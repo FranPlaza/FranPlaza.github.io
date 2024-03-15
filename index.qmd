@@ -2,7 +2,7 @@
 title: "Francisco J. Plaza Vega"
 about:
   template: jolla
-  image: profile.jpg
+  image: fran2.jpg
   links:
     - icon: twitter
       text: twitter
@@ -13,6 +13,8 @@ about:
 ---
 
 Finley Malloc is the Chief Data Scientist at Wengo Analytics. When not innovating on data platforms, Finley enjoys spending time unicycling and playing with her pet iguana.
+
+[Deep Learning](courses/Deep_Learning/Deep_Learning_00_About.html)
 
 ## Education
 
