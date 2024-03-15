@@ -2,7 +2,7 @@
 title: "Francisco J. Plaza Vega"
 about:
   template: jolla
-  image: "www/fran2.jpg"
+  image: index_images/fran2.jpg
   links:
     - icon: twitter
       text: twitter
