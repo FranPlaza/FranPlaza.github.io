@@ -4,28 +4,21 @@ about:
   template: jolla
   image: index_images/fran2.jpg
   links:
-    - icon: twitter
-      text: twitter
-      href: https://twitter.com
+    - icon: envelope
+      text: email
+      href: mailto:francisco.plaza.v@usach.cl
+    - icon: linkedin
+      text: Linkedin
+      href: https://www.linkedin.com/in/franplazavega/
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/FranPlaza
 ---
 
-Finley Malloc is the Chief Data Scientist at Wengo Analytics. When not innovating on data platforms, Finley enjoys spending time unicycling and playing with her pet iguana.
+Hola!, soy Francisco Plaza-Vega, Profesor Asociado de la Universidad de Santiago de Chile.
 
-[Deep Learning](courses/Deep_Learning/Deep_Learning_00_About.html){target="_blank"}
+## Cursos
 
-## Education
+[Simulación Estadística](courses/Simulation/Simulation_00_About.html){target="_blank"}
 
-University of California, San Diego | San Diego, CA
-PhD in Mathematics | Sept 2011 - June 2015
-
-Macalester College | St. Paul MA
-B.A in Economics | Sept 2007 - June 2011
-
-## Experience
-
-Wengo Analytics | Head Data Scientist | April 2018 - present
-
-GeoScynce | Chief Analyst | Spet 2012 - April 2018
+[Modelos de Deep Learning](courses/Deep_Learning/Deep_Learning_00_About.html){target="_blank"}
