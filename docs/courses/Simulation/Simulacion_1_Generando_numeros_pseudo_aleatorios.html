@@ -1066,19 +1066,27 @@ x_{i+1} = a x_{i} + b \mod m
 </section>
 <section class="slide level2">
 
+<div class="definition">
+<p><span class="blue">Definición:</span><br></p>
+<p>El generador de la <a href="#/eq-congruencial" class="quarto-xref">Ecuación&nbsp;1</a> no puede producir más de <span class="math inline">\(m\)</span> números diferentes antes de que el ciclo se repita. Sea <span class="math inline">\(p\)</span> el período de una secuencia, cuando <span class="math inline">\(p\)</span> es igual a su máximo, es decir, <span class="math inline">\(p=m\)</span>. Decimos que el generador de números aleatorios <span class="green">tiene un período completo</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+
 <div class="alert">
+<p><span class="green">Teorema: Generador de período completo</span><br> Sea el Generador Congruencial Lineal (GCL) de la forma: <span class="math display">\[ x_i = (a x_{i-1} + b) \pmod m\]</span></p>
+<p>Para <span class="math inline">\(b &gt; 0\)</span>, el GCL tiene un período completo si y solo si se cumplen las siguientes tres condiciones:</p>
+<div class="small">
+<ol type="i">
+<li class="fragment"><p>El único entero positivo que divide exactamente tanto a <span class="math inline">\(m\)</span> como a <span class="math inline">\(b\)</span> es 1.</p></li>
+<li class="fragment"><p>Si <span class="math inline">\(q\)</span> es un número primo (divisible solo por sí mismo y 1) que divide a <span class="math inline">\(m\)</span>, entonces <span class="math inline">\(q\)</span> divide a <span class="math inline">\((a-1)\)</span>. Es decir, <span class="math inline">\(a \equiv 1 \pmod{q}\)</span>, para todo factor primo <span class="math inline">\(q\)</span> de <span class="math inline">\(m\)</span>.</p></li>
+<li class="fragment"><p>Si 4 divide a <span class="math inline">\(m\)</span>, entonces 4 divide a <span class="math inline">\((a-1)\)</span>. Es decir, <span class="math inline">\(a \equiv 1 \pmod{4}\)</span>, si <span class="math inline">\(m\)</span> es múltiplo de 4.</p></li>
+</ol>
 <ul>
-<li class="fragment"><p>El generador de la <a href="#/eq-congruencial" class="quarto-xref">Ecuación&nbsp;1</a> no puede producir más de <span class="math inline">\(m\)</span> números diferentes antes de que el ciclo se repita.</p></li>
-<li class="fragment"><p>Un segundo objetivo al elegir las constantes <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(m\)</span> es que la longitud del ciclo, que podría ser menos que <span class="math inline">\(m\)</span>, sea razonablemente grande.</p></li>
-<li class="fragment"><p>Se ha demostrado que para <span class="math inline">\(b &gt; 0\)</span>, la longitud máxima posible del ciclo <span class="math inline">\(m\)</span> se obtiene si, y solo si, se cumplen las siguientes relaciones:</p>
-<ul>
-<li class="fragment"><p><span class="math inline">\(b\)</span> y <span class="math inline">\(m\)</span> no tienen factores comunes aparte de 1.</p></li>
-<li class="fragment"><p><span class="math inline">\((a - 1)\)</span> es múltiplo de cada número primo que divide a <span class="math inline">\(m\)</span>.</p></li>
-<li class="fragment"><p><span class="math inline">\((a - 1)\)</span> es múltiplo de 4 si <span class="math inline">\(m\)</span> es múltiplo de 4.</p></li>
-</ul></li>
-<li class="fragment"><p>Si <span class="math inline">\(m = 2^k\)</span>, la relación (iii) implicaría que <span class="math inline">\(a = 4c + 1\)</span> para <span class="math inline">\(c\)</span> entero positivo, lo cual también satisface la relación (ii).</p></li>
+<li class="fragment"><p>Si <span class="math inline">\(m = 2^k\)</span>, la relación (iii) implicaría que <span class="math inline">\(a = 4b + 1\)</span> para <span class="math inline">\(b\)</span> entero positivo, lo cual también satisface la relación (ii).</p></li>
 <li class="fragment"><p>Cuando <span class="math inline">\(m = 2^n\)</span>, la relación (i) se logra fácilmente estableciendo <span class="math inline">\(b\)</span> como cualquier constante positiva impar.</p></li>
 </ul>
+</div>
 </div>
 </section>
 <section id="propiedades-de-los-generadores-congruenciales" class="slide level2" data-number="2.3">
@@ -1086,8 +1094,8 @@ x_{i+1} = a x_{i} + b \mod m
 <div class="definition">
 <p>Se podría esperar que los números resultantes del generador congruencial mixto (<a href="#/eq-congruencial" class="quarto-xref">Ecuación&nbsp;1</a>) tengan dependencias inusuales, y esto puede ser ilustrado en lo siguiente:</p>
 <ul>
-<li class="fragment">Sea <span class="math inline">\(x_{i+1} = 5x_i \pmod{m}\)</span></li>
-<li class="fragment">Aquí, <span class="math inline">\(x_{i+1} = 5x_i - h_{i}m\)</span>, donde <span class="math inline">\(h\)</span> toma uno de los valores 0, 1, 2, 3, 4.</li>
+<li class="fragment"><p>Sea <span class="math inline">\(x_{i+1} = 5x_i \pmod{m}\)</span></p></li>
+<li class="fragment"><p>Aquí, <span class="math inline">\(x_{i+1} = 5x_i - h_{i}m\)</span>, donde <span class="math inline">\(h\)</span> toma uno de los valores 0, 1, 2, 3, 4.</p></li>
 </ul>
 <p>Por lo tanto, los pares de valores sucesivos <span class="math inline">\((x_i, x_{i+1})\)</span> representan las coordenadas cartesianas de puntos que se encuentran en una de las cinco rectas dadas por la ecuación, y cuanto mayor es <span class="math inline">\(m\)</span>, más larga será la secuencia de números generados que permanecerá en una de estas líneas antes de pasar a otra.</p>
 </div>
@@ -1146,6 +1154,27 @@ x_{i+1} = a x_{i} + b \mod m
 </div>
 </div>
 </div>
+</section>
+<section id="método-de-los-cuadrados-medios" class="slide level2" data-number="2.4">
+<h2><span class="header-section-number">2.4</span> Método de los Cuadrados Medios</h2>
+<p>Otra alternativa para generar números pseudo-aleatorios es utilizar el <span class="green">Método de los Cuadrados Medios</span>. Este método tiene la desventaja de que en generan resulta en un período corto. Al aplicarlo repetidamente, el método <span class="orange">tiende a producir el mismo número de manera recurrente o entra en un ciclo</span>, repitiendo una secuencia de números anterior, lo que resulta en un bucle infinito. Esto limita su efectividad para generar secuencias de números aleatorios confiables y variados.</p>
+<div class="definition small">
+<p><span class="blue">Método de los cuadrados medios</span><br></p>
+<p>Se inicia con un número entero positivo de cuatro dígitos <span class="math inline">\(x_0\)</span>, posteriormente se debe seguir la siguiente secuencia:</p>
+<ol type="1">
+<li class="fragment"><p>Elevar al cuadrado <span class="math inline">\(x_0\)</span> para obtener un entero de hasta ocho dígitos; si es necesario, añadir ceros a la izquierda para que tenga exactamente ocho dígitos.</p></li>
+<li class="fragment"><p>Tomar los cuatro dígitos del medio de este número de ocho dígitos como el siguiente número de cuatro dígitos <span class="math inline">\(x_1\)</span>.</p></li>
+<li class="fragment"><p>Colocar un punto decimal a la izquierda de <span class="math inline">\(x_1\)</span> para obtener el primer <span class="green">número aleatorio <span class="math inline">\(u_1 \sim U(0,1)\)</span></span>.</p></li>
+<li class="fragment"><p>Repetir los pasos 1 a 3 <span class="math inline">\(n\)</span> veces para generar un vector de números aleatorios de largo <span class="math inline">\(n\)</span>.</p></li>
+</ol>
+</div>
+</section>
+<section id="ejercicios-1" class="slide level2" data-number="2.5">
+<h2><span class="header-section-number">2.5</span> Ejercicios</h2>
+<ol type="1">
+<li class="fragment"><p>Si <span class="math inline">\(x0 = 5\)</span> y <span class="math inline">\(x_n = 3x_{n−1} \pmod{150}\)</span>, generar <span class="math inline">\(x_1, \ldots, x_{100}\)</span>. Visualizar la secuencia generada en un histograma de frecuencias y comentar los resultados.</p></li>
+<li class="fragment"><p>Si <span class="math inline">\(x_0 = 3\)</span> y <span class="math inline">\(x_n = (5x_{n−1} + 7) \pmod{200}\)</span>, generar <span class="math inline">\(x_1, \ldots, x_{1000}\)</span>. Visualizar la secuencia generada en un histograma de frecuencias y comentar los resultados.</p></li>
+</ol>
 </section></section>
 <section id="referencias" class="title-slide slide level1 smaller scrollable" data-number="3">
 <h1><span class="header-section-number">3</span> Referencias</h1>
