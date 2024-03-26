@@ -767,11 +767,15 @@ Francisco Plaza Vega
 <section class="slide level2">
 
 <!-- https://livebook.manning.com/book/data-science-bookcamp/chapter-3/21 -->
-<p>Probemos generando un experimento en Python:</p>
+<p>Probemos generando el experimento de manera computacional:</p>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Python</a></li><li><a href="#tabset-1-2">R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a><span class="co"># imporando librerías</span></span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a><span class="co"># importando librerías</span></span>
 <span id="cb14-2"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb14-3"><a href=""></a><span class="im">from</span> scipy.stats <span class="im">import</span> bernoulli</span>
 <span id="cb14-4"><a href=""></a></span>
@@ -792,6 +796,35 @@ Francisco Plaza Vega
 <figure>
 <p><img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
 </figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>n <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb15-2"><a href=""></a>p <span class="ot">=</span> <span class="fl">0.7</span></span>
+<span id="cb15-3"><a href=""></a>moneda <span class="ot">=</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> p)</span>
+<span id="cb15-4"><a href=""></a>moneda <span class="ot">=</span> <span class="fu">ifelse</span>(moneda <span class="sc">==</span> <span class="dv">0</span>, <span class="st">"Cara"</span>, <span class="st">"Sello"</span>)</span>
+<span id="cb15-5"><a href=""></a><span class="fu">barplot</span>(<span class="fu">table</span>(moneda)<span class="sc">/</span>n, </span>
+<span id="cb15-6"><a href=""></a>        <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), </span>
+<span id="cb15-7"><a href=""></a>        <span class="at">ylab =</span> <span class="st">"Probabilidad"</span>)</span>
+<span id="cb15-8"><a href=""></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fl">0.7</span>, <span class="at">col=</span> <span class="st">"green"</span>, <span class="at">lwd =</span> <span class="dv">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -842,31 +875,65 @@ Francisco Plaza Vega
 </section>
 <section class="slide level2">
 
-<p>Probemos generando una v.a. <span class="math inline">\(Uniforme(1,5)\)</span>, en Python</p>
+<p>Probemos generando una v.a. <span class="math inline">\(Uniforme(1,5)\)</span>, de manera computacional:</p>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Python</a></li><li><a href="#tabset-2-2">R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb15-2"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb15-3"><a href=""></a></span>
-<span id="cb15-4"><a href=""></a>a, b <span class="op">=</span> <span class="dv">1</span>,<span class="dv">5</span> <span class="co">#Rango </span></span>
-<span id="cb15-5"><a href=""></a>n <span class="op">=</span> <span class="dv">1000</span> <span class="co">#Tamaño de la muestra</span></span>
-<span id="cb15-6"><a href=""></a>muestras <span class="op">=</span> np.random.uniform(low <span class="op">=</span> a, high <span class="op">=</span> b, size<span class="op">=</span>n) </span>
-<span id="cb15-7"><a href=""></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">4</span>))</span>
-<span id="cb15-8"><a href=""></a>count, bins, ignored <span class="op">=</span> plt.hist(muestras, bins <span class="op">=</span> <span class="dv">15</span>, density<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb15-9"><a href=""></a>plt.plot(bins, np.ones_like(bins)<span class="op">/</span>(b<span class="op">-</span>a), linewidth<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
-<span id="cb15-10"><a href=""></a>plt.xlim([<span class="dv">0</span>, <span class="dv">6</span>])<span class="op">;</span> plt.ylim([<span class="dv">0</span>, <span class="dv">1</span>])</span>
-<span id="cb15-11"><a href=""></a>plt.xlabel(<span class="st">'x'</span>)</span>
-<span id="cb15-12"><a href=""></a>plt.ylabel(<span class="st">'Probabilidad'</span>)<span class="op">;</span></span>
-<span id="cb15-13"><a href=""></a>plt.show()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-2"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-3"><a href=""></a></span>
+<span id="cb16-4"><a href=""></a>a, b <span class="op">=</span> <span class="dv">1</span>,<span class="dv">5</span> <span class="co">#Rango </span></span>
+<span id="cb16-5"><a href=""></a>n <span class="op">=</span> <span class="dv">1000</span> <span class="co">#Tamaño de la muestra</span></span>
+<span id="cb16-6"><a href=""></a>muestras <span class="op">=</span> np.random.uniform(low <span class="op">=</span> a, high <span class="op">=</span> b, size<span class="op">=</span>n) </span>
+<span id="cb16-7"><a href=""></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">4</span>))</span>
+<span id="cb16-8"><a href=""></a>count, bins, ignored <span class="op">=</span> plt.hist(muestras, bins <span class="op">=</span> <span class="dv">15</span>, density<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-9"><a href=""></a>plt.plot(bins, np.ones_like(bins)<span class="op">/</span>(b<span class="op">-</span>a), linewidth<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb16-10"><a href=""></a>plt.xlim([<span class="dv">0</span>, <span class="dv">6</span>])<span class="op">;</span> plt.ylim([<span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb16-11"><a href=""></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb16-12"><a href=""></a>plt.ylabel(<span class="st">'Probabilidad'</span>)<span class="op">;</span></span>
+<span id="cb16-13"><a href=""></a>plt.show()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-14-3.png" class="quarto-figure quarto-figure-center" width="480"></p>
+<p><img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
 </figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>n <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb17-2"><a href=""></a>a <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb17-3"><a href=""></a>b <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb17-4"><a href=""></a>muestras <span class="ot">=</span> <span class="fu">runif</span>(n, a, b)</span>
+<span id="cb17-5"><a href=""></a><span class="fu">hist</span>(muestras, <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb17-6"><a href=""></a>     <span class="at">col =</span> <span class="st">"lightblue"</span>, </span>
+<span id="cb17-7"><a href=""></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">xlim =</span> <span class="fu">c</span>((a<span class="dv">-1</span>),(b<span class="sc">+</span><span class="dv">1</span>)),</span>
+<span id="cb17-8"><a href=""></a>     <span class="at">ylab =</span> <span class="st">"Probabilidad"</span>, <span class="at">main=</span><span class="cn">NULL</span>)</span>
+<span id="cb17-9"><a href=""></a><span class="fu">abline</span>(<span class="at">h=</span>(<span class="dv">1</span><span class="sc">/</span>(b<span class="sc">-</span>a)), <span class="at">col=</span> <span class="st">"green"</span>, <span class="at">lwd =</span> <span class="dv">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -886,7 +953,7 @@ Francisco Plaza Vega
 <li class="fragment"><p>El área total bajo la curva de <span class="math inline">\(f(x)\)</span> es igual a 1.</p></li>
 </ul></li>
 <li class="fragment"><p>Cualquier <span class="math inline">\(f\)</span> que cumple estos requisitos, es una pdf válida.</p></li>
-<li class="fragment"><p>Relacionado con la pdf, está la [<span class="orange">Función de distribución acumulada</span> (cdf, por su sigla en inglés: <em>cummulative distribution function</em>). Por convención, se utiliza la munúscula <span class="math inline">\(f()\)</span> para denotar a la pdf, y la mayúscula <span class="math inline">\(F()\)</span> para denotar a la cdf.</p></li>
+<li class="fragment"><p>Relacionado con la pdf, está la <span class="orange">Función de distribución acumulada</span> (cdf, por su sigla en inglés: <em>cummulative distribution function</em>). Por convención, se utiliza la munúscula <span class="math inline">\(f()\)</span> para denotar a la pdf, y la mayúscula <span class="math inline">\(F()\)</span> para denotar a la cdf.</p></li>
 <li class="fragment"><p><span class="math inline">\(F(x)\)</span> es la probabilidad de que el valor de una variable aleatoria sea <span class="math inline">\(\leq x\)</span>. Así, <span class="math inline">\(F(x)\)</span> es una función no decreciente que se aproxima a cero cuando <span class="math inline">\(x \to -\infty\)</span> y se aproxima a uno cuando <span class="math inline">\(x \to \infty\)</span>.</p></li>
 </ul>
 </div>
@@ -987,7 +1054,7 @@ Francisco Plaza Vega
 </section>
 <section id="métodos-congruenciales" class="slide level2" data-number="2.2">
 <h2><span class="header-section-number">2.2</span> Métodos Congruenciales</h2>
-<p>Consieremos la siguiente <span class="green">secuencia de 100 números</span>, generada en R, parecen ser aleatorios, ¿cierto?:</p>
+<p>Consideremos la siguiente <span class="green">secuencia de 100 números</span>, generada en R, parecen ser aleatorios, ¿cierto?:</p>
 <div class="alert">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -1055,6 +1122,7 @@ x_{i+1} = a x_{i} + b \mod m
 
 <div class="alert">
 <p><span class="blue">Algunas consideraciones</span><br></p>
+<div class="small">
 <ul>
 <li class="fragment"><p>La <span class="green">elección de las constantes <span class="math inline">\(a, b\)</span> y <span class="math inline">\(m\)</span></span> tiene un razonamiento que considera varios objetivos. Para empezar, se quiere que la <span class="orange">aritmética sea eficiente</span>. Los seres humanos hacen aritmética en base 10, así que si la <a href="#/eq-congruencial" class="quarto-xref">Ecuación&nbsp;1</a> se operara manualmente, usando lápiz y papel, sería sensato que <span class="orange"><span class="math inline">\(m\)</span> fuera alguna potencia entera positiva de 10</span>.</p></li>
 <li class="fragment"><p>Si uno calcula naturalmente en <span class="green">base numérica <span class="math inline">\(r\)</span></span>, entonces la operación de división por <span class="math inline">\(m\)</span> es <span class="orange">más eficiente si <span class="math inline">\(m = r^k\)</span></span> para algún entero positivo <span class="math inline">\(k\)</span>.</p>
@@ -1062,6 +1130,7 @@ x_{i+1} = a x_{i} + b \mod m
 <li class="fragment">Para la mayoría de los computadores, esto implica establecer <span class="math inline">\(m = 2^k\)</span>, donde <span class="math inline">\(k\)</span> se selecciona para que <span class="math inline">\(m\)</span> sea “<em>grande</em>” y los números involucrados estén dentro de la precisión de la máquina.</li>
 </ul></li>
 </ul>
+</div>
 </div>
 </section>
 <section class="slide level2">
@@ -1074,7 +1143,7 @@ x_{i+1} = a x_{i} + b \mod m
 <section class="slide level2">
 
 <div class="alert">
-<p><span class="green">Teorema: Generador de período completo</span><br> Sea el Generador Congruencial Lineal (GCL) de la forma: <span class="math display">\[ x_i = (a x_{i-1} + b) \pmod m\]</span></p>
+<p><span class="green">Teorema: Hull-Dobell (Generador de período completo)</span><br> Sea el Generador Congruencial Lineal (GCL) de la forma: <span class="math display">\[ x_i = (a x_{i-1} + b) \pmod m\]</span></p>
 <p>Para <span class="math inline">\(b &gt; 0\)</span>, el GCL tiene un período completo si y solo si se cumplen las siguientes tres condiciones:</p>
 <div class="small">
 <ol type="i">
@@ -1119,7 +1188,7 @@ x_{i+1} = a x_{i} + b \mod m
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1148,7 +1217,7 @@ x_{i+1} = a x_{i} + b \mod m
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center" width="1536"></p>
+<p><img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="1536"></p>
 </figure>
 </div>
 </div>
@@ -1158,6 +1227,9 @@ x_{i+1} = a x_{i} + b \mod m
 <section id="método-de-los-cuadrados-medios" class="slide level2" data-number="2.4">
 <h2><span class="header-section-number">2.4</span> Método de los Cuadrados Medios</h2>
 <p>Otra alternativa para generar números pseudo-aleatorios es utilizar el <span class="green">Método de los Cuadrados Medios</span>. Este método tiene la desventaja de que en generan resulta en un período corto. Al aplicarlo repetidamente, el método <span class="orange">tiende a producir el mismo número de manera recurrente o entra en un ciclo</span>, repitiendo una secuencia de números anterior, lo que resulta en un bucle infinito. Esto limita su efectividad para generar secuencias de números aleatorios confiables y variados.</p>
+</section>
+<section class="slide level2">
+
 <div class="definition small">
 <p><span class="blue">Método de los cuadrados medios</span><br></p>
 <p>Se inicia con un número entero positivo de cuatro dígitos <span class="math inline">\(x_0\)</span>, posteriormente se debe seguir la siguiente secuencia:</p>
@@ -1168,16 +1240,24 @@ x_{i+1} = a x_{i} + b \mod m
 <li class="fragment"><p>Repetir los pasos 1 a 3 <span class="math inline">\(n\)</span> veces para generar un vector de números aleatorios de largo <span class="math inline">\(n\)</span>.</p></li>
 </ol>
 </div>
+</section></section>
+<section>
+<section id="analizando-la-calidad-de-los-números-pseudo-aleatorios" class="title-slide slide level1 center" data-number="3">
+<h1><span class="header-section-number">3</span> Analizando la calidad de los números pseudo aleatorios</h1>
+
 </section>
-<section id="ejercicios-1" class="slide level2" data-number="2.5">
-<h2><span class="header-section-number">2.5</span> Ejercicios</h2>
+<section id="métodos-de-bondad-de-ajuste" class="slide level2" data-number="3.1">
+<h2><span class="header-section-number">3.1</span> Métodos de bondad de ajuste</h2>
+</section>
+<section id="ejercicios-1" class="slide level2" data-number="3.2">
+<h2><span class="header-section-number">3.2</span> Ejercicios</h2>
 <ol type="1">
 <li class="fragment"><p>Si <span class="math inline">\(x0 = 5\)</span> y <span class="math inline">\(x_n = 3x_{n−1} \pmod{150}\)</span>, generar <span class="math inline">\(x_1, \ldots, x_{100}\)</span>. Visualizar la secuencia generada en un histograma de frecuencias y comentar los resultados.</p></li>
 <li class="fragment"><p>Si <span class="math inline">\(x_0 = 3\)</span> y <span class="math inline">\(x_n = (5x_{n−1} + 7) \pmod{200}\)</span>, generar <span class="math inline">\(x_1, \ldots, x_{1000}\)</span>. Visualizar la secuencia generada en un histograma de frecuencias y comentar los resultados.</p></li>
 </ol>
 </section></section>
-<section id="referencias" class="title-slide slide level1 smaller scrollable" data-number="3">
-<h1><span class="header-section-number">3</span> Referencias</h1>
+<section id="referencias" class="title-slide slide level1 smaller scrollable" data-number="4">
+<h1><span class="header-section-number">4</span> Referencias</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Andrews1972" class="csl-entry" role="listitem">
 Andrews, DF, PJ Bickel, FR Hampel, PJ Huber, WH Rogers, y JW Tuckey. 1972. <span>«Robust estimates of location, Princeton Univ»</span>. Princeton University Press, Princeton.
