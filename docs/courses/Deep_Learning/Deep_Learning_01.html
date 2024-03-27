@@ -32,6 +32,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
@@ -401,14 +466,14 @@ Francisco Plaza Vega
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="images/DALLE_generated.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="Imagen generada desde DALL-E con los conceptos de esta diapositiva"><img data-src="images/DALLE_generated.png" style="width:30.0%" alt="Imagen generada desde DALL-E con los conceptos de esta diapositiva"></a></p>
+<p><a href="images/DALLE_generated.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Imagen generada desde DALL-E con los conceptos de esta diapositiva"><img data-src="images/DALLE_generated.png" style="width:30.0%" alt="Imagen generada desde DALL-E con los conceptos de esta diapositiva"></a></p>
 <figcaption>Imagen generada desde <em>DALL-E</em> con los conceptos de esta diapositiva</figcaption>
 </figure>
 </div>
 </section>
 <section id="algunos-personajes-históricos-relevantes" class="slide level2" data-number="1.2">
 <h2><span class="header-section-number">1.2</span> Algunos personajes históricos relevantes</h2>
-<h3 id="ada-lovelace-1815-1852">Ada Lovelace (1815-1852)</h3>
+<h3 data-number="1.2.1" id="ada-lovelace-1815-1852"><span class="header-section-number">1.2.1</span> Ada Lovelace (1815-1852)</h3>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="alert">
@@ -429,7 +494,7 @@ Francisco Plaza Vega
 </section>
 <section class="slide level2">
 
-<h3 id="alan-turing-1912-1954">Alan Turing (1912-1954)</h3>
+<h3 data-number="1.2.2" id="alan-turing-1912-1954"><span class="header-section-number">1.2.2</span> Alan Turing (1912-1954)</h3>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="alert">
@@ -451,7 +516,7 @@ Francisco Plaza Vega
 </section>
 <section class="slide level2">
 
-<h3 id="geoffrey-hinton">Geoffrey Hinton</h3>
+<h3 data-number="1.2.3" id="geoffrey-hinton"><span class="header-section-number">1.2.3</span> Geoffrey Hinton</h3>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="alert">
@@ -760,8 +825,11 @@ Francisco Plaza Vega
 </section>
 <section class="slide level2">
 
-
-<img data-src="images/ML_vs_DL.png" class="r-stretch"></section>
+<div class="r-stack">
+<p><img data-src="images/ML_vs_DL2.jpg" class="fragment fade-in-then-out" width="950" height="650"></p>
+<p><img data-src="images/ML_vs_DL.png" class="fragment" width="850" height="550"></p>
+</div>
+</section>
 <section class="slide level2">
 
 
@@ -784,7 +852,7 @@ Francisco Plaza Vega
 </section>
 <section class="slide level2">
 
-<h3 id="redes-neuronales-y-sus-múltiples-nombres">Redes Neuronales y sus múltiples nombres</h3>
+<h3 data-number="1.5.1" id="redes-neuronales-y-sus-múltiples-nombres"><span class="header-section-number">1.5.1</span> Redes Neuronales y sus múltiples nombres</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/DL_history.png" style="height:50.0%"></p>
@@ -877,7 +945,7 @@ Francisco Plaza Vega
 </section>
 <section class="slide level2">
 
-<h3 id="crecimiento-de-datasets">Crecimiento de datasets</h3>
+<h3 data-number="1.5.2" id="crecimiento-de-datasets"><span class="header-section-number">1.5.2</span> Crecimiento de datasets</h3>
 
 <img data-src="images/internet_population_growth.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section class="slide level2">
@@ -906,7 +974,7 @@ Francisco Plaza Vega
 </section>
 <section class="slide level2">
 
-<h3 id="modelos-más-complejos">Modelos más complejos</h3>
+<h3 data-number="1.5.3" id="modelos-más-complejos"><span class="header-section-number">1.5.3</span> Modelos más complejos</h3>
 
 <img data-src="images/model_size.png" class="r-stretch quarto-figure-center"><p class="caption">Número de neuronas asociado a la complejidad de los modelos de DL <span class="citation" data-cites="Goodfellow2016">(<a href="#/referencias" role="doc-biblioref" onclick="">Goodfellow, Bengio, y Courville 2016</a>)</span>.</p><div class="columns">
 <div class="column">
@@ -948,11 +1016,327 @@ Francisco Plaza Vega
 </section>
 <section class="slide level2">
 
-<h3 id="crecimiento-en-el-desempeño-de-los-modelos">Crecimiento en el desempeño de los modelos</h3>
+<h3 data-number="1.5.4" id="crecimiento-en-el-desempeño-de-los-modelos"><span class="header-section-number">1.5.4</span> Crecimiento en el desempeño de los modelos</h3>
 
 <img data-src="images/DL_error2.png" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">Resultados del error obtenido por los ganadores de la <a href="https://www.image-net.org/challenges/LSVRC/index.php">competencia de clasificación ImageNet</a>, figura extraída de <span class="citation" data-cites="Dean2019">Dean (<a href="#/referencias" role="doc-biblioref" onclick="">2019</a>)</span>.</p></section></section>
-<section id="referencias" class="title-slide slide level1 smaller scrollable" data-number="2">
-<h1><span class="header-section-number">2</span> Referencias</h1>
+<section>
+<section id="principios-básicos" class="title-slide slide level1 center" data-background-color="#00A499" data-number="2">
+<h1><span class="header-section-number">2</span> Principios básicos</h1>
+
+</section>
+<section id="algoritmos-de-aprendizaje" class="slide level2" data-number="2.1">
+<h2><span class="header-section-number">2.1</span> Algoritmos de “aprendizaje”</h2>
+<div class="alert">
+<p>Un algoritmo de aprendizaje automático es un algoritmo capaz de aprender desde los datos.</p>
+<blockquote>
+<p>Se dice que un algoritmo computacional aprende desde la <span class="green">experiencia <span class="math inline">\(E\)</span></span> con respecto a una <span class="green">clase de tareas <span class="math inline">\(T\)</span></span> y una <span class="green">medida de desempeño <span class="math inline">\(P\)</span></span>, si <span class="orange">su desempeño en tareas <span class="math inline">\(T\)</span>, medido por <span class="math inline">\(P\)</span>, mejora con la experiencia <span class="math inline">\(E\)</span></span> <span class="citation" data-cites="Mitchell1997">(<a href="#/referencias" role="doc-biblioref" onclick="">Mitchell 1997</a>)</span><sup>1</sup>.</p>
+</blockquote>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>El libro de <span class="citation" data-cites="Mitchell1997">Mitchell (<a href="#/referencias" role="doc-biblioref" onclick="">1997</a>)</span>, llamado <em>Machine Learning</em>, puede ser encontrado gratis en el siguiente <a href="https://www.cs.cmu.edu/afs/cs.cmu.edu/user/mitchell/ftp/mlbook.html">enlace</a></p></li></ol></aside></section>
+<section class="slide level2">
+
+<h3 data-number="2.1.1" id="algunas-tareas-t"><span class="header-section-number">2.1.1</span> Algunas tareas <span class="math inline">\(T\)</span></h3>
+<div class="definition">
+<p><span class="blue">Clasificación</span><br> En esta tarea, el algoritmo debe especificar a cuál de un set de <span class="math inline">\(k\)</span> categorías pertenece un input determinado.</p>
+<div class="small">
+<ul>
+<li class="fragment">Para resolver esta tarea, el algoritmo de aprendizaje usualmente debe producir una función <span class="math inline">\(f: \mathbb{R}^n \leftarrow \{ 1, \ldots, k \}\)</span>.
+<ul>
+<li class="fragment"><p>Cuando <span class="math inline">\(f = f(\mathbf{x})\)</span>, el modelo asigna un input descrito por el vector <span class="math inline">\(\mathbf{x}\)</span> a una categoría identificada por un código numérico <span class="math inline">\(y\)</span>.</p></li>
+<li class="fragment"><p>También, donde <span class="math inline">\(f\)</span> tiene una salida asociada a una distribución de probabilidad de todas las clases.</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<p><br></p>
+<div class="definition">
+<p><span class="blue">Regresión</span><br> En esta tarea, el algoritmo debe predecir un valor numérico dado algún valor de entrada (<em>input</em>).</p>
+<div class="small">
+<ul>
+<li class="fragment">Para resolver esta tarea, el algoritmo de aprendizaje debe entregar una función <span class="math inline">\(f: \mathbb{R}^n \leftarrow \mathbb{R}\)</span>.</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h4 id="otras-tareas">Otras tareas</h4>
+<div class="definition">
+<div class="small">
+<ul>
+<li class="fragment">Clasificación con datos faltantes</li>
+<li class="fragment">Transcripción</li>
+<li class="fragment">Traducción automática</li>
+<li class="fragment">Detección de anomalías</li>
+<li class="fragment">Síntesis y muestreo</li>
+<li class="fragment">etc.<sup>1</sup></li>
+</ul>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>Para más detalles, revisar <span class="citation" data-cites="Goodfellow2016">(<a href="#/referencias" role="doc-biblioref" onclick="">Goodfellow, Bengio, y Courville 2016</a>, chap.&nbsp;5)</span></p></li></ol></aside></section>
+<section class="slide level2">
+
+<h3 data-number="2.1.2" id="las-medidas-de-desempeño-p"><span class="header-section-number">2.1.2</span> Las medidas de desempeño <span class="math inline">\(P\)</span></h3>
+<ul>
+<li class="fragment"><p>Para evaluar las habilidades de los algoritmos de aprendizaje, se debe diseñar una <span class="green">medida cuantitativa</span> de su desempeño. Usualmente, esta medida de desempeñp <span class="math inline">\(P\)</span> es específica a la tarea <span class="math inline">\(T\)</span> llevada a cabo por el algoritmo.</p></li>
+<li class="fragment"><p>Para tareas como clasificación, usualmente se emplea la <span class="green">exactitud (<em>accuracy</em>)</span> del modelo, que representa la proporción de <span class="orange">ejemplos en los que el modelo produce la salida correcta</span>. También se puede obtener información equivalente al medir la <span class="green">tasa de error</span>, o la proporción de <span class="orange">ejemplos erróneamente clasificados</span>.</p></li>
+<li class="fragment"><p>En tareas de regresión, se debe buscar una métrica distinta que entregue un valor contínuo para cada ejemplo.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<ul>
+<li class="fragment"><p>Estamos interesados en como el algoritmo se desempeña en datos que no ha visto antes, ya que esto determina qué tan bien funcionará el modelo en el mundo real.</p></li>
+<li class="fragment"><p>Las medidas de desempeño se evalúan usando <span class="green">un conjunto de datos de prueba (test set)</span>, que es separado de los datos empleados para el entrenamiento del modelo.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 data-number="2.1.3" id="la-experiencia-e"><span class="header-section-number">2.1.3</span> La experiencia <span class="math inline">\(E\)</span></h3>
+<p>Los algoritmos de aprendizaje automático pueden ser categorizados como <span class="green">supervisados</span> o <span class="green">no supervisados</span>. Dependiendo de qué tipo de experiencia tienen permitido utilizar durante el proceso de aprendizaje del modelo.</p>
+</section>
+<section class="slide level2">
+
+<h4 id="supervisado-y-no-supervisado">Supervisado y no supervisado</h4>
+<div class="columns">
+<div class="column">
+<div class="alert">
+<p><span class="orange">Aprendizaje supervisado</span><br></p>
+<ul>
+<li class="fragment"><p>Datos etiquetados</p></li>
+<li class="fragment"><p>Retroalimentación directa</p></li>
+<li class="fragment"><p>Predecir resultados/futuro</p></li>
+</ul>
+</div>
+</div><div class="column">
+<div class="alert">
+<p><span class="orange">Aprendizaje no supervisado</span><br></p>
+<ul>
+<li class="fragment"><p>No hay etiquetas</p></li>
+<li class="fragment"><p>No hay retroalimentación</p></li>
+<li class="fragment"><p>Encontrar estructura oculta en los datos</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="{columns}">
+<div class="column" style="width:25%;">
+
+</div>
+<div class="column" style="width:50%;">
+<div class="alert">
+<p><span class="orange">Aprendizaje reforzado</span><br></p>
+<ul>
+<li class="fragment"><p>Proceso de decisión</p></li>
+<li class="fragment"><p>Sistema de recompensas</p></li>
+<li class="fragment"><p>Aprender una serie de acciones</p></li>
+</ul>
+</div>
+</div>
+<div class="column" style="width:25%;">
+
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h4 id="aprendizaje-supervisado">Aprendizaje supervisado</h4>
+
+<img data-src="images/DL_scheme.png" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"><div class="alert">
+<ul>
+<li class="fragment"><p>Los datos consisten en algunos puntos y una <span class="orange">etiqueta o valor objetivo</span> asociado a ellos.</p></li>
+<li class="fragment"><p>El objetivo de los algoritmos es encontrar alguna manera de estimar ese valor objetivo.</p></li>
+<li class="fragment"><p>Usualmente utilizados como etapa final de algún proyecto de ciencia de datos, asociado a clasificación o regresión.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<h4 id="aprendizaje-no-supervisado">Aprendizaje no supervisado</h4>
+<div class="alert">
+<ul>
+<li class="fragment"><p>En este caso, solo se tiene datos en bruto, <span class="orange">sin ninguna etiqueta ni objetivo</span> a ser predicho.</p></li>
+<li class="fragment"><p>Los algoritmos no supervisados se emplean para encontrar patrones en los datos, buscando en su estructura subyacente.</p></li>
+<li class="fragment"><p>Usualmente usados como parte del pre procesamiento de los datos.</p></li>
+<li class="fragment"><p>Algoritmos de agrupamiento (clustering), por ejemplo, intentan separar los datos en agrupaciones naturales.</p></li>
+</ul>
+</div>
+<div class="columns">
+<div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/clustering.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dim_reduction.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h4 id="aprendizaje-reforzado">Aprendizaje reforzado</h4>
+
+<img data-src="images/reinforced_learning.png" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"><div class="alert">
+<ul>
+<li class="fragment"><p>Algoritmos más utilizados: Q-learning y DQN (Deep Q network)</p></li>
+<li class="fragment"><p>Ejemplos de entornos donde se utiliza:</p>
+<ul>
+<li class="fragment"><p>Juegos</p></li>
+<li class="fragment"><p>Manejo de recursos</p></li>
+<li class="fragment"><p>Recomendaciones personalizadas</p></li>
+<li class="fragment"><p>Robótica</p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="sub-y-sobre-entrenamiento" class="slide level2" data-number="2.2">
+<h2><span class="header-section-number">2.2</span> Sub y sobre entrenamiento</h2>
+<p>Los factores que determinan la capacidad de desempeño de in algoritmo de aprendizaje automático son las habilidades para:</p>
+<ul>
+<li class="fragment"><p>Hacer el error de entrenamiento lo más pequeño posible</p></li>
+<li class="fragment"><p>Hacer que la brecha entre error de entrenamiento y prueba sea lo más pequeño posible</p></li>
+</ul>
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/over_under_fitting.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="images/over_under2.png" class="quarto-figure quarto-figure-center r-stretch"><ul>
+<li class="fragment"><p><span class="green">Zona de infraajuste:</span> En el extremo izquierdo del gráfico, donde ambos errores, de entrenamiento y de generalización, son altos.</p></li>
+<li class="fragment"><p><span class="green">Capacidad óptima:</span> Punto en el eje de capacidad donde el error de generalización es mínimo antes de que comience a aumentar nuevamente.</p></li>
+<li class="fragment"><p><span class="green">Brecha de generalización:</span> La diferencia entre el error de entrenamiento y el error de generalización; se amplía a medida que la capacidad excede la óptima.</p></li>
+<li class="fragment"><p><span class="green">Zona de sobreajuste:</span> Área a la derecha de la línea roja vertical, donde la capacidad es demasiado grande y el error de generalización es más alto debido a una brecha de generalización más amplia.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 data-number="2.2.1" id="no-hay-almuerzos-gratis"><span class="header-section-number">2.2.1</span> <em>No hay almuerzos gratis</em></h3>
+<div class="definition">
+<p><span class="green">Teorema: No hay almuerzo gratis (<em>No free lunch Theorem</em>)</span><br></p>
+<blockquote>
+<p>El teorema <span class="orange"><em>no hay almuerzo gratis</em></span> para el aprendizaje automático <span class="citation" data-cites="Wolpert1996">(<a href="#/referencias" role="doc-biblioref" onclick="">Wolpert 1996</a>)</span> establece que, promediado sobre todas las posibles distribuciones generadoras de datos, cada algoritmo de clasificación tiene la misma tasa de error al clasificar puntos previamente no observados. En otras palabras, en cierto sentido, ningún algoritmo de aprendizaje automático es universalmente mejor que cualquier otro. El algoritmo más sofisticado que podamos concebir tiene el mismo rendimiento promedio (sobre todas las posibles tareas) que simplemente predecir que cada punto pertenece a la misma clase.</p>
+</blockquote>
+</div>
+</section>
+<section class="slide level2">
+
+<ul>
+<li class="fragment"><p>Cualquier modelo que afirme ofrecer una flexibilidad superior en el análisis de los patrones de datos generalmente lo hace a costa de introducir suposiciones adicionales, o al sacrificar la generalización en situaciones importantes.</p></li>
+<li class="fragment"><p>Debido a que no hay un algoritmo superior en todos los escenarios, la elección del algoritmo de aprendizaje automático debe basarse en el conocimiento previo específico del problema y la naturaleza de los datos con los que se está trabajando.</p></li>
+<li class="fragment"><p>Algunos algoritmos funcionarán mejor en ciertos problemas y otros serán superiores en diferentes contextos.</p></li>
+<li class="fragment"><p>Si un algoritmo tiene un buen desempeño en una tarea específica, es porque las suposiciones implícitas en el modelo se alinean bien con la distribución de los datos de esa tarea.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<blockquote>
+<p>Cuando se elige o se diseña un algoritmo de aprendizaje automático para una tarea específica, se debe considerar cómo se relacionan las propiedades del algoritmo con los datos y la tarea en cuestión. No existe una estrategia única que sea la mejor, sino que la elección se debe adaptar al problema específico.</p>
+</blockquote>
+</section>
+<section class="slide level2">
+
+<h4 id="regularización">Regularización</h4>
+<div class="definition">
+<p><span class="blue">Definición</span><br></p>
+<blockquote>
+<p>La regularización es cualquier modificación que se hace en un algoritmo de aprendizaje que tiene como objetivo reducir su error de generalización pero no su error de entrenamiento.</p>
+</blockquote>
+</div>
+</section>
+<section class="slide level2">
+
+<ul>
+<li class="fragment"><p>El concepto de regularización en el aprendizaje automático se refiere a técnicas aplicadas a modelos para prevenir el sobreajuste, i.e.&nbsp;cuando un modelo es tan complejo que aprende el ruido del conjunto de datos de entrenamiento, reduciendo su capacidad para generalizar bien a nuevos datos.</p></li>
+<li class="fragment"><p>Al regularizar, se agrega información (usualmente en forma de una penalización a la complejidad del modelo) para disuadir al algoritmo de aprendizaje de ajustarse demasiado a los datos de entrenamiento. Esto se hace a menudo añadiendo un término adicional a la función de pérdida durante el entrenamiento que penaliza los pesos grandes (en el caso de la regularización L1 o L2), o mediante métodos como la parada temprana, donde el entrenamiento se detiene antes de que el sobreajuste pueda comenzar.</p></li>
+<li class="fragment"><p>El objetivo final es mejorar el rendimiento del modelo en datos no vistos previamente, sin mejorar su rendimiento en los datos de entrenamiento.</p></li>
+</ul>
+</section></section>
+<section>
+<section id="qué-necesitaremos" class="title-slide slide level1 center" data-background-color="#00A499" data-number="3">
+<h1><span class="header-section-number">3</span> ¿Qué necesitaremos?</h1>
+
+</section>
+<section id="instalando-las-dependencias-necesarias" class="slide level2" data-number="3.1">
+<h2><span class="header-section-number">3.1</span> Instalando las dependencias necesarias</h2>
+<ul>
+<li class="fragment"><p>En general, instalaremos alguna distribución de Python, que podremos usar directamente a través de algún IDE (como Spyder).</p></li>
+<li class="fragment"><p>También es posible ejecutar código de Python en R a través de la librería <code>reticulate</code>. Para ello, tendremos que indicar a R la ruta de acceso a alguna distribución de Python que tengamos instalada en nuestro computador.</p></li>
+<li class="fragment"><p>Luego, necesitaremos las siguientes plataformas de desarrollo para Deep Learning:</p>
+<ul>
+<li class="fragment"><p><a href="https://www.tensorflow.org/?hl=es">Tensorflow</a></p></li>
+<li class="fragment"><p><a href="https://keras.io/">Keras</a></p></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 data-number="3.1.1" id="para-python"><span class="header-section-number">3.1.1</span> Para Python:</h3>
+<ul>
+<li class="fragment"><p>Lo primero sería descargar la distribución de <a href="https://www.anaconda.com/download">Anaconda</a></p></li>
+<li class="fragment"><p>Luego, dependiendo si se cuenta con GPU (Graphic Processor Unit, i.e.&nbsp;Tarjeta de video dedicada), se pueden seguir dos caminos:</p>
+<ul>
+<li class="fragment"><p>Instalar Tensorflow y Keras con GPU</p></li>
+<li class="fragment"><p>Instalar Tensorflow y Keras sin GPU (o dicho de otra forma, instalar con CPU)</p></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Acá un tutorial en video en español de cómo instalar TensorFlow dentro de un entorno virtual de Anaconda</p>
+<iframe data-external="1" src="https://www.youtube.com/embed/za_O63kTQAo?si=3QJ7DQG70GbTUb3U" width="60%" height="60%" title="INSTALAR TENSORFLOW en ANACONDA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</section>
+<section class="slide level2">
+
+<h3 data-number="3.1.2" id="para-r"><span class="header-section-number">3.1.2</span> Para R:</h3>
+<ul>
+<li class="fragment"><p><a href="https://posit.co/download/rstudio-desktop/">RStudio</a> proporciona una guía para comenzar con <code>TensorFlow</code> y <code>Keras</code> en R.</p></li>
+<li class="fragment"><p>Se puede instalar el paquete de tensorflow directamente desde GitHub y luego utilizar la función <code>install_tensorflow()</code> para instalar <code>TensorFlow</code> en un entorno virtual llamado “<code>r-tensorflow</code>”.</p></li>
+<li class="fragment"><p>Después, instalar <code>Keras</code> utilizando la función <code>install_keras()</code>, que instalará <code>TensorFlow</code> y algunas dependencias de Python comúnmente utilizadas.</p>
+<ul>
+<li class="fragment"><p><a href="https://tensorflow.rstudio.com/install/">Una guía de instalación rápida de Tensorflow</a></p></li>
+<li class="fragment"><p><a href="https://tensorflow.rstudio.com/reference/keras/install_keras">Una guía de instalación de Keras</a></p></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>La instalación sería algo así:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Instalar el paquete tensorflow desde GitHub</span></span>
+<span id="cb1-2"><a href=""></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rstudio/tensorflow"</span>)</span>
+<span id="cb1-3"><a href=""></a></span>
+<span id="cb1-4"><a href=""></a><span class="co"># Asegurarte de que Python está instalado o instalarlo con reticulate</span></span>
+<span id="cb1-5"><a href=""></a>reticulate<span class="sc">::</span><span class="fu">install_python</span>()</span>
+<span id="cb1-6"><a href=""></a></span>
+<span id="cb1-7"><a href=""></a><span class="co"># Instalar TensorFlow</span></span>
+<span id="cb1-8"><a href=""></a><span class="fu">library</span>(tensorflow)</span>
+<span id="cb1-9"><a href=""></a><span class="fu">install_tensorflow</span>(<span class="at">envname =</span> <span class="st">"r-tensorflow"</span>)</span>
+<span id="cb1-10"><a href=""></a></span>
+<span id="cb1-11"><a href=""></a><span class="co"># Instalar Keras</span></span>
+<span id="cb1-12"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"keras"</span>)</span>
+<span id="cb1-13"><a href=""></a><span class="fu">library</span>(keras)</span>
+<span id="cb1-14"><a href=""></a><span class="fu">install_keras</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 data-number="3.1.3" id="google-colab"><span class="header-section-number">3.1.3</span> Google Colab</h3>
+<p>También podremos emplear <a href="https://colab.google/">Google Colab</a> para ejecutar nuestro código de manera online. Esto tiene algunas ventajas y desventajas.</p>
+
+<img data-src="images/google_colab.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section></section>
+<section id="referencias" class="title-slide slide level1 smaller scrollable" data-number="4">
+<h1><span class="header-section-number">4</span> Referencias</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Aiello2016" class="csl-entry" role="listitem">
 Aiello, Luigia Carlucci. 2016. <span>«The multifaceted impact of Ada Lovelace in the digital age»</span>. <em>Artificial Intelligence</em> 235: 58-62.
@@ -987,6 +1371,9 @@ Lenat, Douglas, y RV Guha. 1990. <em><span>Building Large Knowledge-Based System
 <div id="ref-Lovelace2015" class="csl-entry" role="listitem">
 Lovelace, AA. 2015. <span>«1842 Notes to the Translation of the Sketch of the Analytical Engine»</span>. <em>Ada User Journal</em> 36 (3): 152.
 </div>
+<div id="ref-Mitchell1997" class="csl-entry" role="listitem">
+Mitchell, T. M. 1997. <em>Machine Learning</em>. McGraw-Hill international editions - computer science series. McGraw-Hill Education. <a href="https://books.google.cl/books?id=xOGAngEACAAJ">https://books.google.cl/books?id=xOGAngEACAAJ</a>.
+</div>
 <div id="ref-Moor1976" class="csl-entry" role="listitem">
 Moor, James H. 1976. <span>«An <span>Analysis</span> of the <span>Turing</span> <span>Test</span>»</span>. <em>Philosophical Studies: An International Journal for Philosophy in the Analytic Tradition</em> 30 (4): 249-57. <a href="https://www.jstor.org/stable/4319091">https://www.jstor.org/stable/4319091</a>.
 </div>
@@ -999,6 +1386,9 @@ Pinar Saygin, Ayse, Ilyas Cicekli, y Varol Akman. 2000. <span>«Turing <span>Tes
 <div id="ref-Rumelhart1986" class="csl-entry" role="listitem">
 Rumelhart, David E., Geoffrey E. Hinton, y Ronald J. Williams. 1986. <span>«Learning representations by back-propagating errors»</span>. <em>Nature</em> 323 (6088): 533-36. <a href="https://doi.org/10.1038/323533a0">https://doi.org/10.1038/323533a0</a>.
 </div>
+<div id="ref-Wolpert1996" class="csl-entry" role="listitem">
+Wolpert, David H. 1996. <span>«The lack of a priori distinctions between learning algorithms»</span>. <em>Neural computation</em> 8 (7): 1341-90.
+</div>
 </div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/Usach_P2.png" class="slide-logo"></p>
@@ -1010,6 +1400,8 @@ Rumelhart, David E., Geoffrey E. Hinton, y Ronald J. Williams. 1986. <span>«Lea
 <span class="glightbox-desc lightbox-desc-1">Imagen generada desde <em>DALL-E</em> con los conceptos de esta diapositiva</span>
 </div>
 </section>
+
+
     </div>
   </div>
 
@@ -1475,7 +1867,7 @@ Rumelhart, David E., Geoffrey E. Hinton, y Ronald J. Williams. 1986. <span>«Lea
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;
