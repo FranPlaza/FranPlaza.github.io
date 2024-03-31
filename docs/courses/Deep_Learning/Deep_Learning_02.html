@@ -29,71 +29,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-      }
-    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-    div.sourceCode
-      { color: #24292e;  }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #24292e; } /* Normal */
-    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
-    code span.an { color: #6a737d; } /* Annotation */
-    code span.at { color: #d73a49; } /* Attribute */
-    code span.bn { color: #005cc5; } /* BaseN */
-    code span.bu { color: #d73a49; } /* BuiltIn */
-    code span.cf { color: #d73a49; } /* ControlFlow */
-    code span.ch { color: #032f62; } /* Char */
-    code span.cn { color: #005cc5; } /* Constant */
-    code span.co { color: #6a737d; } /* Comment */
-    code span.cv { color: #6a737d; } /* CommentVar */
-    code span.do { color: #6a737d; } /* Documentation */
-    code span.dt { color: #d73a49; } /* DataType */
-    code span.dv { color: #005cc5; } /* DecVal */
-    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
-    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
-    code span.fl { color: #005cc5; } /* Float */
-    code span.fu { color: #6f42c1; } /* Function */
-    code span.im { color: #032f62; } /* Import */
-    code span.in { color: #6a737d; } /* Information */
-    code span.kw { color: #d73a49; } /* Keyword */
-    code span.op { color: #24292e; } /* Operator */
-    code span.ot { color: #6f42c1; } /* Other */
-    code span.pp { color: #d73a49; } /* Preprocessor */
-    code span.re { color: #6a737d; } /* RegionMarker */
-    code span.sc { color: #005cc5; } /* SpecialChar */
-    code span.ss { color: #032f62; } /* SpecialString */
-    code span.st { color: #032f62; } /* String */
-    code span.va { color: #e36209; } /* Variable */
-    code span.vs { color: #032f62; } /* VerbatimString */
-    code span.wa { color: #ff5555; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
@@ -619,7 +554,11 @@ Francisco Plaza Vega
 <p><img data-src="images/02_DNN/activation_functions_eq.png" class="fragment"></p>
 <p><img data-src="images/02_DNN/activation_functions_use.png" class="fragment"></p>
 </div>
-</section></section>
+</section>
+<section class="slide level2">
+
+
+<img data-src="images/02_DNN/activations.png" class="r-stretch quarto-figure-center"><p class="caption">Ejemplos de perceptrones y funciones de activación</p></section></section>
 <section>
 <section id="función-de-coste-loss-function" class="title-slide slide level1 center" data-background-color="#00A499" data-number="4">
 <h1><span class="header-section-number">4</span> Función de coste (loss function)</h1>
@@ -627,35 +566,118 @@ Francisco Plaza Vega
 </section>
 <section class="slide level2">
 
+<div class="definition">
+<div>
 <ul>
-<li class="fragment"><p>La función de coste (<span class="math inline">\(l\)</span>), también llamada función de pérdida, <em>loss function</em> o <em>cost function</em>, es la encargada de <strong>cuantificar</strong> la distancia entre el valor real y el valor predicho por la red, en otras palabras, <strong>mide cuánto se equivoca la red al realizar predicciones</strong>.</p></li>
-<li class="fragment"><p>En la mayoría de casos, la función de coste devuelve valores positivos. Cuanto más próximo a cero es el valor de coste, mejor son las predicciones de la red (menor error), siendo cero cuando las predicciones se corresponden exactamente con el valor real.</p></li>
-<li class="fragment"><p>La función de coste puede calcularse para una única observación o para un conjunto de datos (normalmente promediando el valor de todas las observaciones). Es el segundo caso el que se utiliza para dirigir el entrenamiento de los modelos.</p></li>
-<li class="fragment"><p>Dependiendo del tipo de problema, regresión o clasificación, es necesario utilizar una función de coste u otra. En problemas de regresión, las más utilizadas son el error cuadrático medio y el error absoluto medio. En problemas de clasificación suele emplearse la función <em>log loss</em>, también llamada <em>logistic loss</em> o <em>cross-entropy loss</em>.</p></li>
+<li><p>El objetivo del modelo es <span class="green">predecir un valor real</span> o <span class="green">clasificar datos</span>.</p></li>
+<li><p>Existirán <span class="orange">errores en la predicción</span>.</p></li>
+<li><p>Para la <span class="orange">cuantificación de dicho error</span>, utilizaremos una <span class="green">función de coste (o pérdida)</span>.</p></li>
+</ul>
+</div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="definition">
+<p><span class="blue">Definición</span><br></p>
+<p>Dado un set de datos <span class="math inline">\(D(\mathbf{X}, \mathbf{Y})\)</span>, con <span class="math inline">\(N\)</span> puntos y un modelo <span class="math inline">\(M\)</span>, una función general de coste está dada por</p>
+<p><span class="math display">\[L(M) = \sum_{i=1}^{N} d\left[ f(x(i);M), y(i) \right]\]</span></p>
+<p>con <span class="math inline">\(d[\cdot]\)</span> la distancia entre los valores predichos y los verdaderos, <span class="math inline">\(x(i)\)</span> los <span class="math inline">\(i\)</span>-ésimos valores o clases predichas y <span class="math inline">\(y(i)\)</span> los <span class="math inline">\(i\)</span>-ésimos valores o clases verdaderas.</p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<ul>
+<li class="fragment"><p>La <span class="green">función de coste (<span class="math inline">\(l\)</span>)</span>, también llamada función de pérdida, <span class="green"><em>loss function</em> o <em>cost function</em></span>, es la encargada de <span class="orange"><strong>cuantificar</strong> la distancia entre el valor real y el valor predicho</span> por la red, en otras palabras, <strong>mide cuánto se equivoca la red al realizar predicciones</strong>.</p></li>
+<li class="fragment"><p>En la mayoría de casos, la función de coste devuelve valores positivos. <span class="green">Cuanto más próximo a cero es el valor de coste, mejor son las predicciones</span> de la red (menor error), siendo cero cuando las predicciones se corresponden exactamente con el valor real.</p></li>
+</ul>
+
+<img data-src="images/02_DNN/goals.png" class="r-stretch quarto-figure-center"><p class="caption">Distintos objetivos de un modelo.</p></section>
+<section class="slide level2">
+
+<ul>
+<li class="fragment"><p>La función de coste <span class="green">puede calcularse para una única observación o para un conjunto de datos (normalmente promediando el valor de todas las observaciones)</span>. Es el segundo caso el que se utiliza para dirigir el entrenamiento de los modelos.</p></li>
+<li class="fragment"><p>Dependiendo del tipo de problema, regresión o clasificación, es necesario utilizar una función de coste u otra. En problemas de <span class="orange">regresión, las más utilizadas son el error cuadrático medio y el error absoluto medio</span>. En problemas de [clasificación suele emplearse la función <em>log loss</em>, también llamada <em>logistic loss</em> o <em>cross-entropy loss</em>]{orange}.</p></li>
 </ul>
 </section>
-<section id="error-cuadrático-medio" class="slide level2" data-number="4.1">
-<h2><span class="header-section-number">4.1</span> Error cuadrático medio</h2>
-<p>El error cuadrático medio (<em>mean squared error</em>, MSE) es la función de coste más utilizada en problemas de regresión. Para una determinada observación <span class="math inline">\(i\)</span>, el error cuadrático se calcula como la diferencia al cuadrado entre el valor predicho <span class="math inline">\(\hat{y}\)</span> y el valor real <span class="math inline">\(y\)</span>.</p>
-<p><span class="math display">\[l^{(i)}(w,b)=\left( \widehat{y}^{(i)}-y^{(i)}\right)^2\]</span></p>
-<p>Las funciones de coste suelen escribirse con la notación <span class="math inline">\(l(w,b)\)</span> para hacer referencia a que su valor depende de los pesos y el sesgo del modelo, ya que son estos los que determinan el valor de las predicciones <span class="math inline">\(\widehat{y}^{(i)}\)</span>.</p>
+<section id="funciones-de-coste-para-regresión" class="slide level2" data-number="4.1">
+<h2><span class="header-section-number">4.1</span> Funciones de coste para regresión</h2>
+<div class="alert">
+<p>Las funciones de coste más comunes para regresión:</p>
+<div class="small">
+<ul>
+<li class="fragment">Error cuadrático medio:</li>
+</ul>
+<p><span class="math display">\[L_{sq}(w,b)=\dfrac{1}{n}\sum_{i=1}^{n}\left( \widehat{y}^{(i)}-y^{(i)}\right)^{2}\]</span></p>
+<ul>
+<li class="fragment">Error medio absoluto:</li>
+</ul>
+<p><span class="math display">\[L_{abs}(w,b)=\dfrac{1}{n}\sum_{i=1}^{n}|\widehat{y}^{(i)}-y^{(i)}|\]</span></p>
+</div>
+</div>
 </section>
 <section class="slide level2">
 
-<p>Con frecuencia, esta función de coste se encuentra multiplicada por <span class="math inline">\(\dfrac{1}{2}\)</span>, esto es simplemente por conveniencia matemática para simplificar el cálculo de su derivada.</p>
-<p><span class="math display">\[l^{(i)}(w,b)=\dfrac{1}{2}\left( \widehat{y}^{(i)}-y^{(i)}\right)^2\]</span></p>
+<h3 data-number="4.1.1" id="error-cuadrático-medio"><span class="header-section-number">4.1.1</span> Error cuadrático medio</h3>
+<div class="definition">
+<p>El <span class="green">error cuadrático medio (<em>mean squared error</em>, MSE) es la función de coste más utilizada en problemas de regresión</span>. Para una determinada observación <span class="math inline">\(i\)</span>, el error cuadrático se calcula como la diferencia al cuadrado entre el valor predicho <span class="math inline">\(\hat{y}\)</span> y el valor real <span class="math inline">\(y\)</span>.</p>
+<p><span class="math display">\[l_{sq}^{(i)}(w,b)=\left( \widehat{y}^{(i)}-y^{(i)}\right)^2\]</span></p>
+</div>
 </section>
 <section class="slide level2">
 
-<p>Para cuantificar el error que comete el modelo todo un conjunto de datos, por ejemplo los de entrenamiento, se promedia el error de todas las <span class="math inline">\(N\)</span> observaciones.</p>
-<p><span class="math display">\[L(w,b)=\dfrac{1}{n}\sum_{i=1}^{n}l^{(i)}(w,b)=\dfrac{1}{n}\sum_{i=1}^{n}\left( \widehat{y}^{(i)}-y^{(i)}\right)^{2}\]</span></p>
-<p>Cuando un modelo se entrena utilizando el error cuadrático medio como función de coste, está aprendiendo a <strong>predecir la media de la variable respuesta</strong>.</p>
+<ul>
+<li class="fragment"><p>Las funciones de coste <span class="orange">suelen escribirse con la notación <span class="math inline">\(l(w,b)\)</span></span> para hacer referencia a que su valor depende de los pesos y el sesgo del modelo, ya que son estos los que determinan el valor de las predicciones <span class="math inline">\(\widehat{y}^{(i)}\)</span>.</p></li>
+<li class="fragment"><p>Con frecuencia, esta función de coste <span class="orange">se encuentra multiplicada por <span class="math inline">\(\dfrac{1}{2}\)</span></span>, esto es simplemente por conveniencia matemática para simplificar el cálculo de su derivada.</p></li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[L_{sq}^{(i)}(w,b)=\dfrac{1}{2}\left( \widehat{y}^{(i)}-y^{(i)}\right)^2\]</span></p>
+</div>
 </section>
-<section id="error-medio-absoluto" class="slide level2" data-number="4.2">
-<h2><span class="header-section-number">4.2</span> Error medio absoluto</h2>
-<p>El error medio absoluto (<em>mean absolute error</em>, MAE) consiste en promediar el error absoluto de las predicciones.</p>
+<section class="slide level2">
+
+<p>Para <span class="orange">cuantificar el error que comete el modelo en todo un conjunto de datos</span>, por ejemplo los de entrenamiento, se promedia el error de todas las <span class="math inline">\(N\)</span> observaciones.</p>
+<div class="fragment">
+<p><span class="math display">\[L_{sq}(w,b)=\dfrac{1}{n}\sum_{i=1}^{n}l^{(i)}(w,b)=\dfrac{1}{n}\sum_{i=1}^{n}\left( \widehat{y}^{(i)}-y^{(i)}\right)^{2}\]</span></p>
+</div>
+<div class="fragment">
+<div class="alert">
+<p>Cuando un modelo se <span class="orange">entrena utilizando el error cuadrático medio como función de coste, está aprendiendo a <strong>predecir la media de la variable respuesta</strong></span>.</p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 data-number="4.1.2" id="error-medio-absoluto"><span class="header-section-number">4.1.2</span> Error medio absoluto</h3>
+<div class="definition">
+<p>El <span class="green">error medio absoluto (<em>mean absolute error</em>, MAE)</span> consiste en <span class="orange">promediar el error absoluto de las predicciones</span>.</p>
 <p><span class="math display">\[L(w,b)=\dfrac{1}{n}\sum_{i=1}^{n}|\widehat{y}^{(i)}-y^{(i)}|\]</span></p>
-<p>El error medio absoluto es más robusto frente a <em>outliers</em> que el error cuadrático medio. Esto significa que, el entrenamiento del modelo, se ve menos influenciado por datos anómalos que pueda haber en el conjunto de entrenamiento. Cuando un modelo se entrena utilizando el error absoluto medio como función de coste, está aprendiendo a <strong>predecir la mediana de la variable respuesta</strong>.</p>
+</div>
+</section>
+<section class="slide level2">
+
+<ul>
+<li class="fragment"><p>El error medio absoluto es <span class="orange">más robusto frente a <em>outliers</em></span> que el error cuadrático medio.</p></li>
+<li class="fragment"><p>Esto significa que, el <span class="orange">entrenamiento del modelo, se ve menos influenciado por datos anómalos</span> que pueda haber en el conjunto de entrenamiento.</p></li>
+<li class="fragment"><p>Cuando un modelo se entrena utilizando el error absoluto medio como función de coste, <span class="orange">está aprendiendo a <strong>predecir la mediana de la variable respuesta</strong></span>.</p></li>
+</ul>
+</section>
+<section id="funciones-de-coste-para-clasificación" class="slide level2" data-number="4.2">
+<h2><span class="header-section-number">4.2</span> Funciones de coste para clasificación</h2>
+<div class="alert">
+<div class="small">
+<p>Las funciones de coste más comunes para problemas de clasificación:</p>
+<ul>
+<li class="fragment">Entropia cruzada binaria (Binary crossentropy):</li>
+</ul>
+<p><span class="math display">\[L_{bc}(M) = -\frac{1}{N} \sum_{i=1}^{N} \left[ y^{(i)} \cdot log(\hat{y}^{(i)}) + (1 - y^{(i)}) \cdot log(1 - \hat{y}^{(i)}) \right]\]</span></p>
+<ul>
+<li class="fragment">Entropía cruzada categórica (Categorical crossentropy):</li>
+</ul>
+<p><span class="math display">\[L_{bc}(M) = -\frac{1}{N} \sum_{i=1}^{N} \sum_{j=1}^{C} \left[ y^{(i,j)} \cdot log(\hat{y}^{(i,j)}) \right], \]</span></p>
+<p>donde <span class="math inline">\(y^{(i,j)} =1\)</span>, si la clase de <span class="math inline">\(y^{(i,j)}\)</span> es <span class="math inline">\(j\)</span> y 0 en cualquier otro caso, <span class="math inline">\(\hat{y}^{(i,j)}\)</span> es la probabilidad entregada por el modelo para que la <span class="math inline">\(i\)</span>-ésima observación pertenezca a la <span class="math inline">\(j\)</span>-ésima clase.</p>
+</div>
+</div>
 </section></section>
 <section>
 <section id="múltiples-capas" class="title-slide slide level1 center" data-background-color="#00A499" data-number="5">
@@ -664,12 +686,24 @@ Francisco Plaza Vega
 </section>
 <section class="slide level2">
 
-<p>El modelo de red neuronal con una única capa (<strong>single-layer perceptron</strong>), aunque supuso un gran avance en el campo del <em>machine learning</em>, solo es capaz de aprender patrones sencillos. Para superar esta limitación, los investigadores descubrieron que, combinando múltiples capas ocultas, la red puede aprender relaciones mucho más complejas entre los predictores y la variable respuesta. A esta estructura se le conoce como <strong>perceptrón multicapa</strong> o <strong>multilayer perceptron</strong> (MLP), y puede considerarse como el primer modelo de <strong>deep learning</strong>.</p>
-<p>La estructura de un perceptrón multicapa consta de varias capas ocultas. Cada neurona está conectada a todas las neuronas de la capa anterior y a las de la capa posterior. Aunque no es estrictamente necesario, todas las neuronas que forman parte de una misma capa suelen emplear la misma función de activación.</p>
+<div class="definition">
+<ul>
+<li class="fragment"><p>El modelo de red neuronal con <span class="green">una única capa (<strong>single-layer perceptron</strong>)</span>, aunque supuso un gran avance en el campo del <em>machine learning</em>, sólo <span class="orange">es capaz de aprender patrones sencillos</span>.</p></li>
+<li class="fragment"><p>Para superar esta limitación, los investigadores descubrieron que, combinando <span class="green">múltiples capas ocultas</span>, la red puede aprender relaciones mucho más <span class="orange">complejas entre los predictores y la variable de respuesta</span>.</p></li>
+<li class="fragment"><p>A esta estructura se le conoce como <span class="green"><strong>perceptrón multicapa</strong> o <strong>multilayer perceptron</strong> (MLP)</span>, y puede considerarse como el primer modelo de <strong>deep learning</strong>.</p></li>
+</ul>
+</div>
 </section>
 <section class="slide level2">
 
-<p>Combinando múltiples capas ocultas y <strong>funciones de activación no lineales</strong>, los modelos de redes pueden aprender prácticamente cualquier patrón. De hecho, está demostrado que, con suficientes neuronas, un MLP es un aproximador universal para cualquier función.</p>
+<ul>
+<li class="fragment"><p>La estructura de <span class="green">un perceptrón multicapa consta de varias capas ocultas</span>. Cada neurona está conectada a todas las neuronas de la capa anterior y a las de la capa posterior.</p></li>
+<li class="fragment"><p>Aunque no es estrictamente necesario, todas las neuronas que forman parte de <span class="orange">una misma capa suelen emplear la misma función de activación</span>.</p></li>
+<li class="fragment"><p>Combinando <span class="orange">múltiples capas ocultas</span> y <span class="orange"><strong>funciones de activación no lineales</strong></span>, los modelos de redes pueden aprender prácticamente cualquier patrón. De hecho, está demostrado que, con <span class="green">suficientes neuronas, un MLP es un aproximador universal</span> para cualquier función.</p></li>
+</ul>
+<div class="example">
+<p><span class="green">Tarea</span> Busque información sobre el <span class="blue">Teorema de aproximación universal</span></p>
+</div>
 </section>
 <section class="slide level2">
 
@@ -682,7 +716,13 @@ Francisco Plaza Vega
 </section>
 <section class="slide level2">
 
-<p>El proceso de entrenamiento de una red neuronal consiste en ajustar el valor de los pesos y sesgo de tal forma que, las predicciones que se generen, tengan el menor error posible. Gracias a esto, el modelo es capaz de identificar qué predictores tienen mayor influencia y de qué forma están relacionados entre ellos y con la variable respuesta.</p>
+<div class="definition">
+<p>El <span class="green">proceso de entrenamiento</span> de una red neuronal consiste en <span class="orange">ajustar el valor de los pesos y sesgo de tal forma que, las predicciones que se generen, tengan el menor error posible</span>. Gracias a esto, el modelo es capaz de identificar qué predictores tienen mayor influencia y de qué forma están relacionados entre ellos y con la variable de respuesta.</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="alert">
 <p>La idea intuitiva de cómo entrenar una red neuronal es la siguiente:</p>
 <div class="small">
 <ol type="1">
@@ -693,12 +733,49 @@ Francisco Plaza Vega
 <li class="fragment"><p>Repetir los pasos 2, 3, 4 y 5 hasta que la red sea suficientemente buena.</p></li>
 </ol>
 </div>
-<p>Si bien la idea parece sencilla, alcanzar una forma de implementarla ha requerido la combinación de múltiples métodos matemáticos, en particular, <em>backward</em> y <em>forward propagation</em></p>
+</div>
+<p><br></p>
+<p>Si bien, la idea parece sencilla, el alcanzar una forma de implementarla ha requerido la combinación de múltiples métodos matemáticos, en particular, <span class="green"><em>backward</em> y <em>forward propagation</em></span></p>
 </section>
+<section class="slide level2">
+
+<div class="alert">
+<div>
+<ul>
+<li><p>En el proceso de entrenamiento, se <span class="orange">busca el mejor conjunto de parámetros</span> para <span class="orange">minimizar alguna de las funciones de coste</span> o pérdida.</p></li>
+<li><p>La verdadera forma de la función de pérdida sólo puede ser construída si se tuviesen datos infinitos. Al ser finita la cantidad de datos que se tiene, la <span class="orange">función de pérdida obtenida no reflejará la verdadera forma de la función de pérdida</span>.</p></li>
+</ul>
+</div>
+</div>
+<div class="columns">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/02_DNN/training.png" style="width:80.0%"></p>
+<figcaption>Minimización de una función de pérdida para un proceso de entrenamiento de 500 épocas</figcaption>
+</figure>
+</div>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/02_DNN/training_hyperplane.png"></p>
+<figcaption>Hiperplano que representa la función de pérdida con 2 parámetros.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="images/02_DNN/training_epochs.png" class="r-stretch quarto-figure-center"><p class="caption">Resultados de predicción de un modelo a través de las épocas</p></section>
 <section id="backpropagation" class="slide level2" data-number="6.1">
 <h2><span class="header-section-number">6.1</span> Backpropagation</h2>
 <p><em>Backpropagation</em> es el algoritmo que permite cuantificar la influencia que tiene cada peso y bias en las predicciones de la red. Para conseguirlo, hace uso de la <strong>regla de la cadena</strong> para calcular el gradiente, que no es más que el vector formado por las derivadas parciales de una función.</p>
 <p>En el caso de las redes, la derivada parcial del error respecto a un parámetro (peso o sesgo) mide cuánta <em>responsabilidad</em> ha tenido ese parámetro en el error cometido. Gracias a esto, se puede identificar qué pesos de la red hay que modificar para mejorarla. El siguiente paso necesario, es determinar cuánto y cómo modificarlos (optimización).</p>
+</section>
+<section class="slide level2">
+
 <h3 data-number="6.1.1" id="prepocesamiento-de-variables"><span class="header-section-number">6.1.1</span> Prepocesamiento de variables</h3>
 <p>A la hora de entrenar modelos basados en redes neuronales, es necesario aplicar a los datos, al menos, dos tipos de transformaciones.</p>
 <ul>
@@ -750,178 +827,8 @@ Francisco Plaza Vega
 <p>Los métodos de regularización tienen el objetivo de reducir el sobreajuste (<em>overfitting</em>) de los modelos. Un modelo con sobreajuste memoriza los datos de entrenamiento pero es incapaz de predecir correctamente nuevas observaciones.</p>
 <p>Los modelos de redes neuronales pueden considerarse como <strong>modelos sobre parametrizados</strong>, por lo tanto, las estrategias de regularización son fundamentales. De entre las muchas que existen, destacan la regularización <strong>L1</strong> y <strong>L2</strong> (<em>weight decay</em>) y el <em>dropout</em>.</p>
 </section></section>
-<section>
-<section id="ejemplos-y-práctica" class="title-slide slide level1 center" data-number="8">
-<h1><span class="header-section-number">8</span> Ejemplos y práctica</h1>
-
-</section>
-<section id="ejemplo-en-r" class="slide level2" data-number="8.1">
-<h2><span class="header-section-number">8.1</span> Ejemplo en R</h2>
-<p>Utilizaremos la librería <code>neuralnet</code> de R, y datos del repositorio del <em>Center for Machine Learning and Intelligent Systems</em> de la Universidad de California, en particular, el conjunto de datos <a href="http://archive.ics.uci.edu/ml/datasets/Concrete+Compressive+Strength"><strong>Concrete Compressive Strength Data Sets</strong></a>.</p>
-</section>
-<section class="slide level2">
-
-<div class="cell" data-warnings="false">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">library</span>(readxl)</span>
-<span id="cb1-2"><a href=""></a>concrete_data<span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"db/Concrete_Data.xls"</span>)</span>
-<span id="cb1-3"><a href=""></a><span class="fu">names</span>(concrete_data)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"cement"</span>,<span class="st">"slag"</span>,<span class="st">"ash"</span>,<span class="st">"water"</span>,<span class="st">"superplastic"</span>,</span>
-<span id="cb1-4"><a href=""></a>                        <span class="st">"coarseagg"</span>,<span class="st">"fineagg"</span>,<span class="st">"age"</span>,<span class="st">"strength"</span>)</span>
-<span id="cb1-5"><a href=""></a>normalize <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb1-6"><a href=""></a><span class="fu">return</span>((x <span class="sc">-</span> <span class="fu">min</span>(x)) <span class="sc">/</span> (<span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x)))</span>
-<span id="cb1-7"><a href=""></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2">
-
-<div class="cell" data-warnings="false">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>concrete_data_norm <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">lapply</span>(concrete_data, normalize))</span>
-<span id="cb2-2"><a href=""></a><span class="fu">summary</span>(concrete_data_norm<span class="sc">$</span>strength)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
- 0.0000  0.2663  0.4000  0.4172  0.5457  1.0000 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">summary</span>(concrete_data<span class="sc">$</span>strength)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  2.332  23.707  34.443  35.818  46.136  82.599 </code></pre>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<p>Debido a que los datos ya están ordenamos aleatoriamente, simplemente dividimos en dos partes de 75 y 25 porciento, respectivamente</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>concrete_train <span class="ot">&lt;-</span> concrete_data_norm[<span class="dv">1</span><span class="sc">:</span><span class="dv">773</span>, ]</span>
-<span id="cb6-2"><a href=""></a>concrete_test <span class="ot">&lt;-</span> concrete_data_norm[<span class="dv">774</span><span class="sc">:</span><span class="dv">1030</span>, ]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2">
-
-<p>Este modelo sería un <strong>simple multilayer feedfoward network</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">library</span>(neuralnet)</span>
-<span id="cb7-2"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">411</span>)</span>
-<span id="cb7-3"><a href=""></a>concrete_model <span class="ot">&lt;-</span> <span class="fu">neuralnet</span>(strength <span class="sc">~</span> cement <span class="sc">+</span> slag <span class="sc">+</span> </span>
-<span id="cb7-4"><a href=""></a>                            ash <span class="sc">+</span> water <span class="sc">+</span> superplastic </span>
-<span id="cb7-5"><a href=""></a>                            <span class="sc">+</span> coarseagg <span class="sc">+</span> fineagg <span class="sc">+</span> age,</span>
-<span id="cb7-6"><a href=""></a>                            <span class="at">data =</span> concrete_train)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">plot</span>(concrete_model, <span class="at">rep=</span><span class="st">"best"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="Deep_Learning_02_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>model_results <span class="ot">&lt;-</span> <span class="fu">compute</span>(concrete_model, concrete_test[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])</span>
-<span id="cb9-2"><a href=""></a>predicted_strength <span class="ot">&lt;-</span> model_results<span class="sc">$</span>net.result</span>
-<span id="cb9-3"><a href=""></a><span class="fu">cor</span>(predicted_strength, concrete_test<span class="sc">$</span>strength)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>          [,1]
-[1,] 0.7209429</code></pre>
-</div>
-</div>
-<p><strong>Debido a que es un problema de predicción, no podemos realizar una matriz de confusión para determinar el nivel de precisión</strong></p>
-</section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>concrete_model2 <span class="ot">&lt;-</span> <span class="fu">neuralnet</span>(strength <span class="sc">~</span> cement <span class="sc">+</span> slag <span class="sc">+</span></span>
-<span id="cb11-2"><a href=""></a>                               ash <span class="sc">+</span> water <span class="sc">+</span> superplastic <span class="sc">+</span></span>
-<span id="cb11-3"><a href=""></a>                               coarseagg <span class="sc">+</span> fineagg <span class="sc">+</span> age,</span>
-<span id="cb11-4"><a href=""></a>                             <span class="at">data =</span> concrete_train, <span class="at">hidden =</span> <span class="dv">5</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="fu">plot</span>(concrete_model2, <span class="at">rep=</span><span class="st">"best"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="Deep_Learning_02_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a>model_results2 <span class="ot">&lt;-</span> <span class="fu">compute</span>(concrete_model2, concrete_test[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])</span>
-<span id="cb13-2"><a href=""></a>predicted_strength2 <span class="ot">&lt;-</span> model_results2<span class="sc">$</span>net.result</span>
-<span id="cb13-3"><a href=""></a><span class="fu">cor</span>(predicted_strength2, concrete_test<span class="sc">$</span>strength)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>          [,1]
-[1,] 0.8138362</code></pre>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<p>En este problema no podemos utilizar una función de activación <strong>Rectified linear unit (ReLU)</strong> debido a que no tiene derivada en <span class="math inline">\(x=0\)</span>. Alternativamente, utilizamos una función de activación llamada <strong>softplus</strong> o <strong>Smooth ReLI</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>softplus <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { <span class="fu">log</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(x)) }</span>
-<span id="cb15-2"><a href=""></a>concrete_model3 <span class="ot">&lt;-</span> <span class="fu">neuralnet</span>(strength <span class="sc">~</span> cement <span class="sc">+</span> slag <span class="sc">+</span></span>
-<span id="cb15-3"><a href=""></a>                               ash <span class="sc">+</span> water <span class="sc">+</span> superplastic <span class="sc">+</span></span>
-<span id="cb15-4"><a href=""></a>                               coarseagg <span class="sc">+</span> fineagg <span class="sc">+</span> age,</span>
-<span id="cb15-5"><a href=""></a>                             <span class="at">data =</span> concrete_train,</span>
-<span id="cb15-6"><a href=""></a>                             <span class="at">hidden =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>), <span class="at">act.fct =</span> softplus)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="fu">plot</span>(concrete_model3, <span class="at">rep=</span><span class="st">"best"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="Deep_Learning_02_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>model_results3 <span class="ot">&lt;-</span> <span class="fu">compute</span>(concrete_model3, concrete_test[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])</span>
-<span id="cb17-2"><a href=""></a>predicted_strength3 <span class="ot">&lt;-</span> model_results3<span class="sc">$</span>net.result</span>
-<span id="cb17-3"><a href=""></a><span class="fu">cor</span>(predicted_strength3, concrete_test<span class="sc">$</span>strength)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>          [,1]
-[1,] 0.6761314</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>strengths <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">actual =</span> concrete_data<span class="sc">$</span>strength[<span class="dv">774</span><span class="sc">:</span><span class="dv">1030</span>],<span class="at">pred =</span> predicted_strength3)</span>
-<span id="cb19-2"><a href=""></a><span class="fu">head</span>(strengths, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      actual      pred
-774 37.42476 0.4099593
-775 11.46599 0.2406689
-776 22.43555 0.2818004</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="fu">cor</span>(strengths<span class="sc">$</span>pred, strengths<span class="sc">$</span>actual)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6761314</code></pre>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>unnormalize <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb23-2"><a href=""></a><span class="fu">return</span>((x <span class="sc">*</span> (<span class="fu">max</span>(concrete_data<span class="sc">$</span>strength)) <span class="sc">-</span></span>
-<span id="cb23-3"><a href=""></a><span class="fu">min</span>(concrete_data<span class="sc">$</span>strength)) <span class="sc">+</span> <span class="fu">min</span>(concrete_data<span class="sc">$</span>strength))</span>
-<span id="cb23-4"><a href=""></a>}</span>
-<span id="cb23-5"><a href=""></a>strengths<span class="sc">$</span>pred_new <span class="ot">&lt;-</span> <span class="fu">unnormalize</span>(strengths<span class="sc">$</span>pred)</span>
-<span id="cb23-6"><a href=""></a>strengths<span class="sc">$</span>error <span class="ot">&lt;-</span> strengths<span class="sc">$</span>pred_new <span class="sc">-</span> strengths<span class="sc">$</span>actual</span>
-<span id="cb23-7"><a href=""></a><span class="fu">head</span>(strengths, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      actual      pred pred_new      error
-774 37.42476 0.4099593 33.86232 -3.5624375
-775 11.46599 0.2406689 19.87906  8.4130769
-776 22.43555 0.2818004 23.27650  0.8409468</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a><span class="fu">cor</span>(strengths<span class="sc">$</span>pred_new, strengths<span class="sc">$</span>actual)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6761314</code></pre>
-</div>
-</div>
-</section></section>
-<section id="referencias" class="title-slide slide level1 smaller scrollable" data-number="9">
-<h1><span class="header-section-number">9</span> Referencias</h1>
+<section id="referencias" class="title-slide slide level1 smaller scrollable" data-number="8">
+<h1><span class="header-section-number">8</span> Referencias</h1>
 <div id="refs" role="list">
 
 </div>
