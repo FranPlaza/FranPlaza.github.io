@@ -1058,23 +1058,23 @@ Francisco Plaza Vega
 <div class="alert">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 0.000000000 0.019684785 0.727971636 0.581599391 0.446543927 0.764213055
-  [7] 0.977596003 0.928249528 0.574854510 0.989517848 0.189572800 0.186175578
- [13] 0.098837064 0.283559007 0.410260175 0.294567676 0.034837082 0.367422044
- [19] 0.017522088 0.649466924 0.074438324 0.033803589 0.841705272 0.799134415
- [25] 0.346074235 0.030048415 0.937277399 0.014052885 0.925585578 0.925317465
- [31] 0.558539244 0.563177120 0.920770417 0.352898014 0.098022342 0.834636279
- [37] 0.932531689 0.461356045 0.142160339 0.814491835 0.008955298 0.406259363
- [43] 0.117989329 0.967568490 0.563583640 0.303765118 0.480322950 0.292113004
- [49] 0.326252054 0.531489954 0.580150481 0.055517868 0.032134452 0.994093518
- [55] 0.867689320 0.936193854 0.515245263 0.925927402 0.393072364 0.748687567
- [61] 0.054823348 0.669477129 0.960117244 0.979907081 0.258819996 0.630026295
- [67] 0.201200455 0.395238888 0.441695314 0.756564832 0.112728857 0.007916698
- [73] 0.894958620 0.648516446 0.093285045 0.233254961 0.795042269 0.422000961
- [79] 0.699554016 0.189005000 0.836712326 0.529976245 0.203646861 0.924818730
- [85] 0.876528207 0.405809455 0.761664719 0.016158839 0.971151082 0.679664292
- [91] 0.762825327 0.363950279 0.390875753 0.036401056 0.164286328 0.852376501
- [97] 0.303760268 0.476906144 0.357679816 0.673101646 0.790426504</code></pre>
+<pre><code>  [1] 0.50000000 0.40810728 0.58342256 0.19995311 0.61707744 0.18960591
+  [7] 0.20656207 0.75336388 0.42318121 0.65187749 0.56721709 0.73441689
+ [13] 0.83104986 0.45814651 0.44273811 0.61666370 0.77680949 0.72995251
+ [19] 0.80450243 0.83649141 0.25332014 0.96528698 0.31478070 0.29105900
+ [25] 0.59410869 0.54647416 0.32911075 0.60207293 0.33499109 0.88276385
+ [31] 0.55832126 0.35890085 0.58913651 0.71756336 0.97617735 0.88747819
+ [37] 0.75549994 0.88394823 0.11250067 0.87996813 0.89692892 0.26651384
+ [43] 0.79663157 0.33197375 0.68261844 0.91709167 0.35257423 0.85665304
+ [49] 0.75645357 0.98427681 0.57663485 0.68933159 0.12133686 0.86093372
+ [55] 0.23784003 0.77707536 0.04337541 0.73695267 0.69647589 0.84394413
+ [61] 0.62048056 0.59188530 0.38397178 0.68232607 0.60448698 0.70890958
+ [67] 0.42190796 0.62456833 0.69495839 0.19879479 0.89549425 0.35971429
+ [73] 0.20010115 0.70937298 0.93135996 0.84816307 0.95432161 0.80084249
+ [79] 0.40745700 0.06738798 0.27926031 0.45948509 0.56740071 0.90814229
+ [85] 0.26360899 0.84046038 0.23310057 0.69491270 0.14929459 0.98018450
+ [91] 0.65912623 0.10144566 0.72397223 0.10739251 0.02506461 0.42364202
+ [97] 0.02403674 0.90719104 0.98491985 0.50861252 0.01697735</code></pre>
 </div>
 </div>
 </div>
@@ -1242,22 +1242,650 @@ x_{i+1} = a x_{i} + b \mod m
 </div>
 </section></section>
 <section>
-<section id="analizando-la-calidad-de-los-números-pseudo-aleatorios" class="title-slide slide level1 center" data-number="3">
+<section id="analizando-la-calidad-de-los-números-pseudo-aleatorios" class="title-slide slide level1 center" data-background-color="#00A499" data-number="3">
 <h1><span class="header-section-number">3</span> Analizando la calidad de los números pseudo aleatorios</h1>
 
 </section>
+<section class="slide level2">
+
+<p>Para verificar si un generador tiene las propiedades estadísticas deseadas hay disponibles una gran cantidad de test de hipótesis y métodos gráficos, incluyendo métodos genéricos (de bondad de ajuste y aleatoriedad) y contrastes específicos para generadores aleatorios. Se trata principalmente de contrastar si las muestras generadas son i.i.d. <span class="math inline">\(U(0,1)\)</span>.</p>
+<p>Hay que destacar algunas diferencias entre el uso de este tipo de métodos en inferencia y en simulación.</p>
+<div class="alert">
+<ul>
+<li class="fragment"><p>Si empleamos un test de hipótesis del modo habitual, desconfiamos del generador si la muestra (secuencia) no se ajusta a la distribución teórica <span class="math inline">\((\mbox{p-valor} \leq \alpha)\)</span>.</p></li>
+<li class="fragment"><p>En simulación, además, también se sospecha si se ajusta demasiado bien a la distribución teórica <span class="math inline">\((\mbox{p-valor} \geq 1-\alpha)\)</span>, lo que indicaría que no reproduce adecuadamente la variabilidad.</p></li>
+</ul>
+</div>
+</section>
 <section id="métodos-de-bondad-de-ajuste" class="slide level2" data-number="3.1">
 <h2><span class="header-section-number">3.1</span> Métodos de bondad de ajuste</h2>
+<p>A partir de <span class="math inline">\(x_1, \ldots, x_n\)</span> m.a.s. de <span class="math inline">\(X\)</span> con función de distribución <span class="math inline">\(F\)</span>, establecemos un test de hipótesis de la forma</p>
+<p><span class="math display">\[\left\{\begin{matrix}
+H_0 : F = F_0\\
+H_1: F \neq F_0
+\end{matrix}\right.\]</span></p>
 </section>
-<section id="ejercicios-1" class="slide level2" data-number="3.2">
-<h2><span class="header-section-number">3.2</span> Ejercicios</h2>
+<section class="slide level2">
+
+<h3 id="histograma-1">Histograma</h3>
+<div class="definition">
+<p>Agrupando los datos en intervalos <span class="math inline">\(I_k = \left[ L_{k-1}, L_{k} \right)\)</span> con <span class="math inline">\(k = 1, \ldots, K\)</span> y a cada intervalo se le asocia un valor (altura de la barra) igual a la frecuencia absoluta de ese intervalo <span class="math inline">\(n_{k} = \sum_{i=1}^{n} \mathbf{1} \left( X_i \in \left[ L_{k-1}, L_{k} \right) \right)\)</span>, si la longitud de los intervalos es constante, o proporcional a dicha frecuencia (de forma que el área coincida con la frecuencia relativa y pueda ser comparado con una función de densidad):</p>
+<p><span class="math display">\[\hat{f}_{n}(x) = \frac{n_i}{n(L_k - L_{k-1})} \]</span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p>Ejemplo:</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>datos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">22.56</span>,<span class="fl">22.33</span>,<span class="fl">24.58</span>,<span class="fl">23.14</span>,<span class="fl">19.03</span>,<span class="fl">26.76</span>,<span class="fl">18.33</span>,<span class="fl">23.10</span>,</span>
+<span id="cb19-2"><a href=""></a>  <span class="fl">21.53</span>,<span class="fl">9.06</span>,<span class="fl">16.75</span>,<span class="fl">23.29</span>,<span class="fl">22.14</span>,<span class="fl">16.28</span>,<span class="fl">18.89</span>,<span class="fl">27.48</span>,<span class="fl">10.44</span>,</span>
+<span id="cb19-3"><a href=""></a>  <span class="fl">26.86</span>,<span class="fl">27.27</span>,<span class="fl">18.74</span>,<span class="fl">19.88</span>,<span class="fl">15.76</span>,<span class="fl">30.77</span>,<span class="fl">21.16</span>,<span class="fl">24.26</span>,<span class="fl">22.90</span>,</span>
+<span id="cb19-4"><a href=""></a>  <span class="fl">27.14</span>,<span class="fl">18.02</span>,<span class="fl">21.53</span>,<span class="fl">24.99</span>,<span class="fl">19.81</span>,<span class="fl">11.88</span>,<span class="fl">24.01</span>,<span class="fl">22.11</span>,<span class="fl">21.91</span>,</span>
+<span id="cb19-5"><a href=""></a>  <span class="fl">14.35</span>,<span class="fl">11.14</span>,<span class="fl">9.93</span>,<span class="fl">20.22</span>,<span class="fl">17.73</span>,<span class="fl">19.05</span>)</span>
+<span id="cb19-6"><a href=""></a><span class="fu">hist</span>(datos, <span class="at">freq =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb19-7"><a href=""></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="fu">mean</span>(datos), <span class="fu">sd</span>(datos)), <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="función-de-distribución-empírica">Función de distribución empírica</h3>
+<div class="definition">
+<p>La función de distribución empírica <span class="math inline">\(F_n(x) = \frac{1}{n} \sum_{i=1}^n \mathbf{1} (X_i \leq x)\)</span> asigna a cada número real <span class="math inline">\(x\)</span> la frecuencia relativa de observaciones menores o iguales que <span class="math inline">\(x\)</span>. Para obtener las frecuencias relativas acumuladas, se ordena la muestra <span class="math inline">\(X_{(1)} \leq X_{(2)} \leq \cdots \leq X_{(n)}\)</span> y</p>
+<p><span class="math display">\[ F_n (x) = \left\{\begin{align}
+&amp; 0 &amp; si \quad &amp; x &gt; X_{(1)}\\
+&amp; \frac{i}{n} &amp; si \quad &amp; x &gt; X_{(i)} \leq x \leq X_{(i+1)} \\
+&amp; 1 &amp; si \quad &amp; X_{(n)} \leq x
+\end{align}\right.\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p><span class="green">Ejemplo</span></p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>fn <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(datos)</span>
+<span id="cb20-2"><a href=""></a><span class="fu">curve</span>(<span class="fu">ecdf</span>(datos)(x), <span class="at">xlim =</span> <span class="fu">extendrange</span>(datos), <span class="at">type =</span> <span class="st">'s'</span>, </span>
+<span id="cb20-3"><a href=""></a>      <span class="at">ylab =</span> <span class="st">'Función de distribución'</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb20-4"><a href=""></a><span class="fu">curve</span>(<span class="fu">pnorm</span>(x, <span class="fu">mean</span>(datos), <span class="fu">sd</span>(datos)), <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="prueba-chi-cuadrado">Prueba Chi cuadrado</h3>
+<p>La <span class="green">prueba chi cuadrado de bondad de ajuste</span> es adecuada en términos de probar si existe diferencia significativa entre un número observaciones clasificado en distintas categorías y su valor esperado. Por lo anterior, puede ser utilizada para comprobar si la muestra sigue algún tipo de distribución determinado.</p>
+<!-- Supuestos: -->
+<!-- - La muestra es aleatoria. -->
+<!-- - La escala de medida es al menos nominal -->
+<p>Este test de hipótesis desarrollado inicialmente para variables categóricas. En el caso general, podemos pensar que los datos están agrupados en <span class="math inline">\(k\)</span> clases <span class="math inline">\(C_1, \ldots, C_n\)</span>.</p>
+<ul>
+<li class="fragment"><p>Si la variable es categórica o discreta, cada clase se puede corresponder con una modalidad. Si la variable es contínua habrá que categorizarla en intervalos.</p></li>
+<li class="fragment"><p>Si la hipótesis nula es simple, cada clase tendrá asociada una probabilidad <span class="math inline">\(p_i = P(X \in C_i)\)</span> bajo <span class="math inline">\(H_0\)</span>.</p></li>
+<li class="fragment"><p>Si por el contrario es compuesta, se trabajará con una estimación de dicha probabilidad (y habrá que correguir la distribución aproximada del estadístico del contraste).</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div class="small">
+<table>
+<colgroup>
+<col style="width: 13%">
+<col style="width: 16%">
+<col style="width: 18%">
+<col style="width: 22%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Clases</th>
+<th>Discreta</th>
+<th>Contínua</th>
+<th><span class="math inline">\(H_0\)</span> simple</th>
+<th><span class="math inline">\(H_0\)</span> compuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(C_1\)</span></td>
+<td><span class="math inline">\(x_1\)</span></td>
+<td><span class="math inline">\(\left[ L_0, L_1 \right)\)</span></td>
+<td><span class="math inline">\(p_1\)</span></td>
+<td><span class="math inline">\(\hat{p}_1\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C_k\)</span></td>
+<td><span class="math inline">\(x_k\)</span></td>
+<td><span class="math inline">\(\left[ L_{k-1}, L_{k} \right)\)</span></td>
+<td><span class="math inline">\(p_k\)</span></td>
+<td><span class="math inline">\(\hat{p}_k\)</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><span class="math inline">\(\sum_{i=1}^k p_i = 1\)</span></td>
+<td><span class="math inline">\(\sum_{i=1}^k \hat{p}_i = 1\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="alert">
+<p><span class="green">Hipótesis</span><br></p>
+<p>Sea <span class="math inline">\(F(x)\)</span> la distribución verdadera, pero desconocida de <span class="math inline">\(X\)</span> y sea <span class="math inline">\(F^*(x)\)</span> una distribución hipotética, especificada completamente.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    H_0&amp;:&amp; F(x) = F^*(x) \qquad \mbox{La función de distribución de la v.a. es $F^*(x)$.}\\
+    H_1&amp;:&amp; F(x) \neq F^*(x) \qquad \mbox{La función de distribución de la v.a. es distinta de $F^*(x)$.}
+\end{eqnarray*}\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Si <span class="math inline">\(H_0\)</span> es cierta, la frecuencia relativa <span class="math inline">\(f_i\)</span> de la clase <span class="math inline">\(C_i\)</span> es una aproximación de la probabilidad teórica, <span class="math inline">\(f_i \approx p_i\)</span>. Equivalentemente, las frecuencias observadas <span class="math inline">\(n_i = n \dot f_i\)</span> deberían ser próximas a las esperadas <span class="math inline">\(e_i = n \dot p_i\)</span> bajo <span class="math inline">\(H_0\)</span>, sugiriendo el estadístico del contraste <span class="citation" data-cites="Pearson1900">(<a href="#/referencias" role="doc-biblioref" onclick="">Pearson 1900</a>)</span>:</p>
+<p><span class="math display">\[\begin{equation*}
+    T = \sum_{i=1}^k \frac{(n_i - e_i)^2}{e_i} \sim \chi^2_{k-r-1}
+\end{equation*} \qquad \mbox{Si se cumple $H_0$}\]</span></p>
+<p>donde <span class="math inline">\(k\)</span> el número de clases y <span class="math inline">\(r\)</span> el número de parámetros estimados del test de hipótesis compuesto.</p>
+</section>
+<section class="slide level2">
+
+<div class="small">
+<table>
+<colgroup>
+<col style="width: 7%">
+<col style="width: 21%">
+<col style="width: 22%">
+<col style="width: 21%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Clases</th>
+<th><span class="math inline">\(n_i\)</span> observadas</th>
+<th><span class="math inline">\(p_i\)</span> bajo <span class="math inline">\(H_0\)</span></th>
+<th><span class="math inline">\(e_i\)</span> bajo <span class="math inline">\(H_0\)</span></th>
+<th><span class="math inline">\(\frac{(n_i - e_i)^2}{e_i}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(C_1\)</span></td>
+<td><span class="math inline">\(n_1\)</span></td>
+<td><span class="math inline">\(p_1\)</span></td>
+<td><span class="math inline">\(e_1\)</span></td>
+<td><span class="math inline">\(\frac{(n_1 - e_1)^2}{e_1}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C_k\)</span></td>
+<td><span class="math inline">\(n_k\)</span></td>
+<td><span class="math inline">\(p_k\)</span></td>
+<td><span class="math inline">\(e_k\)</span></td>
+<td><span class="math inline">\(\frac{(n_k - e_k)^2}{e_k}\)</span></td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td><span class="math inline">\(\sum_{i=1}^k n_i = n\)</span></td>
+<td><span class="math inline">\(\sum_{i=1}^k p_i = 1\)</span></td>
+<td><span class="math inline">\(\sum_{i=1}^k e_i = n\)</span></td>
+<td><span class="math inline">\(T = \sum_{i=1}^k \frac{(n_i - e_i)^2}{e_i}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>con <span class="math inline">\(p_i^*\)</span> la probabilidad que una observación cualquiera de <span class="math inline">\(X\)</span> pertenezca a la clase <span class="math inline">\(i\)</span>. Bajo el supuesto de que <span class="math inline">\(F^*(x)\)</span> es la función de distribución de <span class="math inline">\(X\)</span>. Siendo <span class="math inline">\(e_i\)</span> la esperanza de las observaciones de la clase <span class="math inline">\(i\)</span> bajo el supuesto de que <span class="math inline">\(H_0\)</span> es verdadero.</p>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<p><span class="green">Dócima de hipótesis</span><br></p>
+<p>Rechazamos <span class="math inline">\(H_0\)</span> con un nivel <span class="math inline">\(\alpha\)</span> de significancia, si</p>
+<p><span class="math display">\[\sum_{i=1}^k \frac{(n_i - e_i)^2}{e_i} \geq \chi_{k-r-1, 1-\alpha}^2\]</span> <br></p>
+<p>Si se efectúa el contraste a partir del p-valor o nivel crítico</p>
+<p><span class="math display">\[p = P \left( \chi_{k-r-1}^2 \geq \sum_{i=1}^k \frac{(n_i-e_i)^2}{e_i} \right)\]</span></p>
+<p>se rechaza <span class="math inline">\(H_0\)</span> si <span class="math inline">\(p \leq \alpha\)</span> y se aceptará <span class="math inline">\(H_0\)</span> si <span class="math inline">\(p &gt; \alpha\)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p><span class="green">Ejemplo</span><br> Un ejemplo empleando la función <code>chisq.test</code> en R, para el caso discreto. Probaremos evaluar el generador de números aleatorios de R:</p>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="co"># En el caso discreto</span></span>
+<span id="cb21-2"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">trunc</span>(<span class="dv">6</span> <span class="sc">*</span> <span class="fu">runif</span>(<span class="dv">100</span>))<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb21-3"><a href=""></a><span class="fu">table</span>(x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x
+ 1  2  3  4  5  6 
+16 13 15 14 18 24 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(x))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  table(x)
+X-squared = 4.76, df = 5, p-value = 0.4459</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Algunas consideraciones para el caso contínuo:</p>
+<div class="small">
+<ul>
+<li class="fragment"><p>El tamaño muestral debe ser suficientemente grande (e.g.&nbsp;<span class="math inline">\(n &gt; 30\)</span>).</p></li>
+<li class="fragment"><p>La muestra debe ser una muestra aleatoria simple.</p></li>
+<li class="fragment"><p>Los parámetros deben estimarse (si es necesario) por máxima verosimilitud.</p></li>
+<li class="fragment"><p>Las frecuencias esperadas <span class="math inline">\(e_i = n \cdot p_i\)</span> deberían ser todas <span class="math inline">\(\geq 5\)</span>.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a><span class="co"># En el caso contínuo, agrupamos las observaciones en percentiles.</span></span>
+<span id="cb25-2"><a href=""></a>x <span class="ot">=</span> <span class="fu">runif</span>(<span class="dv">100</span>)</span>
+<span id="cb25-3"><a href=""></a>quant <span class="ot">=</span> <span class="fu">quantile</span>(<span class="at">x =</span> x, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>, <span class="at">to=</span><span class="dv">1</span>, <span class="at">by=</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>))))</span>
+<span id="cb25-4"><a href=""></a>quant</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         0%   16.66667%   33.33333%         50%   66.66667%   83.33333% 
+0.006246689 0.130709554 0.300613914 0.461148495 0.730929349 0.901319154 
+       100% 
+0.999931238 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a><span class="fu">table</span>(<span class="fu">cut</span>(x, quant))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+(0.00625,0.131]   (0.131,0.301]   (0.301,0.461]   (0.461,0.731]   (0.731,0.901] 
+             16              17              16              17              16 
+      (0.901,1] 
+             17 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(<span class="fu">cut</span>(x, quant)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Chi-squared test for given probabilities
+
+data:  table(cut(x, quant))
+X-squared = 0.090909, df = 5, p-value = 0.9999</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="prueba-de-kolmogorov-smirnov">Prueba de Kolmogorov-Smirnov</h3>
+<p>Prueba que mide el grado de acuerdo entre distribución de un conjunto de valores muestreados (observaciones) y alguna distribución teórica específica.</p>
+<div class="definition">
+<ul>
+<li class="fragment"><p>Sea <span class="math inline">\(X_1, X_2, ..., X_n\)</span> una muestra aleatoria. La función de distribución empírica <span class="math inline">\(S(x)\)</span> (o también denominada FDE) es una función de <span class="math inline">\(x\)</span>, que iguala la fracción de los <span class="math inline">\(X_i\)</span>s que son menores que , o iguales a <span class="math inline">\(x\)</span>, para cada <span class="math inline">\(x\)</span>, <span class="math inline">\(-\infty &lt; x &lt; \infty\)</span>. La FDE es siempre una función del tipo escalón, que aumenta en <span class="math inline">\(\frac{1}{n}\)</span> en cada valor de la muestra.</p></li>
+<li class="fragment"><p>Una forma de comparar la muestra aleatoria, con la distribución <span class="math inline">\(F^*(x)\)</span>, especificada completamente, es a través de la FDE <span class="math inline">\(S(x)\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(S(x)\)</span> es de ayuda en la estimación de <span class="math inline">\(F(x)\)</span>, la distribución desconocida de los <span class="math inline">\(X_i\)</span>s. Entonces, podemos comparar la FDE <span class="math inline">\(S(x)\)</span> con una función de distribución hipotética <span class="math inline">\(F(x)'\)</span>, y evaluar su ajuste.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<p>El test de Kolmogorov-Smirnov evalúa la distancia más grande entre <span class="math inline">\(S(x)\)</span> y <span class="math inline">\(F(x)'\)</span> asociados a los valores de la muestra</p>
+
+<img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-26-1.png" width="960" class="r-stretch quarto-figure-center"><p class="caption">Ejemplo de la FDE <span class="math inline">\(S(x)\)</span> vs una función de distribución conocida <span class="math inline">\(F(x)'\)</span> para una muestra.</p></section>
+<section class="slide level2">
+
+<div class="definition">
+<p>Sea una muestra aleatoria <span class="math inline">\(X_1, X_2, ..., X_n\)</span> de tamaño <span class="math inline">\(n\)</span> y asociada a alguna distribución desconocida denotada por <span class="math inline">\(F(x)\)</span>.</p>
+<p><span class="blue">Estadístico de prueba:</span><br> Sea <span class="math inline">\(S(x)\)</span> la FDE basada en la muestra aleatoria <span class="math inline">\(X_1, X_2, ..., X_n\)</span>, definida anteriormente. El estadístico de prueba <span class="math inline">\(T\)</span>, denotado por el supremo de la diferencia entre <span class="math inline">\(S(x)\)</span> y <span class="math inline">\(F^*(x)\)</span>, se define para la hipótesis de dos colas de la siguiente manera:</p>
+<p><span class="math display">\[ T = \underset{x}{sup}|F(x)' - S(x)| \]</span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<p><span class="green">Hipótesis para dos colas:</span><br> Sea <span class="math inline">\(KS_{1-\alpha}\)</span> el cuantil <span class="math inline">\(1-\alpha\)</span> de la distribución del estadístico <span class="math inline">\(T\)</span>.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+        H_0 &amp;:&amp; F(x) = F^*(x) \qquad \forall x \in ]-\infty, \infty [\\
+        H_1&amp;:&amp; F(x) \neq F^*(x) \qquad \mbox{Para al menos un valor de $x$}
+    \end{eqnarray*}\]</span></p>
+<p>Si <span class="math inline">\(T &gt; KS_{(1-\alpha)}\)</span>, rechazar <span class="math inline">\(H_0\)</span>, si no, no rechazar.</p>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Ejemplo: Sean los siguientes datos generados por un generador de números aleatorios con distribución <span class="math inline">\(X \sim N(\mu = 20, \sigma = 5)\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a>datos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">22.56</span>,<span class="fl">22.33</span>,<span class="fl">24.58</span>,<span class="fl">23.14</span>,<span class="fl">19.03</span>,<span class="fl">26.76</span>,<span class="fl">18.33</span>,<span class="fl">23.10</span>,</span>
+<span id="cb31-2"><a href=""></a>           <span class="fl">21.53</span>,<span class="fl">9.06</span>,<span class="fl">16.75</span>,<span class="fl">23.29</span>,<span class="fl">22.14</span>,<span class="fl">16.28</span>,<span class="fl">18.89</span>,<span class="fl">27.48</span>,<span class="fl">10.44</span>,</span>
+<span id="cb31-3"><a href=""></a>           <span class="fl">26.86</span>,<span class="fl">27.27</span>,<span class="fl">18.74</span>,<span class="fl">19.88</span>,<span class="fl">15.76</span>,<span class="fl">30.77</span>,<span class="fl">21.16</span>,<span class="fl">24.26</span>,<span class="fl">22.90</span>,</span>
+<span id="cb31-4"><a href=""></a>           <span class="fl">27.14</span>,<span class="fl">18.02</span>,<span class="fl">21.53</span>,<span class="fl">24.99</span>,<span class="fl">19.81</span>,<span class="fl">11.88</span>,<span class="fl">24.01</span>,<span class="fl">22.11</span>,<span class="fl">21.91</span>,</span>
+<span id="cb31-5"><a href=""></a>           <span class="fl">14.35</span>,<span class="fl">11.14</span>,<span class="fl">9.93</span>,<span class="fl">20.22</span>,<span class="fl">17.73</span>,<span class="fl">19.05</span>)</span>
+<span id="cb31-6"><a href=""></a><span class="fu">ks.test</span>(datos, pnorm, <span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="dv">5</span>) <span class="co"># Una muestra</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  datos
+D = 0.13239, p-value = 0.4688
+alternative hypothesis: two-sided</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="aplicación-uso-de-rng-para-evaluar-integrales" class="title-slide slide level1 center" data-background-color="#00A499" data-number="4">
+<h1><span class="header-section-number">4</span> Aplicación: Uso de RNG para evaluar integrales</h1>
+
+</section>
+<section id="caso-univariado" class="slide level2" data-number="4.1">
+<h2><span class="header-section-number">4.1</span> Caso univariado</h2>
+<p>Una de las aplicaciones más intuitivas de los generadores de números aleatorios es la aproximación de integrales. Sea <span class="math inline">\(g(x)\)</span> una función y supongamos que queremos calcular <span class="math inline">\(\theta\)</span> donde</p>
+<p><span class="math display">\[ \theta = \int_{0}^{1} g(x) dx\]</span></p>
+<p>Para calcular el valor de <span class="math inline">\(\theta\)</span> podemos emplear <span class="math inline">\(U\)</span>, que se encuentra distribuído uniformemente entre <span class="math inline">\((0,1)\)</span>. Entonces podemos escribir <span class="math inline">\(\theta\)</span> como</p>
+<p><span class="math display">\[ \theta = \mathbb{E}\left[ g(U) \right]\]</span></p>
+</section>
+<section class="slide level2">
+
+<p>Si <span class="math inline">\(U_1, \ldots, U_k\)</span> son variables aleatorias i.i.d Uniformes en <span class="math inline">\((0,1)\)</span>, la transformación de las variables aleatorias <span class="math inline">\(g(U_1), \ldots g(U_k)\)</span> son también variables aleatorias i.i.d con media <span class="math inline">\(\theta\)</span>. Entonces por la <span class="green">Ley Fuerte de los Grandes Números</span> se tiene que con probabilidad 1</p>
+<p><span class="math display">\[ \sum_{i=1}^{k} \frac{g(U_i)}{k} \rightarrow \mathbb{E}\left[ g(U) \right] = \theta \qquad \mbox{cuando } k\rightarrow \infty \]</span></p>
+<p>Entonces, es posible aproximar <span class="math inline">\(\theta\)</span> al generar una gran cantidad de números aleatorios <span class="math inline">\(u_i\)</span> y considerarlos como una aproximación al valor esperado de <span class="math inline">\(g(u_i)\)</span>. Este enfoque para aproximar integrales es conocido como el <span class="green">Método Monte Carlo</span>.</p>
+</section>
+<section class="slide level2">
+
+<p>Si se quiere efectuar una estimación de una integral de la siguiente forma</p>
+<p><span class="math display">\[\int_{a}^{b} g(x) dx\]</span></p>
+<p>Podemos hacer la sustitución de <span class="math inline">\(u = \frac{x-a}{b-a}\)</span> cuando <span class="math inline">\(x \rightarrow a\)</span>, entonces cuando <span class="math inline">\(x \rightarrow b\)</span>, <span class="math inline">\(u \rightarrow 1\)</span>. Además tenemos que <span class="math inline">\(du = \frac{dx}{b-a}\)</span>, lo que implica que <span class="math inline">\(x = (b-a)u +a\)</span>, y <span class="math inline">\(dx = (b-a)du\)</span>.</p>
+<p>Entonces, podemos escribir la integral de la siguiente manera</p>
+<p><span class="math display">\[\int_{0}^{1} g((b-a)u+a)(b-a) du = \int_{0}^{1} h(u) du\]</span></p>
+<p>con <span class="math inline">\(h(u) = (b-a)g(a+(b-a)u)\)</span></p>
+</section>
+<section id="caso-multivariado" class="slide level2" data-number="4.2">
+<h2><span class="header-section-number">4.2</span> Caso multivariado</h2>
+<p>Digamos que ahora <span class="math inline">\(g\)</span> es una función con argumento <span class="math inline">\(n\)</span>-dimensional y estamos interesados en el cálculo de la siguiente integral multivariada</p>
+<p><span class="math display">\[
+\theta = \int_{0}^{1} \int_{0}^{1} \cdots \int_{0}^{1} g(x_1, x_2, \ldots, x_n) \, dx_1 \, dx_2 \cdots dx_n
+\]</span></p>
+<p>La aproximación de Monte Carlo para estimar <span class="math inline">\(\theta\)</span> puede expresarse como el valor esperado:</p>
+<p><span class="math display">\[
+\theta = \mathbb{E}[g(U_1, U_2, \ldots, U_n)]
+\]</span></p>
+<p>donde <span class="math inline">\(U_1, U_2, \ldots, U_n\)</span> son v.a. i.i.d. uniformes en <span class="math inline">\((0,1)\)</span>.</p>
+</section>
+<section class="slide level2">
+
+<p>Entonces, generando <span class="math inline">\(k\)</span> conjuntos independientes, cada uno de <span class="math inline">\(n\)</span> v.a. independientes uniformes <span class="math inline">\((0,1)\)</span></p>
+<p><span class="math display">\[
+\begin{matrix}
+U_{11} &amp; U_{12} &amp; \cdots &amp; U_{1n} \\
+U_{21} &amp; U_{22} &amp; \cdots &amp; U_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+U_{k1} &amp; U_{k2} &amp; \cdots &amp; U_{kn}
+\end{matrix}
+\]</span></p>
+<p>Dado que <span class="math inline">\(g(U_{i1}, U_{i2}, \ldots, U_{in})\)</span> para <span class="math inline">\(i=1, \ldots, k\)</span>, son todas v.a. i.i.d. con media <span class="math inline">\(\theta\)</span>, podemos estimar <span class="math inline">\(\theta\)</span> como</p>
+<p><span class="math display">\[
+\theta \approx \frac{1}{k} \sum_{i=1}^{k} g(U_{i1}, U_{i2}, \ldots, U_{in})
+\]</span></p>
+</section>
+<section id="ejemplos" class="slide level2" data-number="4.3">
+<h2><span class="header-section-number">4.3</span> Ejemplos</h2>
+<h3 id="ejemplo-1">Ejemplo 1</h3>
+<div class="example">
+<p><span class="green">Ejemplo 1:</span><br> Aproximar la siguiente integral por el Método de Monte Carlo</p>
+<p><span class="math display">\[\int_{0}^{1} e^{-x^2}dx\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<p><span class="green">Solución:</span><br> Primero escribimos la función, y evaluamos su forma gráficamente</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a>g <span class="ot">=</span> <span class="cf">function</span>(x){</span>
+<span id="cb33-2"><a href=""></a>  <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb33-3"><a href=""></a>}</span>
+<span id="cb33-4"><a href=""></a><span class="fu">curve</span>(g,<span class="at">xlab=</span><span class="st">"Función"</span>,<span class="at">ylab=</span><span class="st">""</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-28-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>Luego, generamos <code>1000</code> números aleatorios en el intervalo <span class="math inline">\((0,1)\)</span>, evaluamos cada valor de la secuencia generada y computamos la media de los resultados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span>
+<span id="cb34-2"><a href=""></a>U <span class="ot">=</span> <span class="fu">runif</span>(<span class="dv">10000</span>)</span>
+<span id="cb34-3"><a href=""></a><span class="fu">head</span>(U)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8369425 0.3208675 0.6803633 0.6981731 0.4570092 0.7014203</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a><span class="co"># Estimación de la integral</span></span>
+<span id="cb36-2"><a href=""></a><span class="fu">mean</span>(<span class="fu">g</span>(U))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7472925</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Podemos evaluar gráficamente la convergencia de nuestra aproximación de la integral</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb38-2"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb38-3"><a href=""></a>n <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span></span>
+<span id="cb38-4"><a href=""></a>sim <span class="ot">=</span> <span class="fu">data.frame</span>(n, <span class="at">Int =</span> <span class="fu">cumsum</span>(<span class="fu">g</span>(U))<span class="sc">/</span>n)</span>
+<span id="cb38-5"><a href=""></a>sim <span class="sc">%&gt;%</span> </span>
+<span id="cb38-6"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>n, <span class="at">y=</span>Int)) <span class="sc">+</span></span>
+<span id="cb38-7"><a href=""></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb38-8"><a href=""></a>  <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="fl">0.6</span>, <span class="fl">0.8</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-30-1.png" width="960" class="r-stretch"><p><br> Además, comparamos con la estimación que efectúa R directamente</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a><span class="fu">integrate</span>(g, <span class="at">lower =</span> <span class="dv">0</span>,<span class="at">upper =</span> <span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.7468241 with absolute error &lt; 8.3e-15</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="ejemplo-2">Ejemplo 2</h3>
+<div class="example">
+<p><span class="green">Ejemplo 2:</span><br> Aproximar la siguiente integral por el Método de Monte Carlo</p>
+<p><span class="math display">\[\int_{-2}^{2} \left[ cos(50x) + sin(20x) \right]^2 dx\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<p><span class="green">Solución:</span><br> Primero escribimos la función, y evaluamos su forma gráficamente</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a>g <span class="ot">=</span> <span class="cf">function</span>(x){</span>
+<span id="cb41-2"><a href=""></a>  (<span class="fu">cos</span>(<span class="dv">50</span><span class="sc">*</span>x)<span class="sc">+</span><span class="fu">sin</span>(<span class="dv">20</span><span class="sc">*</span>x))<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb41-3"><a href=""></a>}</span>
+<span id="cb41-4"><a href=""></a><span class="fu">curve</span>(g,<span class="at">from=</span> <span class="sc">-</span><span class="dv">2</span>,<span class="at">to =</span> <span class="dv">2</span>,<span class="at">xlab=</span><span class="st">"Función"</span>,<span class="at">ylab=</span><span class="st">""</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-32-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>Generamos una secuencia suficientemente larga de números aleatorios en el intervalo <span class="math inline">\((0,1)\)</span>. Luego evaluamos cada valor de <span class="math inline">\(U\)</span> con la sustitución <span class="math inline">\(h(u) = (b-a)g(a+(b-a)u)\)</span> y promediamos los resultados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span>
+<span id="cb42-2"><a href=""></a>U <span class="ot">=</span><span class="fu">runif</span>(<span class="dv">10000</span>)</span>
+<span id="cb42-3"><a href=""></a><span class="fu">head</span>(U)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8369425 0.3208675 0.6803633 0.6981731 0.4570092 0.7014203</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a>a <span class="ot">=</span> <span class="sc">-</span><span class="dv">2</span></span>
+<span id="cb44-2"><a href=""></a>b <span class="ot">=</span> <span class="dv">2</span></span>
+<span id="cb44-3"><a href=""></a>h <span class="ot">=</span> (b<span class="sc">-</span>a)<span class="sc">*</span><span class="fu">g</span>((b<span class="sc">-</span>a)<span class="sc">*</span>U<span class="sc">+</span>a)</span>
+<span id="cb44-4"><a href=""></a><span class="fu">mean</span>(h)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.079631</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>También podemos evaluar gráficamente la convergencia de nuestra aproximación de la integral y comparamos con el valor estimado de la integral en R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb46-2"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb46-3"><a href=""></a>n <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span></span>
+<span id="cb46-4"><a href=""></a>sim <span class="ot">=</span> <span class="fu">data.frame</span>(n, <span class="at">Int =</span> <span class="fu">cumsum</span>(<span class="fu">g</span>((b<span class="sc">-</span>a)<span class="sc">*</span>U<span class="sc">+</span>a)<span class="sc">*</span>(b<span class="sc">-</span>a))<span class="sc">/</span>n)</span>
+<span id="cb46-5"><a href=""></a>sim <span class="sc">%&gt;%</span> </span>
+<span id="cb46-6"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>n, <span class="at">y=</span>Int)) <span class="sc">+</span></span>
+<span id="cb46-7"><a href=""></a>  <span class="fu">geom_line</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a><span class="fu">integrate</span>(g, <span class="at">lower =</span> <span class="sc">-</span><span class="dv">2</span>,<span class="at">upper =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4.016114 with absolute error &lt; 5.8e-10</code></pre>
+</div>
+</div>
+<img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-34-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="ejemplo-3">Ejemplo 3</h3>
+<div class="example">
+<p><span class="green">Ejemplo 2:</span><br> Aproximar la siguiente integral multivariada por el Método de Monte Carlo</p>
+<p><span class="math display">\[\int_{0}^{1} \int_{0}^{1} (x_1^2 + x_2^2) dx_2 dx_1\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<p><span class="green">Solución:</span><br> Siguiendo el procedimiento, consideramos <span class="math inline">\(X = [x_1, x_2]\)</span>, generamos la función y luego simulamos valores de <span class="math inline">\(U=[u_1, u_2]\)</span> en el intervalo <span class="math inline">\((0,1)\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href=""></a>g <span class="ot">=</span> <span class="cf">function</span>(X){</span>
+<span id="cb49-2"><a href=""></a>  X[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>X[<span class="dv">2</span>]<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb49-3"><a href=""></a>}</span>
+<span id="cb49-4"><a href=""></a></span>
+<span id="cb49-5"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span>
+<span id="cb49-6"><a href=""></a>U1 <span class="ot">=</span> <span class="fu">runif</span>(<span class="dv">10000</span>)</span>
+<span id="cb49-7"><a href=""></a>U2 <span class="ot">=</span> <span class="fu">runif</span>(<span class="dv">10000</span>)</span>
+<span id="cb49-8"><a href=""></a>U <span class="ot">=</span> <span class="fu">cbind</span>(U1,U2)</span>
+<span id="cb49-9"><a href=""></a><span class="fu">head</span>(U)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            U1        U2
+[1,] 0.8369425 0.7541860
+[2,] 0.3208675 0.4017094
+[3,] 0.6803633 0.5151423
+[4,] 0.6981731 0.3301014
+[5,] 0.4570092 0.1025579
+[6,] 0.7014203 0.6809831</code></pre>
+</div>
+</div>
+<p>Se evalúa cada valor de <span class="math inline">\(U\)</span> en la función <span class="math inline">\(g\)</span> y se extrae la media</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href=""></a>I <span class="ot">=</span> <span class="fu">apply</span>(U,<span class="dv">1</span>,g)</span>
+<span id="cb51-2"><a href=""></a><span class="fu">mean</span>(I)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6621755</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Evaluamos la convergencia de la estimación de la integral</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb53-2"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb53-3"><a href=""></a>n <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span></span>
+<span id="cb53-4"><a href=""></a>sim <span class="ot">=</span> <span class="fu">data.frame</span>(n, <span class="at">Int =</span> <span class="fu">cumsum</span>(I)<span class="sc">/</span>n)</span>
+<span id="cb53-5"><a href=""></a>sim <span class="sc">%&gt;%</span> </span>
+<span id="cb53-6"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>n, <span class="at">y=</span>Int)) <span class="sc">+</span></span>
+<span id="cb53-7"><a href=""></a>  <span class="fu">geom_line</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-37-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>Evaluando de manera analítica la integral</p>
+<p><span class="math display">\[\begin{eqnarray}
+\theta &amp; = \int_{0}^{1} \int_{0}^{1} (x_{1}^{2} + x_{2}^{2}) \, dx_{2} \, dx_{1} \\
+
+&amp; = \int_{0}^{1} \left. \left(\frac{1}{3}x_{2}^{3} + x_{1}^{2}x_{2} \right) \right|_{x_{2}=0}^{x_{2}=1} \, dx_{1} \\
+
+&amp; = \int_{0}^{1} \left(x_{1}^{2} + \frac{1}{3} \right) \, dx_{1} \\
+
+&amp; = \left. \left(\frac{1}{3}x_{1}^{3} + \frac{1}{3}x_{1} \right) \right|_{x_{1}=0}^{x_{1}=1} \\
+
+&amp; = \frac{1}{3} + \frac{1}{3} = \frac{2}{3} = 0.6666667
+\end{eqnarray}\]</span></p>
+</section>
+<section id="estimando-el-valor-de-pi" class="slide level2" data-number="4.4">
+<h2><span class="header-section-number">4.4</span> Estimando el valor de <span class="math inline">\(\pi\)</span></h2>
+<p>La idea detrás de esta simulación es generar puntos aleatorios uniformes <span class="math inline">\((x, y)\)</span> dentro del dominio. Al estimar <span class="math inline">\(\pi\)</span>, el dominio es el sistema de coordenadas cartesianas bidimensional del cuadrado delimitador de un círculo. Para cada punto generado calculamos la distancia al origen para determinar si la coordenada simulada cae dentro del círculo. Luego agregamos los resultados y aproximamos el valor de <span class="math inline">\(\pi\)</span> tomando la relación de puntos que caen dentro del círculo y el número total de puntos y multiplicando por 4.</p>
+
+<img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-38-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"></section>
+<section class="slide level2">
+
+<p>El área de un círculo está dada por <span class="math inline">\(\pi \cdot r^2\)</span>, y el área del cuadrado que lo delimita corresponde a <span class="math inline">\((2r)^2 = 4r^2\)</span>. Dividiendo ambas áreas resulta</p>
+<p><span class="math display">\[\frac{\mbox{área del círculo}}{\mbox{área del cuadrado}} = \frac{\pi \cdot r^2}{4\cdot r^2} = \frac{\pi}{4}\]</span> A partir de lo cual, podemos estimar <span class="math inline">\(\pi\)</span> usando la siguiente fórmula</p>
+<p><span class="math display">\[ \pi \approx 4 \cdot \frac{\mbox{puntos simulados en el círculo}}{\mbox{puntos simulados totales}} \]</span></p>
+<p>Al simular números aleatorios dentro de este cuadrado, obtenemos valores aproximados para el área del círculo y el área del cuadrado. Por lo tanto, podemos estimar <span class="math inline">\(\pi\)</span> tomando la proporción de puntos simulados que caen dentro del círculo y el número total de puntos simulados, y multiplicar por 4.</p>
+<p>Para identificar qué puntos caen dentro del círculo usamos la ecuación del círculo: <span class="math inline">\((x-a)^2 + (y-b)^2 = r^2\)</span>, donde <span class="math inline">\((a, b)\)</span> es el centro del círculo. En nuestro ejemplo, el centro del círculo es <span class="math inline">\((0,0)\)</span> y el radio es 1, así que los puntos simulados que satisfacen <span class="math inline">\(\sqrt{x^2 + y^2} \leq 1\)</span> están dentro del círculo.</p>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p><span class="green">Práctica 1:</span><br></p>
+<p>Programar una <span class="green">Función para la Simulación</span> que deberá tomar dos argumentos, <code>semilla</code> para la reproducibilidad e <code>iteraciones</code> para poder escoger cuántos puntos simulados se quiere generar.</p>
+<p>La función deberá seguir los siguientes pasos:</p>
+<div class="small">
+<ol type="1">
+<li class="fragment"><p>Establecer la semilla.</p></li>
+<li class="fragment"><p>Generar el número elegido de puntos aleatorios de la distribución uniforme, los valores mínimos y máximos se establecen a los límites de nuestro dominio, aquí -1 y 1. Estos números aleatorios se almacenan en dos vectores, uno para las coordenadas <span class="math inline">\(x\)</span> y otro para las coordenadas <span class="math inline">\(y\)</span>.</p></li>
+<li class="fragment"><p>Calcula <span class="math inline">\(\sqrt{x^2 + y^2}\)</span> para cada punto <span class="math inline">\((x, y)\)</span> y los almacena en un vector.</p></li>
+<li class="fragment"><p>Calcula cuántos puntos caen dentro del círculo evaluando <span class="math inline">\(\sqrt{x^2 + y^2} \leq 1\)</span>.</p></li>
+<li class="fragment"><p>Estima <span class="math inline">\(\pi\)</span> multiplicando 4 con la proporción de puntos dentro del círculo y el número total de puntos.</p></li>
+<li class="fragment"><p>Devuelve el valor de <span class="math inline">\(\pi\)</span> estimado.</p></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p><span class="green">Práctica 2:</span><br> Generar una función en R que permita analizar la convergencia al valor verdadero de <span class="math inline">\(\pi\)</span> en la medida que <span class="math inline">\(n \rightarrow \infty\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Simulacion_1_Generando_numeros_pseudo_aleatorios_files/figure-revealjs/unnamed-chunk-39-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="ejercicios-1" class="title-slide slide level1 center" data-background-color="#00A499" data-number="5">
+<h1><span class="header-section-number">5</span> Ejercicios</h1>
+
+</section>
+<section class="slide level2">
+
+<div class="small">
 <ol type="1">
 <li class="fragment"><p>Si <span class="math inline">\(x0 = 5\)</span> y <span class="math inline">\(x_n = 3x_{n−1} \pmod{150}\)</span>, generar <span class="math inline">\(x_1, \ldots, x_{100}\)</span>. Visualizar la secuencia generada en un histograma de frecuencias y comentar los resultados.</p></li>
 <li class="fragment"><p>Si <span class="math inline">\(x_0 = 3\)</span> y <span class="math inline">\(x_n = (5x_{n−1} + 7) \pmod{200}\)</span>, generar <span class="math inline">\(x_1, \ldots, x_{1000}\)</span>. Visualizar la secuencia generada en un histograma de frecuencias y comentar los resultados.</p></li>
 </ol>
+</div>
 </section></section>
-<section id="referencias" class="title-slide slide level1 smaller scrollable" data-number="4">
-<h1><span class="header-section-number">4</span> Referencias</h1>
+<section id="referencias" class="title-slide slide level1 smaller scrollable" data-number="6">
+<h1><span class="header-section-number">6</span> Referencias</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Andrews1972" class="csl-entry" role="listitem">
 Andrews, DF, PJ Bickel, FR Hampel, PJ Huber, WH Rogers, y JW Tuckey. 1972. <span>«Robust estimates of location, Princeton Univ»</span>. Princeton University Press, Princeton.
@@ -1282,6 +1910,9 @@ Marsaglia, George, Stephen J Sullivan, Stephen K Park, Keith W Miller, y Paul K 
 </div>
 <div id="ref-Park1988" class="csl-entry" role="listitem">
 Park, Stephen K., y Keith W. Miller. 1988. <span>«Random number generators: good ones are hard to find»</span>. <em>Communications of the ACM</em> 31 (10): 1192-1201.
+</div>
+<div id="ref-Pearson1900" class="csl-entry" role="listitem">
+Pearson, Karl. 1900. <span>«X. On the criterion that a given system of deviations from the probable in the case of a correlated system of variables is such that it can be reasonably supposed to have arisen from random sampling»</span>. <em>The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science</em> 50 (302): 157-75.
 </div>
 </div>
 <div class="quarto-auto-generated-content">
