@@ -298,8 +298,8 @@ ________________________________________________________________________________
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>model <span class="sc">%&gt;%</span> <span class="fu">plot_model</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-9b09babef2f00a15ca4f" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-9b09babef2f00a15ca4f">{"x":{"diagram":"digraph {\n\ngraph [layout = \"neato\",\n       outputorder = \"edgesfirst\",\n       bgcolor = \"white\"]\n\nnode [fontname = \"Helvetica\",\n      fontsize = \"10\",\n      shape = \"circle\",\n      fixedsize = \"true\",\n      width = \"0.5\",\n      style = \"filled\",\n      fillcolor = \"aliceblue\",\n      color = \"gray70\",\n      fontcolor = \"gray50\"]\n\nedge [fontname = \"Helvetica\",\n     fontsize = \"8\",\n     len = \"1.5\",\n     color = \"gray80\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"dense_2_input\nInputLayer\n\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0,6!\"] \n  \"2\" [label = \"dense_2\nDense\nrelu\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0,5!\"] \n  \"3\" [label = \"dropout_1\nDropout\n\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0,4!\"] \n  \"4\" [label = \"dense_1\nDense\nrelu\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0,3!\"] \n  \"5\" [label = \"dropout\nDropout\n\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0,2!\"] \n  \"6\" [label = \"dense\nDense\nsoftmax\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0,1!\"] \n  \"1\"->\"2\" \n  \"2\"->\"3\" \n  \"3\"->\"4\" \n  \"4\"->\"5\" \n  \"5\"->\"6\" \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-aacb5fc9be4552c0d4c2" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-aacb5fc9be4552c0d4c2">{"x":{"diagram":"digraph {\n\ngraph [layout = \"neato\",\n       outputorder = \"edgesfirst\",\n       bgcolor = \"white\"]\n\nnode [fontname = \"Helvetica\",\n      fontsize = \"10\",\n      shape = \"circle\",\n      fixedsize = \"true\",\n      width = \"0.5\",\n      style = \"filled\",\n      fillcolor = \"aliceblue\",\n      color = \"gray70\",\n      fontcolor = \"gray50\"]\n\nedge [fontname = \"Helvetica\",\n     fontsize = \"8\",\n     len = \"1.5\",\n     color = \"gray80\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"dense_2_input\nInputLayer\n\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0,6!\"] \n  \"2\" [label = \"dense_2\nDense\nrelu\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0,5!\"] \n  \"3\" [label = \"dropout_1\nDropout\n\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0,4!\"] \n  \"4\" [label = \"dense_1\nDense\nrelu\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0,3!\"] \n  \"5\" [label = \"dropout\nDropout\n\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0,2!\"] \n  \"6\" [label = \"dense\nDense\nsoftmax\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0,1!\"] \n  \"1\"->\"2\" \n  \"2\"->\"3\" \n  \"3\"->\"4\" \n  \"4\"->\"5\" \n  \"5\"->\"6\" \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -331,65 +331,65 @@ ________________________________________________________________________________
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Epoch 1/30
-375/375 - 1s - loss: 0.4372 - accuracy: 0.8679 - val_loss: 0.1688 - val_accuracy: 0.9487 - 1s/epoch - 4ms/step
+375/375 - 1s - loss: 0.4375 - accuracy: 0.8684 - val_loss: 0.1727 - val_accuracy: 0.9480 - 1s/epoch - 4ms/step
 Epoch 2/30
-375/375 - 1s - loss: 0.2056 - accuracy: 0.9392 - val_loss: 0.1217 - val_accuracy: 0.9640 - 837ms/epoch - 2ms/step
+375/375 - 1s - loss: 0.2033 - accuracy: 0.9401 - val_loss: 0.1239 - val_accuracy: 0.9634 - 865ms/epoch - 2ms/step
 Epoch 3/30
-375/375 - 1s - loss: 0.1579 - accuracy: 0.9528 - val_loss: 0.1055 - val_accuracy: 0.9694 - 931ms/epoch - 2ms/step
+375/375 - 1s - loss: 0.1581 - accuracy: 0.9534 - val_loss: 0.1123 - val_accuracy: 0.9680 - 975ms/epoch - 3ms/step
 Epoch 4/30
-375/375 - 1s - loss: 0.1355 - accuracy: 0.9592 - val_loss: 0.0988 - val_accuracy: 0.9712 - 778ms/epoch - 2ms/step
+375/375 - 1s - loss: 0.1322 - accuracy: 0.9603 - val_loss: 0.0896 - val_accuracy: 0.9736 - 810ms/epoch - 2ms/step
 Epoch 5/30
-375/375 - 1s - loss: 0.1144 - accuracy: 0.9653 - val_loss: 0.0914 - val_accuracy: 0.9738 - 852ms/epoch - 2ms/step
+375/375 - 1s - loss: 0.1192 - accuracy: 0.9648 - val_loss: 0.0930 - val_accuracy: 0.9726 - 834ms/epoch - 2ms/step
 Epoch 6/30
-375/375 - 1s - loss: 0.1067 - accuracy: 0.9688 - val_loss: 0.0926 - val_accuracy: 0.9744 - 890ms/epoch - 2ms/step
+375/375 - 1s - loss: 0.1056 - accuracy: 0.9688 - val_loss: 0.0897 - val_accuracy: 0.9753 - 879ms/epoch - 2ms/step
 Epoch 7/30
-375/375 - 1s - loss: 0.0927 - accuracy: 0.9726 - val_loss: 0.0862 - val_accuracy: 0.9783 - 882ms/epoch - 2ms/step
+375/375 - 1s - loss: 0.0926 - accuracy: 0.9719 - val_loss: 0.0912 - val_accuracy: 0.9760 - 895ms/epoch - 2ms/step
 Epoch 8/30
-375/375 - 1s - loss: 0.0892 - accuracy: 0.9737 - val_loss: 0.0825 - val_accuracy: 0.9777 - 909ms/epoch - 2ms/step
+375/375 - 1s - loss: 0.0917 - accuracy: 0.9732 - val_loss: 0.0858 - val_accuracy: 0.9772 - 900ms/epoch - 2ms/step
 Epoch 9/30
-375/375 - 1s - loss: 0.0827 - accuracy: 0.9750 - val_loss: 0.0832 - val_accuracy: 0.9770 - 1s/epoch - 3ms/step
+375/375 - 1s - loss: 0.0821 - accuracy: 0.9745 - val_loss: 0.0888 - val_accuracy: 0.9756 - 914ms/epoch - 2ms/step
 Epoch 10/30
-375/375 - 1s - loss: 0.0780 - accuracy: 0.9768 - val_loss: 0.0805 - val_accuracy: 0.9795 - 1s/epoch - 3ms/step
+375/375 - 1s - loss: 0.0764 - accuracy: 0.9776 - val_loss: 0.0888 - val_accuracy: 0.9773 - 1s/epoch - 3ms/step
 Epoch 11/30
-375/375 - 1s - loss: 0.0739 - accuracy: 0.9776 - val_loss: 0.0850 - val_accuracy: 0.9778 - 1s/epoch - 3ms/step
+375/375 - 1s - loss: 0.0745 - accuracy: 0.9771 - val_loss: 0.0792 - val_accuracy: 0.9792 - 1s/epoch - 3ms/step
 Epoch 12/30
-375/375 - 1s - loss: 0.0676 - accuracy: 0.9801 - val_loss: 0.0842 - val_accuracy: 0.9780 - 1s/epoch - 3ms/step
+375/375 - 1s - loss: 0.0679 - accuracy: 0.9790 - val_loss: 0.0841 - val_accuracy: 0.9797 - 978ms/epoch - 3ms/step
 Epoch 13/30
-375/375 - 1s - loss: 0.0683 - accuracy: 0.9795 - val_loss: 0.0798 - val_accuracy: 0.9803 - 1s/epoch - 3ms/step
+375/375 - 1s - loss: 0.0660 - accuracy: 0.9800 - val_loss: 0.0873 - val_accuracy: 0.9800 - 1s/epoch - 3ms/step
 Epoch 14/30
-375/375 - 1s - loss: 0.0636 - accuracy: 0.9803 - val_loss: 0.0859 - val_accuracy: 0.9786 - 1s/epoch - 3ms/step
+375/375 - 1s - loss: 0.0652 - accuracy: 0.9801 - val_loss: 0.0847 - val_accuracy: 0.9798 - 1s/epoch - 3ms/step
 Epoch 15/30
-375/375 - 1s - loss: 0.0586 - accuracy: 0.9823 - val_loss: 0.0914 - val_accuracy: 0.9793 - 937ms/epoch - 2ms/step
+375/375 - 1s - loss: 0.0616 - accuracy: 0.9815 - val_loss: 0.0865 - val_accuracy: 0.9796 - 1s/epoch - 3ms/step
 Epoch 16/30
-375/375 - 1s - loss: 0.0608 - accuracy: 0.9820 - val_loss: 0.0809 - val_accuracy: 0.9807 - 938ms/epoch - 3ms/step
+375/375 - 1s - loss: 0.0594 - accuracy: 0.9821 - val_loss: 0.0910 - val_accuracy: 0.9804 - 1000ms/epoch - 3ms/step
 Epoch 17/30
-375/375 - 1s - loss: 0.0563 - accuracy: 0.9827 - val_loss: 0.0909 - val_accuracy: 0.9789 - 1s/epoch - 3ms/step
+375/375 - 1s - loss: 0.0569 - accuracy: 0.9831 - val_loss: 0.0880 - val_accuracy: 0.9794 - 970ms/epoch - 3ms/step
 Epoch 18/30
-375/375 - 1s - loss: 0.0550 - accuracy: 0.9838 - val_loss: 0.0907 - val_accuracy: 0.9793 - 1s/epoch - 3ms/step
+375/375 - 1s - loss: 0.0576 - accuracy: 0.9831 - val_loss: 0.0851 - val_accuracy: 0.9787 - 940ms/epoch - 3ms/step
 Epoch 19/30
-375/375 - 1s - loss: 0.0569 - accuracy: 0.9830 - val_loss: 0.0915 - val_accuracy: 0.9787 - 1s/epoch - 3ms/step
+375/375 - 1s - loss: 0.0539 - accuracy: 0.9837 - val_loss: 0.0908 - val_accuracy: 0.9817 - 935ms/epoch - 2ms/step
 Epoch 20/30
-375/375 - 1s - loss: 0.0516 - accuracy: 0.9840 - val_loss: 0.0903 - val_accuracy: 0.9804 - 950ms/epoch - 3ms/step
+375/375 - 1s - loss: 0.0525 - accuracy: 0.9843 - val_loss: 0.0888 - val_accuracy: 0.9803 - 914ms/epoch - 2ms/step
 Epoch 21/30
-375/375 - 1s - loss: 0.0510 - accuracy: 0.9849 - val_loss: 0.0913 - val_accuracy: 0.9802 - 909ms/epoch - 2ms/step
+375/375 - 1s - loss: 0.0497 - accuracy: 0.9853 - val_loss: 0.0961 - val_accuracy: 0.9801 - 904ms/epoch - 2ms/step
 Epoch 22/30
-375/375 - 1s - loss: 0.0500 - accuracy: 0.9849 - val_loss: 0.0918 - val_accuracy: 0.9802 - 902ms/epoch - 2ms/step
+375/375 - 1s - loss: 0.0494 - accuracy: 0.9850 - val_loss: 0.1020 - val_accuracy: 0.9790 - 893ms/epoch - 2ms/step
 Epoch 23/30
-375/375 - 1s - loss: 0.0478 - accuracy: 0.9854 - val_loss: 0.0903 - val_accuracy: 0.9818 - 891ms/epoch - 2ms/step
+375/375 - 1s - loss: 0.0479 - accuracy: 0.9854 - val_loss: 0.0990 - val_accuracy: 0.9798 - 884ms/epoch - 2ms/step
 Epoch 24/30
-375/375 - 1s - loss: 0.0454 - accuracy: 0.9865 - val_loss: 0.0894 - val_accuracy: 0.9820 - 997ms/epoch - 3ms/step
+375/375 - 1s - loss: 0.0470 - accuracy: 0.9859 - val_loss: 0.0952 - val_accuracy: 0.9813 - 904ms/epoch - 2ms/step
 Epoch 25/30
-375/375 - 1s - loss: 0.0467 - accuracy: 0.9862 - val_loss: 0.0928 - val_accuracy: 0.9818 - 1s/epoch - 3ms/step
+375/375 - 1s - loss: 0.0459 - accuracy: 0.9859 - val_loss: 0.0983 - val_accuracy: 0.9803 - 890ms/epoch - 2ms/step
 Epoch 26/30
-375/375 - 1s - loss: 0.0452 - accuracy: 0.9861 - val_loss: 0.0906 - val_accuracy: 0.9818 - 1s/epoch - 3ms/step
+375/375 - 1s - loss: 0.0468 - accuracy: 0.9860 - val_loss: 0.0891 - val_accuracy: 0.9814 - 902ms/epoch - 2ms/step
 Epoch 27/30
-375/375 - 1s - loss: 0.0439 - accuracy: 0.9873 - val_loss: 0.0999 - val_accuracy: 0.9808 - 995ms/epoch - 3ms/step
+375/375 - 1s - loss: 0.0470 - accuracy: 0.9863 - val_loss: 0.0956 - val_accuracy: 0.9817 - 978ms/epoch - 3ms/step
 Epoch 28/30
-375/375 - 1s - loss: 0.0441 - accuracy: 0.9871 - val_loss: 0.0911 - val_accuracy: 0.9823 - 1s/epoch - 3ms/step
+375/375 - 1s - loss: 0.0460 - accuracy: 0.9866 - val_loss: 0.0966 - val_accuracy: 0.9808 - 1s/epoch - 3ms/step
 Epoch 29/30
-375/375 - 1s - loss: 0.0426 - accuracy: 0.9879 - val_loss: 0.0903 - val_accuracy: 0.9818 - 959ms/epoch - 3ms/step
+375/375 - 1s - loss: 0.0432 - accuracy: 0.9879 - val_loss: 0.1026 - val_accuracy: 0.9813 - 1s/epoch - 3ms/step
 Epoch 30/30
-375/375 - 1s - loss: 0.0425 - accuracy: 0.9876 - val_loss: 0.0943 - val_accuracy: 0.9812 - 910ms/epoch - 2ms/step</code></pre>
+375/375 - 1s - loss: 0.0419 - accuracy: 0.9873 - val_loss: 0.1006 - val_accuracy: 0.9805 - 1s/epoch - 3ms/step</code></pre>
 </div>
 </div>
 <ul>
@@ -417,11 +417,11 @@ Epoch 30/30
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>model <span class="sc">%&gt;%</span> <span class="fu">evaluate</span>(x_test, y_test)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>313/313 - 0s - loss: 0.0881 - accuracy: 0.9814 - 237ms/epoch - 757us/step</code></pre>
+<pre><code>313/313 - 0s - loss: 0.0875 - accuracy: 0.9828 - 240ms/epoch - 766us/step</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      loss   accuracy 
-0.08810671 0.98140001 </code></pre>
+0.08747123 0.98280001 </code></pre>
 </div>
 </div>
 </section>
@@ -435,7 +435,7 @@ Epoch 30/30
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">array_reshape</span>(., <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">10000</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.vector</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>313/313 - 0s - 273ms/epoch - 871us/step</code></pre>
+<pre><code>313/313 - 0s - 307ms/epoch - 980us/step</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>predicciones[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -459,6 +459,25 @@ Epoch 30/30
 <p><img src="Deep_Learning_02_examples_02_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
+</div>
+</div>
+<p>Finalmente mostramos una matriz de confusión para las predicciones del conjunto de prueba</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="at">Estimado =</span> predicciones,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">Observado =</span> <span class="fu">as.vector</span>(<span class="fu">k_argmax</span>(y_test)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Observado
+Estimado    0    1    2    3    4    5    6    7    8    9
+       0  974    0    2    0    0    2    4    2    1    2
+       1    1 1127    0    0    0    0    2    2    1    2
+       2    1    2 1015    2    2    0    0    9    2    0
+       3    1    1    3  995    0   10    1    3    5    4
+       4    0    0    2    0  966    1    5    0    5   12
+       5    1    1    0    4    0  869    5    0    3    2
+       6    0    2    2    0    5    2  941    0    2    0
+       7    1    1    5    4    0    1    0 1010    3    2
+       8    1    1    3    2    2    3    0    1  946    0
+       9    0    0    0    3    7    4    0    1    6  985</code></pre>
 </div>
 </div>
 <p>Parece que nuestro modelo de <span class="orange">Deep Learning</span> logró aprende bastante bien los patrones de los pixeles de las imagenes.</p>
