@@ -448,7 +448,7 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Lanzamiento de monedas</span></span>
 <span id="cb1-2"><a href=""></a><span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 0 1 0 1 0 1 0 0 0</code></pre>
+<pre><code> [1] 1 0 0 1 0 1 1 0 1 1</code></pre>
 </div>
 </div>
 <p></p>
@@ -456,7 +456,7 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Escoger números del loto</span></span>
 <span id="cb3-2"><a href=""></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">36</span>, <span class="at">size =</span> <span class="dv">6</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 12 35 19 15 22 13</code></pre>
+<pre><code>[1] 11 19 18 21 31 14</code></pre>
 </div>
 </div>
 <p></p>
@@ -464,8 +464,8 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Permuación de letras a-z</span></span>
 <span id="cb5-2"><a href=""></a><span class="fu">sample</span>(letters)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "o" "g" "r" "v" "n" "s" "l" "j" "k" "i" "f" "a" "c" "t" "p" "m" "b" "y" "z"
-[20] "x" "h" "d" "u" "q" "e" "w"</code></pre>
+<pre><code> [1] "t" "e" "y" "d" "a" "h" "p" "r" "g" "q" "u" "n" "f" "z" "o" "v" "i" "x" "m"
+[20] "s" "k" "l" "j" "w" "b" "c"</code></pre>
 </div>
 </div>
 <p></p>
@@ -476,7 +476,7 @@ Francisco Plaza Vega
 <div class="cell-output cell-output-stdout">
 <pre><code>x
  1  2  3 
-15 33 52 </code></pre>
+18 29 53 </code></pre>
 </div>
 </div>
 </section><section id="algunos-generadores-aleatorios-en-r" class="slide level2" data-number="1.1"><h2>
@@ -717,7 +717,8 @@ P \left( F_{X}^{-1}(U) \leq x \right) =&amp; P \left( inf\{ t: F_{X}(t) =U \} \l
 <span id="cb11-7"><a href=""></a><span class="fu">lines</span>(y, <span class="dv">3</span><span class="sc">*</span>y<span class="sc">^</span><span class="dv">2</span>) <span class="co">#curva de la densidad f(x)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="Simulacion_2_Generando_variables_aleatorias_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section class="slide level2"><div class="example">
+<img data-src="Simulacion_2_Generando_variables_aleatorias_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section class="slide level2"><h3 id="ejemplo-distribución-exponencial">Ejemplo: Distribución exponencial</h3>
+<div class="example">
 <p><span class="green">Ejemplo: Distribución exponencial</span> Es posible generar muestras aleatorias desde una distribución exponencial con media <span class="math inline">\(\frac{1}{\lambda}\)</span>.</p>
 <ul>
 <li class="fragment"><p>Si <span class="math inline">\(X\sim Exp(\lambda)\)</span>, entonces para <span class="math inline">\(x&gt;0\)</span> la <em>cdf</em> de <span class="math inline">\(X\)</span> es <span class="math inline">\(F_{X}(x) = 1 - e^{-\lambda x}\)</span>.</p></li>
@@ -736,7 +737,8 @@ P \left( F_{X}^{-1}(U) \leq x \right) =&amp; P \left( inf\{ t: F_{X}(t) =U \} \l
 <span id="cb12-7"><a href=""></a><span class="fu">lines</span>(y, <span class="fu">dexp</span>(y), <span class="at">col =</span> <span class="st">'red'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="Simulacion_2_Generando_variables_aleatorias_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section class="slide level2"><div class="example">
+<img data-src="Simulacion_2_Generando_variables_aleatorias_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section><section class="slide level2"><h3 id="ejemplo-distribución-kumaraswami">Ejemplo: Distribución Kumaraswami</h3>
+<div class="example">
 <p><span class="green">Ejemplo: Distribución Kumaraswami</span></p>
 <p>La función de <a href="https://en.wikipedia.org/wiki/Kumaraswamy_distribution">distribución Kumaraswami</a> puede ser expresada</p>
 <p><span class="math display">\[F_{X}(x) = 1- (1-x^a)^b\]</span></p>
@@ -786,23 +788,34 @@ P \left( F_{X}^{-1}(U) \leq x \right) =&amp; P \left( inf\{ t: F_{X}(t) =U \} \l
 </div>
 </div>
 </div>
-</section><section id="método-de-la-transformada-inversa-caso-discreto" class="slide level2" data-number="2.3"><h2>
-<span class="header-section-number">2.3</span> Método de la transformada inversa (caso discreto)</h2>
-<p>Supongamos que se necesita generar el valor de una variable aleatoria discreta denotada por <span class="math inline">\(X\)</span>, cuya función de masa de probabilidad está dada por</p>
-<p><span class="math display">\[P\{ X = x_j \} = p_j, \qquad j=0,1, \ldots, \sum_{j} p_j = 1\]</span></p>
-<p>Para lograr lo anterior, necesitamos generar un número aleatorio <span class="math inline">\(U\)</span>, tal que <span class="math inline">\(U\)</span> tenga una distribución <span class="math inline">\((0,1)\)</span>, y además establecer que</p>
-<p><span class="math display">\[X = \left\{\begin{array}{ll}
+</section><section id="ejercicios" class="slide level2" data-number="2.3"><h2>
+<span class="header-section-number">2.3</span> Ejercicios</h2>
+<p>Genere números aleatorios utilizando el método de la inversa de las siguientes distribuciones:</p>
+<div>
+<div class="small">
+<ol type="1">
+<li><p>Distribución Cauchy</p></li>
+<li><p>Distribución Weibull</p></li>
+</ol>
+</div>
+</div>
+</section><section id="método-de-la-transformada-inversa-caso-discreto" class="slide level2" data-number="2.4"><h2>
+<span class="header-section-number">2.4</span> Método de la transformada inversa (caso discreto)</h2>
+<ul>
+<li class="fragment"><p>Supongamos que se necesita generar el valor de una variable aleatoria discreta denotada por <span class="math inline">\(X\)</span>, cuya función de masa de probabilidad está dada por <span class="math display">\[P\{ X = x_j \} = p_j, \qquad j=0,1, \ldots, \sum_{j} p_j = 1\]</span></p></li>
+<li class="fragment"><p>Para lograr lo anterior, necesitamos generar un número aleatorio <span class="math inline">\(U\)</span>, tal que <span class="math inline">\(U\)</span> tenga una distribución <span class="math inline">\((0,1)\)</span>, y además establecer que <span class="math display">\[X = \left\{\begin{array}{ll}
 x_0 &amp; \mbox{Si} \; U &lt; p_0  \\
 x_1 &amp; \mbox{Si} \; p_0 \leq U &lt; p_0 + p_1\\
 \vdots &amp; \\
 x_j &amp; \mbox{Si} \; \sum_{i=0}^{j-1} p_i \leq U &lt; \sum_{i=0}^{j} p_i  \\
 \vdots &amp;
-\end{array}\right.\]</span></p>
-</section><section class="slide level2"><p>Dado que, para <span class="math inline">\(0&lt;a&lt;b&lt;1\)</span>, <span class="math inline">\(P\{a \leq U &lt; b \} = b-a\)</span>, tenemos que</p>
-<p><span class="math display">\[ P\{X = x_j \} = P\left\{ \sum_{i=0}^{j-1} p_i \leq U &lt; \sum_{i=0}^{j} p_i \right\} = p_j \]</span></p>
-<p>Entonces, <span class="math inline">\(X\)</span> tendrá la distribución objetivo.</p>
-</section><section class="slide level2"><p>Podemos escribir el procedimiento anterior como pseudocódigo:</p>
-<div class="alert">
+\end{array}\right.\]</span></p></li>
+</ul></section><section class="slide level2"><ul>
+<li class="fragment"><p>Dado que, para <span class="math inline">\(0&lt;a&lt;b&lt;1\)</span>, <span class="math inline">\(P\{a \leq U &lt; b \} = b-a\)</span>, tenemos que <span class="math display">\[ P\{X = x_j \} = P\left\{ \sum_{i=0}^{j-1} p_i \leq U &lt; \sum_{i=0}^{j} p_i \right\} = p_j \]</span></p></li>
+<li class="fragment"><p>Entonces, <span class="math inline">\(X\)</span> tendrá la distribución objetivo.</p></li>
+</ul>
+<div class="definition">
+<p>Podemos escribir el procedimiento anterior como pseudocódigo:</p>
 <div class="small">
 <ol type="1">
 <li class="fragment">Genera un número aleatorio <span class="math inline">\(U\)</span>
@@ -819,75 +832,12 @@ x_j &amp; \mbox{Si} \; \sum_{i=0}^{j-1} p_i \leq U &lt; \sum_{i=0}^{j} p_i  \\
 </ol>
 </div>
 </div>
-</section><section class="slide level2"><p>Si el <span class="math inline">\(i-\)</span>ésimo elemento <span class="math inline">\(x_i, i \geq 0\)</span> está ordenado de tal manera que $x_0 &lt; x_1 &lt; x_2 $y dejamos que <span class="math inline">\(F\)</span> sea la función de distribución de <span class="math inline">\(X\)</span>. Así <span class="math inline">\(F(x_k) = \sum_{i=0}^{k}p_i\)</span>, entonces</p>
-<p><span class="math display">\[X \quad \mbox{será igual a } x_j \quad \mbox{Si} \quad F(x_{j-1}) \leq U &lt; F(x_k)\]</span></p>
-<p>En otras palabras, después de generar un número aleatorio <span class="math inline">\(U\)</span>, se determina el valor de <span class="math inline">\(X\)</span> al encontrar un intervalo <span class="math inline">\(\left[ F(x_{j−1}), F(x_{j}) \right]\)</span> en el cual se encuentra <span class="math inline">\(U\)</span> <span class="math inline">\(\left[ \mbox{o de forma equivalente, al encontrar la inversa de } F(U), F^{-1}(U) \right]\)</span>. Por esta razón es que este método recibe su nombre: <span class="green">La transformada inversa para generar <span class="math inline">\(X\)</span></span>.</p>
-<p>La cantidad de tiempo que este método tarda en generar una variable aleatoria discrata será proporiconal al número de intervalos que se deben buscar. Es por esta razón que es necesario considerar los posibles valores de <span class="math inline">\(x_j\)</span> de <span class="math inline">\(X\)</span> en orden decreciente para la <span class="math inline">\(p_j\)</span>.</p>
-</section><section class="slide level2"><div class="example">
-<p><span class="green">Ejemplo</span> Si se quiere simular una variable <span class="math inline">\(X\)</span> tal que</p>
-<p><span class="math display">\[ p_1 = 0.20, \; p_2 = 0.15,  \; p_3 = 0.25,  \; p_4 = 0.40, \quad \mbox{donde} \quad p_j = P\{X = j\}\]</span></p>
-</div>
-</section><section class="slide level2"><p>Entonces se podría generar <span class="math inline">\(U\)</span> y seguir los siguientes pasos:</p>
-<div class="small">
-<p>Genera un número aleatorio <span class="math inline">\(U\)</span>  <span class="math display">\[ \begin{align}
-  \mbox{ Si } \quad &amp; U &lt; 0.20 \quad &amp; \mbox{Entonces } X = 1 \\
-  \mbox{ Si } \quad &amp; U &lt; 0.35 \quad &amp; \mbox{Entonces } X = 2 \\
-  \mbox{ Si } \quad &amp; U &lt; 0.60 \quad &amp; \mbox{Entonces } X = 3 \\
-                    &amp; \mbox{Si no} \quad &amp; \mbox{Entonces } X = 4 \\
-\end{align} \]</span></p>
-</div>
-<p>Sin embargo, un método más eficiente podría ser el siguiente:</p>
-<div class="small">
-<p><span class="math display">\[ \begin{align}
-  \mbox{ Si } \quad &amp; U &lt; 0.40 \quad &amp; \mbox{Entonces } X = 4 \\
-  \mbox{ Si } \quad &amp; U &lt; 0.65 \quad &amp; \mbox{Entonces } X = 3 \\
-  \mbox{ Si } \quad &amp; U &lt; 0.85 \quad &amp; \mbox{Entonces } X = 1 \\
-                    &amp; \mbox{Si no} \quad &amp; \mbox{Entonces } X = 2 \\
-\end{align} \]</span></p>
-</div>
-</section><section class="slide level2"><p>Un caso en el que no es necesario buscar el intervalo apropiado en el que el número aleatorio se encuentra es cuando la variable aleatoria deseada es la variable aleatoria uniforme discreta. Es decir, supongamos que queremos generar el valor de <span class="math inline">\(X\)</span> que tiene la misma probabilidad de tomar cualquiera de los valores 1,…,n.&nbsp;Es decir, $P {X = j} = , j = 1,…,n $. Utilizando los resultados anteriores, se deduce que podemos lograr esto generando <span class="math inline">\(U\)</span> y luego estableciendo</p>
-<p><span class="math display">\[X=j \quad \mbox{Si} \quad \frac{j-1}{n}\leq U \leq \frac{j}{n}\]</span></p>
-<p>De esta manera, <span class="math inline">\(X\)</span> será igual a <span class="math inline">\(j\)</span> si <span class="math inline">\(j-1 \leq nU \leq j\)</span>. En otras palabras,</p>
-<p><span class="math display">\[X = Int(nU)+1\]</span></p>
-<p>donde <span class="math inline">\(Int(x)\)</span> es la parte entera de x (es decir, el mayor entero menor o igual a <span class="math inline">\(x\)</span>).</p>
-</section><section class="slide level2"><div class="example">
-<p><span class="green">Ejemplo: Distribución Bernoulli</span> Aplicamos la transformada inversa discreta para generar una muestra aleatoria <span class="math inline">\(Bernoulli(p=0.4)\)</span>.</p>
-<ul>
-<li class="fragment"><p>En este ejemplo, <span class="math inline">\(F_{x}(0) = f_{X}(0) =1-p\)</span> y <span class="math inline">\(F_{X}(1) = 1\)</span>.</p></li>
-<li class="fragment"><p>Así, <span class="math inline">\(F_{X}^{-1}(u) = 1\)</span> si <span class="math inline">\(u &gt;0.6\)</span> y <span class="math inline">\(F_{X}^{-1}(u) = 0\)</span> si <span class="math inline">\(u \leq 0.6\)</span>.</p></li>
-<li class="fragment"><p>El generador de la variable aleatoria debería entregar el valor numérico de la expresión lógica <span class="math inline">\(u&gt;0.6\)</span>.</p></li>
-</ul>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb14-2"><a href=""></a>p <span class="ot">&lt;-</span> <span class="fl">0.4</span></span>
-<span id="cb14-3"><a href=""></a>u <span class="ot">&lt;-</span> <span class="fu">runif</span>(n)</span>
-<span id="cb14-4"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(u <span class="sc">&gt;</span> <span class="dv">1</span><span class="sc">-</span> p)</span>
-<span id="cb14-5"><a href=""></a><span class="fu">head</span>(x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0 1 0 1 0 0</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="fu">mean</span>(x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.389</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="fu">var</span>(x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2379169</code></pre>
-</div>
-</div>
-</section><section class="slide level2"><p>Podemos comparar los valores de los estadísticos muestrales con los momentos teóricos de la distribución Bernoulli.</p>
-<ul>
-<li class="fragment"><p>La media muestral de la muestra generada debería ser aproximadamente <span class="math inline">\(p = 0.4\)</span>, en nuestro ejemplo, la media muestral estimada <span class="math inline">\(\bar{x}=\)</span> 0.389.</p></li>
-<li class="fragment"><p>La varianza muestral debería ser aproximadamente <span class="math inline">\(p(1-p) = 0.24\)</span> y nuestra varianza muestral <span class="math inline">\(s^2=\)</span> 0.2379169</p></li>
-</ul>
-<p></p>
-<p><strong>Nota</strong>: <em>En R, se puede utilizar la función <code>rbinom</code> (</em>random binomial<em>) de tamaño 1 (<code>size=1</code>) para generar una muestra de tipo Bernoulli. Otro método podría ser utilizar la función <code>sample</code> desde el vector <span class="math inline">\(x=\{0,1\}\)</span> con probabilidades <span class="math inline">\((1-p, p)\)</span>.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> p)</span>
-<span id="cb20-2"><a href=""></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(.<span class="dv">6</span>,.<span class="dv">4</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section><section class="slide level2"><div class="example">
+</section><section class="slide level2"><ul>
+<li class="fragment"><p>Si el <span class="math inline">\(i-\)</span>ésimo elemento <span class="math inline">\(x_i, i \geq 0\)</span> está ordenado de tal manera que <span class="math inline">\(x_0 &lt; x_1 &lt; x_2 \cdots\)</span> y dejamos que <span class="math inline">\(F\)</span> sea la función de distribución de <span class="math inline">\(X\)</span>. Así <span class="math inline">\(F(x_k) = \sum_{i=0}^{k}p_i\)</span>, entonces <span class="math display">\[X \quad \mbox{será igual a } x_j \quad \mbox{Si} \quad F(x_{j-1}) \leq U &lt; F(x_k)\]</span></p></li>
+<li class="fragment"><p>En otras palabras, después de generar un número aleatorio <span class="math inline">\(U\)</span>, se determina el valor de <span class="math inline">\(X\)</span> al encontrar un intervalo <span class="math inline">\(\left[ F(x_{j−1}), F(x_{j}) \right]\)</span> en el cual se encuentra <span class="math inline">\(U\)</span> <span class="math inline">\(\left[ \mbox{o de forma equivalente, al encontrar la inversa de } F(U), F^{-1}(U) \right]\)</span>. Por esta razón es que este método recibe su nombre: <span class="green">La transformada inversa para generar <span class="math inline">\(X\)</span></span>.</p></li>
+<li class="fragment"><p>La cantidad de tiempo que este método tarda en generar una variable aleatoria discrata será proporiconal al número de intervalos que se deben buscar. Es por esta razón que es necesario considerar los posibles valores de <span class="math inline">\(x_j\)</span> de <span class="math inline">\(X\)</span> en orden decreciente para la <span class="math inline">\(p_j\)</span>.</p></li>
+</ul></section><section class="slide level2"><h3 id="ejemplo">Ejemplo</h3>
+<div class="example">
 <p><span class="green">Ejemplo:</span> Supongamos que queremos simular desde una variable aleatoria <span class="math inline">\(X\)</span> que sigue la siguiente distribución</p>
 <p><span class="math display">\[f(x) = \left\{ \begin{align}
 0.1 &amp; \quad \mbox{Si } x = 1  \\
@@ -896,6 +846,8 @@ x_j &amp; \mbox{Si} \; \sum_{i=0}^{j-1} p_i \leq U &lt; \sum_{i=0}^{j} p_i  \\
 0.3 &amp; \quad \mbox{Si } x = 4  \\
 \end{align}\right.\]</span></p>
 </div>
+<p></p>
+<p>Tabulamos los posibles valores de <span class="math inline">\(x_i\)</span> y de sus probabilidades <span class="math inline">\(P(X=x_i)\)</span></p>
 <div class="small">
 <table style="width:29%;">
 <colgroup>
@@ -929,14 +881,14 @@ x_j &amp; \mbox{Si} \; \sum_{i=0}^{j-1} p_i \leq U &lt; \sum_{i=0}^{j} p_i  \\
 </section><section class="slide level2"><div class="columns">
 <div class="column">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="co"># Valores posibles de x</span></span>
-<span id="cb21-2"><a href=""></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
-<span id="cb21-3"><a href=""></a></span>
-<span id="cb21-4"><a href=""></a><span class="co"># pdf evaluada en cada valor de x</span></span>
-<span id="cb21-5"><a href=""></a>fx <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>)</span>
-<span id="cb21-6"><a href=""></a></span>
-<span id="cb21-7"><a href=""></a><span class="co"># CDF evaluada en cada valor de x</span></span>
-<span id="cb21-8"><a href=""></a>(<span class="at">Fx =</span> <span class="fu">cumsum</span>(fx))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="co"># Valores posibles de x</span></span>
+<span id="cb14-2"><a href=""></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb14-3"><a href=""></a></span>
+<span id="cb14-4"><a href=""></a><span class="co"># pdf evaluada en cada valor de x</span></span>
+<span id="cb14-5"><a href=""></a>fx <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>)</span>
+<span id="cb14-6"><a href=""></a></span>
+<span id="cb14-7"><a href=""></a><span class="co"># CDF evaluada en cada valor de x</span></span>
+<span id="cb14-8"><a href=""></a>(<span class="at">Fx =</span> <span class="fu">cumsum</span>(fx))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1 0.5 0.7 1.0</code></pre>
 </div>
@@ -958,7 +910,7 @@ x_j &amp; \mbox{Si} \; \sum_{i=0}^{j-1} p_i \leq U &lt; \sum_{i=0}^{j} p_i  \\
 <li class="fragment">Paso 2: Encontrar el valor más pequeño de <span class="math inline">\(X\)</span> tal que <span class="math inline">\(F(x) \geq u\)</span>. Es decir:
 <ul>
 <li class="fragment">if <span class="math inline">\(u \leq 0.10\)</span>, entonces <span class="math inline">\(X=1\)</span>;</li>
-<li class="fragment">else if <span class="math inline">\(0 u \leq 0.5\)</span>, entonces <span class="math inline">\(X=2\)</span>;</li>
+<li class="fragment">else if <span class="math inline">\(0.10 &lt; u \leq 0.5\)</span>, entonces <span class="math inline">\(X=2\)</span>;</li>
 <li class="fragment"><span class="math inline">\(\vdots\)</span></li>
 <li class="fragment">else <span class="math inline">\(X=4\)</span>.</li>
 </ul>
@@ -968,25 +920,24 @@ x_j &amp; \mbox{Si} \; \sum_{i=0}^{j-1} p_i \leq U &lt; \sum_{i=0}^{j} p_i  \\
 </section><section class="slide level2"><div class="columns">
 <div class="column">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="fu">library</span>(knitr)</span>
-<span id="cb23-2"><a href=""></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb23-3"><a href=""></a><span class="co"># Generar números aleatorios uniformes</span></span>
-<span id="cb23-4"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb23-5"><a href=""></a>u <span class="ot">=</span> <span class="fu">runif</span>(<span class="dv">10</span>)</span>
-<span id="cb23-6"><a href=""></a>fx <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>)</span>
-<span id="cb23-7"><a href=""></a>Fx <span class="ot">=</span> <span class="fu">cumsum</span>(fx)</span>
-<span id="cb23-8"><a href=""></a></span>
-<span id="cb23-9"><a href=""></a><span class="co"># Especificar los valores de x</span></span>
-<span id="cb23-10"><a href=""></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
-<span id="cb23-11"><a href=""></a></span>
-<span id="cb23-12"><a href=""></a><span class="co"># Encontrar el valor más pequeño de x con la CDF &gt;= u</span></span>
-<span id="cb23-13"><a href=""></a>xsim <span class="ot">=</span> <span class="fu">sapply</span>(u, <span class="cf">function</span>(uval) <span class="fu">min</span>(x[Fx <span class="sc">&gt;=</span> uval]))</span>
-<span id="cb23-14"><a href=""></a></span>
-<span id="cb23-15"><a href=""></a><span class="co"># Mostrar tabla con los resultados</span></span>
-<span id="cb23-16"><a href=""></a><span class="fu">tibble</span>(<span class="at">u =</span> u, <span class="at">xsim =</span> xsim) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-17"><a href=""></a>  <span class="fu">kbl</span>(<span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-18"><a href=""></a>  <span class="fu">kable_paper</span>(<span class="st">"hover"</span>, <span class="at">full_width=</span>F) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-19"><a href=""></a>  <span class="fu">kable_styling</span>(<span class="at">font_size=</span><span class="dv">22</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="fu">library</span>(knitr)</span>
+<span id="cb16-2"><a href=""></a><span class="fu">library</span>(kableExtra) </span>
+<span id="cb16-3"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb16-4"><a href=""></a>u <span class="ot">=</span> <span class="fu">runif</span>(<span class="dv">10</span>)</span>
+<span id="cb16-5"><a href=""></a>fx <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>)</span>
+<span id="cb16-6"><a href=""></a>Fx <span class="ot">=</span> <span class="fu">cumsum</span>(fx)</span>
+<span id="cb16-7"><a href=""></a></span>
+<span id="cb16-8"><a href=""></a><span class="co"># Especificar los valores de x</span></span>
+<span id="cb16-9"><a href=""></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb16-10"><a href=""></a></span>
+<span id="cb16-11"><a href=""></a><span class="co"># Encontrar el valor más pequeño de x con la CDF &gt;= u</span></span>
+<span id="cb16-12"><a href=""></a>xsim <span class="ot">=</span> <span class="fu">sapply</span>(u, <span class="cf">function</span>(uval) <span class="fu">min</span>(x[Fx <span class="sc">&gt;=</span> uval]))</span>
+<span id="cb16-13"><a href=""></a></span>
+<span id="cb16-14"><a href=""></a><span class="co"># Mostrar tabla con los resultados</span></span>
+<span id="cb16-15"><a href=""></a><span class="fu">tibble</span>(<span class="at">u =</span> u, <span class="at">xsim =</span> xsim) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-16"><a href=""></a>  <span class="fu">kbl</span>(<span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-17"><a href=""></a>  <span class="fu">kable_paper</span>(<span class="st">"hover"</span>, <span class="at">full_width=</span>F) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-18"><a href=""></a>  <span class="fu">kable_styling</span>(<span class="at">font_size=</span><span class="dv">22</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
 <div class="cell">
@@ -1049,36 +1000,104 @@ x_j &amp; \mbox{Si} \; \sum_{i=0}^{j-1} p_i \leq U &lt; \sum_{i=0}^{j} p_i  \\
 <div class="columns">
 <div class="column">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb24-2"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb24-3"><a href=""></a>n <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb24-4"><a href=""></a>u <span class="ot">=</span> <span class="fu">runif</span>(n)</span>
-<span id="cb24-5"><a href=""></a>fx <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>)</span>
-<span id="cb24-6"><a href=""></a>Fx <span class="ot">=</span> <span class="fu">cumsum</span>(fx)</span>
-<span id="cb24-7"><a href=""></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
-<span id="cb24-8"><a href=""></a></span>
-<span id="cb24-9"><a href=""></a><span class="co"># Encontrar el valor más pequeño de x con la CDF &gt;= u</span></span>
-<span id="cb24-10"><a href=""></a>xsim <span class="ot">&lt;-</span> <span class="fu">sapply</span>(u, <span class="cf">function</span>(uval) <span class="fu">min</span>(x[Fx <span class="sc">&gt;=</span> uval]))</span>
-<span id="cb24-11"><a href=""></a></span>
-<span id="cb24-12"><a href=""></a><span class="fu">data.frame</span>(<span class="fu">table</span>(xsim)) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-13"><a href=""></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb24-14"><a href=""></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(xsim, Freq<span class="sc">/</span>n),</span>
-<span id="cb24-15"><a href=""></a>           <span class="at">colour=</span><span class="st">"white"</span>, <span class="at">fill=</span><span class="st">"grey40"</span>) <span class="sc">+</span></span>
-<span id="cb24-16"><a href=""></a>  <span class="fu">ylab</span>(<span class="st">"f(x)"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"x"</span>) <span class="sc">+</span></span>
-<span id="cb24-17"><a href=""></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb17-2"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb17-3"><a href=""></a>n <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb17-4"><a href=""></a>u <span class="ot">=</span> <span class="fu">runif</span>(n)</span>
+<span id="cb17-5"><a href=""></a>fx <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>)</span>
+<span id="cb17-6"><a href=""></a>Fx <span class="ot">=</span> <span class="fu">cumsum</span>(fx)</span>
+<span id="cb17-7"><a href=""></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb17-8"><a href=""></a></span>
+<span id="cb17-9"><a href=""></a><span class="co"># Encontrar el valor más pequeño de x con la CDF &gt;= u</span></span>
+<span id="cb17-10"><a href=""></a>xsim <span class="ot">&lt;-</span> <span class="fu">sapply</span>(u, <span class="cf">function</span>(uval) <span class="fu">min</span>(x[Fx <span class="sc">&gt;=</span> uval]))</span>
+<span id="cb17-11"><a href=""></a></span>
+<span id="cb17-12"><a href=""></a><span class="fu">data.frame</span>(<span class="fu">table</span>(xsim)) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-13"><a href=""></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb17-14"><a href=""></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(xsim, Freq<span class="sc">/</span>n),</span>
+<span id="cb17-15"><a href=""></a>           <span class="at">colour=</span><span class="st">"white"</span>, <span class="at">fill=</span><span class="st">"grey40"</span>) <span class="sc">+</span></span>
+<span id="cb17-16"><a href=""></a>  <span class="fu">ylab</span>(<span class="st">"f(x)"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"x"</span>) <span class="sc">+</span></span>
+<span id="cb17-17"><a href=""></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="Simulacion_2_Generando_variables_aleatorias_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+<figure><p><img data-src="Simulacion_2_Generando_variables_aleatorias_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 </div>
-</section><section class="slide level2"><div class="example">
+</section><section class="slide level2"><h3 id="ejemplo-distribuciones-de-bernoulli-p-y-binomial-n-p">Ejemplo: Distribuciones de Bernoulli (<span class="math inline">\(p\)</span>) y Binomial (<span class="math inline">\(n, p\)</span>)</h3>
+<p>Supongamos que queremos generar una variable aleatoria Bernoulli (<span class="math inline">\(p\)</span>) <span class="math inline">\(X\)</span>, en cuyo caso <span class="math inline">\(P(X = 0) = 1-p\)</span> y <span class="math inline">\(P(X = 1) = p\)</span> para algún <span class="math inline">\(p \in (0, 1)\)</span>. Entonces el método de transformación inversa discreta produce:</p>
+<div class="alert">
+<div class="small">
+<p>Algoritmo para generar una v.a. Bernoulli (<span class="math inline">\(p\)</span>) <span class="math inline">\(X\)</span>:</p>
+<ol type="1">
+<li class="fragment"><p>Genera <span class="math inline">\(u_i \sim \text{unif}(0, 1)\)</span>.</p></li>
+<li class="fragment"><p>Establece <span class="math inline">\(x_i = 0\)</span> si <span class="math inline">\(u_i \leq 1-p\)</span>; <span class="math inline">\(x_i = 1\)</span> si <span class="math inline">\(u_i &gt; 1-p\)</span>.</p></li>
+<li class="fragment"><p>Repetir pasos 1 y 2 <span class="math inline">\(n\)</span> veces, tal que <span class="math inline">\(i=1, 2, \ldots, n\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</section><section class="slide level2"><h3 id="implementación-distribución-bernoulli">Implementación: Distribución <em>Bernoulli</em>
+</h3>
+<div class="example">
+<p><span class="green">Ejemplo: Distribución Bernoulli</span> Aplicamos la transformada inversa discreta para generar una muestra aleatoria <span class="math inline">\(Bernoulli(p=0.4)\)</span>.</p>
+<ul>
+<li class="fragment"><p>En este ejemplo, <span class="math inline">\(F_{x}(0) = f_{X}(0) =1-p\)</span> y <span class="math inline">\(F_{X}(1) = 1\)</span>.</p></li>
+<li class="fragment"><p>Así, <span class="math inline">\(F_{X}^{-1}(u) = 1\)</span> si <span class="math inline">\(u &gt;0.6\)</span> y <span class="math inline">\(F_{X}^{-1}(u) = 0\)</span> si <span class="math inline">\(u \leq 0.6\)</span>.</p></li>
+<li class="fragment"><p>El generador de la variable aleatoria debería entregar el valor numérico de la expresión lógica <span class="math inline">\(u&gt;0.6\)</span>.</p></li>
+</ul>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb18-2"><a href=""></a>p <span class="ot">&lt;-</span> <span class="fl">0.4</span></span>
+<span id="cb18-3"><a href=""></a>u <span class="ot">&lt;-</span> <span class="fu">runif</span>(n)</span>
+<span id="cb18-4"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(u <span class="sc">&gt;</span> <span class="dv">1</span><span class="sc">-</span> p)</span>
+<span id="cb18-5"><a href=""></a><span class="fu">head</span>(x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 0 0 1 0 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="fu">mean</span>(x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.388</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="fu">var</span>(x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2376937</code></pre>
+</div>
+</div>
+</section><section class="slide level2"><p>Podemos comparar los valores de los estadísticos muestrales con los momentos teóricos de la distribución Bernoulli.</p>
+<ul>
+<li class="fragment"><p>La media muestral de la muestra generada debería ser aproximadamente <span class="math inline">\(p = 0.4\)</span>, en nuestro ejemplo, la media muestral estimada <span class="math inline">\(\bar{x}=\)</span> 0.388.</p></li>
+<li class="fragment"><p>La varianza muestral debería ser aproximadamente <span class="math inline">\(p(1-p) = 0.24\)</span> y nuestra varianza muestral <span class="math inline">\(s^2=\)</span> 0.2376937</p></li>
+</ul>
+<p></p>
+<p><strong>Nota</strong>: <em>En R, se puede utilizar la función <code>rbinom</code> (</em>random binomial<em>) de tamaño 1 (<code>size=1</code>) para generar una muestra de tipo Bernoulli. Otro método podría ser utilizar la función <code>sample</code> desde el vector <span class="math inline">\(x=\{0,1\}\)</span> con probabilidades <span class="math inline">\((1-p, p)\)</span>.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="fu">rbinom</span>(n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> p)</span>
+<span id="cb24-2"><a href=""></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(.<span class="dv">6</span>,.<span class="dv">4</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section class="slide level2"><h3 id="ejemplo-distribución-binomial">Ejemplo: Distribución Binomial</h3>
+<ul>
+<li class="fragment"><p>Supongamos que queremos que <span class="math inline">\(X\)</span> tenga una distribución binomial (<span class="math inline">\(n, p\)</span>), es decir, <span class="math display">\[p(k) = P(X = k) = \binom{n}{k} p^k(1-p)^{n-k}, 0 \leq k \leq n.\]</span></p></li>
+<li class="fragment"><p>Uno podría, en principio, usar el método de transformación inversa discreta con estas <span class="math inline">\(p(k)\)</span>, pero también podemos notar que <span class="math inline">\(X\)</span> puede ser representado (en distribución) como la suma de <span class="math inline">\(n\)</span> v.a. Bernoulli (<span class="math inline">\(p\)</span>) i.i.d, <span class="math inline">\(Y_1, \dots, Y_n\)</span>; <span class="math display">\[X = \sum_{i=1}^n Y_i,\]</span> el número de éxitos de <span class="math inline">\(n\)</span> pruebas Bernoulli (<span class="math inline">\(p\)</span>) i.i.d.</p></li>
+</ul></section><section class="slide level2"><div class="definition">
+<div class="small">
+<p>Algoritmo alternativo para generar una v.a. binomial (<span class="math inline">\(n, p\)</span>) <span class="math inline">\(X\)</span>:</p>
+<ol type="1">
+<li class="fragment"><p>Generar <span class="math inline">\(n\)</span> v.a. i.i.d. <span class="math inline">\(U_1, U_2, \dots, U_n \sim \text{unif}(0, 1)\)</span>.</p></li>
+<li class="fragment"><p>Para cada <span class="math inline">\(1 \leq i \leq n\)</span>, establecer <span class="math inline">\(Y_i = 0\)</span> si <span class="math inline">\(U_i \leq 1-p\)</span>; <span class="math inline">\(Y_i = 1\)</span> si <span class="math inline">\(U_i &gt; 1-p\)</span>. (Esto produce <span class="math inline">\(n\)</span> v.a. Bernoulli (<span class="math inline">\(p\)</span>) i.i.d.)</p></li>
+<li class="fragment"><p>Establece <span class="math inline">\(X = \sum_{i=1}^n Y_i\)</span>.</p></li>
+</ol>
+</div>
+</div>
+<p>La ventaja de este algoritmo es su simplicidad, no necesitamos hacer los diversos cálculos involucrados con las <span class="math inline">\(p(k)\)</span>. Por otro lado, este algoritmo requiere <span class="math inline">\(n\)</span> uniformes para cada copia de <span class="math inline">\(X\)</span> en lugar de solo uno cuando se usa el método de transformación inversa discreta.</p>
+<!-- Por lo tanto, podríamos no querer usar este algoritmo cuando $n$ es bastante grande. -->
+<!-- - De hecho, cuando $n$ es muy grande, y $p$ es pequeño, se sigue (por ejemplo, puede ser demostrado; hay un teorema aquí), que la distribución de $X$ es muy aproximadamente la distribución de Poisson con media $np$. Esto motiva nuestro próximo ejemplo. -->
+</section><section class="slide level2"><!-- --- --><!-- ### Ejemplo: Distribución *Poisson* con media $\alpha$: --><!-- En este caso, --><!-- $$p(k) = P(X = k) = e^{-\alpha} \frac{\alpha^k}{k!}, k \geq 0.$$ --><!-- - Podríamos usar el método de transformación inversa discreta, pero, por supuesto, esto implica calcular (de antemano) intervalos como $\frac{\alpha^k}{k!}$.  --><!-- - Se propone un algoritmo alternativo que hace uso de las propiedades de un proceso de Poisson a tasa $\alpha$. El truco es recordar que si $\{N(t) : t \geq 0\}$ es el proceso de conteo de un proceso de Poisson a tasa $\alpha$, entonces $N(1)$ tiene una distribución de Poisson con media $\alpha$. Así que si podemos simular $N(1)$, entonces podemos establecer $X = N(1)$ y hemos terminado. Sea $Y = N(1) + 1$, y que $t_n = X_1 + \dots + X_n$ denote el $n$-ésimo punto del proceso de Poisson; los $X_i$ son iid con una distribución exponencial a tasa $\alpha$. Note que --><!-- $$Y = \min\{n \geq 1 : t_n > 1\} = \min\{n \geq 1 --><!--  : X_1 + \dots + X_n > 1\},$$ --><!-- un tiempo de parada. Usando el método de transformación inversa para generar los tiempos de llegada exponenciales iid $X_i$, podemos representar $X_i = -\frac{1}{\alpha} \ln(U_i)$. Luego podemos reescribir (recordando que $\ln(xy) = \ln(x)+\ln(y)$) --><!-- $$Y = \min\{n \geq 1 : \ln(U_1) + \dots+ \ln(U_n) < -\alpha\} = \min\{n \geq 1 : \ln(U_1 \dots U_n) < -\alpha\} = \min\{n \geq 1 : U_1 \dots U_n < e^{-\alpha}\}$$ --><!-- Así podemos simular $Y$ simplemente generando uniformes $U_i$ independientes consecutivamente y tomando el producto hasta que el producto caiga por debajo de $e^{-\alpha}$. --><!-- Así podemos simular $Y$ simplemente generando uniformes $U_i$ independientes consecutivamente y tomando el producto hasta que el producto caiga por debajo de $e^{-\alpha}$. Entonces obtenemos $X = N(1) = Y - 1$ como nuestra Poisson deseada. Aquí entonces está el algoritmo resultante: --><!-- ### Algoritmo alternativo para generar una rv Poisson $X$ con media $\alpha$: --><!-- i. Establece $X = 0$, $P = 1$ --><!-- ii. Genera $U \sim \text{unif}(0, 1)$, establece $P = UP$ --><!-- iii. Si $P < e^{-\alpha}$, entonces detente. De lo contrario, si $P \geq e^{-\alpha}$, entonces establece $X = X + 1$ y vuelve a ii. --><!-- --- --><div class="example">
 <p><span class="green">Ejemplo: Generación de permutaciones aleatorias</span></p>
 <ul>
 <li class="fragment">
@@ -1093,9 +1112,7 @@ x_j &amp; \mbox{Si} \; \sum_{i=0}^{j-1} p_i \leq U &lt; \sum_{i=0}^{j} p_i  \\
 </ul>
 </div>
 </section><section class="slide level2"><div class="example">
-<ul>
-<li class="fragment">Para simplificar el proceso y evitar tener que identificar exactamente qué números quedan por posicionar, es práctico y eficiente mantener los números en una lista ordenada. Entonces, en lugar de elegir el número directamente, se selecciona aleatoriamente la posición del número. Partiendo de un ordenamiento inicial <span class="math inline">\(P_1, P_2, \ldots, P_n\)</span>, se elige una posición de <span class="math inline">\(1, \ldots, n\)</span> al azar, intercambiando el número en esa posición con el que está en la posición <span class="math inline">\(n\)</span>. Posteriormente, se selecciona una de las posiciones <span class="math inline">\(1, \ldots, n - 1\)</span> de manera aleatoria, intercambiando el número en esta posición con el que está en la posición <span class="math inline">\(n - 1\)</span>, y este procedimiento se repite sucesivamente.</li>
-</ul>
+<p>Para simplificar el proceso y evitar tener que identificar exactamente qué números quedan por posicionar, es práctico y eficiente mantener los números en una lista ordenada. Entonces, en lugar de elegir el número directamente, se selecciona aleatoriamente la posición del número. Partiendo de un ordenamiento inicial <span class="math inline">\(P_1, P_2, \ldots, P_n\)</span>, se elige una posición de <span class="math inline">\(1, \ldots, n\)</span> al azar, intercambiando el número en esa posición con el que está en la posición <span class="math inline">\(n\)</span>. Posteriormente, se selecciona una de las posiciones <span class="math inline">\(1, \ldots, n - 1\)</span> de manera aleatoria, intercambiando el número en esta posición con el que está en la posición <span class="math inline">\(n - 1\)</span>, y este procedimiento se repite sucesivamente.</p>
 </div>
 </section><section class="slide level2"><p>Recordando que <span class="math inline">\(\text{Int}(kU) + 1\)</span> tendrá la misma probabilidad de tomar cualquiera de los valores <span class="math inline">\(1, 2, \ldots, k\)</span>, vemos que el algoritmo anterior para generar una permutación aleatoria puede escribirse de la siguiente manera:</p>
 <div class="small">
@@ -1110,13 +1127,170 @@ x_j &amp; \mbox{Si} \; \sum_{i=0}^{j-1} p_i \leq U &lt; \sum_{i=0}^{j} p_i  \\
 </ul>
 </div>
 </div>
-</section><section class="slide level2"><p>Por ejemplo, supongamos <span class="math inline">\(n = 4\)</span> y la permutación inicial es <span class="math inline">\(1, 2, 3, 4\)</span>. Si el primer valor de <span class="math inline">\(I\)</span> (que tiene la misma probabilidad de ser <span class="math inline">\(1, 2, 3\)</span> o <span class="math inline">\(4\)</span>) es <span class="math inline">\(I = 3\)</span>, entonces los elementos en las posiciones <span class="math inline">\(3\)</span> y <span class="math inline">\(4\)</span> se intercambian y así la nueva permutación es <span class="math inline">\(1, 2, 4, 3\)</span>. Si el siguiente valor de <span class="math inline">\(I\)</span> es <span class="math inline">\(I = 2\)</span>, entonces los elementos en las posiciones <span class="math inline">\(2\)</span> y <span class="math inline">\(3\)</span> se intercambian y así la nueva permutación es <span class="math inline">\(1, 4, 2, 3\)</span>. Si el valor final de <span class="math inline">\(I\)</span> es <span class="math inline">\(I = 2\)</span>, entonces la permutación final es <span class="math inline">\(1, 4, 2, 3\)</span>, y este es el valor de la permutación aleatoria.</p>
-</section><section class="slide level2"><p>Otra manera de generar una permutación aleatoria es generar números aleatorios ( U_1, …, U_n ), ordenarlos y luego usar los índices de los valores sucesivos como la permutación aleatoria. Por ejemplo, si <span class="math inline">\(n = 4\)</span> y <span class="math inline">\(U_1 = 0.4, U_2 = 0.1, U_3 = 0.8, U_4 = 0.7\)</span>, entonces, debido a que <span class="math inline">\(U_2 &lt; U_1 &lt; U_4 &lt; U_3\)</span>, la permutación aleatoria es 2, 1, 4, 3. La dificultad con este enfoque, sin embargo, es que ordenar los números aleatorios típicamente requiere del orden de <span class="math inline">\(n \log(n)\)</span> comparaciones.</p>
-</section><section class="slide level2"><div class="example">
-<p>[Práctica: Implementar un generador de permutaciones aleatorias, utilizando lo planteado anteriormente en R]</p>
+</section><section class="slide level2"><ul>
+<li class="fragment"><p>Por ejemplo, supongamos <span class="math inline">\(n = 4\)</span> y la permutación inicial es <span class="math inline">\(1, 2, 3, 4\)</span>. Si el primer valor de <span class="math inline">\(I\)</span> (que tiene la misma probabilidad de ser <span class="math inline">\(1, 2, 3\)</span> o <span class="math inline">\(4\)</span>) es <span class="math inline">\(I = 3\)</span>, entonces los elementos en las posiciones <span class="math inline">\(3\)</span> y <span class="math inline">\(4\)</span> se intercambian y así la nueva permutación es <span class="math inline">\(1, 2, 4, 3\)</span>. Si el siguiente valor de <span class="math inline">\(I\)</span> es <span class="math inline">\(I = 2\)</span>, entonces los elementos en las posiciones <span class="math inline">\(2\)</span> y <span class="math inline">\(3\)</span> se intercambian y así la nueva permutación es <span class="math inline">\(1, 4, 2, 3\)</span>. Si el valor final de <span class="math inline">\(I\)</span> es <span class="math inline">\(I = 2\)</span>, entonces la permutación final es <span class="math inline">\(1, 4, 2, 3\)</span>, y este es el valor de la permutación aleatoria.</p></li>
+<li class="fragment"><p>Otra manera de generar una permutación aleatoria es generar números aleatorios <span class="math inline">\(U_1, ..., U_n\)</span>, ordenarlos y luego usar los índices de los valores sucesivos como la permutación aleatoria. Por ejemplo, si <span class="math inline">\(n = 4\)</span> y <span class="math inline">\(U_1 = 0.4, U_2 = 0.1, U_3 = 0.8, U_4 = 0.7\)</span>, entonces, debido a que <span class="math inline">\(U_2 &lt; U_1 &lt; U_4 &lt; U_3\)</span>, la permutación aleatoria es 2, 1, 4, 3. La dificultad con este enfoque, sin embargo, es que ordenar los números aleatorios típicamente requiere del orden de <span class="math inline">\(n \log(n)\)</span> comparaciones.</p></li>
+</ul></section><section class="slide level2"><div class="example">
+<p><span class="green">Práctica:</span></p>
+<p>Implementar un generador de permutaciones aleatorias, utilizando lo planteado anteriormente en R</p>
 </div>
-</section><section class="slide level2"><!-- ::: {.example} --><!-- [Ejemplo: ]{.green}</br> --><!-- Otra variable aleatoria que puede ser generada sin necesidad de buscar el intervalo relevante en el que el número aleatorio cae es la [geométrica](https://en.wikipedia.org/wiki/Geometric_distribution). --><!-- Recordamos que si $X$ es una v.a. geométrica con parámetro $p$ si --><!-- $$P\{ X = i \} = pq^{i-1}, \quad i \geq 1, \quad \mbox{donde } q=1-p$$ --><!-- Aquí, $X$ puede ser considerado como el tiempo que ocurre hasta el primer éxito de ensayos independientes, cada uno de los cuales posee probabilidad $p$. Entonces --><!-- $$\begin{array}{ll} --><!-- \sum_{i=1}^{j-1} P\{ X = i\} = &  P\{ X > j-1 \} \\ --><!--                                & 1- P\{ \mbox{los primeros $j-1$ ensayos son todos fallidos} \} \\ --><!--                                & 1-q^{j-1}, \quad j \geq 1 --><!-- \end{array}$$ --><!-- ::: --><!-- --- --><!-- Podemos generar el valor de $X$ al generar un número aleatorio $U$ e igualar $X$ al valor $j$ para el cual --><!-- $$1-q^{j-1} \leq U < 1- q^{j-1}$$ --><!-- o de manera equivalente, para cada --><!-- $$q^{j} < 1-U \leq q^{j-1}$$ --><!-- Esto es, si definimos $X$ como --><!-- $$X=Min\{ j: q^j < 1-U \}$$ --></section><section class="slide level2"></section></section><section id="referencias" class="title-slide slide level1 smaller scrollable" data-number="3"><h1>
-<span class="header-section-number">3</span> Referencias</h1>
+</section></section><section><section id="método-de-aceptación-y-rechazo" class="title-slide slide level1 center" data-background-color="#00A499" data-number="3"><h1>
+<span class="header-section-number">3</span> Método de aceptación y rechazo</h1>
+
+</section><section id="la-idea-intuitiva-1" class="slide level2" data-number="3.1"><h2>
+<span class="header-section-number">3.1</span> La idea intuitiva</h2>
+</section><section class="slide level2"><ul>
+<li class="fragment"><p>Supongamos que se tiene un método para generar una variable aleatoria que tiene una función de densidad <span class="math inline">\(g(X)\)</span>.</p></li>
+<li class="fragment"><p>Podemos usar esto como base para generar desde la distribución continua que tiene una función de densidad <span class="math inline">\(f(x)\)</span> generando <span class="math inline">\(Y\)</span> desde <span class="math inline">\(g\)</span> y luego aceptando este valor generado con una probabilidad proporcional a <span class="math inline">\(\frac{f(Y)}{g(Y)}\)</span>.</p></li>
+<li class="fragment"><p>Este método puede ser aplicado cuando los métodos directos presentan fallas, o prueban ser computacionalmente ineficientes.</p></li>
+</ul></section><section class="slide level2"><ul>
+<li class="fragment"><p>Sea <span class="math inline">\(c\)</span> una constante tal que <span class="math display">\[ \frac{f(y)}{g(y)} &lt; c \quad \text{para todo } y \]</span></p></li>
+<li class="fragment"><p>Luego tenemos la siguiente técnica para generar una variable aleatoria que tenga densidad <span class="math inline">\(f\)</span>.</p></li>
+</ul>
+
+<img data-src="images/esquema_aceptacion_rechazo.png" class="r-stretch"></section><section class="slide level2"><div class="definition">
+<div class="small">
+<ol type="1">
+<li class="fragment"><p>Encontrar una variable aleatoria <span class="math inline">\(Y\)</span> con densidad <span class="math inline">\(g\)</span> que satisface <span class="math inline">\(\frac{f(t)}{g(t)} \leq c\)</span>, para todo <span class="math inline">\(t\)</span> tal que <span class="math inline">\(f(t) &gt;0\)</span>. Proveer de un método para generar de manera aleatoria <span class="math inline">\(Y\)</span>.</p></li>
+<li class="fragment"><p>Para cada m.a. requerida:</p></li>
+</ol>
+<ul>
+<li class="fragment"><p>PASO 1: Genera <span class="math inline">\(y\)</span> teniendo densidad <span class="math inline">\(g\)</span>.</p></li>
+<li class="fragment"><p>PASO 2: Genera un número aleatorio <span class="math inline">\(u \sim U(0,1)\)</span>.</p></li>
+<li class="fragment"><p>PASO 3: Si <span class="math inline">\(u &lt; \frac{f(y)}{cg(y)}\)</span>, establece <span class="math inline">\(x = y\)</span>. De lo contrario, rechazar <span class="math inline">\(y\)</span> y regresar al PASO 1.</p></li>
+</ul>
+</div>
+</div>
+</section><section class="slide level2"><p>Notar que en el paso (2.3), <span class="math display">\[ P(\text{aceptar}|Y) = P\left(U &lt; \frac{f(Y)}{cg(Y)} \Big| Y\right) = \frac{f(Y)}{cg(Y)}. \]</span></p>
+<p>La última igualdad es simplemente la evaluación de la cdf de <span class="math inline">\(U\)</span>. Por lo tanto, la probabilidad total de aceptación en cualquier iteración es <span class="math display">\[ \sum_{y} P(\text{aceptar}|y)P(Y = y) = \sum_{y} \frac{f(y)}{cg(y)}g(y) = \frac{1}{c}, \]</span></p>
+<p>y el número de iteraciones hasta la aceptación tiene la distribución geométrica con media <span class="math inline">\(c\)</span>. Por lo tanto, en promedio cada valor de muestra de <span class="math inline">\(X\)</span> requiere <span class="math inline">\(c\)</span> iteraciones. Para eficiencia, <span class="math inline">\(Y\)</span> debería ser fácil de simular y <span class="math inline">\(c\)</span> pequeño.</p>
+</section><section class="slide level2"><p>Para ver que la muestra aceptada tiene la misma distribución que <span class="math inline">\(X\)</span>, aplicamos el Teorema de Bayes. En el caso discreto, para cada <span class="math inline">\(k\)</span> tal que <span class="math inline">\(f(k) &gt; 0\)</span>, <span class="math display">\[ P(k | \text{aceptado}) = \frac{P(\text{aceptado} | k)g(k)}{P(\text{aceptado})} = \frac{[f(k)]/([cg(k)])}{1/c} g(k) = f(k). \]</span></p>
+<p>El caso continuo es similar.</p>
+</section><section class="slide level2"><ul>
+<li class="fragment"><p>Notar que el método de rechazo es exactamente el mismo que en el caso de variables aleatorias discretas, con la única diferencia de que las densidades reemplazan a las funciones de masa.</p></li>
+<li class="fragment"><p>De la misma manera que lo hicimos en el caso discreto podemos probar el siguiente resultado.</p></li>
+</ul>
+<div class="definition">
+<div class="small">
+<p><span class="blue">Teorema:</span> <br></p>
+<ol type="1">
+<li class="fragment"><p>La variable aleatoria generada por el método de rechazo tiene densidad <span class="math inline">\(f\)</span>.</p></li>
+<li class="fragment"><p>El número de iteraciones del algoritmo que se necesitan es una variable aleatoria geométrica con media <span class="math inline">\(c\)</span>.</p></li>
+</ol>
+</div>
+</div>
+<p>Como en el caso discreto, se debe notar que la forma en que uno acepta el valor <span class="math inline">\(Y\)</span> con probabilidad <span class="math inline">\(\frac{f(Y)}{cg(Y)}\)</span> es generando un número aleatorio <span class="math inline">\(U\)</span> y luego aceptando si <span class="math inline">\(U \leq \frac{f(Y)}{cg(Y)}\)</span>.</p>
+</section><section class="slide level2"><h3 id="ejemplo-distribución-beta">Ejemplo: Distribución <em>Beta</em>
+</h3>
+<div class="example">
+<p>¿Cuántos números pseudo aleatorios debenser simulados en promedio para generar 1000 muestras desde la distribución <span class="math inline">\(Beta(\alpha=2, \beta=2)\)</span>, empleando este método? <br></p>
+<ul>
+<li class="fragment"><p>Dependerá del límite superior <span class="math inline">\(c\)</span> de <span class="math inline">\(\frac{f(x)}{g(x)}\)</span>, que depende de la elección de la función <span class="math inline">\(g(x)\)</span>.</p></li>
+<li class="fragment"><p>La densidad <span class="math inline">\(Beta(2,2)\)</span> es <span class="math inline">\(f(x)=6x(1-x), 0&lt;x&lt;1\)</span>. Sea <span class="math inline">\(g(x)\)</span> la densidad <span class="math inline">\(Uniforme(0,1)\)</span>. Entonces <span class="math inline">\(\frac{f(x)}{g(x)} \leq 6\)</span> para todo <span class="math inline">\(0&lt;x&lt;1\)</span>, así <span class="math inline">\(c=6\)</span>.</p></li>
+<li class="fragment"><p>Una muestra aleatoria <span class="math inline">\(x\)</span> desde <span class="math inline">\(g(x)\)</span> es aceptada si <span class="math display">\[\frac{f(x)}{c \, g(x)} = \frac{6x(1-x)}{6(1)} = x(1-x)&gt;u\]</span></p></li>
+</ul>
+</div>
+</section><section class="slide level2"><p>En promedio, <span class="math inline">\(c \, n = 6000\)</span> iteraciones (12000 números aleatorios) serán requeridos para un tamaño de muestra igual a 1000. Podemos comprobarlo en la siguiente simulación:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb25-2"><a href=""></a>k <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb25-3"><a href=""></a><span class="co">#Contador para aceptación</span></span>
+<span id="cb25-4"><a href=""></a>contador <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb25-5"><a href=""></a><span class="co">#iteraciones</span></span>
+<span id="cb25-6"><a href=""></a>y <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n)</span>
+<span id="cb25-7"><a href=""></a><span class="cf">while</span> (k <span class="sc">&lt;</span> n) {</span>
+<span id="cb25-8"><a href=""></a>  u <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb25-9"><a href=""></a>  contador <span class="ot">&lt;-</span> contador <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb25-10"><a href=""></a>  x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb25-11"><a href=""></a>  <span class="co">#muestra aleatoria desde g</span></span>
+<span id="cb25-12"><a href=""></a>  <span class="cf">if</span> (x <span class="sc">*</span> (<span class="dv">1</span><span class="sc">-</span>x) <span class="sc">&gt;</span> u) {</span>
+<span id="cb25-13"><a href=""></a>    <span class="co">#aceptamos x</span></span>
+<span id="cb25-14"><a href=""></a>    k <span class="ot">&lt;-</span> k <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb25-15"><a href=""></a>    y[k] <span class="ot">&lt;-</span> x</span>
+<span id="cb25-16"><a href=""></a>  }</span>
+<span id="cb25-17"><a href=""></a>}</span>
+<span id="cb25-18"><a href=""></a><span class="fu">print</span>(contador)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5852</code></pre>
+</div>
+</div>
+</section><section class="slide level2"><p>En esta simulación, 5852 iteraciones fueron requeridas para generar 1000 muestras <em>Beta</em>. Comparamos los percentiles teóricos y empíricos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb27-2"><a href=""></a><span class="fu">library</span>(knitr)</span>
+<span id="cb27-3"><a href=""></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb27-4"><a href=""></a><span class="co">#Comparación de percentiles teóricos y empíricos</span></span>
+<span id="cb27-5"><a href=""></a>p <span class="ot">&lt;-</span> <span class="fu">seq</span>(.<span class="dv">1</span>, .<span class="dv">9</span>, .<span class="dv">1</span>)</span>
+<span id="cb27-6"><a href=""></a>Qhat <span class="ot">&lt;-</span> <span class="fu">quantile</span>(y, p)</span>
+<span id="cb27-7"><a href=""></a><span class="co">#Cuantiles de la muestra</span></span>
+<span id="cb27-8"><a href=""></a>Q <span class="ot">&lt;-</span> <span class="fu">qbeta</span>(p, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb27-9"><a href=""></a><span class="co">#Cuantiles teóricos</span></span>
+<span id="cb27-10"><a href=""></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span><span class="sc">-</span>p) <span class="sc">/</span> (n <span class="sc">*</span> <span class="fu">dbeta</span>(Q, <span class="dv">2</span>, <span class="dv">2</span>)))</span>
+<span id="cb27-11"><a href=""></a></span>
+<span id="cb27-12"><a href=""></a><span class="fu">data.frame</span>(<span class="fu">round</span>(<span class="fu">rbind</span>(Qhat, Q, se), <span class="dv">3</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-13"><a href=""></a>  <span class="fu">rename_at</span>(<span class="fu">vars</span>(<span class="fu">starts_with</span>(<span class="st">'X'</span>)), <span class="sc">~</span><span class="fu">paste0</span>(<span class="fu">seq_along</span>(.), <span class="st">'0%'</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-14"><a href=""></a>  <span class="fu">kbl</span>(<span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-15"><a href=""></a>  <span class="fu">kable_paper</span>(<span class="st">"hover"</span>, <span class="at">full_width=</span>F) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-16"><a href=""></a>  <span class="fu">kable_styling</span>(<span class="at">font_size=</span><span class="dv">25</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<table class="lightable-paper lightable-hover table" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; font-size: 25px; margin-left: auto; margin-right: auto;">
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">10%</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">20%</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">30%</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">40%</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">50%</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">60%</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">70%</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">80%</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">90%</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Qhat</td>
+<td style="text-align: center;">0.194</td>
+<td style="text-align: center;">0.281</td>
+<td style="text-align: center;">0.366</td>
+<td style="text-align: center;">0.435</td>
+<td style="text-align: center;">0.499</td>
+<td style="text-align: center;">0.564</td>
+<td style="text-align: center;">0.638</td>
+<td style="text-align: center;">0.711</td>
+<td style="text-align: center;">0.807</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Q</td>
+<td style="text-align: center;">0.196</td>
+<td style="text-align: center;">0.287</td>
+<td style="text-align: center;">0.363</td>
+<td style="text-align: center;">0.433</td>
+<td style="text-align: center;">0.500</td>
+<td style="text-align: center;">0.567</td>
+<td style="text-align: center;">0.637</td>
+<td style="text-align: center;">0.713</td>
+<td style="text-align: center;">0.804</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">se</td>
+<td style="text-align: center;">0.010</td>
+<td style="text-align: center;">0.011</td>
+<td style="text-align: center;">0.012</td>
+<td style="text-align: center;">0.013</td>
+<td style="text-align: center;">0.013</td>
+<td style="text-align: center;">0.013</td>
+<td style="text-align: center;">0.012</td>
+<td style="text-align: center;">0.011</td>
+<td style="text-align: center;">0.010</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section></section><section id="referencias" class="title-slide slide level1 smaller scrollable" data-number="4"><h1>
+<span class="header-section-number">4</span> Referencias</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Fisher1936" class="csl-entry" role="listitem">
 Fisher, Ronald Aylmer et&nbsp;al. 1936. <span>«Statistical methods for research workers.»</span> <em>Statistical methods for research workers.</em>, n.º 6th Ed.
