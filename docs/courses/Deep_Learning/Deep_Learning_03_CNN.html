@@ -465,19 +465,20 @@ Francisco Plaza Vega
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure><div class="quarto-figure quarto-figure-center">
-<figure><p><a href="images/03_CNN/turing_award.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)"><img data-src="images/03_CNN/turing_award.png" class="quarto-figure quarto-figure-center" style="width:30.0%" alt="Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)"></a></p>
+<figure><p><a href="images/03_CNN/turing_award.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)"><img data-src="images/03_CNN/turing_award.png" class="quarto-figure quarto-figure-center" style="width:30.0%" alt="Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)"></a></p>
 </figure>
 </div>
 <figcaption>Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)</figcaption></figure>
 </div>
 </section><section class="slide level2"><div class="definition">
 <p>Las <span class="green"><strong>Convolutional Neural Networks</strong> o <strong>CNNs</strong></span>, son un tipo especial de redes neuronales para procesar datos que tienen una topología en forma de cuadrícula conocida. Como por ejemplo, series de tiempo, que pueden ser pensados como una malla 1-dimensional que toman datos a intervalos regulares, datos de imagen, que pueden ser pensados como una malla 2-dimensional.</p>
-</div>
 <ul>
 <li class="fragment"><p>Este tipo de redes neuronales ha sido <span class="green"><strong>muy</strong></span> exitoso en la industria y práctica.</p></li>
 <li class="fragment"><p>El nombre <strong>red neuronal convolucional</strong> indica que la red utiliza una operación matemática especifica: la <span class="green"><strong>convolución</strong></span>, esta es un tipo especial de operación lineal.</p></li>
-<li class="fragment"><p><span class="orange"><em>Las redes neuronales convolucionales son simplemente redes neuronales que usan convolución en lugar de una multiplicación matricial en al menos una de sus capas</em></span> :::</p></li>
-</ul></section></section><section><section id="cnns-y-las-jerarquías-de-características" class="title-slide slide level1 center" data-background-color="#00A499" data-number="2"><h1>
+<li class="fragment"><p><span class="orange"><em>Las redes neuronales convolucionales son simplemente redes neuronales que usan convolución en lugar de una multiplicación matricial en al menos una de sus capas</em></span></p></li>
+</ul>
+</div>
+</section></section><section><section id="cnns-y-las-jerarquías-de-características" class="title-slide slide level1 center" data-background-color="#00A499" data-number="2"><h1>
 <span class="header-section-number">2</span> CNNs y las jerarquías de características</h1>
 
 </section><section class="slide level2"><ul>
@@ -527,7 +528,9 @@ Francisco Plaza Vega
 </section><section class="slide level2"><ul>
 <li class="fragment"><p>Típicamente, las <span class="green">CNNs están compuestas por varias capas convolucionales y de submuestreo (<em>pooling</em>)</span> que son seguidas por una o más capas <span class="orange"><em>fully connected</em></span> al final. Las capas <em>fully connected</em> son esencialmente un MLP, donde cada unidad de entrada, <span class="math inline">\(i\)</span>, está conectada a cada unidad de salida, <span class="math inline">\(j\)</span>, con un peso <span class="math inline">\(w_{ij}\)</span>.</p></li>
 <li class="fragment"><p>Las capas de submuestreo (<em>pooling</em>), comúnmente conocidas como capas de agrupamiento (pooling layers), no tienen parámetros que se puedan aprender; por ejemplo, no hay unidades de peso o sesgo en las capas de <em>pooling</em>. Sin embargo, tanto las capas convolucionales como las <em>fully connected</em> tienen pesos y sesgos que son optimizados durante el entrenamiento.</p></li>
-</ul></section><section id="convolución" class="slide level2" data-number="2.1"><h2>
+</ul>
+
+<img data-src="images/03_CNN/CNN_scheme.png" class="r-stretch quarto-figure-center"><p class="caption">Esquema de una CNN</p></section><section id="convolución" class="slide level2" data-number="2.1"><h2>
 <span class="header-section-number">2.1</span> Convolución</h2>
 <div class="definition">
 <p>En su forma general, la convolución es una operación sobre dos funciones con argumentos reales.</p>
@@ -551,13 +554,13 @@ Francisco Plaza Vega
 <p><span class="math display">\[s(t)=(x * w)(t)\]</span></p>
 </section><section class="slide level2"><p>En nuestro caso, <span class="math inline">\(w\)</span> necesita ser una función de densidad de probabilidad válida, sino la salida no sería una ponderación. Además, <span class="math inline">\(w\)</span> necesita ser 0 para todos los argumentos negativos, o esta función mirará en el futuro. Estas limitaciones son particulares de nuestro ejemplo. En general, la convolución está definida para cualquier función para que la integral anterior está definida, y puede ser ocupada con otros fines.</p>
 <p>En este contexto, el <span class="green">primer argumento (<span class="math inline">\(x\)</span>) se le llama <strong>input</strong></span> y el <span class="green">segundo argumento (<span class="math inline">\(w\)</span>) se le llama <strong>kernel</strong></span>, y a la <span class="green">salida se le llama <strong>feature map</strong></span></p>
-</section><section class="slide level2"><p>En nuestro ejemplo, la idea de que el sensor láser entregue medidas en cada instante de tiempo no es realista, pues trabajamos con una discretización del tiempo, usualmente a tiempos regulares. Así, tendremos:</p>
+<p>En nuestro ejemplo, la idea de que el sensor láser entregue medidas en cada instante de tiempo no es realista, pues trabajamos con una discretización del tiempo, usualmente a tiempos regulares. Así, tendremos:</p>
 <p><span class="math display">\[s(t)=(x*w)(t)=\sum_{a=-\infty}^{\infty}x(a)w(t-a)\]</span></p>
-<p>Frecuentemente usamos convoluciones sobre más de un eje en un tiempo especifico. Por ejemplo, si usamos una imagen 2-dimensional <span class="math inline">\(I\)</span> como <strong>input</strong>, probablemente desearemos usar un kernel <span class="math inline">\(K\)</span> 2-dimensional:</p>
+</section><section class="slide level2"><p>Frecuentemente usamos convoluciones sobre más de un eje en un tiempo especifico. Por ejemplo, si usamos una imagen 2-dimensional <span class="math inline">\(I\)</span> como <strong>input</strong>, probablemente desearemos usar un kernel <span class="math inline">\(K\)</span> 2-dimensional:</p>
 <p><span class="math display">\[S(i,j)=(I*K)(i,j)=\sum_m \sum_n I(m,n)K(i-m,j-n)\]</span></p>
 <p>La convolución es <strong>conmutativa</strong>, esto significa que equivalentemente podemos escribir:</p>
 <p><span class="math display">\[S(i,j)=(K*I)(i,j)=\sum_m \sum_n I(i-m,j-n)K(m,n)\]</span></p>
-<h3 data-number="2.1.1" id="motivación">
+</section><section class="slide level2"><h3 data-number="2.1.1" id="motivación">
 <span class="header-section-number">2.1.1</span> Motivación</h3>
 <div class="alert">
 <p>El parche local de elementos que participan de la convolución, se conoce como el <span class="green">campo receptivo local</span>. Las <span class="green">CNNs generalmente se desempeñan muy bien en tareas relacionadas con imágenes</span>, y eso se debe en gran medida a tres ideas importantes:</p>
@@ -581,11 +584,13 @@ Francisco Plaza Vega
 <li class="fragment"><p>Por ejemplo, cuando se procesa una imagen, la entrada podría tener millones de pixeles, pero es posible detectar unas pequeñas pero relevantes características, que al interactuar con el <em>kernel</em> ocupan sólo cientos de pixeles. Esto implica <span class="green">guardar mucho menos parámetros</span>, que reduce la memoria requerida del modelo y mejora su eficiencia estadística.</p></li>
 </ul></section><section class="slide level2">
 <img data-src="images/03_CNN/sparse.png" class="r-stretch quarto-figure-center"><p class="caption">Sparse connectivity</p></section><section class="slide level2"><h4 id="parameter-sharing-y-equivariance-representation">Parameter sharing y equivariance representation</h4>
-<p>Esta característica hace referencia a usar los mismos parámetros para más de una función en un modelo. Reduciendo así, el número de parámetros a optimizar y mejorando la eficiencia estadística.</p>
-<p>Configurando particularmente los parámetros, podemos obtener la propiedad de representación de equivalencia, que refiere a que si las entradas cambian, las salidas cambian <strong>en la misma manera</strong>.</p>
-</section><section class="slide level2">
+<ul>
+<li class="fragment"><p>Esta característica hace referencia a usar los mismos parámetros para más de una función en un modelo. Reduciendo así, el número de parámetros a optimizar y mejorando la eficiencia estadística.</p></li>
+<li class="fragment"><p>Configurando particularmente los parámetros, podemos obtener la propiedad de representación de equivalencia, que refiere a que si las entradas cambian, las salidas cambian <strong>en la misma manera</strong>.</p></li>
+</ul></section><section class="slide level2">
 <img data-src="images/03_CNN/sharing.png" class="r-stretch quarto-figure-center"><p class="caption">Parameter sharing</p></section><section class="slide level2"><div class="alert">
-<p><span class="blue">Importante</span> En las siguientes diapositivas, estudiaremos las capas convolucionales y de <em>pooling</em> con más detalle y veremos cómo funcionan. Para entender cómo funcionan las operaciones de convolución, empezaremos con una convolución en una dimensión, que a veces se utiliza para trabajar con ciertos tipos de datos secuenciales, como el texto. Después, trabajaremos a través de las convoluciones bidimensionales, que se aplican comúnmente a imágenes.</p>
+<p><span class="blue">Importante</span></p>
+<p>En las siguientes diapositivas, estudiaremos las capas convolucionales y de <em>pooling</em> con más detalle y veremos cómo funcionan. Para entender cómo funcionan las operaciones de convolución, empezaremos con una convolución en una dimensión, que a veces se utiliza para trabajar con ciertos tipos de datos secuenciales, como el texto. Después, trabajaremos a través de las convoluciones bidimensionales, que se aplican comúnmente a imágenes.</p>
 </div>
 </section><section class="slide level2"><h3 data-number="2.1.2" id="convoluciones-1-d">
 <span class="header-section-number">2.1.2</span> Convoluciones 1-D</h3>
@@ -598,9 +603,8 @@ Francisco Plaza Vega
 <p><span class="math display">\[
 y = x * w \rightarrow y[i] = \sum_{k=-\infty}^{+\infty} x[i - k] \cdot w[k]
 \]</span></p>
-<ul>
-<li class="fragment">Como se mencionó anteriormente, los corchetes, [], se usan para denotar la indexación para los elementos del vector. El índice, <span class="math inline">\(i\)</span>, recorre cada elemento del vector de salida, <span class="math inline">\(y\)</span>.</li>
-</ul><aside><ol class="aside-footnotes"><li id="fn1"><p>O de aquí en adelante, sólo convolución</p></li></ol></aside></section><section class="slide level2"><div class="alert">
+<p>Como se mencionó anteriormente, los corchetes, [], se usan para denotar la indexación para los elementos del vector. El índice, <span class="math inline">\(i\)</span>, recorre cada elemento del vector de salida, <span class="math inline">\(y\)</span>.</p>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>O de aquí en adelante, sólo convolución</p></li></ol></aside></section><section class="slide level2"><div class="alert">
 <p>Hay dos puntos a mencionar a partir de la fórmula anterior que deben ser destacados:</p>
 <ul>
 <li class="fragment"><p>índices de <span class="math inline">\(-\infty\)</span> a <span class="math inline">\(+\infty\)</span></p></li>
@@ -613,11 +617,11 @@ y = x * w \rightarrow y[i] = \sum_{k=-\infty}^{+\infty} x[i - k] \cdot w[k]
 <li class="fragment"><p>Por lo tanto, para calcular correctamente la sumatoria mostrada en la fórmula anterior, se asume que <span class="math inline">\(x\)</span> y <span class="math inline">\(w\)</span> están <span class="orange">rellenados con ceros</span>. Esto resultará en un vector de salida, <span class="math inline">\(y\)</span>, que también tiene un tamaño infinito, con muchos ceros también. Dado que esto no es útil en situaciones prácticas, a <span class="math inline">\(x\)</span> se le añaden solo un número finito de ceros.</p></li>
 </ul></section><section class="slide level2"><p>Este proceso se llama relleno de ceros o simplemente relleno (<span class="green"><em>padding</em></span>). Aquí, el número de ceros añadidos a cada lado se denota por <span class="math inline">\(p\)</span>. Un ejemplo de relleno para un vector unidimensional, <span class="math inline">\(x\)</span>, se muestra a continuación:</p>
 
-<img data-src="images/03_CNN/1d_conv.png" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section class="slide level2"><p>Supongamos que la entrada original, $ x $, y el filtro, $ w $, tienen <span class="math inline">\(n\)</span> y $ m $ elementos, donde <span class="math inline">\(m \leq n\)</span>. Por lo tanto, el vector rellenado, $ x^{’p} $, tiene tamaño $ n + 2p $. La fórmula práctica para calcular la convolución cambiará a la siguiente:</p>
+<img data-src="images/03_CNN/1d_conv.png" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section class="slide level2"><p>Supongamos que la entrada original, <span class="math inline">\(x\)</span>, y el filtro, <span class="math inline">\(w\)</span>, tienen <span class="math inline">\(n\)</span> y <span class="math inline">\(m\)</span> elementos, donde <span class="math inline">\(m \leq n\)</span>. Por lo tanto, el vector rellenado, <span class="math inline">\(x^{'p}\)</span>, tiene tamaño <span class="math inline">\(n + 2p\)</span>. La fórmula práctica para calcular la convolución cambiará a la siguiente:</p>
 <p><span class="math display">\[
 y = x * w \rightarrow y[i] = \sum_{k=0}^{m-1} x^p[i + m - k] \cdot w[k]
 \]</span></p>
-<p>Ahora que hemos resuelto el problema del índice infinito, el segundo problema es indexar $ x $ con $ i + m - k $. El punto importante a notar aquí es que $ x $ y $ w $ están indexados en diferentes direcciones en esta sumatoria. Calcular la suma con un índice yendo en la dirección inversa es equivalente a calcular la suma con ambos índices en la dirección hacia adelante después de voltear uno de esos vectores, $ x $ o $ w $, después de que son rellenados. Entonces, simplemente podemos calcular su producto punto. Supongamos que invertimos (rotamos) el filtro, $ w $, para obtener el filtro rotado, $ w^r $. Entonces, el producto punto, $ x[i : i + m] w^r $, se calcula para obtener un elemento, $ y[i] $, donde $ x[i : i + m] $ es un segmento de $ x $ con tamaño $ m $. Esta operación se repite como en un enfoque de ventana deslizante para obtener todos los elementos de salida. La siguiente figura proporciona un ejemplo con $ x = [3, 2, 1, 7, 1, 2, 5, 4] $ y <span class="math inline">\(w = \left[ \frac{1}{2}, \frac{3}{4}, 1, \frac{1}{4}\right]\)</span>, de modo que los primeros tres elementos de salida se calculan:</p>
+<p>Ahora que hemos resuelto el problema del índice infinito, el segundo problema es indexar <span class="math inline">\(x\)</span> con <span class="math inline">\(i + m - k\)</span>. El punto importante a notar aquí es que <span class="math inline">\(x\)</span> y <span class="math inline">\(w\)</span> están indexados en diferentes direcciones en esta sumatoria. Calcular la suma con un índice yendo en la dirección inversa es equivalente a calcular la suma con ambos índices en la dirección hacia adelante después de voltear uno de esos vectores, <span class="math inline">\(x\)</span> o <span class="math inline">\(w\)</span>, después de que son rellenados. Entonces, simplemente podemos calcular su producto punto. Supongamos que invertimos (rotamos) el filtro, <span class="math inline">\(w\)</span>, para obtener el filtro rotado, <span class="math inline">\(w^r\)</span>. Entonces, el producto punto, <span class="math inline">\(x[i : i + m] \cdot w^r\)</span>, se calcula para obtener un elemento, <span class="math inline">\(y[i]\)</span>, donde <span class="math inline">\(x[i : i + m]\)</span> es un segmento de <span class="math inline">\(x\)</span> con tamaño <span class="math inline">\(m\)</span>. Esta operación se repite como en un enfoque de ventana deslizante para obtener todos los elementos de salida. La siguiente figura proporciona un ejemplo con <span class="math inline">\(x = [3, 2, 1, 7, 1, 2, 5, 4]\)</span> y <span class="math inline">\(w = \left[ \frac{1}{2}, \frac{3}{4}, 1, \frac{1}{4}\right]\)</span>, de modo que los primeros tres elementos de salida se calculan:</p>
 </section><section class="slide level2">
 <img data-src="images/03_CNN/1d_conv_2.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2"><p>En el ejemplo anterior se pueden notar algunos detalles:</p>
 <ul>
@@ -1146,7 +1150,7 @@ Li, Bin, Yuki Todo, y Zheng Tang. 2022. <span>«Artificial Visual System for Ori
         }
       }
     });
-    </script><script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});
+    </script><script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;
