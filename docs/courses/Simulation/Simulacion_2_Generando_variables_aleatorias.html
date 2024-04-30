@@ -448,7 +448,7 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Lanzamiento de monedas</span></span>
 <span id="cb1-2"><a href=""></a><span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0 0 1 0 0 1 0 1 1 0</code></pre>
+<pre><code> [1] 0 0 1 0 0 0 1 0 1 0</code></pre>
 </div>
 </div>
 <p></p>
@@ -456,7 +456,7 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Escoger números del loto</span></span>
 <span id="cb3-2"><a href=""></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">36</span>, <span class="at">size =</span> <span class="dv">6</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 33  3  7 10 16 32</code></pre>
+<pre><code>[1] 34 16 30 36  4 19</code></pre>
 </div>
 </div>
 <p></p>
@@ -464,8 +464,8 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Permuación de letras a-z</span></span>
 <span id="cb5-2"><a href=""></a><span class="fu">sample</span>(letters)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "q" "u" "x" "j" "s" "l" "v" "r" "t" "i" "p" "y" "w" "c" "a" "o" "f" "h" "b"
-[20] "d" "e" "z" "m" "g" "n" "k"</code></pre>
+<pre><code> [1] "i" "n" "s" "d" "e" "c" "h" "y" "w" "x" "z" "j" "t" "l" "v" "f" "p" "r" "m"
+[20] "a" "b" "u" "g" "o" "q" "k"</code></pre>
 </div>
 </div>
 <p></p>
@@ -476,7 +476,7 @@ Francisco Plaza Vega
 <div class="cell-output cell-output-stdout">
 <pre><code>x
  1  2  3 
-20 36 44 </code></pre>
+22 30 48 </code></pre>
 </div>
 </div>
 </section><section id="algunos-generadores-aleatorios-en-r" class="slide level2" data-number="1.1"><h2>
@@ -834,8 +834,8 @@ x_j &amp; \mbox{Si} \; \sum_{i=0}^{j-1} p_i \leq U &lt; \sum_{i=0}^{j} p_i  \\
 </div>
 </section><section class="slide level2"><ul>
 <li class="fragment"><p>Si el <span class="math inline">\(i-\)</span>ésimo elemento <span class="math inline">\(x_i, i \geq 0\)</span> está ordenado de tal manera que <span class="math inline">\(x_0 &lt; x_1 &lt; x_2 \cdots\)</span> y dejamos que <span class="math inline">\(F\)</span> sea la función de distribución de <span class="math inline">\(X\)</span>. Así <span class="math inline">\(F(x_k) = \sum_{i=0}^{k}p_i\)</span>, entonces <span class="math display">\[X \quad \mbox{será igual a } x_j \quad \mbox{Si} \quad F(x_{j-1}) \leq U &lt; F(x_k)\]</span></p></li>
-<li class="fragment"><p>En otras palabras, después de generar un número aleatorio <span class="math inline">\(U\)</span>, se determina el valor de <span class="math inline">\(X\)</span> al encontrar un intervalo <span class="math inline">\(\left[ F(x_{j−1}), F(x_{j}) \right]\)</span> en el cual se encuentra <span class="math inline">\(U\)</span> <span class="math inline">\(\left[ \mbox{o de forma equivalente, al encontrar la inversa de } F(U), F^{-1}(U) \right]\)</span>. Por esta razón es que este método recibe su nombre: <span class="green">La transformada inversa para generar <span class="math inline">\(X\)</span></span>.</p></li>
-<li class="fragment"><p>La cantidad de tiempo que este método tarda en generar una variable aleatoria discrata será proporiconal al número de intervalos que se deben buscar. Es por esta razón que es necesario considerar los posibles valores de <span class="math inline">\(x_j\)</span> de <span class="math inline">\(X\)</span> en orden decreciente para la <span class="math inline">\(p_j\)</span>.</p></li>
+<li class="fragment"><p>En otras palabras, después de generar un número aleatorio <span class="math inline">\(U\)</span>, se determina el valor de <span class="math inline">\(X\)</span> al encontrar un intervalo <span class="math inline">\(\left[ F(x_{j−1}), F(x_{j}) \right]\)</span> en el cual se encuentra <span class="math inline">\(U\)</span> (o de forma equivalente, al encontrar la inversa de <span class="math inline">\(F(U), F^{-1}(U)\)</span>) . Por esta razón es que este método recibe su nombre: <span class="green">La transformada inversa para generar <span class="math inline">\(X\)</span></span>.</p></li>
+<li class="fragment"><p>La cantidad de tiempo que este método tarda en generar una variable aleatoria discreta será proporiconal al número de intervalos que se deben buscar. Es por esta razón que es necesario considerar los posibles valores de <span class="math inline">\(x_j\)</span> de <span class="math inline">\(X\)</span> en orden decreciente para la <span class="math inline">\(p_j\)</span>.</p></li>
 </ul></section><section class="slide level2"><h3 id="ejemplo">Ejemplo</h3>
 <div class="example">
 <p><span class="green">Ejemplo:</span> Supongamos que queremos simular desde una variable aleatoria <span class="math inline">\(X\)</span> que sigue la siguiente distribución</p>
@@ -1252,7 +1252,7 @@ f(x) = \begin{cases}
 <li class="fragment"><p>Si <span class="math inline">\(U \leq X\)</span>, retorna <span class="math inline">\(Z = X\)</span>. De lo contrario, vuelve al Paso 1.</p></li>
 </ol>
 <p>Notar que este ejemplo es meramente ilustrativo, ya que el método de transformación inversa lo maneja eficientemente.</p>
-</section><section class="slide level2"><p>Como consecuencia de (2.14), la eficiencia del método de aceptación-rechazo modificado se determina nuevamente por la probabilidad de aceptación <span class="math inline">\(p = P(U \leq \frac{f(X)}{(Cg(X))}) = P(Y \leq f(X)) = \frac{1}{C}\)</span> para cada intento <span class="math inline">\((X, U)\)</span>. Dado que los intentos son independientes, el número de intentos, <span class="math inline">\(N\)</span>, antes de que ocurra un par exitoso <span class="math inline">\((Z, U)\)</span> tiene la siguiente distribución geométrica:</p>
+</section><section class="slide level2"><p>La eficiencia del método de aceptación-rechazo modificado se determina nuevamente por la probabilidad de aceptación <span class="math inline">\(p = P(U \leq \frac{f(X)}{(Cg(X))}) = P(Y \leq f(X)) = \frac{1}{C}\)</span> para cada intento <span class="math inline">\((X, U)\)</span>. Dado que los intentos son independientes, el número de intentos, <span class="math inline">\(N\)</span>, antes de que ocurra un par exitoso <span class="math inline">\((Z, U)\)</span> tiene la siguiente distribución geométrica:</p>
 <p><span class="math display">\[
 P(N = n) = p(1 - p)^{n-1}, \quad n = 1, 2, \ldots,
 \]</span></p>
@@ -1261,23 +1261,20 @@ P(N = n) = p(1 - p)^{n-1}, \quad n = 1, 2, \ldots,
 <ol type="1">
 <li class="fragment"><p>Debe ser fácil generar una variable aleatoria de <span class="math inline">\(g(x)\)</span>.</p></li>
 <li class="fragment"><p>La eficiencia, <span class="math inline">\(\frac{1}{C}\)</span>, del procedimiento debe ser grande, es decir, <span class="math inline">\(C\)</span> debería estar cerca de 1 (lo que ocurre cuando <span class="math inline">\(g(x)\)</span> está cerca de <span class="math inline">\(f(x)\)</span>).</p></li>
-</ol></section><section class="slide level2"><h3 id="ejemplo-2">Ejemplo</h3>
-<p>Genera una variable aleatoria <span class="math inline">\(Z\)</span> de la densidad semicircular</p>
+</ol></section><section class="slide level2"><h3 id="ejemplo-densidad-semicircular">Ejemplo: densidad semicircular</h3>
+<div class="example">
+<p><span class="green">Generar una variable aleatoria <span class="math inline">\(Z\)</span> de la densidad semicircular</span></p>
 <p><span class="math display">\[
 f(x) = \frac{2}{\pi R^2}\sqrt{R^2 - x^2}, \quad -R \leq x \leq R.
 \]</span></p>
-<p>Toma la distribución propuesta para ser uniforme sobre <span class="math inline">\([-R, R]\)</span>, esto es, toma <span class="math inline">\(g(x) = \frac{1}{2R}\)</span>, <span class="math inline">\(-R \leq x \leq R\)</span> y elige <span class="math inline">\(C\)</span> tan pequeño como sea posible tal que <span class="math inline">\(Cg(x) \geq f(x)\)</span>; por ende, <span class="math inline">\(C = \frac{4}{\pi}\)</span>. Entonces el Algoritmo 2.3.6 conduce al siguiente algoritmo de generación:</p>
+</div>
+<p>Tomar la distribución propuesta para ser uniforme sobre <span class="math inline">\([-R, R]\)</span>, esto es, toma <span class="math inline">\(g(x) = \frac{1}{2R}\)</span>, <span class="math inline">\(-R \leq x \leq R\)</span> y elige <span class="math inline">\(C\)</span> tan pequeño como sea posible tal que <span class="math inline">\(Cg(x) \geq f(x)\)</span>; por ende, <span class="math inline">\(C = \frac{4}{\pi}\)</span>. Entonces podemos escribir el el siguiente algoritmo de generación:</p>
 <ol type="1">
-<li class="fragment"><p>Genera dos variables aleatorias independientes, <span class="math inline">\(U_1\)</span> y <span class="math inline">\(U_2\)</span>, de <span class="math inline">\(U(0, 1)\)</span>.</p></li>
-<li class="fragment"><p>Usa <span class="math inline">\(U_2\)</span> para generar <span class="math inline">\(X\)</span> de <span class="math inline">\(g(x)\)</span> vía el método de transformación inversa, es decir, <span class="math inline">\(X = (2U_2 - 1)R\)</span>, y calcula</p></li>
+<li class="fragment"><p>Generar dos variables aleatorias independientes, <span class="math inline">\(U_1\)</span> y <span class="math inline">\(U_2\)</span>, de <span class="math inline">\(U(0, 1)\)</span>.</p></li>
+<li class="fragment"><p>Usar <span class="math inline">\(U_2\)</span> para generar <span class="math inline">\(X\)</span> de <span class="math inline">\(g(x)\)</span> vía el método de transformación inversa, es decir, <span class="math inline">\(X = (2U_2 - 1)R\)</span>, y calcular <span class="math inline">\(\frac{f(X)}{Cg(X)} = \sqrt{1 - (2U_2 - 1)^2}\)</span>.</p></li>
+<li class="fragment"><p>Si <span class="math inline">\(U_1 \leq \frac{f(X)}{Cg(X)}\)</span>, lo cual es equivalente a <span class="math inline">\((2U_2 - 1)^2 \leq 1 - U_1^2\)</span>, hacer <span class="math inline">\(Z = X = (2U_2 - 1)R\)</span>; de otra manera, regresar al Paso 1.</p></li>
 </ol>
-<p><span class="math display">\[
-\frac{f(X)}{Cg(X)} = \sqrt{1 - (2U_2 - 1)^2}.
-\]</span></p>
-<ol start="3" type="1">
-<li class="fragment">Si <span class="math inline">\(U_1 \leq \frac{f(X)}{Cg(X)}\)</span>, lo cual es equivalente a <span class="math inline">\((2U_2 - 1)^2 \leq 1 - U_1^2\)</span>, retorna <span class="math inline">\(Z = X = (2U_2 - 1)R\)</span>; de otra manera, regresa al Paso 1.</li>
-</ol>
-<p>El número esperado de intentos para este algoritmo es <span class="math inline">\(C = \frac{4}{\pi}\)</span>, y la eficiencia es <span class="math inline">\(\frac{1}{C} = \frac{\pi}{4} \approx 0.785\)</span>.</p>
+<p><span class="green">El número esperado de intentos para este algoritmo es <span class="math inline">\(C = \frac{4}{\pi}\)</span>, y la eficiencia es <span class="math inline">\(\frac{1}{C} = \frac{\pi}{4} \approx 0.785\)</span>.</span></p>
 </section><section class="slide level2"><h3 id="ejemplo-distribución-beta">Ejemplo: Distribución <em>Beta</em>
 </h3>
 <div class="example">
