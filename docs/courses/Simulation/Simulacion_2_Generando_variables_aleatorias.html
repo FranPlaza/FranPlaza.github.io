@@ -448,7 +448,7 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Lanzamiento de monedas</span></span>
 <span id="cb1-2"><a href=""></a><span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0 1 1 1 0 1 0 1 0 1</code></pre>
+<pre><code> [1] 0 0 1 0 0 1 0 1 1 0</code></pre>
 </div>
 </div>
 <p></p>
@@ -456,7 +456,7 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Escoger números del loto</span></span>
 <span id="cb3-2"><a href=""></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">36</span>, <span class="at">size =</span> <span class="dv">6</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  6 35 30 34  8 33</code></pre>
+<pre><code>[1] 33  3  7 10 16 32</code></pre>
 </div>
 </div>
 <p></p>
@@ -464,8 +464,8 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Permuación de letras a-z</span></span>
 <span id="cb5-2"><a href=""></a><span class="fu">sample</span>(letters)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "z" "h" "t" "n" "b" "a" "p" "v" "l" "k" "r" "x" "f" "d" "s" "u" "q" "e" "i"
-[20] "o" "g" "j" "m" "w" "y" "c"</code></pre>
+<pre><code> [1] "q" "u" "x" "j" "s" "l" "v" "r" "t" "i" "p" "y" "w" "c" "a" "o" "f" "h" "b"
+[20] "d" "e" "z" "m" "g" "n" "k"</code></pre>
 </div>
 </div>
 <p></p>
@@ -476,7 +476,7 @@ Francisco Plaza Vega
 <div class="cell-output cell-output-stdout">
 <pre><code>x
  1  2  3 
-21 22 57 </code></pre>
+20 36 44 </code></pre>
 </div>
 </div>
 </section><section id="algunos-generadores-aleatorios-en-r" class="slide level2" data-number="1.1"><h2>
@@ -1552,13 +1552,27 @@ X = \left\lfloor 1 + \frac{\log(V)}{\log(1 - (1 - \theta)U)} \right\rfloor
 <span id="cb32-9"><a href=""></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">/</span>n)</span>
 <span id="cb32-10"><a href=""></a>p.hat <span class="ot">&lt;-</span> <span class="fu">tabulate</span>(x)<span class="sc">/</span>n</span>
 <span id="cb32-11"><a href=""></a></span>
-<span id="cb32-12"><a href=""></a><span class="fu">data.frame</span>(<span class="fu">round</span>(<span class="fu">rbind</span>(p.hat, p, se), <span class="dv">3</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb32-13"><a href=""></a>  <span class="fu">kbl</span>(<span class="at">align =</span> <span class="st">"c"</span>, <span class="at">col.names =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb32-14"><a href=""></a>  <span class="fu">kable_paper</span>(<span class="st">"hover"</span>, <span class="at">full_width=</span>F) <span class="sc">%&gt;%</span> </span>
-<span id="cb32-15"><a href=""></a>  <span class="fu">kable_styling</span>(<span class="at">font_size=</span><span class="dv">25</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-12"><a href=""></a><span class="fu">library</span>(knitr)</span>
+<span id="cb32-13"><a href=""></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb32-14"><a href=""></a><span class="fu">data.frame</span>(<span class="fu">round</span>(<span class="fu">rbind</span>(p.hat, p, se), <span class="dv">3</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-15"><a href=""></a>  <span class="fu">kbl</span>(<span class="at">align =</span> <span class="st">"c"</span>, <span class="at">col.names =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">max</span>(x)) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-16"><a href=""></a>  <span class="fu">kable_paper</span>(<span class="st">"hover"</span>, <span class="at">full_width=</span>F) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-17"><a href=""></a>  <span class="fu">kable_styling</span>(<span class="at">font_size=</span><span class="dv">25</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<table class="lightable-paper lightable-hover table" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; font-size: 25px; margin-left: auto; margin-right: auto;"><tbody>
+<table class="lightable-paper lightable-hover table" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; font-size: 25px; margin-left: auto; margin-right: auto;">
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">1</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">2</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">3</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">4</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">5</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">6</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">7</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">8</th>
+</tr></thead>
+<tbody>
 <tr class="odd">
 <td style="text-align: left;">p.hat</td>
 <td style="text-align: center;">0.705</td>
@@ -1592,7 +1606,8 @@ X = \left\lfloor 1 + \frac{\log(V)}{\log(1 - (1 - \theta)U)} \right\rfloor
 <td style="text-align: center;">0.001</td>
 <td style="text-align: center;">0.001</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 </div>
 </div>
