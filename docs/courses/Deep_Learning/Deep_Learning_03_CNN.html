@@ -465,7 +465,7 @@ Francisco Plaza Vega
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure><div class="quarto-figure quarto-figure-center">
-<figure><p><a href="images/03_CNN/turing_award.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)"><img data-src="images/03_CNN/turing_award.png" class="quarto-figure quarto-figure-center" style="width:30.0%" alt="Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)"></a></p>
+<figure><p><a href="images/03_CNN/turing_award.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)"><img data-src="images/03_CNN/turing_award.png" class="quarto-figure quarto-figure-center" style="width:30.0%" alt="Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)"></a></p>
 </figure>
 </div>
 <figcaption>Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)</figcaption></figure>
@@ -530,8 +530,8 @@ Francisco Plaza Vega
 <li class="fragment"><p>Las capas de submuestreo (<em>pooling</em>), comúnmente conocidas como capas de agrupamiento (pooling layers), no tienen parámetros que se puedan aprender; por ejemplo, no hay unidades de peso o sesgo en las capas de <em>pooling</em>. Sin embargo, tanto las capas convolucionales como las <em>fully connected</em> tienen pesos y sesgos que son optimizados durante el entrenamiento.</p></li>
 </ul>
 
-<img data-src="images/03_CNN/CNN_scheme.png" class="r-stretch quarto-figure-center"><p class="caption">Esquema de una CNN</p></section><section id="convolución" class="slide level2" data-number="2.1"><h2>
-<span class="header-section-number">2.1</span> Convolución</h2>
+<img data-src="images/03_CNN/CNN_scheme.png" class="r-stretch quarto-figure-center"><p class="caption">Esquema de una CNN</p></section></section><section><section id="convolución" class="title-slide slide level1 center" data-background-color="#00A499" data-number="3"><h1>
+<span class="header-section-number">3</span> Convolución</h1>
 <div class="definition">
 <p>En su forma general, la convolución es una operación sobre dos funciones con argumentos reales.</p>
 </div>
@@ -560,8 +560,8 @@ Francisco Plaza Vega
 <p><span class="math display">\[S(i,j)=(I*K)(i,j)=\sum_m \sum_n I(m,n)K(i-m,j-n)\]</span></p>
 <p>La convolución es <strong>conmutativa</strong>, esto significa que equivalentemente podemos escribir:</p>
 <p><span class="math display">\[S(i,j)=(K*I)(i,j)=\sum_m \sum_n I(i-m,j-n)K(m,n)\]</span></p>
-</section><section class="slide level2"><h3 data-number="2.1.1" id="motivación">
-<span class="header-section-number">2.1.1</span> Motivación</h3>
+</section><section id="motivación" class="slide level2" data-number="3.1"><h2>
+<span class="header-section-number">3.1</span> Motivación</h2>
 <div class="alert">
 <p>El parche local de elementos que participan de la convolución, se conoce como el <span class="green">campo receptivo local</span>. Las <span class="green">CNNs generalmente se desempeñan muy bien en tareas relacionadas con imágenes</span>, y eso se debe en gran medida a tres ideas importantes:</p>
 <ul>
@@ -574,7 +574,8 @@ Francisco Plaza Vega
 <li class="fragment"><p>Como consecuencia directa de estas ideas, <span class="orange">reemplazar una red <em>fully connected</em> (MLP) convencional por una capa de convolución</span> reduce sustancialmente el número de pesos (parámetros) en la red y veremos una mejora en la capacidad de capturar características inherentes.</p></li>
 <li class="fragment"><p>En el contexto de los datos de imagen, tiene sentido suponer que los píxeles cercanos son típicamente más relevantes entre sí que los píxeles que están lejos unos de otros.</p></li>
 <li class="fragment"><p>Además de permitir trabajar con entradas de tamaño variable.</p></li>
-</ul></section><section class="slide level2"><h4 id="sparse-connectivity">Sparse connectivity</h4>
+</ul></section><section class="slide level2"><h3 data-number="3.1.1" id="sparse-connectivity">
+<span class="header-section-number">3.1.1</span> Sparse connectivity</h3>
 <p>Interacciones escasas o sparse interactions (que también se le refiere como <strong>sparse connectivity</strong> o <strong>sparse weights</strong>), viene desde la siguiente idea:</p>
 <blockquote>
 <p>Las capas de una red neuronal tradicional usan multiplicación de matrices por una matriz de parámetros con un parámetro separado que describe la interacción entre cada unidad de entrada y cada unidad de salida.</p>
@@ -583,7 +584,8 @@ Francisco Plaza Vega
 <li class="fragment"><p>Esto significa que <span class="orange">cada unidad de salida interactúa con cada unidad de entrada</span>. Las redes convolucionales, en cambio, no necesariamente. Este es <span class="orange">logrado utilizando <strong>kernels</strong> más pequeños que la entrada</span>.</p></li>
 <li class="fragment"><p>Por ejemplo, cuando se procesa una imagen, la entrada podría tener millones de pixeles, pero es posible detectar unas pequeñas pero relevantes características, que al interactuar con el <em>kernel</em> ocupan sólo cientos de pixeles. Esto implica <span class="green">guardar mucho menos parámetros</span>, que reduce la memoria requerida del modelo y mejora su eficiencia estadística.</p></li>
 </ul></section><section class="slide level2">
-<img data-src="images/03_CNN/sparse.png" class="r-stretch quarto-figure-center"><p class="caption">Sparse connectivity</p></section><section class="slide level2"><h4 id="parameter-sharing-y-equivariance-representation">Parameter sharing y equivariance representation</h4>
+<img data-src="images/03_CNN/sparse.png" class="r-stretch quarto-figure-center"><p class="caption">Sparse connectivity</p></section><section class="slide level2"><h3 data-number="3.1.2" id="parameter-sharing-y-equivariance-representation">
+<span class="header-section-number">3.1.2</span> Parameter sharing y equivariance representation</h3>
 <ul>
 <li class="fragment"><p>Esta característica hace referencia a usar los mismos parámetros para más de una función en un modelo. Reduciendo así, el número de parámetros a optimizar y mejorando la eficiencia estadística.</p></li>
 <li class="fragment"><p>Configurando particularmente los parámetros, podemos obtener la propiedad de representación de equivalencia, que refiere a que si las entradas cambian, las salidas cambian <strong>en la misma manera</strong>.</p></li>
@@ -592,8 +594,8 @@ Francisco Plaza Vega
 <p><span class="blue">Importante</span></p>
 <p>En las siguientes diapositivas, estudiaremos las capas convolucionales y de <em>pooling</em> con más detalle y veremos cómo funcionan. Para entender cómo funcionan las operaciones de convolución, empezaremos con una convolución en una dimensión, que a veces se utiliza para trabajar con ciertos tipos de datos secuenciales, como el texto. Después, trabajaremos a través de las convoluciones bidimensionales, que se aplican comúnmente a imágenes.</p>
 </div>
-</section><section class="slide level2"><h3 data-number="2.1.2" id="convoluciones-1-d">
-<span class="header-section-number">2.1.2</span> Convoluciones 1-D</h3>
+</section><section id="convoluciones-1-d" class="slide level2" data-number="3.2"><h2>
+<span class="header-section-number">3.2</span> Convoluciones 1-D</h2>
 <div class="definition">
 <p><span class="blue"><strong>Notación</strong></span></p>
 <p>En esta parte, usaremos subíndices para denotar el tamaño de un arreglo multidimensional (tensor); por ejemplo, <span class="math inline">\(A_{n_1 \times n_2}\)</span> es un arreglo bidimensional de tamaño <span class="math inline">\(n_1 \times n_2\)</span>. Usamos corchetes, <span class="math inline">\(\left[ \; \right]\)</span>, para denotar la indexación de un arreglo multidimensional.</p>
@@ -628,8 +630,8 @@ y = x * w \rightarrow y[i] = \sum_{k=0}^{m-1} x^p[i + m - k] \cdot w[k]
 <li class="fragment"><p>El tamaño del <em>padding</em> es cero (<span class="math inline">\(p = 0\)</span>).</p></li>
 <li class="fragment"><p>El filtro rotado, <span class="math inline">\(w^r\)</span>, se desplaza dos celdas cada vez que se desliza. Este desplazamiento es otro hiperparámetro de una convolución, <span class="green">el paso o <em>stride</em></span>, <span class="math inline">\(s\)</span>. En este ejemplo, el stride es dos, <span class="math inline">\(s = 2\)</span>.</p></li>
 <li class="fragment"><p>El <span class="orange"><em>stride</em> debe ser un número positivo menor que el tamaño del vector de entrada</span>.</p></li>
-</ul></section><section class="slide level2"><h3 data-number="2.1.3" id="padding">
-<span class="header-section-number">2.1.3</span> Padding</h3>
+</ul></section><section id="padding" class="slide level2" data-number="3.3"><h2>
+<span class="header-section-number">3.3</span> Padding</h2>
 <p>Hasta ahora, solo hemos utilizado el <em>zero-padding</em> en las convoluciones para calcular vectores de salida de tamaño finito. Técnicamente, el <em>padding</em> se puede aplicar con cualquier <span class="math inline">\(p \geq 0\)</span>. Dependiendo de la elección de <span class="math inline">\(p\)</span>, las celdas en los bordes pueden ser tratadas de manera diferente a las celdas situadas en el medio de <span class="math inline">\(x\)</span>.</p>
 <div class="alert">
 <p>Existen tres modos de <em>padding</em> que se utilizan comúnmente en la práctica: <span class="green">completo (<em>full</em>), mismo (<em>same</em>) y válido (<em>valid</em>)</span>:</p>
@@ -640,12 +642,13 @@ y = x * w \rightarrow y[i] = \sum_{k=0}^{m-1} x^p[i + m - k] \cdot w[k]
 </ul>
 </div>
 </section><section class="slide level2">
-<img data-src="images/03_CNN/padding.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2"><h3 data-number="2.1.4" id="determinando-el-tamaño-de-la-salida-de-la-convolución">
-<span class="header-section-number">2.1.4</span> Determinando el tamaño de la salida de la convolución</h3>
+<img data-src="images/03_CNN/padding.png" class="quarto-figure quarto-figure-center r-stretch"></section><section id="determinando-el-tamaño-de-la-salida-de-la-convolución" class="slide level2" data-number="3.4"><h2>
+<span class="header-section-number">3.4</span> Determinando el tamaño de la salida de la convolución</h2>
 <p>El tamaño de salida de una convolución está determinado por el número total de veces que se puede desplazar el filtro, <span class="math inline">\(w\)</span>, a lo largo del vector de entrada. Supongamos que el vector de entrada es de tamaño <span class="math inline">\(n\)</span> y el filtro es de tamaño <span class="math inline">\(m\)</span>. Entonces, el tamaño de la salida resultante de <span class="math inline">\(y = x * w\)</span>, con <em>padding</em>, <span class="math inline">\(p\)</span>, y <em>stride</em>, <span class="math inline">\(s\)</span>, se determinaría de la siguiente manera:</p>
 <p><span class="math display">\[o = \left\lfloor \frac{n + 2p - m}{s} \right\rfloor + 1\]</span></p>
 <p>Aquí, <span class="math inline">\(\lfloor \cdot \rfloor\)</span> denota la operación de redondeo hacia abajo (<em>floor</em>). Esta operación devuelve el entero más grande que es igual o menor que la entrada, por ejemplo: <span class="math inline">\(\text{floor}(1.77) = \lfloor 1.77 \rfloor = 1 \]\)</span></p>
-</section><section class="slide level2"><h4 id="implementación">Implementación</h4>
+</section><section class="slide level2"><h3 data-number="3.4.1" id="implementación">
+<span class="header-section-number">3.4.1</span> Implementación</h3>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby">
 <li><a data-tabby-default="" href="#tabset-1-1">R</a></li>
@@ -713,18 +716,284 @@ y = x * w \rightarrow y[i] = \sum_{k=0}^{m-1} x^p[i + m - k] \cdot w[k]
 </div>
 </div>
 </div>
-</section><section class="slide level2"><h3 data-number="2.1.5" id="convolución-2-d">
-<span class="header-section-number">2.1.5</span> Convolución 2-D</h3>
+</section><section id="convolución-2-d" class="slide level2" data-number="3.5"><h2>
+<span class="header-section-number">3.5</span> Convolución 2-D</h2>
 <p>Los conceptos que hemos visto hasta ahora son fácilmente extensibles a 2D. Cuando tratamos con entradas en 2D, como una matriz, <span class="math inline">\(X_{n1 \times n2}\)</span>, y la matriz del filtro, <span class="math inline">\(W_{m1 \times m2}\)</span>, donde <span class="math inline">\(m1 \leq n1\)</span> y <span class="math inline">\(m2 \leq n2\)</span>, entonces la matriz <span class="math inline">\(Y = X * W\)</span> es el resultado de una convolución en 2D entre <span class="math inline">\(X\)</span> y <span class="math inline">\(W\)</span>. Esto se define matemáticamente de la siguiente manera:</p>
 <p><span class="math display">\[
 Y = X * W \rightarrow Y[i,j] = \sum_{k1=-\infty}^{+\infty} \sum_{k2=-\infty}^{+\infty} X[i - k1,j - k2] \cdot W[k1,k2]
 \]</span></p>
 </section><section class="slide level2"><p>Notar que, todas las técnicas mencionadas anteriormente, como el <em>padding</em>, rotar la matriz del filtro, y el uso de <em>strides</em>, también son aplicables a convoluciones en 2D, siempre y cuando se extiendan a ambas dimensiones de manera independiente. La figura siguiente demuestra la convolución en 2D de una matriz de entrada de tamaño <span class="math inline">\(6 \times 6\)</span>, utilizando un kernel de tamaño <span class="math inline">\(2 \times 2\)</span>. La matriz se rellena con ceros con <span class="math inline">\(p = 1\)</span>. Como resultado, la salida de la convolución en 2D tendrá un tamaño de <span class="math inline">\(4 \times 4\)</span>:</p>
 
-<img data-src="images/03_CNN/conv_2d.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2">
-<img data-src="images/03_CNN/conv2d_2.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2">
-<img data-src="images/03_CNN/conv2d_3.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2"></section></section><section id="referencias" class="title-slide slide level1 smaller scrollable" data-number="3"><h1>
-<span class="header-section-number">3</span> Referencias</h1>
+<img data-src="images/03_CNN/conv_2d.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2"><p>Acá se muestra una convolución 2D entre una matriz de entrada, <span class="math inline">\(X_{3 \times 3}\)</span>, y una matriz de núcleo, <span class="math inline">\(W_{3 \times 3}\)</span>, utilizando un <em>padding</em> <span class="math inline">\(p = (1, 1)\)</span> y un <em>stride</em> <span class="math inline">\(s = (2, 2)\)</span>. <span class="green">De acuerdo al <em>padding</em> especificado, se añade una capa de ceros en cada lado de la matriz de entrada</span>, lo que resulta en la matriz con <em>padding</em> <span class="math inline">\(X_{padded}\)</span> de <span class="math inline">\(5 \times 5\)</span>, de la siguiente manera:</p>
+
+<img data-src="images/03_CNN/conv2d_2.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2"><p>Con el filtro anterior, el filtro rotado será:</p>
+<p><span class="math display">\[
+W' = \begin{bmatrix}
+0.5 &amp; 1 &amp; 0.5 \\
+0.1 &amp; 0.4 &amp; 0.3 \\
+0.4 &amp; 0.7 &amp; 0.5
+\end{bmatrix}
+\]</span></p>
+<p>Notar que esta rotación no es lo mismo que la matriz transpuesta. Para obtener el filtro rotado en <code>NumPy</code>, podemos escribir <code>W_rot = W[::-1, ::-1]</code>. En <code>R</code>, podemos invertir las filas y las columnas utilizando el siguiente código:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>W <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="dv">1</span>, <span class="fl">0.4</span>, <span class="fl">0.7</span>, <span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>), <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-2"><a href=""></a>W_rot <span class="ot">&lt;-</span> W[<span class="fu">nrow</span>(W)<span class="sc">:</span><span class="dv">1</span>, <span class="fu">ncol</span>(W)<span class="sc">:</span><span class="dv">1</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section class="slide level2"><p>El código anterior crea primero la matriz <span class="math inline">\(W\)</span> y luego utiliza la indexación para invertir tanto las filas como las columnas. A continuación, podemos desplazar la matriz de filtro rotado a lo largo de la matriz de entrada con <em>padding</em>, <span class="math inline">\(X_{\text{padded}}\)</span>, como una ventana deslizante y calcular la suma del producto elemento a elemento, que es denotado por el operador <span class="math inline">\(\odot\)</span> en la figura siguiente:</p>
+
+<img data-src="images/03_CNN/conv2d_3.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2"><h3 data-number="3.5.1" id="implementación-1">
+<span class="header-section-number">3.5.1</span> Implementación</h3>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-2-1">R</a></li>
+<li><a href="#tabset-2-2">Python</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<div class="columns">
+<div class="column">
+<div class="small">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Función de convolución 2D</span></span>
+<span id="cb8-2"><a href=""></a>conv2d <span class="ot">&lt;-</span> <span class="cf">function</span>(X, W, <span class="at">p=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="at">s=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)) {</span>
+<span id="cb8-3"><a href=""></a>  <span class="co"># Rota y da vuelta a la matriz de pesos W</span></span>
+<span id="cb8-4"><a href=""></a>  W_rot <span class="ot">&lt;-</span> W[<span class="fu">nrow</span>(W)<span class="sc">:</span><span class="dv">1</span>, <span class="fu">ncol</span>(W)<span class="sc">:</span><span class="dv">1</span>] </span>
+<span id="cb8-5"><a href=""></a>  <span class="co"># Añade el padding a la matriz X</span></span>
+<span id="cb8-6"><a href=""></a>  X_padded <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="fu">nrow</span>(X) <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>p[<span class="dv">1</span>], <span class="at">ncol =</span> <span class="fu">ncol</span>(X) <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>p[<span class="dv">2</span>]) </span>
+<span id="cb8-7"><a href=""></a>  X_padded[(p[<span class="dv">1</span>]<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(p[<span class="dv">1</span>]<span class="sc">+</span><span class="fu">nrow</span>(X)), (p[<span class="dv">2</span>]<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(p[<span class="dv">2</span>]<span class="sc">+</span><span class="fu">ncol</span>(X))] <span class="ot">&lt;-</span> X</span>
+<span id="cb8-8"><a href=""></a>  <span class="co"># Lista para guardar los resultados</span></span>
+<span id="cb8-9"><a href=""></a>  res <span class="ot">&lt;-</span> <span class="fu">list</span>() </span>
+<span id="cb8-10"><a href=""></a>  </span>
+<span id="cb8-11"><a href=""></a>  <span class="co"># Recorrer la imagen con el filtro</span></span>
+<span id="cb8-12"><a href=""></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(X_padded) <span class="sc">-</span> <span class="fu">nrow</span>(W_rot) <span class="sc">+</span> <span class="dv">1</span>, <span class="at">by =</span> s[<span class="dv">1</span>])) {</span>
+<span id="cb8-13"><a href=""></a>    temp <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb8-14"><a href=""></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">ncol</span>(X_padded) <span class="sc">-</span> <span class="fu">ncol</span>(W_rot) <span class="sc">+</span> <span class="dv">1</span>, <span class="at">by =</span> s[<span class="dv">2</span>])) {</span>
+<span id="cb8-15"><a href=""></a>      X_sub <span class="ot">&lt;-</span> X_padded[i<span class="sc">:</span>(i<span class="sc">+</span><span class="fu">nrow</span>(W_rot)<span class="sc">-</span><span class="dv">1</span>), j<span class="sc">:</span>(j<span class="sc">+</span><span class="fu">ncol</span>(W_rot)<span class="sc">-</span><span class="dv">1</span>)]</span>
+<span id="cb8-16"><a href=""></a>      <span class="co"># Realizar la convolución (producto punto)</span></span>
+<span id="cb8-17"><a href=""></a>      temp <span class="ot">&lt;-</span> <span class="fu">c</span>(temp, <span class="fu">sum</span>(X_sub <span class="sc">*</span> W_rot))</span>
+<span id="cb8-18"><a href=""></a>    }</span>
+<span id="cb8-19"><a href=""></a>    res[[<span class="fu">length</span>(res) <span class="sc">+</span> <span class="dv">1</span>]] <span class="ot">&lt;-</span> temp</span>
+<span id="cb8-20"><a href=""></a>  }</span>
+<span id="cb8-21"><a href=""></a>  <span class="co"># Convertir la lista a matriz</span></span>
+<span id="cb8-22"><a href=""></a>  <span class="fu">do.call</span>(rbind, res) </span>
+<span id="cb8-23"><a href=""></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column">
+<div class="small">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="co"># Datos de ejemplo</span></span>
+<span id="cb9-2"><a href=""></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>), </span>
+<span id="cb9-3"><a href=""></a>            <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-4"><a href=""></a>W <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>), </span>
+<span id="cb9-5"><a href=""></a>            <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-6"><a href=""></a></span>
+<span id="cb9-7"><a href=""></a><span class="co"># Aplicar la función de convolución definida</span></span>
+<span id="cb9-8"><a href=""></a>result <span class="ot">&lt;-</span> <span class="fu">conv2d</span>(X, W, <span class="at">p=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="at">s=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb9-9"><a href=""></a><span class="fu">print</span>(result)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4]
+[1,]   11   25   32   13
+[2,]   19   25   24   13
+[3,]   13   28   25   17
+[4,]   11   17   14    9</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2">
+<div class="columns">
+<div class="column">
+<div class="small">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-2"><a href=""></a></span>
+<span id="cb11-3"><a href=""></a><span class="kw">def</span> conv2d(X, W, p<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">0</span>), s<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>)):</span>
+<span id="cb11-4"><a href=""></a>    W_rot <span class="op">=</span> np.array(W)[::<span class="op">-</span><span class="dv">1</span>,::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb11-5"><a href=""></a>    X_orig <span class="op">=</span> np.array(X)</span>
+<span id="cb11-6"><a href=""></a>    n1 <span class="op">=</span> X_orig.shape[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>p[<span class="dv">0</span>]</span>
+<span id="cb11-7"><a href=""></a>    n2 <span class="op">=</span> X_orig.shape[<span class="dv">1</span>] <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>p[<span class="dv">1</span>]</span>
+<span id="cb11-8"><a href=""></a>    X_padded <span class="op">=</span> np.zeros(shape<span class="op">=</span>(n1,n2))</span>
+<span id="cb11-9"><a href=""></a>    X_padded[p[<span class="dv">0</span>]:p[<span class="dv">0</span>] <span class="op">+</span> X_orig.shape[<span class="dv">0</span>], </span>
+<span id="cb11-10"><a href=""></a>             p[<span class="dv">1</span>]:p[<span class="dv">1</span>] <span class="op">+</span> X_orig.shape[<span class="dv">1</span>]] <span class="op">=</span> X_orig</span>
+<span id="cb11-11"><a href=""></a></span>
+<span id="cb11-12"><a href=""></a>    res <span class="op">=</span> []</span>
+<span id="cb11-13"><a href=""></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">int</span>((X_padded.shape[<span class="dv">0</span>] <span class="op">-</span> </span>
+<span id="cb11-14"><a href=""></a>                           W_rot.shape[<span class="dv">0</span>])<span class="op">/</span>s[<span class="dv">0</span>])<span class="op">+</span><span class="dv">1</span>, s[<span class="dv">0</span>]):</span>
+<span id="cb11-15"><a href=""></a>        res.append([])</span>
+<span id="cb11-16"><a href=""></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">int</span>((X_padded.shape[<span class="dv">1</span>] <span class="op">-</span> </span>
+<span id="cb11-17"><a href=""></a>                               W_rot.shape[<span class="dv">1</span>])<span class="op">/</span>s[<span class="dv">1</span>])<span class="op">+</span><span class="dv">1</span>, s[<span class="dv">1</span>]):</span>
+<span id="cb11-18"><a href=""></a>            X_sub <span class="op">=</span> X_padded[i:i<span class="op">+</span>W_rot.shape[<span class="dv">0</span>], j:j<span class="op">+</span>W_rot.shape[<span class="dv">1</span>]]</span>
+<span id="cb11-19"><a href=""></a>            res[<span class="op">-</span><span class="dv">1</span>].append(np.<span class="bu">sum</span>(X_sub <span class="op">*</span> W_rot))</span>
+<span id="cb11-20"><a href=""></a>    <span class="cf">return</span>(np.array(res))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div><div class="column">
+<div class="small">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a>X <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>], [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">3</span>], [<span class="dv">1</span> , <span class="dv">2</span>,<span class="dv">0</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>]]</span>
+<span id="cb12-2"><a href=""></a>W <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>], [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]]</span>
+<span id="cb12-3"><a href=""></a><span class="bu">print</span>(<span class="st">'Conv2d: </span><span class="ch">\n</span><span class="st">'</span>, </span>
+<span id="cb12-4"><a href=""></a>      conv2d(X, W, p<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>), s<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Conv2d: 
+ [[11. 25. 32. 13.]
+ [19. 25. 24. 13.]
+ [13. 28. 25. 17.]
+ [11. 17. 14.  9.]]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section class="slide level2"></section></section><section><section id="submuestreo-pooling" class="title-slide slide level1 center" data-background-color="#00A499" data-number="4"><h1>
+<span class="header-section-number">4</span> Submuestreo (<em>Pooling</em>)</h1>
+
+</section><section class="slide level2"><ul>
+<li class="fragment"><p>El submuestreo se aplica típicamente en dos formas de operaciones de <em>pooling</em> en las CNNs: <span class="green">max-<em>pooling</em> y mean-<em>pooling</em></span> (también conocido como <em>average-pooling</em>).</p></li>
+<li class="fragment"><p>La capa de <em>pooling</em> se denota generalmente por <span class="math inline">\(P_{n1 \times n2}\)</span>. Aquí, el subíndice determina el tamaño del vecindario (el número de píxeles adyacentes en cada dimensión) donde se realiza la operación de máximo o promedio. Nos referimos a tal vecindario como el tamaño de <em>pooling</em>.</p></li>
+<li class="fragment"><p>La operación se describe en la siguiente figura. Aquí, max-<em>pooling</em> toma el valor máximo de un vecindario de píxeles, y mean-<em>pooling</em> calcula su promedio:</p></li>
+</ul>
+
+<img data-src="images/03_CNN/pooling_1.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2"><div class="alert">
+<p>La ventaja del <em>pooling</em> es doble:</p>
+<ul>
+<li class="fragment"><p>El <em>pooling</em> (max-<em>pooling</em>) introduce una invariancia local. Esto significa que pequeños cambios en un vecindario local no cambian el resultado del max-<em>pooling</em>. Por lo tanto, ayuda a generar características que son más robustas al ruido en los datos de entrada.</p></li>
+<li class="fragment"><p><em>Pooling</em> disminuye el tamaño de las características, lo cual resulta en una mayor eficiencia computacional. Además, la reducción en el número de características puede también reducir el riesgo de sobreajuste.</p></li>
+</ul>
+</div>
+</section></section><section><section id="juntando-todo-implementando-una-cnn" class="title-slide slide level1 center" data-background-color="#00A499" data-number="5"><h1>
+<span class="header-section-number">5</span> Juntando todo – Implementando una CNN</h1>
+
+</section><section class="slide level2"><div class="alert">
+<ul>
+<li class="fragment">
+<p>Podemos decir que <span class="green">la operación más importante en una NN</span> tradicional es la <span class="orange">multiplicación de matrices</span>.</p>
+<ul>
+<li class="fragment"><p>Por ejemplo, usamos multiplicaciones de matrices para computar las pre-activaciones (o entradas netas) como en <span class="math inline">\(z = Wx + b\)</span>.</p></li>
+<li class="fragment"><p>Aquí, <span class="math inline">\(x\)</span> es un vector columna (matriz <span class="math inline">\(R^{N \times 1}\)</span>) que representa píxeles, y <span class="math inline">\(W\)</span> es la matriz de pesos que conecta las entradas de píxeles a cada unidad oculta.</p></li>
+</ul>
+</li>
+<li class="fragment">
+<p>En <span class="green">una CNN, esta operación es reemplazada por una operación de convolución</span>, como en <span class="math inline">\(Z = W * X + b\)</span>, donde <span class="math inline">\(X\)</span> es una matriz que representa los píxeles en un arreglo de altura por ancho.</p>
+<ul>
+<li class="fragment"><p>En ambos casos, las pre-activaciones se pasan a una función de activación para obtener la activación de una unidad oculta, <span class="math inline">\(A = \phi(Z)\)</span>, donde <span class="math inline">\(\phi\)</span> es la función de activación.</p></li>
+<li class="fragment"><p>El <span class="green">submuestreo es otro bloque de construcción de una CNN</span>, que puede aparecer en la forma de <em>pooling</em>, como se describió en la sección anterior.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</section><section id="múltiples-entradas-y-canales-de-color" class="slide level2" data-number="5.1"><h2>
+<span class="header-section-number">5.1</span> Múltiples entradas y canales de color</h2>
+<ul>
+<li class="fragment"><p>Una <span class="green">entrada a una capa convolucional puede contener uno o más arreglos o matrices 2D con dimensiones</span> <span class="math inline">\(N_1 \times N_2\)</span> (por ejemplo, la altura y ancho de la imagen en píxeles).</p></li>
+<li class="fragment"><p>Estas matrices <span class="math inline">\(N_1 \times N_2\)</span> <span class="green">se llaman <em>canales</em></span>. Las implementaciones convencionales de capas convolucionales esperan una representación tensorial de rango 3 como entrada, por ejemplo, un arreglo tridimensional, <span class="math inline">\(X_{N_1 \times N_2 \times C_{in}}\)</span>, donde <span class="math inline">\(C_{in}\)</span> es el número de canales de entrada.</p></li>
+<li class="fragment">
+<p>Por ejemplo, consideremos imágenes como entrada a la primera capa de una CNN.</p>
+<ul>
+<li class="fragment"><p><span class="green">Si la imagen es a color y usa el modo de color RGB</span>, entonces <span class="math inline">\(C_{in} = 3\)</span> (para los canales de color rojo, verde y azul en RGB).</p></li>
+<li class="fragment"><p><span class="green">Si la imagen es en escala de grises</span>, entonces tenemos <span class="math inline">\(C_{in} = 1\)</span>, porque solo hay un canal con los valores de intensidad de píxeles en escala de grises.</p></li>
+</ul>
+</li>
+</ul>
+
+<img data-src="images/03_CNN/RGB.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2"><div class="alert">
+<p><span class="green"><em>¿cómo podemos incorporar múltiples canales de entrada en la operación de convolución que discutimos en las secciones anteriores?</em></span> </p>
+<p>Se realiza la operación de convolución por cada canal por separado y luego se suman los resultados utilizando la suma de matrices. La convolución asociada con cada canal (<span class="math inline">\(c\)</span>) se lleva a cabo con nuestra matriz de kernel como <span class="math inline">\(W[:, :, c]\)</span>. El resultado total de pre-activación se calcula en la siguiente fórmula:</p>
+<p><span class="math display">\[
+\begin{matrix}
+\text{Dado un ejemplo } \mathbf{X}_{n_1 \times n_2 \times c_{in'}} \\
+\text{una matriz de kernel } \mathbf{W}_{m_1 \times m_2 \times c_{in'}} \\
+\text{y un valor de sesgo } b
+\end{matrix} \Rightarrow \left\{\begin{matrix}
+Z_{\text{conv}} = \sum_{c=1}^{C_{\text{in}}} W \left[ :, :, c \right] * X \left[ :, :, c \right] \\
+\text{Pre-activación: } Z = Z_{\text{conv}} + b_c \\
+\text{Mapa de características: } A= \phi(Z)
+\end{matrix}\right.
+\]</span></p>
+</div>
+</section><section class="slide level2"><div class="alert">
+<p>El resultado final, <span class="math inline">\(A\)</span>, es un mapa de características. Usualmente, una capa convolucional de una CNN tiene más de un mapa de características. Si usamos múltiples mapas de características, el tensor del kernel se vuelve cuatridimensional: anchura <span class="math inline">\(\times\)</span> altura <span class="math inline">\(\times C_{\text{in}} \times C_{\text{out}}\)</span>. Aquí, <span class="math inline">\(m_1 \times m_2\)</span> es el tamaño del kernel, <span class="math inline">\(C_{\text{in}}\)</span> es el número de canales de entrada, y <span class="math inline">\(C_{\text{out}}\)</span> es el número de mapas de características de salida.</p>
+<p>Ahora, al incluir el número de mapas de características de salida en la fórmula precedente, podemos actualizarla de la siguiente manera:</p>
+<p><span class="math display">\[\begin{matrix}
+\text{Dado un ejemplo } \mathbf{X}_{n_1 \times n_2 \times c_{in'}} \\
+\text{una matriz de kernel } \mathbf{W}_{m_1 \times m_2 \times c_{in} \times c_{out'}} \\
+\text{y un valor de sesgo } b_{C_{out}}
+\end{matrix} \Rightarrow \left\{\begin{matrix}
+Z_{\text{conv}}[:, :, k] =&amp; \sum_{c=1}^{C_{\text{in}}} W[:, :, c, k] * X[:, :, c] \\
+Z[:, :, k] =&amp; Z_{\text{conv}}[:, :, k] + b[k] \\
+A[:, :, k] =&amp; \phi(Z[:, :, k])
+\end{matrix}\right.
+\]</span></p>
+</div>
+</section><section class="slide level2"><ul>
+<li class="fragment"><p>En este ejemplo, hay tres canales de entrada.</p></li>
+<li class="fragment"><p>El <span class="green">tensor del kernel es cuatridimensional</span>. Cada matriz de kernel está denotada como <span class="math inline">\(m_1 \times m_2\)</span> y hay tres de ellas, una para cada canal de entrada.</p></li>
+<li class="fragment"><p>Además, <span class="green">hay cinco de esos kernels</span>, contabilizando cinco mapas de características de salida.</p></li>
+<li class="fragment"><p>Finalmente, hay <span class="green">una capa de <em>pooling</em></span> para submuestrear los mapas de características.</p></li>
+</ul>
+
+<img data-src="images/03_CNN/convolution_pooling.png" class="quarto-figure quarto-figure-center r-stretch"></section><section id="multi-layer-cnn" class="slide level2" data-number="5.2"><h2>
+<span class="header-section-number">5.2</span> Multi-Layer CNN</h2>
+
+<img data-src="images/03_CNN/multilayer_CNN.png" class="quarto-figure quarto-figure-center r-stretch"></section></section><section><section id="evaluando-los-modelos-de-clasificación" class="title-slide slide level1 center" data-background-color="#00A499" data-number="6"><h1>
+<span class="header-section-number">6</span> Evaluando los modelos de clasificación</h1>
+
+</section><section id="matriz-de-confusión" class="slide level2" data-background-color="#00A499" data-number="6.1"><h2>
+<span class="header-section-number">6.1</span> Matriz de confusión</h2>
+<p>Una matriz de confusión es una herramienta útil utilizada en aprendizaje supervisado, especialmente en clasificación, para visualizar el desempeño de un algoritmo. Esencialmente, la matriz compara las etiquetas predichas por el modelo contra las etiquetas verdaderas conocidas del conjunto de datos de prueba. Esta comparación ayuda a evaluar la precisión de un modelo y a identificar de qué manera sus predicciones son correctas o incorrectas.</p>
+</section><section id="estructura-de-la-matriz-de-confusión" class="slide level2" data-number="6.2"><h2>
+<span class="header-section-number">6.2</span> Estructura de la Matriz de Confusión</h2>
+<p>La matriz de confusión es una tabla cuadrada que se organiza en filas y columnas, donde:</p>
+<div class="small">
+<ul>
+<li class="fragment"><p><strong>Las filas</strong> representan las <strong>clases verdaderas</strong> (etiquetas reales de los datos).</p></li>
+<li class="fragment"><p><strong>Las columnas</strong> representan las <strong>clases predichas</strong> por el modelo.</p></li>
+</ul>
+</div>
+<p>Cada entrada en esta matriz indica el número de predicciones realizadas por el modelo para una clase verdadera en comparación con una clase predicha. Para una matriz de confusión de un problema de clasificación binaria, tendrías una estructura como la siguiente:</p>
+<div class="small">
+<ul>
+<li class="fragment">
+<strong>Verdadero Positivo (VP)</strong>: El modelo predijo correctamente la clase positiva.</li>
+<li class="fragment">
+<strong>Falso Positivo (FP)</strong>: El modelo incorrectamente predijo la clase positiva cuando la verdadera clase era negativa.</li>
+<li class="fragment">
+<strong>Verdadero Negativo (VN)</strong>: El modelo predijo correctamente la clase negativa.</li>
+<li class="fragment">
+<strong>Falso Negativo (FN)</strong>: El modelo incorrectamente predijo la clase negativa cuando la verdadera clase era positiva.</li>
+</ul>
+</div>
+</section><section class="slide level2">
+<img data-src="images/03_CNN/conf_mat.png" class="r-stretch quarto-figure-center"><p class="caption">Esquema de una matriz de confusión para clasificación binaria</p></section><section id="interpretación" class="slide level2" data-number="6.3"><h2>
+<span class="header-section-number">6.3</span> Interpretación</h2>
+<p>La matriz de confusión permite varios niveles de interpretación:</p>
+<div class="small">
+<ol type="1">
+<li class="fragment"><p><strong>Diagonal Principal</strong>: Los valores en la diagonal principal (de arriba a la izquierda a abajo a la derecha) indican el número de predicciones correctas que hizo el modelo para cada clase.</p></li>
+<li class="fragment"><p><strong>Fuera de la Diagonal</strong>: Los valores fuera de la diagonal principal muestran los errores cometidos por el modelo, donde se clasificó incorrectamente una clase como otra.</p></li>
+</ol>
+</div>
+</section><section id="métricas-derivadas" class="slide level2" data-number="6.4"><h2>
+<span class="header-section-number">6.4</span> Métricas Derivadas</h2>
+<p>A partir de la matriz de confusión, se pueden calcular diversas métricas que proporcionan más detalles sobre el desempeño del modelo:</p>
+<div class="small">
+<ul>
+<li class="fragment"><p><strong>Precisión</strong>: La exactitud de las predicciones positivas. <span class="math inline">\(\text{Precisión} = \frac{VP}{VP + FP}\)</span></p></li>
+<li class="fragment"><p><strong>Recuperación (Sensibilidad o Tasa de Verdaderos Positivos)</strong>: La proporción de positivos reales que se identificaron correctamente. <span class="math inline">\(\text{Recuperación} = \frac{VP}{VP + FN}\)</span></p></li>
+<li class="fragment"><p><strong>Especificidad (Tasa de Verdaderos Negativos)</strong>: La proporción de negativos reales que se identificaron correctamente. <span class="math inline">\(\text{Especificidad} = \frac{VN}{VN + FP}\)</span></p></li>
+<li class="fragment"><p><strong>Puntuación F1</strong>: El promedio ponderado de la precisión y la recuperación. <span class="math inline">\(F1 = 2 \times \frac{\text{Precisión} \times \text{Recuperación}}{\text{Precisión} + \text{Recuperación}}\)</span></p></li>
+</ul>
+</div>
+</section><section class="slide level2"><p>Estas métricas ayudan a entender no solo la “exactitud global” del modelo, sino también cómo se comporta en términos de diferentes tipos de errores y aciertos, lo cual es crucial para aplicaciones donde ciertos tipos de errores pueden tener consecuencias más graves que otros.</p>
+<p>Más detalle <span class="green">para una matriz de confusión multiclase</span> puede ser revisado <a href="https://bassantgz30.medium.com/performance-metrics-for-classification-models-in-machine-learning-part-ii-9303a1c7cadd">acá</a></p>
+</section></section><section id="referencias" class="title-slide slide level1 smaller scrollable" data-background-color="#00A499" data-number="7"><h1>
+<span class="header-section-number">7</span> Referencias</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Hubel1959" class="csl-entry" role="listitem">
 Hubel, David H, y Torsten N Wiesel. 1959. <span>«Receptive fields of single neurones in the cat’s striate cortex»</span>. <em>The Journal of physiology</em> 148 (3): 574.
@@ -1150,7 +1419,7 @@ Li, Bin, Yuki Todo, y Zheng Tang. 2022. <span>«Artificial Visual System for Ori
         }
       }
     });
-    </script><script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
+    </script><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;
