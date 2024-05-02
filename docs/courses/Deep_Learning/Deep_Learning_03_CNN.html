@@ -465,7 +465,7 @@ Francisco Plaza Vega
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure><div class="quarto-figure quarto-figure-center">
-<figure><p><a href="images/03_CNN/turing_award.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)"><img data-src="images/03_CNN/turing_award.png" class="quarto-figure quarto-figure-center" style="width:30.0%" alt="Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)"></a></p>
+<figure><p><a href="images/03_CNN/turing_award.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)"><img data-src="images/03_CNN/turing_award.png" class="quarto-figure quarto-figure-center" style="width:30.0%" alt="Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)"></a></p>
 </figure>
 </div>
 <figcaption>Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)</figcaption></figure>
@@ -532,7 +532,8 @@ Francisco Plaza Vega
 
 <img data-src="images/03_CNN/CNN_scheme.png" class="r-stretch quarto-figure-center"><p class="caption">Esquema de una CNN</p></section></section><section><section id="convolución" class="title-slide slide level1 center" data-background-color="#00A499" data-number="3"><h1>
 <span class="header-section-number">3</span> Convolución</h1>
-<div class="definition">
+
+</section><section class="slide level2"><div class="definition">
 <p>En su forma general, la convolución es una operación sobre dos funciones con argumentos reales.</p>
 </div>
 <p></p>
@@ -552,14 +553,28 @@ Francisco Plaza Vega
 </section><section class="slide level2"><p>Podemos hacer esto con una función <span class="math inline">\(w(a)\)</span>, donde <span class="math inline">\(a\)</span> es la <em>edad</em> de la medición. Si deseamos aplicar la operación de ponderación en cada momento, debemos obtener una nueva función <span class="math inline">\(s\)</span> que entregue una estimación suavizada de la posición de la nave:</p>
 <p><span class="math display">\[s(t)=\int x(a)w(t-a)da\]</span> Esta operación es llamada <span class="green"><strong>convolución</strong></span>. La operaciónde convolución se denota típicamente como:</p>
 <p><span class="math display">\[s(t)=(x * w)(t)\]</span></p>
-</section><section class="slide level2"><p>En nuestro caso, <span class="math inline">\(w\)</span> necesita ser una función de densidad de probabilidad válida, sino la salida no sería una ponderación. Además, <span class="math inline">\(w\)</span> necesita ser 0 para todos los argumentos negativos, o esta función mirará en el futuro. Estas limitaciones son particulares de nuestro ejemplo. En general, la convolución está definida para cualquier función para que la integral anterior está definida, y puede ser ocupada con otros fines.</p>
+</section><section class="slide level2"><p>Algunas consideaciones:</p>
+<ul>
+<li class="fragment"><p><span class="math inline">\(w\)</span> <span class="orange">necesita ser una función de densidad de probabilidad válida</span>, sino la salida no sería una ponderación.</p></li>
+<li class="fragment"><p><span class="math inline">\(w\)</span> <span class="orange">necesita ser 0 para todos los argumentos negativos</span>, o esta función <em>mirará en el futuro</em>. Estas limitaciones son particulares del ejemplo.</p></li>
+<li class="fragment"><p>En general, la convolución está definida para cualquier función para que la integral anterior está definida, y puede ser ocupada con otros fines.</p></li>
+</ul>
+<div class="alert">
 <p>En este contexto, el <span class="green">primer argumento (<span class="math inline">\(x\)</span>) se le llama <strong>input</strong></span> y el <span class="green">segundo argumento (<span class="math inline">\(w\)</span>) se le llama <strong>kernel</strong></span>, y a la <span class="green">salida se le llama <strong>feature map</strong></span></p>
-<p>En nuestro ejemplo, la idea de que el sensor láser entregue medidas en cada instante de tiempo no es realista, pues trabajamos con una discretización del tiempo, usualmente a tiempos regulares. Así, tendremos:</p>
+</div>
+<p>En el caso del ejemplo, la idea de que el sensor láser entregue medidas en cada instante de tiempo no es realista, pues trabajamos con una discretización del tiempo, usualmente a tiempos regulares. Así, tendremos:</p>
 <p><span class="math display">\[s(t)=(x*w)(t)=\sum_{a=-\infty}^{\infty}x(a)w(t-a)\]</span></p>
-</section><section class="slide level2"><p>Frecuentemente usamos convoluciones sobre más de un eje en un tiempo especifico. Por ejemplo, si usamos una imagen 2-dimensional <span class="math inline">\(I\)</span> como <strong>input</strong>, probablemente desearemos usar un kernel <span class="math inline">\(K\)</span> 2-dimensional:</p>
+</section><section class="slide level2"><div class="small">
+<ul>
+<li class="fragment"><p>Frecuentemente se usan convoluciones sobre más de un eje en un tiempo especifico.</p></li>
+<li class="fragment"><p>Por ejemplo, si se usa una imagen 2-dimensional <span class="math inline">\(I\)</span> como <span class="green"><strong>input</strong></span>, probablemente se necesite usar un kernel <span class="math inline">\(K\)</span> 2-dimensional:</p></li>
+</ul>
 <p><span class="math display">\[S(i,j)=(I*K)(i,j)=\sum_m \sum_n I(m,n)K(i-m,j-n)\]</span></p>
-<p>La convolución es <strong>conmutativa</strong>, esto significa que equivalentemente podemos escribir:</p>
+<ul>
+<li class="fragment">La convolución es <span class="green"><strong>conmutativa</strong></span>, esto significa que equivalentemente podemos escribir:</li>
+</ul>
 <p><span class="math display">\[S(i,j)=(K*I)(i,j)=\sum_m \sum_n I(i-m,j-n)K(m,n)\]</span></p>
+</div>
 </section><section id="motivación" class="slide level2" data-number="3.1"><h2>
 <span class="header-section-number">3.1</span> Motivación</h2>
 <div class="alert">
@@ -576,7 +591,7 @@ Francisco Plaza Vega
 <li class="fragment"><p>Además de permitir trabajar con entradas de tamaño variable.</p></li>
 </ul></section><section class="slide level2"><h3 data-number="3.1.1" id="sparse-connectivity">
 <span class="header-section-number">3.1.1</span> Sparse connectivity</h3>
-<p>Interacciones escasas o sparse interactions (que también se le refiere como <strong>sparse connectivity</strong> o <strong>sparse weights</strong>), viene desde la siguiente idea:</p>
+<p>Interacciones escasas o sparse interactions, que también se le refiere como <span class="green"><strong>sparse connectivity</strong> o <strong>sparse weights</strong></span>, viene desde la siguiente idea:</p>
 <blockquote>
 <p>Las capas de una red neuronal tradicional usan multiplicación de matrices por una matriz de parámetros con un parámetro separado que describe la interacción entre cada unidad de entrada y cada unidad de salida.</p>
 </blockquote>
@@ -587,25 +602,34 @@ Francisco Plaza Vega
 <img data-src="images/03_CNN/sparse.png" class="r-stretch quarto-figure-center"><p class="caption">Sparse connectivity</p></section><section class="slide level2"><h3 data-number="3.1.2" id="parameter-sharing-y-equivariance-representation">
 <span class="header-section-number">3.1.2</span> Parameter sharing y equivariance representation</h3>
 <ul>
-<li class="fragment"><p>Esta característica hace referencia a usar los mismos parámetros para más de una función en un modelo. Reduciendo así, el número de parámetros a optimizar y mejorando la eficiencia estadística.</p></li>
-<li class="fragment"><p>Configurando particularmente los parámetros, podemos obtener la propiedad de representación de equivalencia, que refiere a que si las entradas cambian, las salidas cambian <strong>en la misma manera</strong>.</p></li>
+<li class="fragment"><p>Esta característica hace referencia a <span class="green">usar los mismos parámetros para más de una función en un modelo</span>. Reduciendo así, el número de parámetros a optimizar y mejorando la eficiencia estadística.</p></li>
+<li class="fragment"><p>Configurando particularmente los parámetros, podemos obtener la propiedad de representación de equivalencia, que refiere a que si las entradas cambian, <span class="green">las salidas cambian <strong>en la misma manera</strong></span>.</p></li>
 </ul></section><section class="slide level2">
 <img data-src="images/03_CNN/sharing.png" class="r-stretch quarto-figure-center"><p class="caption">Parameter sharing</p></section><section class="slide level2"><div class="alert">
 <p><span class="blue">Importante</span></p>
-<p>En las siguientes diapositivas, estudiaremos las capas convolucionales y de <em>pooling</em> con más detalle y veremos cómo funcionan. Para entender cómo funcionan las operaciones de convolución, empezaremos con una convolución en una dimensión, que a veces se utiliza para trabajar con ciertos tipos de datos secuenciales, como el texto. Después, trabajaremos a través de las convoluciones bidimensionales, que se aplican comúnmente a imágenes.</p>
+<p>En las siguientes diapositivas, estudiaremos las <span class="green">capas convolucionales</span> y de <span class="green"><em>pooling</em></span> con más detalle y veremos cómo funcionan.</p>
+<ul>
+<li class="fragment"><p>Para entender cómo funcionan las operaciones de convolución, <span class="orange">empezaremos con una convolución en una dimensión</span>, que a veces se utiliza para trabajar con ciertos tipos de datos secuenciales, como el texto.</p></li>
+<li class="fragment"><p>Después, trabajaremos a través de las <span class="orange">convoluciones bidimensionales</span>, que se aplican comúnmente a imágenes.</p></li>
+</ul>
 </div>
 </section><section id="convoluciones-1-d" class="slide level2" data-number="3.2"><h2>
 <span class="header-section-number">3.2</span> Convoluciones 1-D</h2>
 <div class="definition">
 <p><span class="blue"><strong>Notación</strong></span></p>
-<p>En esta parte, usaremos subíndices para denotar el tamaño de un arreglo multidimensional (tensor); por ejemplo, <span class="math inline">\(A_{n_1 \times n_2}\)</span> es un arreglo bidimensional de tamaño <span class="math inline">\(n_1 \times n_2\)</span>. Usamos corchetes, <span class="math inline">\(\left[ \; \right]\)</span>, para denotar la indexación de un arreglo multidimensional.</p>
-<p>Por ejemplo, <span class="math inline">\(A[i, j]\)</span> se refiere al elemento en el índice i, j de la matriz A. Además, observe que usamos un símbolo especial, <span class="math inline">\(*\)</span>, para denotar la operación de convolución entre dos vectores o matrices, lo cual no debe confundirse con el operador de multiplicación, <code>*</code>, que típicamente utilizamos en <code>R</code> o <code>Python</code>.</p>
+<ul>
+<li class="fragment"><p>En esta parte, usaremos subíndices para denotar el tamaño de un arreglo multidimensional (tensor); por ejemplo, <span class="math inline">\(A_{n_1 \times n_2}\)</span> es un arreglo bidimensional de tamaño <span class="math inline">\(n_1 \times n_2\)</span>.</p></li>
+<li class="fragment"><p>Usamos corchetes, <span class="math inline">\(\left[ \; \right]\)</span>, para denotar la indexación de un arreglo multidimensional. Por ejemplo, <span class="math inline">\(A[i, j]\)</span> se refiere al elemento en el índice i, j de la matriz A.</p></li>
+<li class="fragment"><p>Además, notar que usamos un símbolo especial, <span class="math inline">\(*\)</span>, para denotar la operación de convolución entre dos vectores o matrices, lo cual no debe confundirse con el operador de multiplicación, <code>*</code>, que típicamente utilizamos en <code>R</code> o <code>Python</code>.</p></li>
+</ul>
 </div>
-</section><section class="slide level2"><p>Una convolución discreta<sup>1</sup> para dos vectores, <span class="math inline">\(x\)</span> y <span class="math inline">\(w\)</span>, se denota por <span class="math inline">\(y = x * w\)</span>, donde el vector <span class="math inline">\(x\)</span> es nuestra entrada (a veces llamado señal) y <span class="math inline">\(w\)</span> se llama el filtro o kernel. Una convolución se define matemáticamente de la siguiente manera:</p>
+</section><section class="slide level2"><div class="definition">
+<p>Una convolución discreta<sup>1</sup> para dos vectores, <span class="math inline">\(x\)</span> y <span class="math inline">\(w\)</span>, se denota por <span class="math inline">\(y = x * w\)</span>, donde el vector <span class="math inline">\(x\)</span> es nuestra entrada (a veces llamado señal) y <span class="math inline">\(w\)</span> se llama el filtro o kernel. Una convolución se define matemáticamente de la siguiente manera:</p>
 <p><span class="math display">\[
 y = x * w \rightarrow y[i] = \sum_{k=-\infty}^{+\infty} x[i - k] \cdot w[k]
 \]</span></p>
 <p>Como se mencionó anteriormente, los corchetes, [], se usan para denotar la indexación para los elementos del vector. El índice, <span class="math inline">\(i\)</span>, recorre cada elemento del vector de salida, <span class="math inline">\(y\)</span>.</p>
+</div>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>O de aquí en adelante, sólo convolución</p></li></ol></aside></section><section class="slide level2"><div class="alert">
 <p>Hay dos puntos a mencionar a partir de la fórmula anterior que deben ser destacados:</p>
 <ul>
@@ -623,8 +647,16 @@ y = x * w \rightarrow y[i] = \sum_{k=-\infty}^{+\infty} x[i - k] \cdot w[k]
 <p><span class="math display">\[
 y = x * w \rightarrow y[i] = \sum_{k=0}^{m-1} x^p[i + m - k] \cdot w[k]
 \]</span></p>
-<p>Ahora que hemos resuelto el problema del índice infinito, el segundo problema es indexar <span class="math inline">\(x\)</span> con <span class="math inline">\(i + m - k\)</span>. El punto importante a notar aquí es que <span class="math inline">\(x\)</span> y <span class="math inline">\(w\)</span> están indexados en diferentes direcciones en esta sumatoria. Calcular la suma con un índice yendo en la dirección inversa es equivalente a calcular la suma con ambos índices en la dirección hacia adelante después de voltear uno de esos vectores, <span class="math inline">\(x\)</span> o <span class="math inline">\(w\)</span>, después de que son rellenados. Entonces, simplemente podemos calcular su producto punto. Supongamos que invertimos (rotamos) el filtro, <span class="math inline">\(w\)</span>, para obtener el filtro rotado, <span class="math inline">\(w^r\)</span>. Entonces, el producto punto, <span class="math inline">\(x[i : i + m] \cdot w^r\)</span>, se calcula para obtener un elemento, <span class="math inline">\(y[i]\)</span>, donde <span class="math inline">\(x[i : i + m]\)</span> es un segmento de <span class="math inline">\(x\)</span> con tamaño <span class="math inline">\(m\)</span>. Esta operación se repite como en un enfoque de ventana deslizante para obtener todos los elementos de salida. La siguiente figura proporciona un ejemplo con <span class="math inline">\(x = [3, 2, 1, 7, 1, 2, 5, 4]\)</span> y <span class="math inline">\(w = \left[ \frac{1}{2}, \frac{3}{4}, 1, \frac{1}{4}\right]\)</span>, de modo que los primeros tres elementos de salida se calculan:</p>
-</section><section class="slide level2">
+<ul>
+<li class="fragment"><p>Ahora que hemos resuelto el problema del índice infinito, el segundo problema es indexar <span class="math inline">\(x\)</span> con <span class="math inline">\(i + m - k\)</span>.</p></li>
+<li class="fragment"><p>El punto importante a notar aquí es que <span class="math inline">\(x\)</span> y <span class="math inline">\(w\)</span> están indexados en diferentes direcciones en esta sumatoria.</p></li>
+<li class="fragment"><p>Calcular la suma con un índice yendo en la dirección inversa es equivalente a calcular la suma con ambos índices en la dirección hacia adelante después de voltear uno de esos vectores, <span class="math inline">\(x\)</span> o <span class="math inline">\(w\)</span>, después de que son rellenados.</p></li>
+<li class="fragment"><p>Entonces, simplemente podemos calcular su producto punto. Supongamos que invertimos (rotamos) el filtro, <span class="math inline">\(w\)</span>, para obtener el filtro rotado, <span class="math inline">\(w^r\)</span>.</p></li>
+</ul></section><section class="slide level2"><ul>
+<li class="fragment"><p>Entonces, el producto punto, <span class="math inline">\(x[i : i + m] \cdot w^r\)</span>, se calcula para obtener un elemento, <span class="math inline">\(y[i]\)</span>, donde <span class="math inline">\(x[i : i + m]\)</span> es un segmento de <span class="math inline">\(x\)</span> con tamaño <span class="math inline">\(m\)</span>.</p></li>
+<li class="fragment"><p>Esta operación se repite como en un enfoque de ventana deslizante para obtener todos los elementos de salida.</p></li>
+</ul>
+
 <img data-src="images/03_CNN/1d_conv_2.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2"><p>En el ejemplo anterior se pueden notar algunos detalles:</p>
 <ul>
 <li class="fragment"><p>El tamaño del <em>padding</em> es cero (<span class="math inline">\(p = 0\)</span>).</p></li>
@@ -851,7 +883,7 @@ W' = \begin{bmatrix}
 </div>
 </div>
 </div>
-</section><section class="slide level2"></section></section><section><section id="submuestreo-pooling" class="title-slide slide level1 center" data-background-color="#00A499" data-number="4"><h1>
+</section></section><section><section id="submuestreo-pooling" class="title-slide slide level1 center" data-background-color="#00A499" data-number="4"><h1>
 <span class="header-section-number">4</span> Submuestreo (<em>Pooling</em>)</h1>
 
 </section><section class="slide level2"><ul>
@@ -944,7 +976,7 @@ A[:, :, k] =&amp; \phi(Z[:, :, k])
 <img data-src="images/03_CNN/multilayer_CNN.png" class="quarto-figure quarto-figure-center r-stretch"></section></section><section><section id="evaluando-los-modelos-de-clasificación" class="title-slide slide level1 center" data-background-color="#00A499" data-number="6"><h1>
 <span class="header-section-number">6</span> Evaluando los modelos de clasificación</h1>
 
-</section><section id="matriz-de-confusión" class="slide level2" data-background-color="#00A499" data-number="6.1"><h2>
+</section><section id="matriz-de-confusión" class="slide level2" data-number="6.1"><h2>
 <span class="header-section-number">6.1</span> Matriz de confusión</h2>
 <p>Una matriz de confusión es una herramienta útil utilizada en aprendizaje supervisado, especialmente en clasificación, para visualizar el desempeño de un algoritmo. Esencialmente, la matriz compara las etiquetas predichas por el modelo contra las etiquetas verdaderas conocidas del conjunto de datos de prueba. Esta comparación ayuda a evaluar la precisión de un modelo y a identificar de qué manera sus predicciones son correctas o incorrectas.</p>
 </section><section id="estructura-de-la-matriz-de-confusión" class="slide level2" data-number="6.2"><h2>
@@ -1419,7 +1451,7 @@ Li, Bin, Yuki Todo, y Zheng Tang. 2022. <span>«Artificial Visual System for Ori
         }
       }
     });
-    </script><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
+    </script><script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;
