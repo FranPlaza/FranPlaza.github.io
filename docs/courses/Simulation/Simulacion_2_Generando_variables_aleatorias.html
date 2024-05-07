@@ -448,7 +448,7 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Lanzamiento de monedas</span></span>
 <span id="cb1-2"><a href=""></a><span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0 0 1 0 0 0 1 0 1 0</code></pre>
+<pre><code> [1] 1 0 1 1 0 1 0 0 1 1</code></pre>
 </div>
 </div>
 <p></p>
@@ -456,7 +456,7 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Escoger números del loto</span></span>
 <span id="cb3-2"><a href=""></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">36</span>, <span class="at">size =</span> <span class="dv">6</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 34 16 30 36  4 19</code></pre>
+<pre><code>[1] 33  4  5 30  3 21</code></pre>
 </div>
 </div>
 <p></p>
@@ -464,8 +464,8 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Permuación de letras a-z</span></span>
 <span id="cb5-2"><a href=""></a><span class="fu">sample</span>(letters)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "i" "n" "s" "d" "e" "c" "h" "y" "w" "x" "z" "j" "t" "l" "v" "f" "p" "r" "m"
-[20] "a" "b" "u" "g" "o" "q" "k"</code></pre>
+<pre><code> [1] "p" "h" "q" "b" "l" "g" "c" "s" "x" "d" "e" "r" "t" "y" "n" "k" "i" "u" "a"
+[20] "o" "j" "m" "z" "f" "w" "v"</code></pre>
 </div>
 </div>
 <p></p>
@@ -476,7 +476,7 @@ Francisco Plaza Vega
 <div class="cell-output cell-output-stdout">
 <pre><code>x
  1  2  3 
-22 30 48 </code></pre>
+19 29 52 </code></pre>
 </div>
 </div>
 </section><section id="algunos-generadores-aleatorios-en-r" class="slide level2" data-number="1.1"><h2>
@@ -1382,6 +1382,36 @@ f(x) = \frac{2}{\pi R^2}\sqrt{R^2 - x^2}, \quad -R \leq x \leq R.
 </tbody>
 </table>
 </div>
+</div>
+</div>
+</section><section class="slide level2"><h3 id="ejercicios-1">Ejercicios</h3>
+<div class="example">
+<p>Caso discreto: </p>
+<div class="small">
+<p>Queremos simular valores de una v.a <span class="math inline">\(X\)</span> tal que: <span class="math inline">\(\mathbb{P}(X=j) = p_j\)</span>, <span class="math inline">\(j =1,\ldots,6\)</span>, <span class="math inline">\(p_1=0.15\)</span>, <span class="math inline">\(p_2=0.16\)</span>, <span class="math inline">\(p_3=0.18\)</span>, <span class="math inline">\(p_4=0.19\)</span>, <span class="math inline">\(p_5=0.18\)</span>, <span class="math inline">\(p_6=0.14\)</span>, con <span class="math inline">\(q_j = \frac{1}{6}\)</span>, <span class="math inline">\(j =1,\ldots,6\)</span>, ie, <span class="math inline">\(Y \sim UD(1,\ldots,6)\)</span>}</p>
+<ul>
+<li class="fragment"><p>Elegimos <span class="math inline">\(c=\max \frac{p_j}{q_j} = 1.14 (j=4)\)</span>.</p></li>
+<li class="fragment">
+<p>Pasos:</p>
+<ol type="1">
+<li class="fragment"><p>Generar <span class="math inline">\(u_1 \sim U(0,1)\)</span>.</p></li>
+<li class="fragment"><p>Calcular <span class="math inline">\(y=[6 u_1]+1\)</span>.</p></li>
+<li class="fragment"><p>Generar <span class="math inline">\(u_2 \sim U(0,1)\)</span>.</p></li>
+<li class="fragment"><p>Si <span class="math inline">\(u_2 \leq \frac{p_y}{1.14 \frac{1}{6}} \Rightarrow x=y\)</span> y parar, eoc, volver al Paso 1.</p></li>
+</ol>
+</li>
+</ul>
+<p>Implementar el ejemplo anterior en un ciclo de r = 1000 repeticiones y calcular la tasa de aceptación empírica.</p>
+</div>
+</div>
+</section><section class="slide level2"><div class="example">
+<p>Caso contínuo: </p>
+<div class="small">
+<ol type="1">
+<li class="fragment"><p>Generar valores de una v.a. Gamma<span class="math inline">\((\frac{3}{2},1)\)</span> a partir de <span class="math inline">\(g(x)=\frac{2}{3} e^{-2\frac{x}{3}}\)</span>, <span class="math inline">\(x&gt;0\)</span></p></li>
+<li class="fragment"><p>Utilizar el método de aceptación/rechazo para generar una v. a. con función de densidad <span class="math inline">\(f(x) = 20 x(1-x)^3, \qquad 0 &lt; x &lt; 1\)</span>.</p></li>
+<li class="fragment"><p>Generar valores de una v.a. Normal<span class="math inline">\((0,1)\)</span> a partir de la densidad Cauchy <span class="math inline">\(g(x)=\frac{1}{\pi} \left(\frac{1}{1+y^2}\right)\)</span>, <span class="math inline">\(x \in \mathbb{R}\)</span>.</p></li>
+</ol>
 </div>
 </div>
 </section></section><section><section id="métodos-de-transformación" class="title-slide slide level1 center" data-background-color="#00A499" data-number="4"><h1>
