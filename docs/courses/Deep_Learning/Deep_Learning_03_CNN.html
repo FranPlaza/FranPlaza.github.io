@@ -433,12 +433,22 @@ Francisco Plaza Vega
 </section><section><section id="redes-neuronales-convolucionales" class="title-slide slide level1 center" data-background-color="#00A499" data-number="1"><h1>
 <span class="header-section-number">1</span> Redes Neuronales Convolucionales</h1>
 
-</section><section id="los-bloques-con-los-que-se-construyen-las-cnns" class="slide level2" data-number="1.1"><h2>
-<span class="header-section-number">1.1</span> Los bloques con los que se construyen las CNNs</h2>
+</section><section id="qué-dice-youtube" class="slide level2" data-number="1.1"><h2>
+<span class="header-section-number">1.1</span> Qué dice YouTube?</h2>
+<div class="definition">
+<ul>
+<li class="fragment"><p><a href="https://www.youtube.com/watch?v=pj9-rr1wDhM">Convolutional Neural Networks Explained (CNN Visualized) - Futorology - An Optimistic Future</a></p></li>
+<li class="fragment"><p><a href="https://www.youtube.com/watch?v=py5byOOHZM8&amp;ab_channel=Computerphile">CNNs explained - Computerphile</a></p></li>
+<li class="fragment"><p><a href="https://www.youtube.com/watch?v=NmLK_WQBxB4">MIT 6.S191 (2023): Convolutional Neural Networks - Alexander Amini</a></p></li>
+<li class="fragment"><p><a href="https://www.youtube.com/watch?v=oJNHXPs0XDk&amp;ab_channel=SteveBrunton">Neural nets architectures and Deep Learning - Steve Brunton</a></p></li>
+</ul>
+</div>
+</section><section id="los-bloques-con-los-que-se-construyen-las-cnns" class="slide level2" data-number="1.2"><h2>
+<span class="header-section-number">1.2</span> Los bloques con los que se construyen las CNNs</h2>
 <p>Las CNNs son una familia de modelos que fueron originalmente inspirados por cómo funciona el cerebro humano al reconocer objetos.</p>
 
-<img data-src="images/03_CNN/human_vision.png" class="r-stretch quarto-figure-center"><p class="caption">Esquema del sistema óptico humano</p></section><section class="slide level2"><h3 data-number="1.1.1" id="la-corteza-visual-humana">
-<span class="header-section-number">1.1.1</span> La corteza visual humana</h3>
+<img data-src="images/03_CNN/human_vision.png" class="r-stretch quarto-figure-center"><p class="caption">Esquema del sistema óptico humano</p></section><section class="slide level2"><h3 data-number="1.2.1" id="la-corteza-visual-humana">
+<span class="header-section-number">1.2.1</span> La corteza visual humana</h3>
 <div class="columns">
 <div class="column">
 <ul>
@@ -454,8 +464,8 @@ Francisco Plaza Vega
 </div>
 </div>
 </div>
-</section><section class="slide level2"><h3 data-number="1.1.2" id="algo-de-historia">
-<span class="header-section-number">1.1.2</span> Algo de historia</h3>
+</section><section class="slide level2"><h3 data-number="1.2.2" id="algo-de-historia">
+<span class="header-section-number">1.2.2</span> Algo de historia</h3>
 <div class="definition">
 <ul>
 <li class="fragment"><p>El desarrollo de las CNNs se remonta a los años 90, cuando Yann LeCun y sus colegas propusieron una nueva arquitectura de red neuronal para clasificar dígitos escritos a mano desde imágenes <em><a href="https://proceedings.neurips.cc/paper_files/paper/1989/file/53c3bce66e43be4f209556518c2fcb54-Paper.pdf">Handwritten Digit Recognition with a Back-Propagation Network</a></em> <span class="citation" data-cites="LeCun1989">(<a href="#/referencias" role="doc-biblioref" onclick="">LeCun et&nbsp;al. 1989</a>)</span>, publicado en la conferencia de Sistemas de Procesamiento de Información Neural (<em>NeurIPS</em>).</p></li>
@@ -465,7 +475,7 @@ Francisco Plaza Vega
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure><div class="quarto-figure quarto-figure-center">
-<figure><p><a href="images/03_CNN/turing_award.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)"><img data-src="images/03_CNN/turing_award.png" class="quarto-figure quarto-figure-center" style="width:30.0%" alt="Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)"></a></p>
+<figure><p><a href="images/03_CNN/turing_award.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)"><img data-src="images/03_CNN/turing_award.png" class="quarto-figure quarto-figure-center" style="width:30.0%" alt="Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)"></a></p>
 </figure>
 </div>
 <figcaption>Premiación de LeCun, Hinton y Bengio (de izquierda a derecha)</figcaption></figure>
@@ -960,8 +970,7 @@ Z_{\text{conv}} = \sum_{c=1}^{C_{\text{in}}} W \left[ :, :, c \right] * X \left[
 Z_{\text{conv}}[:, :, k] =&amp; \sum_{c=1}^{C_{\text{in}}} W[:, :, c, k] * X[:, :, c] \\
 Z[:, :, k] =&amp; Z_{\text{conv}}[:, :, k] + b[k] \\
 A[:, :, k] =&amp; \phi(Z[:, :, k])
-\end{matrix}\right.
-\]</span></p>
+\end{matrix}\right.\]</span></p>
 </div>
 </section><section class="slide level2"><ul>
 <li class="fragment"><p>En este ejemplo, hay tres canales de entrada.</p></li>
@@ -1024,8 +1033,474 @@ A[:, :, k] =&amp; \phi(Z[:, :, k])
 </div>
 </section><section class="slide level2"><p>Estas métricas ayudan a entender no solo la “exactitud global” del modelo, sino también cómo se comporta en términos de diferentes tipos de errores y aciertos, lo cual es crucial para aplicaciones donde ciertos tipos de errores pueden tener consecuencias más graves que otros.</p>
 <p>Más detalle <span class="green">para una matriz de confusión multiclase</span> puede ser revisado <a href="https://bassantgz30.medium.com/performance-metrics-for-classification-models-in-machine-learning-part-ii-9303a1c7cadd">acá</a></p>
-</section></section><section id="referencias" class="title-slide slide level1 smaller scrollable" data-background-color="#00A499" data-number="7"><h1>
-<span class="header-section-number">7</span> Referencias</h1>
+</section></section><section><section id="salón-de-la-fama-de-las-cnn" class="title-slide slide level1 center" data-background-color="#00A499" data-number="7"><h1>
+<span class="header-section-number">7</span> Salón de la fama de las CNN</h1>
+
+</section><section id="cnns-más-famosas" class="slide level2" data-number="7.1"><h2>
+<span class="header-section-number">7.1</span> CNNs más famosas</h2>
+
+<img data-src="images/03_CNN/cnns.png" class="r-stretch quarto-figure-center"><p class="caption">Línea de tiempo (hasta 2019) de las CNNs y su desarrollo</p></section><section id="lenet-5" class="slide level2" data-number="7.2"><h2>
+<span class="header-section-number">7.2</span> LeNet-5</h2>
+<div class="definition">
+<p><span class="green">LeNet-5</span> es una de las primeras arquitecturas de redes neuronales convolucionales, desarrollada por Yann LeCun en 1998. Fue diseñada para reconocer caracteres escritos a mano y se compone de dos capas convolucionales seguidas de capas de agrupamiento y capas completamente conectadas.</p>
+</div>
+
+<img data-src="images/03_CNN/lenet.jpeg" class="r-stretch"></section><section class="slide level2"><div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-3-1">Código en R</a></li>
+<li><a href="#tabset-3-2">Summary del modelo</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">library</span>(keras)</span>
+<span id="cb14-2"><a href=""></a>model <span class="ot">&lt;-</span> <span class="fu">keras_model_sequential</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">6</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>), <span class="at">activation =</span> <span class="st">'tanh'</span>, <span class="at">input_shape =</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">32</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href=""></a>  <span class="fu">layer_average_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">16</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>), <span class="at">activation =</span> <span class="st">'tanh'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-6"><a href=""></a>  <span class="fu">layer_average_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-7"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">120</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>), <span class="at">activation =</span> <span class="st">'tanh'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-8"><a href=""></a>  <span class="fu">layer_flatten</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-9"><a href=""></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">84</span>, <span class="at">activation =</span> <span class="st">'tanh'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-10"><a href=""></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">10</span>, <span class="at">activation =</span> <span class="st">'softmax'</span>)</span>
+<span id="cb14-11"><a href=""></a>model <span class="sc">%&gt;%</span> <span class="fu">compile</span>(</span>
+<span id="cb14-12"><a href=""></a>  <span class="at">loss =</span> <span class="st">'categorical_crossentropy'</span>,</span>
+<span id="cb14-13"><a href=""></a>  <span class="at">optimizer =</span> <span class="fu">optimizer_sgd</span>(),</span>
+<span id="cb14-14"><a href=""></a>  <span class="at">metrics =</span> <span class="st">'accuracy'</span></span>
+<span id="cb14-15"><a href=""></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-3-2">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Model: "sequential"
+________________________________________________________________________________
+ Layer (type)                       Output Shape                    Param #     
+================================================================================
+ conv2d_2 (Conv2D)                  (None, 28, 28, 6)               156         
+ average_pooling2d_1 (AveragePooli  (None, 14, 14, 6)               0           
+ ng2D)                                                                          
+ conv2d_1 (Conv2D)                  (None, 10, 10, 16)              2416        
+ average_pooling2d (AveragePooling  (None, 5, 5, 16)                0           
+ 2D)                                                                            
+ conv2d (Conv2D)                    (None, 1, 1, 120)               48120       
+ flatten (Flatten)                  (None, 120)                     0           
+ dense_1 (Dense)                    (None, 84)                      10164       
+ dense (Dense)                      (None, 10)                      850         
+================================================================================
+Total params: 61706 (241.04 KB)
+Trainable params: 61706 (241.04 KB)
+Non-trainable params: 0 (0.00 Byte)
+________________________________________________________________________________</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="alexnet" class="slide level2" data-number="7.3"><h2>
+<span class="header-section-number">7.3</span> AlexNet</h2>
+<div class="definition">
+<p><span class="green">AlexNet</span>, desarrollada por Alex Krizhevsky y su equipo en 2012, es una red profunda que ganó la competencia ImageNet. Introdujo el uso de ReLU como función de activación y popularizó el uso de GPU para entrenamiento.</p>
+</div>
+
+<img data-src="images/03_CNN/alexnet.jpg" class="r-stretch"></section><section class="slide level2"><div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-4-1">Código en R</a></li>
+<li><a href="#tabset-4-2">Summary del modelo</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="fu">library</span>(keras)</span>
+<span id="cb16-2"><a href=""></a>model <span class="ot">&lt;-</span> <span class="fu">keras_model_sequential</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">96</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">11</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">input_shape =</span> <span class="fu">c</span>(<span class="dv">227</span>, <span class="dv">227</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href=""></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">256</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a href=""></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-7"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">384</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-8"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">384</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-9"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">256</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-10"><a href=""></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-11"><a href=""></a>  <span class="fu">layer_flatten</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb16-12"><a href=""></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">4096</span>, <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-13"><a href=""></a>  <span class="fu">layer_dropout</span>(<span class="at">rate =</span> <span class="fl">0.5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-14"><a href=""></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">4096</span>, <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-15"><a href=""></a>  <span class="fu">layer_dropout</span>(<span class="at">rate =</span> <span class="fl">0.5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-16"><a href=""></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">1000</span>, <span class="at">activation =</span> <span class="st">'softmax'</span>)</span>
+<span id="cb16-17"><a href=""></a>model <span class="sc">%&gt;%</span> <span class="fu">compile</span>(</span>
+<span id="cb16-18"><a href=""></a>  <span class="at">loss =</span> <span class="st">'categorical_crossentropy'</span>,</span>
+<span id="cb16-19"><a href=""></a>  <span class="at">optimizer =</span> <span class="fu">optimizer_sgd</span>(),</span>
+<span id="cb16-20"><a href=""></a>  <span class="at">metrics =</span> <span class="st">'accuracy'</span></span>
+<span id="cb16-21"><a href=""></a>)</span>
+<span id="cb16-22"><a href=""></a><span class="fu">summary</span>(model)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-4-2">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Model: "sequential_1"
+________________________________________________________________________________
+ Layer (type)                       Output Shape                    Param #     
+================================================================================
+ conv2d_7 (Conv2D)                  (None, 55, 55, 96)              34944       
+ max_pooling2d_2 (MaxPooling2D)     (None, 27, 27, 96)              0           
+ conv2d_6 (Conv2D)                  (None, 27, 27, 256)             614656      
+ max_pooling2d_1 (MaxPooling2D)     (None, 13, 13, 256)             0           
+ conv2d_5 (Conv2D)                  (None, 13, 13, 384)             885120      
+ conv2d_4 (Conv2D)                  (None, 13, 13, 384)             1327488     
+ conv2d_3 (Conv2D)                  (None, 13, 13, 256)             884992      
+ max_pooling2d (MaxPooling2D)       (None, 6, 6, 256)               0           
+ flatten_1 (Flatten)                (None, 9216)                    0           
+ dense_4 (Dense)                    (None, 4096)                    37752832    
+ dropout_1 (Dropout)                (None, 4096)                    0           
+ dense_3 (Dense)                    (None, 4096)                    16781312    
+ dropout (Dropout)                  (None, 4096)                    0           
+ dense_2 (Dense)                    (None, 1000)                    4097000     
+================================================================================
+Total params: 62378344 (237.95 MB)
+Trainable params: 62378344 (237.95 MB)
+Non-trainable params: 0 (0.00 Byte)
+________________________________________________________________________________</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="googlenet-inception" class="slide level2" data-number="7.4"><h2>
+<span class="header-section-number">7.4</span> GoogleNet (Inception)</h2>
+<div class="definition">
+<p><span class="green">GoogleNet</span>, también conocida como Inception v1, fue desarrollada por Google y ganó la competencia ImageNet en 2014. Introduce los módulos de Inception que permiten diferentes tamaños de convoluciones en la misma capa.</p>
+</div>
+
+<img data-src="images/03_CNN/googlenet.png" class="r-stretch"></section><section class="slide level2"><div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-5-1">Código en R</a></li>
+<li><a href="#tabset-5-2">Summary del modelo</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="fu">library</span>(keras)</span>
+<span id="cb18-2"><a href=""></a>input <span class="ot">&lt;-</span> <span class="fu">layer_input</span>(<span class="at">shape =</span> <span class="fu">c</span>(<span class="dv">224</span>, <span class="dv">224</span>, <span class="dv">3</span>))</span>
+<span id="cb18-3"><a href=""></a>conv1 <span class="ot">&lt;-</span> <span class="fu">layer_conv_2d</span>(input, <span class="at">filters =</span> <span class="dv">64</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">7</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href=""></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">padding =</span> <span class="st">'same'</span>)</span>
+<span id="cb18-5"><a href=""></a>conv2 <span class="ot">&lt;-</span> <span class="fu">layer_conv_2d</span>(conv1, <span class="at">filters =</span> <span class="dv">64</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-6"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">192</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">padding =</span> <span class="st">'same'</span>, <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-7"><a href=""></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">padding =</span> <span class="st">'same'</span>)</span>
+<span id="cb18-8"><a href=""></a><span class="co"># Inception Module 1</span></span>
+<span id="cb18-9"><a href=""></a>inception_3a <span class="ot">&lt;-</span> conv2 <span class="sc">%&gt;%</span></span>
+<span id="cb18-10"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">64</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-11"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">128</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">padding =</span> <span class="st">'same'</span>, <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-12"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">32</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-13"><a href=""></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">padding =</span> <span class="st">'same'</span>)</span>
+<span id="cb18-14"><a href=""></a><span class="co"># Flatten and Dense Layers</span></span>
+<span id="cb18-15"><a href=""></a>flatten <span class="ot">&lt;-</span> <span class="fu">layer_flatten</span>(inception_3a) <span class="sc">%&gt;%</span></span>
+<span id="cb18-16"><a href=""></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">1000</span>, <span class="at">activation =</span> <span class="st">'softmax'</span>)</span>
+<span id="cb18-17"><a href=""></a>model <span class="ot">&lt;-</span> <span class="fu">keras_model</span>(<span class="at">inputs =</span> input, <span class="at">outputs =</span> flatten)</span>
+<span id="cb18-18"><a href=""></a>model <span class="sc">%&gt;%</span> <span class="fu">compile</span>(</span>
+<span id="cb18-19"><a href=""></a>  <span class="at">loss =</span> <span class="st">'categorical_crossentropy'</span>,</span>
+<span id="cb18-20"><a href=""></a>  <span class="at">optimizer =</span> <span class="fu">optimizer_sgd</span>(),</span>
+<span id="cb18-21"><a href=""></a>  <span class="at">metrics =</span> <span class="st">'accuracy'</span></span>
+<span id="cb18-22"><a href=""></a>)</span>
+<span id="cb18-23"><a href=""></a><span class="fu">summary</span>(model)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-5-2">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Model: "model"
+________________________________________________________________________________
+ Layer (type)                       Output Shape                    Param #     
+================================================================================
+ input_1 (InputLayer)               [(None, 224, 224, 3)]           0           
+ conv2d_8 (Conv2D)                  (None, 109, 109, 64)            9472        
+ max_pooling2d_3 (MaxPooling2D)     (None, 55, 55, 64)              0           
+ conv2d_10 (Conv2D)                 (None, 55, 55, 64)              4160        
+ conv2d_9 (Conv2D)                  (None, 55, 55, 192)             110784      
+ max_pooling2d_4 (MaxPooling2D)     (None, 28, 28, 192)             0           
+ conv2d_13 (Conv2D)                 (None, 28, 28, 64)              12352       
+ conv2d_12 (Conv2D)                 (None, 28, 28, 128)             73856       
+ conv2d_11 (Conv2D)                 (None, 28, 28, 32)              4128        
+ max_pooling2d_5 (MaxPooling2D)     (None, 28, 28, 32)              0           
+ flatten_2 (Flatten)                (None, 25088)                   0           
+ dense_5 (Dense)                    (None, 1000)                    25089000    
+================================================================================
+Total params: 25303752 (96.53 MB)
+Trainable params: 25303752 (96.53 MB)
+Non-trainable params: 0 (0.00 Byte)
+________________________________________________________________________________</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="vgg16" class="slide level2" data-number="7.5"><h2>
+<span class="header-section-number">7.5</span> VGG16</h2>
+<div class="definition">
+<p><span class="green">VGG16</span>, creada por el Visual Geometry Group de la Universidad de Oxford en 2014, es conocida por su simplicidad y profundidad, usando solo convoluciones 3x3 y max-pooling. Esta arquitectura es efectiva y fácil de implementar.</p>
+</div>
+
+<img data-src="images/03_CNN/vgg16.png" class="r-stretch"></section><section class="slide level2"><div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-6-1">Código en R</a></li>
+<li><a href="#tabset-6-2">Summary del modelo</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-6-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="fu">library</span>(keras)</span>
+<span id="cb20-2"><a href=""></a>model <span class="ot">&lt;-</span> <span class="fu">keras_model_sequential</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">64</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>, <span class="at">input_shape =</span> <span class="fu">c</span>(<span class="dv">224</span>, <span class="dv">224</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">64</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-5"><a href=""></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-6"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">128</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-7"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">128</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-8"><a href=""></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-9"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">256</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-10"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">256</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-11"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">256</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-12"><a href=""></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-13"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">512</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-14"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">512</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-15"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">512</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-16"><a href=""></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-17"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">512</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-18"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">512</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-19"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">512</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-20"><a href=""></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-21"><a href=""></a>  <span class="fu">layer_flatten</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb20-22"><a href=""></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">4096</span>, <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-23"><a href=""></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">4096</span>, <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-24"><a href=""></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">1000</span>, <span class="at">activation =</span> <span class="st">'softmax'</span>)</span>
+<span id="cb20-25"><a href=""></a>model <span class="sc">%&gt;%</span> <span class="fu">compile</span>(</span>
+<span id="cb20-26"><a href=""></a>  <span class="at">loss =</span> <span class="st">'categorical_crossentropy'</span>,</span>
+<span id="cb20-27"><a href=""></a>  <span class="at">optimizer =</span> <span class="fu">optimizer_sgd</span>(),</span>
+<span id="cb20-28"><a href=""></a>  <span class="at">metrics =</span> <span class="st">'accuracy'</span></span>
+<span id="cb20-29"><a href=""></a>)</span>
+<span id="cb20-30"><a href=""></a><span class="fu">summary</span>(model)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-6-2">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Model: "sequential_2"
+________________________________________________________________________________
+ Layer (type)                       Output Shape                    Param #     
+================================================================================
+ conv2d_26 (Conv2D)                 (None, 224, 224, 64)            1792        
+ conv2d_25 (Conv2D)                 (None, 224, 224, 64)            36928       
+ max_pooling2d_10 (MaxPooling2D)    (None, 112, 112, 64)            0           
+ conv2d_24 (Conv2D)                 (None, 112, 112, 128)           73856       
+ conv2d_23 (Conv2D)                 (None, 112, 112, 128)           147584      
+ max_pooling2d_9 (MaxPooling2D)     (None, 56, 56, 128)             0           
+ conv2d_22 (Conv2D)                 (None, 56, 56, 256)             295168      
+ conv2d_21 (Conv2D)                 (None, 56, 56, 256)             590080      
+ conv2d_20 (Conv2D)                 (None, 56, 56, 256)             590080      
+ max_pooling2d_8 (MaxPooling2D)     (None, 28, 28, 256)             0           
+ conv2d_19 (Conv2D)                 (None, 28, 28, 512)             1180160     
+ conv2d_18 (Conv2D)                 (None, 28, 28, 512)             2359808     
+ conv2d_17 (Conv2D)                 (None, 28, 28, 512)             2359808     
+ max_pooling2d_7 (MaxPooling2D)     (None, 14, 14, 512)             0           
+ conv2d_16 (Conv2D)                 (None, 14, 14, 512)             2359808     
+ conv2d_15 (Conv2D)                 (None, 14, 14, 512)             2359808     
+ conv2d_14 (Conv2D)                 (None, 14, 14, 512)             2359808     
+ max_pooling2d_6 (MaxPooling2D)     (None, 7, 7, 512)               0           
+ flatten_3 (Flatten)                (None, 25088)                   0           
+ dense_8 (Dense)                    (None, 4096)                    102764544   
+ dense_7 (Dense)                    (None, 4096)                    16781312    
+ dense_6 (Dense)                    (None, 1000)                    4097000     
+================================================================================
+Total params: 138357544 (527.79 MB)
+Trainable params: 138357544 (527.79 MB)
+Non-trainable params: 0 (0.00 Byte)
+________________________________________________________________________________</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="resnet" class="slide level2" data-number="7.6"><h2>
+<span class="header-section-number">7.6</span> ResNet</h2>
+<div class="definition">
+<p><span class="green">ResNet</span> (Redes Residuales), introducida por Microsoft en 2015, es una arquitectura profunda que utiliza “bloques residuales” para permitir la construcción de redes muy profundas sin el problema de la desaparición del gradiente.</p>
+</div>
+
+<img data-src="images/03_CNN/resnet.png" class="r-stretch"></section><section class="slide level2"><div class="panel-tabset">
+<ul id="tabset-7" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-7-1">Código en R</a></li>
+<li><a href="#tabset-7-2">Summary del modelo</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-7-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="fu">library</span>(keras)</span>
+<span id="cb22-2"><a href=""></a>input <span class="ot">&lt;-</span> <span class="fu">layer_input</span>(<span class="at">shape =</span> <span class="fu">c</span>(<span class="dv">224</span>, <span class="dv">224</span>, <span class="dv">3</span>))</span>
+<span id="cb22-3"><a href=""></a>conv1 <span class="ot">&lt;-</span> <span class="fu">layer_conv_2d</span>(input, <span class="at">filters =</span> <span class="dv">64</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">7</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">padding =</span> <span class="st">'same'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href=""></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">padding =</span> <span class="st">'same'</span>)</span>
+<span id="cb22-5"><a href=""></a><span class="co"># Residual Block</span></span>
+<span id="cb22-6"><a href=""></a>residual_block <span class="ot">&lt;-</span> <span class="cf">function</span>(input, filters, <span class="at">strides =</span> <span class="dv">1</span>) {</span>
+<span id="cb22-7"><a href=""></a>  x <span class="ot">&lt;-</span> <span class="fu">layer_conv_2d</span>(input, <span class="at">filters =</span> filters, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">strides =</span> strides, <span class="at">padding =</span> <span class="st">'same'</span>, <span class="at">activation =</span> <span class="st">'relu'</span>)</span>
+<span id="cb22-8"><a href=""></a>  x <span class="ot">&lt;-</span> <span class="fu">layer_conv_2d</span>(x, <span class="at">filters =</span> filters, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">padding =</span> <span class="st">'same'</span>)</span>
+<span id="cb22-9"><a href=""></a>  <span class="cf">if</span> (strides <span class="sc">!=</span> <span class="dv">1</span>) {</span>
+<span id="cb22-10"><a href=""></a>    input <span class="ot">&lt;-</span> <span class="fu">layer_conv_2d</span>(input, <span class="at">filters =</span> filters, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">strides =</span> strides, <span class="at">padding =</span> <span class="st">'same'</span>)</span>
+<span id="cb22-11"><a href=""></a>  }</span>
+<span id="cb22-12"><a href=""></a>  <span class="fu">layer_add</span>(<span class="fu">list</span>(x, input)) <span class="sc">%&gt;%</span> <span class="fu">layer_activation</span>(<span class="st">'relu'</span>)</span>
+<span id="cb22-13"><a href=""></a>}</span>
+<span id="cb22-14"><a href=""></a>resnet <span class="ot">&lt;-</span> <span class="fu">residual_block</span>(conv1, <span class="dv">64</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-15"><a href=""></a>  <span class="fu">residual_block</span>(<span class="at">filters =</span> <span class="dv">128</span>, <span class="at">strides =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-16"><a href=""></a>  <span class="fu">residual_block</span>(<span class="at">filters =</span> <span class="dv">256</span>, <span class="at">strides =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-17"><a href=""></a>  <span class="fu">residual_block</span>(<span class="at">filters =</span> <span class="dv">512</span>, <span class="at">strides =</span> <span class="dv">2</span>)</span>
+<span id="cb22-18"><a href=""></a>flatten <span class="ot">&lt;-</span> <span class="fu">layer_flatten</span>(resnet) <span class="sc">%&gt;%</span></span>
+<span id="cb22-19"><a href=""></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">1000</span>, <span class="at">activation =</span> <span class="st">'softmax'</span>)</span>
+<span id="cb22-20"><a href=""></a>model <span class="ot">&lt;-</span> <span class="fu">keras_model</span>(<span class="at">inputs =</span> input, <span class="at">outputs =</span> flatten)</span>
+<span id="cb22-21"><a href=""></a>model <span class="sc">%&gt;%</span> <span class="fu">compile</span>(</span>
+<span id="cb22-22"><a href=""></a>  <span class="at">loss =</span> <span class="st">'categorical_crossentropy'</span>,</span>
+<span id="cb22-23"><a href=""></a>  <span class="at">optimizer =</span> <span class="fu">optimizer_sgd</span>(),</span>
+<span id="cb22-24"><a href=""></a>  <span class="at">metrics =</span> <span class="st">'accuracy'</span></span>
+<span id="cb22-25"><a href=""></a>)</span>
+<span id="cb22-26"><a href=""></a><span class="fu">summary</span>(model)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-7-2">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Model: "model_1"
+________________________________________________________________________________
+ Layer (type)           Output Shape            Param   Connected to            
+                                                 #                              
+================================================================================
+ input_2 (InputLayer)   [(None, 224, 224, 3)]   0       []                      
+ conv2d_27 (Conv2D)     (None, 112, 112, 64)    9472    ['input_2[0][0]']       
+ max_pooling2d_11 (Max  (None, 56, 56, 64)      0       ['conv2d_27[0][0]']     
+ Pooling2D)                                                                     
+ conv2d_31 (Conv2D)     (None, 56, 56, 64)      36928   ['max_pooling2d_11[0][0]
+                                                        ']                      
+ conv2d_32 (Conv2D)     (None, 56, 56, 64)      36928   ['conv2d_31[0][0]']     
+ add (Add)              (None, 56, 56, 64)      0       ['conv2d_32[0][0]',     
+                                                         'max_pooling2d_11[0][0]
+                                                        ']                      
+ activation (Activatio  (None, 56, 56, 64)      0       ['add[0][0]']           
+ n)                                                                             
+ conv2d_30 (Conv2D)     (None, 28, 28, 128)     73856   ['activation[0][0]']    
+ conv2d_33 (Conv2D)     (None, 28, 28, 128)     14758   ['conv2d_30[0][0]']     
+                                                4                               
+ conv2d_34 (Conv2D)     (None, 28, 28, 128)     8320    ['activation[0][0]']    
+ add_1 (Add)            (None, 28, 28, 128)     0       ['conv2d_33[0][0]',     
+                                                         'conv2d_34[0][0]']     
+ activation_1 (Activat  (None, 28, 28, 128)     0       ['add_1[0][0]']         
+ ion)                                                                           
+ conv2d_29 (Conv2D)     (None, 14, 14, 256)     29516   ['activation_1[0][0]']  
+                                                8                               
+ conv2d_35 (Conv2D)     (None, 14, 14, 256)     59008   ['conv2d_29[0][0]']     
+                                                0                               
+ conv2d_36 (Conv2D)     (None, 14, 14, 256)     33024   ['activation_1[0][0]']  
+ add_2 (Add)            (None, 14, 14, 256)     0       ['conv2d_35[0][0]',     
+                                                         'conv2d_36[0][0]']     
+ activation_2 (Activat  (None, 14, 14, 256)     0       ['add_2[0][0]']         
+ ion)                                                                           
+ conv2d_28 (Conv2D)     (None, 7, 7, 512)       11801   ['activation_2[0][0]']  
+                                                60                              
+ conv2d_37 (Conv2D)     (None, 7, 7, 512)       23598   ['conv2d_28[0][0]']     
+                                                08                              
+ conv2d_38 (Conv2D)     (None, 7, 7, 512)       13158   ['activation_2[0][0]']  
+                                                4                               
+ add_3 (Add)            (None, 7, 7, 512)       0       ['conv2d_37[0][0]',     
+                                                         'conv2d_38[0][0]']     
+ activation_3 (Activat  (None, 7, 7, 512)       0       ['add_3[0][0]']         
+ ion)                                                                           
+ flatten_4 (Flatten)    (None, 25088)           0       ['activation_3[0][0]']  
+ dense_9 (Dense)        (None, 1000)            25089   ['flatten_4[0][0]']     
+                                                000                             
+================================================================================
+Total params: 29991912 (114.41 MB)
+Trainable params: 29991912 (114.41 MB)
+Non-trainable params: 0 (0.00 Byte)
+________________________________________________________________________________</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="mobilenet" class="slide level2" data-number="7.7"><h2>
+<span class="header-section-number">7.7</span> MobileNet</h2>
+<div class="definition">
+<p><span class="green">MobileNet</span>, desarrollada por Google, está optimizada para dispositivos móviles y embebidos. Utiliza separable depthwise convolutions para reducir la cantidad de parámetros y cálculos.</p>
+</div>
+
+<img data-src="images/03_CNN/mobilenet.png" class="r-stretch"></section><section class="slide level2"><div class="panel-tabset">
+<ul id="tabset-8" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-8-1">Código en R</a></li>
+<li><a href="#tabset-8-2">Summary del modelo</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-8-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="fu">library</span>(keras)</span>
+<span id="cb24-2"><a href=""></a>model <span class="ot">&lt;-</span> <span class="fu">keras_model_sequential</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">32</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">activation =</span> <span class="st">'relu'</span>, <span class="at">input_shape =</span> <span class="fu">c</span>(<span class="dv">224</span>, <span class="dv">224</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href=""></a>  <span class="fu">layer_depthwise_conv_2d</span>(<span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-5"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">64</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-6"><a href=""></a>  <span class="fu">layer_depthwise_conv_2d</span>(<span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-7"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">128</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-8"><a href=""></a>  <span class="fu">layer_depthwise_conv_2d</span>(<span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-9"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">128</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-10"><a href=""></a>  <span class="fu">layer_depthwise_conv_2d</span>(<span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-11"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">256</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-12"><a href=""></a>  <span class="fu">layer_depthwise_conv_2d</span>(<span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-13"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">256</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-14"><a href=""></a>  <span class="fu">layer_depthwise_conv_2d</span>(<span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">strides =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-15"><a href=""></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">512</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-16"><a href=""></a>  <span class="fu">layer_global_average_pooling_2d</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-17"><a href=""></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">1000</span>, <span class="at">activation =</span> <span class="st">'softmax'</span>)</span>
+<span id="cb24-18"><a href=""></a>model <span class="sc">%&gt;%</span> <span class="fu">compile</span>(</span>
+<span id="cb24-19"><a href=""></a>  <span class="at">loss =</span> <span class="st">'categorical_crossentropy'</span>,</span>
+<span id="cb24-20"><a href=""></a>  <span class="at">optimizer =</span> <span class="fu">optimizer_adam</span>(),</span>
+<span id="cb24-21"><a href=""></a>  <span class="at">metrics =</span> <span class="st">'accuracy'</span></span>
+<span id="cb24-22"><a href=""></a>)</span>
+<span id="cb24-23"><a href=""></a><span class="fu">summary</span>(model)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-8-2">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Model: "sequential_3"
+________________________________________________________________________________
+ Layer (type)                       Output Shape                    Param #     
+================================================================================
+ conv2d_45 (Conv2D)                 (None, 111, 111, 32)            896         
+ depthwise_conv2d_5 (DepthwiseConv  (None, 109, 109, 32)            320         
+ 2D)                                                                            
+ conv2d_44 (Conv2D)                 (None, 109, 109, 64)            2112        
+ depthwise_conv2d_4 (DepthwiseConv  (None, 54, 54, 64)              640         
+ 2D)                                                                            
+ conv2d_43 (Conv2D)                 (None, 54, 54, 128)             8320        
+ depthwise_conv2d_3 (DepthwiseConv  (None, 52, 52, 128)             1280        
+ 2D)                                                                            
+ conv2d_42 (Conv2D)                 (None, 52, 52, 128)             16512       
+ depthwise_conv2d_2 (DepthwiseConv  (None, 25, 25, 128)             1280        
+ 2D)                                                                            
+ conv2d_41 (Conv2D)                 (None, 25, 25, 256)             33024       
+ depthwise_conv2d_1 (DepthwiseConv  (None, 23, 23, 256)             2560        
+ 2D)                                                                            
+ conv2d_40 (Conv2D)                 (None, 23, 23, 256)             65792       
+ depthwise_conv2d (DepthwiseConv2D  (None, 11, 11, 256)             2560        
+ )                                                                              
+ conv2d_39 (Conv2D)                 (None, 11, 11, 512)             131584      
+ global_average_pooling2d (GlobalA  (None, 512)                     0           
+ veragePooling2D)                                                               
+ dense_10 (Dense)                   (None, 1000)                    513000      
+================================================================================
+Total params: 779880 (2.98 MB)
+Trainable params: 779880 (2.98 MB)
+Non-trainable params: 0 (0.00 Byte)
+________________________________________________________________________________</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section><section id="referencias" class="title-slide slide level1 smaller scrollable" data-background-color="#00A499" data-number="8"><h1>
+<span class="header-section-number">8</span> Referencias</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Hubel1959" class="csl-entry" role="listitem">
 Hubel, David H, y Torsten N Wiesel. 1959. <span>«Receptive fields of single neurones in the cat’s striate cortex»</span>. <em>The Journal of physiology</em> 148 (3): 574.
@@ -1451,7 +1926,7 @@ Li, Bin, Yuki Todo, y Zheng Tang. 2022. <span>«Artificial Visual System for Ori
         }
       }
     });
-    </script><script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
+    </script><script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;
