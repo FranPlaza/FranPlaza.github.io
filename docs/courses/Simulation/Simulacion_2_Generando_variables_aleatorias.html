@@ -448,7 +448,7 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Lanzamiento de monedas</span></span>
 <span id="cb1-2"><a href=""></a><span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 0 0 1 1 1 1 0 0 0</code></pre>
+<pre><code> [1] 0 0 1 1 1 0 1 0 0 1</code></pre>
 </div>
 </div>
 <p></p>
@@ -456,7 +456,7 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Escoger números del loto</span></span>
 <span id="cb3-2"><a href=""></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">36</span>, <span class="at">size =</span> <span class="dv">6</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 25 20 34 15  1 29</code></pre>
+<pre><code>[1] 23 22 10  1  8 27</code></pre>
 </div>
 </div>
 <p></p>
@@ -464,8 +464,8 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Permuación de letras a-z</span></span>
 <span id="cb5-2"><a href=""></a><span class="fu">sample</span>(letters)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "l" "i" "d" "r" "s" "k" "h" "u" "n" "q" "m" "p" "b" "c" "t" "z" "w" "y" "x"
-[20] "g" "a" "v" "e" "f" "o" "j"</code></pre>
+<pre><code> [1] "b" "g" "a" "x" "s" "i" "z" "t" "r" "d" "l" "n" "w" "k" "h" "m" "c" "o" "y"
+[20] "u" "e" "j" "p" "v" "q" "f"</code></pre>
 </div>
 </div>
 <p></p>
@@ -476,7 +476,7 @@ Francisco Plaza Vega
 <div class="cell-output cell-output-stdout">
 <pre><code>x
  1  2  3 
-21 28 51 </code></pre>
+21 27 52 </code></pre>
 </div>
 </div>
 </section><section id="algunos-generadores-aleatorios-en-r" class="slide level2" data-number="1.1"><h2>
@@ -1661,7 +1661,7 @@ d = x^2 + y^2, \quad \theta = \tan^{-1}\left(\frac{y}{x}\right)
 <p><span class="math display">\[
 f(d, \theta) = \frac{1}{2} \cdot \frac{1}{2\pi} e^{-d/2}, \quad 0 &lt; d &lt; \infty, \quad 0 &lt; \theta &lt; 2\pi
 \]</span></p>
-</section><section class="slide level2"><p>Sin embargo, como lo anterior es igual al producto de una densidad exponencial con media 2 (es decir, <span class="math inline">\(\frac{1}{2} e^{-d/2}\)</span>) y la densidad uniforme en <span class="math inline">\((0, 2\pi)\)</span> [es decir, <span class="math inline">\((2\pi)^{-1}\)</span>], se deduce que</p>
+</section><section class="slide level2"><p>Sin embargo, como lo anterior es igual al producto de una densidad exponencial con media 2 (es decir, <span class="math inline">\(\frac{1}{2} e^{-d/2}\)</span>) y la densidad uniforme en <span class="math inline">\((0, 2\pi)\)</span> (es decir, <span class="math inline">\((2\pi)^{-1}\)</span>), se deduce que</p>
 <blockquote>
 <p><span class="math inline">\(R^2\)</span> y <span class="math inline">\(\Theta\)</span> son independientes, con <span class="math inline">\(R^2\)</span> exponencial con media 2 y <span class="math inline">\(\Theta\)</span> uniformemente distribuida en <span class="math inline">\((0, 2\pi)\)</span></p>
 </blockquote>
@@ -1676,7 +1676,7 @@ X = &amp; R \cos \Theta = \sqrt{-2 \log U_1} \cos(2\pi U_2) \\
 Y = &amp; R \sin \Theta = \sqrt{-2 \log U_1} \sin(2\pi U_2)
 \end{eqnarray}
 \qquad(2)\]</span></span></p>
-<p>Las transformaciones dadas por las Ecuaciones <a href="#/eq-boxmuller" class="quarto-xref">Ecuación&nbsp;2</a> son conocidas como las <span class="green">transformaciones de Box-Müller</span>.</p>
+<p>Las transformaciones dadas por la <a href="#/eq-boxmuller" class="quarto-xref">Ecuación&nbsp;2</a> son conocidas como las <span class="green">transformaciones de Box-Müller</span>.</p>
 </section><section class="slide level2"><ul>
 <li class="fragment"><p>Desafortunadamente, el uso de las transformaciones de Box-Müller para generar un par de variables aleatorias normales estándar independientes no es computacionalmente muy eficiente. La razón de esto es la necesidad de calcular las funciones trigonométricas seno y coseno.</p></li>
 <li class="fragment"><p>Sin embargo, hay una manera de evitar esta dificultad que consume tiempo mediante un cálculo indirecto del seno y coseno de un ángulo aleatorio (en lugar de un cálculo directo que genera <span class="math inline">\(U\)</span> y luego calcula el seno y coseno de <span class="math inline">\(2\pi U\)</span>).</p></li>
@@ -1706,18 +1706,19 @@ V_2 =&amp; 2U_2 - 1
 \cos \Theta =&amp; \frac{V_1}{R} = \frac{V_1}{(V_1^2 + V_2^2)^{1/2}}
 \end{eqnarray}\]</span></p>
 </div>
-</section><section class="slide level2"><p>Se deduce ahora de la transformación de Box-Muller (5.5) que podemos generar normales estándar independientes generando un número aleatorio <span class="math inline">\(U\)</span> y estableciendo</p>
+</section><section class="slide level2"><p>Se deduce ahora de la transformación de Box-Muller (<a href="#/eq-boxmuller" class="quarto-xref">Ecuación&nbsp;2</a>) que podemos generar normales estándar independientes generando un número aleatorio <span class="math inline">\(U\)</span> y estableciendo</p>
 <p><span id="eq-polar2"><span class="math display">\[\begin{eqnarray}
 X =&amp; (-2 \log U)^{1/2} \frac{V_1}{(V_1^2 + V_2^2)^{1/2}} \\
 Y =&amp; (-2 \log U)^{1/2} \frac{V_2}{(V_1^2 + V_2^2)^{1/2}}
 \end{eqnarray} \qquad(3)\]</span></span></p>
-<p>De hecho, dado que <span class="math inline">\(R^2 = V_1^2 + V_2^2\)</span> está uniformemente distribuido en <span class="math inline">\((0, 1)\)</span> y es independiente del ángulo aleatorio <span class="math inline">\(\Theta\)</span>, podemos usarlo como el número aleatorio <span class="math inline">\(U\)</span> necesario en las Ecuaciones <a href="#/eq-polar2" class="quarto-xref">Ecuación&nbsp;3</a>. Por lo tanto, dejando <span class="math inline">\(S = R^2\)</span>, obtenemos que</p>
+<p>De hecho, dado que <span class="math inline">\(R^2 = V_1^2 + V_2^2\)</span> está uniformemente distribuido en <span class="math inline">\((0, 1)\)</span> y es independiente del ángulo aleatorio <span class="math inline">\(\Theta\)</span>, podemos usarlo como el número aleatorio <span class="math inline">\(U\)</span> necesario en la <a href="#/eq-polar2" class="quarto-xref">Ecuación&nbsp;3</a>. Por lo tanto, dejando <span class="math inline">\(S = R^2\)</span>, obtenemos que</p>
 <p><span class="math display">\[\begin{eqnarray}
 X =&amp; (-2 \log S)^{1/2} \frac{V_1}{S^{1/2}} = V_1 \left(\frac{-2 \log S}{S}\right)^{1/2} \\
 Y =&amp; (-2 \log S)^{1/2} \frac{V_2}{S^{1/2}} = V_2 \left(\frac{-2 \log S}{S}\right)^{1/2}
 \end{eqnarray}\]</span></p>
 <p>son normales estándar independientes cuando <span class="math inline">\((V_1, V_2)\)</span> es un punto elegido al azar en el círculo de radio 1 centrado en el origen, y <span class="math inline">\(S = V_1^2 + V_2^2\)</span>.</p>
-</section><section class="slide level2"><p>Resumiendo, tenemos el siguiente enfoque para generar un par de normales estándar independientes:</p>
+</section><section class="slide level2"><div class="alert">
+<p>Resumiendo, tenemos el siguiente enfoque para generar un par de normales estándar independientes:</p>
 <ul>
 <li class="fragment"><p><strong>Paso 1:</strong> Generar números aleatorios, <span class="math inline">\(U_1\)</span> y <span class="math inline">\(U_2\)</span>.</p></li>
 <li class="fragment"><p><strong>Paso 2:</strong> Establecer <span class="math inline">\(V_1 = 2U_1 - 1, V_2 = 2U_2 - 1, S = V_1^2 + V_2^2\)</span>.</p></li>
@@ -1727,6 +1728,7 @@ Y =&amp; (-2 \log S)^{1/2} \frac{V_2}{S^{1/2}} = V_2 \left(\frac{-2 \log S}{S}\r
 <p><span class="math display">\[
 X = \sqrt{\frac{-2 \log S}{S}} V_1, \quad Y = \sqrt{\frac{-2 \log S}{S}} V_2
 \]</span></p>
+</div>
 <p>Lo anterior se <span class="green">llama el método polar</span>. Dado que la probabilidad de que un punto aleatorio en el cuadrado caiga dentro del círculo es igual a <span class="math inline">\(\pi/4\)</span> (el área del círculo dividida por el área del cuadrado), se deduce que, en promedio, el método polar requerirá <span class="math inline">\(4/\pi \approx 1.273\)</span> iteraciones del Paso 1. Por lo tanto, en promedio, requerirá <span class="math inline">\(2.546\)</span> números aleatorios, <span class="math inline">\(1\)</span> logaritmo, <span class="math inline">\(1\)</span> raíz cuadrada, <span class="math inline">\(1\)</span> división y <span class="math inline">\(4.546\)</span> multiplicaciones para generar dos normales estándar independientes.</p>
 </section></section><section><section id="método-de-composición" class="title-slide slide level1 center" data-background-color="#00A499" data-number="6"><h1>
 <span class="header-section-number">6</span> Método de composición</h1>
