@@ -448,7 +448,7 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Lanzamiento de monedas</span></span>
 <span id="cb1-2"><a href=""></a><span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0 0 1 1 1 0 1 0 0 1</code></pre>
+<pre><code> [1] 0 1 0 1 0 1 1 1 1 1</code></pre>
 </div>
 </div>
 <p></p>
@@ -456,7 +456,7 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Escoger números del loto</span></span>
 <span id="cb3-2"><a href=""></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">36</span>, <span class="at">size =</span> <span class="dv">6</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 23 22 10  1  8 27</code></pre>
+<pre><code>[1] 35 32 10 31  4  6</code></pre>
 </div>
 </div>
 <p></p>
@@ -464,8 +464,8 @@ Francisco Plaza Vega
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Permuación de letras a-z</span></span>
 <span id="cb5-2"><a href=""></a><span class="fu">sample</span>(letters)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "b" "g" "a" "x" "s" "i" "z" "t" "r" "d" "l" "n" "w" "k" "h" "m" "c" "o" "y"
-[20] "u" "e" "j" "p" "v" "q" "f"</code></pre>
+<pre><code> [1] "o" "t" "n" "c" "w" "g" "v" "s" "b" "r" "d" "f" "x" "z" "a" "e" "m" "k" "q"
+[20] "l" "u" "j" "i" "y" "p" "h"</code></pre>
 </div>
 </div>
 <p></p>
@@ -476,7 +476,7 @@ Francisco Plaza Vega
 <div class="cell-output cell-output-stdout">
 <pre><code>x
  1  2  3 
-21 27 52 </code></pre>
+22 30 48 </code></pre>
 </div>
 </div>
 </section><section id="algunos-generadores-aleatorios-en-r" class="slide level2" data-number="1.1"><h2>
@@ -1730,78 +1730,715 @@ X = \sqrt{\frac{-2 \log S}{S}} V_1, \quad Y = \sqrt{\frac{-2 \log S}{S}} V_2
 \]</span></p>
 </div>
 <p>Lo anterior se <span class="green">llama el método polar</span>. Dado que la probabilidad de que un punto aleatorio en el cuadrado caiga dentro del círculo es igual a <span class="math inline">\(\pi/4\)</span> (el área del círculo dividida por el área del cuadrado), se deduce que, en promedio, el método polar requerirá <span class="math inline">\(4/\pi \approx 1.273\)</span> iteraciones del Paso 1. Por lo tanto, en promedio, requerirá <span class="math inline">\(2.546\)</span> números aleatorios, <span class="math inline">\(1\)</span> logaritmo, <span class="math inline">\(1\)</span> raíz cuadrada, <span class="math inline">\(1\)</span> división y <span class="math inline">\(4.546\)</span> multiplicaciones para generar dos normales estándar independientes.</p>
-</section></section><section><section id="método-de-composición" class="title-slide slide level1 center" data-background-color="#00A499" data-number="6"><h1>
-<span class="header-section-number">6</span> Método de composición</h1>
+<!-- # Método de composición {background-color="#00A499"} -->
+<!-- --- -->
+<!-- ## La idea intuitiva -->
+<!-- Supongamos que tenemos un método eficiente para simular el valor de una variable aleatoria que toma cualquiera de las siguientes dos funciones de masa de probabilidad $\{ p_j^{(1)}, j \geq 0 \}$ o $\{ p_j^{(2)}, j \geq 0 \}$, y queremos simular el valor de la variable aleatoria $X$ que tiene función de masa de probabilidad dada por: -->
+<!-- $$P\{ X=j \} = \alpha p_j^{(1)} + (1- \alpha) p_j^{(2)}, \qquad j \geq 0$$ {#eq-composition} -->
+<!-- donde $0 < \alpha < 1$. Una manera para simular esta v.a. $X$ es tomar en cuenta que si $X_1$ y $X_2$ son v.a. con sus respectivas funciones de masa dadas por $\{ p_j^{(1)} \}$ y $\{ p_j^{(2)} \}$, entonces la variable aleatoria $X$ es definida por: -->
+<!-- $$ X = \left\{\begin{matrix} -->
+<!-- X_1 & \text{con probabilidad } \alpha\\  -->
+<!-- X_2 & \text{con probabilidad } 1- \alpha  -->
+<!-- \end{matrix}\right. $$  -->
+<!-- tendrá su función de masa de probabilidadd dada por la @eq-composition. De esto sigue que es posible generar el valor de esta variable aleatoria al generar un número aleatorio $U$ y luego generar el valor de $X_1$ si $U > \alpha$ y de $X_2$ si $U > \alpha$. -->
+<!-- --- -->
+<!-- ::: {.example} -->
+<!-- [Ejemplo]{.green}: </br> -->
+<!-- Supongamos que queremos generar el valor de una variable aleatoria $X$ tal que -->
+<!-- $$ -->
+<!-- p_j = P\{X = j\} =  -->
+<!-- \begin{cases}  -->
+<!-- 0.05 & \text{para } j = 1, 2, 3, 4, 5 \\ -->
+<!-- 0.15 & \text{para } j = 6, 7, 8, 9, 10  -->
+<!-- \end{cases} -->
+<!-- $$ -->
+<!-- ::: -->
+<!-- --- -->
+<!-- Notando que $p_j = 0.5p_j^{(1)} + 0.5p_j^{(2)}$, donde -->
+<!-- $$ -->
+<!-- p_j^{(1)} = 0.1, \quad j = 1, \ldots, 10 \quad \text{y} \quad p_j^{(2)} =  -->
+<!-- \begin{cases}  -->
+<!-- 0 & \text{para } j = 1, 2, 3, 4, 5 \\ -->
+<!-- 0.2 & \text{para } j = 6, 7, 8, 9, 10  -->
+<!-- \end{cases} -->
+<!-- $$ -->
+<!-- podemos lograr esto generando primero un número aleatorio $U$ y luego generando de la distribución uniforme discreta sobre $1, \ldots, 10$ si $U < 0.5$ y de la uniforme discreta sobre $6, 7, 8, 9, 10$ de otro modo.  -->
+<!-- Es decir, podemos simular $X$ de la siguiente manera: -->
+<!-- **Paso 1:** Generar un número aleatorio $U_1$.   -->
+<!-- **Paso 2:** Generar un número aleatorio $U_2$.   -->
+<!-- **Paso 3:** Si $U_1 < 0.5$, entonces $X = \text{Int}(10U_2) + 1$. De lo contrario, $X = \text{Int}(5U_2) + 6$. -->
+<!-- --- -->
+<!-- Si $F_i, \, i = 1, \ldots, n$ son funciones de distribución y $\alpha_i, \, i = 1, \ldots, n$ son números no negativos que suman 1, entonces la función de distribución $F$ dada por -->
+<!-- $$ -->
+<!-- F(x) = \sum_{i=1}^{n} \alpha_i F_i(x) -->
+<!-- $$ -->
+<!-- se dice que es una mezcla, o [una composición]{.green}, de las funciones de distribución $F_i, \, i = 1, \ldots, n$. Una forma de simular a partir de $F$ es primero simular una variable aleatoria $I$, igual a $i$ con probabilidad $\alpha_i, \, i = 1, \ldots, n$, y luego simular a partir de la distribución $F_I$. (Es decir, si el valor simulado de $I$ es $j$, entonces la segunda simulación es de $F_j$.) Este enfoque para simular a partir de $F$ se conoce como el método de composición. -->
+<!-- --- -->
+<!-- ::: {.definition} -->
+<!-- Aplicable cuando la función de distribución deseada puede expresarse como una combinación convexa de varias funciones de distribución. Este método asume que una función de distribución acumulada (cdf), $F$, puede expresarse como una mezcla de cdfs $\{G_i\}$, es decir: -->
+<!-- $$ -->
+<!-- F(x) = \sum_{i=1}^{m} p_i G_i(x) , -->
+<!-- $$ -->
+<!-- donde -->
+<!-- $$ -->
+<!-- p_i > 0, -->
+<!-- $$ -->
+<!-- $$ -->
+<!-- \sum_{i=1}^{m} p_i = 1 . -->
+<!-- $$ -->
+<!-- ::: -->
+<!-- --- -->
+<!-- Sea $X_i \sim G_i$ y sea $Y$ una variable aleatoria discreta con $\mathbb{P}(Y = i) = p_i$, independiente de $X_i$, para $1 \leq i \leq m$. Entonces una variable aleatoria $X$ con cdf $F$ puede representarse como -->
+<!-- $$ -->
+<!-- X = \sum_{i=1}^{m} X_i \mathbb{I}_{(Y = i)}. -->
+<!-- $$ -->
+<!-- Se deduce que, para generar $X$ a partir de $F$, primero debemos generar la variable aleatoria discreta $Y$ y luego, dado $Y = i$, generar $X_i$ de $G_i$. Así, tenemos el siguiente método. -->
+<!-- ::: {.alert} -->
+<!-- ::: {.small} -->
+<!-- - **Paso 1**: Generar la variable aleatoria $Y$ de acuerdo con -->
+<!-- $$ -->
+<!-- \mathbb{P}(Y = i) = p_i, \quad i = 1, \ldots, m . -->
+<!-- $$ -->
+<!-- - **Paso 2**: Dado $Y = i$, generar $X$ de la cdf $G_i$. -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- --- -->
+</section></section><section><section id="método-de-composición-sumas-y-mixturas" class="title-slide slide level1 center" data-background-color="#00A499" data-number="6"><h1>
+<span class="header-section-number">6</span> Método de composición (Sumas y Mixturas)</h1>
 
 </section><section id="la-idea-intuitiva-2" class="slide level2" data-number="6.1"><h2>
 <span class="header-section-number">6.1</span> La idea intuitiva</h2>
-<p>Supongamos que tenemos un método eficiente para simular el valor de una variable aleatoria que toma cualquiera de las siguientes dos funciones de masa de probabilidad <span class="math inline">\(\{ p_j^{(1)}, j \geq 0 \}\)</span> o <span class="math inline">\(\{ p_j^{(2)}, j \geq 0 \}\)</span>, y queremos simular el valor de la variable aleatoria <span class="math inline">\(X\)</span> que tiene función de masa de probabilidad dada por:</p>
-<p><span id="eq-composition"><span class="math display">\[P\{ X=j \} = \alpha p_j^{(1)} + (1- \alpha) p_j^{(2)}, \qquad j \geq 0 \qquad(4)\]</span></span></p>
-<p>donde <span class="math inline">\(0 &lt; \alpha &lt; 1\)</span>. Una manera para simular esta v.a. <span class="math inline">\(X\)</span> es tomar en cuenta que si <span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span> son v.a. con sus respectivas funciones de masa dadas por <span class="math inline">\(\{ p_j^{(1)} \}\)</span> y <span class="math inline">\(\{ p_j^{(2)} \}\)</span>, entonces la variable aleatoria <span class="math inline">\(X\)</span> es definida por:</p>
-<p><span class="math display">\[ X = \left\{\begin{matrix}
-X_1 &amp; \text{con probabilidad } \alpha\\
-X_2 &amp; \text{con probabilidad } 1- \alpha
-\end{matrix}\right. \]</span></p>
-<p>tendrá su función de masa de probabilidadd dada por la <a href="#/la-idea-intuitiva-2" class="quarto-xref">Ecuación&nbsp;4</a>. De esto sigue que es posible generar el valor de esta variable aleatoria al generar un número aleatorio <span class="math inline">\(U\)</span> y luego generar el valor de <span class="math inline">\(X_1\)</span> si <span class="math inline">\(U &gt; \alpha\)</span> y de <span class="math inline">\(X_2\)</span> si <span class="math inline">\(U &gt; \alpha\)</span>.</p>
+<div class="definition">
+<p><span class="blue">Sumas de Variables Aleatorias</span> </p>
+<ul>
+<li class="fragment"><p>Imaginemos que se tienen <span class="green">dos variables aleatorias diferentes</span>, como la <span class="orange">altura de una persona y su peso</span>.</p></li>
+<li class="fragment"><p>Si se quiere encontrar la distribución conjunta de la <strong>suma</strong> de estas dos variables, podemos pensar en cada posible combinación de altura y peso y sumar esos valores.</p></li>
+<li class="fragment"><p>La <span class="green">suma de variables aleatorias tiende a mezclar sus distribuciones</span>, resultando en una nueva distribución que combina las características de ambas.</p></li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Método:</strong></p>
+<div class="small">
+<ul>
+<li class="fragment"><p>Paso 1. Generar un valor aleatorio para cada una de las variables.</p></li>
+<li class="fragment"><p>Paso 2. Sumar estos valores para obtener un nuevo valor aleatorio.</p></li>
+<li class="fragment"><p>Paso 3. Repetir Paso 1.</p></li>
+</ul>
+</div>
+</div>
 </section><section class="slide level2"><div class="example">
-<p><span class="green">Ejemplo</span>:  Supongamos que queremos generar el valor de una variable aleatoria <span class="math inline">\(X\)</span> tal que</p>
-<p><span class="math display">\[
-p_j = P\{X = j\} =
-\begin{cases}
-0.05 &amp; \text{para } j = 1, 2, 3, 4, 5 \\
-0.15 &amp; \text{para } j = 6, 7, 8, 9, 10
-\end{cases}
-\]</span></p>
+<p><span class="green">Ejemplo:</span> </p>
+<p>Supongamos que se tienen dos variables aleatorias, <span class="math inline">\(X_1 \sim N(0, 1)\)</span> y <span class="math inline">\(X_2 \sim N(3, 1)\)</span>. Para encontrar la distribución de su suma, <span class="math inline">\(S = X_1 + X_2\)</span>:</p>
 </div>
-</section><section class="slide level2"><p>Notando que <span class="math inline">\(p_j = 0.5p_j^{(1)} + 0.5p_j^{(2)}\)</span>, donde</p>
-<p><span class="math display">\[
-p_j^{(1)} = 0.1, \quad j = 1, \ldots, 10 \quad \text{y} \quad p_j^{(2)} =
-\begin{cases}
-0 &amp; \text{para } j = 1, 2, 3, 4, 5 \\
-0.2 &amp; \text{para } j = 6, 7, 8, 9, 10
-\end{cases}
-\]</span></p>
-<p>podemos lograr esto generando primero un número aleatorio <span class="math inline">\(U\)</span> y luego generando de la distribución uniforme discreta sobre <span class="math inline">\(1, \ldots, 10\)</span> si <span class="math inline">\(U &lt; 0.5\)</span> y de la uniforme discreta sobre <span class="math inline">\(6, 7, 8, 9, 10\)</span> de otro modo.</p>
-<p>Es decir, podemos simular <span class="math inline">\(X\)</span> de la siguiente manera:</p>
-<p><strong>Paso 1:</strong> Generar un número aleatorio <span class="math inline">\(U_1\)</span>.<br><strong>Paso 2:</strong> Generar un número aleatorio <span class="math inline">\(U_2\)</span>.<br><strong>Paso 3:</strong> Si <span class="math inline">\(U_1 &lt; 0.5\)</span>, entonces <span class="math inline">\(X = \text{Int}(10U_2) + 1\)</span>. De lo contrario, <span class="math inline">\(X = \text{Int}(5U_2) + 6\)</span>.</p>
-</section><section class="slide level2"><p>Si <span class="math inline">\(F_i, \, i = 1, \ldots, n\)</span> son funciones de distribución y <span class="math inline">\(\alpha_i, \, i = 1, \ldots, n\)</span> son números no negativos que suman 1, entonces la función de distribución <span class="math inline">\(F\)</span> dada por</p>
-<p><span class="math display">\[
-F(x) = \sum_{i=1}^{n} \alpha_i F_i(x)
-\]</span></p>
-<p>se dice que es una mezcla, o <span class="green">una composición</span>, de las funciones de distribución <span class="math inline">\(F_i, \, i = 1, \ldots, n\)</span>. Una forma de simular a partir de <span class="math inline">\(F\)</span> es primero simular una variable aleatoria <span class="math inline">\(I\)</span>, igual a <span class="math inline">\(i\)</span> con probabilidad <span class="math inline">\(\alpha_i, \, i = 1, \ldots, n\)</span>, y luego simular a partir de la distribución <span class="math inline">\(F_I\)</span>. (Es decir, si el valor simulado de <span class="math inline">\(I\)</span> es <span class="math inline">\(j\)</span>, entonces la segunda simulación es de <span class="math inline">\(F_j\)</span>.) Este enfoque para simular a partir de <span class="math inline">\(F\)</span> se conoce como el método de composición.</p>
-</section><section class="slide level2"><div class="definition">
-<p>Aplicable cuando la función de distribución deseada puede expresarse como una combinación convexa de varias funciones de distribución. Este método asume que una función de distribución acumulada (cdf), <span class="math inline">\(F\)</span>, puede expresarse como una mezcla de cdfs <span class="math inline">\(\{G_i\}\)</span>, es decir:</p>
-<p><span class="math display">\[
-F(x) = \sum_{i=1}^{m} p_i G_i(x) ,
-\]</span></p>
-<p>donde</p>
-<p><span class="math display">\[
-p_i &gt; 0,
-\]</span></p>
-<p><span class="math display">\[
-\sum_{i=1}^{m} p_i = 1 .
-\]</span></p>
-</div>
-</section><section class="slide level2"><p>Sea <span class="math inline">\(X_i \sim G_i\)</span> y sea <span class="math inline">\(Y\)</span> una variable aleatoria discreta con <span class="math inline">\(\mathbb{P}(Y = i) = p_i\)</span>, independiente de <span class="math inline">\(X_i\)</span>, para <span class="math inline">\(1 \leq i \leq m\)</span>. Entonces una variable aleatoria <span class="math inline">\(X\)</span> con cdf <span class="math inline">\(F\)</span> puede representarse como</p>
-<p><span class="math display">\[
-X = \sum_{i=1}^{m} X_i \mathbb{I}_{(Y = i)}.
-\]</span></p>
-<p>Se deduce que, para generar <span class="math inline">\(X\)</span> a partir de <span class="math inline">\(F\)</span>, primero debemos generar la variable aleatoria discreta <span class="math inline">\(Y\)</span> y luego, dado <span class="math inline">\(Y = i\)</span>, generar <span class="math inline">\(X_i\)</span> de <span class="math inline">\(G_i\)</span>. Así, tenemos el siguiente método.</p>
-</section><section id="algoritmo" class="slide level2" data-number="6.2"><h2>
-<span class="header-section-number">6.2</span> Algoritmo</h2>
-<div class="alert">
+<div class="small">
 <ol type="1">
-<li class="fragment">Generar la variable aleatoria <span class="math inline">\(Y\)</span> de acuerdo con</li>
-</ol>
-<p><span class="math display">\[
-\mathbb{P}(Y = i) = p_i, \quad i = 1, \ldots, m .
-\]</span></p>
-<ol start="2" type="1">
-<li class="fragment">Dado <span class="math inline">\(Y = i\)</span>, generar <span class="math inline">\(X\)</span> de la cdf <span class="math inline">\(G_i\)</span>.</li>
+<li class="fragment"><p>Generar un valor <span class="math inline">\(x_1\)</span> de <span class="math inline">\(N(0, 1)\)</span>.</p></li>
+<li class="fragment"><p>Generar un valor <span class="math inline">\(x_2\)</span> de <span class="math inline">\(N(3, 1)\)</span>.</p></li>
+<li class="fragment"><p>Sumar estos valores: <span class="math inline">\(s = x_1 + x_2\)</span>.</p></li>
 </ol>
 </div>
-</section></section><section id="referencias" class="title-slide slide level1 smaller scrollable" data-background-color="#00A499" data-number="7"><h1>
-<span class="header-section-number">7</span> Referencias</h1>
+<div class="fragment">
+<p>El resultado es una nueva variable aleatoria <span class="math inline">\(S\)</span> que sigue una distribución normal con media 3 y varianza 2.</p>
+</div>
+</section><section class="slide level2"><div class="definition">
+<p><span class="blue">Mezclas de Variables Aleatorias</span> </p>
+<ul>
+<li class="fragment"><p>Pensemos en una mezcla de variables aleatorias como un chef que elige entre <span class="green">dos recetas diferentes para cocinar una comida</span>.</p></li>
+<li class="fragment"><p>En lugar de combinar todos los ingredientes de ambas recetas, el chef decide <em>aleatoriamente</em> cuál receta seguir cada vez que cocina.</p></li>
+<li class="fragment"><p>Así, algunas comidas seguirán una receta y otras seguirán la otra, creando una <span class="green">mezcla de dos tipos de comidas</span> en el menú.</p></li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Método:</strong></p>
+<div class="small">
+<ul>
+<li class="fragment"><p>Paso 1. Decidir de manera aleatoria cuál de las variables aleatorias utilizar.</p></li>
+<li class="fragment"><p>Paso 2. Generar un valor aleatorio de la variable elegida.</p></li>
+</ul>
+</div>
+</div>
+</section><section class="slide level2"><div class="example">
+<p><span class="green">Ejemplo:</span> </p>
+<p>Supongamos que tenemos dos variables aleatorias, <span class="math inline">\(X_1 \sim N(0, 1)\)</span> y <span class="math inline">\(X_2 \sim N(3, 1)\)</span>. Para crear una mezcla de estas variables:</p>
+</div>
+<div class="small">
+<ol type="1">
+<li class="fragment"><p>Elegimos aleatoriamente entre <span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span> con probabilidad igual.</p></li>
+<li class="fragment"><p>Si escogemos <span class="math inline">\(X_1\)</span>, generamos un valor <span class="math inline">\(x\)</span> de <span class="math inline">\(N(0, 1)\)</span>.</p></li>
+<li class="fragment"><p>Si escogemos <span class="math inline">\(X_2\)</span>, generamos un valor <span class="math inline">\(x\)</span> de <span class="math inline">\(N(3, 1)\)</span>.</p></li>
+</ol>
+</div>
+<div class="fragment">
+<p>El resultado es una nueva variable aleatoria <span class="math inline">\(X\)</span> que tiene una distribución bimodal, ya que mezcla las dos distribuciones normales originales.</p>
+<!-- ::: {.alert} -->
+<!-- - **Sumas:** La suma de variables aleatorias tiende a "suavizar" la distribución resultante. Por ejemplo, sumar dos distribuciones normales produce otra distribución normal. -->
+<!-- - **Mezclas:** Una mezcla de variables aleatorias puede crear una distribución más compleja y multimodal. La mezcla no suaviza, sino que mantiene las características distintivas de las distribuciones individuales. -->
+<!-- ::: -->
+</div>
+</section><section id="convoluciones" class="slide level2" data-number="6.2"><h2>
+<span class="header-section-number">6.2</span> Convoluciones</h2>
+<ul>
+<li class="fragment"><p>Sean <span class="math inline">\(X_1, \ldots, X_n\)</span> independientes e idénticamente distribuidas con distribución <span class="math inline">\(X_j \sim X\)</span>, y sea <span class="math inline">\(S = X_1 + \cdots + X_n\)</span>. La <span class="green">función de distribución de la suma <span class="math inline">\(S\)</span> se llama la <span class="math inline">\(n\)</span>-ésima convolución de <span class="math inline">\(X\)</span></span> y se denota <span class="math inline">\(F_X^{*(n)}\)</span>.</p></li>
+<li class="fragment"><p>Es sencillo simular una convolución generando directamente <span class="math inline">\(X_1, \ldots, X_n\)</span> y calculando la suma.</p></li>
+<li class="fragment">
+<p>Varias distribuciones están relacionadas por convolución.</p>
+<ul>
+<li class="fragment"><p>Si <span class="math inline">\(\nu &gt; 0\)</span> es un entero, la distribución chi-cuadrado con <span class="math inline">\(\nu\)</span> grados de libertad es la convolución de <span class="math inline">\(\nu\)</span> variables aleatorias normales estándar iid al cuadrado.</p></li>
+<li class="fragment"><p>La distribución binomial negativa <span class="math inline">\(\text{NegBin}(r, p)\)</span> es la convolución de <span class="math inline">\(r\)</span> variables aleatorias geométricas iid <span class="math inline">\(\text{Geom}(p)\)</span>.</p></li>
+<li class="fragment"><p>La convolución de <span class="math inline">\(r\)</span> variables aleatorias exponenciales independientes <span class="math inline">\(\text{Exp}(\lambda)\)</span> tiene la distribución Gamma<span class="math inline">\((r, \lambda)\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+<div class="fragment">
+<p>Consultar <a href="http://www.math.wm.edu/~leemis/chart/UDR/UDR.html">el siguiente enlace</a> para una presentación introductoria de estas y muchas otras relaciones interesantes entre familias de distribuciones.</p>
+</div>
+</section><section class="slide level2"><div class="example">
+<p><span class="green">Ejemplo: Distribución Chi-cuadrado</span> </p>
+<p>Podemos generar una variable aleatoria chi cuadrado <span class="math inline">\(\chi^2(\nu)\)</span> como la convolución de <span class="math inline">\(\nu\)</span> normales al cuadrado. Si <span class="math inline">\(Z_1, \ldots, Z_\nu\)</span> son variables aleatorias iid <span class="math inline">\(N(0,1)\)</span>, entonces <span class="math inline">\(V = Z_1^2 + \cdots + Z_\nu^2\)</span> tiene la distribución <span class="math inline">\(\chi^2(\nu)\)</span>. Los pasos para generar una muestra aleatoria de tamaño <span class="math inline">\(n\)</span> de <span class="math inline">\(\chi^2(\nu)\)</span> son los siguientes:</p>
+<div class="small">
+<ul>
+<li class="fragment"><p>Paso 1. Llenar una matriz <span class="math inline">\(n \times \nu\)</span> con <span class="math inline">\(n\nu\)</span> muestras aleatorias <span class="math inline">\(N(0,1)\)</span>.</p></li>
+<li class="fragment"><p>Paso 2. Elevar al cuadrado cada entrada en la matriz (1).</p></li>
+<li class="fragment"><p>Paso 3. Calcular las sumas de las filas de los normales al cuadrado. Cada suma de fila es una observación aleatoria de la distribución <span class="math inline">\(\chi^2(\nu)\)</span>.</p></li>
+<li class="fragment"><p>Paso 4. Entregar el vector de sumas de filas.</p></li>
+</ul>
+</div>
+</div>
+</section><section class="slide level2"><p>Un ejemplo con <span class="math inline">\(n = 1000\)</span> y <span class="math inline">\(\nu = 2\)</span> se muestra a continuación.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb33-2"><a href=""></a>nu <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb33-3"><a href=""></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n <span class="sc">*</span> nu), n, nu)<span class="sc">^</span><span class="dv">2</span>  <span class="co"># matriz de normales al cuadrado</span></span>
+<span id="cb33-4"><a href=""></a><span class="co"># sumar los normales al cuadrado a través de cada fila: método 1</span></span>
+<span id="cb33-5"><a href=""></a>y <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(X)</span>
+<span id="cb33-6"><a href=""></a><span class="co"># método 2</span></span>
+<span id="cb33-7"><a href=""></a>y <span class="ot">&lt;-</span> <span class="fu">apply</span>(X, <span class="at">MARGIN=</span><span class="dv">1</span>, <span class="at">FUN=</span>sum)  <span class="co"># un vector de longitud n</span></span>
+<span id="cb33-8"><a href=""></a><span class="fu">mean</span>(y)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.998142</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a><span class="fu">var</span>(y)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.830044</code></pre>
+</div>
+</div>
+<p>Una variable aleatoria <span class="math inline">\(\chi^2(\nu)\)</span> tiene media <span class="math inline">\(\nu\)</span> y varianza <span class="math inline">\(2\nu\)</span>. Nuestros parámetros calculados concuerdan muy de cerca con los parámetros teóricos.</p>
+</section><section id="mixturas" class="slide level2" data-number="6.3"><h2>
+<span class="header-section-number">6.3</span> Mixturas</h2>
+<div class="definition">
+<p>Una variable aleatoria <span class="math inline">\(X\)</span> <span class="green">es una mezcla discreta</span> si la distribución de <span class="math inline">\(X\)</span> es una suma ponderada <span class="math inline">\(F_X(x) = \sum \theta_i F_{X_i}(x)\)</span> para alguna secuencia de variables aleatorias <span class="math inline">\(X_1, X_2, \ldots\)</span> y <span class="math inline">\(\theta_i &gt; 0\)</span> tal que <span class="math inline">\(\sum \theta_i = 1\)</span>. Las constantes <span class="math inline">\(\theta_i\)</span> se llaman pesos de mezcla o probabilidades de mezcla. Aunque la notación es similar para sumas y mezclas, las distribuciones representadas son diferentes.</p>
+</div>
+<div class="definition">
+<p>Una variable aleatoria <span class="math inline">\(X\)</span> <span class="green">es una mezcla continua</span> si la distribución de <span class="math inline">\(X\)</span> es <span class="math inline">\(F_X(x) = \int_{-\infty}^{\infty} F_{X|Y=y}(x) f_Y(y) \, dy\)</span> para una familia <span class="math inline">\(X|Y = y\)</span> indexada por los números reales <span class="math inline">\(y\)</span> y la función de ponderación <span class="math inline">\(f_Y\)</span> tal que <span class="math inline">\(\int_{-\infty}^{\infty} f_Y(y) \, dy = 1\)</span>.</p>
+</div>
+</section><section class="slide level2"><p>Comparamos los métodos para la simulación <span class="green">de una convolución</span> y <span class="green">una mixtura de variables</span> normales. Supongamos <span class="math inline">\(X_1 \sim N(0, 1)\)</span> y <span class="math inline">\(X_2 \sim N(3, 1)\)</span> son independientes. La notación <span class="math inline">\(S = X_1 + X_2\)</span> denota la convolución de <span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span>. La distribución de <span class="math inline">\(S\)</span> es normal con media <span class="math inline">\(\mu_1 + \mu_2 = 3\)</span> y varianza <span class="math inline">\(\sigma_1^2 + \sigma_2^2 = 2\)</span>.</p>
+<div class="alert">
+<p>Para simular la convolución:</p>
+<div class="small">
+<ul>
+<li class="fragment"><p>Paso 1. Generar <span class="math inline">\(x_1 \sim N(0, 1)\)</span>.</p></li>
+<li class="fragment"><p>Paso 2. Generar <span class="math inline">\(x_2 \sim N(3, 1)\)</span>.</p></li>
+<li class="fragment"><p>Paso 3. Hacer <span class="math inline">\(s = x_1 + x_2\)</span>.</p></li>
+</ul>
+</div>
+</div>
+</section><section class="slide level2"><p>También podemos definir una mezcla normal al 50%, denotada <span class="math inline">\(F_X(x) = 0.5F_{X_1}(x) + 0.5F_{X_2}(x)\)</span>. A diferencia de la convolución anterior, la distribución de la mezcla <span class="math inline">\(X\)</span> es claramente no normal; es bimodal.</p>
+<div class="alert">
+<p>Para simular la mezcla:</p>
+<div class="small">
+<ul>
+<li class="fragment"><p>Paso 1. Generar un entero <span class="math inline">\(k \in \{1, 2\}\)</span>, donde <span class="math inline">\(P(1) = P(2) = 0.5\)</span>.</p></li>
+<li class="fragment"><p>Paso 2. Si <span class="math inline">\(k = 1\)</span>, entregar un valor aleatorio <span class="math inline">\(x\)</span> de <span class="math inline">\(N(0, 1)\)</span>; si <span class="math inline">\(k = 2\)</span>, entregar un valor aleatorio <span class="math inline">\(x\)</span> de <span class="math inline">\(N(3, 1)\)</span>.</p></li>
+</ul>
+</div>
+</div>
+</section><section class="slide level2"><div class="example">
+<p><span class="green">Comparación entre Convoluciones y mezclas</span> </p>
+<p>Sean <span class="math inline">\(X_1 \sim \text{Gamma}(2, 2)\)</span> y <span class="math inline">\(X_2 \sim \text{Gamma}(2, 4)\)</span> independientes. Comparamos los histogramas de las muestras generadas por la convolución <span class="math inline">\(S = X_1 + X_2\)</span> y la mezcla <span class="math inline">\(F_X = 0.5F_{X_1} + 0.5F_{X_2}\)</span>.</p>
+</div>
+<p></p>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb37-2"><a href=""></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb37-3"><a href=""></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb37-4"><a href=""></a>x1 <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(n, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb37-5"><a href=""></a>x2 <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(n, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb37-6"><a href=""></a>s <span class="ot">&lt;-</span> x1 <span class="sc">+</span> x2          <span class="co"># la convolución</span></span>
+<span id="cb37-7"><a href=""></a>u <span class="ot">&lt;-</span> <span class="fu">runif</span>(n)</span>
+<span id="cb37-8"><a href=""></a>k <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(u <span class="sc">&gt;</span> <span class="fl">0.5</span>)  <span class="co"># vector de 0's y 1's</span></span>
+<span id="cb37-9"><a href=""></a>x <span class="ot">&lt;-</span> k <span class="sc">*</span> x1 <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> k) <span class="sc">*</span> x2  <span class="co"># la mezcla</span></span>
+<span id="cb37-10"><a href=""></a></span>
+<span id="cb37-11"><a href=""></a><span class="fu">data.frame</span>(s, x) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-12"><a href=""></a>  <span class="fu">melt</span>(<span class="at">key =</span> <span class="fu">c</span>(<span class="st">"s"</span>, <span class="st">"x"</span>), <span class="at">value.name=</span><span class="st">"sim"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-13"><a href=""></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb37-14"><a href=""></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x=</span>sim), <span class="at">color =</span> <span class="st">"green4"</span>, <span class="at">fill=</span><span class="st">"orange3"</span>) <span class="sc">+</span></span>
+<span id="cb37-15"><a href=""></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>variable) <span class="sc">+</span></span>
+<span id="cb37-16"><a href=""></a>  <span class="fu">xlab</span>(<span class="st">"Histogramas"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Frecuencia"</span>) <span class="sc">+</span></span>
+<span id="cb37-17"><a href=""></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Simulacion_2_Generando_variables_aleatorias_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section class="slide level2"><p>El método de generación de la mezcla del ejemplo anterior es simple para una mezcla de dos distribuciones, pero no para mezclas arbitrarias. El siguiente ejemplo ilustra cómo generar una mezcla de varias distribuciones con probabilidades de mezcla arbitrarias.</p>
+<div class="example">
+<p><span class="green">Mezcla de varias distribuciones gamma</span> </p>
+<p>Este ejemplo es similar al anterior, pero hay varios componentes en la mezcla y los pesos de mezcla no son uniformes. La mezcla está dada por</p>
+<p><span class="math display">\[
+F_X = \sum_{i=1}^{5} \theta_j F_{X_j},
+\]</span></p>
+<p>donde <span class="math inline">\(X_j \sim \text{Gamma}(r = 3, \lambda_j = 1/j)\)</span> son independientes y las probabilidades de mezcla son <span class="math inline">\(\theta_j = j/15, \, j = 1, \ldots, 5\)</span>.</p>
+<p>Para simular una variable aleatoria de la mezcla <span class="math inline">\(F_X\)</span>:</p>
+<ul>
+<li class="fragment"><p>Paso 1. Generar un entero <span class="math inline">\(k \in \{1, 2, 3, 4, 5\}\)</span>, donde <span class="math inline">\(P(k) = \theta_k, \, k = 1, \ldots, 5\)</span>.</p></li>
+<li class="fragment"><p>Paso 2. Entregar un valor aleatorio <span class="math inline">\(\text{Gamma}(r, \lambda_k)\)</span>.</p></li>
+</ul>
+</div>
+<!-- --- -->
+<!-- ::: {.alert} -->
+<!-- [Eficiencia del cómputo]{.blue} -->
+<!-- - Para generar una muestra de tamaño $n$, los pasos (1) y (2) se repiten $n$ veces. Notar que el algoritmo mencionado anteriormente implica usar un ciclo `for`, pero [los ciclos `for` son realmente ineficientes en R]{.orange}. El algoritmo se puede traducir a un enfoque vectorizado. -->
+<!--   - Paso 1. Generar una muestra aleatoria $k_1, \ldots, k_n$ de enteros en un vector $k$, donde $P(k) = \theta_k$, $k = 1, \ldots, 5$. Luego, $k[i]$ indica cuál de las cinco distribuciones gamma se muestreará para obtener el elemento $i$-ésimo de la muestra (usa `sample`). -->
+<!--   - Paso 2. Establecer `tasa` igual al vector de longitud $n$ $\lambda = (\lambda_k)$. -->
+<!--   - Paso 3. Generar una muestra gamma de tamaño $n$, con el parámetro de forma $r$ y el vector de tasas `tasa` (usar `rgamma`). -->
+<!-- ::: -->
+</section><section class="slide level2"><div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a> <span class="fu">library</span>(ggplot2)</span>
+<span id="cb38-2"><a href=""></a><span class="co"># Generar datos</span></span>
+<span id="cb38-3"><a href=""></a>n <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb38-4"><a href=""></a>k <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size=</span>n, <span class="at">replace=</span><span class="cn">TRUE</span>, </span>
+<span id="cb38-5"><a href=""></a>            <span class="at">prob=</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)<span class="sc">/</span><span class="dv">15</span>)</span>
+<span id="cb38-6"><a href=""></a>tasa <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>k</span>
+<span id="cb38-7"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(n, <span class="at">shape=</span><span class="dv">3</span>, <span class="at">rate=</span>tasa)</span>
+<span id="cb38-8"><a href=""></a></span>
+<span id="cb38-9"><a href=""></a><span class="co"># Crear un dataframe para ggplot2</span></span>
+<span id="cb38-10"><a href=""></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> x, <span class="at">tipo =</span> <span class="st">"Mezcla"</span>)</span>
+<span id="cb38-11"><a href=""></a></span>
+<span id="cb38-12"><a href=""></a><span class="co"># Agregar las densidades de los componentes</span></span>
+<span id="cb38-13"><a href=""></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb38-14"><a href=""></a>  df_componente <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb38-15"><a href=""></a>    <span class="at">value =</span> <span class="fu">rgamma</span>(n, <span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span>i), </span>
+<span id="cb38-16"><a href=""></a>    <span class="at">tipo =</span> <span class="fu">paste</span>(<span class="st">"Componente"</span>, i))</span>
+<span id="cb38-17"><a href=""></a>  df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(df, df_componente)</span>
+<span id="cb38-18"><a href=""></a>}</span>
+<span id="cb38-19"><a href=""></a></span>
+<span id="cb38-20"><a href=""></a><span class="co"># Graficar usando ggplot2</span></span>
+<span id="cb38-21"><a href=""></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">color =</span> tipo)) <span class="sc">+</span></span>
+<span id="cb38-22"><a href=""></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb38-23"><a href=""></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb38-24"><a href=""></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb38-25"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"x"</span>, <span class="at">y =</span> <span class="st">"Densidad"</span>) <span class="sc">+</span></span>
+<span id="cb38-26"><a href=""></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Simulacion_2_Generando_variables_aleatorias_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section class="slide level2"><div class="example">
+<p><span class="green">Mezcla de varias distribuciones gamma</span> </p>
+<p>Sea</p>
+<p><span class="math display">\[
+F_X = \sum_{j=1}^{5} \theta_j F_{X_j},
+\]</span></p>
+<p>donde <span class="math inline">\(X_j \sim \text{Gamma}(3, \lambda_j)\)</span> son independientes, con tasas <span class="math inline">\(\lambda = (1, 1.5, 2, 2.5, 3)\)</span> y probabilidades de mezcla <span class="math inline">\(\theta = (0.1, 0.2, 0.2, 0.3, 0.2)\)</span>.</p>
+</div>
+</section><section class="slide level2"><p>Este ejemplo es similar al anterior. Muestrea de 1:5 con pesos de probabilidad <span class="math inline">\(\theta\)</span> para obtener un vector de longitud <span class="math inline">\(n\)</span>. La posición <span class="math inline">\(i\)</span>-ésima en este vector indica cuál de las cinco distribuciones gamma se muestreará para obtener el elemento <span class="math inline">\(i\)</span>-ésimo de la muestra. Este vector se usa para seleccionar el parámetro de tasa correcto del vector <span class="math inline">\(\lambda\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a>n <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb39-2"><a href=""></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.2</span>)</span>
+<span id="cb39-3"><a href=""></a></span>
+<span id="cb39-4"><a href=""></a>lambda <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>, <span class="fl">2.5</span>, <span class="dv">3</span>)</span>
+<span id="cb39-5"><a href=""></a>k <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size=</span>n, <span class="at">replace=</span><span class="cn">TRUE</span>, <span class="at">prob=</span>p)</span>
+<span id="cb39-6"><a href=""></a>tasa <span class="ot">&lt;-</span> lambda[k]</span>
+<span id="cb39-7"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(n, <span class="at">shape=</span><span class="dv">3</span>, <span class="at">rate=</span>tasa)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Comparar las primeras entradas de <code>k</code> y los valores correspondientes de <code>tasa</code> con <span class="math inline">\(\lambda\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a>k[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 4 5 4 5 4 1 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a>tasa[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.0 2.5 3.0 2.5 3.0 2.5 1.0 2.5</code></pre>
+</div>
+</div>
+</section><section class="slide level2"><div class="example">
+<p><span class="green">Mezcla Poisson-Gamma</span> </p>
+<p>Este es un ejemplo de una mezcla continua. La distribución binomial negativa es una mezcla de distribuciones de Poisson(<span class="math inline">\(\Lambda\)</span>), donde <span class="math inline">\(\Lambda\)</span> tiene una distribución gamma. Específicamente, si <span class="math inline">\((X|\Lambda = \lambda) \sim \text{Poisson}(\lambda)\)</span> y <span class="math inline">\(\Lambda \sim \text{Gamma}(r, \beta)\)</span>, entonces <span class="math inline">\(X\)</span> tiene la distribución binomial negativa con parámetros <span class="math inline">\(r\)</span> y <span class="math inline">\(p = \beta / (1 + \beta)\)</span> (ver, por ejemplo, [23]). Este ejemplo ilustra un método de muestreo de una mezcla Poisson-Gamma y compara la muestra con la distribución binomial negativa.</p>
+</div>
+</section><section class="slide level2"><div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a><span class="co"># Generar una mezcla Poisson-Gamma</span></span>
+<span id="cb44-2"><a href=""></a><span class="fu">library</span>(knitr)</span>
+<span id="cb44-3"><a href=""></a><span class="fu">library</span>(kableExtra) </span>
+<span id="cb44-4"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb44-5"><a href=""></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb44-6"><a href=""></a>r <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb44-7"><a href=""></a>beta <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb44-8"><a href=""></a>lambda <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(n, r, beta) <span class="co"># lambda es aleatoria</span></span>
+<span id="cb44-9"><a href=""></a></span>
+<span id="cb44-10"><a href=""></a><span class="co"># Ahora suministrar la muestra de lambda como la media de Poisson</span></span>
+<span id="cb44-11"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(n, lambda) <span class="co"># la mezcla</span></span>
+<span id="cb44-12"><a href=""></a></span>
+<span id="cb44-13"><a href=""></a><span class="co"># Comparar con la binomial negativa</span></span>
+<span id="cb44-14"><a href=""></a>mix <span class="ot">&lt;-</span> <span class="fu">tabulate</span>(x <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> n</span>
+<span id="cb44-15"><a href=""></a>negbin <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">dnbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="fu">max</span>(x), r, beta<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span>beta)), <span class="dv">3</span>)</span>
+<span id="cb44-16"><a href=""></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(negbin <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> negbin) <span class="sc">/</span> n)</span>
+<span id="cb44-17"><a href=""></a><span class="fu">round</span>(<span class="fu">rbind</span>(mix, negbin, se), <span class="dv">3</span>)</span>
+<span id="cb44-18"><a href=""></a></span>
+<span id="cb44-19"><a href=""></a><span class="fu">tibble</span>(<span class="at">mix =</span> mix, <span class="at">negbin =</span> negbin, <span class="at">se =</span> se) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-20"><a href=""></a>  <span class="fu">kbl</span>(<span class="at">align =</span> <span class="st">"c"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-21"><a href=""></a>  <span class="fu">kable_paper</span>(<span class="st">"hover"</span>, <span class="at">full_width=</span>F) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-22"><a href=""></a>  <span class="fu">kable_styling</span>(<span class="at">font_size=</span><span class="dv">20</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>        [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]
+mix    0.314 0.325 0.218 0.084 0.038 0.014 0.004 0.003
+negbin 0.316 0.316 0.198 0.099 0.043 0.017 0.006 0.002
+se     0.015 0.015 0.013 0.009 0.006 0.004 0.002 0.001</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<table class="lightable-paper lightable-hover table" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; font-size: 20px; margin-left: auto; margin-right: auto;">
+<thead><tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">mix</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">negbin</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">se</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.314</td>
+<td style="text-align: center;">0.316</td>
+<td style="text-align: center;">0.0147018</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.325</td>
+<td style="text-align: center;">0.316</td>
+<td style="text-align: center;">0.0147018</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.218</td>
+<td style="text-align: center;">0.198</td>
+<td style="text-align: center;">0.0126014</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.084</td>
+<td style="text-align: center;">0.099</td>
+<td style="text-align: center;">0.0094445</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.038</td>
+<td style="text-align: center;">0.043</td>
+<td style="text-align: center;">0.0064149</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.014</td>
+<td style="text-align: center;">0.017</td>
+<td style="text-align: center;">0.0040879</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.004</td>
+<td style="text-align: center;">0.006</td>
+<td style="text-align: center;">0.0024421</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.003</td>
+<td style="text-align: center;">0.002</td>
+<td style="text-align: center;">0.0014128</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section><section><section id="normal-multivariada" class="title-slide slide level1 center" data-background-color="#00A499" data-number="7"><h1>
+<span class="header-section-number">7</span> Normal multivariada</h1>
+
+</section><section class="slide level2"><div class="definition">
+<p>Un vector aleatorio <span class="math inline">\(X = (X_1, \ldots, X_d)\)</span> tiene una <span class="green">distribución normal multivariante</span> de <span class="math inline">\(d\)</span> dimensiones denotada <span class="math inline">\(N_d(\mu, \Sigma)\)</span> si la densidad de <span class="math inline">\(X\)</span> es</p>
+<p><span class="math display">\[
+f(x) = \frac{1}{(2\pi)^{d/2} |\Sigma|^{1/2}} \exp \left\{-\frac{1}{2}(x - \mu)^T \Sigma^{-1} (x - \mu)\right\}, \quad x \in \mathbb{R}^d,
+\]</span></p>
+<p>donde <span class="math inline">\(\mu = (\mu_1, \ldots, \mu_d)^T\)</span> es el vector de medias y <span class="math inline">\(\Sigma\)</span> es una matriz simétrica positiva definida de <span class="math inline">\(d \times d\)</span></p>
+<p><span class="math display">\[
+\Sigma =
+\begin{bmatrix}
+\sigma_{11} &amp; \sigma_{12} &amp; \cdots &amp; \sigma_{1d} \\
+\sigma_{21} &amp; \sigma_{22} &amp; \cdots &amp; \sigma_{2d} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\sigma_{d1} &amp; \sigma_{d2} &amp; \cdots &amp; \sigma_{dd}
+\end{bmatrix}
+\]</span></p>
+<p>con entradas <span class="math inline">\(\sigma_{ij} = \text{Cov}(X_i, X_j)\)</span>. Aquí <span class="math inline">\(\Sigma^{-1}\)</span> es la inversa de <span class="math inline">\(\Sigma\)</span>, y <span class="math inline">\(|\Sigma|\)</span> es el determinante de <span class="math inline">\(\Sigma\)</span>. La distribución normal bivariada es el caso especial <span class="math inline">\(N_2(\mu, \Sigma)\)</span>.</p>
+</div>
+</section><section class="slide level2"><div class="alert">
+<p>Un vector <span class="math inline">\(N_d(\mu, \Sigma)\)</span> aleatorio puede generarse en dos pasos:</p>
+<ul>
+<li class="fragment"><p>Paso 1: Generar <span class="math inline">\(Z = (Z_1, \ldots, Z_d)\)</span>, donde <span class="math inline">\(Z_1, \ldots, Z_d\)</span> son normales estándar iid.</p></li>
+<li class="fragment"><p>Paso 2: Transformar el vector aleatorio <span class="math inline">\(Z\)</span> para que tenga la estructura de media <span class="math inline">\(\mu\)</span> y covarianza <span class="math inline">\(\Sigma\)</span> deseada. La transformación requiere factorizar la matriz de covarianza <span class="math inline">\(\Sigma\)</span>.</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div>
+<p>Si <span class="math inline">\(Z \sim N_d(\mu, \Sigma)\)</span>, entonces la transformación lineal <span class="math inline">\(CZ + b\)</span> es normal multivariante con media <span class="math inline">\(C\mu + b\)</span> y covarianza <span class="math inline">\(C \Sigma C^T\)</span>. Si <span class="math inline">\(Z \sim N_d(0, I_d)\)</span>, entonces</p>
+<p><span class="math display">\[
+CZ + b \sim N_d(b, C \Sigma C^T).
+\]</span></p>
+<p>Supongamos que <span class="math inline">\(\Sigma\)</span> puede factorizarse de modo que <span class="math inline">\(\Sigma = C C^T\)</span> para alguna matriz <span class="math inline">\(C\)</span>. Entonces</p>
+<p><span class="math display">\[
+CZ + \mu \sim N_d(\mu, \Sigma),
+\]</span></p>
+<p>y <span class="math inline">\(CZ + \mu\)</span> es la transformación requerida.</p>
+</div>
+</div>
+</section><section class="slide level2"><ul>
+<li class="fragment"><p>La factorización requerida de <span class="math inline">\(\Sigma\)</span> puede obtenerse mediante el método de descomposición espectral (descomposición en valores propios), factorización de Cholesky o descomposición en valores singulares (svd). Las funciones de R correspondientes son <code>eigen</code>, <code>chol</code> y <code>svd</code>.</p></li>
+<li class="fragment"><p>Usualmente, no se aplica una transformación lineal a los vectores aleatorios de una muestra uno a la vez. Típicamente, se aplica la transformación a una matriz de datos y se transforma toda la muestra.</p></li>
+</ul>
+<p></p>
+<div class="fragment">
+<div>
+<p>Supongamos que <span class="math inline">\(Z = (Z_{ij})\)</span> es una matriz <span class="math inline">\(n \times d\)</span> donde <span class="math inline">\(Z_{ij}\)</span> son iid <span class="math inline">\(N(0, 1)\)</span>. Entonces las filas de <span class="math inline">\(Z\)</span> son <span class="math inline">\(n\)</span> observaciones aleatorias de la distribución estándar <span class="math inline">\(d\)</span>-dimensional MVN. La transformación requerida aplicada a la matriz de datos es</p>
+<p><span class="math display">\[
+X = ZQ + J\mu^T,
+\]</span></p>
+<p>donde <span class="math inline">\(Q^TQ = \Sigma\)</span> y <span class="math inline">\(J\)</span> es un vector columna de unos. Las filas de <span class="math inline">\(X\)</span> son observaciones aleatorias de la distribución <span class="math inline">\(d\)</span>-dimensional MVN con vector de medias <span class="math inline">\(\mu\)</span> y matriz de covarianza <span class="math inline">\(\Sigma\)</span>.</p>
+</div>
+</div>
+</section><section id="método-para-generar-muestras-normales-multivariadas" class="slide level2" data-number="7.1"><h2>
+<span class="header-section-number">7.1</span> Método para generar muestras normales multivariadas</h2>
+<div class="definition">
+<p>Para generar una muestra aleatoria de tamaño <span class="math inline">\(n\)</span> de la distribución <span class="math inline">\(N_d(\mu, \Sigma)\)</span>:</p>
+<ul>
+<li class="fragment"><p>Paso 1. Generar una matriz <span class="math inline">\(n \times d\)</span> <span class="math inline">\(Z\)</span> que contenga <span class="math inline">\(nd\)</span> varíates aleatorios <span class="math inline">\(N(0, 1)\)</span> (n vectores aleatorios en <span class="math inline">\(\mathbb{R}^d\)</span>).</p></li>
+<li class="fragment"><p>Paso 2. Calcular una factorización <span class="math inline">\(\Sigma = Q^TQ\)</span>.</p></li>
+<li class="fragment"><p>Paso 3. Aplicar la transformación <span class="math inline">\(X = ZQ + J\mu^T\)</span>.</p></li>
+<li class="fragment"><p>Paso 4. Entregar la matriz <span class="math inline">\(n \times d\)</span> <span class="math inline">\(X\)</span>. Cada fila de <span class="math inline">\(X\)</span> es un varíate aleatorio de <span class="math inline">\(N_d(\mu, \Sigma)\)</span>.</p></li>
+</ul>
+</div>
+</section><section class="slide level2"><p>La transformación <span class="math inline">\(X = ZQ + J\mu^T\)</span> se puede codificar en R de la siguiente manera:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a>Z <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n <span class="sc">*</span> d), <span class="at">nrow =</span> n, <span class="at">ncol =</span> d)</span>
+<span id="cb46-2"><a href=""></a>X <span class="ot">&lt;-</span> Z <span class="sc">%*%</span> Q <span class="sc">+</span> <span class="fu">matrix</span>(mu, n, d, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote>
+<p>El producto de matrices <span class="math inline">\(J\mu^T\)</span> es igual a <code>matrix(mu, n, d, byrow = TRUE)</code>. Esto ahorra una multiplicación de matrices. El argumento <code>byrow = TRUE</code> es necesario aquí; el valor por defecto es <code>byrow = FALSE</code>. La matriz se llena fila por fila con las entradas del vector de medias <code>mu</code>.</p>
+</blockquote>
+<blockquote>
+<p>Existen funciones en los paquetes de R para generar muestras normales multivariadas directmente. Revisar la función <code>mvrnorm</code> en el paquete <code>MASS</code> y <code>rmvnorm</code> en el paquete <code>mvtnorm</code>.</p>
+</blockquote>
+</section><section id="método-de-descomposición-espectral-para-generar-muestras-n_dmu-sigma" class="slide level2" data-number="7.2"><h2>
+<span class="header-section-number">7.2</span> Método de descomposición espectral para generar muestras <span class="math inline">\(N_d(\mu, \Sigma)\)</span>
+</h2>
+<ul>
+<li class="fragment"><p>La raíz cuadrada de la covarianza es <span class="math inline">\(\Sigma^{1/2} = P\Lambda^{1/2}P^{-1}\)</span>, donde <span class="math inline">\(\Lambda\)</span> es la matriz diagonal con los valores propios de <span class="math inline">\(\Sigma\)</span> en la diagonal y <span class="math inline">\(P\)</span> es la matriz cuyas columnas son los vectores propios de <span class="math inline">\(\Sigma\)</span> correspondientes a los valores propios en <span class="math inline">\(\Lambda\)</span>.</p></li>
+<li class="fragment"><p>Este método también puede llamarse el <span class="green">método de descomposición en valores propios</span>. En la descomposición en valores propios tenemos <span class="math inline">\(P^{-1} = P^T\)</span> y por lo tanto <span class="math inline">\(\Sigma^{1/2} = P\Lambda^{1/2}P^T\)</span>. La matriz <span class="math inline">\(Q = \Sigma^{1/2}\)</span> es una factorización de <span class="math inline">\(\Sigma\)</span> tal que <span class="math inline">\(Q^TQ = \Sigma\)</span>.</p></li>
+</ul></section><section class="slide level2"><div class="example">
+<p><span class="green">Método de descomposición espectral</span> </p>
+<p>Este ejemplo proporciona una función <code>rmvn.eigen</code> para generar una muestra aleatoria normal multivariada. Se aplica para generar una muestra normal bivariada con vector de medias cero y</p>
+<p><span class="math display">\[
+\Sigma =
+\begin{bmatrix}
+1.0 &amp; 0.9 \\
+0.9 &amp; 1.0
+\end{bmatrix}.
+\]</span></p>
+</div>
+<div class="columns">
+<div class="column">
+<p>Definiendo los parámetros</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a><span class="co"># parámetros de media y covarianza</span></span>
+<span id="cb47-2"><a href=""></a>mu <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb47-3"><a href=""></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">9</span>, .<span class="dv">9</span>, <span class="dv">1</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column">
+<p>La función <code>eigen</code> devuelve los valores propios y vectores propios de una matriz.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href=""></a>rmvn.eigen <span class="ot">&lt;-</span> <span class="cf">function</span>(n, mu, Sigma) {</span>
+<span id="cb48-2"><a href=""></a>  <span class="co"># generar n vectores aleatorios de MVN(mu, Sigma)</span></span>
+<span id="cb48-3"><a href=""></a>  <span class="co"># la dimensión se infiere de mu y Sigma</span></span>
+<span id="cb48-4"><a href=""></a>  d <span class="ot">&lt;-</span> <span class="fu">length</span>(mu)</span>
+<span id="cb48-5"><a href=""></a>  ev <span class="ot">&lt;-</span> <span class="fu">eigen</span>(Sigma, <span class="at">symmetric =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb48-6"><a href=""></a>  lambda <span class="ot">&lt;-</span> ev<span class="sc">$</span>values</span>
+<span id="cb48-7"><a href=""></a>  V <span class="ot">&lt;-</span> ev<span class="sc">$</span>vectors</span>
+<span id="cb48-8"><a href=""></a>  R <span class="ot">&lt;-</span> V <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="fu">sqrt</span>(lambda)) <span class="sc">%*%</span> <span class="fu">t</span>(V)</span>
+<span id="cb48-9"><a href=""></a>  Z <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n <span class="sc">*</span> d), <span class="at">nrow =</span> n, <span class="at">ncol =</span> d)</span>
+<span id="cb48-10"><a href=""></a>  X <span class="ot">&lt;-</span> Z <span class="sc">%*%</span> R <span class="sc">+</span> <span class="fu">matrix</span>(mu, n, d, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb48-11"><a href=""></a>  X</span>
+<span id="cb48-12"><a href=""></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section><section class="slide level2"><p>Verificamos los resultados de la simulación:</p>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href=""></a><span class="co"># generar la muestra</span></span>
+<span id="cb49-2"><a href=""></a>X <span class="ot">&lt;-</span> <span class="fu">rmvn.eigen</span>(<span class="dv">1000</span>, mu, Sigma)</span>
+<span id="cb49-3"><a href=""></a><span class="fu">print</span>(<span class="fu">colMeans</span>(X))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.05928216 -0.07082142</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href=""></a><span class="fu">print</span>(<span class="fu">cor</span>(X))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          [,1]      [,2]
+[1,] 1.0000000 0.9077065
+[2,] 0.9077065 1.0000000</code></pre>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href=""></a><span class="fu">plot</span>(X, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"y"</span>, <span class="at">pch =</span> <span class="dv">20</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Simulacion_2_Generando_variables_aleatorias_files/figure-revealjs/unnamed-chunk-42-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>La salida del ejemplo muestra que el vector de medias de la muestra es (-0.059, -0.071) y la correlación de la muestra es 0.908, lo cual concuerda estrechamente con los parámetros especificados. El diagrama de dispersión de los datos de la muestra exhibe la simetría elíptica de las distribuciones normales multivariadas.</p>
+</section><section id="método-svd-para-generar-muestras-n_dmu-sigma" class="slide level2" data-number="7.3"><h2>
+<span class="header-section-number">7.3</span> Método SVD para generar muestras <span class="math inline">\(N_d(\mu, \Sigma)\)</span>
+</h2>
+<div class="definition">
+<p>La descomposición en valores singulares (svd) generaliza la idea de los vectores propios a las matrices rectangulares.</p>
+<ul>
+<li class="fragment"><p>La svd de una matriz <span class="math inline">\(X\)</span> es <span class="math inline">\(X = UDV^T\)</span>, donde <span class="math inline">\(D\)</span> es un vector que contiene los valores singulares de <span class="math inline">\(X\)</span>, <span class="math inline">\(U\)</span> es una matriz cuyas columnas contienen los vectores singulares izquierdos de <span class="math inline">\(X\)</span>, y <span class="math inline">\(V\)</span> es una matriz cuyas columnas contienen los vectores singulares derechos de <span class="math inline">\(X\)</span>. La matriz <span class="math inline">\(X\)</span> en este caso es la matriz de covarianza poblacional <span class="math inline">\(\Sigma\)</span>, y <span class="math inline">\(UV^T = I\)</span>.</p></li>
+<li class="fragment"><p>La svd de una matriz simétrica positiva definida <span class="math inline">\(\Sigma\)</span> da <span class="math inline">\(U = V = P\)</span> y <span class="math inline">\(\Sigma^{1/2} = UD^{1/2}V^T\)</span>.</p></li>
+<li class="fragment"><p>El método svd para en este caso es equivalente al método de descomposición espectral, pero es menos eficiente porque el método svd no aprovecha el hecho de que la matriz <span class="math inline">\(\Sigma\)</span> es cuadrada simétrica.</p></li>
+</ul>
+</div>
+</section><section class="slide level2"><div class="example">
+<p><span class="green">Método SVD</span>  Construiremos una función <code>rmvn.svd</code> para generar una muestra normal multivariada, utilizando el método svd para factorizar <span class="math inline">\(\Sigma\)</span>.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href=""></a>rmvn.svd <span class="ot">&lt;-</span> <span class="cf">function</span>(n, mu, Sigma) {</span>
+<span id="cb54-2"><a href=""></a>  <span class="co"># generar n vectores aleatorios de MVN(mu, Sigma)</span></span>
+<span id="cb54-3"><a href=""></a>  <span class="co"># la dimensión se infiere de mu y Sigma</span></span>
+<span id="cb54-4"><a href=""></a>  d <span class="ot">&lt;-</span> <span class="fu">length</span>(mu)</span>
+<span id="cb54-5"><a href=""></a>  S <span class="ot">&lt;-</span> <span class="fu">svd</span>(Sigma)</span>
+<span id="cb54-6"><a href=""></a>  R <span class="ot">&lt;-</span> S<span class="sc">$</span>u <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="fu">sqrt</span>(S<span class="sc">$</span>d)) <span class="sc">%*%</span> <span class="fu">t</span>(S<span class="sc">$</span>v) <span class="co"># raíz cuadrada de Sigma</span></span>
+<span id="cb54-7"><a href=""></a>  Z <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n <span class="sc">*</span> d), <span class="at">nrow =</span> n, <span class="at">ncol =</span> d)</span>
+<span id="cb54-8"><a href=""></a>  X <span class="ot">&lt;-</span> Z <span class="sc">%*%</span> R <span class="sc">+</span> <span class="fu">matrix</span>(mu, n, d, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb54-9"><a href=""></a>  X</span>
+<span id="cb54-10"><a href=""></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="método-de-factorización-de-choleski-para-generar-muestras-n_dmu-sigma" class="slide level2" data-number="7.4"><h2>
+<span class="header-section-number">7.4</span> Método de factorización de Choleski para generar muestras <span class="math inline">\(N_d(\mu, \Sigma)\)</span>
+</h2>
+<div class="definition">
+<ul>
+<li class="fragment"><p>La factorización de Choleski de una matriz simétrica positiva definida real es <span class="math inline">\(X = Q^TQ\)</span>, donde <span class="math inline">\(Q\)</span> es una matriz triangular superior.</p></li>
+<li class="fragment"><p>La factorización de Choleski se implementa en la función de R <code>chol</code>. La sintaxis básica es <code>chol(X)</code> y el valor de retorno es una matriz triangular superior <span class="math inline">\(R\)</span> tal que <span class="math inline">\(R^TR = X\)</span>.</p></li>
+</ul>
+</div>
+</section><section class="slide level2"><div class="example">
+<p><span class="green">Método de factorización de Choleski</span> </p>
+<p>El método de factorización de Choleski se aplica para generar 200 observaciones aleatorias de una distribución normal multivariada de cuatro dimensiones.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href=""></a>rmvn.Choleski <span class="ot">&lt;-</span> <span class="cf">function</span>(n, mu, Sigma) {</span>
+<span id="cb55-2"><a href=""></a>  <span class="co"># generar n vectores aleatorios de MVN(mu, Sigma)</span></span>
+<span id="cb55-3"><a href=""></a>  <span class="co"># la dimensión se infiere de mu y Sigma</span></span>
+<span id="cb55-4"><a href=""></a>  d <span class="ot">&lt;-</span> <span class="fu">length</span>(mu)</span>
+<span id="cb55-5"><a href=""></a>  Q <span class="ot">&lt;-</span> <span class="fu">chol</span>(Sigma) <span class="co"># factorización de Choleski de Sigma</span></span>
+<span id="cb55-6"><a href=""></a>  Z <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n <span class="sc">*</span> d), <span class="at">nrow =</span> n, <span class="at">ncol =</span> d)</span>
+<span id="cb55-7"><a href=""></a>  X <span class="ot">&lt;-</span> Z <span class="sc">%*%</span> Q <span class="sc">+</span> <span class="fu">matrix</span>(mu, n, d, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb55-8"><a href=""></a>  X</span>
+<span id="cb55-9"><a href=""></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section class="slide level2"><p>Generamos muestras Normal 4-variada, de acuerdo con la misma estructura de media y covarianza que los datos de <code>iris virginica</code> de cuatro dimensiones.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href=""></a>y <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris, Species <span class="sc">==</span> <span class="st">"virginica"</span>)[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span>
+<span id="cb56-2"><a href=""></a>mu <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(y)</span>
+<span id="cb56-3"><a href=""></a>Sigma <span class="ot">&lt;-</span> <span class="fu">cov</span>(y)</span>
+<span id="cb56-4"><a href=""></a>mu</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+       6.588        2.974        5.552        2.026 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href=""></a>Sigma</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Sepal.Length Sepal.Width Petal.Length Petal.Width
+Sepal.Length   0.40434286  0.09376327   0.30328980  0.04909388
+Sepal.Width    0.09376327  0.10400408   0.07137959  0.04762857
+Petal.Length   0.30328980  0.07137959   0.30458776  0.04882449
+Petal.Width    0.04909388  0.04762857   0.04882449  0.07543265</code></pre>
+</div>
+</div>
+</section><section class="slide level2"><div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href=""></a><span class="co"># Generar datos MVN con la media y covarianza calculados</span></span>
+<span id="cb60-2"><a href=""></a>X <span class="ot">&lt;-</span> <span class="fu">rmvn.Choleski</span>(<span class="dv">200</span>, mu, Sigma)</span>
+<span id="cb60-3"><a href=""></a><span class="co">#pairs(X)</span></span>
+<span id="cb60-4"><a href=""></a><span class="fu">library</span>(GGally)</span>
+<span id="cb60-5"><a href=""></a><span class="fu">data.frame</span>(X) <span class="sc">%&gt;%</span> </span>
+<span id="cb60-6"><a href=""></a>  <span class="fu">ggpairs</span>(</span>
+<span id="cb60-7"><a href=""></a>    <span class="co"># upper = list(continuous = "density", combo = "box_no_facet"),</span></span>
+<span id="cb60-8"><a href=""></a>    <span class="co"># lower = list(continuous = "points", combo = "dot_no_facet")</span></span>
+<span id="cb60-9"><a href=""></a>  )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Simulacion_2_Generando_variables_aleatorias_files/figure-revealjs/unnamed-chunk-46-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href=""></a>y <span class="sc">%&gt;%</span> </span>
+<span id="cb61-2"><a href=""></a>  <span class="fu">ggpairs</span>(</span>
+<span id="cb61-3"><a href=""></a>    <span class="co"># upper = list(continuous = "density", combo = "box_no_facet"),</span></span>
+<span id="cb61-4"><a href=""></a>    <span class="co"># lower = list(continuous = "points", combo = "dot_no_facet")</span></span>
+<span id="cb61-5"><a href=""></a>  )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Simulacion_2_Generando_variables_aleatorias_files/figure-revealjs/unnamed-chunk-47-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section class="slide level2"><ul>
+<li class="fragment"><p>Los <span class="green">diagramas de dispersión</span> de los datos dan una vista 2-D de la <span class="orange">distribución bivariada</span> de cada par de distribuciones marginales.</p></li>
+<li class="fragment"><p>La <span class="green">distribución conjunta de cada par</span> de distribuciones marginales es teóricamente <span class="orange">normal bivariada</span>. El gráfico puede compararse con la siguiente Figura de la derecha, que muestra los datos de <code>iris virginica</code>. (Los datos de iris virginica <span class="orange">no son multivariados normales</span>, pero las medias y la correlación para cada par de variables deberían ser similares a los datos simulados.)</p></li>
+</ul>
+<div class="fragment">
+<blockquote>
+<p>Nota: Para estandarizar una muestra normal multivariada, invertimos el procedimiento anterior, sustituyendo el vector de medias de la muestra y la matriz de covarianza de la muestra si los parámetros son desconocidos. La muestra transformada de <span class="math inline">\(d\)</span> dimensiones tiene entonces un vector de medias cero y covarianza <span class="math inline">\(I_d\)</span>. Esto no es lo mismo que escalar las columnas de la matriz de datos.</p>
+</blockquote>
+</div>
+</section></section><section id="referencias" class="title-slide slide level1 smaller scrollable" data-background-color="#00A499" data-number="8"><h1>
+<span class="header-section-number">8</span> Referencias</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Fisher1936" class="csl-entry" role="listitem">
 Fisher, Ronald Aylmer et&nbsp;al. 1936. <span>«Statistical methods for research workers.»</span> <em>Statistical methods for research workers.</em>, n.º 6th Ed.
