@@ -1,8 +1,8 @@
 ---
-title: "Francisco J. Plaza Vega"
+title: "Francisco J. Plaza-Vega"
 about:
   template: jolla
-  image: index_images/fran2.jpg
+  image: index_images/fran3.jpg
   links:
     - icon: envelope
       text: email
