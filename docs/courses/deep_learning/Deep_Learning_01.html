@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<script src="Deep_Learning_01_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Deep_Learning_01_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Deep_Learning_01_files/libs/quarto-html/popper.min.js"></script>
+<script src="Deep_Learning_01_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Deep_Learning_01_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Deep_Learning_01_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="Deep_Learning_01_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="Deep_Learning_01_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Deep_Learning_01_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="Deep_Learning_01_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="Deep_Learning_01_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.4.551">
+
+  <meta name="author" content="Francisco Plaza Vega">
+  <title>Deep Learning</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Deep_Learning_01_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Deep_Learning_01_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="Deep_Learning_01_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="Deep_Learning_01_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Deep_Learning_01_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Deep_Learning_01_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Deep_Learning_01_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Deep Learning</h1>
+  <p class="subtitle">Unidad 1: Fundamentos del Deep Learning</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Francisco Plaza Vega 
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:francisco.plaza.v@usach.cl">francisco.plaza.v@usach.cl</a>
+</div>
+        <p class="quarto-title-affiliation">
+            Ingeniería en Estadística
+          </p>
+    </div>
+</div>
+
+</section>
+<section>
+<section id="introducción-al-deep-learning-y-su-evolución-histórica." class="title-slide slide level1 center" data-background-color="#00A499" data-number="1">
+<h1><span class="header-section-number">1</span> Introducción al Deep Learning y su evolución histórica.</h1>
+
+</section>
+<section id="los-inicios" class="slide level2" data-number="1.1">
+<h2><span class="header-section-number">1.1</span> Los inicios</h2>
+<div class="alert">
+<div>
+<ul>
+<li><p>La idea de <span class="orange">crear máquinas pensantes</span> se remontan a la antigua Grecia, inspirados en figuras míticas como <a href="https://es.wikipedia.org/wiki/Pigmali%C3%B3n">Pigmalión</a>, <a href="https://es.wikipedia.org/wiki/D%C3%A9dalo">Dédalo</a> y <a href="https://es.wikipedia.org/wiki/Hefesto">Hefesto</a>.</p></li>
+<li><p>Sus respectivas creaciones: <a href="https://es.wikipedia.org/wiki/Galatea">Galatea</a>, <a href="https://es.wikipedia.org/wiki/Talos">Talos</a> y <a href="https://es.wikipedia.org/wiki/Pandora">Pandora</a>, han sido considerados como las <span class="orange">primeras formas de vida artificial</span>.</p></li>
+<li><p>La posibilidad de <span class="orange">inteligencia en máquinas</span> fue contemplada mucho antes de la existencia de las computadoras programables <span class="citation" data-cites="Lovelace2015">(<a href="#/referencias" role="doc-biblioref" onclick="">Lovelace 2015</a>)</span>.</p></li>
+</ul>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://www.thecollector.com/ancient-greek-mythology-robots-ai/"><img data-src="images/talos.jpg" title="Did the Ancient Greeks Warn Us About Robots?" class="quarto-figure quarto-figure-center" style="width:30.0%"></a></p>
+</figure>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<ul>
+<li class="fragment"><p>La <span class="green">inteligencia artificial (IA)</span> hoy es un campo con <span class="orange">aplicaciones prácticas</span> extensas y una muy <span class="orange">prolífica agenda de investigación</span>.</p></li>
+<li class="fragment"><p>La <span class="green">IA moderna</span> busca <span class="orange">automatizar</span> tareas rutinarias, <span class="orange">interpretar</span> el habla e imágenes, <span class="orange">apoyar</span> diagnósticos médicos y <span class="orange">fomentar la investigación</span> científica.</p></li>
+<li class="fragment"><p>Los <span class="green">primeros avances</span> en IA <span class="orange">resolvieron problemas complejos para humanos</span> pero simples para computadoras, definidos por reglas matemáticas formales.</p></li>
+<li class="fragment"><p>El <span class="green">gran reto de la IA</span> es <span class="orange">resolver tareas intuitivas humanas</span>, como el reconocimiento de voz o de rostros, que son difíciles de expresar con reglas formales.</p></li>
+</ul>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/DALLE_generated.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Imagen generada desde DALL-E con los conceptos de esta diapositiva"><img data-src="images/DALLE_generated.png" style="width:30.0%" alt="Imagen generada desde DALL-E con los conceptos de esta diapositiva"></a></p>
+<figcaption>Imagen generada desde <em>DALL-E</em> con los conceptos de esta diapositiva</figcaption>
+</figure>
+</div>
+</section>
+<section id="algunos-personajes-históricos-relevantes" class="slide level2" data-number="1.2">
+<h2><span class="header-section-number">1.2</span> Algunos personajes históricos relevantes</h2>
+<h3 data-number="1.2.1" id="ada-lovelace-1815-1852"><span class="header-section-number">1.2.1</span> Ada Lovelace (1815-1852)</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="alert">
+<p>Considerada la <span class="orange">primera programadora de la historia</span> por su trabajo en el algoritmo destinado a ser procesado por la máquina analítica de <a href="https://es.wikipedia.org/wiki/Charles_Babbage">Charles Babbage</a>. Lovelace <span class="orange">anticipó la capacidad de las computadoras para ir más allá del simple cálculo numérico</span>, sugiriendo que podrían crear arte y música si se les proporcionaban las instrucciones correctas.</p>
+</div>
+</div><div class="column" style="width:20%;">
+<p><img data-src="images/Ada_Lovelace.jpg"></p>
+</div>
+</div>
+<p>Acá algunos artículos que pueden ser de interés para profundizar en el tema:</p>
+<div>
+<ul>
+<li><p><a href="https://www.nature.com/articles/s43588-023-00541-z">Ada Lovelace, a role model for the ages</a> <span class="citation" data-cites="2023">(<a href="#/referencias" role="doc-biblioref" onclick="">Editorial 2023</a>)</span></p></li>
+<li><p><a href="https://www.sciencedirect.com/science/article/pii/S0004370216300224">The multifaceted impact of Ada Lovelace in the digital age</a> <span class="citation" data-cites="Aiello2016">(<a href="#/referencias" role="doc-biblioref" onclick="">Aiello 2016</a>)</span></p></li>
+<li><p><a href="https://link.springer.com/chapter/10.1007/978-3-031-23926-7_7">Ada Lovelace (1815–1852): Inventor of Computer Algorithms</a> <span class="citation" data-cites="Jaeger2023">(<a href="#/referencias" role="doc-biblioref" onclick="">Jaeger 2023</a>)</span></p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 data-number="1.2.2" id="alan-turing-1912-1954"><span class="header-section-number">1.2.2</span> Alan Turing (1912-1954)</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="alert">
+<p>Matemático y lógico británico, <span class="orange">es uno de los padres de la informática y pionero en la inteligencia artificial</span>. Desarrolló el concepto de la “<a href="https://es.wikipedia.org/wiki/M%C3%A1quina_de_Turing">máquina de Turing</a>”, un dispositivo teórico que puede simular cualquier algoritmo. También es conocido por el “<a href="https://es.wikipedia.org/wiki/Prueba_de_Turing">Test de Turing</a>”, un criterio para evaluar la inteligencia de una máquina según su capacidad para exhibir un comportamiento indistinguible del de un humano.</p>
+</div>
+</div><div class="column" style="width:20%;">
+<p><img data-src="images/Alan_Turing.jpg"></p>
+</div>
+</div>
+<p>Algunos artículos de interés:</p>
+<div>
+<ul>
+<li><p><a href="https://link.springer.com/article/10.1023/A:1011218925467">The Status and Future of the Turing Test</a> <span class="citation" data-cites="Moor2001">(<a href="#/referencias" role="doc-biblioref" onclick="">Moor 2001</a>)</span>.</p></li>
+<li><p><a href="https://www.cell.com/trends/cognitive-sciences/abstract/S1364-6613(00)01453-4">The Turing Test: the first 50 years</a> <span class="citation" data-cites="French2000">(<a href="#/referencias" role="doc-biblioref" onclick="">French 2000</a>)</span>.</p></li>
+<li><p><a href="https://link.springer.com/article/10.1023/A:1011288000451">Turing Test: 50 Years Later</a> <span class="citation" data-cites="PinarSaygin2000">(<a href="#/referencias" role="doc-biblioref" onclick="">Pinar Saygin, Cicekli, y Akman 2000</a>)</span>.</p></li>
+<li><p><a href="https://www.jstor.org/stable/4319091">An Analysis of the Turing Test</a> <span class="citation" data-cites="Moor1976">(<a href="#/referencias" role="doc-biblioref" onclick="">Moor 1976</a>)</span>.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 data-number="1.2.3" id="geoffrey-hinton"><span class="header-section-number">1.2.3</span> Geoffrey Hinton</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="alert">
+<p>Psicólogo cognitivo y científico informático británico-canadiense, a menudo llamado “<span class="orange">el padrino del deep learning</span>”. Hinton ha sido una <span class="orange">figura clave en el desarrollo de redes neuronales y algoritmos de aprendizaje profundo</span>, contribuyendo al renacimiento del interés en la inteligencia artificial en el siglo XXI con sus avances en redes neuronales profundas.</p>
+</div>
+</div><div class="column" style="width:20%;">
+<p><img data-src="images/Geoffrey_Hinton.png"></p>
+</div>
+</div>
+<p>Algunos artículos de interés:</p>
+<div>
+<ul>
+<li><p><a href="https://www.nature.com/articles/323533a0">Learning representations by back-propagating errors</a> <span class="citation" data-cites="Rumelhart1986">(<a href="#/referencias" role="doc-biblioref" onclick="">Rumelhart, Hinton, y Williams 1986</a>)</span>.</p></li>
+<li><p><a href="https://www.jstor.org/stable/24939221">How Neural Networks Learn from Experience</a> <span class="citation" data-cites="Hinton1992">(<a href="#/referencias" role="doc-biblioref" onclick="">Hinton 1992</a>)</span>.</p></li>
+<li><p><a href="https://www.nature.com/articles/nature14539">Deep Learning</a> <span class="citation" data-cites="LeCun2015">(<a href="#/referencias" role="doc-biblioref" onclick="">LeCun, Bengio, y Hinton 2015</a>)</span>.</p></li>
+<li><p>La extensa cantidad de artículos desarrollados por Hinton puede ser revisada en <a href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Geoffrey+Hinton&amp;btnG=">Google Scholar</a>.</p></li>
+</ul>
+</div>
+</section>
+<section id="contexto-actual" class="slide level2" data-number="1.3">
+<h2><span class="header-section-number">1.3</span> Contexto actual</h2>
+<div class="alert">
+<ul>
+<li class="fragment"><p>Los <span class="green">primeros éxitos de la IA</span> ocurrieron en <span class="orange">entornos formales y <em>simples</em></span>, como el ajedrez; por ejemplo, <em>Deep Blue</em> de IBM venció a Garry Kasparov en 1997.</p></li>
+<li class="fragment"><p><span class="green">El ajedrez</span>, aunque estratégicamente complejo para los humanos, <span class="orange">es simple para las computadoras</span> debido a sus reglas formales y bien definidas.</p></li>
+<li class="fragment"><p>Las <span class="green">tareas <em>abstractas y formales</em></span>, difíciles para los humanos, <span class="orange">suelen ser fáciles para las computadoras</span>, como jugar al ajedrez a nivel de campeonato.</p></li>
+</ul>
+</div>
+
+<img data-src="images/DeepBlue.png" class="r-stretch quarto-figure-center"><p class="caption">Garry Kasparov vs <em>Deep Blue</em></p></section>
+<section class="slide level2">
+
+<div class="alert">
+<ul>
+<li class="fragment"><p>Las habilidades humanas promedio para <span class="orange">reconocer objetos o el habla</span> han sido un desafío más significativo para la IA.</p></li>
+<li class="fragment"><p>La vida cotidiana de una persona involucra <span class="orange">conocimiento subjetivo e intuitivo</span> sobre el mundo, <span class="orange">difícil de codificar en reglas formales</span> para las computadoras. Una <span class="green">gran dificultad en IA</span> es la incorporación de este conocimiento informal en las computadoras.</p></li>
+<li class="fragment"><p>Algunos proyectos de IA han intentado <span class="green">codificar conocimiento del mundo</span> en lenguajes formales. Un computador puede ser entrenado para reaccionar automáticamente a sentencias establecidas en este lenguaje formal, conocido como <span class="orange">línea base de conocimientos (<em>knowledge base</em>, en inglés)</span>, pero han tenido un éxito limitado.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p><span class="blue">Ejemplo:</span><br> <span class="green">Cyc, uno de los proyectos más conocidos</span> <span class="citation" data-cites="Lenat1990">(<a href="#/referencias" role="doc-biblioref" onclick="">Lenat y Guha 1990</a>)</span>, utiliza un motor de inferencia y una base de datos de afirmaciones en un lenguaje llamado <a href="https://es.wikipedia.org/wiki/CycL">CycL</a>, pero ha enfrentado desafíos, como comprender historias simples del mundo real.</p>
+</div>
+<p><br></p>
+<iframe data-external="1" src="https://www.youtube.com/embed/3wMKoSRbGVs?si=Tx9yjg5YYRTsSIY1" width="60%" height="60%" title="Entrevista a Douglas Lenat, uno de los autores del proyecto Cyc." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<p>Los sistemas de IA necesitan poder adquirir su propio conocimiento extrayendo patrones de datos sin procesar. Esta habilidad se denomina aprendizaje automático (machine learning), que ha permitido a las computadoras manejar problemas complejos y tomar decisiones subjetivas.</p>
+</div>
+<div class="example">
+<p><span class="blue">Algunos ejemplos:</span><br></p>
+<ul>
+<li class="fragment"><p>La regresión logística es un algoritmo de aprendizaje automático que puede recomendar partos por cesárea.</p></li>
+<li class="fragment"><p>El algoritmo de clasificación de naive Bayes es capaz de distinguir entre correos electrónicos legítimos y spam.</p></li>
+<li class="fragment"><p>Las Máquinas de Soporte Vectorial (SVM, del inglés <em>Support Vector Machines</em>), pueden ser útiles para la clasificación y regresión en datos de alta dimensión. Un ejemplo de aplicación es la clasificación de géneros de música o películas basada en las características del contenido como frecuencias de sonido, tipos de instrumentos, o palabras clave en las reseñas.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<p><span class="green">El rendimiento de los algoritmos de aprendizaje automático depende de la representación de los datos que se les proporciona</span><br></p>
+<ul>
+<li class="fragment"><p>En el caso de la regresión logística aplicada a decisiones médicas, se confía en la información relevante proporcionada por el médico, no en un examen directo del paciente.</p></li>
+<li class="fragment"><p>Cada pieza de información utilizada en la regresión logística se llama característica (o en inglés <em>feature</em>) y el algoritmo aprende la correlación de estas con los resultados.</p></li>
+<li class="fragment"><p>La regresión logística no puede definir ni influir en cómo se definen las características y no es efectiva con datos no estructurados como los píxeles de una resonancia magnética.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<ul>
+<li class="fragment"><p>Esta dependencia de las representaciones es un fenómeno general que es muy ocurrente dentro de la ciencia de computación, incluso en la vida diaria.</p></li>
+<li class="fragment"><p>La elección de la representación de los datos tiene un efecto significativo en el desempeño de los algoritmos de machine learning.</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="example">
+<p><span class="green">Ejemplo</span><br></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Deep_Learning_01_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="small">
+<div class="alert">
+<ul>
+<li class="fragment"><p>Muchas tareas relacionadas con inteligencia artificial pueden ser resueltas al diseñar el conjunto correcto de características (<em>features</em>) que deben ser extraídas para dicha tarea, y luego poder entregar estas características a algún algoritmo de machine learning.</p>
+<ul>
+<li class="fragment"><span class="green">Ejemplo:</span> Una característica útil a la hora de diseñar un modelo de identificación de quién habla a partir del sonido (hombre, mujer, o ñiño), es una estimación del tamaño del tracto vocal.</li>
+</ul></li>
+<li class="fragment"><p>Para muchas tareas, se hace difícil el saber qué características deben ser extraídas.</p>
+<ul>
+<li class="fragment"><span class="green">Ejemplo:</span> necesitamos escribir un programa para detectar automóviles en imágenes. ¿Qué características interesantes podríamos extraer?.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<ul>
+<li class="fragment"><p>Una solución para este problema es usar machine learning para descubrir no solo el mapeo de la representación a la salida (<em>output</em>), sino también la representación misma.</p></li>
+<li class="fragment"><p>Este enfoque se conoce como aprendizaje de representación (<em>representation learning</em>).</p>
+<ul>
+<li class="fragment"><p>Las representaciones aprendidas a menudo resultan en un rendimiento mucho mejor que el que se puede obtener con representaciones diseñadas manualmente.</p></li>
+<li class="fragment"><p>Permiten a los sistemas de IA adaptarse rápidamente a nuevas tareas, con una mínima intervención humana.</p></li>
+<li class="fragment"><p>Un algoritmo de aprendizaje de representación puede descubrir un buen conjunto de características para una tarea simple en minutos o para una tarea compleja en horas o meses.</p></li>
+</ul></li>
+<li class="fragment"><p>Diseñar manualmente características para una tarea compleja requiere una gran cantidad de tiempo y esfuerzo humano; puede llevar décadas para toda una comunidad de investigadores.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p><span class="green">Ejemplo:</span><br></p>
+<ul>
+<li class="fragment"><p>Un ejemplo por excelencia de un algoritmo de aprendizaje de representación es el <span class="green">autoencoder</span>. Un autoencoder es la <span class="orange">combinación</span> de:</p>
+<ul>
+<li class="fragment"><p>una <span class="orange">función de codificador</span>, que convierte los datos de entrada en una representación diferente, y</p></li>
+<li class="fragment"><p>una <span class="orange">función de decodificador</span>, que convierte la nueva representación de nuevo al formato original.</p></li>
+</ul></li>
+<li class="fragment"><p>Los autoencoders están entrenados para preservar tanta información como sea posible cuando una entrada se ejecuta a través del codificador y luego del decodificador, pero también están entrenados para hacer que la nueva representación tenga varias propiedades deseables.</p></li>
+<li class="fragment"><p>Diferentes tipos de autoencoders buscan lograr diferentes tipos de propiedades.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<ul>
+<li class="fragment"><p>Al diseñar características o algoritmos para aprender características (<em>feature engineering</em>), <span class="orange">nuestro objetivo generalmente es separar los factores de variación</span> que explican los datos observados.</p></li>
+<li class="fragment"><p>En este contexto, usamos la palabra <span class="orange"><code>factores</code></span> simplemente para referirnos a fuentes separadas de influencia; los factores generalmente no se combinan por multiplicación.</p>
+<ul>
+<li class="fragment"><p>Los factores a menudo no son cantidades que se observan directamente, <span class="orange">pueden existir como objetos no observados o fuerzas no observadas</span> en el mundo físico que afectan cantidades observables.</p></li>
+<li class="fragment"><p>Pueden existir como <span class="orange">construcciones en la mente humana</span> que proporcionan explicaciones simplificadoras útiles o causas inferidas de los datos observados.</p></li>
+<li class="fragment"><p>Pueden considerarse como <span class="orange">conceptos o abstracciones</span> que nos ayudan a dar sentido a la rica variabilidad en los datos.</p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p><span class="green">Ejemplo:</span><br></p>
+<p>Al <span class="green">analizar una grabación de voz</span>, los factores de variación incluyen la <span class="orange">edad del hablante, su sexo, su acento y las palabras que está diciendo</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/speech.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p><span class="green">Ejemplo:</span><br></p>
+<p>Al <span class="green">analizar una imagen de un automóvil</span>, los factores de variación podrían incluir la <span class="orange">posición del automóvil, su color y el ángulo y brillo del sol</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/cars.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<ul>
+<li class="fragment"><p>Una <span class="orange">fuente importante de dificultad</span> en muchas aplicaciones de inteligencia artificial del mundo real es que muchos de los <span class="orange">factores de variación influyen en cada pieza de datos que podemos observar</span>.</p>
+<ul>
+<li class="fragment"><p><em>Los píxeles individuales en una imagen de un automóvil rojo podrían estar muy cerca del negro por la noche</em>.</p></li>
+<li class="fragment"><p><em>La forma de la silueta del automóvil depende del ángulo de visión</em>.</p></li>
+</ul></li>
+<li class="fragment"><p>La mayoría de las aplicaciones <span class="orange">requieren que se analizen en profundidad</span> (y <em>desenredemos</em>) los factores de variación y descartemos aquellos que no nos importan.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<ul>
+<li class="fragment"><p>Puede ser muy difícil extraer tales características abstractas y de alto nivel de datos sin procesar.</p></li>
+<li class="fragment"><p>Muchos de estos factores de variación, como el acento de un hablante, solo se pueden identificar utilizando una comprensión de los datos sofisticada y casi al nivel humano.</p></li>
+<li class="fragment"><p>Cuando es casi tan difícil obtener una representación como resolver el problema original, el aprendizaje de representación no parece, a primera vista, ser de mucha ayuda.</p></li>
+</ul>
+</div>
+</section>
+<section id="deep-learning" class="slide level2" data-number="1.4">
+<h2><span class="header-section-number">1.4</span> Deep Learning</h2>
+<div class="definition">
+<p><span class="blue">Definiciones</span><br></p>
+<blockquote>
+<p>Rama del campo de la inteligencia artificial que se enfoca en el desarrollo y entrenamiento de modelos de redes neuronales artificiales de múltiples capas. Estos modelos tienen la capacidad de aprender y extraer representaciones de alto nivel a partir de datos brutos, lo que les permite abordar tareas complejas como el reconocimiento de imágenes, el procesamiento del lenguaje natural y la toma de decisiones</p>
+</blockquote>
+<ul>
+<li class="fragment"><p>El <span class="green">Aprendizaje Profundo (<em>Deep Learning</em>)</span> resuelve el problema central en el aprendizaje de representaciones introduciendo representaciones que se expresan en términos de otras representaciones más simples.</p></li>
+<li class="fragment"><p>El aprendizaje profundo permite que el modelo <span class="green">construya conceptos complejos a partir de conceptos más simples</span>.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="images/deep_learning_1.png" class="r-stretch quarto-figure-center"><p class="caption">Esquema de como un sistema de aprendizaje profundo puede representar el concepto de una imagen de una persona combinando conceptos más simples, como esquinas y contornos, que a su vez se definen en términos de bordes.</p></section>
+<section class="slide level2">
+
+<div class="example">
+<p><span class="green">Ejemplo:</span><br> Uno de los modelos más utilizados en <span class="green">deep learning</span> es la red profunda hacia adelante (<em>deep feed forward network</em>)o <span class="orange">perceptrón multicapa (<em>multilayer perceptron</em>, MLP)</span>.</p>
+<ul>
+<li class="fragment"><p>Un MLP puede ser visto como una función matemática que mapea un conjunto de valores de entrada a valores de salida.</p></li>
+<li class="fragment"><p>La función se forma componiendo muchas funciones más simples. Podemos pensar en cada aplicación de una función matemática diferente como proporcionando una nueva representación de la entrada.</p></li>
+</ul>
+</div>
+
+<img data-src="images/MLP.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<div class="alert">
+<ul>
+<li class="fragment"><p>Las redes más profundas pueden ejecutar más instrucciones en secuencia, permitiendo referencias a resultados de cálculos previos.</p></li>
+<li class="fragment"><p>No toda la información en las activaciones de una capa representa factores de variación; también almacena información de estado para ejecutar programas que procesan la entrada.</p></li>
+<li class="fragment"><p>La profundidad de un modelo puede medirse por:</p>
+<ul>
+<li class="fragment"><p>la cantidad de <span class="orange">instrucciones secuenciales</span> necesarias para evaluar la arquitectura, o</p></li>
+<li class="fragment"><p>la longitud del camino más largo en un diagrama de flujo que describe el cálculo de las salidas.</p></li>
+</ul></li>
+<li class="fragment"><p>La <span class="green">profundidad percibida</span> de un modelo puede variar <span class="orange">dependiendo del “lenguaje” o funciones que se elijan</span> para representar la arquitectura en un diagrama de flujo.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p><span class="green">Ejemplo: <em>Regresión logística</em></span><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/depth.png"></p>
+<figcaption>Representaciones de un modelo de regresión logística, demostrando la variabilidad en la percepción de la profundidad de un modelo dependiendo de la definición de un paso computacional.</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<ul>
+<li class="fragment"><p>La profundidad de un modelo no tiene un valor único o correcto, ya que la percepción de la profundidad depende de la elección de los elementos básicos utilizados para construir los gráficos.</p></li>
+<li class="fragment"><p>No hay consenso sobre cuánta profundidad se necesita para que un modelo sea considerado como “profundo”.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="definition">
+<ul>
+<li class="fragment"><p>El aprendizaje profundo se puede considerar como el estudio de modelos que involucran una mayor cantidad de composición de funciones o conceptos aprendidos en comparación con el aprendizaje automático tradicional.</p></li>
+<li class="fragment"><p>El aprendizaje profundo es una técnica de aprendizaje automático que permite a los sistemas informáticos mejorar con la experiencia y los datos.</p></li>
+<li class="fragment"><p>Se sostiene que el aprendizaje automático es el único enfoque viable para construir sistemas de IA que puedan operar en entornos del mundo real complicados.</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="alert">
+<p><span class="green">Entonces…</span><br></p>
+<blockquote>
+<p>Los modelos de Deep Learning pueden ser vistos como un tipo particular de Machine Learning, más potente y flexible al poder representar los distintos problemas que se analizan a través de una jerarquía anidada de conceptos, con cada concepto definido en relación a conceptos más simples, y así sucesivamente.</p>
+</blockquote>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:&quot;50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Venn_DL.png"></p>
+<figcaption>Diagrama de Venn asociado a Deep Learning</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:&quot;50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/flowchart_DL.png" style="width:70.0%"></p>
+<figcaption>Machine Learning y Deep Learning</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="r-stack">
+<p><img data-src="images/ML_vs_DL2.jpg" class="fragment fade-in-then-out" width="950" height="650"></p>
+<p><img data-src="images/ML_vs_DL.png" class="fragment" width="850" height="550"></p>
+</div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="images/AI_DS.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="images/global_scheme_DS.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="contexto-histórico" class="slide level2" data-number="1.5">
+<h2><span class="header-section-number">1.5</span> Contexto histórico</h2>
+<div class="definition">
+<p><span class="blue">Algunos conceptos claves en la historia de la evolución del Deep Learning</span><br></p>
+<ul>
+<li class="fragment"><p>Ha tenido <span class="green">muchos nombres a lo largo de la historia</span>, a partir de diferentes puntos de vista filosóficos. Esto tambien ha hecho que su <span class="green">popularidad haya presentado variaciones</span>.</p></li>
+<li class="fragment"><p>Se ha vuelto <span class="green">más útil a medida que ha aumentado la cantidad de datos</span> de entrenamiento disponibles.</p></li>
+<li class="fragment"><p>Los <span class="green">modelos han crecido en tamaño</span> a lo largo del tiempo a medida que la <span class="green">infraestructura informática</span> (tanto hardware como software) para el aprendizaje profundo ha mejorado.</p></li>
+<li class="fragment"><p>Ha <span class="green">resuelto aplicaciones</span> cada vez más complicadas con una <span class="green">precisión creciente</span> con el tiempo.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 data-number="1.5.1" id="redes-neuronales-y-sus-múltiples-nombres"><span class="header-section-number">1.5.1</span> Redes Neuronales y sus múltiples nombres</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/DL_history.png" style="height:50.0%"></p>
+<figcaption>Olas de tendencias históricas asociadas a la investigación en Redes Neuronales Artificiales. Cibernética, Conexionismo, Redes Neuronales y Deep Learning <span class="citation" data-cites="Goodfellow2016">(<a href="#/referencias" role="doc-biblioref" onclick="">Goodfellow, Bengio, y Courville 2016</a>)</span>.</figcaption>
+</figure>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<ul>
+<li class="fragment"><p>Los primeros predecesores de lo que conocemos hoy como Deep Learning fueron modelos mucho más simples, motivados desde una perspectiva neurocientífica.</p></li>
+<li class="fragment"><p>Estos modelos fueron diseñados para tomar un set de valores de entrada (<em>inputs</em>) <span class="math inline">\(x_1, \ldots, x_n\)</span> y luego asociarlos con un valor de salida (<em>output</em>) <span class="math inline">\(y\)</span>. Estos modelos podrían <em>aprender</em> un set de pesos (<em>weights</em>) <span class="math inline">\(w_1, \ldots, w_n\)</span> y computar el valor de salida <span class="math inline">\(f(\mathbf{x}, \mathbf{y} ) = x_1 w_1, \ldots, x_n w_n\)</span>.</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column">
+<p><img data-src="images/neuron.png"></p>
+</div><div class="column">
+<p><img data-src="images/neuron_formulas.png"></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<ul>
+<li class="fragment"><p>1958, Frank Rosenblatt creó el perceptrón.</p></li>
+<li class="fragment"><p>1962, primer algoritmo de entrenamiento para el perceptrón: <span class="math inline">\(\mbox{Cambio de Peso} = (\mbox{Valor de línea de Peso Previo})\frac{\mbox{Error}}{\mbox{Número de Entradas}}\)</span></p></li>
+<li class="fragment"><p>Alrededor de la misma época, un artículo afirmó que no podría ser una extensión de la red neuronal de una sola capa a una red neuronal de múltiples capas.</p></li>
+</ul>
+</div>
+
+<img data-src="images/neuron2.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<div class="alert">
+<ul>
+<li class="fragment"><p>La primera red multicapa se desarrolló en 1975, siendo una red no supervisada.</p></li>
+<li class="fragment"><p>Entre 1980-1986 se crearon arquitecturas de múltiples capas, el problema principal era la falta de un algoritmo de entrenamiento.</p></li>
+<li class="fragment"><p>1986, tres grupos independientes de investigadores, incluyendo a Rumelhart y otros, propusieron el algoritmo de retropropagación.</p></li>
+<li class="fragment"><p>1989: Las redes multicapa feedforward son aproximaciones universales.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<ul>
+<li class="fragment"><p>1986-2005 se encontraron varios retos computacionales, de estabilidad y de sobreajuste en el uso de este algoritmo.</p></li>
+<li class="fragment"><p>2006, Hinton, Salakhutdinov, Osindero y Teh demostraron que las redes neuronales feedforward de múltiples capas podían preentrenarse eficazmente una capa a la vez, comenzando la era del aprendizaje profundo.</p></li>
+<li class="fragment"><p>2009 las redes neuronales de aprendizaje profundo fueron entrenadas con unidades de procesamiento gráfico (GPU) de <em>Nvidia</em>.</p></li>
+</ul>
+</div>
+
+<img data-src="images/DL_infinite_layers.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<div class="alert">
+<p>Desde entonces, múltiples arquitecturas han sido reconsideradas y creadas resolviendo problemas específicos.</p>
+</div>
+
+<img data-src="images/DL_model_types.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<h4 id="profundizando-un-poco-en-la-historia">Profundizando un poco en la historia</h4>
+<div>
+<ul>
+<li><p>Para más detalles, se puede revisar el libro de <a href="https://www.deeplearningbook.org/">Deep Learning</a> <span class="citation" data-cites="Goodfellow2016">(ver <a href="#/referencias" role="doc-biblioref" onclick="">Goodfellow, Bengio, y Courville 2016, 12-26</a>)</span>.</p></li>
+<li><p>Hay muchos recursos en internet para encontrar información histórica asociada a Deep Learning, por ejemplo:</p></li>
+</ul>
+</div>
+<div class="columns">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://www.skynettoday.com/overviews/neural-net-history"><img data-src="images/DL_history2.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></a></p>
+</figure>
+</div>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://github.com/Ravoxsg/A_chronology_of_deep_learning"><img data-src="images/DL_history3.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 data-number="1.5.2" id="crecimiento-de-datasets"><span class="header-section-number">1.5.2</span> Crecimiento de datasets</h3>
+
+<img data-src="images/internet_population_growth.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="images/data_per_minute.png" class="r-stretch quarto-figure-center"><p class="caption">Infografía <em>Data never sleeps</em> de <a href="https://www.domo.com/learn/infographic/data-never-sleeps-11">Domo</a></p></section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/datasets1.png"></p>
+<figcaption>Incremento de datasets a lo largo del tiempo del libro <a href="https://www.deeplearningbook.org/"><em>Deep Learning</em></a> <span class="citation" data-cites="Goodfellow2016">(<a href="#/referencias" role="doc-biblioref" onclick="">Goodfellow, Bengio, y Courville 2016, 19</a>)</span></figcaption>
+</figure>
+</div>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/datasets2.png"></p>
+<figcaption>Imagen extraída desde artículo <a href="https://epochai.org/blog/compute-trends"><em>Compute Trends Across Three Eras of Machine Learning</em></a> <span class="citation" data-cites="Epoch2022">(<a href="#/referencias" role="doc-biblioref" onclick="">Epoch 2022</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 data-number="1.5.3" id="modelos-más-complejos"><span class="header-section-number">1.5.3</span> Modelos más complejos</h3>
+
+<img data-src="images/model_size.png" class="r-stretch quarto-figure-center"><p class="caption">Número de neuronas asociado a la complejidad de los modelos de DL <span class="citation" data-cites="Goodfellow2016">(<a href="#/referencias" role="doc-biblioref" onclick="">Goodfellow, Bengio, y Courville 2016</a>)</span>.</p><div class="columns">
+<div class="column">
+<div class="tiny">
+<div>
+<ol type="1">
+<li>Perceptron (Rosenblatt, 1958, 1962)</li>
+<li>Adaptive linear element (Widrow and Hoff, 1960)</li>
+<li>Neocognitron (Fukushima, 1980)</li>
+<li>Early back-propagation network (Rumelhart et al., 1986b)</li>
+<li>Recurrent neural network for speech recognition (Robinson and Fallside, 1991)</li>
+<li>Multilayer perceptron for speech recognition (Bengio et al., 1991)</li>
+<li>Mean ﬁeld sigmoid belief network (Saul et al., 1996)</li>
+<li>LeNet-5 (LeCun et al., 1998b)</li>
+<li>Echo state network (Jaeger and Haas, 2004)</li>
+<li>Deep belief network (Hinton et al., 2006)</li>
+</ol>
+</div>
+</div>
+</div><div class="column">
+<div class="tiny">
+<div>
+<ol start="11" type="1">
+<li>GPU-accelerated convolutional network (Chellapilla et al., 2006)</li>
+<li>Deep Boltzmann machine (Salakhutdinov and Hinton, 2009a)</li>
+<li>GPU-accelerated deep belief network (Raina et al., 2009)</li>
+<li>Unsupervised convolutional network (Jarrett et al., 2009)</li>
+<li>GPU-accelerated multilayer perceptron (Ciresan et al., 2010)</li>
+<li>OMP-1 network (Coates and Ng, 2011)</li>
+<li>Distributed autoencoder (Le et al., 2012)</li>
+<li>Multi-GPU convolutional network (Krizhevsky et al., 2012)</li>
+<li>COTS HPC unsupervised convolutional network (Coates et al., 2013)</li>
+<li>GoogLeNet (Szegedy et al., 2014a)</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 data-number="1.5.4" id="crecimiento-en-el-desempeño-de-los-modelos"><span class="header-section-number">1.5.4</span> Crecimiento en el desempeño de los modelos</h3>
+
+<img data-src="images/DL_error2.png" style="width:50.0%" class="r-stretch quarto-figure-center"><p class="caption">Resultados del error obtenido por los ganadores de la <a href="https://www.image-net.org/challenges/LSVRC/index.php">competencia de clasificación ImageNet</a>, figura extraída de <span class="citation" data-cites="Dean2019">Dean (<a href="#/referencias" role="doc-biblioref" onclick="">2019</a>)</span>.</p></section></section>
+<section>
+<section id="principios-básicos" class="title-slide slide level1 center" data-background-color="#00A499" data-number="2">
+<h1><span class="header-section-number">2</span> Principios básicos</h1>
+
+</section>
+<section id="algoritmos-de-aprendizaje" class="slide level2" data-number="2.1">
+<h2><span class="header-section-number">2.1</span> Algoritmos de “aprendizaje”</h2>
+<div class="alert">
+<p>Un algoritmo de aprendizaje automático es un algoritmo capaz de aprender desde los datos.</p>
+<blockquote>
+<p>Se dice que un algoritmo computacional aprende desde la <span class="green">experiencia <span class="math inline">\(E\)</span></span> con respecto a una <span class="green">clase de tareas <span class="math inline">\(T\)</span></span> y una <span class="green">medida de desempeño <span class="math inline">\(P\)</span></span>, si <span class="orange">su desempeño en tareas <span class="math inline">\(T\)</span>, medido por <span class="math inline">\(P\)</span>, mejora con la experiencia <span class="math inline">\(E\)</span></span> <span class="citation" data-cites="Mitchell1997">(<a href="#/referencias" role="doc-biblioref" onclick="">Mitchell 1997</a>)</span><sup>1</sup>.</p>
+</blockquote>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>El libro de <span class="citation" data-cites="Mitchell1997">Mitchell (<a href="#/referencias" role="doc-biblioref" onclick="">1997</a>)</span>, llamado <em>Machine Learning</em>, puede ser encontrado gratis en el siguiente <a href="https://www.cs.cmu.edu/afs/cs.cmu.edu/user/mitchell/ftp/mlbook.html">enlace</a></p></li></ol></aside></section>
+<section class="slide level2">
+
+<h3 data-number="2.1.1" id="algunas-tareas-t"><span class="header-section-number">2.1.1</span> Algunas tareas <span class="math inline">\(T\)</span></h3>
+<div class="definition">
+<p><span class="blue">Clasificación</span><br> En esta tarea, el algoritmo debe especificar a cuál de un set de <span class="math inline">\(k\)</span> categorías pertenece un input determinado.</p>
+<div class="small">
+<ul>
+<li class="fragment">Para resolver esta tarea, el algoritmo de aprendizaje usualmente debe producir una función <span class="math inline">\(f: \mathbb{R}^n \leftarrow \{ 1, \ldots, k \}\)</span>.
+<ul>
+<li class="fragment"><p>Cuando <span class="math inline">\(f = f(\mathbf{x})\)</span>, el modelo asigna un input descrito por el vector <span class="math inline">\(\mathbf{x}\)</span> a una categoría identificada por un código numérico <span class="math inline">\(y\)</span>.</p></li>
+<li class="fragment"><p>También, donde <span class="math inline">\(f\)</span> tiene una salida asociada a una distribución de probabilidad de todas las clases.</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<p><br></p>
+<div class="definition">
+<p><span class="blue">Regresión</span><br> En esta tarea, el algoritmo debe predecir un valor numérico dado algún valor de entrada (<em>input</em>).</p>
+<div class="small">
+<ul>
+<li class="fragment">Para resolver esta tarea, el algoritmo de aprendizaje debe entregar una función <span class="math inline">\(f: \mathbb{R}^n \leftarrow \mathbb{R}\)</span>.</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h4 id="otras-tareas">Otras tareas</h4>
+<div class="definition">
+<div class="small">
+<ul>
+<li class="fragment">Clasificación con datos faltantes</li>
+<li class="fragment">Transcripción</li>
+<li class="fragment">Traducción automática</li>
+<li class="fragment">Detección de anomalías</li>
+<li class="fragment">Síntesis y muestreo</li>
+<li class="fragment">etc.<sup>1</sup></li>
+</ul>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>Para más detalles, revisar <span class="citation" data-cites="Goodfellow2016">(<a href="#/referencias" role="doc-biblioref" onclick="">Goodfellow, Bengio, y Courville 2016</a>, chap.&nbsp;5)</span></p></li></ol></aside></section>
+<section class="slide level2">
+
+<h3 data-number="2.1.2" id="las-medidas-de-desempeño-p"><span class="header-section-number">2.1.2</span> Las medidas de desempeño <span class="math inline">\(P\)</span></h3>
+<ul>
+<li class="fragment"><p>Para evaluar las habilidades de los algoritmos de aprendizaje, se debe diseñar una <span class="green">medida cuantitativa</span> de su desempeño. Usualmente, esta medida de desempeñp <span class="math inline">\(P\)</span> es específica a la tarea <span class="math inline">\(T\)</span> llevada a cabo por el algoritmo.</p></li>
+<li class="fragment"><p>Para tareas como clasificación, usualmente se emplea la <span class="green">exactitud (<em>accuracy</em>)</span> del modelo, que representa la proporción de <span class="orange">ejemplos en los que el modelo produce la salida correcta</span>. También se puede obtener información equivalente al medir la <span class="green">tasa de error</span>, o la proporción de <span class="orange">ejemplos erróneamente clasificados</span>.</p></li>
+<li class="fragment"><p>En tareas de regresión, se debe buscar una métrica distinta que entregue un valor contínuo para cada ejemplo.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<ul>
+<li class="fragment"><p>Estamos interesados en como el algoritmo se desempeña en datos que no ha visto antes, ya que esto determina qué tan bien funcionará el modelo en el mundo real.</p></li>
+<li class="fragment"><p>Las medidas de desempeño se evalúan usando <span class="green">un conjunto de datos de prueba (test set)</span>, que es separado de los datos empleados para el entrenamiento del modelo.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 data-number="2.1.3" id="la-experiencia-e"><span class="header-section-number">2.1.3</span> La experiencia <span class="math inline">\(E\)</span></h3>
+<p>Los algoritmos de aprendizaje automático pueden ser categorizados como <span class="green">supervisados</span> o <span class="green">no supervisados</span>. Dependiendo de qué tipo de experiencia tienen permitido utilizar durante el proceso de aprendizaje del modelo.</p>
+</section>
+<section class="slide level2">
+
+<h4 id="supervisado-y-no-supervisado">Supervisado y no supervisado</h4>
+<div class="columns">
+<div class="column">
+<div class="alert">
+<p><span class="orange">Aprendizaje supervisado</span><br></p>
+<ul>
+<li class="fragment"><p>Datos etiquetados</p></li>
+<li class="fragment"><p>Retroalimentación directa</p></li>
+<li class="fragment"><p>Predecir resultados/futuro</p></li>
+</ul>
+</div>
+</div><div class="column">
+<div class="alert">
+<p><span class="orange">Aprendizaje no supervisado</span><br></p>
+<ul>
+<li class="fragment"><p>No hay etiquetas</p></li>
+<li class="fragment"><p>No hay retroalimentación</p></li>
+<li class="fragment"><p>Encontrar estructura oculta en los datos</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="{columns}">
+<div class="column" style="width:25%;">
+
+</div>
+<div class="column" style="width:50%;">
+<div class="alert">
+<p><span class="orange">Aprendizaje reforzado</span><br></p>
+<ul>
+<li class="fragment"><p>Proceso de decisión</p></li>
+<li class="fragment"><p>Sistema de recompensas</p></li>
+<li class="fragment"><p>Aprender una serie de acciones</p></li>
+</ul>
+</div>
+</div>
+<div class="column" style="width:25%;">
+
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h4 id="aprendizaje-supervisado">Aprendizaje supervisado</h4>
+
+<img data-src="images/DL_scheme.png" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"><div class="alert">
+<ul>
+<li class="fragment"><p>Los datos consisten en algunos puntos y una <span class="orange">etiqueta o valor objetivo</span> asociado a ellos.</p></li>
+<li class="fragment"><p>El objetivo de los algoritmos es encontrar alguna manera de estimar ese valor objetivo.</p></li>
+<li class="fragment"><p>Usualmente utilizados como etapa final de algún proyecto de ciencia de datos, asociado a clasificación o regresión.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<h4 id="aprendizaje-no-supervisado">Aprendizaje no supervisado</h4>
+<div class="alert">
+<ul>
+<li class="fragment"><p>En este caso, solo se tiene datos en bruto, <span class="orange">sin ninguna etiqueta ni objetivo</span> a ser predicho.</p></li>
+<li class="fragment"><p>Los algoritmos no supervisados se emplean para encontrar patrones en los datos, buscando en su estructura subyacente.</p></li>
+<li class="fragment"><p>Usualmente usados como parte del pre procesamiento de los datos.</p></li>
+<li class="fragment"><p>Algoritmos de agrupamiento (clustering), por ejemplo, intentan separar los datos en agrupaciones naturales.</p></li>
+</ul>
+</div>
+<div class="columns">
+<div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/clustering.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dim_reduction.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h4 id="aprendizaje-reforzado">Aprendizaje reforzado</h4>
+
+<img data-src="images/reinforced_learning.png" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"><div class="alert">
+<ul>
+<li class="fragment"><p>Algoritmos más utilizados: Q-learning y DQN (Deep Q network)</p></li>
+<li class="fragment"><p>Ejemplos de entornos donde se utiliza:</p>
+<ul>
+<li class="fragment"><p>Juegos</p></li>
+<li class="fragment"><p>Manejo de recursos</p></li>
+<li class="fragment"><p>Recomendaciones personalizadas</p></li>
+<li class="fragment"><p>Robótica</p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="sub-y-sobre-entrenamiento" class="slide level2" data-number="2.2">
+<h2><span class="header-section-number">2.2</span> Sub y sobre entrenamiento</h2>
+<p>Los factores que determinan la capacidad de desempeño de in algoritmo de aprendizaje automático son las habilidades para:</p>
+<ul>
+<li class="fragment"><p>Hacer el error de entrenamiento lo más pequeño posible</p></li>
+<li class="fragment"><p>Hacer que la brecha entre error de entrenamiento y prueba sea lo más pequeño posible</p></li>
+</ul>
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/over_under_fitting.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="images/over_under2.png" class="quarto-figure quarto-figure-center r-stretch"><ul>
+<li class="fragment"><p><span class="green">Zona de infraajuste:</span> En el extremo izquierdo del gráfico, donde ambos errores, de entrenamiento y de generalización, son altos.</p></li>
+<li class="fragment"><p><span class="green">Capacidad óptima:</span> Punto en el eje de capacidad donde el error de generalización es mínimo antes de que comience a aumentar nuevamente.</p></li>
+<li class="fragment"><p><span class="green">Brecha de generalización:</span> La diferencia entre el error de entrenamiento y el error de generalización; se amplía a medida que la capacidad excede la óptima.</p></li>
+<li class="fragment"><p><span class="green">Zona de sobreajuste:</span> Área a la derecha de la línea roja vertical, donde la capacidad es demasiado grande y el error de generalización es más alto debido a una brecha de generalización más amplia.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 data-number="2.2.1" id="no-hay-almuerzos-gratis"><span class="header-section-number">2.2.1</span> <em>No hay almuerzos gratis</em></h3>
+<div class="definition">
+<p><span class="green">Teorema: No hay almuerzo gratis (<em>No free lunch Theorem</em>)</span><br></p>
+<blockquote>
+<p>El teorema <span class="orange"><em>no hay almuerzo gratis</em></span> para el aprendizaje automático <span class="citation" data-cites="Wolpert1996">(<a href="#/referencias" role="doc-biblioref" onclick="">Wolpert 1996</a>)</span> establece que, promediado sobre todas las posibles distribuciones generadoras de datos, cada algoritmo de clasificación tiene la misma tasa de error al clasificar puntos previamente no observados. En otras palabras, en cierto sentido, ningún algoritmo de aprendizaje automático es universalmente mejor que cualquier otro. El algoritmo más sofisticado que podamos concebir tiene el mismo rendimiento promedio (sobre todas las posibles tareas) que simplemente predecir que cada punto pertenece a la misma clase.</p>
+</blockquote>
+</div>
+</section>
+<section class="slide level2">
+
+<ul>
+<li class="fragment"><p>Cualquier modelo que afirme ofrecer una flexibilidad superior en el análisis de los patrones de datos generalmente lo hace a costa de introducir suposiciones adicionales, o al sacrificar la generalización en situaciones importantes.</p></li>
+<li class="fragment"><p>Debido a que no hay un algoritmo superior en todos los escenarios, la elección del algoritmo de aprendizaje automático debe basarse en el conocimiento previo específico del problema y la naturaleza de los datos con los que se está trabajando.</p></li>
+<li class="fragment"><p>Algunos algoritmos funcionarán mejor en ciertos problemas y otros serán superiores en diferentes contextos.</p></li>
+<li class="fragment"><p>Si un algoritmo tiene un buen desempeño en una tarea específica, es porque las suposiciones implícitas en el modelo se alinean bien con la distribución de los datos de esa tarea.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<blockquote>
+<p>Cuando se elige o se diseña un algoritmo de aprendizaje automático para una tarea específica, se debe considerar cómo se relacionan las propiedades del algoritmo con los datos y la tarea en cuestión. No existe una estrategia única que sea la mejor, sino que la elección se debe adaptar al problema específico.</p>
+</blockquote>
+</section>
+<section class="slide level2">
+
+<h4 id="regularización">Regularización</h4>
+<div class="definition">
+<p><span class="blue">Definición</span><br></p>
+<blockquote>
+<p>La regularización es cualquier modificación que se hace en un algoritmo de aprendizaje que tiene como objetivo reducir su error de generalización pero no su error de entrenamiento. En otras palabras, ayuda a que el modelo pueda generalizar de mejor manera.</p>
+</blockquote>
+</div>
+</section>
+<section class="slide level2">
+
+<ul>
+<li class="fragment"><p>El concepto de regularización en el aprendizaje automático se refiere a técnicas aplicadas a modelos para prevenir el sobreajuste, i.e.&nbsp;cuando un modelo es tan complejo que aprende el ruido del conjunto de datos de entrenamiento, reduciendo su capacidad para generalizar bien a nuevos datos.</p></li>
+<li class="fragment"><p>Al regularizar, se agrega información (usualmente en forma de una penalización a la complejidad del modelo) para disuadir al algoritmo de aprendizaje de ajustarse demasiado a los datos de entrenamiento. Esto se hace a menudo añadiendo un término adicional a la función de pérdida durante el entrenamiento que penaliza los pesos grandes (en el caso de la regularización L1 o L2), mediante métodos como la parada temprana, donde el entrenamiento se detiene antes de que el sobreajuste pueda comenzar, o el <em>dropout</em> donde algunas neuronas se “desactivan” aleatoriamente, es decir, se les asigna un valor de cero.</p></li>
+<li class="fragment"><p>El objetivo final es mejorar el rendimiento del modelo en datos no vistos previamente, sin mejorar su rendimiento en los datos de entrenamiento.</p></li>
+</ul>
+</section></section>
+<section>
+<section id="modelos-de-deep-learning-que-revisaremos-en-este-curso" class="title-slide slide level1 center" data-background-color="#00A499" data-number="3">
+<h1><span class="header-section-number">3</span> Modelos de Deep Learning que revisaremos en este curso</h1>
+
+</section>
+<section id="redes-neuronales-profundas" class="slide level2" data-number="3.1">
+<h2><span class="header-section-number">3.1</span> Redes Neuronales Profundas</h2>
+
+<img data-src="images/DFFN.png" class="r-stretch quarto-figure-center"><p class="caption">Esquema de una red neuronal profunda (<em>Deep Feed Forward Networks</em>, DFFN)</p></section>
+<section id="redes-neuronales-convolucionales" class="slide level2" data-number="3.2">
+<h2><span class="header-section-number">3.2</span> Redes Neuronales Convolucionales</h2>
+
+<img data-src="images/CNN_scheme.png" class="r-stretch quarto-figure-center"><p class="caption">Esquema de una red neuronal convolucional (Convolutional Neural Networks, CNN)</p></section>
+<section id="redes-neuronales-recurrentes" class="slide level2" data-number="3.3">
+<h2><span class="header-section-number">3.3</span> Redes Neuronales Recurrentes</h2>
+
+<img data-src="images/RNN_scheme.png" class="r-stretch quarto-figure-center"><p class="caption">Esquema de una red neuronal Long Short Term Memory (LSTM)</p></section>
+<section id="modelos-generativos-adversariales" class="slide level2" data-number="3.4">
+<h2><span class="header-section-number">3.4</span> Modelos Generativos Adversariales</h2>
+
+<img data-src="images/GAN_scheme.png" class="r-stretch quarto-figure-center"><p class="caption">Esquema de una red generativa adversarial (Generative Adversarial Network, GAN)</p></section></section>
+<section>
+<section id="qué-necesitaremos" class="title-slide slide level1 center" data-background-color="#00A499" data-number="4">
+<h1><span class="header-section-number">4</span> ¿Qué necesitaremos?</h1>
+
+</section>
+<section id="instalando-las-dependencias-necesarias" class="slide level2" data-number="4.1">
+<h2><span class="header-section-number">4.1</span> Instalando las dependencias necesarias</h2>
+<ul>
+<li class="fragment"><p>En general, instalaremos alguna distribución de Python, que podremos usar directamente a través de algún IDE (como Spyder).</p></li>
+<li class="fragment"><p>También es posible ejecutar código de Python en R a través de la librería <code>reticulate</code>. Para ello, tendremos que indicar a R la ruta de acceso a alguna distribución de Python que tengamos instalada en nuestro computador.</p></li>
+<li class="fragment"><p>Luego, necesitaremos las siguientes plataformas de desarrollo para Deep Learning:</p>
+<ul>
+<li class="fragment"><p><a href="https://www.tensorflow.org/?hl=es">Tensorflow</a></p></li>
+<li class="fragment"><p><a href="https://keras.io/">Keras</a></p></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 data-number="4.1.1" id="para-python"><span class="header-section-number">4.1.1</span> Para Python:</h3>
+<ul>
+<li class="fragment"><p>Lo primero sería descargar la distribución de <a href="https://www.anaconda.com/download">Anaconda</a></p></li>
+<li class="fragment"><p>Luego, dependiendo si se cuenta con GPU (Graphic Processor Unit, i.e.&nbsp;Tarjeta de video dedicada), se pueden seguir dos caminos:</p>
+<ul>
+<li class="fragment"><p>Instalar Tensorflow y Keras con GPU</p></li>
+<li class="fragment"><p>Instalar Tensorflow y Keras sin GPU (o dicho de otra forma, instalar con CPU)</p></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Acá un tutorial en video en español de cómo instalar TensorFlow dentro de un entorno virtual de Anaconda</p>
+<iframe data-external="1" src="https://www.youtube.com/embed/za_O63kTQAo?si=3QJ7DQG70GbTUb3U" width="60%" height="60%" title="INSTALAR TENSORFLOW en ANACONDA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</section>
+<section class="slide level2">
+
+<h3 data-number="4.1.2" id="para-r"><span class="header-section-number">4.1.2</span> Para R:</h3>
+<ul>
+<li class="fragment"><p><a href="https://posit.co/download/rstudio-desktop/">RStudio</a> proporciona una guía para comenzar con <code>TensorFlow</code> y <code>Keras</code> en R.</p></li>
+<li class="fragment"><p>Se puede instalar el paquete de tensorflow directamente desde GitHub y luego utilizar la función <code>install_tensorflow()</code> para instalar <code>TensorFlow</code> en un entorno virtual llamado “<code>r-tensorflow</code>”.</p></li>
+<li class="fragment"><p>Después, instalar <code>Keras</code> utilizando la función <code>install_keras()</code>, que instalará <code>TensorFlow</code> y algunas dependencias de Python comúnmente utilizadas.</p>
+<ul>
+<li class="fragment"><p><a href="https://tensorflow.rstudio.com/install/">Una guía de instalación rápida de Tensorflow</a></p></li>
+<li class="fragment"><p><a href="https://tensorflow.rstudio.com/reference/keras/install_keras">Una guía de instalación de Keras</a></p></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>La instalación sería algo así:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Instalar el paquete tensorflow desde GitHub</span></span>
+<span id="cb1-2"><a href=""></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rstudio/tensorflow"</span>)</span>
+<span id="cb1-3"><a href=""></a></span>
+<span id="cb1-4"><a href=""></a><span class="co"># Asegurarte de que Python está instalado o instalarlo con reticulate</span></span>
+<span id="cb1-5"><a href=""></a>reticulate<span class="sc">::</span><span class="fu">install_python</span>()</span>
+<span id="cb1-6"><a href=""></a></span>
+<span id="cb1-7"><a href=""></a><span class="co"># Instalar TensorFlow</span></span>
+<span id="cb1-8"><a href=""></a><span class="fu">library</span>(tensorflow)</span>
+<span id="cb1-9"><a href=""></a><span class="fu">install_tensorflow</span>(<span class="at">envname =</span> <span class="st">"r-tensorflow"</span>)</span>
+<span id="cb1-10"><a href=""></a></span>
+<span id="cb1-11"><a href=""></a><span class="co"># Instalar Keras</span></span>
+<span id="cb1-12"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"keras"</span>)</span>
+<span id="cb1-13"><a href=""></a><span class="fu">library</span>(keras)</span>
+<span id="cb1-14"><a href=""></a><span class="fu">install_keras</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 data-number="4.1.3" id="google-colab"><span class="header-section-number">4.1.3</span> Google Colab</h3>
+<p>También podremos emplear <a href="https://colab.google/">Google Colab</a> para ejecutar nuestro código de manera online. Esto tiene algunas ventajas y desventajas.</p>
+
+<img data-src="images/google_colab.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section></section>
+<section id="referencias" class="title-slide slide level1 smaller scrollable" data-number="5">
+<h1><span class="header-section-number">5</span> Referencias</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Aiello2016" class="csl-entry" role="listitem">
+Aiello, Luigia Carlucci. 2016. <span>«The multifaceted impact of Ada Lovelace in the digital age»</span>. <em>Artificial Intelligence</em> 235: 58-62.
+</div>
+<div id="ref-Dean2019" class="csl-entry" role="listitem">
+Dean, Jeffrey. 2019. <span>«The Deep Learning Revolution and Its Implications for Computer Architecture and Chip Design»</span>. <a href="https://arxiv.org/abs/1911.05289">https://arxiv.org/abs/1911.05289</a>.
+</div>
+<div id="ref-2023" class="csl-entry" role="listitem">
+Editorial, Nature. 2023. <span>«Ada <span>Lovelace</span>, a role model for the ages»</span>. <em>Nature Computational Science</em> 3 (10): 807-7. <a href="https://doi.org/10.1038/s43588-023-00541-z">https://doi.org/10.1038/s43588-023-00541-z</a>.
+</div>
+<div id="ref-Epoch2022" class="csl-entry" role="listitem">
+Epoch. 2022. <span>«Parameter, Compute and Data Trends in Machine Learning»</span>. <a href="https://epochai.org/data/epochdb/visualization">https://epochai.org/data/epochdb/visualization</a>.
+</div>
+<div id="ref-French2000" class="csl-entry" role="listitem">
+French, Robert M. 2000. <span>«The <span>Turing</span> <span>Test</span>: the first 50 years»</span>. <em>Trends in Cognitive Sciences</em> 4 (3): 115-22. <a href="https://doi.org/10.1016/S1364-6613(00)01453-4">https://doi.org/10.1016/S1364-6613(00)01453-4</a>.
+</div>
+<div id="ref-Goodfellow2016" class="csl-entry" role="listitem">
+Goodfellow, Ian, Yoshua Bengio, y Aaron Courville. 2016. <em>Deep learning</em>. MIT press.
+</div>
+<div id="ref-Hinton1992" class="csl-entry" role="listitem">
+Hinton, Geoffrey E. 1992. <span>«How <span>Neural</span> <span>Networks</span> <span>Learn</span> from <span>Experience</span>»</span>. <em>Scientific American</em> 267 (3): 144-51. <a href="https://www.jstor.org/stable/24939221">https://www.jstor.org/stable/24939221</a>.
+</div>
+<div id="ref-Jaeger2023" class="csl-entry" role="listitem">
+Jaeger, Lars. 2023. <span>«Ada Lovelace (1815–1852): Inventor of Computer Algorithms»</span>. En <em>Women of Genius in Science: Whose Frequently Overlooked Contributions Changed the World</em>, 71-82. Springer.
+</div>
+<div id="ref-LeCun2015" class="csl-entry" role="listitem">
+LeCun, Yann, Yoshua Bengio, y Geoffrey Hinton. 2015. <span>«Deep learning»</span>. <em>Nature</em> 521 (7553): 436-44. <a href="https://doi.org/10.1038/nature14539">https://doi.org/10.1038/nature14539</a>.
+</div>
+<div id="ref-Lenat1990" class="csl-entry" role="listitem">
+Lenat, Douglas, y RV Guha. 1990. <em><span>Building Large Knowledge-Based Systems, Representation and Inference in the Cyc Project</span></em>. Addison-Wesley.
+</div>
+<div id="ref-Lovelace2015" class="csl-entry" role="listitem">
+Lovelace, AA. 2015. <span>«1842 Notes to the Translation of the Sketch of the Analytical Engine»</span>. <em>Ada User Journal</em> 36 (3): 152.
+</div>
+<div id="ref-Mitchell1997" class="csl-entry" role="listitem">
+Mitchell, T. M. 1997. <em>Machine Learning</em>. McGraw-Hill international editions - computer science series. McGraw-Hill Education. <a href="https://books.google.cl/books?id=xOGAngEACAAJ">https://books.google.cl/books?id=xOGAngEACAAJ</a>.
+</div>
+<div id="ref-Moor1976" class="csl-entry" role="listitem">
+Moor, James H. 1976. <span>«An <span>Analysis</span> of the <span>Turing</span> <span>Test</span>»</span>. <em>Philosophical Studies: An International Journal for Philosophy in the Analytic Tradition</em> 30 (4): 249-57. <a href="https://www.jstor.org/stable/4319091">https://www.jstor.org/stable/4319091</a>.
+</div>
+<div id="ref-Moor2001" class="csl-entry" role="listitem">
+———. 2001. <span>«The <span>Status</span> and <span>Future</span> of the <span>Turing</span> <span>Test</span>»</span>. <em>Minds and Machines</em> 11 (1): 77-93. <a href="https://doi.org/10.1023/A:1011218925467">https://doi.org/10.1023/A:1011218925467</a>.
+</div>
+<div id="ref-PinarSaygin2000" class="csl-entry" role="listitem">
+Pinar Saygin, Ayse, Ilyas Cicekli, y Varol Akman. 2000. <span>«Turing <span>Test</span>: 50 <span>Years</span> <span>Later</span>»</span>. <em>Minds and Machines</em> 10 (4): 463-518. <a href="https://doi.org/10.1023/A:1011288000451">https://doi.org/10.1023/A:1011288000451</a>.
+</div>
+<div id="ref-Rumelhart1986" class="csl-entry" role="listitem">
+Rumelhart, David E., Geoffrey E. Hinton, y Ronald J. Williams. 1986. <span>«Learning representations by back-propagating errors»</span>. <em>Nature</em> 323 (6088): 533-36. <a href="https://doi.org/10.1038/323533a0">https://doi.org/10.1038/323533a0</a>.
+</div>
+<div id="ref-Wolpert1996" class="csl-entry" role="listitem">
+Wolpert, David H. 1996. <span>«The lack of a priori distinctions between learning algorithms»</span>. <em>Neural computation</em> 8 (7): 1341-90.
+</div>
+</div>
+<div class="quarto-auto-generated-content">
+<p><img src="images/Usach_P2.png" class="slide-logo"></p>
+<div class="footer footer-default">
+
+</div>
+</div>
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-1">Imagen generada desde <em>DALL-E</em> con los conceptos de esta diapositiva</span>
+</div>
+</section>
+
+
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="Deep_Learning_01_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="Deep_Learning_01_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Deep_Learning_01_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Deep_Learning_01_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Deep_Learning_01_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Deep_Learning_01_files/libs/revealjs/plugin/multiplex/socket.io.js"></script>
+  <script src="Deep_Learning_01_files/libs/revealjs/plugin/multiplex/multiplex.js"></script>
+  <script src="Deep_Learning_01_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="Deep_Learning_01_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Deep_Learning_01_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Deep_Learning_01_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Deep_Learning_01_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'multiplex': {"secret":null,"id":"66afcffaae6ae248","url":"https://reveal-multiplex.glitch.me/"},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copiado");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copiado");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    <script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","descPosition":"bottom"});
+    window.onload = () => {
+      lightboxQuarto.on('slide_before_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        const href = trigger.getAttribute('href');
+        if (href !== null) {
+          const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+          if (imgEl !== null) {
+            const srcAttr = imgEl.getAttribute("src");
+            if (srcAttr && srcAttr.startsWith("data:")) {
+              slideConfig.href = srcAttr;
+            }
+          }
+        } 
+      });
+
+      lightboxQuarto.on('slide_after_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(slideNode);
+        }
+      });
+
+    };
+              </script>
+    
+
+</body></html>
