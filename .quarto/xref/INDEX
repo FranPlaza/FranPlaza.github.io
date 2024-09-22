@@ -1,8 +1,14 @@
 {
-  "index_test.qmd": {
-    "index_test.html": "e275766a"
-  },
   "index.qmd": {
-    "index.html": "606029ef"
+    "index.html": "abde3ada"
+  },
+  "courses/simulation/Simulation_00_About.qmd": {
+    "Simulation_00_About.html": "fe93eb31"
+  },
+  "courses/simulation/index.qmd": {
+    "index.html": "1f920071"
+  },
+  "courses/deep_learning/Deep_Learning_00_About.qmd": {
+    "Deep_Learning_00_About.html": "149d550d"
   }
 }

@@ -1,24 +1,10 @@
 ---
 title: "Francisco J. Plaza-Vega"
-about:
-  template: jolla
-  image: index_images/fran3.jpg
-  links:
-    - icon: envelope
-      text: email
-      href: mailto:francisco.plaza.v@usach.cl
-    - icon: linkedin
-      text: Linkedin
-      href: https://www.linkedin.com/in/franplazavega/
-    - icon: github
-      text: Github
-      href: https://github.com/FranPlaza
+subtitle: "Profesor Asociado <br>Departamento de Matemática y Ciencia de la Computación<br>Universidad de Santiago de Chile"
+lang: es
+format: 
+  html:
+    embed-resources: true
 ---
 
-Hola!, soy Francisco Plaza-Vega, Profesor Asociado de la Universidad de Santiago de Chile.
-
-## Cursos
-
-[Simulación Estadística](courses/Simulation/Simulation_00_About.html){target="_blank"}
-
-[Modelos de Deep Learning](courses/Deep_Learning/Deep_Learning_00_About.html){target="_blank"}
+Hola!, soy un académico del [Departamento de Matemática y Ciencia de la Computación](https://www.dmcc.usach.cl/), de la [Universidad de Santiago de Chile](https://www.usach.cl/).

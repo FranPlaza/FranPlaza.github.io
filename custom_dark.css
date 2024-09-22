@@ -1,0 +1,23 @@
+/*-- scss:defaults --*/
+// Base document colors
+$navbar-bg: #393e41;
+$navbar-fg: #f6f7eb;
+$navbar-hl: #303030;
+
+$body-bg: #393e41;
+$body-color: #f4f1de; 
+$link-color: #ffefca;
+
+// Code blocks
+$code-block-bg-alpha: -.8;
+
+// Bootstrap popovers
+$popover-bg: #f6f7eb;
+
+// Bootstrap inputs
+$input-bg: #f6f7eb;
+$dropdown-bg: $body-bg;
+$dropdown-color: $body-color;
+$dropdown-link-color: $body-color;
+$dropdown-link-hover-bg: $gray-600;
+$dropdown-link-hover-color: white;

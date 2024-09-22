@@ -2,10 +2,107 @@ project:
   type: website
   output-dir: docs
 
+website:
+  title: "Fran Plaza-Vega"
+  page-navigation: true
+  back-to-top-navigation: true
+  navbar:
+    #icon: house
+    search: true
+    #tools:
+    #  - icon: github
+    #    href: https://github.com/FranPlaza/FranPlaza.github.io
+    left:
+#      - icon: house
+#        href: index.qmd
+#        text: Home
+      - icon: github
+        aria-label: GitHub
+        href: https://github.com/FranPlaza
+      - icon: linkedin
+        aria-label: "LinkedIn"
+        href: https://www.linkedin.com/in/franplazavega/
+      - text: "{{< ai orcid >}}"
+        href: https://orcid.org/0000-0001-7577-2775
+      - text: "{{< ai google-scholar >}}"
+        aria-label: "Google Scholar"
+        href: https://scholar.google.com/citations?user=4jWVTf4AAAAJ&hl=en
+      - icon: envelope
+        href: mailto:francisco.plaza.v@usach.cl
+    
+    right: 
+        - text: Acerca de
+          href: index.qmd
+        - text: Cursos
+          menu:
+            - text: Simulación Estadística
+              href: courses/simulation/Simulation_00_About.qmd
+            - text: Modelos de Deep Learning
+              href: courses/deep_learning/Deep_Learning_00_About.qmd
+        - text: Publicaciones
+          href: index.qmd
+#        - text: Proyectos
+#          href: index.qmd
+#        - text: Actividades
+#          href: index.qmd
+  
+  page-footer:  
+    border: true
+    background: light
+    left: 
+      - icon: envelope
+        href: mailto:francisco.plaza.v@usach.cl
+        text: Contacto
+    center: >-
+        &#169; 2024 Francisco Plaza-Vega &#8729; Hecho con [Quarto](https://quarto.org)
+    
+
 format:
   html:
-    css: styles.css
+    #css: styles.css
     toc: true
-
-
-
+    theme: #yeti
+        light: [yeti, custom_light.css]
+        dark: [yeti, custom_dark.css]
+        
+ # include CSS style for title blocks
+title-block-banner: "#00000000"
+title-block-banner-color: "rgba(255, 255, 255, 0.9)"
+include-in-header:
+  - text: |
+      <style>
+      .quarto-title-block .quarto-title-banner {
+        flex-direction: row;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 400px;
+        z-index: 2;
+        padding: 0 ;
+        background-image: 
+        /* top, transparent red */
+            linear-gradient(
+                rgba(100, 100, 100, 0.8), 
+                rgba(100, 100, 100, 0.8)
+                ),
+                url(images/dmcc.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        }
+       .quarto-title-block .quarto-title-banner::before {
+        content: '';
+        background-image: url(images/fran.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 300px;
+        height: 300px;
+        margin-right: 20px;
+      }
+      .quarto-title-block .quarto-title-banner h1.title {
+        margin: 0;
+        text-align: left;
+        font-size: 2.5em;
+      }
+      </style>

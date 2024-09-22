@@ -1,0 +1,153 @@
+---
+title: "Modelos de Deep Learning"
+subtitle: "Descripción del curso"
+# author:
+#   - name: Francisco Plaza Vega
+#     email: francisco.plaza.v@usach.cl
+#     affiliation: Departamento de Matemática y Ciencia de la Computación, Universidad de Santiago de Chile
+# date: 11/02/23
+# date-format: "DD/MM/YY"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 2
+    toc-expand: 2
+    html-math-method: katex
+    theme: simplex
+lang: es
+highlight-style: github
+toc: false
+toc-title: "Contenidos"
+toc-expand: false
+toc-depth: 2
+number-sections: true
+number-depth: 2
+bibliography: refs.bib
+#title-block-banner: false
+#image: cover.png
+---
+
+
+```{r}
+#| echo: false
+#| warning: false
+library(reticulate)
+# use_python('C:/ProgramData/Anaconda3/python.exe')
+```
+
+
+# Objetivos del curso 
+
+::: {.callout-tip appearance="simple" icon=false}
+- Comprender y aplicar los principios fundamentales de Deep Learning para modelar y resolver problemas complejos en diversos dominios.
+- Diseñar, entrenar y validar modelos de Deep Learning, utilizando conjuntos de datos reales y simulados, para tareas de clasificación, regresión y otras aplicaciones avanzadas.
+- Evaluar críticamente la efectividad y eficiencia de diferentes arquitecturas de redes neuronales, incluidas las redes convolucionales y recurrentes, en la solución de problemas específicos.
+-	Desarrollar habilidades prácticas en el uso de herramientas y librerías de software de vanguardia para el Deep Learning, tales como TensorFlow, PyTorch, y/o Keras, permitiendo la simulación y experimentación con modelos complejos.
+-	Implementar técnicas de optimización y ajuste fino para mejorar el rendimiento de los modelos de aprendizaje profundo, así como aplicar métodos para verificar y validar la precisión de los modelos desarrollados.
+:::
+
+# Programa del curso
+
+::: {.callout-tip collapse="true" icon=false}
+## Unidad 1: Fundamentos del Deep Learning
+
+    1.1. Introducción al Deep Learning y su evolución histórica.
+    1.2. Principios básicos de las redes neuronales: perceptrones, perceptrones multicapa (MLP), funciones de activación, y propagación hacia adelante.
+    1.3. Entrenamiento de redes neuronales profundas: backpropagation, descenso del gradiente y ajuste de hiperparámetros. Uso de la librería Keras para facilitar la implementación de modelos.
+    1.4. Evaluación de modelos: conjuntos de entrenamiento, validación y prueba; sobreajuste y técnicas de regularización.
+    1.5. Introducción a TensorFlow, PyTorch y Keras como interfaz de alto nivel para la construcción y el entrenamiento de modelos de deep learning.
+
+[Slides](Deep_Learning_01.html){target="_blank"} </br>
+[Tutorial básico de Python](Deep_Learning_01_python.html){target="_blank"}
+:::
+
+::: {.callout-tip collapse="true" icon=false}
+## Unidad 2: Perceptrones Multicapa (MLP) y Deep Learning
+
+    2.1. Estructura y características de los MLP: capas ocultas, nodos y profundidad.
+    2.2. Aplicaciones prácticas de los MLP en clasificación y regresión.
+    2.3. Comparación entre MLP y otros modelos de Deep Learning en términos de capacidad, complejidad y tipos de problemas a resolver.
+    2.4. Implementación de MLP para tareas de clasificación y regresión.
+    2.5. Estrategias de optimización y ajuste fino específicas para MLP.
+
+[Slides](Deep_Learning_02.html){target="_blank"} </br>
+[Guía de Keras](Deep_Learning_02_guide_01.html){target="_blank"} </br>
+[Ejemplo 1: Librería `neuralnet` en R](Deep_Learning_02_examples_01.html){target="_blank"} </br>
+[Ejemplo 2: Librería `keras` con datos de MNIST](Deep_Learning_02_examples_02.html){target="_blank"}</br>
+[Ejemplo 3: Librería `keras` para regresión con datos de automóviles](Deep_Learning_02_examples_03.html){target="_blank"}
+
+:::
+
+::: {.callout-tip collapse="true" icon=false}
+## Unidad 3: Redes Neuronales Convolucionales (CNNs)
+
+    3.1.	Fundamentos de las CNNs: operación de convolución, pooling y normalización.
+    3.2.	Arquitecturas de CNNs populares: LeNet, AlexNet, VGG, ResNet e Inception.
+    3.3.	Introducción al Transfer Learning en CNNs: cómo reutilizar modelos preentrenados para nuevas tareas.
+    3.4.	Aplicaciones de las CNNs: reconocimiento de imágenes, detección de objetos y segmentación semántica.
+    3.5.	Prácticas con conjuntos de datos reales utilizando librerías de Deep Learning.
+    
+[Slides](Deep_Learning_03_CNN.html){target="_blank"} </br>
+[Ejemplo 1: Librería `Keras` con datos `fashion-MNIST`](Deep_Learning_03_examples_01.html){target="_blank"} </br>
+[Ejemplo 2: Gatos y perros](Deep_Learning_03_examples_02.html){target="_blank"} </br>
+[Ejemplo 2b: Gatos y perros, la venganza](Deep_Learning_03_examples_02b.html){target="_blank"}
+:::
+
+::: {.callout-tip collapse="true" icon=false}
+## Unidad 4: Redes Neuronales Recurrentes (RNNs) y LSTM
+
+    4.1.	Principios de las RNNs: procesamiento de secuencias y dependencias temporales.
+    4.2.	Problemas de las RNNs: desvanecimiento y explosión del gradiente.
+    4.3.	LSTM y GRU: soluciones al problema del desvanecimiento del gradiente.
+    4.4.	Aplicaciones de las RNNs y LSTM: procesamiento de lenguaje natural, generación de texto y análisis de series temporales.
+    4.5.	Implementación práctica de modelos RNN y LSTM.
+:::
+
+::: {.callout-tip collapse="true" icon=false}
+## Unidad 5: Introducción a Modelos Generativos
+
+    5.1.	Diferencia entre modelos discriminativos y generativos.
+    5.2.	Conceptos básicos de Autoencoders y su aplicación en la reducción de dimensionalidad y generación de datos.
+    5.3.	Introducción teórica a Redes Generativas Antagónicas (GANs): fundamentos, arquitectura y aplicaciones sin implementación práctica.
+    5.4.	Discusión sobre el impacto de GANs en la generación de contenido y ética en la IA.
+:::
+
+# Procedimiento de evaluación
+
+A lo largo del curso, los estudiantes desarrollarán un [Proyecto aplicado]{.green} utilizando los conocimientos adquiridos durante el curso. Los estudiantes seleccionarán un problema real para aplicar técnicas de Deep Learning, incluyendo el diseño e implementación de uno o varios modelos. 
+
+::: {.callout-tip appearance="simple" icon=false}
+[Presentación de proyectos:]{.green}</br>
+Los estudiantes expondrán sus proyectos (máximo 3 integrantes), mostrando la metodología, resultados y aprendizajes clave. Dicho trabajo grupal tendrá 3 presentaciones de avance ([PA]{.green}) y un informe final ([IF]{.green}), con las siguientes ponderaciones:
+
+  - PA$_1$: 25$\%$: 9 de mayo 2024
+  - PA$_2$: 25$\%$: 13 de Junio 2024
+  - PA$_3$: 25$\%$: 11 de Julio 2024
+  - IF: 25$\%$: 18 de Julio 2024
+:::
+
+# Asistencia
+
+::: {.callout-tip appearance="simple" icon=false}
+[Asistencia:]{.green} 75$\%$
+:::
+
+# Bibliografía del curso
+
+Los principales libros que usaremos, además de otros recursos online son los siguientes:
+
+::: {layout-ncol=4}
+![@Goodfellow2016, [Disponible acá](https://www.deeplearningbook.org/)](images/Book_deep_learning.png){height=250px}
+
+![@Geron2022, con su repositorio gratuito en [GitHub](https://github.com/ageron/handson-ml3) ](images/Book_Hands_on_ML.jpg){height=250px}
+
+![@Raschka2019, con su repositorio gratuito en [GitHub](https://github.com/rasbt/python-machine-learning-book-3rd-edition)](images/Book_Machine_Learning.jpg){height=250px}
+
+![@Zhang2023, [Disponible acá](https://d2l.ai/)](images/Book_Dive_DL.jpg){height=250px}
+:::
+
+# Referencias
+
+::: {#refs}
+:::
