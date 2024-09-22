@@ -121,10 +121,10 @@ A lo largo del curso, los estudiantes desarrollarán un [Proyecto aplicado]{.gre
 [Presentación de proyectos:]{.green}</br>
 Los estudiantes expondrán sus proyectos (máximo 3 integrantes), mostrando la metodología, resultados y aprendizajes clave. Dicho trabajo grupal tendrá 3 presentaciones de avance ([PA]{.green}) y un informe final ([IF]{.green}), con las siguientes ponderaciones:
 
-  - PA$_1$: 25$\%$: 9 de mayo 2024
-  - PA$_2$: 25$\%$: 13 de Junio 2024
-  - PA$_3$: 25$\%$: 11 de Julio 2024
-  - IF: 25$\%$: 18 de Julio 2024
+  - PA$_1$: 25$\%$
+  - PA$_2$: 25$\%$
+  - PA$_3$: 25$\%$
+  - IF: 25$\%$
 :::
 
 # Asistencia
