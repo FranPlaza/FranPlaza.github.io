@@ -36,9 +36,9 @@ website:
         - text: Cursos
           menu:
             - text: Simulación Estadística
-              href: courses/simulation/Simulation_00_About.qmd
+              href: courses/simulation/Simulation_00_About.html
             - text: Modelos de Deep Learning
-              href: courses/deep_learning/Deep_Learning_00_About.qmd
+              href: courses/deep_learning/Deep_Learning_00_About.html
         - text: Publicaciones
           href: index.qmd
 #        - text: Proyectos
