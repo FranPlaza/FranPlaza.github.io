@@ -14,7 +14,7 @@ format:
     toc-depth: 2
     toc-expand: 2
     html-math-method: katex
-    theme: simplex
+#    theme: simplex
 lang: es
 highlight-style: github
 toc: false
