@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Francisco Plaza Vega">
+
+<title>Deep Learning</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Deep_Learning_02_examples_03_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Deep_Learning_02_examples_03_files/libs/quarto-html/quarto.js"></script>
+<script src="Deep_Learning_02_examples_03_files/libs/quarto-html/popper.min.js"></script>
+<script src="Deep_Learning_02_examples_03_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Deep_Learning_02_examples_03_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Deep_Learning_02_examples_03_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Deep_Learning_02_examples_03_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Deep_Learning_02_examples_03_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Deep_Learning_02_examples_03_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Deep_Learning_02_examples_03_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+    <h2 id="toc-title">Contenidos</h2>
+   
+  <ul class="collapse">
+  <li><a href="#cargamos-librerías-iniciales-y-datos" id="toc-cargamos-librerías-iniciales-y-datos" class="nav-link active" data-scroll-target="#cargamos-librerías-iniciales-y-datos"><span class="header-section-number">1</span> Cargamos librerías iniciales y datos</a>
+  <ul class="collapse">
+  <li><a href="#datos" id="toc-datos" class="nav-link" data-scroll-target="#datos"><span class="header-section-number">1.1</span> Datos</a></li>
+  <li><a href="#limpieza-de-datos" id="toc-limpieza-de-datos" class="nav-link" data-scroll-target="#limpieza-de-datos"><span class="header-section-number">1.2</span> Limpieza de datos</a></li>
+  </ul></li>
+  <li><a href="#pre-procesamiento" id="toc-pre-procesamiento" class="nav-link" data-scroll-target="#pre-procesamiento"><span class="header-section-number">2</span> Pre procesamiento</a>
+  <ul class="collapse">
+  <li><a href="#inspeccionar-los-datos" id="toc-inspeccionar-los-datos" class="nav-link" data-scroll-target="#inspeccionar-los-datos"><span class="header-section-number">2.1</span> Inspeccionar los datos</a></li>
+  <li><a href="#separación-en-entrenamiento-y-prueba" id="toc-separación-en-entrenamiento-y-prueba" class="nav-link" data-scroll-target="#separación-en-entrenamiento-y-prueba"><span class="header-section-number">2.2</span> Separación en entrenamiento y prueba</a></li>
+  <li><a href="#selección-de-variables-para-el-modelo" id="toc-selección-de-variables-para-el-modelo" class="nav-link" data-scroll-target="#selección-de-variables-para-el-modelo"><span class="header-section-number">2.3</span> Selección de variables para el modelo</a></li>
+  <li><a href="#acomodar-etiquetas-de-regresores" id="toc-acomodar-etiquetas-de-regresores" class="nav-link" data-scroll-target="#acomodar-etiquetas-de-regresores"><span class="header-section-number">2.4</span> Acomodar etiquetas de regresores</a></li>
+  <li><a href="#normalización" id="toc-normalización" class="nav-link" data-scroll-target="#normalización"><span class="header-section-number">2.5</span> Normalización</a></li>
+  </ul></li>
+  <li><a href="#regresión-lineal" id="toc-regresión-lineal" class="nav-link" data-scroll-target="#regresión-lineal"><span class="header-section-number">3</span> Regresión Lineal</a>
+  <ul class="collapse">
+  <li><a href="#modelo-lineal-simple" id="toc-modelo-lineal-simple" class="nav-link" data-scroll-target="#modelo-lineal-simple"><span class="header-section-number">3.1</span> Modelo lineal simple</a></li>
+  <li><a href="#modelo-lineal-múltiple" id="toc-modelo-lineal-múltiple" class="nav-link" data-scroll-target="#modelo-lineal-múltiple"><span class="header-section-number">3.2</span> Modelo lineal múltiple</a></li>
+  </ul></li>
+  <li><a href="#regresión-con-mlp" id="toc-regresión-con-mlp" class="nav-link" data-scroll-target="#regresión-con-mlp"><span class="header-section-number">4</span> Regresión con MLP</a>
+  <ul class="collapse">
+  <li><a href="#regresión-simple-con-mlp" id="toc-regresión-simple-con-mlp" class="nav-link" data-scroll-target="#regresión-simple-con-mlp"><span class="header-section-number">4.1</span> Regresión simple con MLP</a></li>
+  <li><a href="#desempeño" id="toc-desempeño" class="nav-link" data-scroll-target="#desempeño"><span class="header-section-number">4.2</span> Desempeño</a></li>
+  <li><a href="#conclusión" id="toc-conclusión" class="nav-link" data-scroll-target="#conclusión"><span class="header-section-number">4.3</span> Conclusión</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Deep Learning</h1>
+<p class="subtitle lead">DNN: Ejemplo de <code>Keras</code> para regresión en R</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Autor/a</div>
+  <div class="quarto-title-meta-heading">Afiliación</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Francisco Plaza Vega <a href="mailto:francisco.plaza.v@usach.cl" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Ingeniería en Estadística
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="example">
+<p>En problemas de regresión, el objetivo es predecir el resultado de un valor continuo, como un precio o una probabilidad. Esto se diferencia de los problemas de clasificación, donde el objetivo es elegir una clase de una lista de clases (por ejemplo, determinar qué numero contiene una cierta imagen, o si una imagen contiene una manzana o una naranja).</p>
+<p>Emplearemos el conjunto de datos de <a href="https://archive.ics.uci.edu/dataset/9/auto+mpg">Auto MPG</a> para lograr implementar un modelo de MLP que sea capaz de estimar la eficiencia del combustible en vehículos entre fines de los 70’ y comienzos de los 80</p>
+<p>Este tutorial emplea el clásico conjunto de datos Auto MPG y muestra cómo construir modelos para predecir la eficiencia del combustible de automóviles de finales de los años 70 y principios de los 80. Para ello, el conjunto de datos contiene una descripción de varios automóviles de esa época. Esta descripción incluye atributos como cilindros, desplazamiento, potencia y peso.</p>
+<p>El enlace para el código original puede ser encontrado <a href="https://tensorflow.rstudio.com/tutorials/keras/regression">acá</a>. Adicionalmente, existen muchos más conjuntos de datos a partir del <a href="https://archive.ics.uci.edu/">Repositorio de Machine Learning de la UCI</a></p>
+</div>
+<section id="cargamos-librerías-iniciales-y-datos" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Cargamos librerías iniciales y datos</h1>
+<p>Las librerías que utilizaremos serán las siguientes:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tensorflow)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(keras)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="datos" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="datos"><span class="header-section-number">1.1</span> Datos</h2>
+<p>Descargamos los datos y los importamos a R</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"http://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>col_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"mpg"</span>,<span class="st">"cylinders"</span>,<span class="st">"displacement"</span>,<span class="st">"horsepower"</span>,<span class="st">"weight"</span>,<span class="st">"acceleration"</span>,<span class="st">"model_year"</span>, <span class="st">"origin"</span>,<span class="st">"car_name"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>raw_dataset <span class="ot">=</span> <span class="fu">read.table</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  url,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> T,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">col.names =</span> col_names,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.strings =</span> <span class="st">"?"</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">=</span> raw_dataset <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>car_name)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dataset)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mpg cylinders displacement horsepower weight acceleration model_year origin
+1  15         8          350        165   3693         11.5         70      1
+2  18         8          318        150   3436         11.0         70      1
+3  16         8          304        150   3433         12.0         70      1
+4  17         8          302        140   3449         10.5         70      1
+5  15         8          429        198   4341         10.0         70      1
+6  14         8          454        220   4354          9.0         70      1</code></pre>
+</div>
+</div>
+</section>
+<section id="limpieza-de-datos" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="limpieza-de-datos"><span class="header-section-number">1.2</span> Limpieza de datos</h2>
+<p>Inspeccionamos los datos y observamos que existen algunos <code>NA</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(dataset)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">dataset</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">397</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 10%">
+<col style="width: 15%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">mpg</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">23.53</td>
+<td style="text-align: right;">7.82</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">17.5</td>
+<td style="text-align: right;">23.0</td>
+<td style="text-align: right;">29.0</td>
+<td style="text-align: right;">46.6</td>
+<td style="text-align: left;">▆▇▆▃▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cylinders</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">5.45</td>
+<td style="text-align: right;">1.70</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">8.0</td>
+<td style="text-align: right;">8.0</td>
+<td style="text-align: left;">▇▁▃▁▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">displacement</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">193.14</td>
+<td style="text-align: right;">104.24</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">104.0</td>
+<td style="text-align: right;">146.0</td>
+<td style="text-align: right;">262.0</td>
+<td style="text-align: right;">455.0</td>
+<td style="text-align: left;">▇▂▂▃▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">horsepower</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.98</td>
+<td style="text-align: right;">104.40</td>
+<td style="text-align: right;">38.52</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">75.0</td>
+<td style="text-align: right;">93.0</td>
+<td style="text-align: right;">125.0</td>
+<td style="text-align: right;">230.0</td>
+<td style="text-align: left;">▆▇▃▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">weight</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2969.08</td>
+<td style="text-align: right;">847.49</td>
+<td style="text-align: right;">1613</td>
+<td style="text-align: right;">2223.0</td>
+<td style="text-align: right;">2800.0</td>
+<td style="text-align: right;">3609.0</td>
+<td style="text-align: right;">5140.0</td>
+<td style="text-align: left;">▇▇▅▅▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">acceleration</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">15.58</td>
+<td style="text-align: right;">2.76</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">13.9</td>
+<td style="text-align: right;">15.5</td>
+<td style="text-align: right;">17.2</td>
+<td style="text-align: right;">24.8</td>
+<td style="text-align: left;">▁▆▇▃▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">model_year</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">76.03</td>
+<td style="text-align: right;">3.69</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">73.0</td>
+<td style="text-align: right;">76.0</td>
+<td style="text-align: right;">79.0</td>
+<td style="text-align: right;">82.0</td>
+<td style="text-align: left;">▇▆▇▆▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">origin</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.57</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: left;">▇▁▂▁▂</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Eliminamos los <code>NA</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(dataset)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="pre-procesamiento" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Pre procesamiento</h1>
+<section id="inspeccionar-los-datos" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="inspeccionar-los-datos"><span class="header-section-number">2.1</span> Inspeccionar los datos</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  GGally<span class="sc">::</span><span class="fu">ggpairs</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Deep_Learning_02_examples_03_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Observamos que la variable <code>origin</code> contiene datos categóricos <span class="math inline">\{1,2,3\}</span>. Estos datos corresponden al lugar de fabricación de los automóviles donde <span class="orange">(1=USA, 2=Europe, 3=Japan)</span>. Por otra parte, hacemos la transformación <span class="orange">one-hot encoding</span> para dicha variable. Efectuamos la transformación a continuación, utilizando la librería `recipes``:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(recipes)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">recipe</span>(mpg <span class="sc">~</span> ., dataset) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_num2factor</span>(origin, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"USA"</span>, <span class="st">"Europe"</span>, <span class="st">"Japan"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(origin, <span class="at">one_hot =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dataset)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 391
+Columns: 10
+$ cylinders     &lt;int&gt; 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 6, 6, 6, 4, 4,…
+$ displacement  &lt;dbl&gt; 350, 318, 304, 302, 429, 454, 440, 455, 390, 383, 340, 4…
+$ horsepower    &lt;dbl&gt; 165, 150, 150, 140, 198, 220, 215, 225, 190, 170, 160, 1…
+$ weight        &lt;dbl&gt; 3693, 3436, 3433, 3449, 4341, 4354, 4312, 4425, 3850, 35…
+$ acceleration  &lt;dbl&gt; 11.5, 11.0, 12.0, 10.5, 10.0, 9.0, 8.5, 10.0, 8.5, 10.0,…
+$ model_year    &lt;int&gt; 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, …
+$ mpg           &lt;dbl&gt; 15, 18, 16, 17, 15, 14, 14, 14, 15, 15, 14, 15, 14, 24, …
+$ origin_USA    &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0,…
+$ origin_Europe &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…
+$ origin_Japan  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0,…</code></pre>
+</div>
+</div>
+</section>
+<section id="separación-en-entrenamiento-y-prueba" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="separación-en-entrenamiento-y-prueba"><span class="header-section-number">2.2</span> Separación en entrenamiento y prueba</h2>
+<p>Separaremos los datos en conjuntos de entrenamiento y prueba, emplearemos un porcentaje de 80<span class="math inline">\%</span> para el entrenamiento y un 20<span class="math inline">\%</span> para la prueba.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(dataset, <span class="fl">0.8</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>train_dataset <span class="ot">&lt;-</span> <span class="fu">training</span>(split)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>test_dataset <span class="ot">&lt;-</span> <span class="fu">testing</span>(split)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="selección-de-variables-para-el-modelo" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="selección-de-variables-para-el-modelo"><span class="header-section-number">2.3</span> Selección de variables para el modelo</h2>
+<p>A partir de una selección de las variables que mejor se correlacionan con nuestra variable objetivo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>train_dataset <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mpg, cylinders, displacement, horsepower, weight) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  GGally<span class="sc">::</span><span class="fu">ggpairs</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_point(): All aesthetics have length 1, but the data has 25 rows.
+ℹ Did you mean to use `annotate()`?</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Deep_Learning_02_examples_03_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="acomodar-etiquetas-de-regresores" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="acomodar-etiquetas-de-regresores"><span class="header-section-number">2.4</span> Acomodar etiquetas de regresores</h2>
+<p>En este caso, estableceremos un modelo de regresión que explica <code>mpg</code> en función de otras variables regresoras <code>cylinders</code>, <code>displacement</code>, <code>weight</code>. Si planteamos lo anterior como un modelo de regresión, tenemos:</p>
+<p><span class="math display">y_{i} = \beta_0 + \beta_1 + x_{1,i} + \beta_2 x_{2,i} + \beta_2 x_{3,i} + \epsilon_{i} </span></p>
+<p>con <span class="math inline">i=1, \ldots, n</span>. Donde, <span class="math inline">Y = mpg</span>, <span class="math inline">X_1 = cylinders</span>, <span class="math inline">X_2 = displacement</span>, <span class="math inline">X_3 = weight</span>.</p>
+<p>Necesitamos indicarle al modelo cuáles son las variables regresoras y cuáles son las variables objetivo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>train_features <span class="ot">&lt;-</span> train_dataset <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>mpg)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>test_features <span class="ot">&lt;-</span> test_dataset <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>mpg)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>train_labels <span class="ot">&lt;-</span> train_dataset <span class="sc">%&gt;%</span> <span class="fu">select</span>(mpg)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>test_labels <span class="ot">&lt;-</span> test_dataset <span class="sc">%&gt;%</span> <span class="fu">select</span>(mpg)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="normalización" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="normalización"><span class="header-section-number">2.5</span> Normalización</h2>
+<p>Es recomendable normalizar las características que utilizan diferentes escalas y rangos.</p>
+<p>Por ejemplo en los datos se observan escalas muy diferentes para cada uno de los predictores.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>my_skim <span class="ot">&lt;-</span> skimr<span class="sc">::</span><span class="fu">skim_with</span>(<span class="at">numeric =</span> skimr<span class="sc">::</span><span class="fu">sfl</span>(mean, sd))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>train_dataset <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(<span class="sc">~</span><span class="fu">is.numeric</span>(.x))) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"variable"</span>, <span class="at">values_to =</span> <span class="st">"values"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(variable) <span class="sc">%&gt;%</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(values), <span class="at">sd =</span> <span class="fu">sd</span>(values))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+   variable          mean      sd
+   &lt;chr&gt;            &lt;dbl&gt;   &lt;dbl&gt;
+ 1 acceleration    15.6     2.83 
+ 2 cylinders        5.46    1.73 
+ 3 displacement   195.    108.   
+ 4 horsepower     105.     39.8  
+ 5 model_year      76.0     3.78 
+ 6 mpg             23.6     8.07 
+ 7 origin_Europe    0.173   0.379
+ 8 origin_Japan     0.208   0.407
+ 9 origin_USA       0.619   0.487
+10 weight        2981.    875.   </code></pre>
+</div>
+</div>
+<p>Una razón por la que esto es importante es porque las características se multiplican por los pesos del modelo. Por lo tanto, la escala de las salidas y la escala de los gradientes se ven afectadas por la escala de las entradas.</p>
+<p>Aunque un modelo podría converger sin la normalización de características, la normalización hace que el entrenamiento sea mucho más estable.</p>
+<section id="la-capa-de-normalización" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="la-capa-de-normalización"><span class="header-section-number">2.5.1</span> La capa de normalización</h3>
+<p>Añadimos una capa de normalización a nuestro modelo, a través de la función <code>layer_normalization()</code>.</p>
+<ol type="1">
+<li>Primer paso: Se crea la capa</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>normalizer <span class="ot">&lt;-</span> <span class="fu">layer_normalization</span>(<span class="at">axis =</span> <span class="sc">-</span><span class="dv">1</span>L)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Luego se ajusta el estado de la capa de normalización a los datos, usando <code>adapt()</code></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>normalizer <span class="sc">%&gt;%</span> <span class="fu">adapt</span>(<span class="fu">as.matrix</span>(train_features))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>La media y la varianza son almacenadas en el objeto <code>normalizer</code>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(normalizer<span class="sc">$</span>mean)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor(
+[[5.4551277e+00 1.9516347e+02 1.0464744e+02 2.9808433e+03 1.5561857e+01
+  7.6028854e+01 6.1858976e-01 1.7307693e-01 2.0833333e-01]], shape=(1, 9), dtype=float32)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(normalizer<span class="sc">$</span>variance)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor(
+[[2.9979866e+00 1.1541708e+04 1.5814526e+03 7.6334888e+05 7.9777446e+00
+  1.4245961e+01 2.3593649e-01 1.4312130e-01 1.6493055e-01]], shape=(1, 9), dtype=float32)</code></pre>
+</div>
+</div>
+<p>Cuando se aplica la capa de normalización, devuelve los datos ingresados con cada uno de los regresores normalizados de manera independiente.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>ejemplo <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(train_features[<span class="dv">1</span>,])</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">'Sin normalizar:'</span>, ejemplo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sin normalizar: 8 318 140 4080 13.7 78 1 0 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">'Normalizado:'</span>, <span class="fu">as.matrix</span>(<span class="fu">normalizer</span>(ejemplo)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Normalizado: 1.469776 1.143385 0.8889816 1.258051 -0.6591836 0.5222433 0.7852262 -0.4574957 -0.5129892</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="regresión-lineal" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Regresión Lineal</h1>
+<p>Haremos un ejemplo tomando en cuenta un modelo lineal simple y múltiple.</p>
+<section id="modelo-lineal-simple" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="modelo-lineal-simple"><span class="header-section-number">3.1</span> Modelo lineal simple</h2>
+<p>Implementaremos un modelo lineal simple para predecir la variable <code>mpg</code> en función de <code>horsepower</code>. Para implementarlo, necesitamos ejecutar dos pasos:</p>
+<ol type="1">
+<li>Normalizar las características de <code>horsepower</code> utilizando la capa de preprocesamiento de normalización (<code>normalization</code>).</li>
+<li>Aplicar una transformación lineal (<span class="math inline">y=\beta_0 + \beta x</span>) para producir una salida utilizando una capa lineal del modelo secuencial (<code>dense</code>).</li>
+</ol>
+<p>El número de entradas (<em>inputs</em>) se puede establecer mediante el argumento <code>input_shape</code>, o automáticamente cuando el modelo se ejecuta por primera vez.</p>
+<p>Primero, creamos una matriz con las características de <code>horsepower</code>. Luego, iniciamos la capa de normalización (<code>layer_normalization</code>) y ajustamos su estado a los datos de <code>horsepower</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>horsepower <span class="ot">&lt;-</span> <span class="fu">matrix</span>(train_features<span class="sc">$</span>horsepower)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>horsepower_normalizer <span class="ot">&lt;-</span> <span class="fu">layer_normalization</span>(<span class="at">input_shape =</span> <span class="fu">shape</span>(<span class="dv">1</span>), <span class="at">axis =</span> <span class="cn">NULL</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>horsepower_normalizer <span class="sc">%&gt;%</span> <span class="fu">adapt</span>(horsepower)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Luego, construimos el <span class="orange">modelo secuencial en Keras</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>horsepower_model <span class="ot">&lt;-</span> <span class="fu">keras_model_sequential</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">horsepower_normalizer</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">1</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(horsepower_model)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model: "sequential"
+________________________________________________________________________________
+ Layer (type)                  Output Shape               Param #    Trainable  
+================================================================================
+ normalization_1 (Normalizati  (None, 1)                  3          Y          
+ on)                                                                            
+ dense (Dense)                 (None, 1)                  2          Y          
+================================================================================
+Total params: 5 (24.00 Byte)
+Trainable params: 2 (8.00 Byte)
+Non-trainable params: 3 (16.00 Byte)
+________________________________________________________________________________</code></pre>
+</div>
+</div>
+<p>Una vez construido el modelo, configura el procedimiento de entrenamiento utilizando el método <code>compile()</code> de Keras. Los argumentos más importantes para compilar son la pérdida y el optimizador, ya que estos definen qué se optimizará (<code>mean_absolute_error</code>) y cómo (usando el <code>optimizer_adam</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>horsepower_model <span class="sc">%&gt;%</span> <span class="fu">compile</span>(</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">optimizer =</span> <span class="fu">optimizer_adam</span>(<span class="at">learning_rate =</span> <span class="fl">0.1</span>),</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">loss =</span> <span class="st">'mean_absolute_error'</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Ajustamos el modelo utilizando la función de Keras <code>fit()</code>, en este caso emplearemos 100 épocas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>history <span class="ot">&lt;-</span> horsepower_model <span class="sc">%&gt;%</span> <span class="fu">fit</span>(</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(train_features<span class="sc">$</span>horsepower),</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(train_labels),</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">epochs =</span> <span class="dv">100</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Suppress logging.</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="dv">0</span>,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate validation results on 20% of the training data.</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">validation_split =</span> <span class="fl">0.2</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Visualizamos el proceso de entrenamiento almacenado en el objeto <code>history</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(history)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Deep_Learning_02_examples_03_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Guardar los resultaddos del conjunto de prueba</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>test_results <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>test_results[[<span class="st">"horsepower_model"</span>]] <span class="ot">&lt;-</span> horsepower_model <span class="sc">%&gt;%</span> <span class="fu">evaluate</span>(</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(test_features<span class="sc">$</span>horsepower),</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(test_labels),</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="dv">0</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>También podemos graficar las predicciones de <code>mpg</code> en función de la variable de entrada <code>horsepower</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">250</span>, <span class="at">length.out =</span> <span class="dv">251</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">predict</span>(horsepower_model, x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>8/8 - 0s - 71ms/epoch - 9ms/step</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(train_dataset) <span class="sc">+</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> horsepower, <span class="at">y =</span> mpg, <span class="at">color =</span> <span class="st">"datos"</span>), <span class="at">color=</span><span class="st">"green4"</span>) <span class="sc">+</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(x, y), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> <span class="st">"predicción"</span>),</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">color=</span><span class="st">"orange"</span>, <span class="at">linewidth=</span><span class="dv">2</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Deep_Learning_02_examples_03_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="modelo-lineal-múltiple" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="modelo-lineal-múltiple"><span class="header-section-number">3.2</span> Modelo lineal múltiple</h2>
+<p>Se puede utilizar una configuración casi idéntica para realizar predicciones basadas en múltiples entradas (i.e.&nbsp;modelo de regresión múltiple). Este modelo continúa realizando la misma función <span class="math inline">y=\beta_0 + \beta x</span> excepto que <span class="math inline">\beta</span> es una matriz y <span class="math inline">\beta_0</span> es un vector.</p>
+<p>Se debe crear de nuevo un modelo secuencial de Keras en dos pasos, siendo la primera capa el normalizador (<code>layer_normalization(axis = -1)</code>) que se definió anteriormente y se adaptó a todo el conjunto de datos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">keras_model_sequential</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">normalizer</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Configuramos el modelo con la función <code>compile()</code> y entrenamos usando <code>fit()</code> utilizando 100 épocas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>linear_model <span class="sc">%&gt;%</span> <span class="fu">compile</span>(</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">optimizer =</span> <span class="fu">optimizer_adam</span>(<span class="at">learning_rate =</span> <span class="fl">0.1</span>),</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">loss =</span> <span class="st">'mean_absolute_error'</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>history <span class="ot">&lt;-</span> linear_model <span class="sc">%&gt;%</span> <span class="fu">fit</span>(</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(train_features),</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(train_labels),</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">epochs =</span> <span class="dv">100</span>,</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Suppress logging.</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="dv">0</span>,</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate validation results on 20% of the training data.</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">validation_split =</span> <span class="fl">0.2</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Con la mayor cantidad de regresores como inputs, se logra un error de validación más pequeño que en el modelo simple (<code>horsepower_model</code>):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(history)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Deep_Learning_02_examples_03_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Guardamos los resultados:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>test_results[[<span class="st">'linear_model'</span>]] <span class="ot">&lt;-</span> linear_model <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">evaluate</span>(</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.matrix</span>(test_features),</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.matrix</span>(test_labels),</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="dv">0</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="regresión-con-mlp" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Regresión con MLP</h1>
+<p>Anteriormente, se implementaron dos modelos lineales para entradas únicas y múltiples.</p>
+<p>En esta parte se implementará un modelo de MLP para entradas únicas y múltiples.</p>
+<p>El código es básicamente el mismo excepto que el modelo se expande para incluir algunas capas no lineales “ocultas”. Estos modelos contendrán algunas capas más que el modelo lineal:</p>
+<ul>
+<li>La capa de normalización, como antes (con <code>horsepower_normalizer</code> para un modelo de entrada única y <code>normalizer</code> para un modelo de múltiples entradas).</li>
+<li>Dos capas ocultas, no lineales, <code>Dense</code> con la función de activación ReLU (<code>relu</code>).</li>
+<li>Una capa <code>Dense</code> lineal de salida única.</li>
+</ul>
+<p>Ambos modelos utilizarán el mismo procedimiento de entrenamiento, por lo que el método <code>compile</code> está incluido en la función <code>build_and_compile_model</code> a continuación.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>build_and_compile_model <span class="ot">&lt;-</span> <span class="cf">function</span>(norm) {</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">keras_model_sequential</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">norm</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">layer_dense</span>(<span class="dv">64</span>, <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">layer_dense</span>(<span class="dv">64</span>, <span class="at">activation =</span> <span class="st">'relu'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">layer_dense</span>(<span class="dv">1</span>)</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>  model <span class="sc">%&gt;%</span> <span class="fu">compile</span>(</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">loss =</span> <span class="st">'mean_absolute_error'</span>,</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">optimizer =</span> <span class="fu">optimizer_adam</span>(<span class="fl">0.001</span>)</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>  model</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="regresión-simple-con-mlp" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="regresión-simple-con-mlp"><span class="header-section-number">4.1</span> Regresión simple con MLP</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>dnn_horsepower_model <span class="ot">&lt;-</span> <span class="fu">build_and_compile_model</span>(horsepower_normalizer)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dnn_horsepower_model)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model: "sequential_2"
+________________________________________________________________________________
+ Layer (type)                  Output Shape               Param #    Trainable  
+================================================================================
+ normalization_1 (Normalizati  (None, 1)                  3          Y          
+ on)                                                                            
+ dense_4 (Dense)               (None, 64)                 128        Y          
+ dense_3 (Dense)               (None, 64)                 4160       Y          
+ dense_2 (Dense)               (None, 1)                  65         Y          
+================================================================================
+Total params: 4356 (17.02 KB)
+Trainable params: 4353 (17.00 KB)
+Non-trainable params: 3 (16.00 Byte)
+________________________________________________________________________________</code></pre>
+</div>
+</div>
+<p>Entrenar el modelo con Keras y <code>Model$fit</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>history <span class="ot">&lt;-</span> dnn_horsepower_model <span class="sc">%&gt;%</span> <span class="fu">fit</span>(</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(train_features<span class="sc">$</span>horsepower),</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(train_labels),</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">validation_split =</span> <span class="fl">0.2</span>,</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="dv">0</span>,</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">epochs =</span> <span class="dv">100</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Este modelo mejora un poco respecto al modelo de regresión lineal con un input <code>horsepower_model</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(history)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Deep_Learning_02_examples_03_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Si se grafican las predicciones como función de <code>'horsepower'</code>, se debería notar cómo el modelo aprovecha la no linealidad proporcionada por las capas ocultas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.0</span>, <span class="dv">250</span>, <span class="at">length.out =</span> <span class="dv">251</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">predict</span>(dnn_horsepower_model, x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>8/8 - 0s - 148ms/epoch - 18ms/step</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(train_dataset) <span class="sc">+</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> horsepower, <span class="at">y =</span> mpg, <span class="at">color =</span> <span class="st">"datos"</span>), <span class="at">color=</span><span class="st">"green4"</span>) <span class="sc">+</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(x, y), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> <span class="st">"predicción"</span>), </span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">color=</span><span class="st">"orange"</span>, <span class="at">linewidth=</span><span class="dv">2</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Deep_Learning_02_examples_03_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Recolectamos los resultados del conjunto de prueba, los guardaremos para después analizarlo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>test_results[[<span class="st">'dnn_horsepower_model'</span>]] <span class="ot">&lt;-</span> dnn_horsepower_model <span class="sc">%&gt;%</span> <span class="fu">evaluate</span>(</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(test_features<span class="sc">$</span>horsepower),</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(test_labels),</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="dv">0</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="regresión-múltiple-con-mlp" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="regresión-múltiple-con-mlp"><span class="header-section-number">4.1.1</span> Regresión múltiple con MLP</h3>
+<p>Repetir el proceso anterior, pero esta vez utilizando todos los inputs. El desempeño del modelo mejora ligeramente en el conjunto de validación.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>dnn_model <span class="ot">&lt;-</span> <span class="fu">build_and_compile_model</span>(normalizer)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dnn_model)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model: "sequential_3"
+________________________________________________________________________________
+ Layer (type)                  Output Shape               Param #    Trainable  
+================================================================================
+ normalization (Normalization  (None, 9)                  19         Y          
+ )                                                                              
+ dense_7 (Dense)               (None, 64)                 640        Y          
+ dense_6 (Dense)               (None, 64)                 4160       Y          
+ dense_5 (Dense)               (None, 1)                  65         Y          
+================================================================================
+Total params: 4884 (19.08 KB)
+Trainable params: 4865 (19.00 KB)
+Non-trainable params: 19 (80.00 Byte)
+________________________________________________________________________________</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>history <span class="ot">&lt;-</span> dnn_model <span class="sc">%&gt;%</span> <span class="fu">fit</span>(</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(train_features),</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(train_labels),</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">validation_split =</span> <span class="fl">0.2</span>,</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="dv">0</span>,</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">epochs =</span> <span class="dv">100</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(history)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Deep_Learning_02_examples_03_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Obtenemos los resultados del conjunto de prueba:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>test_results[[<span class="st">'dnn_model'</span>]] <span class="ot">&lt;-</span> dnn_model <span class="sc">%&gt;%</span> <span class="fu">evaluate</span>(</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(test_features),</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(test_labels),</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="dv">0</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="desempeño" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="desempeño"><span class="header-section-number">4.2</span> Desempeño</h2>
+<p>Ahora que tenemos todos los modelos entrenados, podemos revisar y comparar su desempeño con el conjunto de prueba:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(test_results, <span class="cf">function</span>(x) x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    horsepower_model.loss         linear_model.loss dnn_horsepower_model.loss 
+                 3.358897                  2.628806                  2.991233 
+           dnn_model.loss 
+                 1.742151 </code></pre>
+</div>
+</div>
+<p>Estos resultados tienen sentido al comparar con el error de validación observado durante el entrenamiento.</p>
+<section id="hacer-predicciones" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="hacer-predicciones"><span class="header-section-number">4.2.1</span> Hacer predicciones</h3>
+<p>Una vez que se tienen los modelos entrenados, se pueden hacer predicciones con el <code>dnn_model</code> en el conjunto de prueba utilizando <code>predict()</code> de Keras y evaluar la función de pérdida:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>test_predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(dnn_model, <span class="fu">as.matrix</span>(test_features))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3/3 - 0s - 55ms/epoch - 18ms/step</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">pred =</span> <span class="fu">as.numeric</span>(test_predictions), <span class="at">mpg =</span> test_labels<span class="sc">$</span>mpg)) <span class="sc">+</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> pred, <span class="at">y =</span> mpg), <span class="at">color=</span><span class="st">"green4"</span>) <span class="sc">+</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>, </span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"orange"</span>, <span class="at">linewidth=</span><span class="dv">2</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Deep_Learning_02_examples_03_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Parece que el modelo realiza predicciones de manera razonablemente buena.</p>
+<p>A continuación, se verifica la distribución del error:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">error =</span> test_predictions <span class="sc">-</span> test_labels<span class="sc">$</span>mpg) <span class="sc">%&gt;%</span> </span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x=</span>error), <span class="at">color=</span><span class="st">"orange"</span>, <span class="at">linewidth=</span><span class="dv">2</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Densidad del error"</span>) <span class="sc">+</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Deep_Learning_02_examples_03_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> test_predictions <span class="sc">-</span> test_labels</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Si se está conforme con el modelo, se debe guardar para su uso posterior con <code>Model$save</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save_model_tf</span>(dnn_model, <span class="st">'dnn_model'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Podemos cargar los pesos del modelo guardado, esto proporcionará la misma salida:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>reloaded <span class="ot">&lt;-</span> <span class="fu">load_model_tf</span>(<span class="st">'dnn_model'</span>)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>test_results[[<span class="st">'reloaded'</span>]] <span class="ot">&lt;-</span> reloaded <span class="sc">%&gt;%</span> <span class="fu">evaluate</span>(</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(test_features),</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(test_labels),</span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="dv">0</span></span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(test_results, <span class="cf">function</span>(x) x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    horsepower_model.loss         linear_model.loss dnn_horsepower_model.loss 
+                 3.358897                  2.628806                  2.991233 
+           dnn_model.loss             reloaded.loss 
+                 1.742151                  1.742151 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusión" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="conclusión"><span class="header-section-number">4.3</span> Conclusión</h2>
+<p>Este cuaderno introdujo algunas técnicas para manejar un problema de regresión. Aquí hay algunos consejos adicionales que pueden ser útiles:</p>
+<ul>
+<li>El error cuadrático medio (MSE) (<code>loss_mean_squared_error()</code>) y el error absoluto medio (MAE) (<code>loss_mean_absolute_error()</code>) son funciones de pérdida comunes utilizadas para problemas de regresión. El MAE es menos sensible a los valores atípicos. Se utilizan diferentes funciones de pérdida para problemas de clasificación.</li>
+<li>De manera similar, las métricas de evaluación utilizadas para la regresión difieren de las de clasificación.</li>
+<li>Cuando las características de datos de entrada numéricos tienen valores con diferentes rangos, cada característica debe ser escalada independientemente al mismo rango.</li>
+<li>El sobreajuste es un problema común para los modelos DNN, aunque no fue un problema en este tutorial. Se recomienda visitar el tutorial <a href="https://tensorflow.rstudio.com/tutorials/keras/overfit_and_underfit">Sobreajuste y subajuste</a> para más detalles en este aspecto.</li>
+</ul>
+<p>Además, es esencial comprender la importancia de una validación cruzada adecuada y el uso de conjuntos de prueba independientes para evaluar la generalización del modelo. Esto garantiza que el rendimiento observado no sea un resultado de las peculiaridades de un conjunto de datos particular. También, fomentar una comprensión sólida de la teoría detrás de las métricas de evaluación y las funciones de pérdida puede proporcionar una base más profunda para la toma de decisiones críticas en el ajuste y optimización del modelo.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
