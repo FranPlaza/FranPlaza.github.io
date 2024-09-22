@@ -1,0 +1,34 @@
+---
+title: "Anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax) variability changes in northern Chile associated with the environment and inter species synchronicity: GARCH model with exogenous variable and hybrid Bayesian deep learning estimation approach"
+author: 
+- name: Francisco Plaza-Vega
+  orcid: 0000-0001-7577-2775
+- Héctor Araya
+date: '2024-01-04'
+slug: tbi-definitions
+categories:
+  - Research 
+  - EHR
+  - TBI
+description: 'Garch-X anchovy sardine'
+subtitle: blablablab blablablabla.
+links:
+- icon: file-richtext-fill
+  name: Publication
+  url: https://doi.org/10.1136/ip-2023-045069
+- icon: github
+  name: Relevant files
+  url: https://github.com/bolandlab/TBI_Definition
+- icon: calendar-check
+  name: Related talk
+  url: /talk/2022-04-27-dbei-research-day/
+lang: es
+format: 
+  html: 
+    image: cover.png
+    page-layout: full
+---
+
+## Abstract
+
+Small pelagic fish species, such as anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax), play a crucial role in marine ecosystems worldwide as they serve as an important food source for higher-order predators, such as seabirds, marine mammals, and larger fish species; also from their high productivity in terms of fishery landings, they help with maintaining food security. However, small pelagic populations are known for their variability, with fluctuations in their distribution and abundance influenced by interactions with environmental and human-related factors in different spatio-temporal scales. This study aims to investigate the variability in anchovy and sardine populations in northern Chile and their potential environmental drivers by using a class of models that address the changes in variability (i.e. variance) over time, namely Generalized autoregressive conditional heteroskedasticity (GARCH) models. In particular, this work considers a GARCH model that includes an additional term in the variance, that could help to better model the variability fluctuations of both anchovy and sardine, explained by environmental factors. Since there is no estimation procedures for those type of models, we propose a hybrid Approximate Bayesian Computation (ABC) procedure that involves the use of Deep Learning structures for estimating the parameters of the model and obtain posterior distributions. The results are two-fold: First, the proposal of a new time series model that better explain conditional variance with exogenous variables and a novel estimation procedure, and second, a novel approach for establishing explicit models that address the variability of small pelagic fisheries and their interaction with the environment.

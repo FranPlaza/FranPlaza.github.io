@@ -13,5 +13,11 @@
   },
   "courses/deep_learning/index.qmd": {
     "index.html": "c00bbf44"
+  },
+  "research/2024-09-22-test/index.qmd": {
+    "index.html": "486f0fc2"
+  },
+  "research/index.qmd": {
+    "index.html": "63265203"
   }
 }

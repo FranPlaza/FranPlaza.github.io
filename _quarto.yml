@@ -40,7 +40,7 @@ website:
             - text: Modelos de Deep Learning
               href: courses/deep_learning/index.qmd
         - text: Publicaciones
-          href: index.qmd
+          href: research/index.qmd
 #        - text: Proyectos
 #          href: index.qmd
 #        - text: Actividades
