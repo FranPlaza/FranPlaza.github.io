@@ -5,11 +5,11 @@ author:
   orcid: 0000-0001-7577-2775
 - Héctor Araya
 date: '2024-01-04'
-slug: tbi-definitions
+slug: garchx-anchovy-sardine
 categories:
-  - Research 
-  - EHR
-  - TBI
+  - Research
+  - GARCH-X
+  - Time-Series
 description: 'Garch-X anchovy sardine'
 subtitle: blablablab blablablabla.
 links:
