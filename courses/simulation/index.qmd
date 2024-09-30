@@ -70,7 +70,7 @@ para sistemas reales complejos.
     1.4. Test de Rachas y el test de Bondad de Ajuste para analizar la calidad de los números generados.
     1.5. Aplicación: Aproximación de integrales mediante números pseudos aleatorios.
 
-[Slides](Simulacion_1_Generando_numeros_pseudo_aleatorios.html){target="_blank"}
+[Slides](Simulacion_1_Generando_numeros_pseudo_aleatorios.html){target="_blank"} - [Slides en pdf](Simulacion_1_Generando_numeros_pseudo_aleatorios.pdf){target="_blank"}
 :::
 
 ::: {.callout-tip collapse="true" icon=false}
