@@ -11,7 +11,7 @@ categories:
   - GARCH-X
   - Time-Series
 description: 'Garch-X anchovy sardine'
-subtitle: blablablab blablablabla.
+subtitle: Aplicamos un modelo GARCH que tiene una variable exógena a las pesquerías de anchoveta y sardina en el norte de Chile. Para estimar los parámetros del modelo proponemos una metodología híbrida que mezcla ABC y Deep Learning.
 links:
 - icon: file-richtext-fill
   name: Publication
