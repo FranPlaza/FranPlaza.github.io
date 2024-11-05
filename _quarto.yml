@@ -56,7 +56,6 @@ website:
     center: >-
         &#169; 2024 Francisco Plaza-Vega &#8729; Hecho con [Quarto](https://quarto.org)
     
-
 format:
   html:
     #css: styles.css
