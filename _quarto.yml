@@ -39,6 +39,8 @@ website:
               href: courses/simulation/index.qmd
             - text: Modelos de Deep Learning
               href: courses/deep_learning/index.qmd
+            - text: Quarto y Github Pages
+              href: courses/quarto_github_pages/index.qmd
         - text: Publicaciones
           href: research/index.qmd
 #        - text: Proyectos
