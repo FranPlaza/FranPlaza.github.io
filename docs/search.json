@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Francisco J. Plaza-Vega",
     "section": "",
-    "text": "Hola!, soy un académico del Departamento de Matemática y Ciencia de la Computación, de la Universidad de Santiago de Chile.\n\n\n\n Volver arriba"
+    "text": "Hola!, soy un académico del Departamento de Matemática y Ciencia de la Computación, de la Universidad de Santiago de Chile.\n\n    \n    \n  \n\n\n\n\n\n\n Volver arriba"
   },
   {
     "objectID": "courses/simulation/Simulation_00_About.html",
@@ -75,5 +75,19 @@
     "title": "Mini curso Quarto Github Pages",
     "section": "",
     "text": "1 Objetivos del curso\n\n\n\n\n\n\nEste mini curso está diseñado para introducir a los participantes en el uso de Quarto, GitHub y GitHub Pages para la creación y publicación de distintos tipos de documentos, con un foco en documentos web (de tipo .html). A lo largo del curso, aprenderán a generar documentos básicos en Quarto y a trabajar con repositorios en GitHub, utilizando GitHub Desktop para simplificar el flujo de trabajo. Al finalizar, los participantes serán capaces de publicar sus propios sitios web utilizando GitHub Pages, adquiriendo así una herramienta versátil para compartir su trabajo de manera profesional y accesible en la web.\n\n\n\n\n\n2 Programa y Requisitos\n\n\n\n\n\n\nContenidos\n\n\n\n\n\n1. Introducción\n2. Qué necesitaremos?\n3. Quarto\n4. Sintáxis\n5. Páginas web con Quarto\n6. Github\n7. Repositorio usando Github Desktop\nSlides\n\n\n\n\n\n\n\n\n\nPrerequisitos\n\n\n\n\n\n\nConocimientos básicos de Markdown\nFamiliaridad con la sintaxis de Markdown para la creación y edición de contenido.\nGitHub y GitHub Desktop\n\nInstalación de GitHub Desktop (enlace de descarga).\nCreación de una cuenta en GitHub y familiaridad con sus funcionalidades básicas, como la creación de repositorios.\nComprensión de conceptos básicos de Git y GitHub, como realizar commit, push y pull usando GitHub Desktop para facilitar el flujo de trabajo.\n\nInstalación de R y RStudio\n\nInstalar R (https://cran.r-project.org/) y RStudio (https://www.rstudio.com/).\nFamiliaridad básica con RStudio para ejecutar y editar código en R.\n\nInstalación de Quarto\n\nInstalar Quarto siguiendo las instrucciones oficiales.\nVerificar la instalación con el comando quarto check.\n\n\n\n\n\n\n\n\n\n Volver arriba"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Francisco J. Plaza-Vega",
+    "section": "",
+    "text": "Hola!, soy un académico del Departamento de Matemática y Ciencia de la Computación, de la Universidad de Santiago de Chile.\n\n\n Volver arriba"
+  },
+  {
+    "objectID": "about/index.html",
+    "href": "about/index.html",
+    "title": "Francisco J. Plaza-Vega",
+    "section": "",
+    "text": "Hola!, soy un académico del Departamento de Matemática y Ciencia de la Computación, de la Universidad de Santiago de Chile.\n\n\n Volver arriba"
   }
 ]

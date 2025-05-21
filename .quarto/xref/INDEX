@@ -25,5 +25,11 @@
   },
   "courses/quarto_github_pages/index.qmd": {
     "index.html": "e9915fe4"
+  },
+  "about.qmd": {
+    "about.html": "8ecb8132"
+  },
+  "about/index.qmd": {
+    "index.html": "b8ad3029"
   }
 }

@@ -1,10 +1,47 @@
 ---
 title: "Francisco J. Plaza-Vega"
-subtitle: "Profesor Asociado <br>Departamento de Matemática y Ciencia de la Computación<br>Universidad de Santiago de Chile"
+subtitle: "Profesor Asociado <br> Universidad de Santiago de Chile"
+image: images/website_image_clean.png
 lang: es
 format: 
   html:
     embed-resources: true
+
+about:
+  template: solana
+  image-width: 25em
+  id: hero-heading
+  links:
+     - icon: github
+       aria-label: GitHub
+       href: https://github.com/FranPlaza
+     - icon: linkedin
+       aria-label: "LinkedIn"
+       href: https://www.linkedin.com/in/franplazavega/
+     - text: "{{< ai orcid >}}"
+       href: https://orcid.org/0000-0001-7577-2775
+     - text: "{{< ai google-scholar >}}"
+       aria-label: "Google Scholar"
+       href: https://scholar.google.com/citations?user=4jWVTf4AAAAJ&hl=en
+     - icon: envelope
+       href: mailto:francisco.plaza.v@usach.cl
+page-layout: full
+
+execute: 
+  freeze: false
+  echo: false
+  warning: false
+
+header-includes: >
+  <link rel="stylesheet" href="index.css">
+resources:
+  - index.css
 ---
 
+<br><br>
+
+::: {#hero-heading}
+
 Hola!, soy un académico del [Departamento de Matemática y Ciencia de la Computación](https://www.dmcc.usach.cl/), de la [Universidad de Santiago de Chile](https://www.usach.cl/).
+
+:::

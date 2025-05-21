@@ -1,0 +1,13 @@
+---
+title: "Francisco J. Plaza-Vega"
+subtitle: "Profesor Asociado <br>Departamento de Matemática y Ciencia de la Computación<br>Universidad de Santiago de Chile"
+lang: es
+format: 
+  html:
+    embed-resources: true
+about:
+  template: jolla
+  image: ../images/fran.jpg
+---
+
+Hola!, soy un académico del [Departamento de Matemática y Ciencia de la Computación](https://www.dmcc.usach.cl/), de la [Universidad de Santiago de Chile](https://www.usach.cl/).
