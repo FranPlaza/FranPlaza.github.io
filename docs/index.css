@@ -19,6 +19,11 @@
   padding: 0 2em 0 2em;
 }
 
+/* blurb */
+.about-contents {
+  padding: 0 0 0 2em !important;
+}
+
 /* social links: block of links */
 .about-entity .about-links {
   justify-content: flex-end !important;

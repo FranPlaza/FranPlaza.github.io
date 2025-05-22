@@ -61,7 +61,7 @@ website:
 format:
   html:
     #css: styles.css
-    toc: true
+    toc: false
     theme: #yeti
         light: [yeti, custom_light.css]
         dark: [yeti, custom_dark.css]

@@ -9,7 +9,7 @@ format:
 
 about:
   template: solana
-  image-width: 25em
+  image-width: 28em
   id: hero-heading
   links:
      - icon: github
@@ -38,10 +38,12 @@ resources:
   - index.css
 ---
 
-<br><br>
+---
 
 ::: {#hero-heading}
-
-Hola!, soy un académico del [Departamento de Matemática y Ciencia de la Computación](https://www.dmcc.usach.cl/), de la [Universidad de Santiago de Chile](https://www.usach.cl/).
-
+Soy **Francisco Plaza-Vega**, académico del [Departamento de Matemática y Ciencia de la Computación](https://www.dmcc.usach.cl/) de la [Universidad de Santiago de Chile](https://www.usach.cl/). Mi labor académica y científica se desarrolla en la intersección entre la **estadística**, la **ciencia de datos** y el **aprendizaje automático y profundo**, con un fuerte enfoque aplicado a problemáticas medioambientales, especialmente en el ámbito de las **pesquerías y el cambio climático**.
 :::
+
+---
+
+Este sitio busca compartir parte de ese trabajo, promover colaboraciones interdisciplinarias y difundir herramientas modernas de análisis de datos aplicadas a desafíos del mundo real.
