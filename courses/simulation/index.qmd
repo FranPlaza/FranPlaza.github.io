@@ -121,12 +121,6 @@ Tres pruebas escritas programadas (PEP) y trabajos grupales con ponderaciones:
 - Tareas: 25$\%$
 :::
 
-# Asistencia
-
-::: {.callout-tip appearance="simple" icon=false}
-[Asistencia:]{.green} 75$\%$
-:::
-
 # Bibliografía
 
 Los principales libros que usaremos, además de otros recursos online son los siguientes:

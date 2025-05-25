@@ -119,18 +119,12 @@ A lo largo del curso, los estudiantes desarrollarán un [Proyecto aplicado]{.gre
 
 ::: {.callout-tip appearance="simple" icon=false}
 [Presentación de proyectos:]{.green}</br>
-Los estudiantes expondrán sus proyectos (máximo 3 integrantes), mostrando la metodología, resultados y aprendizajes clave. Dicho trabajo grupal tendrá 3 presentaciones de avance ([PA]{.green}) y un informe final ([IF]{.green}), con las siguientes ponderaciones:
+Los estudiantes expondrán sus proyectos (máximo 3 integrantes), mostrando la metodología, resultados y aprendizajes clave. Dicho trabajo grupal tendrá 3 presentaciones de avance ([PA]{.green}), con las siguientes ponderaciones:
 
-  - PA$_1$: 25$\%$
-  - PA$_2$: 25$\%$
-  - PA$_3$: 25$\%$
-  - IF: 25$\%$
-:::
-
-# Asistencia
-
-::: {.callout-tip appearance="simple" icon=false}
-[Asistencia:]{.green} 75$\%$
+  - PA$_1$: 33.3$\%$
+  - PA$_2$: 33.3$\%$
+  - PA$_3$: 33.3$\%$
+  
 :::
 
 # Bibliografía del curso
