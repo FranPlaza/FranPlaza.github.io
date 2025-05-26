@@ -102,6 +102,8 @@ library(reticulate)
     4.3.	LSTM y GRU: soluciones al problema del desvanecimiento del gradiente.
     4.4.	Aplicaciones de las RNNs y LSTM: procesamiento de lenguaje natural, generación de texto y análisis de series temporales.
     4.5.	Implementación práctica de modelos RNN y LSTM.
+
+[Slides](Deep_Learning_04_RNN.html){target="_blank"}
 :::
 
 ::: {.callout-tip collapse="true" icon=false}
