@@ -289,16 +289,16 @@ Francisco Plaza Vega
 <span id="cb1-5"><a href=""></a>  <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">10</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-1           6.1         2.9          4.7         1.4 versicolor
-2           6.2         3.4          5.4         2.3  virginica
-3           4.8         3.4          1.9         0.2     setosa
-4           5.8         2.8          5.1         2.4  virginica
-5           5.0         3.4          1.5         0.2     setosa
-6           7.2         3.0          5.8         1.6  virginica
-7           6.3         2.9          5.6         1.8  virginica
-8           4.7         3.2          1.3         0.2     setosa
-9           7.7         3.8          6.7         2.2  virginica
-10          5.0         3.5          1.6         0.6     setosa</code></pre>
+1           6.9         3.1          5.1         2.3  virginica
+2           4.6         3.6          1.0         0.2     setosa
+3           7.0         3.2          4.7         1.4 versicolor
+4           4.4         2.9          1.4         0.2     setosa
+5           5.1         3.7          1.5         0.4     setosa
+6           5.1         3.5          1.4         0.2     setosa
+7           5.6         2.5          3.9         1.1 versicolor
+8           4.9         3.6          1.4         0.1     setosa
+9           4.9         3.0          1.4         0.2     setosa
+10          4.9         3.1          1.5         0.2     setosa</code></pre>
 </div>
 </div>
 </section><section class="slide level2"><p>Lo anterior no funciona cuando trabajamos con secuencias, donde <span class="green">por definición, el orden <strong>sí</strong> importa</span>.</p>
@@ -672,9 +672,96 @@ L = \sum_{t=1}^{T} L^{(t)}
 \frac{\partial \mathbf{h}^{(i)}}{\partial \mathbf{h}^{(i-1)}}
 \]</span></p>
 </div>
-</section></section><section id="referencias" class="title-slide slide level1 smaller scrollable" data-background-color="#00A499" data-number="3"><h1>
-<span class="header-section-number">3</span> Referencias</h1>
+</section><section class="slide level2"><div title="Recurrencia en la capa oculta versus recurrencia en la capa de salida">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Recurrencia en la capa oculta versus recurrencia en la capa de salida</strong></p>
+</div>
+<div class="callout-content">
+<p>Hasta ahora, hemos visto redes recurrentes en las que la capa oculta posee la propiedad recurrente. Sin embargo, es importante notar que existe un modelo alternativo en el cual la conexión recurrente proviene desde la capa de salida. En este caso, las activaciones netas de la capa de salida en el paso de tiempo anterior, <span class="math inline">\(\mathbf{o}^{t-1}\)</span>, pueden agregarse de una de las siguientes dos maneras:</p>
+<ul>
+<li class="fragment"><p>A la capa oculta en el paso de tiempo actual, <span class="math inline">\(\mathbf{h}^{t}\)</span> (mostrado en la figura siguiente como <em>output-to-hidden recurrence</em>)</p></li>
+<li class="fragment"><p>A la capa de salida en el paso de tiempo actual, <span class="math inline">\(\mathbf{o}^{t}\)</span> (mostrado en la figura siguiente como <em>output-to-output recurrence</em>)</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section></section><section><section id="los-desafíos-de-aprender-interacciones-de-largo-alcance" class="title-slide slide level1 center" data-background-color="#00A499" data-number="3"><h1>
+<span class="header-section-number">3</span> Los desafíos de aprender interacciones de largo alcance</h1>
+
+</section><section class="slide level2"><div class="definition">
+<p>Back propagation through time (BPTT), introduce nuevos desafíos. Debido al factor multiplicativo, <span class="math inline">\(\frac{\partial \mathbf{h}^{(t)}}{\partial \mathbf{h}^{(k)}}\)</span>, en el cálculo de los gradientes de una función de pérdida, surgen los llamados problemas de <span class="green"><strong>gradientes que se desvanecen</strong> (<em>vanishing</em>) y <strong>gradientes que explotan</strong> (<em>exploding</em>)</span>.</p>
+</div>
+
+<img data-src="images/04_RNN/RNN-gradients.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2"><div class="alert">
+<ul>
+<li class="fragment">
+<p>Básicamente, <span class="math inline">\(\frac{\partial \mathbf{h}^{(t)}}{\partial \mathbf{h}^{(k)}}\)</span> implica <span class="math inline">\(t - k\)</span> multiplicaciones; por lo tanto, <span class="green">multiplicar el peso <span class="math inline">\(w\)</span> por sí mismo <span class="math inline">\(t - k\)</span> veces da como resultado un factor de <span class="math inline">\(w^{t-k}\)</span></span>:</p>
+<ul>
+<li class="fragment"><p><span class="orange">Si <span class="math inline">\(|w| &lt; 1\)</span>, este factor se vuelve muy pequeño</span> cuando <span class="math inline">\(t - k\)</span> es grande.</p></li>
+<li class="fragment"><p>Por otro lado, <span class="orange">si el peso del borde recurrente es <span class="math inline">\(|w| &gt; 1\)</span>, entonces <span class="math inline">\(w^{t-k}\)</span> se vuelve muy grande</span> cuando <span class="math inline">\(t - k\)</span> es grande.</p></li>
+</ul>
+</li>
+<li class="fragment"><p>Cabe notar que un gran valor de <span class="math inline">\(t - k\)</span> se refiere a dependencias de largo alcance (<em>long-range dependencies</em>). Podemos ver que una solución ingenua para evitar gradientes que se desvanecen o explotan es asegurar que <span class="math inline">\(|w| = 1\)</span>. Si estás interesado y deseas investigar esto en más detalle, puedes leer <a href="https://arxiv.org/pdf/1211.5063.pdf"><em>On the difficulty of training recurrent neural networks</em></a> <span class="citation" data-cites="Pascanu2012">(<a href="#/referencias" role="doc-biblioref" onclick="">Pascanu, Mikolov, y Bengio 2012</a>)</span>.</p></li>
+</ul>
+</div>
+</section><section class="slide level2"><div class="alert">
+<p>En la práctica, existen al menos tres soluciones a este problema:</p>
+<ul>
+<li class="fragment"><p><em>Clipping</em> de gradientes (<em>Gradient clipping</em>)</p></li>
+<li class="fragment"><p><em>Truncated Backpropagation Through Time</em> (TBPTT)</p></li>
+<li class="fragment"><p><em>Long Short Term Memory Networks</em> (LSTM)</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="example">
+<ul>
+<li class="fragment"><p>Al usar <span class="green"><em>gradient clipping</em></span>, se especifica un valor umbral o de corte para los gradientes, y se asigna este valor límite a los gradientes que lo exceden. En contraste, <span class="orange"><em>Truncated Backpropagation Through Time</em> (TBPTT)</span> limita la cantidad de pasos de tiempo hacia atrás que puede realizar la retropropagación después de cada paso hacia adelante. Por ejemplo, si la secuencia tiene 100 elementos o pasos, podríamos solo retropropagar los últimos 20 pasos de tiempo.</p></li>
+<li class="fragment"><p>Aunque tanto el <em>gradient clipping</em> como TBPTT pueden resolver el problema de los gradientes que explotan, la truncación limita el número de pasos en los que el gradiente puede fluir hacia atrás de manera efectiva y actualizar adecuadamente los pesos. Por otro lado, <span class="green"><em>Long Short Term Memory</em> (LSTM, <span class="citation" data-cites="Hochreiter1997">Hochreiter y Schmidhuber (<a href="#/referencias" role="doc-biblioref" onclick="">1997</a>)</span>)</span>, ha tenido más éxito al abordar los problemas de gradientes que se desvanecen y explotan, mientras modela dependencias de largo alcance mediante el uso de celdas de memoria (<em>memory cells</em>).</p></li>
+</ul>
+</div>
+</div>
+</section><section id="esquema-general-de-una-celda-lstm" class="slide level2" data-number="3.1"><h2>
+<span class="header-section-number">3.1</span> Esquema general de una celda LSTM</h2>
+<ul>
+<li class="fragment"><p>Las LSTM fueron introducidas por primera vez para superar el problema de los gradientes que se desvanecen (<em>vanishing gradient problem</em>) en el artículo de <span class="citation" data-cites="Hochreiter1997">Hochreiter y Schmidhuber (<a href="#/referencias" role="doc-biblioref" onclick="">1997</a>)</span>.</p></li>
+<li class="fragment"><p>El bloque fundamental de una LSTM es una <strong>celda de memoria</strong> (<em>memory cell</em>), que esencialmente representa o reemplaza la capa oculta de las RNN estándar.</p></li>
+</ul>
+<div class="fragment">
+<div class="alert">
+<p>La estructura interna de una celda LSTM muestran tres componentes fundamentales, conocidos como <em>puertas</em> (<em>gates</em>), que controlan el flujo de información dentro de la celda:</p>
+<ul>
+<li class="fragment"><p><strong>Forget Gate (Puerta de olvido)</strong>: decide qué parte de la información del estado de celda anterior <span class="math inline">\(\mathbf{c}^{(t-1)}\)</span> debe ser descartada. Esta puerta evalúa qué tan relevante sigue siendo la información del pasado y produce una salida <span class="math inline">\(\mathbf{f}_t\)</span> que modula dicha memoria.</p></li>
+<li class="fragment"><p><strong>Input Gate (Puerta de entrada)</strong>: regula qué nueva información, proveniente de la entrada actual <span class="math inline">\(\mathbf{x}^{(t)}\)</span> y del estado oculto anterior <span class="math inline">\(\mathbf{h}^{(t-1)}\)</span>, será incorporada al estado de celda actual. La señal de esta puerta se denota como <span class="math inline">\(\mathbf{x}_t\)</span> en el esquema.</p></li>
+<li class="fragment"><p><strong>Output Gate (Puerta de salida)</strong>: determina qué parte del estado de celda actualizado <span class="math inline">\(\mathbf{c}^{(t)}\)</span> se convierte en la salida de la celda, es decir, en el nuevo estado oculto <span class="math inline">\(\mathbf{h}^{(t)}\)</span> que se propaga al siguiente paso de tiempo o a la capa superior.</p></li>
+</ul>
+</div>
+</div>
+</section><section class="slide level2">
+<img data-src="images/04_RNN/RNN-LSTM2.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2"><p>En cada celda de memoria, hay una conexión recurrente que tiene el peso deseable, <span class="math inline">\(w = 1\)</span>, como discutimos, para superar los problemas de gradientes que se desvanecen y explotan.<br>
+Los valores asociados con esta conexión recurrente se conocen colectivamente como <strong>estado de la celda</strong> (<em>cell state</em>).</p>
+
+<img data-src="images/04_RNN/RNN-LSTM.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2"><p>Obsérvese que el estado de la celda del paso de tiempo anterior, <span class="math inline">\(\mathbf{c}^{(t-1)}\)</span>, se modifica para obtener el estado de la celda en el paso de tiempo actual, <span class="math inline">\(\mathbf{c}^{(t)}\)</span>, sin ser multiplicado directamente por ningún factor de peso.</p>
+<p>El flujo de información en esta celda de memoria está controlado por varias unidades de cómputo (a menudo llamadas <strong>puertas</strong> o <em>gates</em>) que se describen aquí.<br>
+En la figura anterior: - <span class="math inline">\(\odot\)</span> representa el <strong>producto elemento a elemento</strong> (<em>element-wise product</em>) - <span class="math inline">\(\oplus\)</span> representa la <strong>suma elemento a elemento</strong> (<em>element-wise addition</em>)</p>
+<p>Además: - <span class="math inline">\(\mathbf{x}^{(t)}\)</span> se refiere a los datos de entrada en el tiempo <span class="math inline">\(t\)</span> - <span class="math inline">\(\mathbf{h}^{(t-1)}\)</span> indica las unidades ocultas en el tiempo <span class="math inline">\(t - 1\)</span></p>
+<p>Cuatro recuadros están indicados con una función de activación, ya sea la función sigmoide (<span class="math inline">\(\sigma\)</span>) o tangente hiperbólica (<em>tanh</em>), junto con un conjunto de pesos.<br>
+Estos recuadros aplican una combinación lineal realizando multiplicaciones de matrices y vectores sobre sus entradas (que son <span class="math inline">\(\mathbf{h}^{(t-1)}\)</span> y <span class="math inline">\(\mathbf{x}^{(t)}\)</span>).<br>
+Estas unidades de cómputo con funciones de activación sigmoide, cuyos valores de salida se pasan por <span class="math inline">\(\odot\)</span>, se denominan <strong>puertas</strong> (<em>gates</em>).</p>
+</section></section><section id="referencias" class="title-slide slide level1 smaller scrollable" data-background-color="#00A499" data-number="4"><h1>
+<span class="header-section-number">4</span> Referencias</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Hochreiter1997" class="csl-entry" role="listitem">
+Hochreiter, Sepp, y Jürgen Schmidhuber. 1997. <span>«Long short-term memory»</span>. <em>Neural computation</em> 9 (8): 1735-80.
+</div>
+<div id="ref-Pascanu2012" class="csl-entry" role="listitem">
+Pascanu, Razvan, Tomas Mikolov, y Yoshua Bengio. 2012. <span>«On the difficulty of training Recurrent Neural Networks»</span>. <em>arXiv e-prints</em>, arXiv-1211.
+</div>
 <div id="ref-Raschka2019" class="csl-entry" role="listitem">
 Raschka, Sebastian, y Vahid Mirjalili. 2019. <em>Python machine learning: Machine learning and deep learning with Python, scikit-learn, and TensorFlow 2</em>. Packt Publishing Ltd.
 </div>
