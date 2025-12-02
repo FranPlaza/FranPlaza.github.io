@@ -1,0 +1,65 @@
+---
+title: "Francisco J. Plaza-Vega"
+subtitle: "Profesor Asociado <br>Departamento de Matemática y Ciencia de la Computación<br>Universidad de Santiago de Chile"
+image: ../images/fran.jpg
+lang: es
+format: 
+  html:
+    embed-resources: true
+
+about:
+  template: solana
+  image-width: 22em
+  id: hero-heading
+  links:
+     - icon: github
+       aria-label: GitHub
+       href: https://github.com/FranPlaza
+     - icon: linkedin
+       aria-label: "LinkedIn"
+       href: https://www.linkedin.com/in/franplazavega/
+     - text: "{{< ai orcid >}}"
+       href: https://orcid.org/0000-0001-7577-2775
+     - text: "{{< ai google-scholar >}}"
+       aria-label: "Google Scholar"
+       href: https://scholar.google.com/citations?user=4jWVTf4AAAAJ&hl=en
+     - icon: envelope
+       href: mailto:francisco.plaza.v@usach.cl
+
+page-layout: full
+
+execute: 
+  freeze: false
+  echo: false
+  warning: false
+
+---
+
+::: {#hero-heading}
+Mi nombre es **Francisco Plaza-Vega**, soy **Ingeniero Pesquero** de formación, y desde mis primeros pasos profesionales he estado profundamente motivado por el estudio de los sistemas complejos desde una perspectiva cuantitativa. Mi interés por la **estadística** y la **computación** nació al enfrentarme a desafíos reales en el sector pesquero, lo que me llevó a explorar herramientas que me permitieran entender, modelar y anticipar dinámicas ambientales y pesqueras.
+:::
+
+### Sobre mí
+
+---
+
+:::{.columns}
+
+:::{.column width="48%"}
+Tuve la oportunidad de trabajar durante varios años en el **[Instituto de Fomento Pesquero (IFOP)](https://www.ifop.cl/)**, donde participé en proyectos estratégicos y de control de gestión, además de colaborar en iniciativas de investigación científica vinculadas a pesquerías y oceanografía. Esa experiencia consolidó mi interés por aplicar metodologías rigurosas al análisis de datos en contextos con alto impacto social y ecológico.
+
+Convencido de la necesidad de una base sólida, continué mi formación con un **Magíster en Estadística** y luego con un **Doctorado en Estadística**, el cual culminé en 2023. En paralelo, fui desarrollando una fuerte afinidad con las metodologías de **aprendizaje automático y aprendizaje profundo**, que hoy forman parte central de mi investigación y docencia.
+:::
+
+:::{.column width="4%"}
+:::
+
+:::{.column width="48%"}
+Actualmente, me desempeño como **académico en la Universidad de Santiago de Chile**, en el **[Departamento de Matemática y Ciencia de la Computación](https://www.dmcc.usach.cl/)**, donde imparto cursos de **Simulación** y **Deep Learning**, además de desarrollar investigación aplicada en el cruce entre medio ambiente, pesquerías y ciencia de datos.
+
+Además, soy parte del podcast **[Por sobre la Media: hablemos con confianza](https://open.spotify.com/show/1ygvqwPDgCP5uirXkMeYnG?si=d12edc28c7524c6f)**, un espacio donde, junto a colegas del DMCC, conversamos sobre estadística, inteligencia artificial y ciencia de datos de manera cercana, relajada y con vocación de divulgación.
+
+Mi trabajo busca tender puentes entre la teoría estadística y las aplicaciones reales, siempre con la convicción de que el conocimiento riguroso puede contribuir a enfrentar los desafíos más urgentes de nuestro tiempo.
+:::
+
+:::
