@@ -6,20 +6,20 @@
 <script src="Deep_Learning_04_RNN_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="Deep_Learning_04_RNN_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Deep_Learning_04_RNN_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Deep_Learning_04_RNN_files/libs/quarto-html/quarto-syntax-highlighting-86daaaaad7353f9cc0c554efc1dd6d94.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="Deep_Learning_04_RNN_files/libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="Deep_Learning_04_RNN_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="Deep_Learning_04_RNN_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="Deep_Learning_04_RNN_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
-<meta name="author" content="Francisco Plaza Vega">
-<title>Deep Learning</title>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-<link rel="stylesheet" href="Deep_Learning_04_RNN_files/libs/revealjs/dist/reset.css">
-<link rel="stylesheet" href="Deep_Learning_04_RNN_files/libs/revealjs/dist/reveal.css">
-<style>
+<link href="Deep_Learning_04_RNN_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
+
+  <meta name="author" content="Francisco Plaza Vega">
+  <title>Deep Learning</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Deep_Learning_04_RNN_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Deep_Learning_04_RNN_files/libs/revealjs/dist/reveal.css">
+  <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,8 +32,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -44,7 +45,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -117,12 +118,12 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-<link rel="stylesheet" href="Deep_Learning_04_RNN_files/libs/revealjs/dist/theme/quarto-12f9f439e1922b60d66cad71bdc1d827.css">
-<link href="Deep_Learning_04_RNN_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-<link href="Deep_Learning_04_RNN_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-<link href="Deep_Learning_04_RNN_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-<link href="Deep_Learning_04_RNN_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-<style type="text/css">
+  <link rel="stylesheet" href="Deep_Learning_04_RNN_files/libs/revealjs/dist/theme/quarto-1796ccda6f3517d277e3200b05bdd099.css">
+  <link href="Deep_Learning_04_RNN_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Deep_Learning_04_RNN_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Deep_Learning_04_RNN_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Deep_Learning_04_RNN_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -214,7 +215,8 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center"><h1 class="title">Deep Learning</h1>
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Deep Learning</h1>
   <p class="subtitle">Unidad 4: Redes Neuronales Recurrentes (RNNs)</p>
 
 <div class="quarto-title-authors">
@@ -231,11 +233,14 @@ Francisco Plaza Vega
     </div>
 </div>
 
-</section><section><section id="redes-neuronales-recurrentes" class="title-slide slide level1 center" data-background-color="#00A499" data-number="1"><h1>
-<span class="header-section-number">1</span> Redes Neuronales Recurrentes</h1>
+</section>
+<section>
+<section id="redes-neuronales-recurrentes" class="title-slide slide level1 center" data-background-color="#00A499" data-number="1">
+<h1><span class="header-section-number">1</span> Redes Neuronales Recurrentes</h1>
 
-</section><section id="qué-dice-youtube" class="slide level2" data-number="1.1"><h2>
-<span class="header-section-number">1.1</span> Qué dice YouTube?</h2>
+</section>
+<section id="qué-dice-youtube" class="slide level2" data-number="1.1">
+<h2><span class="header-section-number">1.1</span> Qué dice YouTube?</h2>
 <div title="Algunos enlaces que pueden ser de interés">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -256,8 +261,9 @@ Francisco Plaza Vega
 </div>
 </div>
 </div>
-</section><section id="datos-secuenciales" class="slide level2" data-number="1.2"><h2>
-<span class="header-section-number">1.2</span> Datos secuenciales?</h2>
+</section>
+<section id="datos-secuenciales" class="slide level2" data-number="1.2">
+<h2><span class="header-section-number">1.2</span> Datos secuenciales?</h2>
 <div title="Datos secuenciales">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -274,34 +280,44 @@ Francisco Plaza Vega
 </div>
 </div>
 
-<img data-src="images/04_RNN/sequential.png" class="r-stretch"></section><section class="slide level2"><ul>
+<img data-src="images/04_RNN/sequential.png" class="r-stretch"></section>
+<section class="slide level2">
+
+<ul>
 <li class="fragment"><p>Los algoritmos típicos de aprendizaje supervisado asumen que la entrada es <span class="green"><strong>independiente e idénticamente distribuida (IID)</strong></span>, lo que significa que los ejemplos de entrenamiento son <span class="orange"><strong>mutuamente independientes</strong></span> y tienen la <span class="orange"><strong>misma distribución subyacente</strong></span>.</p></li>
 <li class="fragment"><p>Si se tiene una muestra que consiste en <span class="orange"><span class="math inline">\(n\)</span> ejemplos de entrenamiento, <span class="math inline">\(x^{(1)}, x^{(2)}, \dots, x^{(n)}\)</span></span>, el orden en que se usan los datos para entrenar el algoritmo de aprendizaje automático no importa.</p></li>
-</ul></section><section class="slide level2"><div class="example">
+</ul>
+</section>
+<section class="slide level2">
+
+<div class="example">
 <p><span class="green">Ejemplo, los datos de iris</span><br> En el conjunto de datos <span class="orange"><code>**Iris**</code></span>, cada flor ha sido medida de manera independiente, y las mediciones de una flor no influyen en las mediciones de otra flor.</p>
 </div>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">library</span>(datasets)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">library</span>(datasets)</span>
 <span id="cb1-2"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href=""></a><span class="fu">data</span>(iris)</span>
 <span id="cb1-4"><a href=""></a>iris <span class="sc">%&gt;%</span> </span>
-<span id="cb1-5"><a href=""></a>  <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">10</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href=""></a>  <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">10</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-1           6.9         3.1          5.1         2.3  virginica
-2           4.6         3.6          1.0         0.2     setosa
-3           7.0         3.2          4.7         1.4 versicolor
-4           4.4         2.9          1.4         0.2     setosa
-5           5.1         3.7          1.5         0.4     setosa
-6           5.1         3.5          1.4         0.2     setosa
-7           5.6         2.5          3.9         1.1 versicolor
-8           4.9         3.6          1.4         0.1     setosa
-9           4.9         3.0          1.4         0.2     setosa
-10          4.9         3.1          1.5         0.2     setosa</code></pre>
+1           6.3         3.4          5.6         2.4  virginica
+2           6.6         3.0          4.4         1.4 versicolor
+3           6.3         2.8          5.1         1.5  virginica
+4           5.0         3.4          1.6         0.4     setosa
+5           5.7         3.0          4.2         1.2 versicolor
+6           5.0         3.6          1.4         0.2     setosa
+7           6.9         3.1          5.1         2.3  virginica
+8           4.4         3.2          1.3         0.2     setosa
+9           6.2         2.9          4.3         1.3 versicolor
+10          5.7         2.5          5.0         2.0  virginica</code></pre>
 </div>
 </div>
-</section><section class="slide level2"><p>Lo anterior no funciona cuando trabajamos con secuencias, donde <span class="green">por definición, el orden <strong>sí</strong> importa</span>.</p>
+</section>
+<section class="slide level2">
+
+<p>Lo anterior no funciona cuando trabajamos con secuencias, donde <span class="green">por definición, el orden <strong>sí</strong> importa</span>.</p>
 <div class="example">
 <p><span class="green">Ejemplo: Datos financieros</span><br></p>
 <ul>
@@ -309,17 +325,18 @@ Francisco Plaza Vega
 <li class="fragment"><p>Si el objetivo es predecir el valor del mercado de esa acción para los próximos tres días, tendría sentido considerar los precios previos en un orden cronológico, <span class="orange">como al emplear un modelo Autoregresivo (AR) de series de tiempo</span>.</p></li>
 </ul>
 </div>
-</section><section class="slide level2"><div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-1-1">Precio de Bitcoin</a></li>
-<li><a href="#tabset-1-2">Código</a></li>
-</ul>
+</section>
+<section class="slide level2">
+
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Precio de Bitcoin</a></li><li><a href="#tabset-1-2">Código</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="Deep_Learning_04_RNN_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+<figure>
+<p><img data-src="Deep_Learning_04_RNN_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -327,7 +344,7 @@ Francisco Plaza Vega
 </div>
 <div id="tabset-1-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">library</span>(cryptoQuotes)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">library</span>(cryptoQuotes)</span>
 <span id="cb3-2"><a href=""></a><span class="fu">library</span>(xts)</span>
 <span id="cb3-3"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb3-4"><a href=""></a>BTC <span class="ot">&lt;-</span> <span class="fu">get_quote</span>(</span>
@@ -343,13 +360,14 @@ Francisco Plaza Vega
 <span id="cb3-14"><a href=""></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
 <span id="cb3-15"><a href=""></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>close), <span class="at">color=</span><span class="st">"#00a499"</span>, <span class="at">linewidth=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>
 <span id="cb3-16"><a href=""></a>  <span class="fu">ylab</span>(<span class="st">"Precio de BTC en (USD)"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Días"</span>) <span class="sc">+</span></span>
-<span id="cb3-17"><a href=""></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-17"><a href=""></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
-</section><section id="series-de-tiempo" class="slide level2" data-number="1.3"><h2>
-<span class="header-section-number">1.3</span> Series de tiempo</h2>
+</section>
+<section id="series-de-tiempo" class="slide level2" data-number="1.3">
+<h2><span class="header-section-number">1.3</span> Series de tiempo</h2>
 <div title="Un recordatorio... o no?">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -381,21 +399,19 @@ Francisco Plaza Vega
 </div>
 </div>
 </div>
-</section><section class="slide level2"><div class="alert">
+</section>
+<section class="slide level2">
+
+<div class="alert">
 <p>Una de las características principales de las series de tiempo es el hecho que observaciones sucesivas no son usualmente independientes, por lo que el análisis debe tomar en cuenta el orden temporal de las observaciones.</p>
 </div>
-</section><section class="slide level2"><div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-2-1">Algunos ejemplos</a></li>
-<li><a href="#tabset-2-2">Vino</a></li>
-<li><a href="#tabset-2-3">TSM</a></li>
-<li><a href="#tabset-2-4">Contínua 1 y 2</a></li>
-</ul>
+</section>
+<section class="slide level2">
+
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Algunos ejemplos</a></li><li><a href="#tabset-2-2">Vino</a></li><li><a href="#tabset-2-3">TSM</a></li><li><a href="#tabset-2-4">Contínua 1 y 2</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<div>
-
-</div>
 <div class="cell quarto-layout-panel" data-layout="[[45,45],[45,45]]">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -418,7 +434,7 @@ Francisco Plaza Vega
 <div id="tabset-2-2">
 <div class="small">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r code-overflow-scroll number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r code-overflow-scroll number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb4-2"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb4-3"><a href=""></a><span class="fu">library</span>(readr)</span>
 <span id="cb4-4"><a href=""></a></span>
@@ -441,14 +457,14 @@ Francisco Plaza Vega
 <span id="cb4-21"><a href=""></a>    <span class="at">x =</span> <span class="st">"Años"</span>,</span>
 <span id="cb4-22"><a href=""></a>    <span class="at">y =</span> <span class="st">"Ventas de vino tinto</span><span class="sc">\n</span><span class="st"> en Australia"</span></span>
 <span id="cb4-23"><a href=""></a>  ) <span class="sc">+</span></span>
-<span id="cb4-24"><a href=""></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-24"><a href=""></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 <div id="tabset-2-3">
 <div class="small">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r code-overflow-scroll number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r code-overflow-scroll number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb5-2"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb5-3"><a href=""></a><span class="fu">library</span>(readr)</span>
 <span id="cb5-4"><a href=""></a><span class="fu">library</span>(zoo)</span>
@@ -485,14 +501,14 @@ Francisco Plaza Vega
 <span id="cb5-35"><a href=""></a>    <span class="at">x =</span> <span class="st">"Años"</span>,</span>
 <span id="cb5-36"><a href=""></a>    <span class="at">y =</span> <span class="st">"TSM en la región</span><span class="sc">\n</span><span class="st"> Niño34 (°C)"</span></span>
 <span id="cb5-37"><a href=""></a>  ) <span class="sc">+</span></span>
-<span id="cb5-38"><a href=""></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-38"><a href=""></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 <div id="tabset-2-4">
 <div class="small">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r code-overflow-scroll number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r code-overflow-scroll number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb6-2"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb6-3"><a href=""></a><span class="fu">library</span>(latex2exp)</span>
 <span id="cb6-4"><a href=""></a></span>
@@ -515,47 +531,59 @@ Francisco Plaza Vega
 <span id="cb6-21"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#00a499"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb6-22"><a href=""></a>  <span class="fu">xlab</span>(<span class="fu">TeX</span>(<span class="st">"t"</span>)) <span class="sc">+</span> </span>
 <span id="cb6-23"><a href=""></a>  <span class="fu">ylab</span>(<span class="fu">TeX</span>(<span class="st">"$X_t = cos(0.2t + </span><span class="sc">\\</span><span class="st">frac{</span><span class="sc">\\</span><span class="st">pi}{3})"</span>)) <span class="sc">+</span></span>
-<span id="cb6-24"><a href=""></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-24"><a href=""></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 </div>
 <!-- ![Ejemplos de algunas series de tiempo de tipo discreto y contínuo](images/04_RNN/timeseries_examples.png) -->
-</section><section id="objetivos-del-análisis-de-series-de-tiempo" class="slide level2" data-number="1.4"><h2>
-<span class="header-section-number">1.4</span> Objetivos del análisis de series de tiempo</h2>
+</section>
+<section id="objetivos-del-análisis-de-series-de-tiempo" class="slide level2" data-number="1.4">
+<h2><span class="header-section-number">1.4</span> Objetivos del análisis de series de tiempo</h2>
 <p>Existen distintos objetivos posibles del análisis de series de tiempo. Estos objetivos pueden ser clasificados en 4 categorías:</p>
 <ul>
 <li class="fragment"><span class="orange">Describir</span></li>
 <li class="fragment"><span class="orange">Explicar</span></li>
 <li class="fragment"><span class="orange">Predecir</span></li>
 <li class="fragment"><span class="orange">Controlar</span></li>
-</ul></section><section id="representando-secuencias" class="slide level2" data-number="1.5"><h2>
-<span class="header-section-number">1.5</span> Representando secuencias</h2>
+</ul>
+</section>
+<section id="representando-secuencias" class="slide level2" data-number="1.5">
+<h2><span class="header-section-number">1.5</span> Representando secuencias</h2>
 <p>A partir de las definiciones de <span class="citation" data-cites="Raschka2019">Raschka y Mirjalili (<a href="#/referencias" role="doc-biblioref" onclick="">2019</a>)</span></p>
 
-<img data-src="images/04_RNN/sequence.png" alt="Traducido de @Raschka2019" class="r-stretch"></section><section id="categorías-en-la-modelación-de-secuencias" class="slide level2" data-number="1.6"><h2>
-<span class="header-section-number">1.6</span> Categorías en la modelación de secuencias</h2>
+<img data-src="images/04_RNN/sequence.png" alt="Traducido de @Raschka2019" class="r-stretch"></section>
+<section id="categorías-en-la-modelación-de-secuencias" class="slide level2" data-number="1.6">
+<h2><span class="header-section-number">1.6</span> Categorías en la modelación de secuencias</h2>
 
-<img data-src="images/04_RNN/representando_secuencias.png" alt="Traducido de @Raschka2019" class="r-stretch"></section><section class="slide level2"><h3 data-number="1.6.1" id="muchos-a-uno">
-<span class="header-section-number">1.6.1</span> Muchos a uno</h3>
+<img data-src="images/04_RNN/representando_secuencias.png" alt="Traducido de @Raschka2019" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 data-number="1.6.1" id="muchos-a-uno"><span class="header-section-number">1.6.1</span> Muchos a uno</h3>
 
 <img data-src="images/04_RNN/many_one.png" alt="Traducido de @Raschka2019" class="r-stretch"><p><strong>Many-to-one (Muchos a uno):</strong> Los datos de entrada son una secuencia, pero la salida es un vector o escalar de tamaño fijo, no una secuencia. Por ejemplo, en el análisis de sentimiento, la entrada es un texto (como una reseña de película) y la salida es una etiqueta de clase (por ejemplo, una etiqueta que indica si al crítico le gustó la película).</p>
-</section><section class="slide level2"><h3 data-number="1.6.2" id="uno-a-muchos">
-<span class="header-section-number">1.6.2</span> Uno a Muchos</h3>
+</section>
+<section class="slide level2">
+
+<h3 data-number="1.6.2" id="uno-a-muchos"><span class="header-section-number">1.6.2</span> Uno a Muchos</h3>
 
 <img data-src="images/04_RNN/one_many.png" alt="Traducido de @Raschka2019" class="r-stretch"><p><strong>One-to-many (Uno a muchos):</strong> Los datos de entrada están en formato estándar y no son una secuencia, pero la salida es una secuencia. Un ejemplo de esta categoría es la generación de subtítulos para imágenes: la entrada es una imagen y la salida es una frase en inglés que resume el contenido de esa imagen.</p>
-</section><section class="slide level2"><h3 data-number="1.6.3" id="muchos-a-muchos">
-<span class="header-section-number">1.6.3</span> Muchos a Muchos</h3>
+</section>
+<section class="slide level2">
+
+<h3 data-number="1.6.3" id="muchos-a-muchos"><span class="header-section-number">1.6.3</span> Muchos a Muchos</h3>
 <div class="columns">
 <div class="column">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="images/04_RNN/many_many1.png" class="quarto-figure quarto-figure-center" style="width:50.0%" alt="Traducido de @Raschka2019"></p>
+<figure>
+<p><img data-src="images/04_RNN/many_many1.png" class="quarto-figure quarto-figure-center" style="width:50.0%" alt="Traducido de @Raschka2019"></p>
 </figure>
 </div>
 </div><div class="column">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="images/04_RNN/many_many2.png" class="quarto-figure quarto-figure-center" alt="Traducido de @Raschka2019"></p>
+<figure>
+<p><img data-src="images/04_RNN/many_many2.png" class="quarto-figure quarto-figure-center" alt="Traducido de @Raschka2019"></p>
 </figure>
 </div>
 </div></div>
@@ -563,22 +591,33 @@ Francisco Plaza Vega
 <ul>
 <li class="fragment"><p>Un ejemplo de una tarea <strong>many-to-many sincronizada</strong> es la clasificación de video, donde cada cuadro en un video está etiquetado.</p></li>
 <li class="fragment"><p>Un ejemplo de una tarea <strong>many-to-many con retraso</strong> sería la traducción de un idioma a otro. Por ejemplo, una frase completa en inglés debe ser procesada por una máquina antes de que se produzca su traducción al español.</p></li>
-</ul></section></section><section><section id="rnn-para-secuencias" class="title-slide slide level1 center" data-background-color="#00A499" data-number="2"><h1>
-<span class="header-section-number">2</span> RNN para secuencias</h1>
+</ul>
+</section></section>
+<section>
+<section id="rnn-para-secuencias" class="title-slide slide level1 center" data-background-color="#00A499" data-number="2">
+<h1><span class="header-section-number">2</span> RNN para secuencias</h1>
 
-</section><section id="entendiendo-el-mecanismo-cíclico-de-las-rnns" class="slide level2" data-number="2.1"><h2>
-<span class="header-section-number">2.1</span> Entendiendo el mecanismo cíclico de las RNNs</h2>
+</section>
+<section id="entendiendo-el-mecanismo-cíclico-de-las-rnns" class="slide level2" data-number="2.1">
+<h2><span class="header-section-number">2.1</span> Entendiendo el mecanismo cíclico de las RNNs</h2>
 
 <img data-src="images/04_RNN/RNN-looping_mechanism.png" class="quarto-figure quarto-figure-center r-stretch" alt="Traducido de @Raschka2019"><p>Ambas redes tienen solo una capa oculta. En esta representación, las unidades no se muestran, pero asumimos que la capa de entrada <span class="math inline">\((x)\)</span>, la capa oculta <span class="math inline">\((h)\)</span> y la capa de salida <span class="math inline">\((o)\)</span> son vectores que contienen muchas unidades.</p>
-</section><section class="slide level2"><div class="alert">
+</section>
+<section class="slide level2">
+
+<div class="alert">
 <ul>
 <li class="fragment"><p>En una <span class="green">red feedforward estándar</span>, la información fluye desde la capa de entrada hasta la capa oculta, y luego desde la capa oculta hasta la capa de salida. Por otro lado, en <span class="green">una RNN (Red Neuronal Recurrente)</span>, la capa oculta recibe su entrada tanto de la capa de entrada del instante de tiempo actual como de la capa oculta del instante de tiempo anterior.</p></li>
 <li class="fragment"><p>El flujo de información entre pasos de tiempo adyacentes en la capa oculta permite que la red tenga una memoria de eventos pasados. Este flujo de información se representa usualmente como un bucle, también conocido como un <span class="orange"><em>borde recurrente</em> (recurrent edge)</span> en notación de grafos, lo cual explica el origen del nombre de esta arquitectura general de RNN.</p></li>
 </ul>
 </div>
-</section><section class="slide level2"><p>Similar a los MLP, las RNN pueden consistir en múltiples capas ocultas.</p>
+</section>
+<section class="slide level2">
+
+<p>Similar a los MLP, las RNN pueden consistir en múltiples capas ocultas.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure><p><a href="images/04_RNN/RNN-1layer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="images/04_RNN/RNN-1layer.png" class="quarto-figure quarto-figure-center" style="width:50.0%"></a></p>
+<figure>
+<p><a href="images/04_RNN/RNN-1layer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="images/04_RNN/RNN-1layer.png" class="quarto-figure quarto-figure-center" style="width:50.0%"></a></p>
 </figure>
 </div>
 <div class="alert">
@@ -589,8 +628,12 @@ Francisco Plaza Vega
 </ul>
 </div>
 </div>
-</section><section class="slide level2"><div class="quarto-figure quarto-figure-center">
-<figure><p><a href="images/04_RNN/RNN-multilayer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="images/04_RNN/RNN-multilayer.png" class="quarto-figure quarto-figure-center" style="width:50.0%"></a></p>
+</section>
+<section class="slide level2">
+
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/04_RNN/RNN-multilayer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="images/04_RNN/RNN-multilayer.png" class="quarto-figure quarto-figure-center" style="width:50.0%"></a></p>
 </figure>
 </div>
 <div class="alert">
@@ -602,8 +645,9 @@ Francisco Plaza Vega
 </ul>
 </div>
 </div>
-</section><section id="cálculo-de-activaciones-en-una-rnn" class="slide level2" data-number="2.2"><h2>
-<span class="header-section-number">2.2</span> Cálculo de activaciones en una RNN</h2>
+</section>
+<section id="cálculo-de-activaciones-en-una-rnn" class="slide level2" data-number="2.2">
+<h2><span class="header-section-number">2.2</span> Cálculo de activaciones en una RNN</h2>
 <p>Para simplificar, consideraremos solo una capa oculta; sin embargo, el mismo concepto aplica a RNNs multicapa.</p>
 <div class="fragment">
 <div class="alert">
@@ -615,8 +659,14 @@ Francisco Plaza Vega
 </ul>
 </div>
 </div>
-</section><section class="slide level2">
-<img data-src="images/04_RNN/RNN-computing_activations.png" class="r-stretch"></section><section class="slide level2"><div class="alert">
+</section>
+<section class="slide level2">
+
+
+<img data-src="images/04_RNN/RNN-computing_activations.png" class="r-stretch"></section>
+<section class="slide level2">
+
+<div class="alert">
 <p>En ciertas implementaciones, puede observarse que las matrices de pesos, <span class="math inline">\(\mathbf{W}_{xh}\)</span> y <span class="math inline">\(\mathbf{W}_{hh}\)</span>, se concatenan en una matriz combinada, <span class="math inline">\(\mathbf{W}_h = [\mathbf{W}_{xh} \, ; \, \mathbf{W}_{hh}]\)</span>. Más adelante en esta sección, también utilizaremos esta notación.</p>
 <p>El cálculo de las activaciones es muy similar al de los perceptrones multicapa estándar y otros tipos de redes neuronales feedforward. Para la capa oculta, la entrada neta, <span class="math inline">\(\mathbf{z}_h\)</span> (preactivación), se calcula mediante una combinación lineal, es decir, computamos la suma de las multiplicaciones de las matrices de pesos con los vectores correspondientes y añadimos el término de sesgo:</p>
 <p><span class="math display">\[
@@ -628,7 +678,10 @@ Francisco Plaza Vega
 \]</span></p>
 <p>Aquí, <span class="math inline">\(\mathbf{b}_h\)</span> es el vector de sesgo para las unidades ocultas y <span class="math inline">\(\phi_h(\cdot)\)</span> es la función de activación de la capa oculta.</p>
 </div>
-</section><section class="slide level2"><div class="alert">
+</section>
+<section class="slide level2">
+
+<div class="alert">
 <p>En caso de que se desee utilizar la matriz de pesos concatenada, <span class="math inline">\(\mathbf{W}_h = [\mathbf{W}_{xh} \, ; \, \mathbf{W}_{hh}]\)</span>, la fórmula para calcular las unidades ocultas cambia de la siguiente manera:</p>
 <p><span class="math display">\[
 \mathbf{h}^{(t)} = \phi_h \left(
@@ -645,10 +698,14 @@ Francisco Plaza Vega
 \mathbf{o}^{(t)} = \phi_o \left( \mathbf{W}_{ho} \mathbf{h}^{(t)} + \mathbf{b}_o \right)
 \]</span></p>
 </div>
-</section><section class="slide level2"><p>Para clarificar aún más este proceso, se muestra cómo se computan estas activaciones con ambas formulaciones.</p>
+</section>
+<section class="slide level2">
 
-<img data-src="images/04_RNN/RNN-computing_activations2.png" class="quarto-figure quarto-figure-center r-stretch"></section><section id="entrenamiento-de-rnns" class="slide level2" data-number="2.3"><h2>
-<span class="header-section-number">2.3</span> Entrenamiento de RNNs</h2>
+<p>Para clarificar aún más este proceso, se muestra cómo se computan estas activaciones con ambas formulaciones.</p>
+
+<img data-src="images/04_RNN/RNN-computing_activations2.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="entrenamiento-de-rnns" class="slide level2" data-number="2.3">
+<h2><span class="header-section-number">2.3</span> Entrenamiento de RNNs</h2>
 <p>El algoritmo de aprendizaje para RNNs fue introducido en 1990: <em>Backpropagation Through Time: What It Does and How to Do It</em> <span class="citation" data-cites="Werbos1990">(<a href="#/referencias" role="doc-biblioref" onclick="">Werbos 1990</a>)</span>.</p>
 <div class="alert">
 <p>La derivación de los gradientes puede ser algo compleja, pero la idea básica es que la pérdida total, <span class="math inline">\(L\)</span>, es la suma de todas las funciones de pérdida en los tiempos <span class="math inline">\(t = 1\)</span> hasta <span class="math inline">\(t = T\)</span>:</p>
@@ -672,7 +729,10 @@ L = \sum_{t=1}^{T} L^{(t)}
 \frac{\partial \mathbf{h}^{(i)}}{\partial \mathbf{h}^{(i-1)}}
 \]</span></p>
 </div>
-</section><section class="slide level2"><div title="Recurrencia en la capa oculta versus recurrencia en la capa de salida">
+</section>
+<section class="slide level2">
+
+<div title="Recurrencia en la capa oculta versus recurrencia en la capa de salida">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -691,26 +751,35 @@ L = \sum_{t=1}^{T} L^{(t)}
 </div>
 </div>
 </div>
-</section></section><section><section id="los-desafíos-de-aprender-interacciones-de-largo-alcance" class="title-slide slide level1 center" data-background-color="#00A499" data-number="3"><h1>
-<span class="header-section-number">3</span> Los desafíos de aprender interacciones de largo alcance</h1>
+</section></section>
+<section>
+<section id="los-desafíos-de-aprender-interacciones-de-largo-alcance-redes-lstm" class="title-slide slide level1 center" data-background-color="#00A499" data-number="3">
+<h1><span class="header-section-number">3</span> Los desafíos de aprender interacciones de largo alcance: Redes LSTM</h1>
 
-</section><section class="slide level2"><div class="definition">
+</section>
+<section class="slide level2">
+
+<div class="definition">
 <p>Back propagation through time (BPTT), introduce nuevos desafíos. Debido al factor multiplicativo, <span class="math inline">\(\frac{\partial \mathbf{h}^{(t)}}{\partial \mathbf{h}^{(k)}}\)</span>, en el cálculo de los gradientes de una función de pérdida, surgen los llamados problemas de <span class="green"><strong>gradientes que se desvanecen</strong> (<em>vanishing</em>) y <strong>gradientes que explotan</strong> (<em>exploding</em>)</span>.</p>
 </div>
 
-<img data-src="images/04_RNN/RNN-gradients.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2"><div class="alert">
+<img data-src="images/04_RNN/RNN-gradients.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<div class="alert">
 <ul>
-<li class="fragment">
-<p>Básicamente, <span class="math inline">\(\frac{\partial \mathbf{h}^{(t)}}{\partial \mathbf{h}^{(k)}}\)</span> implica <span class="math inline">\(t - k\)</span> multiplicaciones; por lo tanto, <span class="green">multiplicar el peso <span class="math inline">\(w\)</span> por sí mismo <span class="math inline">\(t - k\)</span> veces da como resultado un factor de <span class="math inline">\(w^{t-k}\)</span></span>:</p>
+<li class="fragment"><p>Básicamente, <span class="math inline">\(\frac{\partial \mathbf{h}^{(t)}}{\partial \mathbf{h}^{(k)}}\)</span> implica <span class="math inline">\(t - k\)</span> multiplicaciones; por lo tanto, <span class="green">multiplicar el peso <span class="math inline">\(w\)</span> por sí mismo <span class="math inline">\(t - k\)</span> veces da como resultado un factor de <span class="math inline">\(w^{t-k}\)</span></span>:</p>
 <ul>
 <li class="fragment"><p><span class="orange">Si <span class="math inline">\(|w| &lt; 1\)</span>, este factor se vuelve muy pequeño</span> cuando <span class="math inline">\(t - k\)</span> es grande.</p></li>
 <li class="fragment"><p>Por otro lado, <span class="orange">si el peso del borde recurrente es <span class="math inline">\(|w| &gt; 1\)</span>, entonces <span class="math inline">\(w^{t-k}\)</span> se vuelve muy grande</span> cuando <span class="math inline">\(t - k\)</span> es grande.</p></li>
-</ul>
-</li>
+</ul></li>
 <li class="fragment"><p>Cabe notar que un gran valor de <span class="math inline">\(t - k\)</span> se refiere a dependencias de largo alcance (<em>long-range dependencies</em>). Podemos ver que una solución ingenua para evitar gradientes que se desvanecen o explotan es asegurar que <span class="math inline">\(|w| = 1\)</span>. Si estás interesado y deseas investigar esto en más detalle, puedes leer <a href="https://arxiv.org/pdf/1211.5063.pdf"><em>On the difficulty of training recurrent neural networks</em></a> <span class="citation" data-cites="Pascanu2012">(<a href="#/referencias" role="doc-biblioref" onclick="">Pascanu, Mikolov, y Bengio 2012</a>)</span>.</p></li>
 </ul>
 </div>
-</section><section class="slide level2"><div class="alert">
+</section>
+<section class="slide level2">
+
+<div class="alert">
 <p>En la práctica, existen al menos tres soluciones a este problema:</p>
 <ul>
 <li class="fragment"><p><em>Clipping</em> de gradientes (<em>Gradient clipping</em>)</p></li>
@@ -726,8 +795,9 @@ L = \sum_{t=1}^{T} L^{(t)}
 </ul>
 </div>
 </div>
-</section><section id="esquema-general-de-una-celda-lstm" class="slide level2" data-number="3.1"><h2>
-<span class="header-section-number">3.1</span> Esquema general de una celda LSTM</h2>
+</section>
+<section id="esquema-general-de-una-celda-lstm" class="slide level2" data-number="3.1">
+<h2><span class="header-section-number">3.1</span> Esquema general de una celda LSTM</h2>
 <ul>
 <li class="fragment"><p>Las LSTM fueron introducidas por primera vez para superar el problema de los gradientes que se desvanecen (<em>vanishing gradient problem</em>) en el artículo de <span class="citation" data-cites="Hochreiter1997">Hochreiter y Schmidhuber (<a href="#/referencias" role="doc-biblioref" onclick="">1997</a>)</span>.</p></li>
 <li class="fragment"><p>El bloque fundamental de una LSTM es una <strong>celda de memoria</strong> (<em>memory cell</em>), que esencialmente representa o reemplaza la capa oculta de las RNN estándar.</p></li>
@@ -742,20 +812,315 @@ L = \sum_{t=1}^{T} L^{(t)}
 </ul>
 </div>
 </div>
-</section><section class="slide level2">
-<img data-src="images/04_RNN/RNN-LSTM2.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2"><p>En cada celda de memoria, hay una conexión recurrente que tiene el peso deseable, <span class="math inline">\(w = 1\)</span>, como discutimos, para superar los problemas de gradientes que se desvanecen y explotan.<br>
-Los valores asociados con esta conexión recurrente se conocen colectivamente como <strong>estado de la celda</strong> (<em>cell state</em>).</p>
+</section>
+<section class="slide level2">
 
-<img data-src="images/04_RNN/RNN-LSTM.png" class="quarto-figure quarto-figure-center r-stretch"></section><section class="slide level2"><p>Obsérvese que el estado de la celda del paso de tiempo anterior, <span class="math inline">\(\mathbf{c}^{(t-1)}\)</span>, se modifica para obtener el estado de la celda en el paso de tiempo actual, <span class="math inline">\(\mathbf{c}^{(t)}\)</span>, sin ser multiplicado directamente por ningún factor de peso.</p>
-<p>El flujo de información en esta celda de memoria está controlado por varias unidades de cómputo (a menudo llamadas <strong>puertas</strong> o <em>gates</em>) que se describen aquí.<br>
-En la figura anterior: - <span class="math inline">\(\odot\)</span> representa el <strong>producto elemento a elemento</strong> (<em>element-wise product</em>) - <span class="math inline">\(\oplus\)</span> representa la <strong>suma elemento a elemento</strong> (<em>element-wise addition</em>)</p>
-<p>Además: - <span class="math inline">\(\mathbf{x}^{(t)}\)</span> se refiere a los datos de entrada en el tiempo <span class="math inline">\(t\)</span> - <span class="math inline">\(\mathbf{h}^{(t-1)}\)</span> indica las unidades ocultas en el tiempo <span class="math inline">\(t - 1\)</span></p>
-<p>Cuatro recuadros están indicados con una función de activación, ya sea la función sigmoide (<span class="math inline">\(\sigma\)</span>) o tangente hiperbólica (<em>tanh</em>), junto con un conjunto de pesos.<br>
-Estos recuadros aplican una combinación lineal realizando multiplicaciones de matrices y vectores sobre sus entradas (que son <span class="math inline">\(\mathbf{h}^{(t-1)}\)</span> y <span class="math inline">\(\mathbf{x}^{(t)}\)</span>).<br>
-Estas unidades de cómputo con funciones de activación sigmoide, cuyos valores de salida se pasan por <span class="math inline">\(\odot\)</span>, se denominan <strong>puertas</strong> (<em>gates</em>).</p>
-</section></section><section id="referencias" class="title-slide slide level1 smaller scrollable" data-background-color="#00A499" data-number="4"><h1>
-<span class="header-section-number">4</span> Referencias</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/04_RNN/RNN-LSTM2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="images/04_RNN/RNN-LSTM2.png" class="quarto-figure quarto-figure-center"></a></p>
+</figure>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 data-number="3.1.1" id="un-doble-click-a-las-celdas-lstm"><span class="header-section-number">3.1.1</span> Un doble click a las celdas LSTM</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/04_RNN/RNN-LSTM.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="images/04_RNN/RNN-LSTM.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></a></p>
+</figure>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<ul>
+<li class="fragment"><p>En cada celda de memoria, hay una conexión recurrente que tiene el peso deseable, <span class="math inline">\(w = 1\)</span>, para superar los problemas de gradientes que se desvanecen y explotan.</p></li>
+<li class="fragment"><p>Los valores asociados con esta conexión recurrente se conocen colectivamente como <strong>estado de la celda</strong> (<em>cell state</em>).<br>
+</p></li>
+</ul>
+</div>
+<p><br></p>
+<div class="definition">
+<p>El <span class="green">estado de la celda del paso de tiempo anterior</span>, <span class="math inline">\(\mathbf{c}^{(t-1)}\)</span>, se modifica para obtener el estado de la celda en el paso de tiempo actual, <span class="math inline">\(\mathbf{c}^{(t)}\)</span>, sin ser multiplicado directamente por ningún factor de peso.</p>
+<p>El <span class="green">flujo de información</span> en esta celda de memoria está controlado por varias <span class="orange">unidades de cómputo (a menudo llamadas <strong>puertas</strong> o <em>gates</em>)</span>:</p>
+<ul>
+<li class="fragment"><p><span class="math inline">\(\odot\)</span> representa el <strong>producto elemento a elemento</strong> (<em>element-wise product</em>)</p></li>
+<li class="fragment"><p><span class="math inline">\(\oplus\)</span> representa la <strong>suma elemento a elemento</strong> (<em>element-wise addition</em>)</p></li>
+</ul>
+<p>Además:</p>
+<ul>
+<li class="fragment"><p><span class="math inline">\(\mathbf{x}^{(t)}\)</span> se refiere a los datos de entrada en el tiempo <span class="math inline">\(t\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\mathbf{h}^{(t-1)}\)</span> indica las unidades ocultas en el tiempo <span class="math inline">\(t - 1\)</span></p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div title="Funciones de activación">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Funciones de activación</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li class="fragment"><p>Cuatro recuadros están indicados con una <span class="green">función de activación</span>, ya sea la <span class="orange">función sigmoide (<span class="math inline">\(\sigma\)</span>)</span> o <span class="orange">tangente hiperbólica (<span class="math inline">\(tanh\)</span>)</span>, junto con un conjunto de pesos.</p></li>
+<li class="fragment"><p>Estos recuadros <span class="orange">aplican una combinación lineal realizando multiplicaciones de matrices y vectores</span> sobre sus entradas (que son <span class="math inline">\(\mathbf{h}^{(t-1)}\)</span> y <span class="math inline">\(\mathbf{x}^{(t)}\)</span>).</p></li>
+<li class="fragment"><p>Estas unidades de cómputo con funciones de activación sigmoide, cuyos valores de salida se pasan por <span class="math inline">\(\odot\)</span>, <span class="orange">se denominan <strong>puertas</strong> (<em>gates</em>)</span>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div title="Compuertas o *Gates*">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Compuertas o <em>Gates</em></strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li class="fragment"><p><span class="green"><strong>La compuerta de olvido</strong> (<span class="math inline">\(f_t\)</span>)</span> permite que la celda de memoria reinicie su estado sin crecer indefinidamente. Decide qué información pasa y qué información no pasa. El valor de <span class="math inline">\(f_t\)</span> se calcula de la siguiente manera:</p>
+<p><span class="math inline">\(f_t = \sigma\left(W_{xf} x^{(t)} + W_{hf} h^{(t-1)} + b_f\right)\)</span></p></li>
+<li class="fragment"><p><span class="green"><strong>La compuerta de entrada</strong> (<span class="math inline">\(i_t\)</span>)</span> y el <span class="green"><strong>valor candidato</strong></span> (<span class="math inline">\(\tilde{C}_t\)</span>) son responsables de actualizar el estado de la celda. Se calculan de la siguiente forma:</p>
+<p><span class="math inline">\(i_t = \sigma\left(W_{xi} x^{(t)} + W_{hi} h^{(t-1)} + b_i\right)\)</span></p>
+<p><span class="math inline">\(\tilde{C}_t = \tanh\left(W_{xc} x^{(t)} + W_{hc} h^{(t-1)} + b_c\right)\)</span></p></li>
+<li class="fragment"><p>El <span class="green">estado de la celda en el tiempo <span class="math inline">\(t\)</span></span> se calcula como:</p>
+<p><span class="math inline">\(C^{(t)} = \left(C^{(t-1)} \odot f_t\right) \oplus \left(i_t \odot \tilde{C}_t\right)\)</span></p></li>
+<li class="fragment"><p><span class="green"><strong>La compuerta de salida</strong> (<span class="math inline">\(o_t\)</span>)</span> decide cómo actualizar los valores de las unidades ocultas:</p>
+<p><span class="math inline">\(o_t = \sigma\left(W_{xo} x^{(t)} + W_{ho} h^{(t-1)} + b_o\right)\)</span></p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+<div title="Nota">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nota</strong></p>
+</div>
+<div class="callout-content">
+<p>La <span class="orange">compuerta de olvido no formaba parte de la celda LSTM original</span>. Fue añadida años más tarde para mejorar el modelo original. El artículo lleva por título <a href="https://ieeexplore.ieee.org/abstract/document/6789445"><em>Learning to Forget: Continual Prediction with LSTM</em></a> <span class="citation" data-cites="Gers2000">(<a href="#/referencias" role="doc-biblioref" onclick="">Gers, Schmidhuber, y Cummins 2000</a>)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<p>Entonces, las <span class="green">unidades ocultas en el paso de tiempo actual</span> se calculan de la siguiente manera:</p>
+<p><span class="math display">\[
+h^{(t)} = o_t \odot \tanh\left(C^{(t)}\right)
+\]</span></p>
+<p>La estructura de una celda LSTM y sus cálculos subyacentes pueden parecer muy complejos y difíciles de implementar. Sin embargo, la buena noticia es que <code>TensorFlow</code> ya ha implementado todo en funciones <em>wrapper</em> optimizadas, lo que nos permite definir celdas LSTM de manera sencilla y eficiente.</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div title="Otros modelos avanzados de RNN">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Otros modelos avanzados de RNN</strong></p>
+</div>
+<div class="callout-content">
+<p>Las LSTM proporcionan un enfoque básico para modelar dependencias de largo alcance en secuencias. Sin embargo, es importante destacar que existen muchas variaciones de las LSTM descritas en la literatura (<em>An Empirical Exploration of Recurrent Network Architectures</em>, Rafal Jozefowicz, Wojciech Zaremba e Ilya Sutskever, <em>Proceedings of ICML</em>, 2342–2350, 2015).</p>
+<p>También vale la pena mencionar un enfoque más reciente, la <strong>Unidad Recurrente con Compuertas</strong> (<em>Gated Recurrent Unit</em>, GRU), propuesta en 2014. Las GRU tienen una arquitectura más simple que las LSTM; por lo tanto, son computacionalmente más eficientes, mientras que su desempeño en algunas tareas, como el modelado de música polifónica, es comparable al de las LSTM.</p>
+<p>Algunos detalles sobre estas arquitecturas modernas de RNN, pueden ser complementados en el artículo <a href="https://arxiv.org/pdf/1412.3555v1.pdf"><em>Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling</em></a> <span class="citation" data-cites="Chung2014">(<a href="#/referencias" role="doc-biblioref" onclick="">Chung et&nbsp;al. 2014</a>)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- # Gated Recurrent Unit (GRU) {background-color="#00A499"} -->
+<!-- --- -->
+<!-- Siguiendo el enfoque presentado en *Dive into Deep Learning* [@Zhang2023], la **Gated Recurrent Unit (GRU)** se puede entender como una variante “más compacta” de las LSTM: mantiene un mecanismo explícito para **controlar el flujo de información** en el tiempo, pero con menos componentes y sin separar explícitamente un *cell state* $C^{(t)}$ distinto del estado oculto. Este tipo de diseño busca (i) facilitar el entrenamiento y (ii) reducir el número de parámetros, manteniendo buen desempeño en tareas secuenciales. -->
+<!-- Desde un punto de vista conceptual, las GRU surgen al observar que algunas de las compuertas de las LSTM cumplen roles parcialmente redundantes. En particular, las GRU eliminan la separación explícita entre el **estado de la celda** y el **estado oculto**, trabajando únicamente con un estado oculto $h^{(t)}$ que encapsula la memoria del sistema. -->
+<!-- Las dos compuertas principales cumplen funciones complementarias: -->
+<!-- - La **compuerta de actualización** ($z_t$) controla el balance entre retener información pasada y actualizar el estado con nueva información. -->
+<!-- - La **compuerta de reinicio** ($r_t$) determina cuánta información histórica debe ser considerada al calcular el nuevo estado candidato. -->
+<!-- :::{.callout-tip title="Nota"} -->
+<!-- Las GRU fueron introducidas por @@Cho2014 como una unidad recurrente con compuertas para modelar datos secuenciales, en el contexto de traducción automática neuronal, el trabajo lleva por título [*On the Properties of Neural Machine Translation: Encoder–Decoder Approaches*](https://arxiv.org/pdf/1409.1259). -->
+<!-- ::: -->
+<!-- --- -->
+<!-- ## Notación y objetivo -->
+<!-- Sea $x^{(t)} \in \mathbb{R}^{d}$ la entrada en el tiempo $t$ y $h^{(t)} \in \mathbb{R}^{m}$ el estado oculto. La idea central es construir $h^{(t)}$ como una **interpolación controlada por compuertas** entre: -->
+<!-- - memoria previa: $h^{(t-1)}$ -->
+<!-- - nueva información candidata: $\tilde{h}^{(t)}$ -->
+<!-- ### Comp. 1: compuertas de actualización y reinicio -->
+<!-- La GRU introduce dos compuertas (ambas en $(0,1)^m$): -->
+<!-- - **update gate** (compuerta de actualización): $z_t$ -->
+<!-- - **reset gate** (compuerta de reinicio): $r_t$ -->
+<!-- --- -->
+<!-- Se definen típicamente como: -->
+<!-- $$ -->
+<!-- z_t = \sigma\!\left(W_{xz}\,x^{(t)} + W_{hz}\,h^{(t-1)} + b_z\right) -->
+<!-- $$ -->
+<!-- $$ -->
+<!-- r_t = \sigma\!\left(W_{xr}\,x^{(t)} + W_{hr}\,h^{(t-1)} + b_r\right) -->
+<!-- $$ -->
+<!-- donde $\sigma(\cdot)$ es la sigmoide, $W_{x\*}\in\mathbb{R}^{m\times d}$, $W_{h\*}\in\mathbb{R}^{m\times m}$, y $b_\*\in\mathbb{R}^{m}$. -->
+<!-- **Interpretación:** -->
+<!-- - $z_t$ controla **cuánto se actualiza** el estado (cuánta “memoria nueva” entra). -->
+<!-- - $r_t$ controla **cuánta memoria pasada** se usa al construir $\tilde{h}^{(t)}$ (si $r_t$ es cercano a 0, se “olvida” el pasado para el candidato). -->
+<!-- --- -->
+<!-- ### Comp. 2: estado candidato -->
+<!-- El candidato $\tilde{h}^{(t)}$ incorpora la entrada actual y una versión *filtrada* del pasado mediante $r_t$: -->
+<!-- $$ -->
+<!-- \tilde{h}^{(t)} = -->
+<!-- \tanh\!\left(W_{xh}\,x^{(t)} + W_{hh}\,(r_t \odot h^{(t-1)}) + b_h\right) -->
+<!-- $$ -->
+<!-- donde $\odot$ denota producto elemento a elemento y $\tanh(\cdot)$ actúa componente a componente. -->
+<!-- **Lectura rápida:** -->
+<!-- - Si $r_t \approx \mathbf{0}$, entonces $(r_t \odot h^{(t-1)}) \approx \mathbf{0}$, y el candidato depende casi solo de $x^{(t)}$. -->
+<!-- - Si $r_t \approx \mathbf{1}$, el candidato incorpora el pasado “completo”. -->
+<!-- --- -->
+<!-- ### Comp. 3: actualización del estado oculto -->
+<!-- El estado final se obtiene mezclando el pasado y el candidato, controlado por $z_t$: -->
+<!-- $$ -->
+<!-- h^{(t)} = (1 - z_t)\odot h^{(t-1)} + z_t \odot \tilde{h}^{(t)} -->
+<!-- $$ -->
+<!-- Esta ecuación es clave: es una **interpolación adaptativa** (componente a componente). En particular: -->
+<!-- - Si $z_t \approx \mathbf{0}$, entonces $h^{(t)} \approx h^{(t-1)}$ (se conserva memoria). -->
+<!-- - Si $z_t \approx \mathbf{1}$, entonces $h^{(t)} \approx \tilde{h}^{(t)}$ (se actualiza casi por completo). -->
+<!-- --- -->
+<!-- ### Una reescritura útil (visión “residual”) -->
+<!-- La ecuación anterior se puede reescribir como: -->
+<!-- $$ -->
+<!-- h^{(t)} = h^{(t-1)} + z_t \odot (\tilde{h}^{(t)} - h^{(t-1)}) -->
+<!-- $$ -->
+<!-- lo que deja ver que la GRU hace una corrección del estado previo, donde $z_t$ actúa como un “paso de actualización” (*step size*) vectorial. -->
+<!-- --- -->
+<!-- ### Conexión con el problema del gradiente en secuencias largas -->
+<!-- Una razón práctica por la que estas compuertas ayudan (respecto a una RNN simple) es que la actualización permite caminos donde el estado puede **propagarse con cambios pequeños** cuando $z_t$ se mantiene bajo en ciertos tramos, lo que estabiliza el aprendizaje en secuencias largas :contentReference[oaicite:1]{index=1}. Esto no “elimina” todos los problemas, pero sí ofrece un mecanismo directo para controlar cuándo memorizar y cuándo actualizar. -->
+<!-- ### Comparación conceptual con LSTM -->
+<!-- - En LSTM existe un estado de celda $C^{(t)}$ separado y tres compuertas (olvido/entrada/salida). -->
+<!-- - En GRU no hay $C^{(t)}$ explícito y típicamente hay dos compuertas ($z_t$, $r_t$). -->
+<!-- - En la práctica, esto reduce parámetros y puede ser más eficiente, con desempeño a menudo comparable en varias tareas. -->
+<!-- # LSTM Bidireccional (Bidirectional LSTM) {background-color="#00A499"} -->
+<!-- --- -->
+<!-- En una LSTM estándar, la información fluye **solo en una dirección temporal** (típicamente del pasado al futuro). Sin embargo, en muchas tareas secuenciales (p. ej., etiquetado de secuencias en NLP, análisis *offline* de señales, clasificación de secuencias completas) la predicción en el tiempo $t$ puede beneficiarse tanto del **contexto pasado** como del **contexto futuro**. La **LSTM bidireccional (BiLSTM)** aborda esto procesando la misma secuencia en dos direcciones, combinando ambas representaciones. -->
+<!-- ### Idea central -->
+<!-- Dada una secuencia de entradas $\{x^{(1)}, x^{(2)}, \dots, x^{(T)}\}$, una BiLSTM entrena: -->
+<!-- - una LSTM **hacia adelante** (forward) que produce estados $\overrightarrow{h}^{(t)}$, -->
+<!-- - una LSTM **hacia atrás** (backward) que produce estados $\overleftarrow{h}^{(t)}$. -->
+<!-- Luego, para cada instante $t$, ambas representaciones se combinan para producir una representación contextual enriquecida: -->
+<!-- $$ -->
+<!-- h^{(t)} = \left[\overrightarrow{h}^{(t)}\;;\;\overleftarrow{h}^{(t)}\right] -->
+<!-- $$ -->
+<!-- donde $[\cdot\,;\cdot]$ denota concatenación (la opción más común). :contentReference[oaicite:1]{index=1} -->
+<!-- --- -->
+<!-- ### Dinámica de la LSTM hacia adelante (forward) -->
+<!-- La LSTM forward procesa $t=1,\dots,T$ usando las ecuaciones estándar: -->
+<!-- $$ -->
+<!-- \overrightarrow{f}_t = \sigma\left(W^{\rightarrow}_{xf}x^{(t)} + W^{\rightarrow}_{hf}\overrightarrow{h}^{(t-1)} + b^{\rightarrow}_{f}\right) -->
+<!-- $$ -->
+<!-- $$ -->
+<!-- \overrightarrow{i}_t = \sigma\left(W^{\rightarrow}_{xi}x^{(t)} + W^{\rightarrow}_{hi}\overrightarrow{h}^{(t-1)} + b^{\rightarrow}_{i}\right) -->
+<!-- $$ -->
+<!-- $$ -->
+<!-- \overrightarrow{\tilde{C}}_t = \tanh\left(W^{\rightarrow}_{xC}x^{(t)} + W^{\rightarrow}_{hC}\overrightarrow{h}^{(t-1)} + b^{\rightarrow}_{C}\right) -->
+<!-- $$ -->
+<!-- $$ -->
+<!-- \overrightarrow{C}^{(t)} = \overrightarrow{f}_t \odot \overrightarrow{C}^{(t-1)} + \overrightarrow{i}_t \odot \overrightarrow{\tilde{C}}_t -->
+<!-- $$ -->
+<!-- $$ -->
+<!-- \overrightarrow{o}_t = \sigma\left(W^{\rightarrow}_{xo}x^{(t)} + W^{\rightarrow}_{ho}\overrightarrow{h}^{(t-1)} + b^{\rightarrow}_{o}\right) -->
+<!-- $$ -->
+<!-- $$ -->
+<!-- \overrightarrow{h}^{(t)} = \overrightarrow{o}_t \odot \tanh\left(\overrightarrow{C}^{(t)}\right) -->
+<!-- $$ -->
+<!-- --- -->
+<!-- ### Dinámica de la LSTM hacia atrás (backward) -->
+<!-- La LSTM backward procesa la secuencia en sentido inverso. Conceptualmente, es la misma LSTM pero recorriendo $t=T,\dots,1$. Se puede escribir como: -->
+<!-- $$ -->
+<!-- \overleftarrow{h}^{(t)} = \mathrm{LSTM}_{\leftarrow}\left(x^{(t)}, \overleftarrow{h}^{(t+1)}, \overleftarrow{C}^{(t+1)}\right) -->
+<!-- $$ -->
+<!-- y, si se desea, expandir con ecuaciones análogas a las del caso forward, pero con parámetros independientes: -->
+<!-- $$ -->
+<!-- \overleftarrow{f}_t = \sigma\left(W^{\leftarrow}_{xf}x^{(t)} + W^{\leftarrow}_{hf}\overleftarrow{h}^{(t+1)} + b^{\leftarrow}_{f}\right) -->
+<!-- $$ -->
+<!-- $$ -->
+<!-- \overleftarrow{i}_t = \sigma\left(W^{\leftarrow}_{xi}x^{(t)} + W^{\leftarrow}_{hi}\overleftarrow{h}^{(t+1)} + b^{\leftarrow}_{i}\right) -->
+<!-- $$ -->
+<!-- $$ -->
+<!-- \overleftarrow{\tilde{C}}_t = \tanh\left(W^{\leftarrow}_{xC}x^{(t)} + W^{\leftarrow}_{hC}\overleftarrow{h}^{(t+1)} + b^{\leftarrow}_{C}\right) -->
+<!-- $$ -->
+<!-- $$ -->
+<!-- \overleftarrow{C}^{(t)} = \overleftarrow{f}_t \odot \overleftarrow{C}^{(t+1)} + \overleftarrow{i}_t \odot \overleftarrow{\tilde{C}}_t -->
+<!-- $$ -->
+<!-- $$ -->
+<!-- \overleftarrow{o}_t = \sigma\left(W^{\leftarrow}_{xo}x^{(t)} + W^{\leftarrow}_{ho}\overleftarrow{h}^{(t+1)} + b^{\leftarrow}_{o}\right) -->
+<!-- $$ -->
+<!-- $$ -->
+<!-- \overleftarrow{h}^{(t)} = \overleftarrow{o}_t \odot \tanh\left(\overleftarrow{C}^{(t)}\right) -->
+<!-- $$ -->
+<!-- --- -->
+<!-- ### Combinación de ambas direcciones -->
+<!-- La combinación más usada es la concatenación: -->
+<!-- $$ -->
+<!-- h^{(t)} = \left[\overrightarrow{h}^{(t)}\;;\;\overleftarrow{h}^{(t)}\right] \in \mathbb{R}^{2m} -->
+<!-- $$ -->
+<!-- Otras alternativas (menos comunes, pero útiles en ciertos diseños) incluyen: -->
+<!-- - **suma**: -->
+<!-- $$ -->
+<!-- h^{(t)} = \overrightarrow{h}^{(t)} + \overleftarrow{h}^{(t)} -->
+<!-- $$ -->
+<!-- - **promedio**: -->
+<!-- $$ -->
+<!-- h^{(t)} = \frac{1}{2}\left(\overrightarrow{h}^{(t)} + \overleftarrow{h}^{(t)}\right) -->
+<!-- $$ -->
+<!-- La concatenación suele preferirse porque preserva información de ambas direcciones sin “colapsarla” en un solo vector. :contentReference[oaicite:2]{index=2} -->
+<!-- --- -->
+<!-- ### ¿Cómo se usa la salida de una BiLSTM? -->
+<!-- Dependiendo de la tarea: -->
+<!-- **(1) Many-to-many (salida por tiempo)**   -->
+<!-- Se define una predicción por instante, por ejemplo: -->
+<!-- $$ -->
+<!-- \hat{y}^{(t)} = g\left(W_y h^{(t)} + b_y\right) -->
+<!-- $$ -->
+<!-- donde $g(\cdot)$ puede ser una *softmax* (clasificación) o identidad (regresión). -->
+<!-- **(2) Many-to-one (salida para la secuencia completa)**   -->
+<!-- Una opción típica es usar el último estado “agregado”, por ejemplo concatenando los estados finales de cada dirección: -->
+<!-- $$ -->
+<!-- h_{\text{seq}} = \left[\overrightarrow{h}^{(T)}\;;\;\overleftarrow{h}^{(1)}\right] -->
+<!-- $$ -->
+<!-- y luego: -->
+<!-- $$ -->
+<!-- \hat{y} = g\left(W_y h_{\text{seq}} + b_y\right) -->
+<!-- $$ -->
+<!-- --- -->
+<!-- ### Ventajas y limitaciones prácticas -->
+<!-- - **Ventaja principal:** cada representación $h^{(t)}$ incorpora contexto de ambos lados (pasado y futuro), lo que suele mejorar tareas *offline* donde la secuencia completa está disponible :contentReference[oaicite:3]{index=3}. -->
+<!-- - **Limitación clave:** no es adecuada para escenarios estrictamente *online* (tiempo real) si no se dispone del futuro. -->
+<!-- En síntesis, las BiLSTM son una extensión natural de las LSTM cuando el problema permite explotar contexto futuro, entregando representaciones más informativas para tareas secuenciales :contentReference[oaicite:4]{index=4}. -->
+</section></section>
+<section id="referencias" class="title-slide slide level1 smaller scrollable" data-background-color="#00A499" data-number="4">
+<h1><span class="header-section-number">4</span> Referencias</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Chung2014" class="csl-entry" role="listitem">
+Chung, Junyoung, Caglar Gulcehre, KyungHyun Cho, y Yoshua Bengio. 2014. <span>«Empirical evaluation of gated recurrent neural networks on sequence modeling»</span>. <em>arXiv preprint arXiv:1412.3555</em>.
+</div>
+<div id="ref-Gers2000" class="csl-entry" role="listitem">
+Gers, Felix A, Jürgen Schmidhuber, y Fred Cummins. 2000. <span>«Learning to forget: Continual prediction with LSTM»</span>. <em>Neural computation</em> 12 (10): 2451-71.
+</div>
 <div id="ref-Hochreiter1997" class="csl-entry" role="listitem">
 Hochreiter, Sepp, y Jürgen Schmidhuber. 1997. <span>«Long short-term memory»</span>. <em>Neural computation</em> 9 (8): 1735-80.
 </div>
@@ -771,7 +1136,7 @@ Werbos, Paul J. 1990. <span>«Backpropagation through time: what it does and how
 </div>
 
 </section>
-</div>
+    </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="images/Usach_P2.png" class="slide-logo"></p>
 <div class="footer footer-default">
@@ -779,7 +1144,25 @@ Werbos, Paul J. 1990. <span>«Backpropagation through time: what it does and how
 </div>
 </div></div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="Deep_Learning_04_RNN_files/libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/multiplex/socket.io.js"></script><script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/multiplex/multiplex.js"></script><script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/quarto-support/support.js"></script><script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/notes/notes.js"></script><script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/search/search.js"></script><script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/zoom/zoom.js"></script><script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="Deep_Learning_04_RNN_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/multiplex/socket.io.js"></script>
+  <script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/multiplex/multiplex.js"></script>
+  <script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Deep_Learning_04_RNN_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -946,7 +1329,7 @@ Werbos, Paul J. 1990. <span>«Backpropagation through time: what it does and how
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -971,226 +1354,252 @@ Werbos, Paul J. 1990. <span>«Backpropagation through time: what it does and how
           RevealZoom
         ]
       });
-    </script><script>
+    </script>
+    
+
+    <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
     
+
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
+
     
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
             }
           }
+          return false;
         }
-    
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-    
-      })();
-    </script><script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copiado");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copiado");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
           }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
         }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copiado");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copiado");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
-          }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
           for (const childEl of codeEl.children) {
             if (isCodeAnnotation(childEl)) {
               childEl.remove();
             }
           }
           return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
             }
           }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
           }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
           }
-        } else {
-          return undefined;
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
         }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {
@@ -1222,6 +1631,6 @@ Werbos, Paul J. 1990. <span>«Backpropagation through time: what it does and how
       
     })();
               </script>
-
+    
 
 </body></html>
