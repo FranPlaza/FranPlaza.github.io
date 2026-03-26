@@ -1,0 +1,670 @@
+---
+title: "**Del mar a los datos: modelos, pesca y ciencia aplicada frente al cambio climático**"
+subtitle: "**Bienvenida Estudiantes 2026** <br> Facultad de Ciencia, Universidad de Santiago de Chile"
+lang: es
+title-slide-attributes:
+  data-background-color: "#00344f"
+  data-background-image: images/background_fish.gif
+  data-background-size: cover
+  data-background-opacity: "0.12"
+format:
+  clean-revealjs:
+    self-contained: false
+    transition: slide
+    transition-speed: default
+    background-transition: slide
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: "Francisco Plaza-Vega <img src='images/logo_dmcc.png' alt='Logo Universidad de Santiago' style='height:100px; margin-left:10px; margin-right:200px;' align='right'>"
+    email: francisco.plaza.v@usach.cl
+    affiliations: Universidad de Santiago de Chile
+bibliography: referencias.bib
+---
+
+# Una pregunta para empezar {background-color="#00344f" background-image="images/background_fish.gif" background-size="cover" background-opacity="0.25"}
+
+---
+
+## {background-color="black"}
+
+<div style="position: relative; width: 100%; height: 88vh; overflow: hidden;">
+  <iframe 
+    sandbox='allow-popups allow-scripts allow-same-origin allow-presentation' 
+    allowfullscreen='true' 
+    allowtransparency='true' 
+    frameborder='0' 
+    height='300' 
+    src='https://www.mentimeter.com/app/presentation/alapizk2q7g6insiwa4r7vzjrogc7oyk/embed'
+    style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='300'>
+  </iframe>
+</div>
+
+---
+
+## ¿Cómo estudiamos algo que cambia todo el tiempo y que no podemos observar por completo?
+
+::: {.callout-note appearance="minimal"}
+El océano cambia. El clima cambia. Las pesquerías cambian.
+![](images/ocean_weather_fisheries.png){width="100%" fig-align="center" style="border-radius:12px;"}
+
+Y, aun así, necesitamos **entender**, **modelar** y **tomar decisiones**.
+:::
+
+---
+
+## Esta charla no trata solo de pesca
+
+### También trata de:
+
+:::: {.columns .v-center}
+::: {.column width="45%"}
+
+<div style="font-size:0.75em; line-height:1.2;">
+
+\vspace{0.4em}
+
+- **datos** que ayudan a mirar sistemas complejos;
+- **modelos** para transformar observaciones en conocimiento;
+- **computación** para analizar, simular y predecir;
+- **ciencia aplicada** para responder preguntas reales del país;
+- **trabajo interdisciplinario** para conectar distintas miradas.
+
+</div>
+
+:::
+
+::: {.column width="55%"}
+
+![](images/data_models_science.png){fig-align="center" width="100%" style="border-radius: 14px; box-shadow: 0 6px 18px rgba(0,0,0,0.18);"}
+
+:::
+::::
+
+# El problema: mar, clima y decisiones {background-color="#00344f" background-image="images/background_fish.gif" background-size="cover" background-opacity="0.25"}
+
+## Chile y el mar
+
+::: {.callout-note appearance="minimal"}
+Chile es un país profundamente conectado con el océano.
+
+Lo que ocurre en el mar afecta ecosistemas, pesquerías, economía, territorio y decisiones públicas.
+
+Por eso, entender la relación entre **ambiente**, **recursos marinos** y **cambio climático** no es solo un desafío científico: también es un desafío social.
+:::
+
+:::: {.columns}
+::: {.column width="30%"}
+
+::: {.fragment .fade-up fragment-index=1}
+![](images/beach.jpeg){fig-alt="Costa y territorio" style="width:100%; height:220px; object-fit:cover; border-radius:10px;"}
+
+<div style="text-align:center; font-size:0.75em; margin-top:0.35rem;">
+Territorio y vida costera
+</div>
+:::
+
+:::
+
+::: {.column width="30%"}
+
+::: {.fragment .fade-up fragment-index=2}
+![](images/fishermen.jpeg){fig-alt="Pesquerías y economía" style="width:100%; height:220px; object-fit:cover; border-radius:10px;"}
+
+<div style="text-align:center; font-size:0.75em; margin-top:0.35rem;">
+Pesquerías y economía
+</div>
+:::
+
+:::
+
+::: {.column width="40%"}
+
+::: {.fragment .fade-up fragment-index=3}
+![](images/fish_climate.png){fig-alt="Ambiente, recursos marinos y cambio climático" style="width:100%; height:220px; object-fit:cover; border-radius:10px;"}
+
+<div style="text-align:center; font-size:0.75em; margin-top:0.35rem;">
+Ambiente, recursos marinos y cambio climático
+</div>
+:::
+
+:::
+::::
+
+---
+
+## ¿Qué hay bajo la superficie?
+
+::::{.r-stack}
+
+![](images/oceano_4.jpg){.fragment .fade-in-then-out fragment-index=1 fig-alt="Superficie del océano" style="display:block; margin:1.5rem auto 0 auto; width:900px; height:520px; object-fit:cover; border-radius:12px;"}
+
+
+<div style="
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  width: 900px;
+  margin: 1.2rem auto 0 auto;
+">
+
+::: {.fragment .fade-in-then-out fragment-index=2}
+<div style="text-align:center;">
+  <img src="images/underwater1.jpg"
+       style="width:100%; height:220px; object-fit:cover; border-radius:10px; display:block;">
+  <div style="margin-top:0.35rem; font-size:0.75em;">
+    Cardúmenes y biodiversidad
+  </div>
+</div>
+:::
+
+::: {.fragment .fade-in-then-out fragment-index=2}
+<div style="text-align:center;">
+  <img src="images/underwater2.jpg"
+       style="width:100%; height:220px; object-fit:cover; border-radius:10px; display:block;">
+  <div style="margin-top:0.35rem; font-size:0.75em;">
+    Bosques de algas y hábitats marinos
+  </div>
+</div>
+:::
+
+::: {.fragment .fade-in-then-out fragment-index=2}
+<div style="text-align:center;">
+  <img src="images/underwater3.jpg"
+       style="width:100%; height:220px; object-fit:cover; border-radius:10px; display:block;">
+  <div style="margin-top:0.35rem; font-size:0.75em;">
+    Ecosistemas y vida bajo la superficie
+  </div>
+</div>
+:::
+
+::: {.fragment .fade-in-then-out fragment-index=2}
+<div style="text-align:center;">
+  <img src="images/underwater4.jpg"
+       style="width:100%; height:220px; object-fit:cover; border-radius:10px; display:block;">
+  <div style="margin-top:0.35rem; font-size:0.75em;">
+    Especies, interacciones y complejidad
+  </div>
+</div>
+:::
+
+</div>
+
+
+![](images/ocean_zones.png){.fragment .fade-in-then-out fragment-index=3 fig-alt="Zonas del océano" style="display:block; margin:1.5rem auto 0 auto; width:950px; height:520px; object-fit:contain; border-radius:12px; background:white;"}
+
+::::
+
+---
+
+## Un sistema complejo
+
+::: {.callout-tip appearance="minimal" title="Ambiente y recursos"}
+![Parte del Proyecto ANID-FONDECYT-11251120](images/scheme_environment.png){width=65%}
+:::
+
+---
+
+::: {.callout-tip appearance="minimal" title="Pesquerías"}
+![Fuente: Proyecto ANID-FONDECYT-11251120](images/scheme_fisheries.png)
+:::
+
+# Del mar a los datos {background-color="#00344f" background-image="images/background_fish.gif" background-size="cover" background-opacity="0.25"}
+
+## Un mar de datos
+
+![Imagen generada con DALL·E](images/sea_data.png)
+
+---
+
+## Del dato al conocimiento
+
+::: {.callout-note appearance="minimal"}
+Estudiar problemas complejos del mundo real requiere observar, formular preguntas, construir modelos e interpretar resultados.
+:::
+
+:::: {.columns}
+
+::: {.column width="33%"}
+🌎 **Mundo real** →
+![](images/problem_fishermen.jpg){fig-alt="Mundo real" style="width:100%; height:220px; object-fit:cover; border-radius:12px; display:block;"}
+problema, territorio y actores
+:::
+
+::: {.column width="33%"}
+📊 **Datos y Modelos** →
+![](images/data_hydroacoustic.jpg){fig-alt="Datos y modelos" style="width:100%; height:220px; object-fit:cover; border-radius:12px; display:block;"}
+observación, series de tiempo, datos espaciales, modelación, simulación de escenarios, y un extenso etc...
+:::
+
+::: {.column width="33%"}
+🧭 **Decisiones**
+![](images/decision.jpg){fig-alt="Decisiones" style="width:100%; height:220px; object-fit:cover; border-radius:12px; display:block;"}
+conocimiento útil para apoyar acción
+:::
+
+::::
+
+<div style="text-align:center; font-size:0.7em; color:#355c6e; margin-top:1rem;">
+observaciones ambientales y pesqueras · series de tiempo · modelos estadísticos y matemáticos · simulación y aprendizaje automático · interpretación científica · comunicación de resultados
+</div>
+
+# ¿Dónde entra tu carrera? {background-color="#00344f" background-image="images/background_fish2.gif" background-size="cover" background-opacity="0.18"}
+
+## Un mismo problema, muchas formas de aportar
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.callout-note appearance="minimal" title="Ingeniería Estadística"}
+Inferencia, incertidumbre, predicción, validación de modelos y análisis de datos.
+:::
+
+::: {.callout-note appearance="minimal" title="Ingeniería Matemática"}
+Modelación, estructuras dinámicas, optimización y abstracción de sistemas complejos.
+:::
+
+::: {.callout-note appearance="minimal" title="Computación científica / ciencia de datos"}
+Programación, algoritmos, simulación, inteligencia artificial y procesamiento de datos.
+:::
+:::
+
+::: {.column width="50%"}
+::: {.callout-note appearance="minimal" title="Física e Ingeniería Física"}
+Sistemas complejos, señales, procesos dinámicos, medición y comprensión del ambiente.
+:::
+
+::: {.callout-note appearance="minimal" title="Astrofísica con mención en Ciencia de Datos"}
+Análisis cuantitativo, grandes volúmenes de datos, modelación y aprendizaje desde observaciones.
+:::
+
+::: {.callout-note appearance="minimal" title="Pedagogías"}
+Comunicar ciencia, hacerla comprensible y conectar conocimiento con nuevas generaciones.
+:::
+:::
+:::
+
+---
+
+## La invitación
+
+::: {.callout-tip appearance="minimal"}
+La pregunta no es solo **qué carrera estudias**, sino también:
+
+**¿qué tipo de problemas te gustaría comprender o ayudar a resolver con las herramientas que aprenderás aquí?**
+:::
+
+
+# Un camino posible {background-color="#00344f" background-image="images/background_fish2.gif" background-size="cover" background-opacity="0.18"}
+
+## Mi experiencia, como ejemplo y no como meta única
+
+::: {.callout-note appearance="minimal"}
+Mi camino ha estado en el cruce entre:
+
+- el trabajo con problemas reales del mar y las pesquerías;
+- el análisis de datos y la construcción de modelos;
+- la colaboración con instituciones y equipos interdisciplinarios.
+
+Hoy desarrollo docencia e investigación en la **USACH**, luego de una etapa en **IFOP**, y también participo en espacios técnico-científicos donde la evidencia puede aportar a decisiones reales.
+:::
+
+:::: {.columns}
+
+::: {.column width="33%"}
+::: {.fragment .fade-up fragment-index=1}
+![](images/fran_terreno_ifop.jpg){style="border-radius:12px; width:100%; height:180px; object-fit:cover;"}
+
+<div style="text-align:center; font-size:0.7em; margin-top:0.3rem;">
+Problemas reales / trabajo en terreno
+</div>
+:::
+:::
+
+::: {.column width="33%"}
+::: {.fragment .fade-up fragment-index=2}
+![](images/models.png){style="border-radius:12px; width:100%; height:180px; object-fit:contain; background:white;"}
+
+<div style="text-align:center; font-size:0.7em; margin-top:0.3rem;">
+Datos y modelos
+</div>
+:::
+:::
+
+::: {.column width="33%"}
+::: {.fragment .fade-up fragment-index=3}
+![](images/decision.jpg){style="border-radius:12px; width:100%; height:180px; object-fit:cover;"}
+
+<div style="text-align:center; font-size:0.7em; margin-top:0.3rem;">
+Trabajo colaborativo / decisiones
+</div>
+:::
+:::
+
+::::
+
+---
+
+## Lo importante del camino
+
+::: {.callout-tip appearance="minimal"}
+La idea no es que todos sigan una misma trayectoria.
+
+La idea es mostrar que, desde distintas formaciones de la Facultad de Ciencia, sí es posible construir caminos que conecten curiosidad, herramientas y problemas reales.
+:::
+
+---
+
+![](images/bienvenida_usach.jpg){style="width:75%; display:block; margin:1.5rem auto; border-radius:16px;"}
+
+::: {.fragment}
+<div style="text-align:center; font-size:1.2em; margin-top:1rem; opacity:0.9;">
+No hay una sola trayectoria.
+</div>
+:::
+
+# Un proyecto en el que estado trabajando ahora último {background-color="#212f4b" background-image="images/background_fish2.gif" background-size="cover" background-opacity="0.18"}
+
+## ¿De qué se trata?
+
+::: {.callout-note appearance="minimal"}
+El proyecto Fondecyt de Iniciación busca entender **cómo el cambio climático puede afectar a las pesquerías chilenas**. Para eso combina:
+
+- datos ambientales y pesqueros;
+- modelos estadísticos y de series de tiempo;
+- herramientas de inteligencia artificial;
+- simulación de escenarios futuros.
+:::
+
+:::: {.columns}
+
+::: {.column width="25%"}
+::: {.fragment}
+![](images/data_buoy.jpg){style="border-radius:10px; width:100%; height:120px; object-fit:cover;"}
+<div style="text-align:center; font-size:0.65em;">Datos</div>
+:::
+:::
+
+::: {.column width="25%"}
+::: {.fragment}
+![](images/models.png){style="border-radius:10px; width:100%; height:120px; object-fit:cover;"}
+<div style="text-align:center; font-size:0.65em;">Modelos</div>
+:::
+:::
+
+::: {.column width="25%"}
+::: {.fragment}
+![](images/ai.png){style="border-radius:10px; width:100%; height:120px; object-fit:cover;"}
+<div style="text-align:center; font-size:0.65em;">Inteligencia</br>Artificial</div>
+:::
+:::
+
+::: {.column width="25%"}
+::: {.fragment}
+![](images/simulation.png){style="border-radius:10px; width:100%; height:120px; object-fit:cover;"}
+<div style="text-align:center; font-size:0.65em;">Simulación</br>de</br>escenarios</div>
+:::
+:::
+
+::::
+
+---
+
+## La idea general del proyecto
+
+::: {.callout-tip appearance="minimal" title="Marco general del proyecto"}
+![Proyecto ANID-FONDECYT-11251120](images/fondecyt_cartoon.png){width="100%"}
+:::
+
+---
+
+::: {.fragment}
+<div style="text-align:center; font-size:1.1em; margin-top:1rem; opacity:0.7;">
+Estas son las preguntas que guían el proyecto
+</div>
+:::
+
+::: {.fragment}
+1. ¿Qué relaciones existen entre ambiente y recursos marinos?
+:::
+
+::: {.fragment}
+2. ¿Cómo podemos construir mejores modelos y proyecciones a escala regional?
+:::
+
+::: {.fragment}
+3. ¿Qué escenarios futuros podríamos explorar frente al cambio climático?
+:::
+
+
+---
+
+## Más que resultados, una forma de hacer ciencia
+
+:::: {.columns .v-center}
+::: {.column width="40%"}
+
+<div style="font-size:0.75em; line-height:1.2;">
+Intersección entre:
+
+- **océano**, **pesca** y **clima**
+- **datos y modelos**
+- **computación**
+- y **preguntas relevantes** para **Chile**
+
+</div>
+
+:::
+
+::: {.column width="60%"}
+
+![](images/project_layers.png){width="80%" style="border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.18);"}
+
+:::
+::::
+
+# Ejemplos de ciencia aplicada {background-color="#212f4b" background-image="images/background_fish.gif" background-size="cover" background-opacity="0.18"}
+
+## Cómo abordamos estos problemas
+
+:::: {.columns}
+
+::: {.column width="25%"}
+![](images/tools_model_environment.png){style="width:100%; border-radius:10px;"}
+
+**Relaciones**  
+Ambiente ↔ abundancia
+:::
+
+::: {.column width="25%"}
+![](images/tools_time_series.png){style="width:100%; border-radius:10px;"}
+
+**Dinámica**  
+Memoria y cambio
+:::
+
+::: {.column width="25%"}
+![](images/tools_neural_nets.png){style="width:100%; border-radius:10px;"}
+
+**Patrones**  
+Aprendizaje automático
+:::
+
+::: {.column width="25%"}
+![](images/tools_simulation_scenarios.png){style="width:100%; border-radius:10px;"}
+
+**Futuros**  
+Escenarios posibles
+:::
+
+::::
+
+---
+
+## Ejemplos de cómo estas herramientas ya se han usado
+
+:::: {.columns}
+
+::: {.column width="25%"}
+::: {.fragment .fade-up fragment-index=1}
+![](images/articles/plaza2024.jpg){style="width:100%; height:170px; object-fit:cover; border-radius:10px;"}
+
+<div style="font-size:0.75em; line-height:1.2;">
+**Ambiente y abundancia**  
+Variabilidad de anchoveta y sardina asociada al ambiente e interacciones.
+
+\small @PlazaVega2024
+</div>
+:::
+:::
+
+::: {.column width="25%"}
+::: {.fragment .fade-up fragment-index=2}
+![](images/articles/plaza2018_1.jpg){style="width:100%; height:170px; object-fit:cover; border-radius:10px;"}
+
+<div style="font-size:0.75em; line-height:1.2;">
+**Series de tiempo y patrones**  
+Identificación de patrones ecosistémicos en anchoveta y sardina.
+
+\small @Plaza2018
+</div>
+:::
+:::
+
+::: {.column width="25%"}
+::: {.fragment .fade-up fragment-index=3}
+![](images/articles/alvarado2025_2.png){style="width:100%; height:170px; object-fit:cover; border-radius:10px;"}
+
+<div style="font-size:0.75em; line-height:1.2;">
+**Aprendizaje automático**  
+Clasificación automática de especies en pesquerías del centro-sur de Chile.
+
+\small @alvarado2025deep
+</div>
+:::
+:::
+
+::: {.column width="25%"}
+::: {.fragment .fade-up fragment-index=4}
+![](images/articles/yanez2016_2.png){style="width:100%; height:170px; object-fit:cover; border-radius:10px;"}
+
+<div style="font-size:0.75em; line-height:1.2;">
+**Escenarios futuros**  
+Exploración de posibles trayectorias de desembarques bajo cambio climático.
+
+\small @Yanez2016
+</div>
+:::
+:::
+
+::::
+
+---
+
+## Del problema a la colaboración
+
+![](images/collaboration.png)
+
+---
+
+## También hay espacio para divulgación y ciencia abierta
+
+::: {.callout-tip appearance="minimal"}
+**Hacer ciencia no es solo modelar o programar.**
+
+También implica:
+
+- comunicar ideas complejas de manera clara;
+- compartir conocimiento;
+- trabajar con otras personas;
+- y construir una cultura científica abierta, crítica y colaborativa.
+:::
+
+# ¿Y ustedes? {background-color="#212f4b" background-image="images/background_fish2.gif" background-size="cover" background-opacity="0.18"}
+
+## Lo que podrían empezar a construir desde ahora
+
+:::: {.columns}
+
+::: {.column width="45%"}
+<div style="font-size:0.75em; line-height:1.2;">
+Durante su formación podrían acercarse a:
+
+- programación y análisis de datos;
+- modelación y simulación;
+- visualización e interpretación;
+- investigación aplicada;
+- trabajo interdisciplinario;
+- divulgación científica.
+</div>
+:::
+
+::: {.column width="55%"}
+
+:::{.fragment .fade-up}
+![Ejemplo simple de visión por computador desarrollado en laboratorio](images/dl_app.png){style="width:100%; border-radius:12px;"}
+:::
+
+:::
+
+::::
+
+---
+
+## El mensaje final
+
+::: {.callout-tip appearance="minimal"}
+
+Tal vez hoy todavía no sepan exactamente qué camino seguirán.
+
+Pero en esta Facultad sí pueden empezar a construir herramientas, preguntas y formas de mirar el mundo que, con el tiempo, les permitan comprender problemas reales y aportar a transformarlos.
+
+:::
+
+---
+
+## {background-image="images/tu_fondo.png" background-opacity="0.35"}
+
+<div style="text-align:left; line-height:1.2;">
+  <div class="fragment" data-fragment-index="1" style="font-size:2.2em;">Háganse preguntas.</div>
+  <div class="fragment" data-fragment-index="2" style="font-size:2.2em;">Exploren.</div>
+  <div class="fragment" data-fragment-index="3" style="font-size:2.2em;">Conversen.</div>
+  <div class="fragment" data-fragment-index="4" style="font-size:2.2em;">Colaboren.</div>
+  <div class="fragment" data-fragment-index="5" style="font-size:2.2em;">Diviértanse.</div>
+</div>
+
+
+---
+
+## No duden en acercarse a sus profes: en la Facultad encontrarán personas dispuestas a escucharlos, orientarlos y acompañarlos en el desarrollo de sus inquietudes.
+
+### (y también estudien)
+
+
+---
+
+## 
+
+# De eso se trata la Universidad.
+
+# De aprender, descubrir,  
+# preguntar y construir juntos.
+
+# ¡BIENVENID@S a la USACH  
+# y a la Facultad de Ciencia!
+
+---
+
+## Gracias {.unlisted background-color="#212f4b" background-image="images/background_fish.gif" background-size="cover" background-opacity="0.2"}
+
+**Del mar a los datos** también es una invitación:
+
+**a mirar problemas reales con curiosidad, herramientas científicas y ganas de aportar.**
+
+francisco.plaza.v@usach.cl
+
+
+# References {background-color="#212f4b" background-image="images/background_fish.gif" background-size="cover" background-opacity="0.2"}
+
+::: {#referencias}
+:::
