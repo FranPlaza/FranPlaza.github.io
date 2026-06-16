@@ -1,5 +1,10 @@
 | Año | Tipo de Programa | Universidad | Nombre del Programa | Nombre estudiante | Comisión completa | Título del trabajo | Fecha defensa | Enlace al documento |
-|2026| prueba|prueba|prueba|prueba|prueba|prueba|prueba|prueba|
+|---|---|---|---|---|---|---|---|---|
+| 2025 | Magíster | Universidad de Valparaíso | Magíster en Estadística | Ljubitza Alejandra Clavijo Gorostiaga | Francisco Plaza Vega (Profesor guía) | Identificación de patrones temporales asociados al desembarque de especies altamente migratorias y su relación con variables ambientales en Chile a través de herramientas de ciencias de datos | Marzo de 2025 | [PDF](docs/2025_UV_MAG_ESTADISTICA_Ljubitza_Clavijo.pdf) |
+| 2025 | Pregrado | Universidad de Santiago de Chile | Ingeniería Estadística | Bastián Rafael Díaz Vergara | Francisco Plaza Vega (Profesor guía); Andrés Iturriaga (Profesor co-guía); Héctor Araya (Profesor co-guía) | Estimación de Parámetros para el Modelo GARCH-X a través de un esquema híbrido de aproximación bayesiana computacional y aprendizaje profundo | 2025 (por confirmar) | [PDF](docs/2025_USACH_INGESTA_Bastian_Diaz.pdf) |
+| 2025 | Pregrado | Universidad de Santiago de Chile | Ingeniería Estadística | Isidora Jara Muñoz | Francisco Plaza Vega (Profesor guía); Orietta Nicolis; Victor Hugo Salinas | Generación de secuencias de réplicas sísmicas a partir de la ocurrencia de terremotos en Chile utilizando redes adversariales generativas | 2025 (por confirmar) | [PDF](docs/2025_USACH_INGESTA_Isidora_Jara.pdf) |
+| 2025 | Pregrado | Universidad de Santiago de Chile | Ingeniería Estadística | Montserrat Ayleen Aránguiz Calderón | Francisco Plaza Vega (Profesor guía); Omar Chocotea (USACH); Victor Catasti (IFOP) | Evaluación de la relación entre la densidad de cardumen del jurel y variables ambientales en el norte de Chile | 2025 (por confirmar) | [PDF](docs/2025_USACH_INGESTA_Montserrat_Aranguiz.pdf) |
+| 2025 | Pregrado | Universidad de Santiago de Chile | Ingeniería Estadística | Vicente Núñez Roco | Francisco Plaza Vega (Profesor guía); Rodrigo Aroca Gonzales; Omar Chocotea Poca | Modelación del costo medio de seguros colectivos de salud con herramientas de ciencia de datos y aprendizaje automático | 31 de marzo de 2025 | [PDF](docs/2025_USACH_INGESTA_Vicente_Nunez.pdf) |
 
 <!--
 Copia esta fila y reemplaza los campos cuando agregues una tesis:

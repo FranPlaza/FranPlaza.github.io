@@ -374,14 +374,88 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Registro de tesis guiadas, co-guiadas y trabajos de titulación asociados a docencia e investigación.</p>
-<div class="theses-table">
-<div class="line-block">Año | Tipo de Programa | Universidad | Nombre del Programa | Nombre estudiante | Comisión completa | Título del trabajo | Fecha defensa | Enlace al documento |</div>
-<p>|2026| prueba|prueba|prueba|prueba|prueba|prueba|prueba|prueba|</p>
+<div class="table-tools">
+<p><label for="theses-search">Buscar en tesis</label> <input id="theses-search" class="table-search" type="search" placeholder="Estudiante, título, programa, universidad..."> <span id="theses-count" class="table-count"></span></p>
+</div>
+<div class="theses-table interactive-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Año</th>
+<th>Tipo de Programa</th>
+<th>Universidad</th>
+<th>Nombre del Programa</th>
+<th>Nombre estudiante</th>
+<th>Comisión completa</th>
+<th>Título del trabajo</th>
+<th>Fecha defensa</th>
+<th>Enlace al documento</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2025</td>
+<td>Magíster</td>
+<td>Universidad de Valparaíso</td>
+<td>Magíster en Estadística</td>
+<td>Ljubitza Alejandra Clavijo Gorostiaga</td>
+<td>Francisco Plaza Vega (Profesor guía)</td>
+<td>Identificación de patrones temporales asociados al desembarque de especies altamente migratorias y su relación con variables ambientales en Chile a través de herramientas de ciencias de datos</td>
+<td>Marzo de 2025</td>
+<td><a href="docs/2025_UV_MAG_ESTADISTICA_Ljubitza_Clavijo.pdf">PDF</a></td>
+</tr>
+<tr class="even">
+<td>2025</td>
+<td>Pregrado</td>
+<td>Universidad de Santiago de Chile</td>
+<td>Ingeniería Estadística</td>
+<td>Bastián Rafael Díaz Vergara</td>
+<td>Francisco Plaza Vega (Profesor guía); Andrés Iturriaga (Profesor co-guía); Héctor Araya (Profesor co-guía)</td>
+<td>Estimación de Parámetros para el Modelo GARCH-X a través de un esquema híbrido de aproximación bayesiana computacional y aprendizaje profundo</td>
+<td>2025 (por confirmar)</td>
+<td><a href="docs/2025_USACH_INGESTA_Bastian_Diaz.pdf">PDF</a></td>
+</tr>
+<tr class="odd">
+<td>2025</td>
+<td>Pregrado</td>
+<td>Universidad de Santiago de Chile</td>
+<td>Ingeniería Estadística</td>
+<td>Isidora Jara Muñoz</td>
+<td>Francisco Plaza Vega (Profesor guía); Orietta Nicolis; Victor Hugo Salinas</td>
+<td>Generación de secuencias de réplicas sísmicas a partir de la ocurrencia de terremotos en Chile utilizando redes adversariales generativas</td>
+<td>2025 (por confirmar)</td>
+<td><a href="docs/2025_USACH_INGESTA_Isidora_Jara.pdf">PDF</a></td>
+</tr>
+<tr class="even">
+<td>2025</td>
+<td>Pregrado</td>
+<td>Universidad de Santiago de Chile</td>
+<td>Ingeniería Estadística</td>
+<td>Montserrat Ayleen Aránguiz Calderón</td>
+<td>Francisco Plaza Vega (Profesor guía); Omar Chocotea (USACH); Victor Catasti (IFOP)</td>
+<td>Evaluación de la relación entre la densidad de cardumen del jurel y variables ambientales en el norte de Chile</td>
+<td>2025 (por confirmar)</td>
+<td><a href="docs/2025_USACH_INGESTA_Montserrat_Aranguiz.pdf">PDF</a></td>
+</tr>
+<tr class="odd">
+<td>2025</td>
+<td>Pregrado</td>
+<td>Universidad de Santiago de Chile</td>
+<td>Ingeniería Estadística</td>
+<td>Vicente Núñez Roco</td>
+<td>Francisco Plaza Vega (Profesor guía); Rodrigo Aroca Gonzales; Omar Chocotea Poca</td>
+<td>Modelación del costo medio de seguros colectivos de salud con herramientas de ciencia de datos y aprendizaje automático</td>
+<td>31 de marzo de 2025</td>
+<td><a href="docs/2025_USACH_INGESTA_Vicente_Nunez.pdf">PDF</a></td>
+</tr>
+</tbody>
+</table>
 <!--
 Copia esta fila y reemplaza los campos cuando agregues una tesis:
 | 2026 | Pregrado/Magíster/Doctorado | Universidad | Programa | Nombre | Integrante 1; Integrante 2; Integrante 3 | Título | DD-MM-AAAA | [Documento](https://...) |
 -->
 </div>
+<script src="interactive-table.js"></script>
 
 
 

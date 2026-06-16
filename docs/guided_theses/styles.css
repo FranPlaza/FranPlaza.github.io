@@ -1,3 +1,28 @@
+.table-tools {
+  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin: 1.25rem 0 0.75rem;
+}
+
+.table-tools label {
+  font-weight: 600;
+}
+
+.table-search {
+  border: 1px solid rgba(80, 90, 95, 0.35);
+  border-radius: 6px;
+  flex: 1 1 320px;
+  max-width: 560px;
+  padding: 0.45rem 0.65rem;
+}
+
+.table-count {
+  color: #5f6b70;
+  font-size: 0.9rem;
+}
+
 .theses-table {
   overflow-x: auto;
   width: 100%;
@@ -5,10 +30,91 @@
 }
 
 .theses-table table {
-  min-width: 1100px;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  width: 100%;
+  min-width: 1200px;
   font-size: 0.92rem;
 }
 
 .theses-table th {
+  cursor: pointer;
+  position: sticky;
+  top: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  z-index: 1;
+}
+
+.theses-table th::after {
+  color: #6d777b;
+  content: " ↕";
+  font-size: 0.78rem;
+}
+
+.theses-table th[aria-sort="ascending"]::after {
+  content: " ↑";
+}
+
+.theses-table th[aria-sort="descending"]::after {
+  content: " ↓";
+}
+
+.theses-table tbody tr[hidden] {
+  display: none;
+}
+
+.theses-table td {
+  overflow-wrap: anywhere;
+  vertical-align: top;
+}
+
+.theses-table th:nth-child(1),
+.theses-table td:nth-child(1) {
+  width: 5rem;
+}
+
+.theses-table th:nth-child(2),
+.theses-table td:nth-child(2) {
+  width: 7rem;
+}
+
+.theses-table th:nth-child(3),
+.theses-table td:nth-child(3) {
+  width: 12rem;
+}
+
+.theses-table th:nth-child(4),
+.theses-table td:nth-child(4) {
+  width: 10rem;
+}
+
+.theses-table th:nth-child(5),
+.theses-table td:nth-child(5) {
+  width: 12rem;
+}
+
+.theses-table th:nth-child(6),
+.theses-table td:nth-child(6) {
+  width: 18rem;
+}
+
+.theses-table th:nth-child(7),
+.theses-table td:nth-child(7) {
+  width: 22rem;
+}
+
+.theses-table th:nth-child(8),
+.theses-table td:nth-child(8) {
+  width: 9rem;
+}
+
+.theses-table th:nth-child(9),
+.theses-table td:nth-child(9) {
+  width: 6rem;
+}
+
+.theses-table a {
   white-space: nowrap;
 }

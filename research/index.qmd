@@ -7,14 +7,13 @@ listing:
     - "*/index.qmd"
   sort: "date desc"
   type: default
-  categories: false
-  sort-ui: false
-  filter-ui: false
-  fields: [title, author, categories, date]
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  fields: [title, author, categories, date, description]
   image-align: left
   date-format: "YYYY"
-  # image-height: 10em
-  # page-size: 5
+  page-size: 10
 lang: es
 format: 
   html: 

@@ -3,6 +3,9 @@ title: "Tesistas"
 description: "Dirección de tesis y trabajos de titulación."
 lang: es
 page-layout: full
+resources:
+  - docs/*.pdf
+  - interactive-table.js
 format:
   html:
     css: styles.css
@@ -10,6 +13,16 @@ format:
 
 Registro de tesis guiadas, co-guiadas y trabajos de titulación asociados a docencia e investigación.
 
-::: {.theses-table}
+::: {.table-tools}
+<label for="theses-search">Buscar en tesis</label>
+<input id="theses-search" class="table-search" type="search" placeholder="Estudiante, título, programa, universidad...">
+<span id="theses-count" class="table-count"></span>
+:::
+
+::: {.theses-table .interactive-table}
 {{< include _tesis.md >}}
 :::
+
+```{=html}
+<script src="interactive-table.js"></script>
+```

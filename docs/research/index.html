@@ -87,9 +87,10 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-categories','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description"],
+      valueNames: ['listing-title','listing-author','listing-categories','listing-date','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      page: 10,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -444,7 +445,7 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
+    <div class="quarto-title column-page-left">
       <h1 class="title">Publicaciones</h1>
                   <div>
         <div class="description">
@@ -455,7 +456,7 @@ window.Quarto = {
   </div>
     
   
-  <div class="quarto-title-meta column-page">
+  <div class="quarto-title-meta column-page-left">
 
       
     
@@ -466,9 +467,10 @@ window.Quarto = {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <h5 class="quarto-listing-category-title">Categorías</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">Todas <span class="quarto-category-count">(24)</span></div><div class="category" data-category="QWN1aWN1bHR1cmE=">Acuicultura <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Q2FtYmlvJTIwY2xpbSVDMyVBMXRpY28=">Cambio climático <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Q2xhc2lmaWNhY2klQzMlQjNu">Clasificación <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q09WSUQtMTk=">COVID-19 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGVlcCUyMExlYXJuaW5n">Deep Learning <span class="quarto-category-count">(6)</span></div><div class="category" data-category="RWNvc2lzdGVtYXM=">Ecosistemas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RWN1YWNpb25lcyUyMGRpZmVyZW5jaWFsZXMlMjBlc3RvYyVDMyVBMXN0aWNhcw==">Ecuaciones diferenciales estocásticas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R0FSQ0gtWA==">GARCH-X <span class="quarto-category-count">(2)</span></div><div class="category" data-category="SW5mZXJlbmNpYSUyMGJheWVzaWFuYQ==">Inferencia bayesiana <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SW5mZXJlbmNpYSUyMGVzdGFkJUMzJUFEc3RpY2E=">Inferencia estadística <span class="quarto-category-count">(2)</span></div><div class="category" data-category="SW52ZXN0aWdhY2klQzMlQjNu">Investigación <span class="quarto-category-count">(24)</span></div><div class="category" data-category="TWFjaGluZSUyMExlYXJuaW5n">Machine Learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TWVkaW8lMjBhbWJpZW50ZQ==">Medio ambiente <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TXVlc3RyZW8lMjBhZGFwdGF0aXZv">Muestreo adaptativo <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UGVzcXVlciVDMyVBRGFz">Pesquerías <span class="quarto-category-count">(15)</span></div><div class="category" data-category="UHJvY2Vzb3MlMjBlc3RvYyVDMyVBMXN0aWNvcw==">Procesos estocásticos <span class="quarto-category-count">(4)</span></div><div class="category" data-category="UmFkaW9taWNz">Radiomics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UmVkZXMlMjBuZXVyb25hbGVz">Redes neuronales <span class="quarto-category-count">(7)</span></div><div class="category" data-category="U2FsdWQ=">Salud <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U2FsdWQlMjBwJUMzJUJBYmxpY2E=">Salud pública <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U2VyaWVzJTIwZGUlMjB0aWVtcG8=">Series de tiempo <span class="quarto-category-count">(3)</span></div><div class="category" data-category="U2lzbW9sb2clQzMlQURh">Sismología <span class="quarto-category-count">(2)</span></div><div class="category" data-category="VmlzaSVDMyVCM24lMjBjb21wdXRhY2lvbmFs">Visión computacional <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
@@ -481,6 +483,31 @@ window.Quarto = {
 
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-sort" class="form-select" aria-label="Ordenar por" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Ordenar por</option>
+      <option value="index" data-direction="asc">Por defecto</option>
+      <option value="listing-title" data-direction="asc">
+        Título
+      </option>
+      <option value="listing-date-sort" data-direction="asc">
+        Fecha - Más antiguo
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Fecha - Más reciente
+      </option>
+      <option value="listing-author" data-direction="asc">
+        Autor/a
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filtro">
+    </div>
+</div>
 <div class="list quarto-listing-default">
 <div class="quarto-post image-left" data-index="0" data-categories="SW52ZXN0aWdhY2klQzMlQjNuJTJDUHJvY2Vzb3MlMjBlc3RvYyVDMyVBMXN0aWNvcyUyQ0luZmVyZW5jaWElMjBlc3RhZCVDMyVBRHN0aWNh" data-listing-date-sort="1767495600000" data-listing-file-modified-sort="1781629889462" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="44">
 <div class="body">
@@ -496,6 +523,9 @@ window.Quarto = {
 <div class="listing-category" onclick="window.quartoListingCategory('SW5mZXJlbmNpYSUyMGVzdGFkJUMzJUFEc3RpY2E='); return false;">Inferencia estadística</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2026-01-04-ou-rosenblatt-process/index.html" class="no-external">
+<p>Estimación del parámetro de deriva en un proceso Ornstein-Uhlenbeck ruidoso conducido por un proceso de Rosenblatt.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2026-01-04-ou-rosenblatt-process/index.html" class="no-external">
@@ -522,6 +552,9 @@ Araya, H.; Plaza-Vega, F.; Alvarado, E.
 <div class="listing-category" onclick="window.quartoListingCategory('SW5mZXJlbmNpYSUyMGVzdGFkJUMzJUFEc3RpY2E='); return false;">Inferencia estadística</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2026-01-03-ou-small-general-gaussian-noise/index.html" class="no-external">
+<p>Identificación del parámetro de deriva para procesos Ornstein-Uhlenbeck con ruido gaussiano general pequeño.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2026-01-03-ou-small-general-gaussian-noise/index.html" class="no-external">
@@ -550,6 +583,9 @@ Araya, H.; Plaza-Vega, F.; Alvarado, E.
 <div class="listing-category" onclick="window.quartoListingCategory('TWVkaW8lMjBhbWJpZW50ZQ=='); return false;">Medio ambiente</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2026-01-02-jack-mackerel-deep-learning-surplus-production/index.html" class="no-external">
+<p>Modelación y simulación de la pesquería de jurel mediante deep learning, modelos de producción excedentaria y condiciones ambientales.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2026-01-02-jack-mackerel-deep-learning-surplus-production/index.html" class="no-external">
@@ -578,6 +614,9 @@ Plaza-Vega, F.; Yáñez, E.; Fréon, P.; Araya, H.; Aranis, A.
 <div class="listing-category" onclick="window.quartoListingCategory('VmlzaSVDMyVCM24lMjBjb21wdXRhY2lvbmFs'); return false;">Visión computacional</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2026-01-01-beggiatoa-microbial-mats/index.html" class="no-external">
+<p>Detección automática de tapetes microbianos Beggiatoa en videos de centros de cultivo de salmones.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2026-01-01-beggiatoa-microbial-mats/index.html" class="no-external">
@@ -606,6 +645,9 @@ Martinez, N.; Moreno, S.; Plaza-Vega, F.; Castillo, J. E.; Carrasco, M.
 <div class="listing-category" onclick="window.quartoListingCategory('Q2xhc2lmaWNhY2klQzMlQjNu'); return false;">Clasificación</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2025-01-01-species-classification-fisheries-chile/index.html" class="no-external">
+<p>Clasificación de especies en pesquerías centro-sur de Chile mediante aprendizaje profundo.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2025-01-01-species-classification-fisheries-chile/index.html" class="no-external">
@@ -634,6 +676,9 @@ Alvarado, E.; Plaza-Vega, F.; Montenegro, C.; Saavedra, O.
 <div class="listing-category" onclick="window.quartoListingCategory('U2FsdWQ='); return false;">Salud</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2024-07-01-mgmt-radiomics-explainable-ml/index.html" class="no-external">
+<p>Uso de aprendizaje automático explicable y radiomics para identificar el biomarcador genético MGMT en tumores cerebrales.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2024-07-01-mgmt-radiomics-explainable-ml/index.html" class="no-external">
@@ -662,6 +707,9 @@ Ponce, S.; Chabert, S.; Mayeta, L.; Franco, P.; Plaza-Vega, F.; Querales, M.; Sa
 <div class="listing-category" onclick="window.quartoListingCategory('UGVzcXVlciVDMyVBRGFz'); return false;">Pesquerías</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2024-01-04-garchx-anchovy-sardine/index.html" class="no-external">
+<p>Modelo GARCH-X para estudiar cambios de variabilidad en anchoveta y sardina del norte de Chile.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2024-01-04-garchx-anchovy-sardine/index.html" class="no-external">
@@ -690,6 +738,9 @@ Francisco Plaza-Vega; Héctor Araya
 <div class="listing-category" onclick="window.quartoListingCategory('SW5mZXJlbmNpYSUyMGJheWVzaWFuYQ=='); return false;">Inferencia bayesiana</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2023-01-02-fractional-power-diffusion-bayesian-deep-learning/index.html" class="no-external">
+<p>Estimación de parámetros para difusiones de potencia fraccional mediante un enfoque híbrido bayesiano y de deep learning.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2023-01-02-fractional-power-diffusion-bayesian-deep-learning/index.html" class="no-external">
@@ -718,6 +769,9 @@ Araya, H.; Plaza-Vega, F.
 <div class="listing-category" onclick="window.quartoListingCategory('U2VyaWVzJTIwZGUlMjB0aWVtcG8='); return false;">Series de tiempo</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2023-01-01-anchovy-garchx-missing-values/index.html" class="no-external">
+<p>Análisis del efecto ambiental sobre la variabilidad de la anchoveta en el norte de Chile mediante un enfoque GARCH-X con datos faltantes.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2023-01-01-anchovy-garchx-missing-values/index.html" class="no-external">
@@ -746,6 +800,9 @@ Plaza, F.; Araya, H.; Yáñez, E.
 <div class="listing-category" onclick="window.quartoListingCategory('U2FsdWQlMjBwJUMzJUJBYmxpY2E='); return false;">Salud pública</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2022-01-01-redacs-covid-adaptive-cluster-sampling/index.html" class="no-external">
+<p>Propuesta de muestreo adaptativo regional para apoyar la gestión efectiva de emergencias sanitarias por COVID-19.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2022-01-01-redacs-covid-adaptive-cluster-sampling/index.html" class="no-external">
@@ -772,6 +829,9 @@ Stehlík, M.; Kiselák, J.; Dinamarca, A.; Alvarado, E.; Plaza, F.; Medina, F. A
 <div class="listing-category" onclick="window.quartoListingCategory('RWN1YWNpb25lcyUyMGRpZmVyZW5jaWFsZXMlMjBlc3RvYyVDMyVBMXN0aWNhcw=='); return false;">Ecuaciones diferenciales estocásticas</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2021-01-01-hermite-spatial-variations-stochastic-heat-equation/index.html" class="no-external">
+<p>Estudio de variaciones espaciales de Hermite para soluciones de la ecuación de calor estocástica.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2021-01-01-hermite-spatial-variations-stochastic-heat-equation/index.html" class="no-external">
@@ -798,6 +858,9 @@ Araya, H.; Garzón, J.; Moreno, N.; Plaza, F.
 <div class="listing-category" onclick="window.quartoListingCategory('U2lzbW9sb2clQzMlQURh'); return false;">Sismología</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2020-01-01-seismic-events-deep-learning/index.html" class="no-external">
+<p>Predicción de intensidad y localización de eventos sísmicos mediante aprendizaje profundo.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2020-01-01-seismic-events-deep-learning/index.html" class="no-external">
@@ -824,6 +887,9 @@ Nicolis, O.; Plaza, F.; Salas, R.
 <div class="listing-category" onclick="window.quartoListingCategory('U2lzbW9sb2clQzMlQURh'); return false;">Sismología</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2019-01-01-seismic-hazard-deep-neural-networks/index.html" class="no-external">
+<p>Evaluación del peligro sísmico en Chile utilizando redes neuronales profundas.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2019-01-01-seismic-hazard-deep-neural-networks/index.html" class="no-external">
@@ -852,6 +918,9 @@ Plaza, F.; Nicolis, O.; Salas, R.
 <div class="listing-category" onclick="window.quartoListingCategory('QWN1aWN1bHR1cmE='); return false;">Acuicultura</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2017-01-03-climate-change-fisheries-aquaculture-chile/index.html" class="no-external">
+<p>Capítulo sobre impactos del cambio climático en pesquerías y acuicultura marina en Chile.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2017-01-03-climate-change-fisheries-aquaculture-chile/index.html" class="no-external">
@@ -880,6 +949,9 @@ Yáñez, E.; Lagos, N.; Norambuena, R.; Silva, C.; Letelier, J.; Muck, K. P.; Sa
 <div class="listing-category" onclick="window.quartoListingCategory('UmVkZXMlMjBuZXVyb25hbGVz'); return false;">Redes neuronales</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2017-01-02-climate-change-anchovy-sardine-anns/index.html" class="no-external">
+<p>Modelación de impactos del cambio climático en desembarques de anchoveta y sardina del norte de Chile mediante redes neuronales artificiales.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2017-01-02-climate-change-anchovy-sardine-anns/index.html" class="no-external">
@@ -908,6 +980,9 @@ Yáñez, E.; Plaza, F.; Sanchez, F.; Silva, C.; Barbieri, M. A.; Bohm, G.
 <div class="listing-category" onclick="window.quartoListingCategory('RWNvc2lzdGVtYXM='); return false;">Ecosistemas</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2017-01-01-ecosystem-patterns-anchovy-sardine/index.html" class="no-external">
+<p>Identificación de patrones ecosistémicos a partir de series de tiempo de desembarques de anchoveta y sardina en el norte de Chile.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2017-01-01-ecosystem-patterns-anchovy-sardine/index.html" class="no-external">
@@ -934,6 +1009,9 @@ Plaza, F.; Salas, R.; Yáñez, E.
 <div class="listing-category" onclick="window.quartoListingCategory('UGVzcXVlciVDMyVBRGFz'); return false;">Pesquerías</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2016-01-01-pelagic-landings-a2-climate-change/index.html" class="no-external">
+<p>Análisis de desembarques de recursos pelágicos en Chile centro-sur bajo escenarios A2 de cambio climático.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2016-01-01-pelagic-landings-a2-climate-change/index.html" class="no-external">
@@ -960,6 +1038,9 @@ Yáñez, E.; Plaza, F.; Silva, C.; Sánchez, F.; Barbieri, M. A.; Aranis, A.
 <div class="listing-category" onclick="window.quartoListingCategory('UGVzcXVlciVDMyVBRGFz'); return false;">Pesquerías</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2015-01-01-jack-mackerel-landings-neural-networks/index.html" class="no-external">
+<p>Pronóstico de desembarques de jurel en Chile centro-sur mediante redes neuronales.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2015-01-01-jack-mackerel-landings-neural-networks/index.html" class="no-external">
@@ -986,6 +1067,9 @@ Naranjo, L.; Plaza, F.; Yáñez, E.; Barbieri, M. A.; Sánchez, F.
 <div class="listing-category" onclick="window.quartoListingCategory('UGVzcXVlciVDMyVBRGFz'); return false;">Pesquerías</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2014-01-01-climate-change-fisheries-chile/index.html" class="no-external">
+<p>Capítulo sobre cambio climático y pesquerías en Chile.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2014-01-01-climate-change-fisheries-chile/index.html" class="no-external">
@@ -1012,6 +1096,9 @@ Yáñez, E.; Barbieri, M. A.; Plaza, F.; Silva, C.
 <div class="listing-category" onclick="window.quartoListingCategory('UGVzcXVlciVDMyVBRGFz'); return false;">Pesquerías</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2010-01-01-anchovy-sardine-abundance-forecast/index.html" class="no-external">
+<p>Pronóstico de abundancia de anchoveta y sardina frente al norte de Chile mediante un enfoque ecosistémico multivariado con redes neuronales.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2010-01-01-anchovy-sardine-abundance-forecast/index.html" class="no-external">
@@ -1038,6 +1125,9 @@ Yáñez, E.; Plaza, F.; Gutiérrez-Estrada, J. C.; Rodríguez, N.; Barbieri, M. 
 <div class="listing-category" onclick="window.quartoListingCategory('UGVzcXVlciVDMyVBRGFz'); return false;">Pesquerías</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2009-01-02-pacific-sardine-landings-neural-network/index.html" class="no-external">
+<p>Predicción de desembarques de sardina mediante un enfoque ecosistémico con redes neuronales.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2009-01-02-pacific-sardine-landings-neural-network/index.html" class="no-external">
@@ -1064,6 +1154,9 @@ Gutiérrez-Estrada, J. C.; Yáñez, E.; Pulido-Calvo, I.; Silva, C.; Plaza, F.; 
 <div class="listing-category" onclick="window.quartoListingCategory('UGVzcXVlciVDMyVBRGFz'); return false;">Pesquerías</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2009-01-01-anchoveta-landings-apropech/index.html" class="no-external">
+<p>Artículo sobre predicción de desembarques de anchoveta en la I y II región mediante redes neuronales artificiales.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2009-01-01-anchoveta-landings-apropech/index.html" class="no-external">
@@ -1090,6 +1183,9 @@ Plaza, F.
 <div class="listing-category" onclick="window.quartoListingCategory('UGVzcXVlciVDMyVBRGFz'); return false;">Pesquerías</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2008-01-02-anchoveta-capturas-redes-neuronales/index.html" class="no-external">
+<p>Capítulo sobre predicción de capturas de anchoveta en el norte de Chile mediante redes neuronales artificiales.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2008-01-02-anchoveta-capturas-redes-neuronales/index.html" class="no-external">
@@ -1116,6 +1212,9 @@ Plaza, F.; Yáñez, E.; Gutiérrez-Estrada, J. C.; Pulido-Calvo, I.; Rodríguez,
 <div class="listing-category" onclick="window.quartoListingCategory('UGVzcXVlciVDMyVBRGFz'); return false;">Pesquerías</div>
 
 </div>
+<div class="delink listing-description"><a href="../research/2008-01-01-nonlinear-forecast-anchovy-globec/index.html" class="no-external">
+<p>Pronóstico no lineal de capturas de anchoveta en el norte de Chile mediante un enfoque multivariado.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../research/2008-01-01-nonlinear-forecast-anchovy-globec/index.html" class="no-external">
@@ -1130,6 +1229,9 @@ Plaza, F.; Yáñez, E.; Gutiérrez-Estrada, J. C.; Pulido-Calvo, I.; Rodríguez,
 </div>
 </div>
 <div class="listing-no-matching d-none">No hay resultados</div>
+<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Volver arriba</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
