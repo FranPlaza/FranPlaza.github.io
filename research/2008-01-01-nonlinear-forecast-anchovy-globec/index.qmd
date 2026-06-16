@@ -1,0 +1,26 @@
+---
+title: "Non linear forecast of anchovy (Engraulis ringens) catches in northern Chile: A multivariate approach"
+author: "Plaza, F.; Yáñez, E.; Gutiérrez-Estrada, J. C.; Pulido-Calvo, I.; Rodríguez, N."
+date: '2008-01-01'
+date-format: "YYYY"
+slug: nonlinear-forecast-anchovy-globec
+categories:
+  - Investigación
+  - Redes neuronales
+  - Pesquerías
+description: "Pronóstico no lineal de capturas de anchoveta en el norte de Chile mediante un enfoque multivariado."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Plaza, F., Yáñez, E., Gutiérrez-Estrada, J. C., Pulido-Calvo, I., & Rodríguez, N. (2008). Non linear forecast of anchovy (*Engraulis ringens*) catches in northern Chile: A multivariate approach. *Globec International Newsletter*, 14(1), 75.

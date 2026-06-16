@@ -1,5 +1,180 @@
 [
   {
+    "objectID": "research/index.html",
+    "href": "research/index.html",
+    "title": "Publicaciones",
+    "section": "",
+    "text": "Esta sección reúne mis publicaciones en estadística aplicada, aprendizaje automático, series de tiempo, procesos estocásticos, pesquerías y cambio climático. Cada entrada queda preparada para incorporar una figura representativa del artículo reemplazando el archivo cover.png de su carpeta.\n\n\n\n\n\n\n\n\n\nDrift parameter estimation for the noisy Ornstein-Uhlenbeck process driven by a Rosenblatt process\n\n\n\nInvestigación\n\nProcesos estocásticos\n\nInferencia estadística\n\n\n\n\n\n\n2026\n\n\nAraya, H.; Plaza-Vega, F.; Alvarado, E.\n\n\n\n\n\n\n\nDrift parameter identification for the Ornstein-Uhlenbeck process driven by Ornstein-Uhlenbeck with small General Gaussian noise\n\n\n\nInvestigación\n\nProcesos estocásticos\n\nInferencia estadística\n\n\n\n\n\n\n2026\n\n\nAraya, H.; Plaza-Vega, F.; Alvarado, E.\n\n\n\n\n\n\n\nDeep learning and surplus production models for multivariate autoregressive modeling and simulation of the jack mackerel fishery associated with environmental conditions\n\n\n\nInvestigación\n\nDeep Learning\n\nPesquerías\n\nMedio ambiente\n\n\n\n\n\n\n2026\n\n\nPlaza-Vega, F.; Yáñez, E.; Fréon, P.; Araya, H.; Aranis, A.\n\n\n\n\n\n\n\nAutomatic detection of Beggiatoa microbial mats in salmon farms videos\n\n\n\nInvestigación\n\nDeep Learning\n\nAcuicultura\n\nVisión computacional\n\n\n\n\n\n\n2026\n\n\nMartinez, N.; Moreno, S.; Plaza-Vega, F.; Castillo, J. E.; Carrasco, M.\n\n\n\n\n\n\n\nDeep learning-based classification of species in central-southern fisheries in Chile\n\n\n\nInvestigación\n\nDeep Learning\n\nPesquerías\n\nClasificación\n\n\n\n\n\n\n2025\n\n\nAlvarado, E.; Plaza-Vega, F.; Montenegro, C.; Saavedra, O.\n\n\n\n\n\n\n\nExplainable Machine-Learning for identifying the genetic biomarker MGMT in brain tumors using magnetic resonance imaging radiomics\n\n\n\nInvestigación\n\nMachine Learning\n\nRadiomics\n\nSalud\n\n\n\n\n\n\n2024\n\n\nPonce, S.; Chabert, S.; Mayeta, L.; Franco, P.; Plaza-Vega, F.; Querales, M.; Salas, R.\n\n\n\n\n\n\n\nAnchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax) variability changes in northern Chile associated with the environment and inter species synchronicity: GARCH model with exogenous variable and hybrid Bayesian deep learning estimation approach\n\n\n\nInvestigación\n\nGARCH-X\n\nSeries de tiempo\n\nPesquerías\n\n\n\n\n\n\n2024\n\n\nFrancisco Plaza-Vega; Héctor Araya\n\n\n\n\n\n\n\nParameter estimation for fractional power type diffusion: A hybrid Bayesian-deep learning approach\n\n\n\nInvestigación\n\nDeep Learning\n\nProcesos estocásticos\n\nInferencia bayesiana\n\n\n\n\n\n\n2023\n\n\nAraya, H.; Plaza-Vega, F.\n\n\n\n\n\n\n\nEnvironmental effect on the variability of anchovy (Engraulis ringens) in northern Chile: Autoregressive conditional heteroskedastic approach with exogenonus variable and missing values\n\n\n\nInvestigación\n\nGARCH-X\n\nPesquerías\n\nSeries de tiempo\n\n\n\n\n\n\n2023\n\n\nPlaza, F.; Araya, H.; Yáñez, E.\n\n\n\n\n\n\n\nREDACS: Regional emergency-driven adaptive cluster sampling for effective COVID-19 management\n\n\n\nInvestigación\n\nMuestreo adaptativo\n\nCOVID-19\n\nSalud pública\n\n\n\n\n\n\n2022\n\n\nStehlík, M.; Kiselák, J.; Dinamarca, A.; Alvarado, E.; Plaza, F.; Medina, F. A.; Stehlíková, S.; Marek, J.; Venegas, B.; Gajdoš, A.; Li, Y.; Katuščák, S.; Bražinová, A.; Zeintl, E.; Lu, Y.\n\n\n\n\n\n\n\nHermite spatial variations for the solution to the stochastic heat equation\n\n\n\nInvestigación\n\nProcesos estocásticos\n\nEcuaciones diferenciales estocásticas\n\n\n\n\n\n\n2021\n\n\nAraya, H.; Garzón, J.; Moreno, N.; Plaza, F.\n\n\n\n\n\n\n\nPrediction of intensity and location of seismic events using deep learning\n\n\n\nInvestigación\n\nDeep Learning\n\nSismología\n\n\n\n\n\n\n2020\n\n\nNicolis, O.; Plaza, F.; Salas, R.\n\n\n\n\n\n\n\nAssessing seismic hazard in Chile using deep neural networks\n\n\n\nInvestigación\n\nDeep Learning\n\nSismología\n\n\n\n\n\n\n2019\n\n\nPlaza, F.; Nicolis, O.; Salas, R.\n\n\n\n\n\n\n\nImpacts of Climate Change on Marine Fisheries and Aquaculture in Chile\n\n\n\nInvestigación\n\nCambio climático\n\nPesquerías\n\nAcuicultura\n\n\n\n\n\n\n2017\n\n\nYáñez, E.; Lagos, N.; Norambuena, R.; Silva, C.; Letelier, J.; Muck, K. P.; San Martin, G.; Benítez, S.; Broitman, B.; Contreras, H.; Duarte, C.; Gelcich, S.; Labra, F.; Lardies, M.; Manríquez, P.; Quijón, P.; Ramajo, L.; González, E.; Molina, R.; Gómez, A.; Soto, L.; Montecino, A.; Barbieri, M. A.; Plaza, F.; Sánchez, F.; Aranis, A.; Bernal, C.; Böhm, G.\n\n\n\n\n\n\n\nModelling climate change impacts on anchovy and sardine landings in northern Chile using ANNs\n\n\n\nInvestigación\n\nCambio climático\n\nPesquerías\n\nRedes neuronales\n\n\n\n\n\n\n2017\n\n\nYáñez, E.; Plaza, F.; Sanchez, F.; Silva, C.; Barbieri, M. A.; Bohm, G.\n\n\n\n\n\n\n\nIdentifying ecosystem patterns from time series of anchovy (Engraulis ringens) and sardine (Sardinops Sagax) landings in northern Chile\n\n\n\nInvestigación\n\nPesquerías\n\nSeries de tiempo\n\nEcosistemas\n\n\n\n\n\n\n2017\n\n\nPlaza, F.; Salas, R.; Yáñez, E.\n\n\n\n\n\n\n\nPelagic resources landings in central-southern Chile under the A2 climate change scenarios\n\n\n\nInvestigación\n\nCambio climático\n\nPesquerías\n\n\n\n\n\n\n2016\n\n\nYáñez, E.; Plaza, F.; Silva, C.; Sánchez, F.; Barbieri, M. A.; Aranis, A.\n\n\n\n\n\n\n\nForecasting of Jack mackerel landings (Trachurus murphyi) in central-southern Chile through neural networks\n\n\n\nInvestigación\n\nRedes neuronales\n\nPesquerías\n\n\n\n\n\n\n2015\n\n\nNaranjo, L.; Plaza, F.; Yáñez, E.; Barbieri, M. A.; Sánchez, F.\n\n\n\n\n\n\n\nClimate change and fisheries in Chile\n\n\n\nInvestigación\n\nCambio climático\n\nPesquerías\n\n\n\n\n\n\n2014\n\n\nYáñez, E.; Barbieri, M. A.; Plaza, F.; Silva, C.\n\n\n\n\n\n\n\nAnchovy (Engraulis ringens) and sardine (Sardinops sagax) abundance forecast off northern Chile: A multivariate ecosystemic neural network approach\n\n\n\nInvestigación\n\nRedes neuronales\n\nPesquerías\n\n\n\n\n\n\n2010\n\n\nYáñez, E.; Plaza, F.; Gutiérrez-Estrada, J. C.; Rodríguez, N.; Barbieri, M. A.; Pulido-Calvo, I.; Bórquez, C.\n\n\n\n\n\n\n\nPacific sardine (Sardinops sagax, Jenyns 1842) landings prediction. A neural network ecosystemic approach\n\n\n\nInvestigación\n\nRedes neuronales\n\nPesquerías\n\n\n\n\n\n\n2009\n\n\nGutiérrez-Estrada, J. C.; Yáñez, E.; Pulido-Calvo, I.; Silva, C.; Plaza, F.; Bórquez, C.\n\n\n\n\n\n\n\nPredicción de desembarques de anchoveta (Engraulis ringens), I y II región, mediante la aplicación de redes neuronales artificiales\n\n\n\nInvestigación\n\nRedes neuronales\n\nPesquerías\n\n\n\n\n\n\n2009\n\n\nPlaza, F.\n\n\n\n\n\n\n\nPredicción de capturas de anchoveta (Engraulis ringens) en el norte de Chile mediante redes neuronales artificiales: un enfoque multivariado\n\n\n\nInvestigación\n\nRedes neuronales\n\nPesquerías\n\n\n\n\n\n\n2008\n\n\nPlaza, F.; Yáñez, E.; Gutiérrez-Estrada, J. C.; Pulido-Calvo, I.; Rodríguez, N.\n\n\n\n\n\n\n\nNon linear forecast of anchovy (Engraulis ringens) catches in northern Chile: A multivariate approach\n\n\n\nInvestigación\n\nRedes neuronales\n\nPesquerías\n\n\n\n\n\n\n2008\n\n\nPlaza, F.; Yáñez, E.; Gutiérrez-Estrada, J. C.; Pulido-Calvo, I.; Rodríguez, N.\n\n\n\n\n\nNo hay resultados\n Volver arriba"
+  },
+  {
+    "objectID": "research/2026-01-03-ou-small-general-gaussian-noise/index.html",
+    "href": "research/2026-01-03-ou-small-general-gaussian-noise/index.html",
+    "title": "Drift parameter identification for the Ornstein-Uhlenbeck process driven by Ornstein-Uhlenbeck with small General Gaussian noise",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2026-01-03-ou-small-general-gaussian-noise/index.html#cita",
+    "href": "research/2026-01-03-ou-small-general-gaussian-noise/index.html#cita",
+    "title": "Drift parameter identification for the Ornstein-Uhlenbeck process driven by Ornstein-Uhlenbeck with small General Gaussian noise",
+    "section": "Cita",
+    "text": "Cita\nAraya, H., Plaza-Vega, F., & Alvarado, E. (2026). Drift parameter identification for the Ornstein-Uhlenbeck process driven by Ornstein-Uhlenbeck with small General Gaussian noise. Statistical Papers, 67(3), 49."
+  },
+  {
+    "objectID": "research/2026-01-01-beggiatoa-microbial-mats/index.html",
+    "href": "research/2026-01-01-beggiatoa-microbial-mats/index.html",
+    "title": "Automatic detection of Beggiatoa microbial mats in salmon farms videos",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2026-01-01-beggiatoa-microbial-mats/index.html#cita",
+    "href": "research/2026-01-01-beggiatoa-microbial-mats/index.html#cita",
+    "title": "Automatic detection of Beggiatoa microbial mats in salmon farms videos",
+    "section": "Cita",
+    "text": "Cita\nMartinez, N., Moreno, S., Plaza-Vega, F., Castillo, J. E., & Carrasco, M. (2026). Automatic detection of Beggiatoa microbial mats in salmon farms videos. IEEE Access, 14, 35356-35371."
+  },
+  {
+    "objectID": "research/2024-07-01-mgmt-radiomics-explainable-ml/index.html",
+    "href": "research/2024-07-01-mgmt-radiomics-explainable-ml/index.html",
+    "title": "Explainable Machine-Learning for identifying the genetic biomarker MGMT in brain tumors using magnetic resonance imaging radiomics",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2024-07-01-mgmt-radiomics-explainable-ml/index.html#cita",
+    "href": "research/2024-07-01-mgmt-radiomics-explainable-ml/index.html#cita",
+    "title": "Explainable Machine-Learning for identifying the genetic biomarker MGMT in brain tumors using magnetic resonance imaging radiomics",
+    "section": "Cita",
+    "text": "Cita\nPonce, S., Chabert, S., Mayeta, L., Franco, P., Plaza-Vega, F., Querales, M., & Salas, R. (2024). Explainable Machine-Learning for identifying the genetic biomarker MGMT in brain tumors using magnetic resonance imaging radiomics. In 2024 14th International Conference on Pattern Recognition Systems (ICPRS) (pp. 1-6). IEEE."
+  },
+  {
+    "objectID": "research/2023-01-02-fractional-power-diffusion-bayesian-deep-learning/index.html",
+    "href": "research/2023-01-02-fractional-power-diffusion-bayesian-deep-learning/index.html",
+    "title": "Parameter estimation for fractional power type diffusion: A hybrid Bayesian-deep learning approach",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2023-01-02-fractional-power-diffusion-bayesian-deep-learning/index.html#cita",
+    "href": "research/2023-01-02-fractional-power-diffusion-bayesian-deep-learning/index.html#cita",
+    "title": "Parameter estimation for fractional power type diffusion: A hybrid Bayesian-deep learning approach",
+    "section": "Cita",
+    "text": "Cita\nAraya, H., & Plaza-Vega, F. (2023). Parameter estimation for fractional power type diffusion: A hybrid Bayesian-deep learning approach. Communications in Statistics - Theory and Methods, 1-21."
+  },
+  {
+    "objectID": "research/2022-01-01-redacs-covid-adaptive-cluster-sampling/index.html",
+    "href": "research/2022-01-01-redacs-covid-adaptive-cluster-sampling/index.html",
+    "title": "REDACS: Regional emergency-driven adaptive cluster sampling for effective COVID-19 management",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2022-01-01-redacs-covid-adaptive-cluster-sampling/index.html#cita",
+    "href": "research/2022-01-01-redacs-covid-adaptive-cluster-sampling/index.html#cita",
+    "title": "REDACS: Regional emergency-driven adaptive cluster sampling for effective COVID-19 management",
+    "section": "Cita",
+    "text": "Cita\nStehlík, M., Kiselák, J., Dinamarca, A., Alvarado, E., Plaza, F., Medina, F. A., Stehlíková, S., Marek, J., Venegas, B., Gajdoš, A., Li, Y., Katuščák, S., Bražinová, A., Zeintl, E., & Lu, Y. (2022). REDACS: Regional emergency-driven adaptive cluster sampling for effective COVID-19 management. Stochastic Analysis and Applications."
+  },
+  {
+    "objectID": "research/2020-01-01-seismic-events-deep-learning/index.html",
+    "href": "research/2020-01-01-seismic-events-deep-learning/index.html",
+    "title": "Prediction of intensity and location of seismic events using deep learning",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2020-01-01-seismic-events-deep-learning/index.html#cita",
+    "href": "research/2020-01-01-seismic-events-deep-learning/index.html#cita",
+    "title": "Prediction of intensity and location of seismic events using deep learning",
+    "section": "Cita",
+    "text": "Cita\nNicolis, O., Plaza, F., & Salas, R. (2020). Prediction of intensity and location of seismic events using deep learning. Spatial Statistics, 42."
+  },
+  {
+    "objectID": "research/2017-01-03-climate-change-fisheries-aquaculture-chile/index.html",
+    "href": "research/2017-01-03-climate-change-fisheries-aquaculture-chile/index.html",
+    "title": "Impacts of Climate Change on Marine Fisheries and Aquaculture in Chile",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2017-01-03-climate-change-fisheries-aquaculture-chile/index.html#cita",
+    "href": "research/2017-01-03-climate-change-fisheries-aquaculture-chile/index.html#cita",
+    "title": "Impacts of Climate Change on Marine Fisheries and Aquaculture in Chile",
+    "section": "Cita",
+    "text": "Cita\nYáñez, E., Lagos, N., Norambuena, R., Silva, C., Letelier, J., Muck, K. P., San Martin, G., Benítez, S., Broitman, B., Contreras, H., Duarte, C., Gelcich, S., Labra, F., Lardies, M., Manríquez, P., Quijón, P., Ramajo, L., González, E., Molina, R., Gómez, A., Soto, L., Montecino, A., Barbieri, M. A., Plaza, F., Sánchez, F., Aranis, A., Bernal, C., & Böhm, G. (2017). Impacts of Climate Change on Marine Fisheries and Aquaculture in Chile. In F. Phillips & M. Pérez-Ramírez (Eds.), Climate Change Impacts on Fisheries and Aquaculture: A Global Analysis (Vol. 1, Ch. 10, pp. 239-332). Wiley."
+  },
+  {
+    "objectID": "research/2017-01-01-ecosystem-patterns-anchovy-sardine/index.html",
+    "href": "research/2017-01-01-ecosystem-patterns-anchovy-sardine/index.html",
+    "title": "Identifying ecosystem patterns from time series of anchovy (Engraulis ringens) and sardine (Sardinops Sagax) landings in northern Chile",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2017-01-01-ecosystem-patterns-anchovy-sardine/index.html#cita",
+    "href": "research/2017-01-01-ecosystem-patterns-anchovy-sardine/index.html#cita",
+    "title": "Identifying ecosystem patterns from time series of anchovy (Engraulis ringens) and sardine (Sardinops Sagax) landings in northern Chile",
+    "section": "Cita",
+    "text": "Cita\nPlaza, F., Salas, R., & Yáñez, E. (2017). Identifying ecosystem patterns from time series of anchovy (Engraulis ringens) and sardine (Sardinops sagax) landings in northern Chile. Journal of Statistical Computation and Simulation, 88(10), 1863-1881."
+  },
+  {
+    "objectID": "research/2015-01-01-jack-mackerel-landings-neural-networks/index.html",
+    "href": "research/2015-01-01-jack-mackerel-landings-neural-networks/index.html",
+    "title": "Forecasting of Jack mackerel landings (Trachurus murphyi) in central-southern Chile through neural networks",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2015-01-01-jack-mackerel-landings-neural-networks/index.html#cita",
+    "href": "research/2015-01-01-jack-mackerel-landings-neural-networks/index.html#cita",
+    "title": "Forecasting of Jack mackerel landings (Trachurus murphyi) in central-southern Chile through neural networks",
+    "section": "Cita",
+    "text": "Cita\nNaranjo, L., Plaza, F., Yáñez, E., Barbieri, M. A., & Sánchez, F. (2015). Forecasting of Jack mackerel landings (Trachurus murphyi) in central-southern Chile through neural networks. Fisheries Oceanography, 24(3), 219-228."
+  },
+  {
+    "objectID": "research/2010-01-01-anchovy-sardine-abundance-forecast/index.html",
+    "href": "research/2010-01-01-anchovy-sardine-abundance-forecast/index.html",
+    "title": "Anchovy (Engraulis ringens) and sardine (Sardinops sagax) abundance forecast off northern Chile: A multivariate ecosystemic neural network approach",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2010-01-01-anchovy-sardine-abundance-forecast/index.html#cita",
+    "href": "research/2010-01-01-anchovy-sardine-abundance-forecast/index.html#cita",
+    "title": "Anchovy (Engraulis ringens) and sardine (Sardinops sagax) abundance forecast off northern Chile: A multivariate ecosystemic neural network approach",
+    "section": "Cita",
+    "text": "Cita\nYáñez, E., Plaza, F., Gutiérrez-Estrada, J. C., Rodríguez, N., Barbieri, M. A., Pulido-Calvo, I., & Bórquez, C. (2010). Anchovy (Engraulis ringens) and sardine (Sardinops sagax) abundance forecast off northern Chile: A multivariate ecosystemic neural network approach. Progress in Oceanography, 87, 242-250. https://doi.org/10.1016/j.pocean.2010.09.015"
+  },
+  {
+    "objectID": "research/2009-01-01-anchoveta-landings-apropech/index.html",
+    "href": "research/2009-01-01-anchoveta-landings-apropech/index.html",
+    "title": "Predicción de desembarques de anchoveta (Engraulis ringens), I y II región, mediante la aplicación de redes neuronales artificiales",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2009-01-01-anchoveta-landings-apropech/index.html#cita",
+    "href": "research/2009-01-01-anchoveta-landings-apropech/index.html#cita",
+    "title": "Predicción de desembarques de anchoveta (Engraulis ringens), I y II región, mediante la aplicación de redes neuronales artificiales",
+    "section": "Cita",
+    "text": "Cita\nPlaza, F. (2009). Predicción de desembarques de anchoveta (Engraulis ringens), I y II región, mediante la aplicación de redes neuronales artificiales. Revista de la Asociación de Profesionales Pesqueros (Apropech), 23."
+  },
+  {
+    "objectID": "research/2008-01-01-nonlinear-forecast-anchovy-globec/index.html",
+    "href": "research/2008-01-01-nonlinear-forecast-anchovy-globec/index.html",
+    "title": "Non linear forecast of anchovy (Engraulis ringens) catches in northern Chile: A multivariate approach",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2008-01-01-nonlinear-forecast-anchovy-globec/index.html#cita",
+    "href": "research/2008-01-01-nonlinear-forecast-anchovy-globec/index.html#cita",
+    "title": "Non linear forecast of anchovy (Engraulis ringens) catches in northern Chile: A multivariate approach",
+    "section": "Cita",
+    "text": "Cita\nPlaza, F., Yáñez, E., Gutiérrez-Estrada, J. C., Pulido-Calvo, I., & Rodríguez, N. (2008). Non linear forecast of anchovy (Engraulis ringens) catches in northern Chile: A multivariate approach. Globec International Newsletter, 14(1), 75."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Francisco J. Plaza-Vega",
@@ -7,81 +182,32 @@
     "text": "Soy Francisco Plaza-Vega, académico del Departamento de Matemática y Ciencia de la Computación de la Universidad de Santiago de Chile. Mi labor académica y científica se desarrolla en la intersección entre la estadística, la ciencia de datos y el aprendizaje automático y profundo, con un fuerte enfoque aplicado a problemáticas medioambientales, especialmente en el ámbito de las pesquerías y el cambio climático.\n\n    \n    \n  \n\n\n\nEste sitio busca compartir parte de ese trabajo, promover colaboraciones interdisciplinarias y difundir herramientas modernas de análisis de datos aplicadas a desafíos del mundo real.\n\n\n\n\n Volver arriba"
   },
   {
-    "objectID": "courses/simulation/Simulation_00_About.html",
-    "href": "courses/simulation/Simulation_00_About.html",
-    "title": "Simulación Estadística",
+    "objectID": "cv/index.html",
+    "href": "cv/index.html",
+    "title": "Curriculum Vitae",
     "section": "",
-    "text": "1 Objetivos del curso\n\n\n\n\n\n\n\nModelar estocásticamente y simular sistemas reales simples.\nFormular modelos de simulación para sistemas reales complejos.\nVerificar y validar los modelos de simulación.\nManejar un lenguaje computacional que permita simular situaciones relativamente complejas.\n\n\n\n\n\n\n2 Programa del curso\n\n\n\n\n\n\nUnidad 0: Preliminares\n\n\n\n\n\n0.1. Probabilidades\n0.2. Probabilidad condicional e independencia\n0.3. Distribuciones de probabilidad y variables aleatorias\n0.4. Variables aleatorias\n0.5. Distribuciones de probabilidad\n0.6. Funciones de variables aleatorias\nSlides\n\n\n\n\n\n\n\n\n\nUnidad 1: Generación de Números Pseudos Aleatorios.\n\n\n\n\n\n1.1. Aspectos históricos.\n1.2. Método Congruencial, Aditivo y Mixto.\n1.3. Método Cuadrados Medios y otros métodos para generar números pseudos aleatorios\n1.4. Test de Rachas y el test de Bondad de Ajuste para analizar la calidad de los números generados.\n1.5. Aplicación: Aproximación de integrales mediante números pseudos aleatorios.\nSlides\n\n\n\n\n\n\n\n\n\nUnidad 2: Generación de Variables Aleatorias (discretas y continuas)\n\n\n\n\n\n2.1. Método de la transformada inversa\n2.2. Método de Aceptación y Rechazo\n2.3. Método de composición\n2.4. Método Polar para generar variables aleatorias normales\n2.5. Método Box-Muller para generar variables aleatorias normales\n2.6. Métodos para generar variables aleatorias bidimensionales: Caso Normal.\nSlides\n\n\n\n\n\n\n\n\n\nUnidad 3: Técnicas de Reducción de Varianza.\n\n\n\n\n\n3.1. Uso de variables antitéticas.\n3.2. Uso de variables de control\n3.3. Reducción de varianza mediante condicionamiento.\n3.4. Uso de muestreo estratificado\nSlides\n\n\n\n\n\n\n\n\n\nUnidad 4: Método de simulación por medio de eventos discretos.\n\n\n\n\n\n4.1. Generación de un Proceso de Poisson\n4.2. Generación de un Proceso de Poisson No Homogéneo.\n4.3. Simulación mediante eventos discretos.\n4.4. Sistema de líneas de espera con un servidor\n4.5. Sistema de línea de espera con dos servidores en serie.\n4.6. Sistema de línea de espera con dos servidores en paralelo.\n4.7. Aplicación de sistemas de líneas de espera mediante uso de software.\n\n\n\n\n\n3 Procedimiento de evaluación\n\n\n\n\n\n\nEvaluación: Tres pruebas escritas programadas (PEP) y trabajos grupales con ponderaciones:\n\nPEP_1: 25\\%\nPEP_2: 25\\%\nPEP_3: 25\\%\nTareas: 25\\%\n\n\n\n\n\n\n4 Asistencia\n\n\n\n\n\n\nAsistencia: 75\\%\n\n\n\n\n\n5 Bibliografía\nLos principales libros que usaremos, además de otros recursos online son los siguientes:\n\n\n\n\n\n\n\n\n\nRoss (2022)\n\n\n\n\n\n\n\nRubinstein y Kroese (2016)\n\n\n\n\n\n\n\nMorgan (2018)\n\n\n\n\n\n\n\nRizzo (2019), Con su repositorio gratuito en Github\n\n\n\n\n\n\n\n6 Referencias\n\n\nMorgan, Byron JT. 2018. Elements of simulation. Routledge.\n\n\nRizzo, Maria L. 2019. Statistical Computing with R. Second. The R Series. Chapman & Hall/CRC.\n\n\nRoss, Sheldon M. 2022. Simulation. academic press.\n\n\nRubinstein, Reuven Y, y Dirk P Kroese. 2016. Simulation and the Monte Carlo method. John Wiley & Sons.\n\n\n\n\n\n\n Volver arriba"
+    "text": "Profesor Asociado del Departamento de Matemática y Ciencia de la Computación de la Universidad de Santiago de Chile. Mi trabajo se sitúa en la intersección entre estadística, ciencia de datos, aprendizaje automático, pesquerías y cambio climático.\n\nDescargar CV en PDF Ver publicaciones\n\n\n\nLíneas principales\n\nEstadística aplicada y computacional.\nDeep learning y machine learning.\nSeries de tiempo, procesos estocásticos y modelos GARCH.\nPesquerías, medio ambiente y cambio climático."
   },
   {
-    "objectID": "courses/simulation/index.html",
-    "href": "courses/simulation/index.html",
-    "title": "Simulación Estadística",
+    "objectID": "cv/index.html#francisco-j.-plaza-vega",
+    "href": "cv/index.html#francisco-j.-plaza-vega",
+    "title": "Curriculum Vitae",
     "section": "",
-    "text": "1 Objetivos del curso\n\n\n\n\n\n\n\nModelar estocásticamente y simular sistemas reales simples.\nFormular modelos de simulación para sistemas reales complejos.\nVerificar y validar los modelos de simulación.\nManejar un lenguaje computacional que permita simular situaciones relativamente complejas.\n\n\n\n\n\n\n2 Programa del curso\n\n\n\n\n\n\nUnidad 0: Preliminares\n\n\n\n\n\n0.1. Probabilidades\n0.2. Probabilidad condicional e independencia\n0.3. Distribuciones de probabilidad y variables aleatorias\n0.4. Variables aleatorias\n0.5. Distribuciones de probabilidad\n0.6. Funciones de variables aleatorias\nSlides\n\n\n\n\n\n\n\n\n\nUnidad 1: Generación de Números Pseudos Aleatorios.\n\n\n\n\n\n1.1. Aspectos históricos.\n1.2. Método Congruencial, Aditivo y Mixto.\n1.3. Método Cuadrados Medios y otros métodos para generar números pseudos aleatorios\n1.4. Test de Rachas y el test de Bondad de Ajuste para analizar la calidad de los números generados.\n1.5. Aplicación: Aproximación de integrales mediante números pseudos aleatorios.\nSlides - Slides en pdf\n\n\n\n\n\n\n\n\n\nUnidad 2: Generación de Variables Aleatorias (discretas y continuas)\n\n\n\n\n\n2.1. Método de la transformada inversa\n2.2. Método de Aceptación y Rechazo\n2.3. Método de composición\n2.4. Método Polar para generar variables aleatorias normales\n2.5. Método Box-Muller para generar variables aleatorias normales\n2.6. Métodos para generar variables aleatorias bidimensionales: Caso Normal.\nSlides\n\n\n\n\n\n\n\n\n\nUnidad 3: Técnicas de Reducción de Varianza.\n\n\n\n\n\n3.1. Uso de variables antitéticas.\n3.2. Uso de variables de control\n3.3. Reducción de varianza mediante condicionamiento.\n3.4. Uso de muestreo estratificado\nSlides\n\n\n\n\n\n\n\n\n\nUnidad 4: Método de simulación por medio de eventos discretos.\n\n\n\n\n\n4.1. Generación de un Proceso de Poisson\n4.2. Generación de un Proceso de Poisson No Homogéneo.\n4.3. Simulación mediante eventos discretos.\n4.4. Sistema de líneas de espera con un servidor\n4.5. Sistema de línea de espera con dos servidores en serie.\n4.6. Sistema de línea de espera con dos servidores en paralelo.\n4.7. Aplicación de sistemas de líneas de espera mediante uso de software.\n\n\n\n\n\n3 Procedimiento de evaluación\n\n\n\n\n\n\nEvaluación: Tres pruebas escritas programadas (PEP) y trabajos grupales con ponderaciones:\n\nPEP_1: 25\\%\nPEP_2: 25\\%\nPEP_3: 25\\%\nTareas: 25\\%\n\n\n\n\n\n\n4 Bibliografía\nLos principales libros que usaremos, además de otros recursos online son los siguientes:\n\n\n\n\n\n\n\n\n\nRoss (2022)\n\n\n\n\n\n\n\nRubinstein y Kroese (2016)\n\n\n\n\n\n\n\nMorgan (2018)\n\n\n\n\n\n\n\nRizzo (2019), Con su repositorio gratuito en Github\n\n\n\n\n\n\n\n5 Referencias\n\n\nMorgan, Byron JT. 2018. Elements of simulation. Routledge.\n\n\nRizzo, Maria L. 2019. Statistical Computing with R. Second. The R Series. Chapman & Hall/CRC.\n\n\nRoss, Sheldon M. 2022. Simulation. academic press.\n\n\nRubinstein, Reuven Y, y Dirk P Kroese. 2016. Simulation and the Monte Carlo method. John Wiley & Sons.\n\n\n\n\n\n\n Volver arriba"
+    "text": "Profesor Asociado del Departamento de Matemática y Ciencia de la Computación de la Universidad de Santiago de Chile. Mi trabajo se sitúa en la intersección entre estadística, ciencia de datos, aprendizaje automático, pesquerías y cambio climático.\n\nDescargar CV en PDF Ver publicaciones"
   },
   {
-    "objectID": "courses/deep_learning/Deep_Learning_00_About.html",
-    "href": "courses/deep_learning/Deep_Learning_00_About.html",
-    "title": "Modelos de Deep Learning",
-    "section": "",
-    "text": "1 Objetivos del curso\n\n\n\n\n\n\n\nComprender y aplicar los principios fundamentales de Deep Learning para modelar y resolver problemas complejos en diversos dominios.\nDiseñar, entrenar y validar modelos de Deep Learning, utilizando conjuntos de datos reales y simulados, para tareas de clasificación, regresión y otras aplicaciones avanzadas.\nEvaluar críticamente la efectividad y eficiencia de diferentes arquitecturas de redes neuronales, incluidas las redes convolucionales y recurrentes, en la solución de problemas específicos.\nDesarrollar habilidades prácticas en el uso de herramientas y librerías de software de vanguardia para el Deep Learning, tales como TensorFlow, PyTorch, y/o Keras, permitiendo la simulación y experimentación con modelos complejos.\nImplementar técnicas de optimización y ajuste fino para mejorar el rendimiento de los modelos de aprendizaje profundo, así como aplicar métodos para verificar y validar la precisión de los modelos desarrollados.\n\n\n\n\n\n\n2 Programa del curso\n\n\n\n\n\n\nUnidad 1: Fundamentos del Deep Learning\n\n\n\n\n\n1.1. Introducción al Deep Learning y su evolución histórica.\n1.2. Principios básicos de las redes neuronales: perceptrones, perceptrones multicapa (MLP), funciones de activación, y propagación hacia adelante.\n1.3. Entrenamiento de redes neuronales profundas: backpropagation, descenso del gradiente y ajuste de hiperparámetros. Uso de la librería Keras para facilitar la implementación de modelos.\n1.4. Evaluación de modelos: conjuntos de entrenamiento, validación y prueba; sobreajuste y técnicas de regularización.\n1.5. Introducción a TensorFlow, PyTorch y Keras como interfaz de alto nivel para la construcción y el entrenamiento de modelos de deep learning.\nSlides  Tutorial básico de Python\n\n\n\n\n\n\n\n\n\nUnidad 2: Perceptrones Multicapa (MLP) y Deep Learning\n\n\n\n\n\n2.1. Estructura y características de los MLP: capas ocultas, nodos y profundidad.\n2.2. Aplicaciones prácticas de los MLP en clasificación y regresión.\n2.3. Comparación entre MLP y otros modelos de Deep Learning en términos de capacidad, complejidad y tipos de problemas a resolver.\n2.4. Implementación de MLP para tareas de clasificación y regresión.\n2.5. Estrategias de optimización y ajuste fino específicas para MLP.\nSlides  Guía de Keras  Ejemplo 1: Librería neuralnet en R  Ejemplo 2: Librería keras con datos de MNIST Ejemplo 3: Librería keras para regresión con datos de automóviles\n\n\n\n\n\n\n\n\n\nUnidad 3: Redes Neuronales Convolucionales (CNNs)\n\n\n\n\n\n3.1.    Fundamentos de las CNNs: operación de convolución, pooling y normalización.\n3.2.    Arquitecturas de CNNs populares: LeNet, AlexNet, VGG, ResNet e Inception.\n3.3.    Introducción al Transfer Learning en CNNs: cómo reutilizar modelos preentrenados para nuevas tareas.\n3.4.    Aplicaciones de las CNNs: reconocimiento de imágenes, detección de objetos y segmentación semántica.\n3.5.    Prácticas con conjuntos de datos reales utilizando librerías de Deep Learning.\nSlides  Ejemplo 1: Librería Keras con datos fashion-MNIST  Ejemplo 2: Gatos y perros  Ejemplo 2b: Gatos y perros, la venganza\n\n\n\n\n\n\n\n\n\nUnidad 4: Redes Neuronales Recurrentes (RNNs) y LSTM\n\n\n\n\n\n4.1.    Principios de las RNNs: procesamiento de secuencias y dependencias temporales.\n4.2.    Problemas de las RNNs: desvanecimiento y explosión del gradiente.\n4.3.    LSTM y GRU: soluciones al problema del desvanecimiento del gradiente.\n4.4.    Aplicaciones de las RNNs y LSTM: procesamiento de lenguaje natural, generación de texto y análisis de series temporales.\n4.5.    Implementación práctica de modelos RNN y LSTM.\n\n\n\n\n\n\n\n\n\nUnidad 5: Introducción a Modelos Generativos\n\n\n\n\n\n5.1.    Diferencia entre modelos discriminativos y generativos.\n5.2.    Conceptos básicos de Autoencoders y su aplicación en la reducción de dimensionalidad y generación de datos.\n5.3.    Introducción teórica a Redes Generativas Antagónicas (GANs): fundamentos, arquitectura y aplicaciones sin implementación práctica.\n5.4.    Discusión sobre el impacto de GANs en la generación de contenido y ética en la IA.\n\n\n\n\n\n3 Procedimiento de evaluación\nA lo largo del curso, los estudiantes desarrollarán un Proyecto aplicado utilizando los conocimientos adquiridos durante el curso. Los estudiantes seleccionarán un problema real para aplicar técnicas de Deep Learning, incluyendo el diseño e implementación de uno o varios modelos.\n\n\n\n\n\n\nPresentación de proyectos: Los estudiantes expondrán sus proyectos (máximo 3 integrantes), mostrando la metodología, resultados y aprendizajes clave. Dicho trabajo grupal tendrá 3 presentaciones de avance (PA) y un informe final (IF), con las siguientes ponderaciones:\n\nPA_1: 25\\%: 9 de mayo 2024\nPA_2: 25\\%: 13 de Junio 2024\nPA_3: 25\\%: 11 de Julio 2024\nIF: 25\\%: 18 de Julio 2024\n\n\n\n\n\n\n4 Asistencia\n\n\n\n\n\n\nAsistencia: 75\\%\n\n\n\n\n\n5 Bibliografía del curso\nLos principales libros que usaremos, además de otros recursos online son los siguientes:\n\n\n\n\n\n\n\n\n\nGoodfellow, Bengio, y Courville (2016), Disponible acá\n\n\n\n\n\n\n\nGéron (2022), con su repositorio gratuito en GitHub\n\n\n\n\n\n\n\nRaschka y Mirjalili (2019), con su repositorio gratuito en GitHub\n\n\n\n\n\n\n\nZhang et al. (2023), Disponible acá\n\n\n\n\n\n\n\n6 Referencias\n\n\nGéron, Aurélien. 2022. Hands-on machine learning with Scikit-Learn, Keras, and TensorFlow. O’Reilly Media, Inc.\n\n\nGoodfellow, Ian, Yoshua Bengio, y Aaron Courville. 2016. Deep learning. MIT press.\n\n\nRaschka, Sebastian, y Vahid Mirjalili. 2019. Python machine learning: Machine learning and deep learning with Python, scikit-learn, and TensorFlow 2. Packt Publishing Ltd.\n\n\nZhang, Aston, Zachary C Lipton, Mu Li, y Alexander J Smola. 2023. Dive into deep learning. Cambridge University Press.\n\n\n\n\n\n\n Volver arriba"
-  },
-  {
-    "objectID": "courses/deep_learning/index.html",
-    "href": "courses/deep_learning/index.html",
-    "title": "Modelos de Deep Learning",
-    "section": "",
-    "text": "1 Objetivos del curso\n\n\n\n\n\n\n\nComprender y aplicar los principios fundamentales de Deep Learning para modelar y resolver problemas complejos en diversos dominios.\nDiseñar, entrenar y validar modelos de Deep Learning, utilizando conjuntos de datos reales y simulados, para tareas de clasificación, regresión y otras aplicaciones avanzadas.\nEvaluar críticamente la efectividad y eficiencia de diferentes arquitecturas de redes neuronales, incluidas las redes convolucionales y recurrentes, en la solución de problemas específicos.\nDesarrollar habilidades prácticas en el uso de herramientas y librerías de software de vanguardia para el Deep Learning, tales como TensorFlow, PyTorch, y/o Keras, permitiendo la simulación y experimentación con modelos complejos.\nImplementar técnicas de optimización y ajuste fino para mejorar el rendimiento de los modelos de aprendizaje profundo, así como aplicar métodos para verificar y validar la precisión de los modelos desarrollados.\n\n\n\n\n\n\n2 Programa del curso\n\n\n\n\n\n\nUnidad 1: Fundamentos del Deep Learning\n\n\n\n\n\n1.1. Introducción al Deep Learning y su evolución histórica.\n1.2. Principios básicos de las redes neuronales: perceptrones, perceptrones multicapa (MLP), funciones de activación, y propagación hacia adelante.\n1.3. Entrenamiento de redes neuronales profundas: backpropagation, descenso del gradiente y ajuste de hiperparámetros. Uso de la librería Keras para facilitar la implementación de modelos.\n1.4. Evaluación de modelos: conjuntos de entrenamiento, validación y prueba; sobreajuste y técnicas de regularización.\n1.5. Introducción a TensorFlow, PyTorch y Keras como interfaz de alto nivel para la construcción y el entrenamiento de modelos de deep learning.\nSlides  Tutorial básico de Python\n\n\n\n\n\n\n\n\n\nUnidad 2: Perceptrones Multicapa (MLP) y Deep Learning\n\n\n\n\n\n2.1. Estructura y características de los MLP: capas ocultas, nodos y profundidad.\n2.2. Aplicaciones prácticas de los MLP en clasificación y regresión.\n2.3. Comparación entre MLP y otros modelos de Deep Learning en términos de capacidad, complejidad y tipos de problemas a resolver.\n2.4. Implementación de MLP para tareas de clasificación y regresión.\n2.5. Estrategias de optimización y ajuste fino específicas para MLP.\nSlides  Guía de Keras  Ejemplo 1: Librería neuralnet en R  Ejemplo 2: Librería keras con datos de MNIST Ejemplo 3: Librería keras para regresión con datos de automóviles\n\n\n\n\n\n\n\n\n\nUnidad 3: Redes Neuronales Convolucionales (CNNs)\n\n\n\n\n\n3.1.    Fundamentos de las CNNs: operación de convolución, pooling y normalización.\n3.2.    Arquitecturas de CNNs populares: LeNet, AlexNet, VGG, ResNet e Inception.\n3.3.    Introducción al Transfer Learning en CNNs: cómo reutilizar modelos preentrenados para nuevas tareas.\n3.4.    Aplicaciones de las CNNs: reconocimiento de imágenes, detección de objetos y segmentación semántica.\n3.5.    Prácticas con conjuntos de datos reales utilizando librerías de Deep Learning.\nSlides  Ejemplo 1: Librería Keras con datos fashion-MNIST  Ejemplo 2: Gatos y perros  Ejemplo 2b: Gatos y perros, la venganza\n\n\n\n\n\n\n\n\n\nUnidad 4: Redes Neuronales Recurrentes (RNNs) y LSTM\n\n\n\n\n\n4.1.    Principios de las RNNs: procesamiento de secuencias y dependencias temporales.\n4.2.    Problemas de las RNNs: desvanecimiento y explosión del gradiente.\n4.3.    LSTM y GRU: soluciones al problema del desvanecimiento del gradiente.\n4.4.    Aplicaciones de las RNNs y LSTM: procesamiento de lenguaje natural, generación de texto y análisis de series temporales.\n4.5.    Implementación práctica de modelos RNN y LSTM.\nSlides\n\n\n\n\n\n\n\n\n\nUnidad 5: Introducción a Modelos Generativos\n\n\n\n\n\n5.1.    Diferencia entre modelos discriminativos y generativos.\n5.2.    Conceptos básicos de Autoencoders y su aplicación en la reducción de dimensionalidad y generación de datos.\n5.3.    Introducción teórica a Redes Generativas Antagónicas (GANs): fundamentos, arquitectura y aplicaciones sin implementación práctica.\n5.4.    Discusión sobre el impacto de GANs en la generación de contenido y ética en la IA.\n\n\n\n\n\n3 Procedimiento de evaluación\nA lo largo del curso, los estudiantes desarrollarán un Proyecto aplicado utilizando los conocimientos adquiridos durante el curso. Los estudiantes seleccionarán un problema real para aplicar técnicas de Deep Learning, incluyendo el diseño e implementación de uno o varios modelos.\n\n\n\n\n\n\nPresentación de proyectos: Los estudiantes expondrán sus proyectos (máximo 3 integrantes), mostrando la metodología, resultados y aprendizajes clave. Dicho trabajo grupal tendrá 3 presentaciones de avance (PA), con las siguientes ponderaciones:\n\nPA_1: 33.3\\%\nPA_2: 33.3\\%\nPA_3: 33.3\\%\n\n\n\n\n\n\n4 Bibliografía del curso\nLos principales libros que usaremos, además de otros recursos online son los siguientes:\n\n\n\n\n\n\n\n\n\nGoodfellow, Bengio, y Courville (2016), Disponible acá\n\n\n\n\n\n\n\nGéron (2022), con su repositorio gratuito en GitHub\n\n\n\n\n\n\n\nRaschka y Mirjalili (2019), con su repositorio gratuito en GitHub\n\n\n\n\n\n\n\nZhang et al. (2023), Disponible acá\n\n\n\n\n\n\n\n5 Referencias\n\n\nGéron, Aurélien. 2022. Hands-on machine learning with Scikit-Learn, Keras, and TensorFlow. O’Reilly Media, Inc.\n\n\nGoodfellow, Ian, Yoshua Bengio, y Aaron Courville. 2016. Deep learning. MIT press.\n\n\nRaschka, Sebastian, y Vahid Mirjalili. 2019. Python machine learning: Machine learning and deep learning with Python, scikit-learn, and TensorFlow 2. Packt Publishing Ltd.\n\n\nZhang, Aston, Zachary C Lipton, Mu Li, y Alexander J Smola. 2023. Dive into deep learning. Cambridge University Press.\n\n\n\n\n\n\n Volver arriba"
-  },
-  {
-    "objectID": "research/index.html",
-    "href": "research/index.html",
-    "title": "Publicaciones",
-    "section": "",
-    "text": "Anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax) variability changes in northern Chile associated with the environment and inter species synchronicity: GARCH model with exogenous variable and hybrid Bayesian deep learning estimation approach\n\n\nblablablab blablablabla.\n\n\n\nResearch\n\n\nGARCH-X\n\n\nTime-Series\n\n\n\n\n\n\n4 ene 2024\n\n\nFrancisco Plaza-Vega, Héctor Araya\n\n\n\n\n\n\nNo hay resultados\n\n Volver arriba"
-  },
-  {
-    "objectID": "research/2024-09-22-test/index.html",
-    "href": "research/2024-09-22-test/index.html",
-    "title": "Anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax) variability changes in northern Chile associated with the environment and inter species synchronicity: GARCH model with exogenous variable and hybrid Bayesian deep learning estimation approach",
-    "section": "",
-    "text": "Small pelagic fish species, such as anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax), play a crucial role in marine ecosystems worldwide as they serve as an important food source for higher-order predators, such as seabirds, marine mammals, and larger fish species; also from their high productivity in terms of fishery landings, they help with maintaining food security. However, small pelagic populations are known for their variability, with fluctuations in their distribution and abundance influenced by interactions with environmental and human-related factors in different spatio-temporal scales. This study aims to investigate the variability in anchovy and sardine populations in northern Chile and their potential environmental drivers by using a class of models that address the changes in variability (i.e. variance) over time, namely Generalized autoregressive conditional heteroskedasticity (GARCH) models. In particular, this work considers a GARCH model that includes an additional term in the variance, that could help to better model the variability fluctuations of both anchovy and sardine, explained by environmental factors. Since there is no estimation procedures for those type of models, we propose a hybrid Approximate Bayesian Computation (ABC) procedure that involves the use of Deep Learning structures for estimating the parameters of the model and obtain posterior distributions. The results are two-fold: First, the proposal of a new time series model that better explain conditional variance with exogenous variables and a novel estimation procedure, and second, a novel approach for establishing explicit models that address the variability of small pelagic fisheries and their interaction with the environment."
-  },
-  {
-    "objectID": "research/2024-09-22-test/index.html#abstract",
-    "href": "research/2024-09-22-test/index.html#abstract",
-    "title": "Anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax) variability changes in northern Chile associated with the environment and inter species synchronicity: GARCH model with exogenous variable and hybrid Bayesian deep learning estimation approach",
-    "section": "",
-    "text": "Small pelagic fish species, such as anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax), play a crucial role in marine ecosystems worldwide as they serve as an important food source for higher-order predators, such as seabirds, marine mammals, and larger fish species; also from their high productivity in terms of fishery landings, they help with maintaining food security. However, small pelagic populations are known for their variability, with fluctuations in their distribution and abundance influenced by interactions with environmental and human-related factors in different spatio-temporal scales. This study aims to investigate the variability in anchovy and sardine populations in northern Chile and their potential environmental drivers by using a class of models that address the changes in variability (i.e. variance) over time, namely Generalized autoregressive conditional heteroskedasticity (GARCH) models. In particular, this work considers a GARCH model that includes an additional term in the variance, that could help to better model the variability fluctuations of both anchovy and sardine, explained by environmental factors. Since there is no estimation procedures for those type of models, we propose a hybrid Approximate Bayesian Computation (ABC) procedure that involves the use of Deep Learning structures for estimating the parameters of the model and obtain posterior distributions. The results are two-fold: First, the proposal of a new time series model that better explain conditional variance with exogenous variables and a novel estimation procedure, and second, a novel approach for establishing explicit models that address the variability of small pelagic fisheries and their interaction with the environment."
-  },
-  {
-    "objectID": "research/2024-01-04-garchx-anchovy-sardine/index.html",
-    "href": "research/2024-01-04-garchx-anchovy-sardine/index.html",
-    "title": "Anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax) variability changes in northern Chile associated with the environment and inter species synchronicity: GARCH model with exogenous variable and hybrid Bayesian deep learning estimation approach",
-    "section": "",
-    "text": "Small pelagic fish species, such as anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax), play a crucial role in marine ecosystems worldwide as they serve as an important food source for higher-order predators, such as seabirds, marine mammals, and larger fish species; also from their high productivity in terms of fishery landings, they help with maintaining food security. However, small pelagic populations are known for their variability, with fluctuations in their distribution and abundance influenced by interactions with environmental and human-related factors in different spatio-temporal scales. This study aims to investigate the variability in anchovy and sardine populations in northern Chile and their potential environmental drivers by using a class of models that address the changes in variability (i.e. variance) over time, namely Generalized autoregressive conditional heteroskedasticity (GARCH) models. In particular, this work considers a GARCH model that includes an additional term in the variance, that could help to better model the variability fluctuations of both anchovy and sardine, explained by environmental factors. Since there is no estimation procedures for those type of models, we propose a hybrid Approximate Bayesian Computation (ABC) procedure that involves the use of Deep Learning structures for estimating the parameters of the model and obtain posterior distributions. The results are two-fold: First, the proposal of a new time series model that better explain conditional variance with exogenous variables and a novel estimation procedure, and second, a novel approach for establishing explicit models that address the variability of small pelagic fisheries and their interaction with the environment."
-  },
-  {
-    "objectID": "research/2024-01-04-garchx-anchovy-sardine/index.html#abstract",
-    "href": "research/2024-01-04-garchx-anchovy-sardine/index.html#abstract",
-    "title": "Anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax) variability changes in northern Chile associated with the environment and inter species synchronicity: GARCH model with exogenous variable and hybrid Bayesian deep learning estimation approach",
-    "section": "",
-    "text": "Small pelagic fish species, such as anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax), play a crucial role in marine ecosystems worldwide as they serve as an important food source for higher-order predators, such as seabirds, marine mammals, and larger fish species; also from their high productivity in terms of fishery landings, they help with maintaining food security. However, small pelagic populations are known for their variability, with fluctuations in their distribution and abundance influenced by interactions with environmental and human-related factors in different spatio-temporal scales. This study aims to investigate the variability in anchovy and sardine populations in northern Chile and their potential environmental drivers by using a class of models that address the changes in variability (i.e. variance) over time, namely Generalized autoregressive conditional heteroskedasticity (GARCH) models. In particular, this work considers a GARCH model that includes an additional term in the variance, that could help to better model the variability fluctuations of both anchovy and sardine, explained by environmental factors. Since there is no estimation procedures for those type of models, we propose a hybrid Approximate Bayesian Computation (ABC) procedure that involves the use of Deep Learning structures for estimating the parameters of the model and obtain posterior distributions. The results are two-fold: First, the proposal of a new time series model that better explain conditional variance with exogenous variables and a novel estimation procedure, and second, a novel approach for establishing explicit models that address the variability of small pelagic fisheries and their interaction with the environment."
+    "objectID": "cv/index.html#vista-previa",
+    "href": "cv/index.html#vista-previa",
+    "title": "Curriculum Vitae",
+    "section": "Vista previa",
+    "text": "Vista previa"
   },
   {
     "objectID": "courses/quarto_github_pages/index.html",
     "href": "courses/quarto_github_pages/index.html",
     "title": "Mini curso Quarto Github Pages",
     "section": "",
-    "text": "1 Objetivos del curso\n\n\n\n\n\n\nEste mini curso está diseñado para introducir a los participantes en el uso de Quarto, GitHub y GitHub Pages para la creación y publicación de distintos tipos de documentos, con un foco en documentos web (de tipo .html). A lo largo del curso, aprenderán a generar documentos básicos en Quarto y a trabajar con repositorios en GitHub, utilizando GitHub Desktop para simplificar el flujo de trabajo. Al finalizar, los participantes serán capaces de publicar sus propios sitios web utilizando GitHub Pages, adquiriendo así una herramienta versátil para compartir su trabajo de manera profesional y accesible en la web.\n\n\n\n\n\n2 Programa y Requisitos\n\n\n\n\n\n\nContenidos\n\n\n\n\n\n1. Introducción\n2. Qué necesitaremos?\n3. Quarto\n4. Sintáxis\n5. Páginas web con Quarto\n6. Github\n7. Repositorio usando Github Desktop\nSlides\n\n\n\n\n\n\n\n\n\nPrerequisitos\n\n\n\n\n\n\nConocimientos básicos de Markdown\nFamiliaridad con la sintaxis de Markdown para la creación y edición de contenido.\nGitHub y GitHub Desktop\n\nInstalación de GitHub Desktop (enlace de descarga).\nCreación de una cuenta en GitHub y familiaridad con sus funcionalidades básicas, como la creación de repositorios.\nComprensión de conceptos básicos de Git y GitHub, como realizar commit, push y pull usando GitHub Desktop para facilitar el flujo de trabajo.\n\nInstalación de R y RStudio\n\nInstalar R (https://cran.r-project.org/) y RStudio (https://www.rstudio.com/).\nFamiliaridad básica con RStudio para ejecutar y editar código en R.\n\nInstalación de Quarto\n\nInstalar Quarto siguiendo las instrucciones oficiales.\nVerificar la instalación con el comando quarto check.\n\n\n\n\n\n\n\n\n\n Volver arriba"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Francisco J. Plaza-Vega",
-    "section": "",
-    "text": "Hola!, soy un académico del Departamento de Matemática y Ciencia de la Computación, de la Universidad de Santiago de Chile.\n\n\n Volver arriba"
+    "text": "1 Objetivos del curso\n\n\n\n\n\n\nEste mini curso está diseñado para introducir a los participantes en el uso de Quarto, GitHub y GitHub Pages para la creación y publicación de distintos tipos de documentos, con un foco en documentos web (de tipo .html). A lo largo del curso, aprenderán a generar documentos básicos en Quarto y a trabajar con repositorios en GitHub, utilizando GitHub Desktop para simplificar el flujo de trabajo. Al finalizar, los participantes serán capaces de publicar sus propios sitios web utilizando GitHub Pages, adquiriendo así una herramienta versátil para compartir su trabajo de manera profesional y accesible en la web.\n\n\n\n\n\n2 Programa y Requisitos\n\n\n\n\n\n\nTipContenidos\n\n\n\n\n\n1. Introducción\n2. Qué necesitaremos?\n3. Quarto\n4. Sintáxis\n5. Páginas web con Quarto\n6. Github\n7. Repositorio usando Github Desktop\nSlides\n\n\n\n\n\n\n\n\n\nAdvertenciaPrerequisitos\n\n\n\n\n\n\nConocimientos básicos de Markdown\nFamiliaridad con la sintaxis de Markdown para la creación y edición de contenido.\nGitHub y GitHub Desktop\n\nInstalación de GitHub Desktop (enlace de descarga).\nCreación de una cuenta en GitHub y familiaridad con sus funcionalidades básicas, como la creación de repositorios.\nComprensión de conceptos básicos de Git y GitHub, como realizar commit, push y pull usando GitHub Desktop para facilitar el flujo de trabajo.\n\nInstalación de R y RStudio\n\nInstalar R (https://cran.r-project.org/) y RStudio (https://www.rstudio.com/).\nFamiliaridad básica con RStudio para ejecutar y editar código en R.\n\nInstalación de Quarto\n\nInstalar Quarto siguiendo las instrucciones oficiales.\nVerificar la instalación con el comando quarto check.\n\n\n\n\n\n\n\n\n\n Volver arriba"
   },
   {
     "objectID": "about/index.html",
@@ -89,5 +215,236 @@
     "title": "Francisco J. Plaza-Vega",
     "section": "",
     "text": "Mi nombre es Francisco Plaza-Vega, soy Ingeniero Pesquero de formación, y desde mis primeros pasos profesionales he estado profundamente motivado por el estudio de los sistemas complejos desde una perspectiva cuantitativa. Mi interés por la estadística y la computación nació al enfrentarme a desafíos reales en el sector pesquero, lo que me llevó a explorar herramientas que me permitieran entender, modelar y anticipar dinámicas ambientales y pesqueras.\n\n    \n    \n  \n\n\n\nSobre mí\n\n\n\nTuve la oportunidad de trabajar durante varios años en el Instituto de Fomento Pesquero (IFOP), donde participé en proyectos estratégicos y de control de gestión, además de colaborar en iniciativas de investigación científica vinculadas a pesquerías y oceanografía. Esa experiencia consolidó mi interés por aplicar metodologías rigurosas al análisis de datos en contextos con alto impacto social y ecológico.\nConvencido de la necesidad de una base sólida, continué mi formación con un Magíster en Estadística y luego con un Doctorado en Estadística, el cual culminé en 2023. En paralelo, fui desarrollando una fuerte afinidad con las metodologías de aprendizaje automático y aprendizaje profundo, que hoy forman parte central de mi investigación y docencia.\n\n\n\nActualmente, me desempeño como académico en la Universidad de Santiago de Chile, en el Departamento de Matemática y Ciencia de la Computación, donde imparto cursos de Simulación y Deep Learning, además de desarrollar investigación aplicada en el cruce entre medio ambiente, pesquerías y ciencia de datos.\nAdemás, soy parte del podcast Por sobre la Media: hablemos con confianza, un espacio donde, junto a colegas del DMCC, conversamos sobre estadística, inteligencia artificial y ciencia de datos de manera cercana, relajada y con vocación de divulgación.\nMi trabajo busca tender puentes entre la teoría estadística y las aplicaciones reales, siempre con la convicción de que el conocimiento riguroso puede contribuir a enfrentar los desafíos más urgentes de nuestro tiempo.\n\n\n\n\n\n\n\n Volver arriba"
+  },
+  {
+    "objectID": "courses/deep_learning/index.html",
+    "href": "courses/deep_learning/index.html",
+    "title": "Modelos de Deep Learning",
+    "section": "",
+    "text": "1 Objetivos del curso\n\n\n\n\n\n\n\nComprender y aplicar los principios fundamentales de Deep Learning para modelar y resolver problemas complejos en diversos dominios.\nDiseñar, entrenar y validar modelos de Deep Learning, utilizando conjuntos de datos reales y simulados, para tareas de clasificación, regresión y otras aplicaciones avanzadas.\nEvaluar críticamente la efectividad y eficiencia de diferentes arquitecturas de redes neuronales, incluidas las redes convolucionales y recurrentes, en la solución de problemas específicos.\nDesarrollar habilidades prácticas en el uso de herramientas y librerías de software de vanguardia para el Deep Learning, tales como TensorFlow, PyTorch, y/o Keras, permitiendo la simulación y experimentación con modelos complejos.\nImplementar técnicas de optimización y ajuste fino para mejorar el rendimiento de los modelos de aprendizaje profundo, así como aplicar métodos para verificar y validar la precisión de los modelos desarrollados.\n\n\n\n\n\n\n2 Programa del curso\n\n\n\n\n\n\nTipUnidad 1: Fundamentos del Deep Learning\n\n\n\n\n\n1.1. Introducción al Deep Learning y su evolución histórica.\n1.2. Principios básicos de las redes neuronales: perceptrones, perceptrones multicapa (MLP), funciones de activación, y propagación hacia adelante.\n1.3. Entrenamiento de redes neuronales profundas: backpropagation, descenso del gradiente y ajuste de hiperparámetros. Uso de la librería Keras para facilitar la implementación de modelos.\n1.4. Evaluación de modelos: conjuntos de entrenamiento, validación y prueba; sobreajuste y técnicas de regularización.\n1.5. Introducción a TensorFlow, PyTorch y Keras como interfaz de alto nivel para la construcción y el entrenamiento de modelos de deep learning.\nSlides  Tutorial básico de Python\n\n\n\n\n\n\n\n\n\nTipUnidad 2: Perceptrones Multicapa (MLP) y Deep Learning\n\n\n\n\n\n2.1. Estructura y características de los MLP: capas ocultas, nodos y profundidad.\n2.2. Aplicaciones prácticas de los MLP en clasificación y regresión.\n2.3. Comparación entre MLP y otros modelos de Deep Learning en términos de capacidad, complejidad y tipos de problemas a resolver.\n2.4. Implementación de MLP para tareas de clasificación y regresión.\n2.5. Estrategias de optimización y ajuste fino específicas para MLP.\nSlides  Guía de Keras  Ejemplo 1: Librería neuralnet en R  Ejemplo 2: Librería keras con datos de MNIST Ejemplo 3: Librería keras para regresión con datos de automóviles\n\n\n\n\n\n\n\n\n\nTipUnidad 3: Redes Neuronales Convolucionales (CNNs)\n\n\n\n\n\n3.1.    Fundamentos de las CNNs: operación de convolución, pooling y normalización.\n3.2.    Arquitecturas de CNNs populares: LeNet, AlexNet, VGG, ResNet e Inception.\n3.3.    Introducción al Transfer Learning en CNNs: cómo reutilizar modelos preentrenados para nuevas tareas.\n3.4.    Aplicaciones de las CNNs: reconocimiento de imágenes, detección de objetos y segmentación semántica.\n3.5.    Prácticas con conjuntos de datos reales utilizando librerías de Deep Learning.\nSlides  Ejemplo 1: Librería Keras con datos fashion-MNIST  Ejemplo 2: Gatos y perros  Ejemplo 2b: Gatos y perros, la venganza\n\n\n\n\n\n\n\n\n\nTipUnidad 4: Redes Neuronales Recurrentes (RNNs) y LSTM\n\n\n\n\n\n4.1.    Principios de las RNNs: procesamiento de secuencias y dependencias temporales.\n4.2.    Problemas de las RNNs: desvanecimiento y explosión del gradiente.\n4.3.    LSTM y GRU: soluciones al problema del desvanecimiento del gradiente.\n4.4.    Aplicaciones de las RNNs y LSTM: procesamiento de lenguaje natural, generación de texto y análisis de series temporales.\n4.5.    Implementación práctica de modelos RNN y LSTM.\nSlides\n\n\n\n\n\n\n\n\n\nTipUnidad 5: Introducción a Modelos Generativos\n\n\n\n\n\n5.1.    Diferencia entre modelos discriminativos y generativos.\n5.2.    Conceptos básicos de Autoencoders y su aplicación en la reducción de dimensionalidad y generación de datos.\n5.3.    Introducción teórica a Redes Generativas Antagónicas (GANs): fundamentos, arquitectura y aplicaciones sin implementación práctica.\n5.4.    Discusión sobre el impacto de GANs en la generación de contenido y ética en la IA.\n\n\n\n\n\n3 Procedimiento de evaluación\nA lo largo del curso, los estudiantes desarrollarán un Proyecto aplicado utilizando los conocimientos adquiridos durante el curso. Los estudiantes seleccionarán un problema real para aplicar técnicas de Deep Learning, incluyendo el diseño e implementación de uno o varios modelos.\n\n\n\n\n\n\nPresentación de proyectos: Los estudiantes expondrán sus proyectos (máximo 3 integrantes), mostrando la metodología, resultados y aprendizajes clave. Dicho trabajo grupal tendrá 3 presentaciones de avance (PA), con las siguientes ponderaciones:\n\nPA_1: 33.3\\%\nPA_2: 33.3\\%\nPA_3: 33.3\\%\n\n\n\n\n\n\n4 Bibliografía del curso\nLos principales libros que usaremos, además de otros recursos online son los siguientes:\n\n\n\n\n\n\nGoodfellow, Bengio, y Courville (2016), Disponible acá\n\n\n\n\n\n\n\nGéron (2022), con su repositorio gratuito en GitHub\n\n\n\n\n\n\n\nRaschka y Mirjalili (2019), con su repositorio gratuito en GitHub\n\n\n\n\n\n\n\nZhang et al. (2023), Disponible acá\n\n\n\n\n\n\n\n5 Referencias\n\n\nGéron, Aurélien. 2022. Hands-on machine learning with Scikit-Learn, Keras, and TensorFlow. O’Reilly Media, Inc.\n\n\nGoodfellow, Ian, Yoshua Bengio, y Aaron Courville. 2016. Deep learning. MIT press.\n\n\nRaschka, Sebastian, y Vahid Mirjalili. 2019. Python machine learning: Machine learning and deep learning with Python, scikit-learn, and TensorFlow 2. Packt Publishing Ltd.\n\n\nZhang, Aston, Zachary C Lipton, Mu Li, y Alexander J Smola. 2023. Dive into deep learning. Cambridge University Press.\n\n\n\n\n\n\n Volver arriba"
+  },
+  {
+    "objectID": "courses/simulation/index.html",
+    "href": "courses/simulation/index.html",
+    "title": "Simulación Estadística",
+    "section": "",
+    "text": "1 Objetivos del curso\n\n\n\n\n\n\n\nModelar estocásticamente y simular sistemas reales simples.\nFormular modelos de simulación para sistemas reales complejos.\nVerificar y validar los modelos de simulación.\nManejar un lenguaje computacional que permita simular situaciones relativamente complejas.\n\n\n\n\n\n\n2 Programa del curso\n\n\n\n\n\n\nTipUnidad 0: Preliminares\n\n\n\n\n\n0.1. Probabilidades\n0.2. Probabilidad condicional e independencia\n0.3. Distribuciones de probabilidad y variables aleatorias\n0.4. Variables aleatorias\n0.5. Distribuciones de probabilidad\n0.6. Funciones de variables aleatorias\nSlides\n\n\n\n\n\n\n\n\n\nTipUnidad 1: Generación de Números Pseudos Aleatorios.\n\n\n\n\n\n1.1. Aspectos históricos.\n1.2. Método Congruencial, Aditivo y Mixto.\n1.3. Método Cuadrados Medios y otros métodos para generar números pseudos aleatorios\n1.4. Test de Rachas y el test de Bondad de Ajuste para analizar la calidad de los números generados.\n1.5. Aplicación: Aproximación de integrales mediante números pseudos aleatorios.\nSlides - Slides en pdf\n\n\n\n\n\n\n\n\n\nTipUnidad 2: Generación de Variables Aleatorias (discretas y continuas)\n\n\n\n\n\n2.1. Método de la transformada inversa\n2.2. Método de Aceptación y Rechazo\n2.3. Método de composición\n2.4. Método Polar para generar variables aleatorias normales\n2.5. Método Box-Muller para generar variables aleatorias normales\n2.6. Métodos para generar variables aleatorias bidimensionales: Caso Normal.\nSlides\n\n\n\n\n\n\n\n\n\nTipUnidad 3: Técnicas de Reducción de Varianza.\n\n\n\n\n\n3.1. Uso de variables antitéticas.\n3.2. Uso de variables de control\n3.3. Reducción de varianza mediante condicionamiento.\n3.4. Uso de muestreo estratificado\nSlides\n\n\n\n\n\n\n\n\n\nTipUnidad 4: Método de simulación por medio de eventos discretos.\n\n\n\n\n\n4.1. Generación de un Proceso de Poisson\n4.2. Generación de un Proceso de Poisson No Homogéneo.\n4.3. Simulación mediante eventos discretos.\n4.4. Sistema de líneas de espera con un servidor\n4.5. Sistema de línea de espera con dos servidores en serie.\n4.6. Sistema de línea de espera con dos servidores en paralelo.\n4.7. Aplicación de sistemas de líneas de espera mediante uso de software.\n\n\n\n\n\n3 Procedimiento de evaluación\n\n\n\n\n\n\nEvaluación: Tres pruebas escritas programadas (PEP) y trabajos grupales con ponderaciones:\n\nPEP_1: 25\\%\nPEP_2: 25\\%\nPEP_3: 25\\%\nTareas: 25\\%\n\n\n\n\n\n\n4 Bibliografía\nLos principales libros que usaremos, además de otros recursos online son los siguientes:\n\n\n\n\n\n\nRoss (2022)\n\n\n\n\n\n\n\nRubinstein y Kroese (2016)\n\n\n\n\n\n\n\nMorgan (2018)\n\n\n\n\n\n\n\nRizzo (2019), Con su repositorio gratuito en Github\n\n\n\n\n\n\n\n5 Referencias\n\n\nMorgan, Byron JT. 2018. Elements of simulation. Routledge.\n\n\nRizzo, Maria L. 2019. Statistical Computing with R. Second. The R Series. Chapman & Hall/CRC.\n\n\nRoss, Sheldon M. 2022. Simulation. academic press.\n\n\nRubinstein, Reuven Y, y Dirk P Kroese. 2016. Simulation and the Monte Carlo method. John Wiley & Sons.\n\n\n\n\n\n\n Volver arriba"
+  },
+  {
+    "objectID": "guided_theses/index.html",
+    "href": "guided_theses/index.html",
+    "title": "Tesistas",
+    "section": "",
+    "text": "Registro de tesis guiadas, co-guiadas y trabajos de titulación asociados a docencia e investigación.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAño\nTipo de Programa\nUniversidad\nNombre del Programa\nNombre estudiante\nComisión completa\nTítulo del trabajo\nFecha defensa\nEnlace al documento\n\n\n\n\n\n\n\n\n\n\n Volver arriba"
+  },
+  {
+    "objectID": "projects/fondecyt-11251120/index.html",
+    "href": "projects/fondecyt-11251120/index.html",
+    "title": "FONDECYT Iniciación 2025-2027",
+    "section": "",
+    "text": "Proyecto FONDECYT de Iniciación - ANID 11251120\nInvestigador responsable: Francisco Plaza-Vega\nPeriodo: 2025-2027"
+  },
+  {
+    "objectID": "projects/fondecyt-11251120/index.html#resumen",
+    "href": "projects/fondecyt-11251120/index.html#resumen",
+    "title": "FONDECYT Iniciación 2025-2027",
+    "section": "Resumen",
+    "text": "Resumen\nEste proyecto estudia dinámicas ecosistémicas espacio-temporales asociadas al cambio climático mediante herramientas estadísticas, inteligencia artificial generativa y modelos de series de tiempo con memoria larga. El foco aplicado está en sistemas ambientales y pesqueros, con especial interés en integrar información ecológica, oceanográfica y productiva para mejorar la comprensión de procesos complejos bajo condiciones cambiantes."
+  },
+  {
+    "objectID": "projects/fondecyt-11251120/index.html#ejes-de-trabajo",
+    "href": "projects/fondecyt-11251120/index.html#ejes-de-trabajo",
+    "title": "FONDECYT Iniciación 2025-2027",
+    "section": "Ejes de trabajo",
+    "text": "Ejes de trabajo\n\n\nModelación espacio-temporal\nRepresentación de patrones ambientales y pesqueros considerando dependencia temporal, estructura espacial e interacción entre variables.\n\n\nSeries de tiempo con memoria larga\nDesarrollo y aplicación de modelos capaces de capturar persistencia, variabilidad y señales de largo plazo en sistemas naturales.\n\n\nInteligencia artificial generativa\nExploración de herramientas generativas para simulación, integración de información y apoyo al análisis de escenarios."
+  },
+  {
+    "objectID": "projects/fondecyt-11251120/index.html#productos-asociados",
+    "href": "projects/fondecyt-11251120/index.html#productos-asociados",
+    "title": "FONDECYT Iniciación 2025-2027",
+    "section": "Productos asociados",
+    "text": "Productos asociados\n\nPublicaciones derivadas del proyecto.\nTesis y trabajos de titulación vinculados a las líneas de investigación.\nMaterial de divulgación, docencia y colaboración interdisciplinaria."
+  },
+  {
+    "objectID": "projects/fondecyt-11251120/index.html#tesis-asociadas",
+    "href": "projects/fondecyt-11251120/index.html#tesis-asociadas",
+    "title": "FONDECYT Iniciación 2025-2027",
+    "section": "Tesis asociadas",
+    "text": "Tesis asociadas\nLas tesis relacionadas con el proyecto se irán registrando en la sección Tesistas."
+  },
+  {
+    "objectID": "research/2008-01-02-anchoveta-capturas-redes-neuronales/index.html",
+    "href": "research/2008-01-02-anchoveta-capturas-redes-neuronales/index.html",
+    "title": "Predicción de capturas de anchoveta (Engraulis ringens) en el norte de Chile mediante redes neuronales artificiales: un enfoque multivariado",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2008-01-02-anchoveta-capturas-redes-neuronales/index.html#cita",
+    "href": "research/2008-01-02-anchoveta-capturas-redes-neuronales/index.html#cita",
+    "title": "Predicción de capturas de anchoveta (Engraulis ringens) en el norte de Chile mediante redes neuronales artificiales: un enfoque multivariado",
+    "section": "Cita",
+    "text": "Cita\nPlaza, F., Yáñez, E., Gutiérrez-Estrada, J. C., Pulido-Calvo, I., & Rodríguez, N. (2008). Predicción de capturas de anchoveta (Engraulis ringens) en el norte de Chile mediante redes neuronales artificiales: un enfoque multivariado. In J. C. Gutiérrez & E. Yáñez (Eds.), Nuevas aproximaciones metodológicas para el análisis de pesquerías (pp. 39-58). Universidad de Huelva Publicaciones."
+  },
+  {
+    "objectID": "research/2009-01-02-pacific-sardine-landings-neural-network/index.html",
+    "href": "research/2009-01-02-pacific-sardine-landings-neural-network/index.html",
+    "title": "Pacific sardine (Sardinops sagax, Jenyns 1842) landings prediction. A neural network ecosystemic approach",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2009-01-02-pacific-sardine-landings-neural-network/index.html#cita",
+    "href": "research/2009-01-02-pacific-sardine-landings-neural-network/index.html#cita",
+    "title": "Pacific sardine (Sardinops sagax, Jenyns 1842) landings prediction. A neural network ecosystemic approach",
+    "section": "Cita",
+    "text": "Cita\nGutiérrez-Estrada, J. C., Yáñez, E., Pulido-Calvo, I., Silva, C., Plaza, F., & Bórquez, C. (2009). Pacific sardine (Sardinops sagax, Jenyns 1842) landings prediction. A neural network ecosystemic approach. Fisheries Research, 100(2), 116-125."
+  },
+  {
+    "objectID": "research/2014-01-01-climate-change-fisheries-chile/index.html",
+    "href": "research/2014-01-01-climate-change-fisheries-chile/index.html",
+    "title": "Climate change and fisheries in Chile",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2014-01-01-climate-change-fisheries-chile/index.html#cita",
+    "href": "research/2014-01-01-climate-change-fisheries-chile/index.html#cita",
+    "title": "Climate change and fisheries in Chile",
+    "section": "Cita",
+    "text": "Cita\nYáñez, E., Barbieri, M. A., Plaza, F., & Silva, C. (2014). Climate change and fisheries in Chile. In Vulnerability of agriculture, water and fisheries to climate change: toward sustainable adaptation strategies (Ch. 16, pp. 259-270)."
+  },
+  {
+    "objectID": "research/2016-01-01-pelagic-landings-a2-climate-change/index.html",
+    "href": "research/2016-01-01-pelagic-landings-a2-climate-change/index.html",
+    "title": "Pelagic resources landings in central-southern Chile under the A2 climate change scenarios",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2016-01-01-pelagic-landings-a2-climate-change/index.html#cita",
+    "href": "research/2016-01-01-pelagic-landings-a2-climate-change/index.html#cita",
+    "title": "Pelagic resources landings in central-southern Chile under the A2 climate change scenarios",
+    "section": "Cita",
+    "text": "Cita\nYáñez, E., Plaza, F., Silva, C., Sánchez, F., Barbieri, M. A., & Aranis, A. (2016). Pelagic resources landings in central-southern Chile under the A2 climate change scenarios. Ocean Dynamics, 66(10), 1333-1351."
+  },
+  {
+    "objectID": "research/2017-01-02-climate-change-anchovy-sardine-anns/index.html",
+    "href": "research/2017-01-02-climate-change-anchovy-sardine-anns/index.html",
+    "title": "Modelling climate change impacts on anchovy and sardine landings in northern Chile using ANNs",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2017-01-02-climate-change-anchovy-sardine-anns/index.html#cita",
+    "href": "research/2017-01-02-climate-change-anchovy-sardine-anns/index.html#cita",
+    "title": "Modelling climate change impacts on anchovy and sardine landings in northern Chile using ANNs",
+    "section": "Cita",
+    "text": "Cita\nYáñez, E., Plaza, F., Sanchez, F., Silva, C., Barbieri, M. A., & Bohm, G. (2017). Modelling climate change impacts on anchovy and sardine landings in northern Chile using ANNs. Latin American Journal of Aquatic Research, 45(4), 675-689."
+  },
+  {
+    "objectID": "research/2019-01-01-seismic-hazard-deep-neural-networks/index.html",
+    "href": "research/2019-01-01-seismic-hazard-deep-neural-networks/index.html",
+    "title": "Assessing seismic hazard in Chile using deep neural networks",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2019-01-01-seismic-hazard-deep-neural-networks/index.html#cita",
+    "href": "research/2019-01-01-seismic-hazard-deep-neural-networks/index.html#cita",
+    "title": "Assessing seismic hazard in Chile using deep neural networks",
+    "section": "Cita",
+    "text": "Cita\nPlaza, F., Nicolis, O., & Salas, R. (2019). Assessing seismic hazard in Chile using deep neural networks. In Natural Disasters. IntechOpen. https://doi.org/10.5772/intechopen.83403"
+  },
+  {
+    "objectID": "research/2021-01-01-hermite-spatial-variations-stochastic-heat-equation/index.html",
+    "href": "research/2021-01-01-hermite-spatial-variations-stochastic-heat-equation/index.html",
+    "title": "Hermite spatial variations for the solution to the stochastic heat equation",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2021-01-01-hermite-spatial-variations-stochastic-heat-equation/index.html#cita",
+    "href": "research/2021-01-01-hermite-spatial-variations-stochastic-heat-equation/index.html#cita",
+    "title": "Hermite spatial variations for the solution to the stochastic heat equation",
+    "section": "Cita",
+    "text": "Cita\nAraya, H., Garzón, J., Moreno, N., & Plaza, F. (2021). Hermite spatial variations for the solution to the stochastic heat equation. Mathematical Communications, 26(2), 253-270."
+  },
+  {
+    "objectID": "research/2023-01-01-anchovy-garchx-missing-values/index.html",
+    "href": "research/2023-01-01-anchovy-garchx-missing-values/index.html",
+    "title": "Environmental effect on the variability of anchovy (Engraulis ringens) in northern Chile: Autoregressive conditional heteroskedastic approach with exogenonus variable and missing values",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2023-01-01-anchovy-garchx-missing-values/index.html#cita",
+    "href": "research/2023-01-01-anchovy-garchx-missing-values/index.html#cita",
+    "title": "Environmental effect on the variability of anchovy (Engraulis ringens) in northern Chile: Autoregressive conditional heteroskedastic approach with exogenonus variable and missing values",
+    "section": "Cita",
+    "text": "Cita\nPlaza, F., Araya, H., & Yáñez, E. (2023). Environmental effect on the variability of anchovy (Engraulis ringens) in northern Chile: Autoregressive conditional heteroskedastic approach with exogenonus variable and missing values. Fisheries Research, 260, 106607."
+  },
+  {
+    "objectID": "research/2024-01-04-garchx-anchovy-sardine/index.html",
+    "href": "research/2024-01-04-garchx-anchovy-sardine/index.html",
+    "title": "Anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax) variability changes in northern Chile associated with the environment and inter species synchronicity: GARCH model with exogenous variable and hybrid Bayesian deep learning estimation approach",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2024-01-04-garchx-anchovy-sardine/index.html#cita",
+    "href": "research/2024-01-04-garchx-anchovy-sardine/index.html#cita",
+    "title": "Anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax) variability changes in northern Chile associated with the environment and inter species synchronicity: GARCH model with exogenous variable and hybrid Bayesian deep learning estimation approach",
+    "section": "Cita",
+    "text": "Cita\nPlaza-Vega, F., & Araya, H. (2024). Anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax) variability changes in northern Chile associated with the environment and inter species synchronicity: GARCH model with exogenous variable and hybrid Bayesian deep learning estimation approach. Progress in Oceanography, 221."
+  },
+  {
+    "objectID": "research/2024-01-04-garchx-anchovy-sardine/index.html#abstract",
+    "href": "research/2024-01-04-garchx-anchovy-sardine/index.html#abstract",
+    "title": "Anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax) variability changes in northern Chile associated with the environment and inter species synchronicity: GARCH model with exogenous variable and hybrid Bayesian deep learning estimation approach",
+    "section": "Abstract",
+    "text": "Abstract\nSmall pelagic fish species, such as anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax), play a crucial role in marine ecosystems worldwide as they serve as an important food source for higher-order predators, such as seabirds, marine mammals, and larger fish species; also from their high productivity in terms of fishery landings, they help with maintaining food security. However, small pelagic populations are known for their variability, with fluctuations in their distribution and abundance influenced by interactions with environmental and human-related factors in different spatio-temporal scales. This study aims to investigate the variability in anchovy and sardine populations in northern Chile and their potential environmental drivers by using a class of models that address the changes in variability (i.e. variance) over time, namely Generalized autoregressive conditional heteroskedasticity (GARCH) models. In particular, this work considers a GARCH model that includes an additional term in the variance, that could help to better model the variability fluctuations of both anchovy and sardine, explained by environmental factors. Since there is no estimation procedures for those type of models, we propose a hybrid Approximate Bayesian Computation (ABC) procedure that involves the use of Deep Learning structures for estimating the parameters of the model and obtain posterior distributions. The results are two-fold: First, the proposal of a new time series model that better explain conditional variance with exogenous variables and a novel estimation procedure, and second, a novel approach for establishing explicit models that address the variability of small pelagic fisheries and their interaction with the environment."
+  },
+  {
+    "objectID": "research/2025-01-01-species-classification-fisheries-chile/index.html",
+    "href": "research/2025-01-01-species-classification-fisheries-chile/index.html",
+    "title": "Deep learning-based classification of species in central-southern fisheries in Chile",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2025-01-01-species-classification-fisheries-chile/index.html#cita",
+    "href": "research/2025-01-01-species-classification-fisheries-chile/index.html#cita",
+    "title": "Deep learning-based classification of species in central-southern fisheries in Chile",
+    "section": "Cita",
+    "text": "Cita\nAlvarado, E., Plaza-Vega, F., Montenegro, C., & Saavedra, O. (2025). Deep learning-based classification of species in central-southern fisheries in Chile. Latin American Journal of Aquatic Research, 53(3), 411-424."
+  },
+  {
+    "objectID": "research/2026-01-02-jack-mackerel-deep-learning-surplus-production/index.html",
+    "href": "research/2026-01-02-jack-mackerel-deep-learning-surplus-production/index.html",
+    "title": "Deep learning and surplus production models for multivariate autoregressive modeling and simulation of the jack mackerel fishery associated with environmental conditions",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2026-01-02-jack-mackerel-deep-learning-surplus-production/index.html#cita",
+    "href": "research/2026-01-02-jack-mackerel-deep-learning-surplus-production/index.html#cita",
+    "title": "Deep learning and surplus production models for multivariate autoregressive modeling and simulation of the jack mackerel fishery associated with environmental conditions",
+    "section": "Cita",
+    "text": "Cita\nPlaza-Vega, F., Yáñez, E., Fréon, P., Araya, H., & Aranis, A. (2026). Deep learning and surplus production models for multivariate autoregressive modeling and simulation of the jack mackerel fishery associated with environmental conditions. Deep Sea Research Part II: Topical Studies in Oceanography, 227, 105645."
+  },
+  {
+    "objectID": "research/2026-01-04-ou-rosenblatt-process/index.html",
+    "href": "research/2026-01-04-ou-rosenblatt-process/index.html",
+    "title": "Drift parameter estimation for the noisy Ornstein-Uhlenbeck process driven by a Rosenblatt process",
+    "section": "",
+    "text": "Figura representativa: reemplazar cover.png por una figura del artículo o subir material complementario a figures/."
+  },
+  {
+    "objectID": "research/2026-01-04-ou-rosenblatt-process/index.html#cita",
+    "href": "research/2026-01-04-ou-rosenblatt-process/index.html#cita",
+    "title": "Drift parameter estimation for the noisy Ornstein-Uhlenbeck process driven by a Rosenblatt process",
+    "section": "Cita",
+    "text": "Cita\nAraya, H., Plaza-Vega, F., & Alvarado, E. (2026). Drift parameter estimation for the noisy Ornstein-Uhlenbeck process driven by a Rosenblatt process. Statistics & Probability Letters, 237, 110803."
   }
 ]

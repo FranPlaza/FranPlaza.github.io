@@ -1,0 +1,25 @@
+.project-meta {
+  border-left: 4px solid #2f6f73;
+  padding: 0.85rem 1rem;
+  background: rgba(47, 111, 115, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.project-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin: 1.25rem 0;
+}
+
+.project-item {
+  border: 1px solid rgba(80, 90, 95, 0.22);
+  border-radius: 8px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.project-item h3 {
+  font-size: 1.05rem;
+  margin-top: 0;
+}

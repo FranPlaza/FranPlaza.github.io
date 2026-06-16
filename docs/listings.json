@@ -2,7 +2,30 @@
   {
     "listing": "/research/index.html",
     "items": [
-      "/research/2024-01-04-garchx-anchovy-sardine/index.html"
+      "/research/2026-01-04-ou-rosenblatt-process/index.html",
+      "/research/2026-01-03-ou-small-general-gaussian-noise/index.html",
+      "/research/2026-01-02-jack-mackerel-deep-learning-surplus-production/index.html",
+      "/research/2026-01-01-beggiatoa-microbial-mats/index.html",
+      "/research/2025-01-01-species-classification-fisheries-chile/index.html",
+      "/research/2024-07-01-mgmt-radiomics-explainable-ml/index.html",
+      "/research/2024-01-04-garchx-anchovy-sardine/index.html",
+      "/research/2023-01-02-fractional-power-diffusion-bayesian-deep-learning/index.html",
+      "/research/2023-01-01-anchovy-garchx-missing-values/index.html",
+      "/research/2022-01-01-redacs-covid-adaptive-cluster-sampling/index.html",
+      "/research/2021-01-01-hermite-spatial-variations-stochastic-heat-equation/index.html",
+      "/research/2020-01-01-seismic-events-deep-learning/index.html",
+      "/research/2019-01-01-seismic-hazard-deep-neural-networks/index.html",
+      "/research/2017-01-03-climate-change-fisheries-aquaculture-chile/index.html",
+      "/research/2017-01-02-climate-change-anchovy-sardine-anns/index.html",
+      "/research/2017-01-01-ecosystem-patterns-anchovy-sardine/index.html",
+      "/research/2016-01-01-pelagic-landings-a2-climate-change/index.html",
+      "/research/2015-01-01-jack-mackerel-landings-neural-networks/index.html",
+      "/research/2014-01-01-climate-change-fisheries-chile/index.html",
+      "/research/2010-01-01-anchovy-sardine-abundance-forecast/index.html",
+      "/research/2009-01-02-pacific-sardine-landings-neural-network/index.html",
+      "/research/2009-01-01-anchoveta-landings-apropech/index.html",
+      "/research/2008-01-02-anchoveta-capturas-redes-neuronales/index.html",
+      "/research/2008-01-01-nonlinear-forecast-anchovy-globec/index.html"
     ]
   }
 ]

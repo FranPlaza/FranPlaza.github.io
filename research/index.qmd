@@ -1,11 +1,10 @@
 ---
 title: "Publicaciones" 
 description: |
-  This is home for my research publications, each linked with<br>
-  accompanying preprints, posters, and/or news pieces.
+  Selección de publicaciones científicas, capítulos de libro y trabajos de conferencia.
 listing: 
   contents: 
-    - "**/index.qmd"
+    - "*/index.qmd"
   sort: "date desc"
   type: default
   categories: false
@@ -13,6 +12,7 @@ listing:
   filter-ui: false
   fields: [title, author, categories, date]
   image-align: left
+  date-format: "YYYY"
   # image-height: 10em
   # page-size: 5
 lang: es
@@ -27,3 +27,5 @@ format:
 # resources:
 #   - ../assets/listing-default.css
 ---
+
+Esta sección reúne mis publicaciones en estadística aplicada, aprendizaje automático, series de tiempo, procesos estocásticos, pesquerías y cambio climático. Cada entrada queda preparada para incorporar una figura representativa del artículo reemplazando el archivo `cover.png` de su carpeta.

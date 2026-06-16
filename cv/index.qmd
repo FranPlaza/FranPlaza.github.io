@@ -1,0 +1,35 @@
+---
+title: "Curriculum Vitae"
+description: "Resumen académico y CV en PDF."
+lang: es
+page-layout: full
+format:
+  html:
+    css: styles.css
+---
+
+::: {.cv-hero}
+::: {.cv-summary}
+## Francisco J. Plaza-Vega
+
+Profesor Asociado del Departamento de Matemática y Ciencia de la Computación de la Universidad de Santiago de Chile. Mi trabajo se sitúa en la intersección entre estadística, ciencia de datos, aprendizaje automático, pesquerías y cambio climático.
+
+::: {.cv-actions}
+[Descargar CV en PDF](FJPV_CV_Espanol.pdf){.btn .btn-primary target="_blank"}
+[Ver publicaciones](../research/index.qmd){.btn .btn-outline-secondary}
+:::
+:::
+
+::: {.cv-highlights}
+**Líneas principales**
+
+- Estadística aplicada y computacional.
+- Deep learning y machine learning.
+- Series de tiempo, procesos estocásticos y modelos GARCH.
+- Pesquerías, medio ambiente y cambio climático.
+:::
+:::
+
+## Vista previa
+
+<iframe class="cv-preview" src="FJPV_CV_Espanol.pdf" title="Curriculum Vitae Francisco Plaza-Vega"></iframe>

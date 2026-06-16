@@ -1,0 +1,27 @@
+---
+title: "Deep learning-based classification of species in central-southern fisheries in Chile"
+author: "Alvarado, E.; Plaza-Vega, F.; Montenegro, C.; Saavedra, O."
+date: '2025-01-01'
+date-format: "YYYY"
+slug: species-classification-fisheries-chile
+categories:
+  - Investigación
+  - Deep Learning
+  - Pesquerías
+  - Clasificación
+description: "Clasificación de especies en pesquerías centro-sur de Chile mediante aprendizaje profundo."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Alvarado, E., Plaza-Vega, F., Montenegro, C., & Saavedra, O. (2025). Deep learning-based classification of species in central-southern fisheries in Chile. *Latin American Journal of Aquatic Research*, 53(3), 411-424.

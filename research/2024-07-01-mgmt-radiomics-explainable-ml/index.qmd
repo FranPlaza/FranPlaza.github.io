@@ -1,0 +1,27 @@
+---
+title: "Explainable Machine-Learning for identifying the genetic biomarker MGMT in brain tumors using magnetic resonance imaging radiomics"
+author: "Ponce, S.; Chabert, S.; Mayeta, L.; Franco, P.; Plaza-Vega, F.; Querales, M.; Salas, R."
+date: '2024-07-01'
+date-format: "YYYY"
+slug: mgmt-radiomics-explainable-ml
+categories:
+  - Investigación
+  - Machine Learning
+  - Radiomics
+  - Salud
+description: "Uso de aprendizaje automático explicable y radiomics para identificar el biomarcador genético MGMT en tumores cerebrales."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Ponce, S., Chabert, S., Mayeta, L., Franco, P., Plaza-Vega, F., Querales, M., & Salas, R. (2024). Explainable Machine-Learning for identifying the genetic biomarker MGMT in brain tumors using magnetic resonance imaging radiomics. In *2024 14th International Conference on Pattern Recognition Systems (ICPRS)* (pp. 1-6). IEEE.

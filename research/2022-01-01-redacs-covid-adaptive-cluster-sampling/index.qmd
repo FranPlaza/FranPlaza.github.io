@@ -1,0 +1,27 @@
+---
+title: "REDACS: Regional emergency-driven adaptive cluster sampling for effective COVID-19 management"
+author: "Stehlík, M.; Kiselák, J.; Dinamarca, A.; Alvarado, E.; Plaza, F.; Medina, F. A.; Stehlíková, S.; Marek, J.; Venegas, B.; Gajdoš, A.; Li, Y.; Katuščák, S.; Bražinová, A.; Zeintl, E.; Lu, Y."
+date: '2022-01-01'
+date-format: "YYYY"
+slug: redacs-covid-adaptive-cluster-sampling
+categories:
+  - Investigación
+  - Muestreo adaptativo
+  - COVID-19
+  - Salud pública
+description: "Propuesta de muestreo adaptativo regional para apoyar la gestión efectiva de emergencias sanitarias por COVID-19."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Stehlík, M., Kiselák, J., Dinamarca, A., Alvarado, E., Plaza, F., Medina, F. A., Stehlíková, S., Marek, J., Venegas, B., Gajdoš, A., Li, Y., Katuščák, S., Bražinová, A., Zeintl, E., & Lu, Y. (2022). REDACS: Regional emergency-driven adaptive cluster sampling for effective COVID-19 management. *Stochastic Analysis and Applications*.

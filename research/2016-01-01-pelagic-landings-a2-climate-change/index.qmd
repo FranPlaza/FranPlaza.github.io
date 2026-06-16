@@ -1,0 +1,26 @@
+---
+title: "Pelagic resources landings in central-southern Chile under the A2 climate change scenarios"
+author: "Yáñez, E.; Plaza, F.; Silva, C.; Sánchez, F.; Barbieri, M. A.; Aranis, A."
+date: '2016-01-01'
+date-format: "YYYY"
+slug: pelagic-landings-a2-climate-change
+categories:
+  - Investigación
+  - Cambio climático
+  - Pesquerías
+description: "Análisis de desembarques de recursos pelágicos en Chile centro-sur bajo escenarios A2 de cambio climático."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Yáñez, E., Plaza, F., Silva, C., Sánchez, F., Barbieri, M. A., & Aranis, A. (2016). Pelagic resources landings in central-southern Chile under the A2 climate change scenarios. *Ocean Dynamics*, 66(10), 1333-1351.

@@ -1,0 +1,30 @@
+---
+title: "Anchovy (Engraulis ringens) and sardine (Sardinops sagax) abundance forecast off northern Chile: A multivariate ecosystemic neural network approach"
+author: "Yáñez, E.; Plaza, F.; Gutiérrez-Estrada, J. C.; Rodríguez, N.; Barbieri, M. A.; Pulido-Calvo, I.; Bórquez, C."
+date: '2010-01-01'
+date-format: "YYYY"
+slug: anchovy-sardine-abundance-forecast
+categories:
+  - Investigación
+  - Redes neuronales
+  - Pesquerías
+description: "Pronóstico de abundancia de anchoveta y sardina frente al norte de Chile mediante un enfoque ecosistémico multivariado con redes neuronales."
+image: cover.png
+links:
+  - icon: file-richtext-fill
+    name: DOI
+    url: https://doi.org/10.1016/j.pocean.2010.09.015
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Yáñez, E., Plaza, F., Gutiérrez-Estrada, J. C., Rodríguez, N., Barbieri, M. A., Pulido-Calvo, I., & Bórquez, C. (2010). Anchovy (*Engraulis ringens*) and sardine (*Sardinops sagax*) abundance forecast off northern Chile: A multivariate ecosystemic neural network approach. *Progress in Oceanography*, 87, 242-250. https://doi.org/10.1016/j.pocean.2010.09.015

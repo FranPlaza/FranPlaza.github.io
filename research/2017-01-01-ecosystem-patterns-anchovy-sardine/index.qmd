@@ -1,0 +1,27 @@
+---
+title: "Identifying ecosystem patterns from time series of anchovy (Engraulis ringens) and sardine (Sardinops Sagax) landings in northern Chile"
+author: "Plaza, F.; Salas, R.; Yáñez, E."
+date: '2017-01-01'
+date-format: "YYYY"
+slug: ecosystem-patterns-anchovy-sardine
+categories:
+  - Investigación
+  - Pesquerías
+  - Series de tiempo
+  - Ecosistemas
+description: "Identificación de patrones ecosistémicos a partir de series de tiempo de desembarques de anchoveta y sardina en el norte de Chile."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Plaza, F., Salas, R., & Yáñez, E. (2017). Identifying ecosystem patterns from time series of anchovy (*Engraulis ringens*) and sardine (*Sardinops sagax*) landings in northern Chile. *Journal of Statistical Computation and Simulation*, 88(10), 1863-1881.

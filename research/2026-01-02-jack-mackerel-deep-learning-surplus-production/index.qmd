@@ -1,0 +1,27 @@
+---
+title: "Deep learning and surplus production models for multivariate autoregressive modeling and simulation of the jack mackerel fishery associated with environmental conditions"
+author: "Plaza-Vega, F.; Yáñez, E.; Fréon, P.; Araya, H.; Aranis, A."
+date: '2026-01-02'
+date-format: "YYYY"
+slug: jack-mackerel-deep-learning-surplus-production
+categories:
+  - Investigación
+  - Deep Learning
+  - Pesquerías
+  - Medio ambiente
+description: "Modelación y simulación de la pesquería de jurel mediante deep learning, modelos de producción excedentaria y condiciones ambientales."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Plaza-Vega, F., Yáñez, E., Fréon, P., Araya, H., & Aranis, A. (2026). Deep learning and surplus production models for multivariate autoregressive modeling and simulation of the jack mackerel fishery associated with environmental conditions. *Deep Sea Research Part II: Topical Studies in Oceanography*, 227, 105645.

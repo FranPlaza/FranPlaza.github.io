@@ -33,7 +33,7 @@ website:
     right: 
         - text: Acerca de
           href: about/index.qmd
-        - text: Cursos
+        - text: Docencia
           menu:
             - text: Simulación Estadística
               href: courses/simulation/index.qmd
@@ -41,10 +41,16 @@ website:
               href: courses/deep_learning/index.qmd
             - text: Quarto y Github Pages
               href: courses/quarto_github_pages/index.qmd
-        - text: Publicaciones
-          href: research/index.qmd
-#        - text: Proyectos
-#          href: index.qmd
+            - text: Tesistas
+              href: guided_theses/index.qmd
+        - text: Investigación
+          menu:
+            - text: Publicaciones
+              href: research/index.qmd
+            - text: FONDECYT Iniciación 2025-2027
+              href: projects/fondecyt-11251120/index.qmd
+        - text: CV
+          href: cv/index.qmd
 #        - text: Actividades
 #          href: index.qmd
   

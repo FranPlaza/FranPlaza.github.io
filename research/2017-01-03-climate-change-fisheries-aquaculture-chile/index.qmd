@@ -1,0 +1,27 @@
+---
+title: "Impacts of Climate Change on Marine Fisheries and Aquaculture in Chile"
+author: "Yáñez, E.; Lagos, N.; Norambuena, R.; Silva, C.; Letelier, J.; Muck, K. P.; San Martin, G.; Benítez, S.; Broitman, B.; Contreras, H.; Duarte, C.; Gelcich, S.; Labra, F.; Lardies, M.; Manríquez, P.; Quijón, P.; Ramajo, L.; González, E.; Molina, R.; Gómez, A.; Soto, L.; Montecino, A.; Barbieri, M. A.; Plaza, F.; Sánchez, F.; Aranis, A.; Bernal, C.; Böhm, G."
+date: '2017-01-03'
+date-format: "YYYY"
+slug: climate-change-fisheries-aquaculture-chile
+categories:
+  - Investigación
+  - Cambio climático
+  - Pesquerías
+  - Acuicultura
+description: "Capítulo sobre impactos del cambio climático en pesquerías y acuicultura marina en Chile."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Yáñez, E., Lagos, N., Norambuena, R., Silva, C., Letelier, J., Muck, K. P., San Martin, G., Benítez, S., Broitman, B., Contreras, H., Duarte, C., Gelcich, S., Labra, F., Lardies, M., Manríquez, P., Quijón, P., Ramajo, L., González, E., Molina, R., Gómez, A., Soto, L., Montecino, A., Barbieri, M. A., Plaza, F., Sánchez, F., Aranis, A., Bernal, C., & Böhm, G. (2017). Impacts of Climate Change on Marine Fisheries and Aquaculture in Chile. In F. Phillips & M. Pérez-Ramírez (Eds.), *Climate Change Impacts on Fisheries and Aquaculture: A Global Analysis* (Vol. 1, Ch. 10, pp. 239-332). Wiley.

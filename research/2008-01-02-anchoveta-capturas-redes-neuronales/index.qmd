@@ -1,0 +1,26 @@
+---
+title: "Predicción de capturas de anchoveta (Engraulis ringens) en el norte de Chile mediante redes neuronales artificiales: un enfoque multivariado"
+author: "Plaza, F.; Yáñez, E.; Gutiérrez-Estrada, J. C.; Pulido-Calvo, I.; Rodríguez, N."
+date: '2008-01-02'
+date-format: "YYYY"
+slug: anchoveta-capturas-redes-neuronales
+categories:
+  - Investigación
+  - Redes neuronales
+  - Pesquerías
+description: "Capítulo sobre predicción de capturas de anchoveta en el norte de Chile mediante redes neuronales artificiales."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Plaza, F., Yáñez, E., Gutiérrez-Estrada, J. C., Pulido-Calvo, I., & Rodríguez, N. (2008). Predicción de capturas de anchoveta (*Engraulis ringens*) en el norte de Chile mediante redes neuronales artificiales: un enfoque multivariado. In J. C. Gutiérrez & E. Yáñez (Eds.), *Nuevas aproximaciones metodológicas para el análisis de pesquerías* (pp. 39-58). Universidad de Huelva Publicaciones.

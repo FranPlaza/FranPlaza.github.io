@@ -1,0 +1,26 @@
+---
+title: "Predicción de desembarques de anchoveta (Engraulis ringens), I y II región, mediante la aplicación de redes neuronales artificiales"
+author: "Plaza, F."
+date: '2009-01-01'
+date-format: "YYYY"
+slug: anchoveta-landings-apropech
+categories:
+  - Investigación
+  - Redes neuronales
+  - Pesquerías
+description: "Artículo sobre predicción de desembarques de anchoveta en la I y II región mediante redes neuronales artificiales."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Plaza, F. (2009). Predicción de desembarques de anchoveta (*Engraulis ringens*), I y II región, mediante la aplicación de redes neuronales artificiales. *Revista de la Asociación de Profesionales Pesqueros (Apropech)*, 23.

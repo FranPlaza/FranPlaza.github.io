@@ -1,0 +1,26 @@
+---
+title: "Pacific sardine (Sardinops sagax, Jenyns 1842) landings prediction. A neural network ecosystemic approach"
+author: "Gutiérrez-Estrada, J. C.; Yáñez, E.; Pulido-Calvo, I.; Silva, C.; Plaza, F.; Bórquez, C."
+date: '2009-01-02'
+date-format: "YYYY"
+slug: pacific-sardine-landings-neural-network
+categories:
+  - Investigación
+  - Redes neuronales
+  - Pesquerías
+description: "Predicción de desembarques de sardina mediante un enfoque ecosistémico con redes neuronales."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Gutiérrez-Estrada, J. C., Yáñez, E., Pulido-Calvo, I., Silva, C., Plaza, F., & Bórquez, C. (2009). Pacific sardine (*Sardinops sagax*, Jenyns 1842) landings prediction. A neural network ecosystemic approach. *Fisheries Research*, 100(2), 116-125.

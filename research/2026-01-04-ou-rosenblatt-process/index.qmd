@@ -1,0 +1,26 @@
+---
+title: "Drift parameter estimation for the noisy Ornstein-Uhlenbeck process driven by a Rosenblatt process"
+author: "Araya, H.; Plaza-Vega, F.; Alvarado, E."
+date: '2026-01-04'
+date-format: "YYYY"
+slug: ou-rosenblatt-process
+categories:
+  - Investigación
+  - Procesos estocásticos
+  - Inferencia estadística
+description: "Estimación del parámetro de deriva en un proceso Ornstein-Uhlenbeck ruidoso conducido por un proceso de Rosenblatt."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Araya, H., Plaza-Vega, F., & Alvarado, E. (2026). Drift parameter estimation for the noisy Ornstein-Uhlenbeck process driven by a Rosenblatt process. *Statistics & Probability Letters*, 237, 110803.

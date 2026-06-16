@@ -1,0 +1,27 @@
+---
+title: "Parameter estimation for fractional power type diffusion: A hybrid Bayesian-deep learning approach"
+author: "Araya, H.; Plaza-Vega, F."
+date: '2023-01-02'
+date-format: "YYYY"
+slug: fractional-power-diffusion-bayesian-deep-learning
+categories:
+  - Investigación
+  - Deep Learning
+  - Procesos estocásticos
+  - Inferencia bayesiana
+description: "Estimación de parámetros para difusiones de potencia fraccional mediante un enfoque híbrido bayesiano y de deep learning."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Araya, H., & Plaza-Vega, F. (2023). Parameter estimation for fractional power type diffusion: A hybrid Bayesian-deep learning approach. *Communications in Statistics - Theory and Methods*, 1-21.

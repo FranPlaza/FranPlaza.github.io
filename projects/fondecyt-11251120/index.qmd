@@ -1,0 +1,57 @@
+---
+title: "FONDECYT Iniciación 2025-2027"
+subtitle: "Climate change: spatio-temporal ecosystem-based dynamics using statistical tools, generative AI and long memory time series"
+description: "Proyecto FONDECYT de Iniciación ANID 11251120."
+author: "Francisco Plaza-Vega"
+date: '2025-01-01'
+date-format: "YYYY"
+lang: es
+image: cover.png
+page-layout: full
+format:
+  html:
+    image: cover.png
+    css: styles.css
+---
+
+::: {.project-meta}
+**Proyecto FONDECYT de Iniciación - ANID 11251120**  
+Investigador responsable: **Francisco Plaza-Vega**  
+Periodo: **2025-2027**
+:::
+
+## Resumen
+
+Este proyecto estudia dinámicas ecosistémicas espacio-temporales asociadas al cambio climático mediante herramientas estadísticas, inteligencia artificial generativa y modelos de series de tiempo con memoria larga. El foco aplicado está en sistemas ambientales y pesqueros, con especial interés en integrar información ecológica, oceanográfica y productiva para mejorar la comprensión de procesos complejos bajo condiciones cambiantes.
+
+## Ejes de trabajo
+
+::: {.project-grid}
+::: {.project-item}
+### Modelación espacio-temporal
+
+Representación de patrones ambientales y pesqueros considerando dependencia temporal, estructura espacial e interacción entre variables.
+:::
+
+::: {.project-item}
+### Series de tiempo con memoria larga
+
+Desarrollo y aplicación de modelos capaces de capturar persistencia, variabilidad y señales de largo plazo en sistemas naturales.
+:::
+
+::: {.project-item}
+### Inteligencia artificial generativa
+
+Exploración de herramientas generativas para simulación, integración de información y apoyo al análisis de escenarios.
+:::
+:::
+
+## Productos asociados
+
+- Publicaciones derivadas del proyecto.
+- Tesis y trabajos de titulación vinculados a las líneas de investigación.
+- Material de divulgación, docencia y colaboración interdisciplinaria.
+
+## Tesis asociadas
+
+Las tesis relacionadas con el proyecto se irán registrando en la sección [Tesistas](../../guided_theses/index.qmd).

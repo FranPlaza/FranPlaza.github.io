@@ -1,0 +1,27 @@
+---
+title: "Modelling climate change impacts on anchovy and sardine landings in northern Chile using ANNs"
+author: "Yáñez, E.; Plaza, F.; Sanchez, F.; Silva, C.; Barbieri, M. A.; Bohm, G."
+date: '2017-01-02'
+date-format: "YYYY"
+slug: climate-change-anchovy-sardine-anns
+categories:
+  - Investigación
+  - Cambio climático
+  - Pesquerías
+  - Redes neuronales
+description: "Modelación de impactos del cambio climático en desembarques de anchoveta y sardina del norte de Chile mediante redes neuronales artificiales."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Yáñez, E., Plaza, F., Sanchez, F., Silva, C., Barbieri, M. A., & Bohm, G. (2017). Modelling climate change impacts on anchovy and sardine landings in northern Chile using ANNs. *Latin American Journal of Aquatic Research*, 45(4), 675-689.

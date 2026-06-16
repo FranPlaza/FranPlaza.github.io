@@ -1,0 +1,26 @@
+---
+title: "Climate change and fisheries in Chile"
+author: "Yáñez, E.; Barbieri, M. A.; Plaza, F.; Silva, C."
+date: '2014-01-01'
+date-format: "YYYY"
+slug: climate-change-fisheries-chile
+categories:
+  - Investigación
+  - Cambio climático
+  - Pesquerías
+description: "Capítulo sobre cambio climático y pesquerías en Chile."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Yáñez, E., Barbieri, M. A., Plaza, F., & Silva, C. (2014). Climate change and fisheries in Chile. In *Vulnerability of agriculture, water and fisheries to climate change: toward sustainable adaptation strategies* (Ch. 16, pp. 259-270).

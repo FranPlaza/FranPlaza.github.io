@@ -1,0 +1,26 @@
+---
+title: "Forecasting of Jack mackerel landings (Trachurus murphyi) in central-southern Chile through neural networks"
+author: "Naranjo, L.; Plaza, F.; Yáñez, E.; Barbieri, M. A.; Sánchez, F."
+date: '2015-01-01'
+date-format: "YYYY"
+slug: jack-mackerel-landings-neural-networks
+categories:
+  - Investigación
+  - Redes neuronales
+  - Pesquerías
+description: "Pronóstico de desembarques de jurel en Chile centro-sur mediante redes neuronales."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Naranjo, L., Plaza, F., Yáñez, E., Barbieri, M. A., & Sánchez, F. (2015). Forecasting of Jack mackerel landings (*Trachurus murphyi*) in central-southern Chile through neural networks. *Fisheries Oceanography*, 24(3), 219-228.

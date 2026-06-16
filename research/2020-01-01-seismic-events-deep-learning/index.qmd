@@ -1,0 +1,26 @@
+---
+title: "Prediction of intensity and location of seismic events using deep learning"
+author: "Nicolis, O.; Plaza, F.; Salas, R."
+date: '2020-01-01'
+date-format: "YYYY"
+slug: seismic-events-deep-learning
+categories:
+  - Investigación
+  - Deep Learning
+  - Sismología
+description: "Predicción de intensidad y localización de eventos sísmicos mediante aprendizaje profundo."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Nicolis, O., Plaza, F., & Salas, R. (2020). Prediction of intensity and location of seismic events using deep learning. *Spatial Statistics*, 42.

@@ -1,0 +1,27 @@
+---
+title: "Environmental effect on the variability of anchovy (Engraulis ringens) in northern Chile: Autoregressive conditional heteroskedastic approach with exogenonus variable and missing values"
+author: "Plaza, F.; Araya, H.; Yáñez, E."
+date: '2023-01-01'
+date-format: "YYYY"
+slug: anchovy-garchx-missing-values
+categories:
+  - Investigación
+  - GARCH-X
+  - Pesquerías
+  - Series de tiempo
+description: "Análisis del efecto ambiental sobre la variabilidad de la anchoveta en el norte de Chile mediante un enfoque GARCH-X con datos faltantes."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Plaza, F., Araya, H., & Yáñez, E. (2023). Environmental effect on the variability of anchovy (*Engraulis ringens*) in northern Chile: Autoregressive conditional heteroskedastic approach with exogenonus variable and missing values. *Fisheries Research*, 260, 106607.

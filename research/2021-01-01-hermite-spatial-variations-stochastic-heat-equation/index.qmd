@@ -1,0 +1,26 @@
+---
+title: "Hermite spatial variations for the solution to the stochastic heat equation"
+author: "Araya, H.; Garzón, J.; Moreno, N.; Plaza, F."
+date: '2021-01-01'
+date-format: "YYYY"
+slug: hermite-spatial-variations-stochastic-heat-equation
+categories:
+  - Investigación
+  - Procesos estocásticos
+  - Ecuaciones diferenciales estocásticas
+description: "Estudio de variaciones espaciales de Hermite para soluciones de la ecuación de calor estocástica."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Araya, H., Garzón, J., Moreno, N., & Plaza, F. (2021). Hermite spatial variations for the solution to the stochastic heat equation. *Mathematical Communications*, 26(2), 253-270.

@@ -1,0 +1,42 @@
+.cv-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(260px, 0.8fr);
+  gap: 1.5rem;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+
+.cv-summary h2 {
+  margin-top: 0;
+}
+
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.cv-highlights {
+  border: 1px solid rgba(80, 90, 95, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  background: rgba(47, 111, 115, 0.08);
+}
+
+.cv-preview {
+  width: 100%;
+  min-height: 780px;
+  border: 1px solid rgba(80, 90, 95, 0.25);
+  border-radius: 8px;
+}
+
+@media (max-width: 760px) {
+  .cv-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-preview {
+    min-height: 560px;
+  }
+}

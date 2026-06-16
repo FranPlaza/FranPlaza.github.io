@@ -1,0 +1,15 @@
+title-block-banner: "#00000000"
+title-block-banner-color: "rgba(255, 255, 255, 0.95)"
+include-in-header:
+  - text: |
+      <style>
+      .quarto-title-block .quarto-title-banner {
+        height: 220px;
+        background-image:
+          linear-gradient(rgba(38, 65, 74, 0.74), rgba(38, 65, 74, 0.74)),
+          url(cover.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      </style>

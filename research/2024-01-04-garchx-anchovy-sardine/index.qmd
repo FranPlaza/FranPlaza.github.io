@@ -1,33 +1,31 @@
 ---
 title: "Anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax) variability changes in northern Chile associated with the environment and inter species synchronicity: GARCH model with exogenous variable and hybrid Bayesian deep learning estimation approach"
-author: 
-- name: Francisco Plaza-Vega
-  orcid: 0000-0001-7577-2775
-- Héctor Araya
+author: "Francisco Plaza-Vega; Héctor Araya"
 date: '2024-01-04'
+date-format: "YYYY"
 slug: garchx-anchovy-sardine
 categories:
-  - Research
+  - Investigación
   - GARCH-X
-  - Time-Series
-description: 'Garch-X anchovy sardine'
+  - Series de tiempo
+  - Pesquerías
+description: "Modelo GARCH-X para estudiar cambios de variabilidad en anchoveta y sardina del norte de Chile."
 subtitle: Aplicamos un modelo GARCH que tiene una variable exógena a las pesquerías de anchoveta y sardina en el norte de Chile. Para estimar los parámetros del modelo proponemos una metodología híbrida que mezcla ABC y Deep Learning.
-links:
-- icon: file-richtext-fill
-  name: Publication
-  url: https://doi.org/10.1136/ip-2023-045069
-- icon: github
-  name: Relevant files
-  url: https://github.com/bolandlab/TBI_Definition
-- icon: calendar-check
-  name: Related talk
-  url: /talk/2022-04-27-dbei-research-day/
+image: cover.png
 lang: es
 format: 
   html: 
     image: cover.png
     page-layout: full
 ---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Plaza-Vega, F., & Araya, H. (2024). Anchovy (*Engraulis ringens*) and Pacific sardine (*Sardinops sagax*) variability changes in northern Chile associated with the environment and inter species synchronicity: GARCH model with exogenous variable and hybrid Bayesian deep learning estimation approach. *Progress in Oceanography*, 221.
 
 ## Abstract
 

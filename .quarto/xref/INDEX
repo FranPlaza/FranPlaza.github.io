@@ -31,5 +31,86 @@
   },
   "about/index.qmd": {
     "index.html": "b8ad3029"
+  },
+  "cv/index.qmd": {
+    "index.html": "1e833ae0"
+  },
+  "guided_theses/index.qmd": {
+    "index.html": "a677b09f"
+  },
+  "guided_theses/tesis.md": {
+    "tesis.html": "3100cac4"
+  },
+  "projects/fondecyt-11251120/index.qmd": {
+    "index.html": "71acbab0"
+  },
+  "research/2008-01-01-nonlinear-forecast-anchovy-globec/index.qmd": {
+    "index.html": "fa93f07c"
+  },
+  "research/2008-01-02-anchoveta-capturas-redes-neuronales/index.qmd": {
+    "index.html": "eb66252e"
+  },
+  "research/2009-01-01-anchoveta-landings-apropech/index.qmd": {
+    "index.html": "94a150e2"
+  },
+  "research/2009-01-02-pacific-sardine-landings-neural-network/index.qmd": {
+    "index.html": "b33025cc"
+  },
+  "research/2010-01-01-anchovy-sardine-abundance-forecast/index.qmd": {
+    "index.html": "35bf5e81"
+  },
+  "research/2014-01-01-climate-change-fisheries-chile/index.qmd": {
+    "index.html": "2d681b36"
+  },
+  "research/2015-01-01-jack-mackerel-landings-neural-networks/index.qmd": {
+    "index.html": "9dc62ae1"
+  },
+  "research/2016-01-01-pelagic-landings-a2-climate-change/index.qmd": {
+    "index.html": "5df3e3c1"
+  },
+  "research/2017-01-01-ecosystem-patterns-anchovy-sardine/index.qmd": {
+    "index.html": "7057ade0"
+  },
+  "research/2017-01-02-climate-change-anchovy-sardine-anns/index.qmd": {
+    "index.html": "7af27a42"
+  },
+  "research/2017-01-03-climate-change-fisheries-aquaculture-chile/index.qmd": {
+    "index.html": "ccfe2ab3"
+  },
+  "research/2019-01-01-seismic-hazard-deep-neural-networks/index.qmd": {
+    "index.html": "7c15eb08"
+  },
+  "research/2020-01-01-seismic-events-deep-learning/index.qmd": {
+    "index.html": "b08e125e"
+  },
+  "research/2021-01-01-hermite-spatial-variations-stochastic-heat-equation/index.qmd": {
+    "index.html": "ebad17da"
+  },
+  "research/2022-01-01-redacs-covid-adaptive-cluster-sampling/index.qmd": {
+    "index.html": "b7f14fd7"
+  },
+  "research/2023-01-01-anchovy-garchx-missing-values/index.qmd": {
+    "index.html": "1564a03f"
+  },
+  "research/2023-01-02-fractional-power-diffusion-bayesian-deep-learning/index.qmd": {
+    "index.html": "5dde87cc"
+  },
+  "research/2024-07-01-mgmt-radiomics-explainable-ml/index.qmd": {
+    "index.html": "d1468b38"
+  },
+  "research/2025-01-01-species-classification-fisheries-chile/index.qmd": {
+    "index.html": "e486eb13"
+  },
+  "research/2026-01-01-beggiatoa-microbial-mats/index.qmd": {
+    "index.html": "7d48ac5a"
+  },
+  "research/2026-01-02-jack-mackerel-deep-learning-surplus-production/index.qmd": {
+    "index.html": "3493c64e"
+  },
+  "research/2026-01-03-ou-small-general-gaussian-noise/index.qmd": {
+    "index.html": "57104c5b"
+  },
+  "research/2026-01-04-ou-rosenblatt-process/index.qmd": {
+    "index.html": "65e10432"
   }
 }

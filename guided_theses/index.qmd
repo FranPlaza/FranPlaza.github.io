@@ -1,0 +1,15 @@
+---
+title: "Tesistas"
+description: "Dirección de tesis y trabajos de titulación."
+lang: es
+page-layout: full
+format:
+  html:
+    css: styles.css
+---
+
+Registro de tesis guiadas, co-guiadas y trabajos de titulación asociados a docencia e investigación.
+
+::: {.theses-table}
+{{< include _tesis.md >}}
+:::

@@ -1,0 +1,27 @@
+---
+title: "Automatic detection of Beggiatoa microbial mats in salmon farms videos"
+author: "Martinez, N.; Moreno, S.; Plaza-Vega, F.; Castillo, J. E.; Carrasco, M."
+date: '2026-01-01'
+date-format: "YYYY"
+slug: beggiatoa-microbial-mats
+categories:
+  - Investigación
+  - Deep Learning
+  - Acuicultura
+  - Visión computacional
+description: "Detección automática de tapetes microbianos Beggiatoa en videos de centros de cultivo de salmones."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Martinez, N., Moreno, S., Plaza-Vega, F., Castillo, J. E., & Carrasco, M. (2026). Automatic detection of Beggiatoa microbial mats in salmon farms videos. *IEEE Access*, 14, 35356-35371.

@@ -1,0 +1,33 @@
+---
+title: "Assessing seismic hazard in Chile using deep neural networks"
+author: "Plaza, F.; Nicolis, O.; Salas, R."
+date: '2019-01-01'
+date-format: "YYYY"
+slug: seismic-hazard-deep-neural-networks
+categories:
+  - Investigación
+  - Deep Learning
+  - Sismología
+description: "Evaluación del peligro sísmico en Chile utilizando redes neuronales profundas."
+image: cover.png
+links:
+  - icon: file-richtext-fill
+    name: DOI
+    url: https://doi.org/10.5772/intechopen.83403
+  - icon: box-arrow-up-right
+    name: Documento
+    url: https://www.intechopen.com/online-first/assessing-seismic-hazard-in-chile-using-deep-neural-networks/
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Plaza, F., Nicolis, O., & Salas, R. (2019). Assessing seismic hazard in Chile using deep neural networks. In *Natural Disasters*. IntechOpen. https://doi.org/10.5772/intechopen.83403

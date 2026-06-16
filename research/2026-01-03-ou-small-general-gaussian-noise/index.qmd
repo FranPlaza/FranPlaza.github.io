@@ -1,0 +1,26 @@
+---
+title: "Drift parameter identification for the Ornstein-Uhlenbeck process driven by Ornstein-Uhlenbeck with small General Gaussian noise"
+author: "Araya, H.; Plaza-Vega, F.; Alvarado, E."
+date: '2026-01-03'
+date-format: "YYYY"
+slug: ou-small-general-gaussian-noise
+categories:
+  - Investigación
+  - Procesos estocásticos
+  - Inferencia estadística
+description: "Identificación del parámetro de deriva para procesos Ornstein-Uhlenbeck con ruido gaussiano general pequeño."
+image: cover.png
+lang: es
+format:
+  html:
+    image: cover.png
+    page-layout: full
+---
+
+::: {.callout-note appearance="simple" icon=false}
+**Figura representativa:** reemplazar `cover.png` por una figura del artículo o subir material complementario a `figures/`.
+:::
+
+## Cita
+
+Araya, H., Plaza-Vega, F., & Alvarado, E. (2026). Drift parameter identification for the Ornstein-Uhlenbeck process driven by Ornstein-Uhlenbeck with small General Gaussian noise. *Statistical Papers*, 67(3), 49.
