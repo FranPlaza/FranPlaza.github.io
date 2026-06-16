@@ -1,5 +1,5 @@
 | Año | Tipo de Programa | Universidad | Nombre del Programa | Nombre estudiante | Comisión completa | Título del trabajo | Fecha defensa | Enlace al documento |
-|---|---|---|---|---|---|---|---|---|
+|2026| prueba|prueba|prueba|prueba|prueba|prueba|prueba|prueba|
 
 <!--
 Copia esta fila y reemplaza los campos cuando agregues una tesis:
