@@ -1,0 +1,569 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Mini curso Quarto Github Pages",
+    "section": "",
+    "text": "Este mini curso está diseñado para introducir a los participantes en el uso de Quarto, GitHub y GitHub Pages para la creación y publicación de distintos tipos de documentos, con un foco en documentos web (de tipo .html). A lo largo del curso, aprenderán a generar documentos básicos en Quarto y a trabajar con repositorios en GitHub, utilizando GitHub Desktop para simplificar el flujo de trabajo. Al finalizar, los participantes serán capaces de publicar sus propios sitios web utilizando GitHub Pages, adquiriendo así una herramienta versátil para compartir su trabajo de manera profesional y accesible en la web.\n\n\n\n\n\n\n\n\nSlides del curso\n\n\n\n\n\nSlides\n\n\n\n\n\n\n\n\n\nPrerequisitos\n\n\n\n\n\n\nConocimientos básicos de Markdown\nFamiliaridad con la sintaxis de Markdown para la creación y edición de contenido.\nGitHub y GitHub Desktop\n\nInstalación de GitHub Desktop (enlace de descarga).\nCreación de una cuenta en GitHub y familiaridad con sus funcionalidades básicas, como la creación de repositorios.\nComprensión de conceptos básicos de Git y GitHub, como realizar commit, push y pull usando GitHub Desktop para facilitar el flujo de trabajo.\n\nInstalación de R y RStudio\n\nInstalar R (https://cran.r-project.org/) y RStudio (https://www.rstudio.com/).\nFamiliaridad básica con RStudio para ejecutar y editar código en R.\n\nInstalación de Quarto\n\nInstalar Quarto siguiendo las instrucciones oficiales.\nVerificar la instalación con el comando quarto check."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#example-slide",
+    "href": "slides/quarto-github-tutorial.html#example-slide",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Example slide",
+    "text": "Example slide\nThis is a subtitle\nBefore we dive a bit deeper, here is a simple example of the clean theme in action.\n\nNo pictures or anything fancy. Just text for the moment.\n\nNext, we’ll take a brief tour of some theme components.\n\nWe’ll use the same basic structure as the original LaTeX slides.\nNote that the full suite of Reveal.js features are available for this Quarto implementation, even if we don’t cover everything here."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#before-you-proceed",
+    "href": "slides/quarto-github-tutorial.html#before-you-proceed",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Before you proceed…",
+    "text": "Before you proceed…\nRequirements for the coding examples in this demo\nThe clean theme is language agnostic. Use it with R, Python, Julia, etc. Or none of the above.\nHowever, this demo uses R code to highlight advanced theme features. You’ll need to install some software if you’d like to render the demo “as-is”.\n\n\n\n\n\n\nRequired software (this demo only)\n\n\nR packages\ninstall.packages(c(\"modelsummary\", \"fixest\", \"pdftools\", \"tinytex\", \"threejs\"))\nTinyTex\nquarto install tinytex\nWhile reveal.js presentations are HTML format, we will show an example of how to embed LaTeX tables as images. This requires a working Tex distribution, of which TinyTex provides by far the easiest and lightest integration with Quarto. More details here."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#components-1",
+    "href": "slides/quarto-github-tutorial.html#components-1",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Components",
+    "text": "Components\nOrdered and Unordered Lists\nHere we have an unordered list.\n\nfirst item\n\nsub-item\n\nsecond item\n\nAnd next we have an ordered one.\n\nfirst item\n\nsub-item\n\nsecond item"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#components-2",
+    "href": "slides/quarto-github-tutorial.html#components-2",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Components",
+    "text": "Components\nAlerts & Cross-refs\nTo emphasize specific words or text, you can:\n\nUse the default .alert class, e.g. important note.\nUse the .fg class for custom colour, e.g. important note.\nUse the .bg class for custom background, e.g. important note.\n\nTo cross-reference, you have several options, for example:\n\nBeamer-like .button class provided by this theme, e.g. Appendix\nQuarto’s native cross-ref syntax, e.g., “See Sección 13.3.”"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#components-3",
+    "href": "slides/quarto-github-tutorial.html#components-3",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Components",
+    "text": "Components\nCitations\nCitations follow the standard Quarto format and be sourced from BibLaTex, BibTeX, or CLS files. For example:\n\nTopic 1: Spatial Frictions (Fajgelbaum et al. 2018; Hsieh y Moretti 2019; Moretti 2011)\nTopic 2: Blah (Suárez Serrato y Zidar 2016)"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#components-4",
+    "href": "slides/quarto-github-tutorial.html#components-4",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Components",
+    "text": "Components\nBlocks\nQuarto provides dedicated environments for theorems, lemmas, and so forth.\nBut in presentation format, it’s arguably more effective just to use a Callout Block.\n\n\n\n\n\n\nRegression Specification\n\n\nThe main specification is as follows:\n\\[\ny_{it} = X_{it} \\beta + \\mu_i + \\varepsilon_{it}\n\\]"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#components-5",
+    "href": "slides/quarto-github-tutorial.html#components-5",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Components",
+    "text": "Components\nMulticolumn I: Text only\n\n\nColumn 1\nHere is a long sentence that will wrap onto the next line as it hits the column width, and continue this way until it stops.\n\nColumn 2\nSome other text in another column.\nA second paragraph.\n\nMulticolumn support is very flexible and we can continue with a single full span column in the same slide."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#components-6",
+    "href": "slides/quarto-github-tutorial.html#components-6",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Components",
+    "text": "Components\nMulticolumn II: Text and figures\n\n\n\n\n\nA point about the figure that is potentially important.\nAnother point about the figure that is also potentially important.\n\n\nNote that sub- and multi-panel figures are also natively supported by Quarto. See here."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#components-7",
+    "href": "slides/quarto-github-tutorial.html#components-7",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Components",
+    "text": "Components\nMulticolumn III: Code and output\n\n\npalette(\"Classic Tableau\")\n\npar(\n  family = \"HersheySans\",\n  las = 1, pch = 19, cex = 1.5\n)\n\npairs(\n  iris[,1:4],\n  col=iris$Species\n)\n\n\n\n\n\n\n\n\nFigura 1: Pairwise scatterplot"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#markdown-tables",
+    "href": "slides/quarto-github-tutorial.html#markdown-tables",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Markdown tables",
+    "text": "Markdown tables\nDefault table styling\nThe clean theme rolls its own minimalist aesthetic for tables. This should interface directly with Quarto’s excellent table support.\n\n\n| fruit  | price  |\n|--------|-------:|\n| apple  | 2.05   |\n| pear   | 1.37   |\n| orange | 3.09   |\n\n: Fruit prices {tbl-colwidths=\"[75,25]\"}\n\n\n\n\nFruit prices\n\n\n\n\n\n\nfruit\nprice\n\n\n\n\napple\n2.05\n\n\npear\n1.37\n\n\norange\n3.09"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#regression-tables",
+    "href": "slides/quarto-github-tutorial.html#regression-tables",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Regression tables",
+    "text": "Regression tables\nRegression example\nThese aesthetics should carry over to any computation-based tables too.\nLet’s take a few slides to illustrate via a simple regression example:\n\nlibrary(fixest)\n\nmods = feols(\n  rating ~ complaints + privileges + learning + csw0(raises + critical),\n  data = attitude\n)\n\ndict = c(\"rating\"     = \"Overall Rating\",\n         \"complaints\" = \"Handling of Complaints\",\n         \"privileges\" = \"No Special Priviledges\",\n         \"learning\"   = \"Opportunity to Learn\",\n         \"raises\"     = \"Performance-Based Raises\",\n         \"critical\"   = \"Too Critical\")"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#regression-tables-1",
+    "href": "slides/quarto-github-tutorial.html#regression-tables-1",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Regression tables",
+    "text": "Regression tables\nmodelsummary\nPopular regression table software should play nicely with this theme out of the box. Here’s an example using modelsummary (with the default tinytable backend1). See the next slide for the resulting table.\n\nlibrary(modelsummary) # Make sure you have &gt;=v2.0.0\n\nmodelsummary(\n  setNames(mods, c(\"(1)\", \"(2)\")),\n  coef_map = dict, stars = TRUE,\n  gof_map = NA\n  ) |&gt;\n  # some optional stylistic tweaks\n  tinytable::group_tt(j = list(\"Dep. variable: Overall Rating\" = 2:3)) |&gt;\n  tinytable::style_tt(i = 1:2, j = 2:3, background = \"pink\")\n\n\nFor extra styling options (e.g., bootstrap themes), see here."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#regression-tables-1-output",
+    "href": "slides/quarto-github-tutorial.html#regression-tables-1-output",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Regression tables",
+    "text": "Regression tables\n\n\n\n    \n\n    \n    \n      \n        \n\n \nDep. variable: Overall Rating\n\n        \n              \n                 \n                (1)\n                (2)\n              \n        \n        + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001\n        \n                \n                  Handling of Complaints  \n                  0.682***\n                  0.692***\n                \n                \n                                          \n                  (0.129) \n                  (0.149) \n                \n                \n                  No Special Priviledges  \n                  -0.103  \n                  -0.104  \n                \n                \n                                          \n                  (0.129) \n                  (0.135) \n                \n                \n                  Opportunity to Learn    \n                  0.238+  \n                  0.249   \n                \n                \n                                          \n                  (0.139) \n                  (0.160) \n                \n                \n                  Performance-Based Raises\n                          \n                  -0.033  \n                \n                \n                                          \n                          \n                  (0.202) \n                \n                \n                  Too Critical            \n                          \n                  0.015   \n                \n                \n                                          \n                          \n                  (0.147)"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#regression-tables-2",
+    "href": "slides/quarto-github-tutorial.html#regression-tables-2",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Regression tables",
+    "text": "Regression tables\nfixest::etable\nAside: We used the fantastic fixest package to estimate our regression models. fixest bundles its own powerful tabling functions. These were designed for LaTeX output, but can work with this (HTML) theme too.1\n\nSet the output: asis R chunk option in your Quarto doc.\nSet the markdown = TRUE fixest::etable option.\n\n```{r}\n#| output: asis\n\nsetFixest_etable(markdown = TRUE, drop = \"Constant\")\nsetFixest_dict(dict)\n\netable(mods, highlight = .(\"se\" = \"complaints\"))\n```\nDetails here. You need to install the tinytex & pdftools packages first."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#regression-tables-3",
+    "href": "slides/quarto-github-tutorial.html#regression-tables-3",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Regression tables",
+    "text": "Regression tables\nfixest::etable (cont.)"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#figure",
+    "href": "slides/quarto-github-tutorial.html#figure",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Figure",
+    "text": "Figure"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#figure-1",
+    "href": "slides/quarto-github-tutorial.html#figure-1",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Figure",
+    "text": "Figure\nFull-size Figures\nYou can use the {.background-image} container environment to completely fill the slide background with an image.\nIdeally, your figure will be the same aspect ratio as the screen that you’re presenting on.\n\nThis can be a bit tricky because of the dynamic nature of reveal.js / HTML. But it’s probably something close to 16:9.\nAspect ratio can also matter for a regular full-frame images (previous slide)."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#interactive-plots",
+    "href": "slides/quarto-github-tutorial.html#interactive-plots",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Interactive plots",
+    "text": "Interactive plots\n\n\n\n\n\n\nNote: Simple flight data example using threejs. There are many interactive plotting options beyond this. (More details.)"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#other-1",
+    "href": "slides/quarto-github-tutorial.html#other-1",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Other",
+    "text": "Other\nWhat else can the clean theme do?\nWe have highlighted some theme-specific components in this demo.\nBut please note that all of the standard reveal.js functionality and plugins are compatible with the clean theme. This includes:\n\nchalkboard for annotating slides.\nmultiplex for enabling audience navigation of your slides.\npdf printing in case you don’t have access to a web browser.\nEtc."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#summary-1",
+    "href": "slides/quarto-github-tutorial.html#summary-1",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Summary",
+    "text": "Summary\nA minimalist and elegant presentation theme\nThe Quarto reveal.js clean theme aims to be a minimalist and elegant presention theme. Here are some options to get you started.\nAdd the theme to an existing project.\nquarto install extension grantmcdermott/quarto-revealjs-clean\n… or, create a new project using our lean template.\nquarto use template grantmcdermott/quarto-revealjs-clean\n… or, create a new project using these demo slides as a full template.\nquarto use template grantmcdermott/quarto-revealjs-clean-demo"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#references",
+    "href": "slides/quarto-github-tutorial.html#references",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "References",
+    "text": "References\n\n\nFajgelbaum, Pablo D, Eduardo Morales, Juan Carlos Suarez Serrato, y Owen Zidar. 2018. «State Taxes and Spatial Misallocation», 90.\n\n\nHsieh, Chang-Tai, y Enrico Moretti. 2019. «Housing Constraints and Spatial Misallocation». American Economic Journal: Macroeconomics 11 (2): 39.\n\n\nMoretti, Enrico. 2011. «Local Labor Markets». En Handbook of Labor Economics. Vol. 4. Elsevier.\n\n\nSuárez Serrato, Juan Carlos, y Owen Zidar. 2016. «Who Benefits from State Corporate Tax Cuts? A Local Labor Markets Approach with Heterogeneous Firms». American Economic Review 106 (9)."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#sec-appendix",
+    "href": "slides/quarto-github-tutorial.html#sec-appendix",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Appendix",
+    "text": "Appendix\n\n\n\n\nTabla 1: Summary of the base R attitude dataset\n\n\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                 \n                Unique\n                Missing Pct.\n                Mean\n                SD\n                Min\n                Median\n                Max\n                Histogram\n              \n        \n        \n        \n                \n                  rating\n                  22\n                  0\n                  64.6\n                  12.2\n                  40.0\n                  65.5\n                  85.0\n                  \n                \n                \n                  complaints\n                  23\n                  0\n                  66.6\n                  13.3\n                  37.0\n                  65.0\n                  90.0\n                  \n                \n                \n                  privileges\n                  24\n                  0\n                  53.1\n                  12.2\n                  30.0\n                  51.5\n                  83.0\n                  \n                \n                \n                  learning\n                  23\n                  0\n                  56.4\n                  11.7\n                  34.0\n                  56.5\n                  75.0\n                  \n                \n                \n                  raises\n                  21\n                  0\n                  64.6\n                  10.4\n                  43.0\n                  63.5\n                  88.0\n                  \n                \n                \n                  critical\n                  21\n                  0\n                  74.8\n                  9.9\n                  49.0\n                  77.5\n                  92.0\n                  \n                \n                \n                  advance\n                  20\n                  0\n                  42.9\n                  10.3\n                  25.0\n                  41.0\n                  72.0\n                  \n                \n        \n      \n    \n\n\n\n\n\n\nBack to main"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#investigación-reproducible",
+    "href": "slides/quarto-github-tutorial.html#investigación-reproducible",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Investigación Reproducible",
+    "text": "Investigación Reproducible\n\nEs la práctica de conducir estudios científicos o basados en datos de tal manera que permita a otros replicar o reproducir los resultados usando los mismos datos, códigos y metodologías."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#este-tutorial",
+    "href": "slides/quarto-github-tutorial.html#este-tutorial",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Este tutorial",
+    "text": "Este tutorial\nEste tutorial usa un template llamado clean. Está disponible en un repositorio en GitHub."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#qué-es-la-investigación-reproducible",
+    "href": "slides/quarto-github-tutorial.html#qué-es-la-investigación-reproducible",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "¿Qué es la Investigación Reproducible?",
+    "text": "¿Qué es la Investigación Reproducible?\n\n\n\nEs la práctica de conducir estudios científicos o basados en datos de tal manera que permita a otros replicar o reproducir los resultados usando los mismos datos, códigos y metodologías."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#etapas-de-una-investigación-reproducible",
+    "href": "slides/quarto-github-tutorial.html#etapas-de-una-investigación-reproducible",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Etapas de una Investigación Reproducible",
+    "text": "Etapas de una Investigación Reproducible"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#ciencia-abierta",
+    "href": "slides/quarto-github-tutorial.html#ciencia-abierta",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Ciencia Abierta",
+    "text": "Ciencia Abierta"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#espectro-de-reproducibilidad",
+    "href": "slides/quarto-github-tutorial.html#espectro-de-reproducibilidad",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Espectro de Reproducibilidad",
+    "text": "Espectro de Reproducibilidad"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#repositorio",
+    "href": "slides/quarto-github-tutorial.html#repositorio",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Repositorio",
+    "text": "Repositorio\n\n\n\n\n\n\n\nEnlaces importantes\n\n\n\nSitio web del Mini Curso: https://franplaza.github.io/Quarto-Github/\nRepositorio en GitHub: https://github.com/FranPlaza/Quarto-Github"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#enlaces-importantes",
+    "href": "slides/quarto-github-tutorial.html#enlaces-importantes",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Enlaces importantes",
+    "text": "Enlaces importantes\n\nSitio web del Mini Curso: https://franplaza.github.io/Quarto-Github/\nRepositorio en GitHub: https://github.com/FranPlaza/Quarto-Github"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#r-project",
+    "href": "slides/quarto-github-tutorial.html#r-project",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "R project",
+    "text": "R project\n\nhttps://cran.dcc.uchile.cl/"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#rsudio-ide",
+    "href": "slides/quarto-github-tutorial.html#rsudio-ide",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "RSudio IDE",
+    "text": "RSudio IDE\n\nhttps://posit.co/download/rstudio-desktop/\n\nExisten otras alternativas más génericas como Visual Studio Code, un editor de código para múltiples lenguajes. Sin embargo, al no ser un software especializado en R, requiere utilizar extensiones para lograr las funcionalidad que otorga RStudio."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#quarto",
+    "href": "slides/quarto-github-tutorial.html#quarto",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Quarto",
+    "text": "Quarto\n\nhttps://quarto.org/docs/get-started/"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#git-github",
+    "href": "slides/quarto-github-tutorial.html#git-github",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Git & Github",
+    "text": "Git & Github\n\n\nCuenta en GitHub\nGithub Desktop"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#rmarkdown-quarto",
+    "href": "slides/quarto-github-tutorial.html#rmarkdown-quarto",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Rmarkdown & Quarto",
+    "text": "Rmarkdown & Quarto\n\n\nEl paquete rmarkdown provee un marco de escritura para investigaciones cuantitativas, que combina códigos, resultados y texto. Los documento R Markdown son completamente reproducibles y permiten generar archivos en distintos formatos: PDF, Word, Presentaciones y más. Quarto es la nueva generación de esta herramienta para incluir distintos lenguajes."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#algunos-ejemplos",
+    "href": "slides/quarto-github-tutorial.html#algunos-ejemplos",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Algunos ejemplos",
+    "text": "Algunos ejemplos\nQuarto posee una galería de ejemplos bastante completa como para comenzar a investigar y visualizar en distintos tipos de documentos."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#quarto-2",
+    "href": "slides/quarto-github-tutorial.html#quarto-2",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Quarto",
+    "text": "Quarto\n\nLos archivos Quarto fueron diseñados para ser usados de tres maneras:\n\nPara comunicar a los tomadores de decisiones, quienes quieren centrarse en las conclusiones, no en el código detrás del análisis.\nPara colaborar con otros investigadores, quienes están interesados en las conclusiones y el cómo se llego a ellas (i.e. el código)\nComo un ambiente para hacer análisis, como un notebook donde se puede capturar el trabajo realizado junto a notas de este."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#primeros-pasos",
+    "href": "slides/quarto-github-tutorial.html#primeros-pasos",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Primeros pasos",
+    "text": "Primeros pasos\n\nEntrar a Quarto.org\nDescargar Quarto para tu sistema operativo\nIngresar a RStudio y crear documento .qmd"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#flujo-documento-quarto",
+    "href": "slides/quarto-github-tutorial.html#flujo-documento-quarto",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Flujo documento Quarto",
+    "text": "Flujo documento Quarto\n\n\nqmd: archivo de origen\nknitr: Herramienta que interpreta y ejecuta códigos y lo traduce en texto markdown\nmd: texto escrito en lenguaje markdown\npandoc: Herramienta que convierte archivos .md en distintos formatos"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#anatomía-de-un-documento-quarto",
+    "href": "slides/quarto-github-tutorial.html#anatomía-de-un-documento-quarto",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Anatomía de un documento Quarto",
+    "text": "Anatomía de un documento Quarto\n\nEncabezado en formato YAML\nTexto en formato Quarto\nBloques de código (R, Python, Julia, Observable)"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#yaml",
+    "href": "slides/quarto-github-tutorial.html#yaml",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "YAML",
+    "text": "YAML\n\nYAML es un formato de serialización de datos que puede ser leído fácilmente. Su uso es amplio, desde Acciones en GitHub hasta Quarto\n\nUn ejemplo de YAML que define un ambiente computacional podría ser:\n# Define the operating system as Linux\nos: linux\n\n# Use the xenial distribution of Linux\ndist: xenial\n\n# Use the programming language Python\nlanguage: python\n\n# Use version of Python 3.2\npython: 3.2\n\n\nYAML nos será de particular interés para la creación de documentos y presentaciones reproducibles, utilizando quarto."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#herramientas",
+    "href": "slides/quarto-github-tutorial.html#herramientas",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Herramientas",
+    "text": "Herramientas\nEl contenido del documento puede estar escrito utilizando diferentes formatos, entre ellos:\n\nQuarto\nHTML\nLaTeX\nCSS"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#creación-de-documento-básico",
+    "href": "slides/quarto-github-tutorial.html#creación-de-documento-básico",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Creación de documento básico",
+    "text": "Creación de documento básico\n\nAbrir RStudio\nFile &gt; New File &gt; Quarto Document\nDefinir características del documento"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#formato-de-texto",
+    "href": "slides/quarto-github-tutorial.html#formato-de-texto",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Formato de Texto",
+    "text": "Formato de Texto\n\n\n\n\n\n\n\nSintáxis Markdown\nSalida\n\n\n\n\n*italics*, **bold**, ***bold italics***\nitalics, bold, bold italics\n\n\nsuperscript^2^ / subscript~2~\nsuperscript2 / subscript2\n\n\n~~strikethrough~~\nstrikethrough\n\n\n`verbatim code`\nverbatim code"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#headings",
+    "href": "slides/quarto-github-tutorial.html#headings",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Encabezados",
+    "text": "Encabezados\n\n\n\n\n\n\n\nSintáxis Markdown\nSalida\n\n\n\n\n# Header 1\nHeader 1\n\n\n## Header 2\nHeader 2\n\n\n### Header 3\nHeader 3\n\n\n#### Header 4\nHeader 4\n\n\n##### Header 5\nHeader 5\n\n\n###### Header 6\nHeader 6"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#links-e-imágenes",
+    "href": "slides/quarto-github-tutorial.html#links-e-imágenes",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Links e Imágenes",
+    "text": "Links e Imágenes\n\n\n\nSintáxis Markdown\nSalida\n\n\n\n\n&lt;https://quarto.org&gt;\nhttps://quarto.org\n\n\n[Quarto](https://quarto.org)\nQuarto\n\n\n![Caption](images/JIE_logo.png)\n\n\n\nCaption\n\n\n\n\n[![Caption](images/JIE_logo.png)](https://quarto.org)\n\n\n\n[![Caption](images/JIE_logo.png)](https://quarto.org \"JIE-2024\")\n\n\n\n[![](images/JIE_logo.png){fig-alt=\"Alt text\"}](https://jornadas-estadistica.github.io/)"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#listas",
+    "href": "slides/quarto-github-tutorial.html#listas",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Listas",
+    "text": "Listas\n\n\n\n\n\n\n\nSintáxis Markdown\nSalida\n\n\n\n\n* Lista no ordenada\n    + sub-item 1\n    + sub-item 2\n        - sub-sub-item 1\n\nLista no ordenada\n\nsub-item 1\nsub-item 2\n\nsub-sub-item 1\n\n\n\n\n\n*   item 2\n\n    Continuación (4 spaces)\n\nitem 2\nContinuación (4 spaces)\n\n\n\n1. Lista ordenada\n2. item 2\n    i) sub-item 1\n         A.  sub-sub-item 1\n\nLista ordenada\nitem 2\n\nsub-item 1\n\nsub-sub-item 1"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#listas-1",
+    "href": "slides/quarto-github-tutorial.html#listas-1",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Listas",
+    "text": "Listas\n\n\n\n\n\n\n\nSintáxis Markdown\nSalida\n\n\n\n\n(@)  Una lista cuyos números\n\ncontinuan después\n\n(@)  de una interrupción\n\nUna lista cuyos números\n\ncontinuan después\n\nde una interrupción\n\n\n\n::: {}\n1. Una lista\n:::\n\n::: {}\n1. Seguida de otra lista\n:::\n\n\nUna lista\n\n\n\n\nSeguida de otra lista\n\n\n\n\ntérmino\n: definición\n\ntérmino\n\ndefinición"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#tablas",
+    "href": "slides/quarto-github-tutorial.html#tablas",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Tablas",
+    "text": "Tablas\n\n\nSintáxis Markdown\n| Right | Left | Default | Center |\n|------:|:-----|---------|:------:|\n|   12  |  12  |    12   |    12  |\n|  123  |  123 |   123   |   123  |\n|    1  |    1 |     1   |     1  |\n\nSalida\n\n\n\nRight\nLeft\nDefault\nCenter\n\n\n\n\n12\n12\n12\n12\n\n\n123\n123\n123\n123\n\n\n1\n1\n1\n1"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#código-de-fuente",
+    "href": "slides/quarto-github-tutorial.html#código-de-fuente",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Código de fuente",
+    "text": "Código de fuente\nUsamos ``` para delimitar bloques de código:\n\n```\ncódigo\n\n```\n\nPodemos agregar un lenguaje para destacar el código:\n\n``` python\n1 + 1\n```\n\n´´´ r\n1 + 1\n´´´\n\nPandoc ofrece 140 distintos lenguajes para destacar código."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#guía-de-referencia",
+    "href": "slides/quarto-github-tutorial.html#guía-de-referencia",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Guía de referencia",
+    "text": "Guía de referencia\nPara una lista exhaustiva de las opciones de formato que tienen los documentos .qmd visitar https://quarto.org/docs/guide/."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#formatos-de-salida-documentos",
+    "href": "slides/quarto-github-tutorial.html#formatos-de-salida-documentos",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Formatos de salida: Documentos",
+    "text": "Formatos de salida: Documentos\nLos formatos de salida más utilizados para documentos creados con Quarto son:\n\nHTML\nPDF\nDOCX\n\n\nPara cambiar entre estos formatos, basta especificiar la salida deseada en el YAML. Otros formatos posibles:\n\nOpenOffice\nePub"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#formatos-de-salida-presentaciones",
+    "href": "slides/quarto-github-tutorial.html#formatos-de-salida-presentaciones",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Formatos de salida: Presentaciones",
+    "text": "Formatos de salida: Presentaciones\nEn Quarto tenemos 3 opciones para presentaciones:\n\nRevealJS\nPowerPoint\nBeamer\n\nEn donde RevealJS es el formato que nos entrega más herramientas. (Esta presentación fue hecha utilizando RevealJS en Quarto)"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#caso-práctico",
+    "href": "slides/quarto-github-tutorial.html#caso-práctico",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Caso práctico",
+    "text": "Caso práctico\n\nCrearemos un mismo documento en distintos formatos"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#control-de-versiones",
+    "href": "slides/quarto-github-tutorial.html#control-de-versiones",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Control de versiones",
+    "text": "Control de versiones"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#git",
+    "href": "slides/quarto-github-tutorial.html#git",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Git",
+    "text": "Git\n\n\n\nSistema de control de versiones distribuido que se utiliza para el seguimiento de cambios en archivos de desarrollo software."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#motivación-para-utilizar-control-de-versiones",
+    "href": "slides/quarto-github-tutorial.html#motivación-para-utilizar-control-de-versiones",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Motivación para utilizar control de versiones",
+    "text": "Motivación para utilizar control de versiones\n\nEs primordial para seguir la procedencia de la información.\nCrea versiones históricas que nos permiten entender que cambios fueron realizados.\nFacilita el manejo de distintas versiones de archivos.\nPermite seguir y combinar cambios realizados por distintas personas."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#flujo-de-trabajo",
+    "href": "slides/quarto-github-tutorial.html#flujo-de-trabajo",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Flujo de trabajo",
+    "text": "Flujo de trabajo\n\n\n\nEl control de versiones es un enfoque sistemático para registrar los cambios realizados en un archivo o conjunto de archivos a lo largo del tiempo.\n\n\n\n\n\nUn flujo de trabajo típico para usar control de versiones es:\n\nCrear archivos\nTrabajar sobre estos archivos\nCrear un snapshot del estado del archivo (también llamado versión)\nDocumentar que cambios fueron realizados en el historial de la versión del archivo"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#elementos-de-git",
+    "href": "slides/quarto-github-tutorial.html#elementos-de-git",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Elementos de Git",
+    "text": "Elementos de Git\n\nRepositorio: Lugar donde se almacenan todos los archivos, carpetas e historial del proyecto.\nCommit: Registro de los cambios realizados en los archivos del proyecto en un momento específico.\nRamas (o “Branches”): Espacios de trabajo independientes del desarrollo principal.\nFusiones (o “Merges”): Representa la acción de incorporar los cambios de una Rama (Branch) a otra.\nRepositorios remotos: Copias del repositorio almacenadas en un servidor central o en otros equipos."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#repositorio-1",
+    "href": "slides/quarto-github-tutorial.html#repositorio-1",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Repositorio",
+    "text": "Repositorio\n\n\nEl Repositorio de un proyecto corresponde al almacén de datos que contiene todos los archivos, carpetas y el historial de cambios del proyecto.\n\n\n\n\n\n\n\n\nUn repositorio de Git puede estar:\n\nEstar ubicado localmente en la computadora de un desarrollador.\nDe forma remota en un servidor."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#ramas-branches",
+    "href": "slides/quarto-github-tutorial.html#ramas-branches",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Ramas (Branches)",
+    "text": "Ramas (Branches)\n\nSupongamos que quiero agregar o probar algo nuevo en un archivo antes de que se vea reflejado en archivo principal. ¿Cómo puedo mantener un registro de esto?"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#sub-ramas-sub-branches",
+    "href": "slides/quarto-github-tutorial.html#sub-ramas-sub-branches",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Sub-ramas (Sub-Branches)",
+    "text": "Sub-ramas (Sub-Branches)"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#cómo-uso-git-y-github",
+    "href": "slides/quarto-github-tutorial.html#cómo-uso-git-y-github",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "¿Cómo uso Git y Github?",
+    "text": "¿Cómo uso Git y Github?\n\nSi deseamos tener una control de versión LOCAL, debemos crear un proyecto en RStudio\n\n\nAcá veremos el esquema general del como crear un proyecto para hacer control de versiones.\nEsto lo veremos en detalle un poco más adelante con un ejemplo para que ustedes también puedan replicarlo."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#conectar-rstudio-con-github",
+    "href": "slides/quarto-github-tutorial.html#conectar-rstudio-con-github",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Conectar RStudio con Github",
+    "text": "Conectar RStudio con Github\nPara guardar nuestras versiones en Github debemos seguir los siguientes pasos:\n\nCrear un token de acceso personal (PAT) en Github\n\n\nAlmacener el token de acceso personal (PAT)\n\n\nCrear repositorio en Github (via web o aplicación de escritorio)\nCrear nuevo proyecto (Versión de control &gt; Git &gt; URL del repositorio)"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#push-pull",
+    "href": "slides/quarto-github-tutorial.html#push-pull",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Push & Pull",
+    "text": "Push & Pull"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#git-para-proyectos-de-investigación",
+    "href": "slides/quarto-github-tutorial.html#git-para-proyectos-de-investigación",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Git para proyectos de investigación",
+    "text": "Git para proyectos de investigación\n\n\nVersiones para conjuntos de datos, requieren especial cuidado\nEstructura de carpetas específician ayudan en el flujo de trabajo\n\n\n\nIntroducción a git\n\n\nPotencial:  lista de características que un flujo de trabajo con Git/GitHub aporta a los proyectos de ciencia de datos y que serían útiles para proyectos de investigación:\n\nRespaldar datos empujándolos a una plataforma Git, hacia un repositorio público o privado.\nUsar fácilmente diferentes computadoras para trabajar en el mismo proyecto (contigo o con colaboradores).\nLlevar un registro de contribuciones.\nFacilitar el uso de plantillas de carpetas para ayudar con la organización de archivos, ver Organización de Datos.\nUsar herramientas de plataformas Git para la gestión de proyectos.\nUtilizar plataformas Git para divulgación, incluso cuando el repositorio es privado (usando la Wiki).\nCrear un sitio web asociado bajo la misma organización en la plataforma Git.\n\nProblemas: Git no funciona bien cuando hay muchos datos o cuando los datos son grandes. Cuando se espera que el proyecto sea grande, es necesario establecer una herramienta diferente para evitar crear repositorios poco prácticos. Algunas de estas herramientas dificultan el acceso o la visualización de tus archivos, por lo que es importante planificar con anticipación qué herramienta se adapta mejor a tus necesidades.\nInteractive_visual_Git Uno de los mayores desafíos para comenzar con Git puede ser comprender la estructura de archivos y directorios y la complejidad de las ramas, commits y remotos, y cómo interactúan, particularmente en la línea de comandos con representaciones visuales limitadas. A menudo es confuso, incluso para usuarios avanzados, traducir de un diagrama conceptual a los comandos Git correctos necesarios para lograr los resultados deseados.\nLa herramienta LearnGitBranching ofrece una introducción interactiva y visual a Git. Esta herramienta interactiva basada en navegador incluye tutoriales y te permite practicar el uso de Git a través de un “repositorio” virtual y un área de pruebas. Al completar los desafíos integrados, familiarizarse con los comandos de Git se convierte más en un juego que en una tarea."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#estructura-de-un-repositorio",
+    "href": "slides/quarto-github-tutorial.html#estructura-de-un-repositorio",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Estructura de un repositorio",
+    "text": "Estructura de un repositorio\n\n\nOpen Science Framework\n\n\nPor ejemplo, Open Science Framework, es una plataforma de código abierto para administración de proyectos de investigación."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#conectar-rstudio-y-github",
+    "href": "slides/quarto-github-tutorial.html#conectar-rstudio-y-github",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Conectar RStudio y Github",
+    "text": "Conectar RStudio y Github"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#código-y-cálculos",
+    "href": "slides/quarto-github-tutorial.html#código-y-cálculos",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Código y cálculos",
+    "text": "Código y cálculos\nAl igual que RMarkdown, Quarto permite ejecutar código y compilarlo dentro del documento\n\nCódigoResultado\n\n\n\nlibrary(ggplot2)\nlibrary(gganimate)\nlibrary(gapminder)\n\nggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +\n  geom_point(alpha = 0.7, show.legend = FALSE) +\n  scale_colour_manual(values = country_colors) +\n  scale_size(range = c(2, 12)) +\n  scale_x_log10() +\n  facet_wrap(~continent) +\n  # Here comes the gganimate specific bits\n  labs(title = 'Año: {frame_time}', x = 'GDP per capita', y = 'Expectativa de vida') +\n  transition_time(year) +\n  ease_aes('linear')"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#templates",
+    "href": "slides/quarto-github-tutorial.html#templates",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Templates",
+    "text": "Templates\n\n\n\n\n\n\n\nTemplate para este tutorial\n\n\n\nLas slides de este tutorial usa un template llamado clean. Está disponible en un repositorio en GitHub: github.com/grantmcdermott/quarto-revealjs-clean.\nMás templates pueden ser encontrados en repositorios como el de Awesome Quarto."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#archivo-_quarto.yml",
+    "href": "slides/quarto-github-tutorial.html#archivo-_quarto.yml",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Archivo _quarto.yml",
+    "text": "Archivo _quarto.yml\n\nEl archivo _quarto.yml define configuraciones para personalizar el sitio web:\n\n\nproject:\n  type: website\n  title: \"Página Web con Quarto\"\n  author: \"Nombre\"\n  description: \"sitio web creado con Quarto\"\n  \nwebsite:\n  navbar:\n    right:\n      - text: \"Inicio\"\n        href: index.qmd\n      - text: \"Acerca de\"\n        href: about.qmd\n\nformat:\n  html:\n    theme: cosmo\n    toc: true\n    toc-location: left\n\n\ntitle: El título del sitio.\nnavbar: Barra de navegación con enlaces.\ntheme: Se puede cambiar el tema (e.g., cosmo, flatly, darkly)."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#contenido-en-index.qmd",
+    "href": "slides/quarto-github-tutorial.html#contenido-en-index.qmd",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Contenido en index.qmd",
+    "text": "Contenido en index.qmd\n\nAbrir el archivo index.qmd y añadimos el siguiente contenido:\n---\ntitle: \"Mi Página Web\"\n---\n\n# ¡Hola, Mundo!\n\nEsta es una página web simple creada con Quarto en las III Jornadas de Ingeniería en Estadística.\n\n## Sección 1: Introducción\n\nQuarto te permite crear documentos y sitios web de forma rápida y sencilla.\n\n## Sección 2: Características\n\n- Código reproducible\n- Fácil de publicar en GitHub Pages\n- Compatible con múltiples lenguajes\nLuego renderizar el documento"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#contenido-en-about.qmd",
+    "href": "slides/quarto-github-tutorial.html#contenido-en-about.qmd",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Contenido en about.qmd",
+    "text": "Contenido en about.qmd\n\n---\ntitle: \"Jornadas\"\nabout:\n  template: jolla\n  image: profile.jpg\n  links:\n    - icon: twitter\n      text: twitter\n      href: https://twitter.com\n    - icon: github\n      text: Github\n      href: https://github.com\n---\n\nLas III Jornadas de Ingeniería Estadística son un evento que se efectúa desde hace tres años en el Departamento de Matemática y Ciencia de la Computación, en la Universidad de Santiago.\n\n## Fecha y lugar de realización\n\nAuditorio del Departamento de Matemática y Ciencia de la Computación, Universidad de Santiago | 11 y 12 de noviembre de 2024\n\n\n\n\n\n\n\n\n\n\nTemplates\n\n\nQuarto incluye 5 templates para este tipo de página: jolla, trestles, solana, marquee, broadside."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#configurar-github-pages",
+    "href": "slides/quarto-github-tutorial.html#configurar-github-pages",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Configurar GitHub Pages",
+    "text": "Configurar GitHub Pages\n\n\nCrear un repositorio llamado nombre-usuario.github.io. Donde nombre-usuario sea tu nombre de usuario de GitHub.\nIr a Settings &gt; Pages.\nSeleccionar la rama main y la carpeta / (root), o alguna otra carpeta que sea definida para guardar los archivos del sitio web.\nGuardar los cambios.\nLuego puedes clonar el repositorio a alguna carpeta local y comenzar a trabajar. Debe contener algún archivo index.html para funcionar\n\nEl sitio web debería estar disponible en: https://usuario.github.io/mi-pagina-web"
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#crear-un-nuevo-repositorio",
+    "href": "slides/quarto-github-tutorial.html#crear-un-nuevo-repositorio",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Crear un Nuevo Repositorio",
+    "text": "Crear un Nuevo Repositorio\n\nPara crear un repositorio local:\n\nHacer clic en File &gt; New Repository.\nCompletar la información que se muestra a continuación:\n\nName: mi-pagina-web\nDescription: “Repositorio para mi sitio web con Quarto”\nLocal Path: Elige una carpeta en tu computadora donde se almacenará el repositorio.\nGit Ignore Template: Selecciona None.\nLicense: Seleccionar algún tipo de licencia o None (se puede modificar más adelante).\n\nHacer clic en Create Repository.\nAhora que el repositorio está creado, se puede modificar y crear archivos."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#sofware-necesarios",
+    "href": "slides/quarto-github-tutorial.html#sofware-necesarios",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Sofware necesarios",
+    "text": "Sofware necesarios\n\n\n\n\n\n\n\n\n\nDescripción\n\n\n\n\n\nLenguaje de programación para análisis de datos y estadística.\n\n\n\nEntorno de desarrollo integrado para R, ideal para análisis de datos y desarrollo reproducible.\n\n\n\nHerramienta para crear documentos reproducibles, reportes y páginas web de alta calidad.\n\n\n\nSistema de control de versiones (Git) y plataforma para compartir proyectos (GitHub). Incluye GitHub Desktop."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#quarto-1",
+    "href": "slides/quarto-github-tutorial.html#quarto-1",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "Quarto",
+    "text": "Quarto\n\nLos archivos Quarto fueron diseñados para ser usados de tres maneras:\n\nPara comunicar a los tomadores de decisiones, quienes quieren centrarse en las conclusiones, no en el código detrás del análisis.\nPara colaborar con otros investigadores, quienes están interesados en las conclusiones y el cómo se llego a ellas (i.e. el código)\nComo un ambiente para hacer análisis, como un notebook donde se puede capturar el trabajo realizado junto a notas de este."
+  },
+  {
+    "objectID": "slides/quarto-github-tutorial.html#muchas-gracias-por-su-atención",
+    "href": "slides/quarto-github-tutorial.html#muchas-gracias-por-su-atención",
+    "title": "Mini curso: Quarto y GitHub Pages",
+    "section": "¡Muchas gracias por su atención!",
+    "text": "¡Muchas gracias por su atención!"
+  },
+  {
+    "objectID": "index.html#slides-del-mini-curso-slides",
+    "href": "index.html#slides-del-mini-curso-slides",
+    "title": "Mini curso Quarto Github Pages",
+    "section": "Slides del mini curso: Slides",
+    "text": "Slides del mini curso: Slides\n\n\n\n\n\n\nPrerequisitos\n\n\n\n\n\n\nConocimientos básicos de Markdown\nFamiliaridad con la sintaxis de Markdown para la creación y edición de contenido.\nGitHub y GitHub Desktop\n\nInstalación de GitHub Desktop (enlace de descarga).\nCreación de una cuenta en GitHub y familiaridad con sus funcionalidades básicas, como la creación de repositorios.\nComprensión de conceptos básicos de Git y GitHub, como realizar commit, push y pull usando GitHub Desktop para facilitar el flujo de trabajo.\n\nInstalación de R y RStudio\n\nInstalar R (https://cran.r-project.org/) y RStudio (https://www.rstudio.com/).\nFamiliaridad básica con RStudio para ejecutar y editar código en R.\n\nInstalación de Quarto\n\nInstalar Quarto siguiendo las instrucciones oficiales.\nVerificar la instalación con el comando quarto check."
+  },
+  {
+    "objectID": "index.html#información-importante",
+    "href": "index.html#información-importante",
+    "title": "Mini curso Quarto Github Pages",
+    "section": "",
+    "text": "Slides del curso\n\n\n\n\n\nSlides\n\n\n\n\n\n\n\n\n\nPrerequisitos\n\n\n\n\n\n\nConocimientos básicos de Markdown\nFamiliaridad con la sintaxis de Markdown para la creación y edición de contenido.\nGitHub y GitHub Desktop\n\nInstalación de GitHub Desktop (enlace de descarga).\nCreación de una cuenta en GitHub y familiaridad con sus funcionalidades básicas, como la creación de repositorios.\nComprensión de conceptos básicos de Git y GitHub, como realizar commit, push y pull usando GitHub Desktop para facilitar el flujo de trabajo.\n\nInstalación de R y RStudio\n\nInstalar R (https://cran.r-project.org/) y RStudio (https://www.rstudio.com/).\nFamiliaridad básica con RStudio para ejecutar y editar código en R.\n\nInstalación de Quarto\n\nInstalar Quarto siguiendo las instrucciones oficiales.\nVerificar la instalación con el comando quarto check."
+  }
+]
