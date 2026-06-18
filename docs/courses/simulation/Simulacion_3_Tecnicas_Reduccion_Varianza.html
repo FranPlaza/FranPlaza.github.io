@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<script src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/quarto-html/popper.min.js"></script>
+<script src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/quarto-html/quarto-syntax-highlighting-86daaaaad7353f9cc0c554efc1dd6d94.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.40">
+
+  <meta name="author" content="Francisco Plaza Vega">
+  <title>Simulación Estadística</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/dist/theme/quarto-d0949217de4ddea90cc802d00346192d.css">
+  <link href="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Simulación Estadística</h1>
+  <p class="subtitle">Unidad 3: Técnicas de reducción de varianza</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Francisco Plaza Vega 
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:francisco.plaza.v@usach.cl">francisco.plaza.v@usach.cl</a>
+</div>
+        <p class="quarto-title-affiliation">
+            Ingeniería en Estadística
+          </p>
+    </div>
+</div>
+
+</section>
+<section>
+<section id="introducción" class="title-slide slide level1 center" data-background-color="#00A499" data-number="1">
+<h1><span class="header-section-number">1</span> Introducción</h1>
+
+</section>
+<section id="integración-con-el-método-de-monte-carlo" class="slide level2" data-number="1.1">
+<h2><span class="header-section-number">1.1</span> Integración con el método de Monte Carlo</h2>
+<ul>
+<li class="fragment"><p>Supongamos que <span class="math inline">\(g(x)\)</span> es una función y que <span class="green">queremos calcular <span class="math inline">\(\int_a^b g(x)dx\)</span></span> (suponiendo que esta integral existe).</p></li>
+<li class="fragment"><p>Recordemos que si <span class="math inline">\(X\)</span> es una variable aleatoria con densidad <span class="math inline">\(f(x)\)</span>, entonces <span class="green">el valor esperado de la variable aleatoria <span class="math inline">\(Y = g(X)\)</span></span> es</p></li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[ \mathbb{E}[g(X)] = \int_{-\infty}^{\infty} g(x)f(x)dx.\]</span></p>
+</div>
+<div class="fragment">
+<div class="alert">
+<p>Si es posible obtener una muestra aleatoria a partir de la distribución de (X), un estimador insesgado de (E[g(X)]) es la media de la muestra.</p>
+</div>
+</div>
+</section>
+<section id="estimador-simple-de-monte-carlo" class="slide level2" data-number="1.2">
+<h2><span class="header-section-number">1.2</span> Estimador simple de Monte Carlo</h2>
+<p>Consideremos la estimación de <span class="math inline">\(\theta = \int_0^1 g(x)dx\)</span>. Si <span class="math inline">\(X_1, \ldots, X_m\)</span> es una muestra aleatoria Uniforme(0,1), entonces</p>
+<p><span class="math display">\[ \hat{\theta} = g_m(X) = \frac{1}{m} \sum_{i=1}^{m} g(X_i) \]</span></p>
+<p>converge a <span class="math inline">\(E[g(X)] = \theta\)</span> con probabilidad 1, por la <a href="https://es.wikipedia.org/wiki/Ley_de_los_grandes_n%C3%BAmeros">Ley Fuerte de los Grandes Números</a>. <span class="green">El estimador simple de Monte Carlo de <span class="math inline">\(\int_0^1 g(x)dx\)</span> es <span class="math inline">\(g_m(X)\)</span></span>.</p>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p><span class="green">Ejemplo: Integración simple de Monte Carlo</span><br></p>
+<p>Estimar a través de Monte Carlo la siguiente integral:</p>
+<p><span class="math display">\[ \theta = \int_0^1 e^{-x} dx \]</span></p>
+<p>y comparar la estimación con el valor exacto.</p>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>m <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb1-2"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(m)</span>
+<span id="cb1-3"><a href=""></a>theta.hat <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">exp</span>(<span class="sc">-</span>x))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La estimación es <span class="math inline">\(\hat{\theta} \approx 0.631702\)</span> y <span class="math inline">\(\theta = 1 - e^{-1} \approx 0.6321206\)</span>.</p>
+</section>
+<section class="slide level2">
+
+<h3 id="integración-con-monte-carlo-intervalo-a-b">Integración con Monte Carlo, intervalo <span class="math inline">\([a, b]\)</span></h3>
+<p>En el caso que se necesite calcular <span class="math inline">\(\int_a^b g(t)dt\)</span>, se deberá efectuar un cambio de variables de manera que los límites de integración sean de 0 a 1. La transformación lineal es <span class="math inline">\(y = (t - a)/(b - a)\)</span> y <span class="math inline">\(dy = (1/(b - a))dt\)</span>. Sustituyendo,</p>
+<p><span class="math display">\[ \int_a^b g(t)dt = \int_0^1 g(y(b - a) + a)(b - a)dy. \]</span></p>
+<p>Alternativamente, podemos reemplazar la densidad Uniforme(0,1) con cualquier otra densidad soportada en el intervalo entre los límites de integración. Por ejemplo,</p>
+<p><span class="math display">\[ \int_a^b g(t)dt = (b - a) \int_a^b g(t) \frac{1}{b - a}dt \]</span></p>
+<p>es <span class="math inline">\(b - a\)</span> veces el valor esperado de <span class="math inline">\(g(Y)\)</span>, donde <span class="math inline">\(Y\)</span> tiene la densidad uniforme en <span class="math inline">\((a, b)\)</span>. La integral es, por lo tanto, <span class="math inline">\(b - a\)</span> veces el valor promedio de <span class="math inline">\(g(\cdot)\)</span> sobre <span class="math inline">\((a, b)\)</span>.</p>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p>Calcular una estimación de Monte Carlo de</p>
+<p><span class="math display">\[\theta = \int_2^4 e^{-x} dx \]</span></p>
+<p>y comparar la estimación con el valor exacto de la integral.</p>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>m <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb2-2"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(m, <span class="at">min=</span><span class="dv">2</span>, <span class="at">max=</span><span class="dv">4</span>)</span>
+<span id="cb2-3"><a href=""></a>theta.hat <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">exp</span>(<span class="sc">-</span>x)) <span class="sc">*</span> <span class="dv">2</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<p>La estimación es <span class="math inline">\(\hat{\theta} \approx 0.1165632\)</span> y <span class="math inline">\(\theta = e^{-2} - e^{-4} \approx 0.1170196\)</span>.</p>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<p>Resumiendo: <br></p>
+<p>El estimador simple de Monte Carlo de la integral <span class="math inline">\(\theta = \int_a^b g(x)dx\)</span> se calcula de la siguiente manera:</p>
+<div class="small">
+<ul>
+<li class="fragment"><p>Generar <span class="math inline">\(X_1, \ldots, X_m\)</span>, iid de Uniforme<span class="math inline">\((a, b)\)</span>.</p></li>
+<li class="fragment"><p>Calcular <span class="math inline">\(g(\bar{X}) = \frac{1}{m} \sum g(X_i)\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(\hat{\theta} = (b - a) g(\bar{X})\)</span>.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="integración-de-monte-carlo-intervalo-no-acotado">Integración de Monte Carlo, intervalo no acotado</h3>
+<p>Usaremos el método de Monte Carlo para estimar la cdf normal estándar</p>
+<p><span class="math display">\[ \Phi(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}} e^{-t^2/2} \, dt.\]</span></p>
+<ul>
+<li class="fragment"><p>Notar que <span class="green">no podemos aplicar directamente el algoritmo</span> anterior porque los límites de integración cubren un <span class="orange">intervalo no acotado</span>.</p></li>
+<li class="fragment"><p>Sin embargo, podemos dividir este problema en dos casos: <span class="math inline">\(x \geq 0\)</span> y <span class="math inline">\(x &lt; 0\)</span>, y usar la simetría de la densidad normal para manejar el segundo caso.</p></li>
+<li class="fragment"><p>Entonces, el problema se traduce en estimar <span class="math inline">\(\theta = \int_0^x e^{-t^2/2} \, dt \quad \text{para} \ x &gt; 0.\)</span></p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<ul>
+<li class="fragment"><p>Lo anterior se puede efectuar generando números Uniformes<span class="math inline">\((0, x)\)</span> aleatorios, pero significaría cambiar los parámetros de la distribución uniforme para cada valor diferente de la cdf requerida. Supongamos que preferimos un algoritmo que siempre muestree de Uniforme(0,1).</p></li>
+<li class="fragment"><p>Esto se puede lograr mediante un cambio de variables. Haciendo la sustitución <span class="math inline">\(y = t/x\)</span>, tenemos <span class="math inline">\(dt = x \, dy\)</span> y</p></li>
+</ul>
+<div class="fragment">
+<div>
+<p><span class="math display">\[\theta = \int_0^1 x e^{-(xy)^2/2} \, dy.\]</span></p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Así, <span class="math inline">\(\theta = E_Y [xe^{-(xY)^2/2}]\)</span>, donde la variable aleatoria <span class="orange"><span class="math inline">\(Y\)</span> tiene la distribución Uniforme(0,1)</span>.</p>
+<div class="small">
+<ul>
+<li class="fragment">Generar números aleatorios iid Uniforme(0,1) <span class="math inline">\(u_1, \ldots, u_m\)</span>, y calcular</li>
+</ul>
+</div>
+<div class="fragment">
+<div>
+<p><span class="math display">\[\hat{\theta} = g_m(u) = \frac{1}{m} \sum_{i=1}^{m} x e^{-(u_i x)^2 / 2}.\]</span></p>
+</div>
+</div>
+<div class="fragment">
+<div class="small">
+<ul>
+<li class="fragment"><p>La media muestral <span class="math inline">\(\hat{\theta}\)</span> converge a <span class="math inline">\(E[\hat{\theta}] = \theta\)</span> cuando <span class="math inline">\(m \to \infty\)</span>.</p></li>
+<li class="fragment"><p>Si <span class="math inline">\(x &gt; 0\)</span>, la estimación de <span class="math inline">\(\Phi(x)\)</span> es <span class="math inline">\(0.5 + \hat{\theta} / \sqrt{2\pi}\)</span>. Si <span class="math inline">\(x &lt; 0\)</span>, calcular <span class="math inline">\(\Phi(x) = 1 - \Phi(-x)\)</span>.</p></li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(.<span class="dv">1</span>, <span class="fl">2.5</span>, <span class="at">length =</span> <span class="dv">10</span>)</span>
+<span id="cb3-2"><a href=""></a>m <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb3-3"><a href=""></a>u <span class="ot">&lt;-</span> <span class="fu">runif</span>(m)</span>
+<span id="cb3-4"><a href=""></a>cdf <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(x))</span>
+<span id="cb3-5"><a href=""></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)) {</span>
+<span id="cb3-6"><a href=""></a>  g <span class="ot">&lt;-</span> x[i] <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>(u <span class="sc">*</span> x[i])<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb3-7"><a href=""></a>  cdf[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(g) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi) <span class="sc">+</span> <span class="fl">0.5</span></span>
+<span id="cb3-8"><a href=""></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Las estimaciones <span class="math inline">\(\hat{\theta}\)</span> para diez valores de <span class="math inline">\(x\)</span> se almacenan en el vector cdf. Comparar las estimaciones con el valor <span class="math inline">\(\Phi(x)\)</span> computado (numéricamente) por la función <code>pnorm</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>Phi <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(x)</span>
+<span id="cb4-2"><a href=""></a><span class="fu">print</span>(<span class="fu">round</span>(<span class="fu">rbind</span>(x, cdf, Phi), <span class="dv">3</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9] [,10]
+x   0.10 0.367 0.633 0.900 1.167 1.433 1.700 1.967 2.233 2.500
+cdf 0.54 0.643 0.737 0.816 0.879 0.926 0.958 0.978 0.991 0.998
+Phi 0.54 0.643 0.737 0.816 0.878 0.924 0.955 0.975 0.987 0.994</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p><span class="green">Ejercicio</span> <br></p>
+<p>Notar que en el ejemplo anterior habría sido más simple generar variables aleatorias Uniforme<span class="math inline">\((0, x)\)</span> y omitir la transformación. <span class="orange">Esto se deja como un ejercicio</span>.</p>
+<p>De hecho, la integral de los ejemplos anteriores es en sí una función de densidad, y es posible generar variables aleatorias de esta densidad. Esto proporciona un enfoque más directo a la integral.</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p><span class="green">Ejemplo:</span> <br></p>
+<p>Sea <span class="math inline">\(I(\cdot)\)</span> la función indicadora, y <span class="math inline">\(Z \sim N(0, 1)\)</span>. Entonces, para cualquier constante <span class="math inline">\(x\)</span>, tenemos <span class="math inline">\(E[I(Z \leq x)] = P(Z \leq x) = \Phi(x)\)</span>, la cdf normal estándar evaluada en <span class="math inline">\(x\)</span>.</p>
+<p>Generar una muestra aleatoria <span class="math inline">\(z_1, \ldots, z_m\)</span> de la distribución normal estándar. Entonces, la media muestral</p>
+<p><span class="math display">\[\hat{\Phi}(x) = \frac{1}{m} \sum_{i=1}^{m} I(z_i \leq x)\]</span></p>
+<p>converge con probabilidad 1 a su valor esperado <span class="math inline">\(E[I(Z \leq x)] = P(Z \leq x) = \Phi(x)\)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(.<span class="dv">1</span>, <span class="fl">2.5</span>, <span class="at">length =</span> <span class="dv">10</span>)</span>
+<span id="cb6-2"><a href=""></a>m <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb6-3"><a href=""></a>z <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(m)</span>
+<span id="cb6-4"><a href=""></a><span class="fu">dim</span>(x) <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb6-5"><a href=""></a>p <span class="ot">&lt;-</span> <span class="fu">apply</span>(x, <span class="at">MARGIN =</span> <span class="dv">1</span>, <span class="at">FUN =</span> <span class="cf">function</span>(x, z) {<span class="fu">mean</span>(z <span class="sc">&lt;</span> x)}, <span class="at">z =</span> z)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<p>Ahora, las estimaciones en <code>p</code> para la secuencia de valores de <span class="math inline">\(x\)</span> se pueden comparar con el resultado de la función <code>pnorm</code> de la cdf normal en R.</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>Phi <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(x)</span>
+<span id="cb7-2"><a href=""></a><span class="fu">print</span>(<span class="fu">round</span>(<span class="fu">rbind</span>(x, p, Phi), <span class="dv">3</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9] [,10]
+x   0.100 0.367 0.633 0.900 1.167 1.433 1.700 1.967 2.233 2.500
+p   0.525 0.633 0.734 0.815 0.876 0.922 0.955 0.975 0.987 0.992
+Phi 0.540 0.643 0.737 0.816 0.878 0.924 0.955 0.975 0.987 0.994</code></pre>
+</div>
+</div>
+<p><br></p>
+<p>En este ejemplo, comparado con los resultados del Ejemplo anterior, parece que tenemos una mejor concordancia con <code>pnorm</code> en la cola superior, pero peor concordancia cerca del centro.</p>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<p>En resumen: <br></p>
+<p>Si <span class="math inline">\(f(x)\)</span> es una función de densidad de probabilidad soportada en un conjunto <span class="math inline">\(A\)</span> (es decir, <span class="math inline">\(f(x) \geq 0\)</span> para todo <span class="math inline">\(x \in \mathbb{R}\)</span> y <span class="math inline">\(\int_A f(x) = 1\)</span>), para estimar la integral</p>
+<p><span class="math display">\[\theta = \int_A g(x)f(x)dx,\]</span></p>
+<p>Se debe generar una muestra aleatoria <span class="math inline">\(x_1, \ldots, x_m\)</span> de la distribución <span class="math inline">\(f(x)\)</span>, y calcular la media muestral</p>
+<p><span class="math display">\[\hat{\theta} = \frac{1}{m} \sum_{i=1}^{m} g(x_i).\]</span></p>
+<p>Entonces, con probabilidad uno, <span class="math inline">\(\hat{\theta}\)</span> converge a <span class="math inline">\(E[\hat{\theta}] = \theta\)</span> cuando <span class="math inline">\(m \to \infty\)</span>.</p>
+</div>
+</section>
+<section id="el-error-estándar-de-la-estimación" class="slide level2" data-number="1.3">
+<h2><span class="header-section-number">1.3</span> El error estándar de la estimación</h2>
+<div class="definition">
+<p><span class="blue">El error estándar de <span class="math inline">\(\hat{\theta} = \frac{1}{m} \sum_{i=1}^{m} g(x_i)\)</span>:</span><br></p>
+<ul>
+<li class="fragment"><p>La <span class="green">varianza de <span class="math inline">\(\hat{\theta}\)</span></span> es <span class="math inline">\(\sigma^2 / m\)</span>, donde <span class="math inline">\(\sigma^2 = Var_f(g(X))\)</span>.</p></li>
+<li class="fragment"><p>Cuando la <span class="green">distribución de <span class="math inline">\(X\)</span> es desconocida</span>, sustituimos <span class="math inline">\(F_X\)</span> por la distribución empírica <span class="math inline">\(F_m\)</span> de la muestra <span class="math inline">\(x_1, \ldots, x_m\)</span>.</p></li>
+<li class="fragment"><p>La varianza de <span class="math inline">\(\hat{\theta}\)</span> <span class="green">puede estimarse por</span></p></li>
+</ul>
+<div class="fragment">
+<p><span id="eq-varianza"><span class="math display">\[\frac{\hat{\sigma}^2}{m} = \frac{1}{m^2} \sum_{i=1}^{m} [g(x_i) - \bar{g}(x)]^2. \qquad(1)\]</span></span></p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Notar que</p>
+<p><span class="math display">\[\frac{1}{m} \sum_{i=1}^{m} [g(x_i) - \bar{g}(x)]^2\]</span></p>
+<p>es el <span class="green">estimador <em>plug-in</em> de <span class="math inline">\(Var(g(X))\)</span></span>. Es decir, la <a href="#/eq-varianza" class="quarto-xref">Ecuación&nbsp;1</a> es la varianza de <span class="math inline">\(U\)</span>, donde <span class="math inline">\(U\)</span> está uniformemente distribuido en el conjunto de repeticiones <span class="math inline">\(\{g(x_i)\}\)</span>.</p>
+<p><br></p>
+<p>La estimación correspondiente del error estándar de <span class="math inline">\(\hat{\theta}\)</span> es</p>
+<p><span class="math display">\[\hat{s}_e(\hat{\theta}) = \frac{\hat{\sigma}}{\sqrt{m}} = \frac{1}{m} \left\{ \sum_{i=1}^{m} [g(x_i) - \bar{g}(x)]^2 \right\}^{1/2}.\]</span></p>
+</section>
+<section class="slide level2">
+
+<p>El <a href="https://es.wikipedia.org/wiki/Teorema_del_l%C3%ADmite_central">Teorema Central del Límite</a> implica que</p>
+<p><span class="math display">\[\frac{\hat{\theta} - E[\hat{\theta}]}{\sqrt{Var \hat{\theta}}}\]</span></p>
+<p><span class="green">converge en distribución a <span class="math inline">\(N(0, 1)\)</span> cuando <span class="math inline">\(m \to \infty\)</span></span>. Por lo tanto, si <span class="math inline">\(m\)</span> es suficientemente grande, <span class="math inline">\(\hat{\theta}\)</span> es aproximadamente normal con media <span class="math inline">\(\theta\)</span>.</p>
+<p><br></p>
+<p>La distribución normal de una gran muestra de <span class="math inline">\(\hat{\theta}\)</span> puede aplicarse para poner límites de confianza o límites de error en la estimación de Monte Carlo de la integral, y verificar la convergencia.</p>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p><span class="green">Ejemplo: Límites de error para la integración de MC</span><br></p>
+<p>Estimar la varianza del estimador en el Ejemplo anterior, y construir intervalos de confianza aproximados del 95% para la estimación de <span class="math inline">\(\Phi(2)\)</span> y <span class="math inline">\(\Phi(2.5)\)</span>.</p>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb9-2"><a href=""></a>m <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb9-3"><a href=""></a>z <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(m)</span>
+<span id="cb9-4"><a href=""></a>g <span class="ot">&lt;-</span> (z <span class="sc">&lt;</span> x)  <span class="co"># la función indicadora</span></span>
+<span id="cb9-5"><a href=""></a>v <span class="ot">&lt;-</span> <span class="fu">mean</span>((g <span class="sc">-</span> <span class="fu">mean</span>(g))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> m</span>
+<span id="cb9-6"><a href=""></a>cdf <span class="ot">&lt;-</span> <span class="fu">mean</span>(g)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">c</span>(cdf, v)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9.805000e-01 1.911975e-06</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="fu">c</span>(cdf <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> <span class="fu">sqrt</span>(v), cdf <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> <span class="fu">sqrt</span>(v))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9777898 0.9832102</code></pre>
+</div>
+</div>
+<p><br></p>
+<div class="small">
+<p>La probabilidad <span class="math inline">\(P(I(Z &lt; x) = 1)\)</span> es <span class="math inline">\(\Phi(2) \approx 0.981\)</span>. Aquí <span class="math inline">\(g(X)\)</span> tiene la distribución de la proporción muestral de 1’s en <span class="math inline">\(m = 10000\)</span> ensayos de Bernoulli con <span class="math inline">\(p \approx 0.981\)</span>, y la varianza de <span class="math inline">\(g(X)\)</span> es, por lo tanto, <span class="math inline">\((0.981)(1 - 0.981)/10000 = 1.8639\times 10^{-6}\)</span>. La estimación de MC <span class="math inline">\(1.911975\times 10^{-6}\)</span> de la varianza es bastante cercana a este valor.</p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="small">
+<p>Para <span class="math inline">\(x = 2.5\)</span>, el resultado es</p>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9.93800e-01 6.16156e-07</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9922615 0.9953385</code></pre>
+</div>
+</div>
+<p><br></p>
+<div class="small">
+<p>La probabilidad <span class="math inline">\(P(I(Z &lt; x) = 1)\)</span> es <span class="math inline">\(\Phi(2.5) \approx 0.994\)</span>. La estimación de Monte Carlo <span class="math inline">\(6.16156\times 10^{-7}\)</span> de la varianza es aproximadamente igual al valor teórico <span class="math inline">\((0.994)(1 - 0.994)/10000 = 5.964\times 10^{-7}\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="varianza-y-eficiencia" class="slide level2" data-number="1.4">
+<h2><span class="header-section-number">1.4</span> Varianza y Eficiencia</h2>
+<div class="alert">
+<p>El <span class="green">método de Monte Carlo para estimar la integral <span class="math inline">\(\int_a^b g(x)dx\)</span></span> consiste en representar la integral como <span class="orange">el valor esperado de una función de una variable aleatoria uniforme</span>. Es decir, si <span class="math inline">\(X \sim \text{Uniforme}(a, b)\)</span>, entonces <span class="math inline">\(f(x) = \frac{1}{b - a}\)</span>, <span class="math inline">\(a &lt; x &lt; b\)</span>, y</p>
+<p><span class="math display">\[\theta = \int_a^b g(x)dx = (b - a) \int_a^b g(x) \frac{1}{b - a}dx = (b - a) E[g(X)].\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<p><span class="blue">Recordemos:</span><br></p>
+<p>El estimador de Monte Carlo de media muestral de la integral <span class="math inline">\(\theta\)</span> se calcula de la siguiente manera:</p>
+<div class="small">
+<ul>
+<li class="fragment"><p>Generar <span class="math inline">\(X_1, \ldots, X_m\)</span>, iid de Uniforme<span class="math inline">\((a, b)\)</span>.</p></li>
+<li class="fragment"><p>Calcular <span class="math inline">\(g(\bar{X}) = \frac{1}{m} \sum g(X_i)\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(\hat{\theta} = (b - a) g(\bar{X})\)</span>.</p></li>
+</ul>
+</div>
+<div class="fragment">
+<p>La media muestral <span class="math inline">\(g(\bar{X})\)</span> tiene un valor esperado <span class="math inline">\(g(\bar{X}) = \theta / (b - a)\)</span>, y</p>
+<p><span class="math display">\[\text{Var}(g(\bar{X})) = \frac{1}{m} \text{Var}(g(X)).\]</span></p>
+</div>
+<div class="fragment">
+<p>Por lo tanto, <span class="math inline">\(E[\hat{\theta}] = \theta\)</span> y</p>
+<p><span id="eq-varianza_recall"><span class="math display">\[\text{Var}(\hat{\theta}) = (b - a)^2 \text{Var}(g(\bar{X})) = \frac{(b - a)^2}{m} \text{Var}(g(X)). \qquad(2)\]</span></span></p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<ul>
+<li class="fragment"><p>Según el Teorema Central del Límite, para <span class="math inline">\(m\)</span> grande, <span class="green"><span class="math inline">\(g(\bar{X})\)</span> es aproximadamente normalmente distribuido</span>, y por lo tanto <span class="green"><span class="math inline">\(\hat{\theta}\)</span> es aproximadamente normalmente distribuido</span> con media <span class="math inline">\(\theta\)</span> y varianza dada por la <a href="#/eq-varianza_recall" class="quarto-xref">Ecuación&nbsp;2</a>.</p></li>
+<li class="fragment"><p>El enfoque de <span class="orange">“acierto-o-fallo”</span> para la integración de Monte Carlo también utiliza una media muestral para estimar la integral, pero la media muestral se toma sobre una muestra diferente y, por lo tanto, este estimador tiene una varianza diferente a la de la fórmula de la <a href="#/eq-varianza_recall" class="quarto-xref">Ecuación&nbsp;2</a>.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Supongamos que <span class="math inline">\(f(x)\)</span> es la densidad de una variable aleatoria <span class="math inline">\(X\)</span>. El enfoque de <span class="orange">“acierto-o-fallo”</span> para estimar <span class="math inline">\(F(x) = \int_{-\infty}^x f(t)dt\)</span> es el siguiente:</p>
+<div class="small">
+<ul>
+<li class="fragment"><p>Generar una muestra aleatoria <span class="math inline">\(X_1, \ldots, X_m\)</span> de la distribución de <span class="math inline">\(X\)</span>.</p></li>
+<li class="fragment"><p>Para cada observación <span class="math inline">\(X_i\)</span>, calcular</p></li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[g(X_i) = I(X_i \leq x) =
+\begin{cases}
+1, &amp; X_i \leq x; \\
+0, &amp; X_i &gt; x.
+\end{cases}\]</span></p>
+</div>
+<ul>
+<li class="fragment">Calcular <span class="math inline">\(\hat{F}(x) = g(\bar{X}) = \frac{1}{m} \sum_{i=1}^{m} I(X_i \leq x)\)</span>.</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<ul>
+<li class="fragment"><p>Notar que la variable aleatoria <span class="math inline">\(Y = g(X)\)</span> tiene la distribución Binomial(1, <span class="math inline">\(p\)</span>), donde la probabilidad de éxito es <span class="math inline">\(p = P(X \leq x) = F(x)\)</span>.</p></li>
+<li class="fragment"><p>La muestra transformada <span class="math inline">\(Y_1, \ldots, Y_m\)</span> son los resultados de <span class="math inline">\(m\)</span> ensayos de Bernoulli independientes e idénticamente distribuidos.</p></li>
+<li class="fragment"><p>El estimador <span class="math inline">\(\hat{F}(x)\)</span> es la proporción muestral <span class="math inline">\(\hat{p} = y/m\)</span>, donde <span class="math inline">\(y\)</span> es el número total de éxitos observados en <span class="math inline">\(m\)</span> ensayos.</p></li>
+<li class="fragment"><p>Por lo tanto, <span class="math inline">\(E[\hat{F}(x)] = p = F(x)\)</span> y <span class="math inline">\(\text{Var}(\hat{F}(x)) = p(1 - p)/m = F(x)(1 - F(x))/m\)</span>.</p></li>
+<li class="fragment"><p>La varianza de <span class="math inline">\(\hat{F}(x)\)</span> puede estimarse por <span class="math inline">\(\hat{p}(1 - \hat{p})/m = \hat{F}(x)(1 - \hat{F}(x))/m\)</span>.</p></li>
+<li class="fragment"><p>La varianza máxima ocurre cuando <span class="math inline">\(F(x) = 1/2\)</span>, por lo que una estimación conservadora de la varianza de <span class="math inline">\(\hat{F}(x)\)</span> es <span class="math inline">\(1/(4m)\)</span>.</p></li>
+</ul>
+</section>
+<section id="eficiencia" class="slide level2" data-number="1.5">
+<h2><span class="header-section-number">1.5</span> Eficiencia</h2>
+<div class="small">
+<ul>
+<li class="fragment">Si <span class="math inline">\(\hat{\theta}_1\)</span> y <span class="math inline">\(\hat{\theta}_2\)</span> son dos estimadores para <span class="math inline">\(\theta\)</span>, entonces <span class="math inline">\(\hat{\theta}_1\)</span> es más eficiente (en un sentido estadístico) que <span class="math inline">\(\hat{\theta}_2\)</span> si</li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[\frac{\text{Var}(\hat{\theta}_1)}{\text{Var}(\hat{\theta}_2)} &lt; 1.\]</span></p>
+</div>
+<ul>
+<li class="fragment"><p>Si las varianzas de los estimadores <span class="math inline">\(\hat{\theta}_i\)</span> son desconocidas, podemos estimar la eficiencia sustituyendo una estimación muestral de la varianza para cada estimador.</p></li>
+<li class="fragment"><p>Notar que la varianza siempre puede reducirse aumentando el número de réplicas, por lo que la eficiencia computacional también es relevante.</p></li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="reducción-de-varianza" class="title-slide slide level1 center" data-background-color="#00A499" data-number="2">
+<h1><span class="header-section-number">2</span> Reducción de varianza</h1>
+
+</section>
+<section class="slide level2">
+
+<p>En un escenario típico para un estudio de simulación, <span class="green">estamos interesados en determinar <span class="math inline">\(\theta\)</span></span>, un parámetro posiblemente conectado con algún modelo estocástico.</p>
+<div class="definition">
+<p>Si <span class="math inline">\(\hat{\theta}_1\)</span> y <span class="math inline">\(\hat{\theta}_2\)</span> son estimadores del parámetro <span class="math inline">\(\theta\)</span>, y <span class="math inline">\(\text{Var}(\hat{\theta}_2) &lt; \text{Var}(\hat{\theta}_1)\)</span>, entonces el porcentaje de reducción de la varianza logrado al usar <span class="math inline">\(\hat{\theta}_2\)</span> en lugar de <span class="math inline">\(\hat{\theta}_1\)</span> es</p>
+<p><span class="math display">\[ 100 \left( \frac{\text{Var}(\hat{\theta}_1) - \text{Var}(\hat{\theta}_2)}{\text{Var}(\hat{\theta}_1)} \right). \]</span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<ul>
+<li class="fragment"><p>Ahora, de manera más general, mediante la integración a través del <span class="green">método de Monte Carlo</span>, pudimos observar que dicho método servía para estimar funciones del tipo <span class="math inline">\(\mathbb{E}[g(X)]\)</span>.</p></li>
+<li class="fragment"><p>El enfoque de Monte Carlo para estimar <span class="math inline">\(\theta = E[g(X)]\)</span> consiste en calcular la media muestral <span class="math inline">\(g(\bar{X})\)</span> para un gran número <span class="math inline">\(m\)</span> de repeticiones de la distribución de <span class="math inline">\(g(X)\)</span>. La función <span class="math inline">\(g(\cdot)\)</span> suele ser un estadístico; es decir, una función <span class="math inline">\(n\)</span>-variada de <span class="math inline">\(g(X_1, \ldots, X_n)\)</span> de una muestra. Cuando <span class="math inline">\(g(X)\)</span> se usa en ese contexto, se tiene <span class="math inline">\(g(\mathcal{X}) = g(X_1, \ldots, X_n)\)</span>, donde <span class="math inline">\(\mathcal{X}\)</span> denota los mismos elementos. Por simplicidad usamos <span class="math inline">\(g(X)\)</span>.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div>
+<p>Sean:</p>
+<p><span class="math display">\[X^{(j)} = \{X_1^{(j)}, \ldots, X_n^{(j)}\}, \quad j = 1, \ldots, m\]</span></p>
+<p>iid provenientes desde la distribución de <span class="math inline">\(X\)</span>, y calculamos las repeticiones correspondientes al experimento</p>
+<p><span id="eq-replicas"><span class="math display">\[ Y_j = g(X_1^{(j)}, \ldots, X_n^{(j)}), \quad j = 1, \ldots, m.  \qquad(3)\]</span></span></p>
+</div>
+<div class="fragment">
+<div>
+<p>Entonces <span class="math inline">\(Y_1, \ldots, Y_m\)</span> son independientes e idénticamente distribuidos con la distribución de <span class="math inline">\(Y = g(\mathcal{X})\)</span>, y</p>
+<p><span class="math display">\[E[\bar{Y}] = E \left[ \frac{1}{m} \sum_{j=1}^{m} Y_j \right] = \theta.\]</span></p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Así, el estimador de Monte Carlo <span class="math inline">\(\hat{\theta} = \bar{Y}\)</span> es insesgado para <span class="math inline">\(\theta = E[Y]\)</span>. La varianza del estimador de Monte Carlo es</p>
+<p><span class="math display">\[\text{Var}(\hat{\theta}) = \text{Var}(\bar{Y}) = \frac{\text{Var}_f(g(X))}{m}.\]</span></p>
+<div class="fragment">
+<div class="alert">
+<div>
+<ul>
+<li><p>El <span class="green">incremento del número de repeticiones <span class="math inline">\(m\)</span> reduce la varianza</span> del estimador de Monte Carlo.</p></li>
+<li><p>Sin embargo, se necesita un gran aumento en <span class="math inline">\(m\)</span> para obtener incluso una pequeña mejora en el error estándar.</p></li>
+<li><p>Para reducir el error estándar de 0.01 a 0.0001, necesitaríamos aproximadamente 10000 veces el número de repeticiones.</p></li>
+<li><p>En general, si el error estándar debe ser como máximo <span class="math inline">\(e\)</span> y <span class="math inline">\(\text{Var}_f(g(X)) = \sigma^2\)</span>, entonces <span class="math inline">\(m \geq [\sigma^2 / e^2]\)</span> repeticiones son necesarias.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<div>
+<ul>
+<li><p>Así, aunque la varianza siempre se puede reducir aumentando el número de repeticiones de Monte Carlo, el costo computacional es alto.</p></li>
+<li><p>Otros métodos para reducir la varianza se pueden aplicar y son menos costosos computacionalmente que simplemente aumentar el número de repeticiones.</p></li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<p>En esta unidad revisaremos algunos métodos para reducir la varianza del estimador de la media muestral obtenido por simulación <span class="math inline">\(\bar{X}\)</span> de <span class="math inline">\(\theta = E[g(X)]\)</span>.</p>
+<!-- Sin embargo, antes de presentar estas técnicas de reducción de varianza, ilustremos las posibles dificultades, incluso en modelos bastante simples, de usar el estimador de simulación crudo. -->
+</div>
+</section></section>
+<section>
+<section id="variables-antitéticas" class="title-slide slide level1 center" data-background-color="#00A499" data-number="3">
+<h1><span class="header-section-number">3</span> Variables antitéticas</h1>
+
+</section>
+<section class="slide level2">
+
+<p>Consideremos la media de dos variables aleatorias idénticamente distribuidas <span class="math inline">\(U_1\)</span> y <span class="math inline">\(U_2\)</span>. Si <span class="math inline">\(U_1\)</span> y <span class="math inline">\(U_2\)</span> son independientes, entonces</p>
+<p><span class="math display">\[ \text{Var} \left( \frac{U_1 + U_2}{2} \right) = \frac{1}{4} (\text{Var}(U_1) + \text{Var}(U_2)), \]</span></p>
+<p>pero en general tenemos</p>
+<p><span class="math display">\[ \text{Var} \left( \frac{U_1 + U_2}{2} \right) = \frac{1}{4} (\text{Var}(U_1) + \text{Var}(U_2) + 2\text{Cov}(U_1, U_2)), \]</span></p>
+<p>así que la varianza de <span class="math inline">\((U_1 + U_2)/2\)</span> es menor si <span class="math inline">\(U_1\)</span> y <span class="math inline">\(U_2\)</span> están negativamente correlacionadas que cuando las variables son independientes. Este hecho nos lleva a considerar variables negativamente correlacionadas como un posible método para reducir la varianza.</p>
+</section>
+<section class="slide level2">
+
+<p>Por ejemplo, supongamos que <span class="math inline">\(X_1, \ldots, X_n\)</span> son simulados mediante el método de la transformación inversa. Para cada una de las <span class="math inline">\(m\)</span> réplicas hemos generado <span class="math inline">\(U_j \sim \text{Uniform}(0,1)\)</span>, y calculamos <span class="math inline">\(X^{(j)} = F_X^{-1}(U_j)\)</span>, <span class="math inline">\(j = 1, \ldots, n\)</span>. Nótese que si <span class="math inline">\(U\)</span> está uniformemente distribuido en <span class="math inline">\((0, 1)\)</span> entonces <span class="math inline">\(1 - U\)</span> tiene la misma distribución que <span class="math inline">\(U\)</span>, pero <span class="math inline">\(U\)</span> y <span class="math inline">\(1 - U\)</span> están negativamente correlacionados. Entonces tomando en cuenta la <a href="#/eq-replicas" class="quarto-xref">Ecuación&nbsp;3</a>.</p>
+<p><span class="math display">\[ Y_j = g(F_X^{-1}(U_1^{(j)}), \ldots, F_X^{-1}(U_n^{(j)})) \]</span></p>
+<p>tiene la misma distribución que</p>
+<p><span class="math display">\[ Y_j' = g(F_X^{-1}(1 - U_1^{(j)}), \ldots, F_X^{-1}(1 - U_n^{(j)})). \]</span></p>
+</section>
+<section class="slide level2">
+
+<div class="alert">
+<p>¿Bajo qué condiciones <span class="math inline">\(Y_j\)</span> y <span class="math inline">\(Y_j'\)</span> están negativamente correlacionados?. <span class="green">Si la función <span class="math inline">\(g\)</span> es monótona, las variables <span class="math inline">\(Y_j\)</span> y <span class="math inline">\(Y_j'\)</span> están negativamente correlacionadas</span>.</p>
+<ul>
+<li class="fragment"><p>Definimos <span class="math inline">\((x_1, \ldots, x_n) \leq (y_1, \ldots, y_n)\)</span> si <span class="math inline">\(x_j \leq y_j\)</span>, <span class="math inline">\(j = 1, \ldots, n\)</span>.</p></li>
+<li class="fragment"><p>Una función <span class="math inline">\(n\)</span>-variada <span class="math inline">\(g = g(X_1, \ldots, X_n)\)</span> es creciente si es creciente en sus coordenadas. Es decir, <span class="math inline">\(g\)</span> es creciente si <span class="math inline">\(g(x_1, \ldots, x_n) \leq g(y_1, \ldots, y_n)\)</span> siempre que <span class="math inline">\((x_1, \ldots, x_n) \leq (y_1, \ldots, y_n)\)</span>.</p></li>
+<li class="fragment"><p>Similarmente, <span class="math inline">\(g\)</span> es decreciente si es decreciente en sus coordenadas. Entonces <span class="green"><span class="math inline">\(g\)</span> es monótona si es creciente o decreciente</span>.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="definition">
+<div id="prp-antitetica" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposición 1</strong></span> Si <span class="math inline">\(X_1, \ldots, X_n\)</span> son independientes, y <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> son funciones crecientes, entonces</p>
+<p><span class="math display">\[E[f(X)g(X)] \geq E[f(X)]E[g(X)].\]</span></p>
+</div>
+</div>
+<p><br></p>
+<div class="definition">
+<div id="cor-antitetica" class="theorem corollary">
+<p><span class="theorem-title"><strong>Corolario 1</strong></span> Si <span class="math inline">\(g = g(X_1, \ldots, X_n)\)</span> es monótona, entonces</p>
+<p><span class="math display">\[ Y = g(F_X^{-1}(U_1), \ldots, F_X^{-1}(U_n)) \]</span></p>
+<p>y</p>
+<p><span class="math display">\[ Y' = g(F_X^{-1}(1 - U_1), \ldots, F_X^{-1}(1 - U_n)).\]</span></p>
+<p>están negativamente correlacionados.</p>
+</div>
+</div>
+<p><strong>Nota</strong>: Las demostraciones de <a href="#/prp-antitetica" class="quarto-xref">Proposición&nbsp;1</a> y <a href="#/cor-antitetica" class="quarto-xref">Corolario&nbsp;1</a> pueden ser revisadas en el libro de <span class="citation" data-cites="Rizzo2019">Rizzo (<a href="#/referencias" role="doc-biblioref" onclick="">2019</a>)</span> (Proposición 5.1 p128 y Corolario 5.1 p129).</p>
+</section>
+<section id="aplicación" class="slide level2" data-number="3.1">
+<h2><span class="header-section-number">3.1</span> Aplicación</h2>
+<p>Si se requieren <span class="math inline">\(m\)</span> réplicas de Monte Carlo, generamos <span class="math inline">\(m/2\)</span> réplicas</p>
+<p><span class="math display">\[ Y_j = g(F_X^{-1}(U_1^{(j)}), \ldots, F_X^{-1}(U_n^{(j)}))\]</span></p>
+<p>y las <span class="math inline">\(m/2\)</span> réplicas restantes</p>
+<p><span class="math display">\[Y'_j = g(F_X^{-1}(1 - U_1^{(j)}), \ldots, F_X^{-1}(1 - U_n^{(j)})),\]</span></p>
+<p>donde <span class="math inline">\(U_i^{(j)}\)</span> son variables iid Uniforme(0,1), <span class="math inline">\(i = 1, \ldots, n\)</span>, <span class="math inline">\(j = 1, \ldots, m/2\)</span>. Entonces, el estimador antitético es</p>
+<p><span class="math display">\[\hat{\theta} = \frac{1}{m} \left\{ Y_1 + Y'_1 + Y_2 + Y'_2 + \cdots + Y_{m/2} + Y'_{m/2} \right\}
+= \frac{2}{m} \sum_{j=1}^{m/2} \left( \frac{Y_j + Y'_j}{2} \right).\]</span></p>
+<p>Así, se requieren <span class="math inline">\(nm/2\)</span> en lugar de <span class="math inline">\(nm\)</span> variables uniformes, y la varianza del estimador de Monte Carlo se reduce utilizando variables antitéticas.</p>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p><span class="green">Ejemplo: Monte Carlo para estimar la cdf normal estándar</span><br></p>
+<p><span class="math display">\[\Phi(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}} e^{-t^2/2} dt.\]</span></p>
+<ul>
+<li class="fragment"><p>Repetir la estimación utilizando variables antitéticas y encontrar la reducción aproximada en el error estándar. En este ejemplo (después del cambio de variables) el parámetro objetivo es <span class="math inline">\(\theta = E_U[x e^{-(xU)^2/2}]\)</span>, donde <span class="math inline">\(U\)</span> tiene la distribución Uniforme(0,1).</p></li>
+<li class="fragment"><p>Restringiendo la simulación a la cola superior (ver Ejemplo de la cdf, en integrales no acotadas), la función <span class="math inline">\(g(\cdot)\)</span> es monótona, por lo que se satisface la hipótesis del <a href="#/cor-antitetica" class="quarto-xref">Corolario&nbsp;1</a>.</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Generar números aleatorios <span class="math inline">\(u_1, \ldots, u_{m/2} \sim \text{Uniforme}(0, 1)\)</span> y calcular la mitad de las réplicas utilizando</p>
+<p><span class="math display">\[Y_j = g^{(j)}(u) = x e^{-(u_j x)^2 / 2}, \quad j = 1, \ldots, m/2\]</span></p>
+<p>como antes, pero calcular la mitad restante de las réplicas utilizando</p>
+<p><span class="math display">\[Y'_j = x e^{-((1 - u_j)x)^2 / 2}, \quad j = 1, \ldots, m/2.\]</span></p>
+<p>La media muestral</p>
+<p><span class="math display">\[\begin{align}
+\hat{\theta} = \bar{g}_m(u) =&amp; \frac{1}{m} \sum_{j=1}^{m/2} \left( x e^{-(u_j x)^2 / 2} + x e^{-((1 - u_j)x)^2 / 2} \right) \\
+=&amp; \frac{1}{m/2} \sum_{j=1}^{m/2} \left( \frac{x e^{-(u_j x)^2 / 2} + x e^{-((1 - u_j)x)^2 / 2}}{2} \right).
+\end{align}\]</span></p>
+<p>converge a <span class="math inline">\(E[\hat{\theta}] = \theta\)</span> cuando <span class="math inline">\(m \to \infty\)</span>. Si <span class="math inline">\(x &gt; 0\)</span>, la estimación de <span class="math inline">\(\Phi(x)\)</span> es <span class="math inline">\(0.5 + \hat{\theta} / \sqrt{2\pi}\)</span>. Si <span class="math inline">\(x &lt; 0\)</span>, compute <span class="math inline">\(\Phi(x) = 1 - \Phi(-x)\)</span>.</p>
+</section>
+<section class="slide level2">
+
+<p>La estimación de Monte Carlo de la integral <span class="math inline">\(\Phi(x)\)</span> se implementa en la función <code>MC.Phi</code> a continuación. Opcionalmente, <code>MC.Phi</code> calculará la estimación con o sin muestreo antitético. La función <code>MC.Phi</code> podría hacerse más general si se añade un argumento que nombre una función, el integrando (se puede ver <code>integrate</code> para un ejemplo de este tipo de argumento a una función).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>MC.Phi <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">R =</span> <span class="dv">10000</span>, <span class="at">antithetic =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb16-2"><a href=""></a>  u <span class="ot">&lt;-</span> <span class="fu">runif</span>(R<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb16-3"><a href=""></a>  <span class="cf">if</span> (<span class="sc">!</span>antithetic) v <span class="ot">&lt;-</span> <span class="fu">runif</span>(R<span class="sc">/</span><span class="dv">2</span>) <span class="cf">else</span></span>
+<span id="cb16-4"><a href=""></a>    v <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> u</span>
+<span id="cb16-5"><a href=""></a>  u <span class="ot">&lt;-</span> <span class="fu">c</span>(u, v)</span>
+<span id="cb16-6"><a href=""></a>  cdf <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(x))</span>
+<span id="cb16-7"><a href=""></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)) {</span>
+<span id="cb16-8"><a href=""></a>    g <span class="ot">&lt;-</span> x[i] <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>(u <span class="sc">*</span> x[i])<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb16-9"><a href=""></a>    cdf[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(g) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi) <span class="sc">+</span> <span class="fl">0.5</span></span>
+<span id="cb16-10"><a href=""></a>  }</span>
+<span id="cb16-11"><a href=""></a>  cdf</span>
+<span id="cb16-12"><a href=""></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Una comparación de las estimaciones obtenidas de un solo experimento de Monte Carlo se muestra a continuación.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(.<span class="dv">1</span>, <span class="fl">2.5</span>, <span class="at">length=</span><span class="dv">5</span>)</span>
+<span id="cb17-2"><a href=""></a>Phi <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(x)</span>
+<span id="cb17-3"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb17-4"><a href=""></a>MC1 <span class="ot">&lt;-</span> <span class="fu">MC.Phi</span>(x, <span class="at">antithetic =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb17-5"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb17-6"><a href=""></a>MC2 <span class="ot">&lt;-</span> <span class="fu">MC.Phi</span>(x)</span>
+<span id="cb17-7"><a href=""></a><span class="fu">print</span>(<span class="fu">round</span>(<span class="fu">rbind</span>(x, MC1, MC2, Phi), <span class="dv">5</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       [,1]    [,2]    [,3]    [,4]    [,5]
+x   0.10000 0.70000 1.30000 1.90000 2.50000
+MC1 0.53983 0.75825 0.90418 0.97311 0.99594
+MC2 0.53983 0.75805 0.90325 0.97132 0.99370
+Phi 0.53983 0.75804 0.90320 0.97128 0.99379</code></pre>
+</div>
+</div>
+<p>La reducción aproximada en la varianza puede estimarse para un <span class="math inline">\(x\)</span> dado mediante una simulación con ambos métodos, el enfoque de integración de Monte Carlo simple y el enfoque de variables antitéticas.</p>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>m <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb19-2"><a href=""></a>MC1 <span class="ot">&lt;-</span> MC2 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(m)</span>
+<span id="cb19-3"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fl">1.95</span></span>
+<span id="cb19-4"><a href=""></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>m) {</span>
+<span id="cb19-5"><a href=""></a>  MC1[i] <span class="ot">&lt;-</span> <span class="fu">MC.Phi</span>(x, <span class="at">R =</span> <span class="dv">1000</span>, <span class="at">antithetic =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb19-6"><a href=""></a>  MC2[i] <span class="ot">&lt;-</span> <span class="fu">MC.Phi</span>(x, <span class="at">R =</span> <span class="dv">1000</span>)</span>
+<span id="cb19-7"><a href=""></a>}</span>
+<span id="cb19-8"><a href=""></a><span class="fu">print</span>(<span class="fu">sd</span>(MC1))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.006874616</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="fu">print</span>(<span class="fu">sd</span>(MC2))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0004392972</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="fu">print</span>((<span class="fu">var</span>(MC1) <span class="sc">-</span> <span class="fu">var</span>(MC2)) <span class="sc">/</span> <span class="fu">var</span>(MC1))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9959166</code></pre>
+</div>
+</div>
+<p>El enfoque de variables antitéticas logró aproximadamente una reducción del 99.6% en la varianza en <span class="math inline">\(x = 1.95\)</span>.</p>
+</section></section>
+<section>
+<section id="variables-de-control" class="title-slide slide level1 center" data-background-color="#00A499" data-number="4">
+<h1><span class="header-section-number">4</span> Variables de Control</h1>
+
+</section>
+<section class="slide level2">
+
+<p>Otro enfoque para reducir la varianza en un estimador de Monte Carlo de <span class="math inline">\(\theta = E[g(X)]\)</span> es el uso de variables de control. Supongamos que hay una función <span class="math inline">\(f\)</span>, tal que <span class="math inline">\(\mu = E[f(X)]\)</span> es conocido, y <span class="math inline">\(f(X)\)</span> está correlacionado con <span class="math inline">\(g(X)\)</span>. Entonces, para cualquier constante <span class="math inline">\(c\)</span>, es fácil comprobar que <span class="math inline">\(\hat{\theta}_c = g(X) + c(f(Y) - \mu)\)</span> es un estimador insesgado de <span class="math inline">\(\theta\)</span>.</p>
+<p>La varianza</p>
+<p><span class="math display">\[\text{Var}(\hat{\theta}_c) = \text{Var}(g(X)) + c^2 \text{Var}(f(X)) + 2c \text{Cov}(g(X), f(X))\]</span></p>
+<p>es una función cuadrática de <span class="math inline">\(c\)</span>. Se minimiza en <span class="math inline">\(c = c^*\)</span>, donde</p>
+<p><span class="math display">\[c^* = -\frac{\text{Cov}(g(X), f(X))}{\text{Var}(f(X))}\]</span></p>
+<p>y la varianza mínima es</p>
+<p><span id="eq-varianza_minima_control"><span class="math display">\[\text{Var}(\hat{\theta}_{c^*}) = \text{Var}(g(X)) - \frac{[\text{Cov}(g(X), f(X))]^2}{\text{Var}(f(X))}. \qquad(4)\]</span></span></p>
+</section>
+<section class="slide level2">
+
+<p>La variable aleatoria <span class="math inline">\(f(X)\)</span> se llama una variable de control para el estimador <span class="math inline">\(g(X)\)</span>. En la <a href="#/eq-varianza_minima_control" class="quarto-xref">Ecuación&nbsp;4</a> vemos que <span class="math inline">\(\text{Var}(g(X))\)</span> se reduce por</p>
+<p><span class="math display">\[\frac{[\text{Cov}(g(X), f(X))]^2}{\text{Var}(f(X))}.\]</span></p>
+<p>por lo tanto, la reducción porcentual en la varianza es</p>
+<p><span class="math display">\[100 \frac{[\text{Cov}(g(X), f(X))]^2}{\text{Var}(g(X)) \text{Var}(f(X))} = 100 [\text{Cor}(g(X), f(X))]^2.\]</span></p>
+<p>Así, es ventajoso si <span class="math inline">\(f(X)\)</span> y <span class="math inline">\(g(X)\)</span> están fuertemente correlacionados. No es posible una reducción de la varianza en el caso de que <span class="math inline">\(f(X)\)</span> y <span class="math inline">\(g(Y)\)</span> no estén correlacionados.</p>
+<p>Para calcular la constante <span class="math inline">\(c^*\)</span>, necesitamos <span class="math inline">\(\text{Cov}(g(X), f(X))\)</span> y <span class="math inline">\(\text{Var}(f(X))\)</span>, pero estos parámetros pueden estimarse si es necesario, a partir de un experimento preliminar de Monte Carlo.</p>
+</section>
+<section id="ejemplo" class="slide level2" data-number="4.1">
+<h2><span class="header-section-number">4.1</span> Ejemplo</h2>
+<div class="example">
+<p><span class="green">Ejemplo: Aplicaremos la variable de control</span><br></p>
+<p>Se pide calcular:</p>
+<p><span class="math display">\[
+\theta = \mathbb{E}[e^U] = \int_0^1 e^u \, du, \qquad U \sim \text{U}(0,1)
+\]</span></p>
+<div class="small">
+<p><br> Este ejemplo puede ser resuelto de manera analítica porque <span class="math inline">\(\theta = e - 1 = 1.718282\)</span> por integración, pero <span class="orange">comprobaremos los resultados mediante simulación</span>.</p>
+<p><br> Utilizando un enfoque simple de Monte Carlo con <span class="math inline">\(m\)</span> réplicas, la varianza del estimador es <span class="math inline">\(\text{Var}(g(U))/m\)</span>, donde:</p>
+<p><span class="math display">\[
+\text{Var}(g(U)) = \text{Var}(e^U) = \mathbb{E}[e^{2U}] - \theta^2 = \frac{e^2 - 1}{2} - (e - 1)^2 \approx 0.2420351.
+\]</span></p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p>Una buena idea es seleccionar <span class="orange"><span class="math inline">\(U \sim \text{Uniform}(0,1)\)</span> como nuestra variable de control</span>. Entonces, <span class="math inline">\(\mathbb{E}[U] = 1/2\)</span>, <span class="math inline">\(\text{Var}(U) = 1/12\)</span>, y <span class="math inline">\(\text{Cov}(e^U, U) = 1 - (1/2)(e - 1) \approx 0.1408591\)</span>. Por lo tanto:</p>
+<p><span class="math display">\[
+c^* = -\frac{\text{Cov}(e^U, U)}{\text{Var}(U)} = -12 + 6(e - 1) \approx -1.690309.
+\]</span></p>
+<p>El estimador controlado es:</p>
+<p><span class="math display">\[
+\hat{\theta}_c = e^U - 1.690309(U - 0.5).
+\]</span></p>
+<p>Para <span class="math inline">\(m\)</span> réplicas, la varianza de <span class="math inline">\(\hat{\theta}_c\)</span> es:</p>
+<p><span class="math display">\[
+\text{Var}(e^U) - \frac{[\text{Cov}(e^U, U)]^2}{\text{Var}(U)} = \frac{e^2 - 1}{2} - (e - 1)^2 - 12\left(1 - \frac{e - 1}{2}\right)^2 \approx 0.003940175.
+\]</span></p>
+<p>El porcentaje de reducción de varianza utilizando la variable de control en comparación con el estimador simple de Monte Carlo es:</p>
+<p><span class="math display">\[
+100 \times \left(1 - \frac{0.003940175}{0.242935}\right) \approx 98.3781\%.
+\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p>Implementamos ahora mediante simulación</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb25-2"><a href=""></a>m <span class="ot">=</span> <span class="dv">10000</span></span>
+<span id="cb25-3"><a href=""></a>a <span class="ot">=</span> <span class="sc">-</span><span class="dv">12</span> <span class="sc">+</span> <span class="dv">6</span> <span class="sc">*</span> (<span class="fu">exp</span>(<span class="dv">1</span>) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb25-4"><a href=""></a></span>
+<span id="cb25-5"><a href=""></a>sim <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb25-6"><a href=""></a>  <span class="at">U =</span> <span class="fu">runif</span>(m)</span>
+<span id="cb25-7"><a href=""></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-8"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">T1 =</span> <span class="fu">exp</span>(U), <span class="co"># simple Monte Carlo</span></span>
+<span id="cb25-9"><a href=""></a>         <span class="at">T2 =</span> <span class="fu">exp</span>(U) <span class="sc">+</span> a <span class="sc">*</span> (U <span class="sc">-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>) <span class="co"># controlado</span></span>
+<span id="cb25-10"><a href=""></a>  )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<p>El valor de las integrales a través del método de Monte Carlo simple (<code>T1</code>) y la versión controlada (<code>T2</code>) se muestran a continuación</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a>sim <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href=""></a>  <span class="fu">select</span>(T1, T2) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href=""></a>  <span class="fu">colMeans</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      T1       T2 
+1.711419 1.717676 </code></pre>
+</div>
+</div>
+<p><br></p>
+<p>Y la reducción de la varianza está dada por</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>(<span class="fu">var</span>(sim<span class="sc">$</span>T1) <span class="sc">-</span> <span class="fu">var</span>(sim<span class="sc">$</span>T2)) <span class="sc">/</span> <span class="fu">var</span>(sim<span class="sc">$</span>T1)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9837252</code></pre>
+</div>
+</div>
+</section>
+<section id="ejemplo-1" class="slide level2" data-number="4.2">
+<h2><span class="header-section-number">4.2</span> Ejemplo</h2>
+<div class="example">
+<p><span class="green">Ejemplo: Integración Monte Carlo usando variables de control</span></p>
+<p>Se requiere estimar la siguiente integral: <span class="math display">\[
+\int_0^1 \frac{e^{-x}}{1 + x^2} \, dx.
+\]</span></p>
+<p>En este caso el parámetro de interés es <span class="math inline">\(\theta = \mathbb{E}[g(X)]\)</span>, con <span class="math inline">\(g(X) = \frac{e^{-X}}{1 + X^2}\)</span> y <span class="math inline">\(X \sim U(0,1)\)</span>. Buscamos una función “cercana” a <span class="math inline">\(g(X)\)</span> con un valor esperado conocido, de modo que <span class="math inline">\(g(X)\)</span> y <span class="math inline">\(f(X)\)</span> estén fuertemente correlacionadas.</p>
+<p>Por ejemplo, la función <span class="math display">\[f(x) = e^{-0.5}(1 + x^2)^{-1}\]</span> <span class="orange">es parecida a <span class="math inline">\(g(x)\)</span> en <span class="math inline">\((0,1)\)</span>, y podemos calcular su esperanza</span>. Si <span class="math inline">\(U \sim U(0,1)\)</span>, entonces: <span class="math display">\[
+\mathbb{E}[f(U)] = e^{-0.5} \int_0^1 \frac{1}{1 + u^2} \, du = e^{-0.5} \arctan(1) = e^{-0.5} \cdot \frac{\pi}{4}.
+\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Comparación de las funciones</p>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Gráfico</a></li><li><a href="#tabset-1-2">Código</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a><span class="co"># Construimos las funciones f(x) y g(x)</span></span>
+<span id="cb30-2"><a href=""></a>f <span class="ot">=</span> <span class="cf">function</span>(u) {</span>
+<span id="cb30-3"><a href=""></a>  <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> u<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb30-4"><a href=""></a>}</span>
+<span id="cb30-5"><a href=""></a></span>
+<span id="cb30-6"><a href=""></a>g <span class="ot">=</span> <span class="cf">function</span>(u) {</span>
+<span id="cb30-7"><a href=""></a>  <span class="fu">exp</span>(<span class="sc">-</span>u) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> u<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb30-8"><a href=""></a>}</span>
+<span id="cb30-9"><a href=""></a>n <span class="ot">=</span> <span class="dv">100</span></span>
+<span id="cb30-10"><a href=""></a><span class="co"># Generamos el dataframe</span></span>
+<span id="cb30-11"><a href=""></a>sim <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb30-12"><a href=""></a>  <span class="at">x =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">length.out =</span> n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-13"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">fx =</span> <span class="fu">f</span>(x),</span>
+<span id="cb30-14"><a href=""></a>         <span class="at">gx =</span> <span class="fu">g</span>(x)) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-15"><a href=""></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"funcion"</span>,</span>
+<span id="cb30-16"><a href=""></a>               <span class="at">values_to =</span> <span class="st">"valor"</span>,</span>
+<span id="cb30-17"><a href=""></a>               <span class="at">cols =</span> <span class="sc">!</span>x)</span>
+<span id="cb30-18"><a href=""></a><span class="co"># Graficamos</span></span>
+<span id="cb30-19"><a href=""></a>sim <span class="sc">%&gt;%</span> </span>
+<span id="cb30-20"><a href=""></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb30-21"><a href=""></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>valor, <span class="at">colour=</span>funcion), <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb30-22"><a href=""></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>funcion) <span class="sc">+</span></span>
+<span id="cb30-23"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb30-24"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p>Al configurar una simulación preliminar para obtener una estimación de la constante <span class="math inline">\(c^*\)</span>, también obtenemos una estimación de <span class="math inline">\(\text{Cor}(g(U), f(U)) \approx 0.974\)</span>.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a>f <span class="ot">=</span> <span class="cf">function</span>(u) {</span>
+<span id="cb31-2"><a href=""></a>  <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> u<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb31-3"><a href=""></a>}</span>
+<span id="cb31-4"><a href=""></a></span>
+<span id="cb31-5"><a href=""></a>g <span class="ot">=</span> <span class="cf">function</span>(u) {</span>
+<span id="cb31-6"><a href=""></a>  <span class="fu">exp</span>(<span class="sc">-</span>u) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> u<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb31-7"><a href=""></a>}</span>
+<span id="cb31-8"><a href=""></a></span>
+<span id="cb31-9"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span>
+<span id="cb31-10"><a href=""></a>u <span class="ot">=</span> <span class="fu">runif</span>(<span class="dv">10000</span>)</span>
+<span id="cb31-11"><a href=""></a>Fu <span class="ot">=</span> <span class="fu">f</span>(u)</span>
+<span id="cb31-12"><a href=""></a>Gu <span class="ot">=</span> <span class="fu">g</span>(u)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="example">
+<p>Las estimaciones de <span class="math inline">\(c^*\)</span> y <span class="math inline">\(\text{Cor}(f(U), g(U))\)</span> son:</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a><span class="fu">cor</span>(Fu, Gu)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9737613</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a>c <span class="ot">=</span> <span class="sc">-</span><span class="fu">cov</span>(Fu, Gu) <span class="sc">/</span> <span class="fu">var</span>(Fu) <span class="co"># estimación de c*</span></span>
+<span id="cb34-2"><a href=""></a>c</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.445661</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p>Resultados de la simulación con y sin la variable de control</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a>m <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
+<span id="cb36-2"><a href=""></a>c <span class="ot">=</span> <span class="sc">-</span><span class="fu">cov</span>(Fu, Gu) <span class="sc">/</span> <span class="fu">var</span>(Fu) <span class="co"># estimación de c*</span></span>
+<span id="cb36-3"><a href=""></a>sim <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">u =</span> <span class="fu">runif</span>(m)) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-4"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">T1 =</span> <span class="fu">g</span>(u),</span>
+<span id="cb36-5"><a href=""></a>         <span class="at">T2 =</span> T1 <span class="sc">+</span> c <span class="sc">*</span> (<span class="fu">f</span>(u) <span class="sc">-</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">*</span> pi <span class="sc">/</span> <span class="dv">4</span>))</span>
+<span id="cb36-6"><a href=""></a></span>
+<span id="cb36-7"><a href=""></a><span class="co"># Cálculo de media y varianza</span></span>
+<span id="cb36-8"><a href=""></a><span class="fu">rbind</span>(<span class="at">media =</span> <span class="fu">colMeans</span>(sim <span class="sc">%&gt;%</span> <span class="fu">select</span>(T1, T2)),</span>
+<span id="cb36-9"><a href=""></a>      <span class="at">varianza =</span> <span class="fu">apply</span>(sim <span class="sc">%&gt;%</span> <span class="fu">select</span>(T1, T2), <span class="dv">2</span>, var))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 T1         T2
+media    0.52458722 0.52465937
+varianza 0.05989423 0.00310331</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a><span class="co"># Y la reducción de la varianza</span></span>
+<span id="cb38-2"><a href=""></a>rvar <span class="ot">=</span> (<span class="fu">var</span>(sim<span class="sc">$</span>T1) <span class="sc">-</span> <span class="fu">var</span>(sim<span class="sc">$</span>T2)) <span class="sc">/</span> <span class="fu">var</span>(sim<span class="sc">$</span>T1)</span>
+<span id="cb38-3"><a href=""></a>rvar</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9481868</code></pre>
+</div>
+</div>
+<blockquote>
+<p>La reducción aproximada de la varianza de <span class="math inline">\(g(X)\)</span> en comparación con <span class="math inline">\(g(X) + c^*(f(X) - \mu)\)</span> es del 94.8%.</p>
+</blockquote>
+</section>
+<section id="variable-antitética-como-variable-de-control" class="slide level2" data-number="4.3">
+<h2><span class="header-section-number">4.3</span> Variable antitética como variable de control</h2>
+<div class="small">
+<div class="definition">
+<p>El <span class="green">estimador de variable antitética es un caso especial del estimador de variable de control</span>.</p>
+<ul>
+<li class="fragment"><p>El estimador de variable de control es una <span class="orange">combinación lineal de estimadores insesgados de <span class="math inline">\(\theta\)</span></span>.</p></li>
+<li class="fragment"><p>En general, si <span class="math inline">\(\hat{\theta}_1\)</span> y <span class="math inline">\(\hat{\theta}_2\)</span> son dos estimadores insesgados de <span class="math inline">\(\theta\)</span>, entonces para cada constante <span class="math inline">\(c\)</span>, <span class="orange"><span class="math display">\[\hat{\theta}_c = c\hat{\theta}_1 + (1 - c)\hat{\theta}_2\]</span> también es insesgado para <span class="math inline">\(\theta\)</span></span>.</p></li>
+<li class="fragment"><p>La <span class="green">varianza de <span class="math inline">\(c\hat{\theta}_1 + (1 - c)\hat{\theta}_2\)</span> es <span class="math display">\[\text{Var}(\hat{\theta}_2) + c^2 \text{Var}(\hat{\theta}_1 - \hat{\theta}_2) + 2c \, \text{Cov}(\hat{\theta}_2, \hat{\theta}_1 - \hat{\theta}_2).\]</span></span></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="múltiples-variables-de-control" class="slide level2" data-number="4.4">
+<h2><span class="header-section-number">4.4</span> Múltiples variables de control</h2>
+<div class="small">
+<div class="definition">
+<ul>
+<li class="fragment"><p>El combinar estimadores insesgados de <span class="math inline">\(\theta\)</span> para reducir la varianza <span class="green">puede ser extendido a más de dos variables de control</span>.</p></li>
+<li class="fragment"><p>Si <span class="math inline">\(\mathbb{E}[\hat{\theta}_i] = \theta\)</span>, para <span class="math inline">\(i = 1, 2, \dots, k\)</span> y <span class="math inline">\(c = (c_1, \dots, c_k)\)</span> tal que <span class="math inline">\(\sum_{i=1}^k c_i = 1\)</span>, entonces <span class="orange"><span class="math inline">\(\sum_{i=1}^k c_i \hat{\theta}_i\)</span> también es insesgado para <span class="math inline">\(\theta\)</span></span></p></li>
+<li class="fragment"><p>El correspondiente estimador de variable de control es <span class="green"><span class="math display">\[\hat{\theta}_c = g(X) + \sum_{i=1}^k c_i^*(f_i(X) - \mu_i)),\]</span></span> donde <span class="math inline">\(\mu_i = \mathbb{E}[f_i(X)]\)</span>, <span class="math inline">\(i = 1, \dots, k\)</span>, y <span class="math inline">\(\mathbb{E}[\hat{\theta}_c] = \mathbb{E}[g(X)] + \sum_{i=1}^k c_i^* \mathbb{E}[f_i(X) - \mu_i] = \theta.\)</span></p></li>
+<li class="fragment"><p>La estimación controlada <span class="math inline">\(\hat{\theta}_{c^*}\)</span> y las estimaciones para las constantes óptimas <span class="math inline">\(c_i^*\)</span> se pueden obtener ajustando un <span class="green">modelo de regresión lineal</span>.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="variables-de-control-y-regresión" class="slide level2" data-number="4.5">
+<h2><span class="header-section-number">4.5</span> Variables de control y regresión</h2>
+<!-- En esta sección discutiremos la dualidad entre el enfoque de variables de control y la regresión lineal simple. Esto proporciona una mayor comprensión de cómo la variable de control reduce la varianza en la integración de Monte Carlo. Además, tenemos un método conveniente para estimar la constante óptima $c^*$, el parámetro objetivo, la reducción porcentual en la varianza y el error estándar del estimador, todo ajustando un modelo de regresión lineal simple. -->
+<div class="definition">
+<div class="small">
+<p>Supongamos que <span class="math inline">\((X_1, Y_1), \dots, (X_n, Y_n)\)</span> es una muestra aleatoria de una distribución bivariada con vector de medias <span class="math inline">\((\mu_X, \mu_Y)\)</span> y varianzas <span class="math inline">\((\sigma_X^2, \sigma_Y^2)\)</span>. <span class="green">Comparemos los estimadores de mínimos cuadrados para la regresión de <span class="math inline">\(X\)</span> sobre <span class="math inline">\(Y\)</span> con el estimador de variable de control</span>.</p>
+<ul>
+<li class="fragment"><p><span class="blue">Si existe una relación lineal</span> <span class="math inline">\(X = \beta_1 Y + \beta_0 + \varepsilon\)</span>, y <span class="math inline">\(\mathbb{E}[\varepsilon] = 0\)</span>, entonces <span class="math display">\[\begin{aligned}
+\mathbb{E}[X] &amp;= \mathbb{E}[\mathbb{E}[X \mid Y]] \\
+&amp; = \mathbb{E}[\beta_0 + \beta_1 Y + \varepsilon] \\
+&amp; = \beta_0 + \beta_1 \mu_Y.
+\end{aligned}\]</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span> son parámetros constantes y <span class="math inline">\(\varepsilon\)</span> es una variable de error aleatoria.</p></li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="definition">
+<div class="small">
+<p>Consideremos la muestra bivariada <span class="math inline">\((g(X_1), f(X_1)), \dots, (g(X_n), f(X_n))\)</span>. Ahora, <span class="green">si <span class="math inline">\(g(X)\)</span> reemplaza <span class="math inline">\(X\)</span> y <span class="math inline">\(f(X)\)</span> reemplaza <span class="math inline">\(Y\)</span>, tenemos</span></p>
+<p><span class="math display">\[\begin{aligned}
+g(X) &amp;= \beta_0 + \beta_1 f(X) + \varepsilon \qquad \text{y},\\
+\mathbb{E}[g(X)] &amp;= \beta_0 + \beta_1 \mathbb{E}[f(X)].
+\end{aligned}\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="estimador-para-la-pendiente">Estimador para la pendiente</h3>
+<div class="definition">
+<p>El <span class="green">estimador de mínimos cuadrados para la pendiente</span> es:</p>
+<p><span class="math display">\[\hat{\beta}_1 = \frac{\sum_{i=1}^n (X_i - \overline{X})(Y_i - \overline{Y})}{\sum_{i=1}^n (Y_i - \overline{Y})^2} = \frac{\text{Cov}(X, Y)}{\text{Var}(Y)} = \frac{\text{Cov}(g(X), f(X))}{\text{Var}(f(X))} = -c^*.\]</span></p>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="alert">
+<p>Una manera conveniente de estimar <span class="math inline">\(c^*\)</span> es <span class="green">usar la pendiente estimada del modelo de regresión lineal simple</span> ajustado de <span class="math inline">\(g(X)\)</span> en <span class="math inline">\(f(X)\)</span>:</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a>L <span class="ot">=</span> <span class="fu">lm</span>(gx <span class="sc">~</span> fx)</span>
+<span id="cb40-2"><a href=""></a>c.star <span class="ot">=</span> <span class="sc">-</span>L<span class="sc">$</span>coeff[<span class="dv">2</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="estimador-para-el-intercepto">Estimador para el intercepto</h3>
+<div class="definition">
+<p>El <span class="green">estimador de mínimos cuadrados del intercepto</span> es <span class="math inline">\(\hat{\beta}_0 = \overline{g(X)} - (-c^*)\overline{f(X)}\)</span>, por lo que la respuesta predicha en <span class="math inline">\(\mu = \mathbb{E}[f(X)]\)</span> es:</p>
+<p><span class="math display">\[
+\hat{\beta}_0 + \hat{\beta}_1 \mu = \overline{g(X)} + c^* \left( \overline{f(X)} - c^* \mu \right) = g(\overline{X}) + c^* \left( f(\overline{X}) - \mu \right) = \hat{\theta}_{c^*}.
+\]</span></p>
+<p>Por lo tanto, el estimador de variable de control <span class="math inline">\(\hat{\theta}_{c^*}\)</span> es el valor predicho de la variable respuesta <span class="math inline">\((g(X))\)</span> en el punto <span class="math inline">\(\mu = \mathbb{E}[f(X)]\)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="estimación-de-la-varianza">Estimación de la varianza</h3>
+<div class="definition">
+<p>La <span class="green">estimación de la varianza del error</span> en la regresión de <span class="math inline">\(X\)</span> en <span class="math inline">\(Y\)</span> es:</p>
+<p><span class="math display">\[
+\hat{\sigma}_\varepsilon^2 = \widehat{\text{Var}}(X - \hat{X}) = \widehat{\text{Var}}(X - (\hat{\beta}_0 + \hat{\beta}_1 Y)) = \widehat{\text{Var}}(X - \hat{\beta}_1 Y) = \widehat{\text{Var}}(X + c^* Y),
+\]</span></p>
+<p>que <span class="orange">corresponde al error cuadrático medio residual (MSE)</span>. La estimación de la varianza del estimador de variable de control es:</p>
+<p><span class="math display">\[
+\widehat{\text{Var}}\left( g(X) + c^* (f(X) - \mu) \right) = \frac{\widehat{\text{Var}}\left( g(X) + c^* (f(X) - \mu) \right)}{n} = \frac{\widehat{\text{Var}}(g(X)) + c^* \widehat{\text{Var}}(f(X))}{n} = \frac{\hat{\sigma}_\varepsilon^2}{n}.
+\]</span></p>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="alert">
+<p>El <span class="green">error estándar estimado del estimador de variable de control puede ser calculado en <strong>R</strong></span> aplicando el método <code>summary</code> al objeto <code>lm</code> del modelo de regresión ajustado, para extraer el valor de <span class="math inline">\(\hat{\sigma}_\varepsilon = \sqrt{\text{MSE}}\)</span>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a>se.hat <span class="ot">=</span> <span class="fu">summary</span>(L)<span class="sc">$</span>sigma</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="alert">
+<p><strong>Nota:</strong> La <span class="green">proporción de reducción de varianza para la variable de control</span> es <span class="math inline">\([\text{Cor}(g(X), f(X))]^2\)</span>. En el modelo de RLS, el coeficiente de determinación <span class="math inline">\((R^2)\)</span>, es la proporción de la varianza de <span class="math inline">\(g(X)\)</span> respecto a su media explicada por <span class="math inline">\(f(X)\)</span>.</p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="example">
+<p><span class="green">Ejercicio:</span> <br></p>
+<p>Revisar y replicar <span class="orange">ejemplo 5.9</span> de <span class="citation" data-cites="Rizzo2019">Rizzo (<a href="#/referencias" role="doc-biblioref" onclick="">2019</a>)</span>.</p>
+</div>
+</section></section>
+<section id="referencias" class="title-slide slide level1 smaller scrollable" data-background-color="#00A499" data-number="5">
+<h1><span class="header-section-number">5</span> Referencias</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Rizzo2019" class="csl-entry" role="listitem">
+Rizzo, Maria L. 2019. <em>Statistical Computing with <span>R</span></em>. Second. The <span>R</span> Series. Chapman &amp; Hall/CRC.
+</div>
+</div>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="images/Usach_P2.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>Simulación Estadística - Técnicas de reducción de varianza</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/plugin/multiplex/socket.io.js"></script>
+  <script src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/plugin/multiplex/multiplex.js"></script>
+  <script src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Simulacion_3_Tecnicas_Reduccion_Varianza_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'multiplex': {"secret":null,"id":"dbabdc2edef0142a","url":"https://reveal-multiplex.glitch.me/"},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copiado");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copiado");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
