@@ -103,7 +103,10 @@ library(reticulate)
     4.4.	Aplicaciones de las RNNs y LSTM: procesamiento de lenguaje natural, generación de texto y análisis de series temporales.
     4.5.	Implementación práctica de modelos RNN y LSTM.
 
-[Slides](Deep_Learning_04_RNN.html){target="_blank"}
+[Slides](Deep_Learning_04_RNN.html){target="_blank"} </br>
+[Ejemplo 1: RNN y LSTM: pronóstico de series temporales en R](Deep_Learning_04_examples_01.html){target="_blank"} </br>
+[Ejemplo 2: LSTM y GRU: análisis de sentimiento con IMDB en R](Deep_Learning_04_examples_02.html){target="_blank"} </br>
+[Ejemplo 3: LSTM: generación de texto carácter a carácter en R](Deep_Learning_04_examples_02b.html){target="_blank"}
 :::
 
 ::: {.callout-tip collapse="true" icon=false}

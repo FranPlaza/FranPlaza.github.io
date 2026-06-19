@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Modelos de Deep Learning – Fran Plaza-Vega</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -24,7 +27,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -52,19 +54,18 @@ div.csl-indent {
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-acf12a64177840b8d86f2d4f01b2e9fb.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-23bbe8b5e4efc1e257f6d59dce478b08.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-acf12a64177840b8d86f2d4f01b2e9fb.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-43ad0a23403bf9b7354f8a246989e6c5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-3c7835643a21120fb80e75091856f14c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-43ad0a23403bf9b7354f8a246989e6c5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-79aa60f86ade8b8674ae1c36839e9e36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-b8d0484ccf50d8ffa05d9ee62fdaf3b5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-79aa60f86ade8b8674ae1c36839e9e36.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -352,8 +353,6 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Fran Plaza-Vega</span>
     </a>
@@ -589,7 +588,7 @@ window.Quarto = {
 4.3.    LSTM y GRU: soluciones al problema del desvanecimiento del gradiente.
 4.4.    Aplicaciones de las RNNs y LSTM: procesamiento de lenguaje natural, generación de texto y análisis de series temporales.
 4.5.    Implementación práctica de modelos RNN y LSTM.</code></pre>
-<p><a href="Deep_Learning_04_RNN.html" target="_blank">Slides</a></p>
+<p><a href="Deep_Learning_04_RNN.html" target="_blank">Slides</a> <br> <a href="Deep_Learning_04_examples_01.html" target="_blank">Ejemplo 1: RNN y LSTM: pronóstico de series temporales en R</a> <br> <a href="Deep_Learning_04_examples_02.html" target="_blank">Ejemplo 2: LSTM y GRU: análisis de sentimiento con IMDB en R</a> <br> <a href="Deep_Learning_04_examples_02b.html" target="_blank">Ejemplo 3: LSTM: generación de texto carácter a carácter en R</a></p>
 </div>
 </div>
 </div>
@@ -641,7 +640,7 @@ window.Quarto = {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/Book_deep_learning.png" height="250" class="figure-img"></p>
-<figcaption><span class="citation" data-cites="Goodfellow2016">Goodfellow, Bengio, y Courville (<a href="#ref-Goodfellow2016" role="doc-biblioref">2016</a>)</span>, <a href="https://www.deeplearningbook.org/">Disponible acá</a></figcaption>
+<figcaption><span class="citation" data-cites="Goodfellow2016">Goodfellow et&nbsp;al. (<a href="#ref-Goodfellow2016" role="doc-biblioref">2016</a>)</span>, <a href="https://www.deeplearningbook.org/">Disponible acá</a></figcaption>
 </figure>
 </div>
 </div>
@@ -674,7 +673,7 @@ window.Quarto = {
 </section>
 <section id="referencias" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Referencias</h1>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-Geron2022" class="csl-entry" role="listitem">
 Géron, Aurélien. 2022. <em><span>Hands-on machine learning with Scikit-Learn, Keras, and TensorFlow</span></em>. O’Reilly Media, Inc.
 </div>
