@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="900" version="1.1" viewBox="0 0 1600 900" width="1600">
+  <defs>
+    <marker id="arrow-dark" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="10" refY="5">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#263238"/>
+    </marker>
+    <marker id="arrow-teal" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="10" refY="5">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#00A499"/>
+    </marker>
+    <marker id="arrow-orange" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="10" refY="5">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#EA7600"/>
+    </marker>
+    <marker id="arrow-red" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="10" refY="5">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C83E4D"/>
+    </marker>
+  </defs>
+  <rect fill="#FFFFFF" height="900" width="1600" x="0" y="0"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700" x="70" y="80">Entrenamiento alternado de una GAN</text>
+  <text fill="#607D8B" font-family="Arial, Helvetica, sans-serif" font-size="24" x="72" y="120">No se optimizan dos pérdidas independientes: cada red cambia continuamente el problema de la otra.</text>
+  <line stroke="#00A499" stroke-width="5" x1="70" x2="1530" y1="142" y2="142"/>
+  <path d="M 800 215 Q 996.1396103067892 283.8603896932107 1065 480" fill="none" marker-end="url(#arrow-dark)" stroke="#263238" stroke-width="5"/>
+  <path d="M 1065 480 Q 996.1396103067892 676.1396103067892 800 745" fill="none" marker-end="url(#arrow-dark)" stroke="#263238" stroke-width="5"/>
+  <path d="M 800 745 Q 603.8603896932108 676.1396103067892 535 480" fill="none" marker-end="url(#arrow-dark)" stroke="#263238" stroke-width="5"/>
+  <path d="M 535 480 Q 603.8603896932108 283.8603896932107 800 215" fill="none" marker-end="url(#arrow-dark)" stroke="#263238" stroke-width="5"/>
+  <circle cx="800" cy="215" fill="#FFFFFF" r="105" stroke="#00A499" stroke-width="6"/>
+  <circle cx="730" cy="145" fill="#00A499" r="28"/>
+  <text fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" opacity="1.0" text-anchor="middle" x="730" y="155">1</text>
+  <text fill="#00A499" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" opacity="1.0" text-anchor="middle" x="800" y="197">Muestrear</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="800" y="235.0">x real ~ p_data</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="800" y="262.0">z ~ p(z)</text>
+  <circle cx="1065" cy="480" fill="#FFFFFF" r="105" stroke="#EA7600" stroke-width="6"/>
+  <circle cx="995" cy="410" fill="#EA7600" r="28"/>
+  <text fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" opacity="1.0" text-anchor="middle" x="995" y="420">2</text>
+  <text fill="#EA7600" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" opacity="1.0" text-anchor="middle" x="1065" y="462">Actualizar D</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="1065" y="500.0">subir D(x)</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="1065" y="527.0">bajar D(G(z))</text>
+  <circle cx="800" cy="745" fill="#FFFFFF" r="105" stroke="#00A499" stroke-width="6"/>
+  <circle cx="730" cy="675" fill="#00A499" r="28"/>
+  <text fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" opacity="1.0" text-anchor="middle" x="730" y="685">3</text>
+  <text fill="#00A499" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" opacity="1.0" text-anchor="middle" x="800" y="727">Volver a muestrear</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="800" y="765.0">nuevo z</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="800" y="792.0">congelar D</text>
+  <circle cx="535" cy="480" fill="#FFFFFF" r="105" stroke="#EA7600" stroke-width="6"/>
+  <circle cx="465" cy="410" fill="#EA7600" r="28"/>
+  <text fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" opacity="1.0" text-anchor="middle" x="465" y="420">4</text>
+  <text fill="#EA7600" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" opacity="1.0" text-anchor="middle" x="535" y="462">Actualizar G</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="535" y="500.0">subir D(G(z))</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="535" y="527.0">engañar a D</text>
+  <rect fill="#F4F7F8" height="180" opacity="1.0" rx="28" ry="28" stroke="#CFD8DC" stroke-width="2" width="380" x="610" y="390"/>
+  <text fill="#607D8B" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" opacity="1.0" text-anchor="middle" x="800" y="435">EQUILIBRIO IDEAL</text>
+  <text fill="#00A499" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" opacity="1.0" text-anchor="middle" x="800" y="490">pG = pdata</text>
+  <text fill="#EA7600" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" opacity="1.0" text-anchor="middle" x="800" y="535">D(x) = 0.5</text>
+  <rect fill="#FFF0E6" height="58" opacity="1.0" rx="15" ry="15" stroke="#EA7600" stroke-width="2" width="760" x="420" y="805"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" opacity="1.0" text-anchor="middle" x="800" y="843">D(x) ≈ 0.5 por sí solo no demuestra convergencia</text>
+</svg>

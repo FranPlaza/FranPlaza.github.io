@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="900" version="1.1" viewBox="0 0 1600 900" width="1600">
+  <defs>
+    <marker id="arrow-dark" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="10" refY="5">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#263238"/>
+    </marker>
+    <marker id="arrow-teal" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="10" refY="5">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#00A499"/>
+    </marker>
+    <marker id="arrow-orange" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="10" refY="5">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#EA7600"/>
+    </marker>
+    <marker id="arrow-red" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="10" refY="5">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C83E4D"/>
+    </marker>
+  </defs>
+  <rect fill="#FFFFFF" height="900" width="1600" x="0" y="0"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700" x="70" y="80">Ética de IA generativa a lo largo del ciclo de vida</text>
+  <text fill="#607D8B" font-family="Arial, Helvetica, sans-serif" font-size="24" x="72" y="120">La responsabilidad no comienza cuando aparece la imagen final: se diseña desde los datos hasta el uso posterior.</text>
+  <line stroke="#00A499" stroke-width="5" x1="70" x2="1530" y1="142" y2="142"/>
+  <rect fill="#F4F7F8" height="455" opacity="1.0" rx="24" ry="24" stroke="#00A499" stroke-width="4" width="250" x="95" y="255"/>
+  <circle cx="220" cy="355" fill="#FFFFFF" r="72" stroke="#00A499" stroke-width="4"/>
+  <ellipse cx="220" cy="327" fill="#FFFFFF" rx="45" ry="18" stroke="#00A499" stroke-width="4"/>
+  <rect fill="#FFFFFF" height="58" stroke="#00A499" stroke-width="4" width="90" x="175" y="327"/>
+  <ellipse cx="220" cy="385" fill="#FFFFFF" rx="45" ry="18" stroke="#00A499" stroke-width="4"/>
+  <text fill="#00A499" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" opacity="1.0" text-anchor="middle" x="220" y="460">1. Datos</text>
+  <rect fill="#FFFFFF" height="42" opacity="1.0" rx="12" ry="12" stroke="#CFD8DC" stroke-width="1.5" width="190" x="125" y="500"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="220" y="528">consentimiento</text>
+  <rect fill="#FFFFFF" height="42" opacity="1.0" rx="12" ry="12" stroke="#CFD8DC" stroke-width="1.5" width="190" x="125" y="558"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="220" y="586">licencias</text>
+  <rect fill="#FFFFFF" height="42" opacity="1.0" rx="12" ry="12" stroke="#CFD8DC" stroke-width="1.5" width="190" x="125" y="616"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="220" y="644">procedencia</text>
+  <line marker-end="url(#arrow-dark)" stroke="#263238" stroke-width="4" x1="345" x2="385" y1="480" y2="480"/>
+  <rect fill="#F4F7F8" height="455" opacity="1.0" rx="24" ry="24" stroke="#EA7600" stroke-width="4" width="250" x="385" y="255"/>
+  <circle cx="510" cy="355" fill="#FFFFFF" r="72" stroke="#EA7600" stroke-width="4"/>
+  <line stroke="#EA7600" stroke-width="8" x1="544.0" x2="562.0" y1="355.0" y2="355.0"/>
+  <line stroke="#EA7600" stroke-width="8" x1="534.0416305603426" x2="546.7695526217004" y1="379.04163056034264" y2="391.7695526217005"/>
+  <line stroke="#EA7600" stroke-width="8" x1="510.0" x2="510.0" y1="389.0" y2="407.0"/>
+  <line stroke="#EA7600" stroke-width="8" x1="485.95836943965736" x2="473.2304473782995" y1="379.04163056034264" y2="391.7695526217005"/>
+  <line stroke="#EA7600" stroke-width="8" x1="476.0" x2="458.0" y1="355.0" y2="355.0"/>
+  <line stroke="#EA7600" stroke-width="8" x1="485.95836943965736" x2="473.2304473782995" y1="330.95836943965736" y2="318.2304473782995"/>
+  <line stroke="#EA7600" stroke-width="8" x1="510.0" x2="510.0" y1="321.0" y2="303.0"/>
+  <line stroke="#EA7600" stroke-width="8" x1="534.0416305603426" x2="546.7695526217004" y1="330.95836943965736" y2="318.2304473782995"/>
+  <circle cx="510" cy="355" fill="#FFFFFF" r="34" stroke="#EA7600" stroke-width="5"/>
+  <circle cx="510" cy="355" fill="#EA7600" r="12"/>
+  <text fill="#EA7600" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" opacity="1.0" text-anchor="middle" x="510" y="460">2. Entrenamiento</text>
+  <rect fill="#FFFFFF" height="42" opacity="1.0" rx="12" ry="12" stroke="#CFD8DC" stroke-width="1.5" width="190" x="415" y="500"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="510" y="528">sesgo</text>
+  <rect fill="#FFFFFF" height="42" opacity="1.0" rx="12" ry="12" stroke="#CFD8DC" stroke-width="1.5" width="190" x="415" y="558"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="510" y="586">privacidad</text>
+  <rect fill="#FFFFFF" height="42" opacity="1.0" rx="12" ry="12" stroke="#CFD8DC" stroke-width="1.5" width="190" x="415" y="616"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="510" y="644">recursos</text>
+  <line marker-end="url(#arrow-dark)" stroke="#263238" stroke-width="4" x1="635" x2="675" y1="480" y2="480"/>
+  <rect fill="#F4F7F8" height="455" opacity="1.0" rx="24" ry="24" stroke="#7B61A8" stroke-width="4" width="250" x="675" y="255"/>
+  <circle cx="800" cy="355" fill="#FFFFFF" r="72" stroke="#7B61A8" stroke-width="4"/>
+  <path d="M 758 383 L 800 317 L 842 383 Z" fill="#FFFFFF" stroke="#7B61A8" stroke-width="5"/>
+  <circle cx="800" cy="360" fill="#7B61A8" r="12"/>
+  <text fill="#7B61A8" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" opacity="1.0" text-anchor="middle" x="800" y="460">3. Generación</text>
+  <rect fill="#FFFFFF" height="42" opacity="1.0" rx="12" ry="12" stroke="#CFD8DC" stroke-width="1.5" width="190" x="705" y="500"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="800" y="528">uso indebido</text>
+  <rect fill="#FFFFFF" height="42" opacity="1.0" rx="12" ry="12" stroke="#CFD8DC" stroke-width="1.5" width="190" x="705" y="558"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="800" y="586">controles</text>
+  <rect fill="#FFFFFF" height="42" opacity="1.0" rx="12" ry="12" stroke="#CFD8DC" stroke-width="1.5" width="190" x="705" y="616"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="800" y="644">trazabilidad</text>
+  <line marker-end="url(#arrow-dark)" stroke="#263238" stroke-width="4" x1="925" x2="965" y1="480" y2="480"/>
+  <rect fill="#F4F7F8" height="455" opacity="1.0" rx="24" ry="24" stroke="#2E86AB" stroke-width="4" width="250" x="965" y="255"/>
+  <circle cx="1090" cy="355" fill="#FFFFFF" r="72" stroke="#2E86AB" stroke-width="4"/>
+  <rect fill="#FFFFFF" height="70" rx="12" ry="12" stroke="#2E86AB" stroke-width="5" width="88" x="1046" y="320"/>
+  <line stroke="#2E86AB" stroke-width="5" x1="1070" x2="1115" y1="343" y2="343"/>
+  <line stroke="#2E86AB" stroke-width="5" x1="1070" x2="1115" y1="360" y2="360"/>
+  <line stroke="#2E86AB" stroke-width="5" x1="1070" x2="1100" y1="377" y2="377"/>
+  <text fill="#2E86AB" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" opacity="1.0" text-anchor="middle" x="1090" y="460">4. Publicación</text>
+  <rect fill="#FFFFFF" height="42" opacity="1.0" rx="12" ry="12" stroke="#CFD8DC" stroke-width="1.5" width="190" x="995" y="500"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="1090" y="528">etiquetado</text>
+  <rect fill="#FFFFFF" height="42" opacity="1.0" rx="12" ry="12" stroke="#CFD8DC" stroke-width="1.5" width="190" x="995" y="558"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="1090" y="586">revisión humana</text>
+  <rect fill="#FFFFFF" height="42" opacity="1.0" rx="12" ry="12" stroke="#CFD8DC" stroke-width="1.5" width="190" x="995" y="616"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="1090" y="644">credenciales</text>
+  <line marker-end="url(#arrow-dark)" stroke="#263238" stroke-width="4" x1="1215" x2="1255" y1="480" y2="480"/>
+  <rect fill="#F4F7F8" height="455" opacity="1.0" rx="24" ry="24" stroke="#C83E4D" stroke-width="4" width="250" x="1255" y="255"/>
+  <circle cx="1380" cy="355" fill="#FFFFFF" r="72" stroke="#C83E4D" stroke-width="4"/>
+  <circle cx="1358" cy="340" fill="#FFFFFF" r="16" stroke="#C83E4D" stroke-width="4"/>
+  <circle cx="1402" cy="340" fill="#FFFFFF" r="16" stroke="#C83E4D" stroke-width="4"/>
+  <path d="M 1330 390 Q 1358 360 1385 390" fill="none" stroke="#C83E4D" stroke-width="5"/>
+  <path d="M 1375 390 Q 1402 360 1430 390" fill="none" stroke="#C83E4D" stroke-width="5"/>
+  <text fill="#C83E4D" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" opacity="1.0" text-anchor="middle" x="1380" y="460">5. Impacto</text>
+  <rect fill="#FFFFFF" height="42" opacity="1.0" rx="12" ry="12" stroke="#CFD8DC" stroke-width="1.5" width="190" x="1285" y="500"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="1380" y="528">responsabilidad</text>
+  <rect fill="#FFFFFF" height="42" opacity="1.0" rx="12" ry="12" stroke="#CFD8DC" stroke-width="1.5" width="190" x="1285" y="558"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="1380" y="586">reparación</text>
+  <rect fill="#FFFFFF" height="42" opacity="1.0" rx="12" ry="12" stroke="#CFD8DC" stroke-width="1.5" width="190" x="1285" y="616"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" opacity="1.0" text-anchor="middle" x="1380" y="644">monitoreo</text>
+  <rect fill="#FFF0E6" height="73" opacity="1.0" rx="18" ry="18" stroke="#EA7600" stroke-width="2" width="930" x="335" y="760"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" opacity="1.0" text-anchor="middle" x="800" y="807">Pregunta transversal: ¿quién se beneficia, quién asume el riesgo y quién responde?</text>
+</svg>

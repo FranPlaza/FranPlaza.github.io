@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="900" version="1.1" viewBox="0 0 1600 900" width="1600">
+  <defs>
+    <marker id="arrow-dark" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="10" refY="5">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#263238"/>
+    </marker>
+    <marker id="arrow-teal" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="10" refY="5">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#00A499"/>
+    </marker>
+    <marker id="arrow-orange" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="10" refY="5">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#EA7600"/>
+    </marker>
+    <marker id="arrow-red" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="10" refY="5">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C83E4D"/>
+    </marker>
+  </defs>
+  <rect fill="#FFFFFF" height="900" width="1600" x="0" y="0"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700" x="70" y="80">Mapa mínimo de modelos generativos</text>
+  <text fill="#607D8B" font-family="Arial, Helvetica, sans-serif" font-size="24" x="72" y="120">Todas las familias aprenden a producir datos plausibles, pero no lo hacen del mismo modo.</text>
+  <line stroke="#00A499" stroke-width="5" x1="70" x2="1530" y1="142" y2="142"/>
+  <rect fill="#E6F5F3" height="180" opacity="1.0" rx="32" ry="32" stroke="#00A499" stroke-width="5" width="380" x="610" y="330"/>
+  <text fill="#00A499" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" opacity="1.0" text-anchor="middle" x="800" y="398">MODELOS</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" opacity="1.0" text-anchor="middle" x="800" y="444">GENERATIVOS</text>
+  <text fill="#607D8B" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" opacity="1.0" text-anchor="middle" x="800" y="482">aprender una distribución</text>
+  <rect fill="#FFFFFF" height="225" opacity="1.0" rx="24" ry="24" stroke="#00A499" stroke-width="4" width="440" x="80" y="190"/>
+  <rect fill="#00A499" height="58" rx="22" ry="22" width="440" x="80" y="190"/>
+  <rect fill="#00A499" height="28" width="440" x="80" y="220"/>
+  <text fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" opacity="1.0" text-anchor="start" x="108" y="231">Autoregresivos</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" opacity="1.0" text-anchor="start" x="110" y="290.0">• Factorizan p(x) como una secuencia</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" opacity="1.0" text-anchor="start" x="110" y="321.9">• Generan un elemento por vez</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" opacity="1.0" text-anchor="start" x="110" y="353.8">• Ej.: RNN, Transformer</text>
+  <rect fill="#FFFFFF" height="225" opacity="1.0" rx="24" ry="24" stroke="#EA7600" stroke-width="4" width="440" x="1080" y="190"/>
+  <rect fill="#EA7600" height="58" rx="22" ry="22" width="440" x="1080" y="190"/>
+  <rect fill="#EA7600" height="28" width="440" x="1080" y="220"/>
+  <text fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" opacity="1.0" text-anchor="start" x="1108" y="231">Variables latentes</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" opacity="1.0" text-anchor="start" x="1110" y="290.0">• Introducen z y modelan x a partir de z</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" opacity="1.0" text-anchor="start" x="1110" y="321.9">• Inferencia aproximada</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" opacity="1.0" text-anchor="start" x="1110" y="353.8">• Ej.: VAE</text>
+  <rect fill="#FFFFFF" height="225" opacity="1.0" rx="24" ry="24" stroke="#7B61A8" stroke-width="4" width="440" x="80" y="535"/>
+  <rect fill="#7B61A8" height="58" rx="22" ry="22" width="440" x="80" y="535"/>
+  <rect fill="#7B61A8" height="28" width="440" x="80" y="565"/>
+  <text fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" opacity="1.0" text-anchor="start" x="108" y="576">Adversariales</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" opacity="1.0" text-anchor="start" x="110" y="635.0">• Un generador produce; un crítico guía</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" opacity="1.0" text-anchor="start" x="110" y="666.9">• Distribución implícita</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" opacity="1.0" text-anchor="start" x="110" y="698.8">• Ej.: GAN, WGAN</text>
+  <rect fill="#FFFFFF" height="225" opacity="1.0" rx="24" ry="24" stroke="#2E86AB" stroke-width="4" width="440" x="1080" y="535"/>
+  <rect fill="#2E86AB" height="58" rx="22" ry="22" width="440" x="1080" y="535"/>
+  <rect fill="#2E86AB" height="28" width="440" x="1080" y="565"/>
+  <text fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" opacity="1.0" text-anchor="start" x="1108" y="576">Difusión</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" opacity="1.0" text-anchor="start" x="1110" y="635.0">• Aprenden a revertir ruido</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" opacity="1.0" text-anchor="start" x="1110" y="666.9">• Generación iterativa</text>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" opacity="1.0" text-anchor="start" x="1110" y="698.8">• Ej.: DDPM</text>
+  <line marker-end="url(#arrow-teal)" stroke="#00A499" stroke-width="4" x1="610" x2="520" y1="360" y2="300"/>
+  <line marker-end="url(#arrow-orange)" stroke="#EA7600" stroke-width="4" x1="990" x2="1080" y1="360" y2="300"/>
+  <line marker-end="url(#arrow-dark)" stroke="#7B61A8" stroke-width="4" x1="610" x2="520" y1="480" y2="640"/>
+  <line marker-end="url(#arrow-dark)" stroke="#2E86AB" stroke-width="4" x1="990" x2="1080" y1="480" y2="640"/>
+  <rect fill="#FFF0E6" height="63" opacity="1.0" rx="16" ry="16" stroke="#EA7600" stroke-width="2" width="600" x="500" y="785"/>
+  <text fill="#263238" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" opacity="1.0" text-anchor="middle" x="800" y="826">Foco de la unidad: AE/VAE como puente y GAN como eje</text>
+</svg>

@@ -116,6 +116,8 @@ library(reticulate)
     5.2.	Conceptos básicos de Autoencoders y su aplicación en la reducción de dimensionalidad y generación de datos.
     5.3.	Introducción teórica a Redes Generativas Antagónicas (GANs): fundamentos, arquitectura y aplicaciones sin implementación práctica.
     5.4.	Discusión sobre el impacto de GANs en la generación de contenido y ética en la IA.
+    
+[Slides](Deep_Learning_05_Generative.html){target="_blank"}
 :::
 
 # Procedimiento de evaluación
