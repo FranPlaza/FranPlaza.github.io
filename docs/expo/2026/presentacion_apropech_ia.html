@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<script src="presentacion_apropech_ia_files/libs/clipboard/clipboard.min.js"></script>
+<script src="presentacion_apropech_ia_files/libs/quarto-html/tabby.min.js"></script>
+<script src="presentacion_apropech_ia_files/libs/quarto-html/popper.min.js"></script>
+<script src="presentacion_apropech_ia_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="presentacion_apropech_ia_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="presentacion_apropech_ia_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="presentacion_apropech_ia_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
+
+  <title>Hacia la cuantificación de las interacciones ambiente–recurso</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="presentacion_apropech_ia_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="presentacion_apropech_ia_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="presentacion_apropech_ia_files/libs/revealjs/dist/theme/quarto-5bc309c8563501a4ec3df2eec9530db9.css">
+  <link rel="stylesheet" href="apropech.css">
+  <link href="presentacion_apropech_ia_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="presentacion_apropech_ia_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="presentacion_apropech_ia_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="presentacion_apropech_ia_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+<script src="mathjax-config.js"></script>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="section" class="slide level2 title-slide center">
+<h2></h2>
+<div class="title-grid">
+<div class="title-copy">
+<div class="eyebrow">
+Webinar APROPECH · 5 de agosto de 2026
+</div>
+<div class="deck-title">
+Hacia la cuantificación de las interacciones <span>ambiente–recurso</span>
+</div>
+<div class="deck-subtitle">
+Herramientas estadísticas y de aprendizaje profundo en un clima cambiante
+</div>
+<div class="speaker-line">
+<p><strong>Francisco Plaza-Vega</strong><br> Ingeniero Pesquero · Magíster en Estadística · Doctor en Estadística<br> Universidad de Santiago de Chile</p>
+</div>
+</div>
+<div class="current-field" aria-hidden="true">
+<p><span class="sonar-sweep"></span> <span class="data-dot d1"></span> <span class="data-dot d2"></span> <span class="data-dot d3"></span> <span class="data-dot d4"></span> <span class="data-dot d5"></span></p>
+</div>
+</div>
+<aside class="notes">
+<p>Las preguntas del sector pesquero y acuícola anteceden la selección de herramientas estadísticas y de aprendizaje automático.</p>
+<p>[Sources] - Título y abstract.txt. - Afiche APROPECH.png.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="de-qué-hablaremos-hoy" class="slide level2">
+<h2>De qué hablaremos hoy</h2>
+<div class="agenda-grid four">
+<div>
+<span>01</span><b>De la pregunta a las herramientas</b>
+<p>
+Sistema pesquero, datos parciales y evolución de las aplicaciones entre 2008 y 2024.
+</p>
+<small>¿Qué aprendimos al modelar el sistema?</small>
+</div>
+<div>
+<span>02</span><b>Integración clima–pesquería</b>
+<p>
+El proyecto FONDECYT, su pregunta central y sus tres etapas.
+</p>
+<small>¿Qué componentes propone conectar?</small>
+</div>
+<div>
+<span>03</span><b>Aplicaciones y avances recientes</b>
+<p>
+Imágenes, video, series temporales, hidroacústica, hábitat y tesis.
+</p>
+<small>¿Qué capacidades estamos construyendo?</small>
+</div>
+<div>
+<span>04</span><b>Perspectivas para el sector</b>
+<p>
+Oportunidades, límites y condiciones para una aplicación responsable.
+</p>
+<small>¿Dónde puede aportar la IA responsablemente?</small>
+</div>
+</div>
+<aside class="notes">
+<p>[Sources] - Inspo/Plaza-Vega_IDEUV.qmd. - Inspo/Plaza-Vega_Bienvenida_Facultad_2026.qmd.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="de-la-pregunta-a-las-herramientas" class="slide level2 section-slide">
+<h2>De la pregunta a las herramientas</h2>
+<div class="section-index">
+01
+</div>
+<div class="section-title">
+Cómo las aplicaciones en pesquerías ampliaron la pregunta: pronóstico, regímenes, variabilidad e incertidumbre.
+</div>
+</section>
+<section id="cómo-decidimos-con-una-imagen-incompleta-del-sistema" class="slide level2">
+<h2>¿Cómo decidimos con una imagen incompleta del sistema?</h2>
+<div class="problem-panorama">
+<p><img data-src="assets/ocean_weather_fisheries.webp" alt="Océano, variabilidad climática y actividad pesquera como componentes de un sistema cambiante"></p>
+</div>
+<div class="problem-statement">
+<strong>El océano cambia. El clima cambia. Las pesquerías cambian.</strong><br>Y, aun así, necesitamos observar, comprender y tomar decisiones.
+</div>
+<aside class="notes">
+<p>Las decisiones pesqueras se construyen con observaciones indirectas de un sistema dinámico y parcialmente observado.</p>
+<p>[Sources] - Inspo/Plaza-Vega_Bienvenida_Facultad_2026.qmd, “¿Cómo estudiamos algo que cambia todo el tiempo y que no podemos observar por completo?”. - Imagen adaptada desde el recurso entregado ocean_weather_fisheries.png.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="los-datos-pesqueros-son-huellas-del-sistema-no-el-sistema-completo" class="slide level2">
+<h2>Los datos pesqueros son huellas del sistema, no el sistema completo</h2>
+<div class="split split-52">
+<div class="text-column">
+<div class="column-heading">
+Cada fuente observa una pieza
+</div>
+<ul>
+<li><strong>operación:</strong> desembarques, esfuerzo, CPUE y bitácoras;</li>
+<li><strong>recurso:</strong> cruceros, hidroacústica y muestreos biológicos;</li>
+<li><strong>ambiente:</strong> satélites, reanálisis y modelos oceanográficos;</li>
+<li><strong>observación digital:</strong> imágenes, video y monitoreo electrónico;</li>
+<li><strong>contexto:</strong> conocimiento experto y experiencia operacional.</li>
+</ul>
+<div class="claim compact">
+Cobertura, resolución, sesgo y escala determinan qué pregunta puede responder cada dato.
+</div>
+</div>
+<div class="figure-frame photo-frame">
+<p><img data-src="assets/sea_data.webp" alt="Ilustración del océano como sistema de datos incompletos"></p>
+</div>
+</div>
+<aside class="notes">
+<p>Cada fuente de datos tiene resolución, cobertura, sesgos y objetivos de muestreo propios; integrarlas requiere trazabilidad y compatibilidad de escalas.</p>
+<p>[Sources] - Plaza-Vega_Bienvenida_Facultad_2026.qmd, secciones “¿Qué hay bajo la superficie?” y “Un mar de datos”.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ambiente-recurso-y-flota-conforman-un-sistema-complejo-y-dinámico" class="slide level2">
+<h2>Ambiente, recurso y flota conforman un sistema complejo y dinámico</h2>
+<div class="split split-50 top-align">
+<div class="figure-block">
+<div class="figure-label">
+Procesos ambientales
+</div>
+<p><img data-src="assets/scheme_environment.png" alt="Procesos ambientales en escalas locales y globales"></p>
+<p>
+Afloramiento, estacionalidad, ENSO, regímenes decádicos y cambio climático operan en escalas distintas. Marco conceptual adaptado de <span class="citation" data-cites="yanez2008coupling">Yáñez, et al. (<a href="#/referencias-principales" role="doc-biblioref" onclick="">2008</a>)</span>.
+</p>
+</div>
+<div class="figure-block">
+<div class="figure-label">
+Dinámica pesquera
+</div>
+<p><img data-src="assets/scheme_fisheries.png" alt="Interacciones entre recurso, ambiente y pesquería"></p>
+<p>
+Abundancia, distribución, reclutamiento, capturabilidad, esfuerzo y manejo se retroalimentan.
+</p>
+</div>
+</div>
+<div class="claim compact">
+El desafío es un sistema <strong>dinámico, no lineal y observado de forma parcial</strong>.
+</div>
+<aside class="notes">
+<p>El sistema acoplado requiere familias de modelos complementarias, porque ninguna representación única captura todas las escalas y mecanismos relevantes.</p>
+<p>[Sources] - Plaza-Vega_PUC.qmd, secciones “Environment–Resource Complexity” y “A statistical view of fisheries as coupled systems”. - Fondecyt - 02_Proposed_research.pdf.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="tres-énfasis-para-convertir-datos-en-evidencia" class="slide level2">
+<h2>Tres énfasis para convertir datos en evidencia</h2>
+<div class="tool-spectrum three-tools">
+<div>
+<span>01</span><b>Estadística</b><em>Diseño e inferencia</em>
+<p>
+Organiza cómo observar el sistema y cuantifica relaciones, variabilidad e incertidumbre.
+</p>
+<small>¿Qué podemos afirmar y con qué precisión?</small>
+</div>
+<div>
+<span>02</span><b>Aprendizaje automático</b><em>Patrones y generalización</em>
+<p>
+Aprende reglas para predecir, clasificar o agrupar, y se contrasta en datos no usados para el ajuste.
+</p>
+<small>¿Qué patrón se sostiene en casos nuevos?</small>
+</div>
+<div>
+<span>03</span><b>Aprendizaje profundo</b><em>Representaciones complejas</em>
+<p>
+Aprende rasgos directamente desde imágenes, video, acústica o secuencias de alta dimensión.
+</p>
+<small>¿Qué rasgos complejos podemos aprender?</small>
+</div>
+</div>
+<div class="claim compact">
+Las tres convierten datos en evidencia; difieren en <strong>lo que hacen explícito</strong>, <strong>cómo aprenden</strong> y <strong>cómo validamos</strong> sus resultados.
+</div>
+<div class="source-line">
+<p>Síntesis conceptual: <span class="citation" data-cites="hastie2009elements goodfellow2016deep">(<a href="#/referencias-principales" role="doc-biblioref" onclick="">Hastie, et al. 2009</a>; <a href="#/referencias-principales" role="doc-biblioref" onclick="">Goodfellow, et al. 2016</a>)</span>.</p>
+</div>
+<aside class="notes">
+<p>Estas categorías representan énfasis, no fronteras rígidas. La estadística también permite predecir y el aprendizaje automático puede apoyar preguntas inferenciales; el aprendizaje profundo amplía las representaciones que pueden aprenderse desde datos complejos.</p>
+<p>[Sources] - Hastie, Tibshirani y Friedman (2009), capítulos 1–2 y 7. - Goodfellow, Bengio y Courville (2016), capítulos 1 y 6.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="no-es-estadística-versus-ia" class="slide level2">
+<h2>No es estadística versus IA</h2>
+<div class="concept-diagram">
+<p><img src="assets/data_science_convergence.png" alt="Ciencia de datos como marco de colaboración: la estadística se superpone con la inteligencia artificial; el aprendizaje automático está contenido en la IA y el aprendizaje profundo está contenido en el aprendizaje automático. La intersección aporta evidencia para decidir."></p>
+</div>
+<div class="claim compact tool-claim">
+El valor no está en elegir una herramienta “superior”, sino en combinar <strong>estadística, aprendizaje automático y aprendizaje profundo</strong> según la <strong>pregunta</strong>, los <strong>datos</strong>, la <strong>escala</strong> y la <strong>decisión</strong>.
+</div>
+<aside class="notes">
+<p>El aprendizaje profundo es una familia del aprendizaje automático. Los modelos generativos pueden apoyar reconstrucción y escenarios, pero no constituyen una categoría separada ni un sinónimo de chatbot.</p>
+<p>[Sources] - Título y abstract.txt. - Fondecyt - 02_Proposed_research.pdf.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pronóstico-no-lineal-de-pesquerías-pelágicas-frente-a-cambios-ambientales" class="slide level2">
+<h2>Pronóstico no lineal de pesquerías pelágicas frente a cambios ambientales</h2>
+<div class="split split-43 top-align">
+<div class="text-column">
+<div class="case-kicker">
+Pelágicos · publicaciones 2009–2017
+</div>
+<h3 id="pregunta">Pregunta</h3>
+<p>¿Podemos anticipar cambios en capturas o desembarques incorporando señales ambientales?</p>
+<h3 id="aprendizaje-acumulado">Aprendizaje acumulado</h3>
+<ul>
+<li>las RNA capturan relaciones no lineales;</li>
+<li>el horizonte y la validación importan tanto como la arquitectura;</li>
+<li>un escenario no es una predicción determinista.</li>
+</ul>
+<div class="source-line">
+<p>Trayectoria publicada: <span class="citation" data-cites="plaza2009prediccion yanez2010anchovy naranjo2015forecasting yanez2016pelagic yanez2017modelling">(<a href="#/referencias-principales" role="doc-biblioref" onclick="">Plaza 2009</a>; <a href="#/referencias-principales" role="doc-biblioref" onclick="">Yáñez, et al. 2010</a>; <a href="#/referencias-principales" role="doc-biblioref" onclick="">Naranjo, et al. 2015</a>; <a href="#/referencias-principales" role="doc-biblioref" onclick="">Yáñez, et al. 2016</a>; <a href="#/referencias-principales" role="doc-biblioref" onclick="">Yáñez, et al. 2017</a>)</span>.</p>
+</div>
+</div>
+<div class="figure-frame paper-frame">
+<p><img data-src="assets/case_machine_learning.png" alt="Recorrido de aplicaciones históricas de redes neuronales en pesquerías pelágicas"></p>
+</div>
+</div>
+<aside class="notes">
+<p>El valor de esta trayectoria está en la evolución metodológica y en la continuidad de las preguntas ambiente–recurso, no en la antigüedad de los trabajos.</p>
+<p>[Sources] - FJPV_CV_Español.pdf, p.&nbsp;3.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="identificando-regímenes-ambiente-recurso" class="slide level2">
+<h2>Identificando regímenes ambiente-recurso</h2>
+<div class="split split-40 top-align">
+<div class="text-column">
+<div class="case-kicker">
+Anchoveta y sardina · publicado
+</div>
+<h3 id="en-lenguaje-simple">En lenguaje simple</h3>
+<ol type="1">
+<li>comprimir muchas señales ambientales y pesqueras;</li>
+<li>buscar periodos que se parezcan entre sí;</li>
+<li>contrastar los grupos con conocimiento oceanográfico.</li>
+</ol>
+<div class="claim compact">
+Un clúster es una pista; <strong>no es automáticamente un régimen ecológico</strong>.
+</div>
+<div class="source-line">
+<p>Artículo: <span class="citation" data-cites="plaza2018identifying">Plaza, et al. (<a href="#/referencias-principales" role="doc-biblioref" onclick="">2018</a>)</span>.</p>
+</div>
+</div>
+<div class="figure-frame paper-frame">
+<p><img data-src="assets/case_data_science.png" alt="Flujo de análisis de componentes principales y clustering en anchoveta y sardina"></p>
+</div>
+</div>
+<aside class="notes">
+<p>PCA resume señales correlacionadas y el agrupamiento identifica periodos similares; ambos requieren validación externa y una interpretación pesquera coherente.</p>
+<p>[Sources] - FJPV_CV_Español.pdf, p.&nbsp;3. - Plaza-Vega_PUC.qmd, bloque de publicaciones relacionadas.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="análisis-de-variabilidad" class="slide level2">
+<h2>Análisis de variabilidad</h2>
+<div class="split split-44 top-align">
+<div class="text-column">
+<div class="case-kicker">
+Anchoveta y sardina · publicado
+</div>
+<p>No solo importa el nivel medio. También importa cuándo el sistema se vuelve más variable, persistente o inestable.</p>
+<h3 id="enfoque-híbrido">Enfoque híbrido</h3>
+<ul>
+<li>GARCH-X para memoria y señales exógenas;</li>
+<li>deep learning para aprender resúmenes útiles;</li>
+<li>inferencia bayesiana para cuantificar incertidumbre.</li>
+</ul>
+<div class="claim compact">
+La IA puede fortalecer un modelo estadístico interpretable sin reemplazarlo.
+</div>
+<div class="source-line">
+<p>Artículo: <span class="citation" data-cites="plazavega2024variability">Plaza-Vega y Araya (<a href="#/referencias-principales" role="doc-biblioref" onclick="">2024</a>)</span>.</p>
+</div>
+</div>
+<div class="figure-frame paper-frame">
+<p><img data-src="assets/case_time_series_2.png" alt="Modelo GARCH-X e inferencia híbrida aplicada a pequeños pelágicos"></p>
+</div>
+</div>
+<aside class="notes">
+<p>GARCH-X permite estudiar cómo la variabilidad actual depende de episodios pasados y de señales ambientales.</p>
+<p>[Sources] - Context for research/1-s2.0-S0079661123002331-main (2).pdf. - FJPV_CV_Español.pdf, p.&nbsp;2.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="integración-climapesquería" class="slide level2 section-slide">
+<h2>Integración clima–pesquería</h2>
+<div class="section-index">
+02
+</div>
+<div class="section-title">
+Proyecto FONDECYT de Iniciación ANID-11251120
+<p>
+<b><i>CLIMATE CHANGE: SPATIO-TEMPORAL ECOSYSTEM-BASED DYNAMICS USING STATISTICAL TOOLS GENERATIVE AI AND LONG MEMORY TIME SERIES</i></b>
+</p>
+Conecta relaciones ambiente–recurso, clima regionalizado, escenarios e incertidumbre.
+</div>
+</section>
+<section id="el-cambio-climático-amplía-un-problema-que-ya-era-multiescala" class="slide level2">
+<h2>El cambio climático amplía un problema que ya era multiescala</h2>
+<div class="three-promises project-gaps">
+<div>
+<span>1</span><b>Relaciones complejas</b>
+<p>
+Efectos no lineales, rezagados y dependientes de la escala entre ambiente, recurso y operación.
+</p>
+</div>
+<div>
+<span>2</span><b>Resolución insuficiente</b>
+<p>
+La información climática global no describe directamente procesos costeros relevantes para las pesquerías.
+</p>
+</div>
+<div>
+<span>3</span><b>Incertidumbre acumulada</b>
+<p>
+Datos, modelos pesqueros, downscaling y escenarios climáticos aportan fuentes distintas de incertidumbre.
+</p>
+</div>
+</div>
+<div class="claim">
+La brecha no se resuelve con un algoritmo aislado: exige una <strong>arquitectura científica integrada y contrastable</strong>.
+</div>
+<aside class="notes">
+<p>Los casos previos resolvieron preguntas parciales; el cambio climático exige conectar escalas y hacer explícitas las fuentes de incertidumbre.</p>
+<p>[Sources] - Context for research/Fondecyt - 02_Proposed_research.pdf, motivación y brechas. - Inspo/Plaza-Vega_IDEUV.qmd, “Gaps in current modelling approaches”.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="cómo-se-conectan-los-datos-y-las-tres-etapas-del-proyecto" class="slide level2">
+<h2>Cómo se conectan los datos y las tres etapas del proyecto</h2>
+<div class="project-map-question">
+¿Cómo cuantificar potenciales efectos del cambio climático sobre pesquerías chilenas?
+</div>
+<div class="project-map">
+<div class="project-data-row">
+<div>
+<span>Datos pesqueros</span><b>Dinámica y abundancia</b><small>captura, esfuerzo, CPUE, cruceros e hidroacústica</small>
+</div>
+<div>
+<span>Datos de monitoreo</span><b>Operación y observación</b><small>bitácoras, muestreos, cruceros, hidroacústica y observaciones</small>
+</div>
+<div>
+<span>Datos ambientales</span><b>Océano y clima</b><small>satélites, observaciones, reanálisis y modelos</small>
+</div>
+</div>
+<div class="project-arrow">
+↓
+</div>
+<div class="project-base">
+<b>Base integrada espacio-temporal</b><span>variables trazables, escalas compatibles y conocimiento del sistema</span>
+</div>
+<div class="project-fork">
+<span>↙</span><span>↘</span>
+</div>
+<div class="project-parallel">
+<div class="project-stage stage-one">
+<span>Etapa 1</span><b>Cuantificar</b>
+<p>
+Relaciones ambiente–recurso y modelos pesqueros espacio-temporales.
+</p>
+</div>
+<div class="project-stage stage-two">
+<span>Etapa 2</span><b>Regionalizar</b>
+<p>
+Información ambiental costera y escenarios climáticos globales.
+</p>
+</div>
+</div>
+<div class="project-merge">
+<span>↘</span><span>↙</span>
+</div>
+<div class="project-stage stage-three">
+<span>Etapa 3</span><b>Integrar y explorar</b>
+<p>
+Impactos potenciales sobre recursos y pesquerías bajo escenarios integrados.
+</p>
+</div>
+<div class="project-guardrails">
+Validación · incertidumbre · conocimiento experto
+</div>
+</div>
+<div class="source-line centered">
+ANID–FONDECYT de Iniciación 11251120 · adjudicado en 2025 · proyecto en ejecución
+</div>
+<aside class="notes">
+<p>Las etapas 1 y 2 son componentes complementarios con solapamiento temporal y convergen en la etapa 3. Validación, incertidumbre y conocimiento experto atraviesan todo el flujo. El downscaling permanece en desarrollo.</p>
+<p>[Sources] - Context for research/Fondecyt - 02_Proposed_research.pdf. - FJPV_CV_Español.pdf, p.&nbsp;4.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="etapa-1-cuantificar-relaciones-ambienterecurso" class="slide level2">
+<h2>Etapa 1: cuantificar relaciones ambiente–recurso</h2>
+<div class="stage-flow stage-progress">
+<div class="stage-item teal-stage">
+<span>Caracterizar</span><b>Patrones y escalas</b>
+<p>
+Describir variabilidad temporal y espacial en recursos, pesquerías y ambiente.
+</p>
+</div>
+<i>→</i>
+<div class="stage-item blue-stage">
+<span>Modelar</span><b>Relaciones y rezagos</b>
+<p>
+Combinar modelos estadísticos, machine learning y deep learning según la pregunta.
+</p>
+</div>
+<i>→</i>
+<div class="stage-item orange-stage">
+<span>Contrastar</span><b>Validez e incertidumbre</b>
+<p>
+Comparar líneas base, separar datos en espacio y tiempo y revisar coherencia ecológica.
+</p>
+</div>
+</div>
+<div class="claim">
+La etapa 1 hereda la trayectoria 2008–2024 y construye los modelos que luego se conectarán con clima regionalizado.
+</div>
+<div class="source-line">
+<p>FONDECYT de Iniciación 11251120 · etapa 1.</p>
+</div>
+<aside class="notes">
+<p>La etapa 1 caracteriza patrones, modela relaciones y contrasta validez e incertidumbre. Jurel hidroacústico, jibia, especies migratorias y tesis aportan avances asociados.</p>
+<p>[Sources] - Context for research/Fondecyt - 02_Proposed_research.pdf, etapa 1. - Inspo/Towards quantification_ statistical modelling of environment–resource interactions under climate change.pdf, diapositivas 27–31.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="etapa-2-regionalizar-el-clima-a-escala-costera" class="slide level2">
+<h2>Etapa 2: regionalizar el clima a escala costera</h2>
+<div class="case-kicker">
+FONDECYT 11251120 · etapa 2 · reducción de escala ambiental
+</div>
+<div class="downscale-flow">
+<div class="field-panel coarse-field">
+<span>Campo global</span><b>Baja resolución</b>
+</div>
+<i>→</i>
+<div class="downscale-core">
+<b>Downscaling híbrido</b><span>estadística + modelo oceánico + deep learning + restricciones físicas</span>
+</div>
+<i>→</i>
+<div class="field-panel fine-field">
+<span>Campo regional</span><b>Mayor detalle costero</b>
+</div>
+</div>
+<div class="claim compact">
+<strong>Producto esperado:</strong> campos costeros de mayor resolución, coherentes con la dinámica oceánica y contrastados con satélites y observaciones <em>in situ</em>.
+</div>
+<aside class="notes">
+<p>El downscaling agrega detalle regional condicionado por información, dinámica oceánica y observaciones; no consiste en inventar resolución ausente.</p>
+<p>[Sources] - Context for research/Fondecyt - 02_Proposed_research.pdf, etapa 2. - Inspo/Plaza-Vega_PUC.qmd, “Stage 2 – Downscaling as conditional super-resolution”. - Context for research/Proyecto-MCS_V03.pptx, diapositivas 10–14 y 17.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="el-downscaling-híbrido-ya-tiene-una-arquitectura-de-trabajo" class="slide level2">
+<h2>El downscaling híbrido ya tiene una arquitectura de trabajo</h2>
+<div class="case-kicker">
+FONDECYT 11251120 · Deep Climate Transformer (DeepCT) · etapa 2
+</div>
+<div class="split split-58 top-align">
+<div class="figure-frame technical-frame">
+<p><img data-src="assets/scheme_stage2.png" alt="Arquitectura Deep Climate Transformer propuesta para downscaling híbrido en la etapa 2 del FONDECYT"></p>
+</div>
+<div class="technical-callouts">
+<div>
+<span>1</span><b>Entrada</b>
+<p>
+Campos ambientales de baja resolución e información previa.
+</p>
+</div>
+<div>
+<span>2</span><b>Modelo</b>
+<p>
+Arquitectura basada en atención, condicionada por datos y restricciones.
+</p>
+</div>
+<div>
+<span>3</span><b>Salida</b>
+<p>
+Campos regionales de mayor resolución para contrastar con observaciones.
+</p>
+</div>
+</div>
+</div>
+<div class="claim compact">
+<strong>Avance concreto:</strong> una arquitectura y una ruta de contraste; su desempeño se evaluará frente a ROMS, métodos estadísticos y observaciones.
+</div>
+<div class="micro-line">
+<strong>Línea asociada:</strong> Doctorado de Mario Cáceres-Soto (UNAB) · asimilación con IA sobre CROCO.
+</div>
+<aside class="notes">
+<p>DeepCT corresponde a la arquitectura de trabajo de la etapa 2 del FONDECYT. El doctorado de Mario Cáceres-Soto desarrolla una línea metodológica asociada de asimilación de datos con IA sobre CROCO; no corresponde al mismo modelo de downscaling.</p>
+<p>[Sources] - Context for research/Fondecyt - 02_Proposed_research.pdf, pp.&nbsp;7–10, Fig. 3. - Context for research/Proyecto-MCS_V03.pptx, diapositivas 10–14 y 17. - Context for research/Tesis - Mario Cáceres Proyecto-MCS_V01.pdf.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="etapa-3-integrar-modelos-y-explorar-impactos-potenciales" class="slide level2">
+<h2>Etapa 3: integrar modelos y explorar impactos potenciales</h2>
+<div class="split split-46 top-align">
+<div class="text-column">
+<div class="case-kicker">
+FONDECYT 11251120 · etapa 3 · integración de modelos y escenarios
+</div>
+<div class="column-heading">
+Lo que se integra
+</div>
+<ol type="1">
+<li>modelos ambiente–recurso;</li>
+<li>escenarios ambientales regionalizados;</li>
+<li>supuestos pesqueros relevantes para cada análisis;</li>
+<li>incertidumbre de datos, modelos y escenarios.</li>
+</ol>
+<div class="claim compact">
+<strong>Producto esperado:</strong> respuestas potenciales bajo escenarios integrados, con supuestos e incertidumbres documentados.
+</div>
+<div class="source-line">
+<p>FONDECYT de Iniciación 11251120 · etapa 3.</p>
+</div>
+</div>
+<div class="scenario-panel">
+<div class="scenario-caption">
+Rango de escenarios
+</div>
+<div class="scenario-axis">
+
+</div>
+<div class="scenario-band">
+
+</div>
+<div class="scenario-line central">
+
+</div>
+<div class="scenario-line upper">
+
+</div>
+<div class="scenario-line lower">
+
+</div>
+<p><span class="scenario-label l1">escenario A</span> <span class="scenario-label l2">trayectoria central</span> <span class="scenario-label l3">escenario B</span></p>
+</div>
+</div>
+<aside class="notes">
+<p>La integración separa variabilidad del proceso, incertidumbre del modelo pesquero y dispersión entre modelos o escenarios climáticos.</p>
+<p>[Sources] - Context for research/Fondecyt - 02_Proposed_research.pdf, etapa 3. - Plaza-Vega_PUC.qmd, “Stage 3 – Scenario propagation and uncertainty”.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="aplicaciones-y-avances-recientes" class="slide level2 section-slide">
+<h2>Aplicaciones y avances recientes</h2>
+<div class="section-index">
+03
+</div>
+<div class="section-title">
+Cuantificar las relaciones ambiente–recurso requiere modelar mejor, pero también observar mejor. La IA amplía lo que podemos observar, relacionar y simular.
+</div>
+</section>
+<section id="imágenes-y-video-amplían-lo-observable" class="slide level2">
+<h2>Imágenes y video amplían lo observable</h2>
+<div class="case-pair">
+<div class="case-panel">
+<div class="case-kicker">
+2025 · Pesquerías · publicado
+</div>
+<h3 id="reconocer-especies">Reconocer especies</h3>
+<p><img data-src="assets/paper_species_gradcam.webp" alt="Mapas Grad-CAM sobre imágenes de especies de peces"></p>
+<p><strong>8.118 imágenes y 18 especies.</strong> Grad-CAM permite revisar qué regiones influyeron en la clasificación.</p>
+</div>
+<div class="case-panel">
+<div class="case-kicker">
+2026 · Acuicultura · publicado
+</div>
+<h3 id="detectar-beggiatoa">Detectar <em>Beggiatoa</em></h3>
+<p><img data-src="assets/paper_beggiatoa_segmentation.webp" alt="Segmentación de regiones con Beggiatoa en video submarino"></p>
+<p>El video submarino puede convertirse en un indicador reproducible, aun con iluminación y fondos variables.</p>
+</div>
+</div>
+<div class="claim compact">
+La ganancia no es solo velocidad: es transformar observación manual en <strong>evidencia trazable y auditable</strong>.
+</div>
+<div class="source-line">
+<p>Artículos y figuras: <span class="citation" data-cites="alvarado2025deep">Alvarado, et al. (<a href="#/referencias-principales" role="doc-biblioref" onclick="">2025</a>)</span>, Fig. 7; <span class="citation" data-cites="martinez2026automatic">Martinez, et al. (<a href="#/referencias-principales" role="doc-biblioref" onclick="">2026</a>)</span>, Figs. 1–2.</p>
+</div>
+<aside class="notes">
+<p>Ambos casos combinan imágenes o video con clasificación o segmentación y requieren validación experta frente a cambios en las condiciones de captura. Son capacidades del grupo; no se atribuye financiamiento directo del FONDECYT a ambos artículos.</p>
+<p>[Sources] - Context for research/3318-19379-1-PB.pdf, pp.&nbsp;1 y 10, Fig. 7. - Context for research/Automatic_Detection_of_Beggiatoa_Microbial_Mats_in_Salmon_Farms_Videos.pdf, p.&nbsp;3, Figs. 1–2.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="el-jurel-conecta-dinámica-ambiental-y-simulación" class="slide level2">
+<h2>El jurel conecta dinámica ambiental y simulación</h2>
+<div class="case-kicker">
+Etapa 3 · jurel y simulación ambiental
+</div>
+<div class="jurel-figure-grid">
+<figure class="jurel-figure-panel">
+<figcaption>
+<span>01</span><b>Patrones mensuales</b><small>CNN y LSTM bajo tres regímenes térmicos</small>
+</figcaption>
+<img src="assets/paper_jurel_scenarios.webp" alt="Simulaciones mensuales de jurel con CNN y LSTM bajo los regímenes Cold1, Warm y Cold2">
+</figure>
+<figure class="jurel-figure-panel yearly">
+<figcaption>
+<span>02</span><b>Suma anual de las proyecciones</b><small>Distribución de 100 reentrenamientos</small>
+</figcaption>
+<img src="assets/paper_jurel_yearly.png" alt="Distribución de las capturas anuales simuladas de jurel, agregadas desde predicciones mensuales, para modelos CNN y LSTM bajo los regímenes Cold1, Warm y Cold2">
+<div class="jurel-panel-note">
+CNN (izquierda) · LSTM (derecha)
+</div>
+</figure>
+</div>
+<div class="claim compact jurel-claim">
+Al sumar las proyecciones mensuales, ambos modelos conservan el mismo contraste: <strong>Warm &gt; Cold1 &gt; Cold2</strong>.
+</div>
+<div class="case-limit jurel-limit">
+Alcance: simulaciones condicionadas por SST para la flota industrial de Chile centro-sur; no son una proyección climática formal ni una evaluación de stock.
+</div>
+<div class="source-line">
+<p>Artículo y figuras: <span class="citation" data-cites="plazavega2026jackmackerel">Plaza-Vega, et al. (<a href="#/referencias-principales" role="doc-biblioref" onclick="">2026b</a>)</span>, Figs. 12–14.</p>
+</div>
+<aside class="notes">
+<p>Problema: representar la dinámica mensual del jurel bajo condiciones ambientales contrastantes. Datos: captura, esfuerzo, CPUE y temperatura. Herramientas: CNN, LSTM y simulación por regímenes térmicos. Las Figs. 12–13 muestran patrones mensuales; la Fig. 14 suma esas proyecciones al nivel anual. Cada boxplot resume 100 reentrenamientos, no 100 años. Ambos modelos conservan el orden Warm, Cold1 y Cold2. Límite: el análisis corresponde a la flota industrial de Chile centro-sur; no constituye una proyección climática formal, una evaluación de stock completa ni una representación directa de todo el stock del Pacífico suroriental.</p>
+<p>[Sources] - Context for research/1-s2.0-S0967064526000573-main.pdf, pp.&nbsp;11–12, Figs. 12–14.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="la-hidroacústica-conecta-agregaciones-de-jurel-con-el-hábitat" class="slide level2">
+<h2>La hidroacústica conecta agregaciones de jurel con el hábitat</h2>
+<div class="case-kicker">
+Etapa 1 · Montserrat Aránguiz · hidroacústica e IA interpretable · revisión R1
+</div>
+<div class="hydro-evidence-grid">
+<figure class="hydro-evidence-panel hydro-map-panel">
+<figcaption>
+<span>01</span><b>Dónde cambian los estados de agregación</b><small>Jurel y eufáusidos · dominio 18–26°S · 2023–2025</small>
+</figcaption>
+<img src="assets/paper_hydroacoustic_maps.png" alt="Distribución espacial revisada de estados positivos de agregación de jurel y eufáusidos, con ceros y ausencias separados, entre 18 y 26 grados sur">
+</figure>
+<figure class="hydro-evidence-panel hydro-importance-panel">
+<figcaption>
+<span>02</span><b>Qué asociaciones usa el modelo</b><small>SHAP · modelos interpretables seleccionados</small>
+</figcaption>
+<div class="hydro-importance-crop">
+<img src="assets/paper_hydroacoustic_importance.png" alt="Importancia SHAP de variables ambientales: profundidad para estados de agregación de jurel y zooplancton para eufáusidos">
+</div>
+</figure>
+</div>
+<div class="claim compact hydro-claim">
+En los modelos interpretables, la <strong>profundidad media de agregación</strong> aporta más al jurel; el <strong>zooplancton</strong>, a eufáusidos.
+</div>
+<div class="case-limit hydro-limit">
+Asociación condicionada a detección; validación temporal en 2025, aún sin validación espacial por bloques.
+</div>
+<div class="source-line">
+<p>Revisión R1 y figuras: <span class="citation" data-cites="plazavega2026hydrographic">Plaza-Vega, et al. (<a href="#/referencias-principales" role="doc-biblioref" onclick="">2026a</a>)</span>, Figs. 3 y 8.</p>
+</div>
+<aside class="notes">
+<p>La revisión R1 restringe el dominio analítico a 18,35–26°S y separa explícitamente los ceros o ausencias de los estados positivos Low, Medium y High; los modelos se ajustan condicionados a detecciones positivas. Se entrenaron con las campañas 2023–2024 y se evaluaron con 2025. El stacking obtuvo el mejor desempeño global: jurel accuracy = 0,819 y macro-F1 = 0,816; eufáusidos accuracy = 0,957 y macro-F1 = 0,950. Para interpretación se seleccionaron RF en jurel (accuracy = 0,811; macro-F1 = 0,808) y XGBoost en eufáusidos (accuracy = 0,951; macro-F1 = 0,944). La profundidad media de las agregaciones de jurel presenta la mayor importancia SHAP (0,384), mientras que el zooplancton ocupa el primer lugar para eufáusidos (0,278). “Depth” corresponde a profundidad media de agregación y “Density” a densidad del agua de mar. La partición temporal reduce fuga interanual, pero no resuelve autocorrelación entre transectas; se requiere validación espacial por bloques antes de un uso operacional. Los resultados describen asociaciones dentro del dominio observado y no mecanismos causales.</p>
+<p>[Sources] - Context for research/Paper Submitted - Jack mackerel and hydroacoustics DSR2-D-26-00045_R1.pdf, pp.&nbsp;24 y 30, Figs. 3 y 8.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="en-jibia-estandarizar-es-el-primer-paso-para-predecir" class="slide level2">
+<h2>En jibia, estandarizar es el primer paso para predecir</h2>
+<div class="case-kicker">
+Etapa 1 · Karen Belmar y colaboradores · tesis de Sofía Valderrama
+</div>
+<div class="squid-evidence-grid">
+<figure class="squid-evidence-panel">
+<figcaption>
+<span>01</span><b>Estandarización y respuesta ambiental</b><small>GAMM · efectos no lineales y rezagados</small>
+</figcaption>
+<img src="assets/paper_squid_environment.webp" alt="Efectos parciales de índices ENSO y temperatura sobre la CPUE estandarizada de jibia">
+</figure>
+<figure class="squid-evidence-panel">
+<figcaption>
+<span>02</span><b>Predicción temporal con SARIMA-X</b><small>Trayectoria observada y estimada · 2015–2023</small>
+</figcaption>
+<img src="assets/thesis_sofia_sarimax_projection.png" alt="CPUE de jibia observada y estimada por un modelo SARIMAX con media móvil de doce meses">
+</figure>
+</div>
+<div class="claim compact squid-claim">
+<strong>SARIMA-X</strong> reprodujo la trayectoria temporal; con 97 observaciones, las LSTM no generalizaron bien en el conjunto de prueba.
+</div>
+<div class="case-limit squid-limit">
+La curva estimada corresponde al período observado; no es una proyección futura ni una evaluación de stock.
+</div>
+<div class="source-line">
+<p>Manuscrito y figuras: <span class="citation" data-cites="belmar2026jumbo">Belmar-Salinas, et al. (<a href="#/referencias-principales" role="doc-biblioref" onclick="">2026</a>)</span>, Fig. 4; <span class="citation" data-cites="valderrama2025jibia">Valderrama Villalobos (<a href="#/referencias-principales" role="doc-biblioref" onclick="">2025</a>)</span>, Fig. 4.33.</p>
+</div>
+<aside class="notes">
+<p>El manuscrito con Karen Belmar y colaboradores estandariza la CPUE y describe respuestas ambientales no lineales y rezagadas mediante GAMM; XGBoost no mejoró al GAMM fuera de muestra. La tesis de Sofía Valderrama amplía la pregunta hacia la predicción temporal. El modelo seleccionado fue SARIMAX(1,1,1)(1,0,0)[12] aplicado a la serie suavizada con media móvil de 12 meses. Incluyó anomalía Niño 1+2 rezagada un mes, PDO rezagada 12 meses y HCI rezagado un mes; solo PDO fue significativa. La Fig. 4.33 compara la trayectoria observada y estimada entre 2015 y 2023: es una predicción sobre el período observado, no un pronóstico futuro. Las LSTM tuvieron problemas de generalización en prueba, asociados en parte a una serie de solo 97 observaciones. Sofía Valderrama no forma parte de la autoría del manuscrito de jibia.</p>
+<p>[Sources] - Context for research/Paper Submitted - Belmar etal Jumbo squid.pdf, p.&nbsp;13, Fig. 4. - Context for research/Tesis_Final - Sofía Valderrama.pdf, pp.&nbsp;74 y 89–93, Fig. 4.33. - Autoría y destino editorial confirmados por Francisco Plaza-Vega, 31-07-2026.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="la-predictibilidad-cambia-entre-especies-altamente-migratorias" class="slide level2">
+<h2>La predictibilidad cambia entre especies altamente migratorias</h2>
+<div class="case-kicker">
+Etapa 1 · Ljubitza Clavijo-Gorostiaga · Magíster en Estadística UV · manuscrito R1 en revisión editorial
+</div>
+<div class="migratory-evidence-grid">
+<figure class="migratory-forecast-panel">
+<figcaption>
+<span>01</span><b>Predicción condicional fuera de muestra</b><small>Random Forest y XGBoost · evaluación cronológica mensual</small>
+</figcaption>
+<img src="assets/paper_migratory_forecast.png" alt="Desembarques mensuales observados y predichos para pez espada, tiburones y dorado con Random Forest y XGBoost">
+</figure>
+<div class="migratory-drivers">
+<div class="migratory-side-heading">
+<span>02</span><b>Desempeño y señal predictiva</b><small>SHAP revisado · memoria y ambiente</small>
+</div>
+<div>
+<b>Pez espada</b><em>R² 0,857 · RF</em><span>Rezagos 12, 1 y 11; SST e índices Niño lideran el subconjunto ambiental.</span>
+</div>
+<div>
+<b>Tiburones agregados</b><em>R² 0,464 · XGBoost</em><span>Memoria de 1–3 meses; Niño 3.4 anómalo y TPI entre las asociaciones ambientales.</span>
+</div>
+<div>
+<b>Dorado</b><em>R² 0,390 · XGBoost</em><span>Rezagos 1 y 11; SST encabeza el subconjunto ambiental.</span>
+</div>
+</div>
+</div>
+<div class="claim compact migratory-claim">
+Los <strong>rezagos</strong> concentran la atribución predictiva; las asociaciones ambientales son menores y específicas de cada respuesta.
+</div>
+<div class="case-limit migratory-limit">
+Desembarques nominales. Predicción mensual condicional, no pronóstico recursivo; SHAP no identifica causalidad ni abundancia.
+</div>
+<div class="source-line">
+<p>Revisión R1 y evidencia: <span class="citation" data-cites="clavijo2026migratory">Clavijo-Gorostiaga, et al. (<a href="#/referencias-principales" role="doc-biblioref" onclick="">2026</a>)</span>, Fig. 5B; SHAP resumido de Fig. 6.</p>
+</div>
+<aside class="notes">
+<p>El trabajo deriva de la tesis de Magíster en Estadística de Ljubitza Clavijo-Gorostiaga en la Universidad de Valparaíso y fue revisado y reenviado como R1 el 28 de julio de 2026. Los modelos usan el primer 80 % de cada serie para entrenamiento y el último 20 % para evaluación cronológica, con ajuste por orígenes acumulativos. La predicción mensual es condicional a desembarques observados hasta t−1; no realimenta predicciones ni constituye un pronóstico recursivo. Pez espada mostró RF R² = 0,857 y XGBoost R² = 0,847; tiburones agregados, 0,440 y 0,464; dorado, 0,324 y 0,390. En esta revisión, R² se define como el cuadrado de la correlación de Pearson entre valores observados y predichos, no como proporción de varianza explicada. La importancia SHAP global está dominada por rezagos en ambos algoritmos. Las asociaciones ambientales son menores y específicas: SST e índices Niño para pez espada, Niño 3.4 anómalo y TPI para tiburones, y SST para dorado. Son desembarques nominales administrativos sin estandarización por esfuerzo ni posición de captura; no representan abundancia ni efectos causales del ambiente.</p>
+<p>[Sources] - Context for research/Paper Submitted - Clavijo etal highly migratory and data science DSR2-D-26-00052_R1 (7).pdf, pp.&nbsp;29, 31 y 35–38, Tabla 4 y Figs. 5–6.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="las-tesis-conectan-capacidades-desde-pregrado-y-postgrado" class="slide level2">
+<h2>Las tesis conectan capacidades desde pregrado y postgrado</h2>
+<div class="students-program-grid">
+<div class="program-column undergraduate-program">
+<div class="program-heading">
+<span>Pregrado</span><b>Ingeniería Estadística · USACH</b>
+</div>
+<div class="student-stage-label">
+Tesis y manuscritos asociados
+</div>
+<div class="student-roster established">
+<div>
+<b>Montserrat Aránguiz</b><span>Hidroacústica interpretable de jurel y eufáusidos.</span>
+</div>
+<div>
+<b>Sofía Valderrama</b><span>Jibia: ambiente y predicción SARIMA-X.</span>
+</div>
+<div>
+<b>Bastián Díaz-Vergara</b><span>Pelágicos: GARCH-X y aproximación ABC.</span>
+</div>
+</div>
+<div class="student-stage-label developing">
+En desarrollo
+</div>
+<div class="student-roster developing">
+<div>
+<b>Javiera Valenzuela</b><span>Anchoveta y sardina: variabilidad temporal y ambiente.</span>
+</div>
+<div>
+<b>Nayely Godoy</b><span>Jurel: métodos clásicos versus ciencia de datos.</span>
+</div>
+<div>
+<b>Milena Rojas</b><span>Anchoveta y sardina: DBSCAN, espacio-tiempo y ambiente.</span>
+</div>
+<div>
+<b>Ernesto Díaz</b><span>Forma de otolitos de reineta con ML/DL.</span>
+</div>
+<div>
+<b>Gonzalo Bello</b><span>Hidroacústica de jurel en espacio-tiempo.</span>
+</div>
+<div>
+<b>Felipe Silva</b><span>ENSO extremo y dependencia espacio-temporal.</span>
+</div>
+</div>
+</div>
+<div class="program-column postgraduate-program">
+<div class="program-heading">
+<span>Postgrado</span><b>Estadística y modelación oceanográfica</b>
+</div>
+<div class="postgraduate-roster">
+<div>
+<b>Ljubitza Clavijo-Gorostiaga</b><em>Magíster en Estadística · UV</em><span>Especies altamente migratorias: predictibilidad y asociaciones ambientales.</span>
+</div>
+<div>
+<b>Mario Cáceres-Soto</b><em>Doctorado · UNAB</em><span>CROCO, asimilación de datos y downscaling con IA.</span>
+</div>
+</div>
+</div>
+</div>
+<div class="claim compact students-claim">
+Las tesis conectan series temporales, espacio, hidroacústica, otolitos, clima y modelación oceanográfica.
+</div>
+<div class="source-line">
+<p>Trabajos asociados: <span class="citation" data-cites="plazavega2026hydrographic valderrama2025jibia diazvergara2026garchx clavijo2026migratory">(<a href="#/referencias-principales" role="doc-biblioref" onclick="">Plaza-Vega, et al. 2026a</a>; <a href="#/referencias-principales" role="doc-biblioref" onclick="">Valderrama Villalobos 2025</a>; <a href="#/referencias-principales" role="doc-biblioref" onclick="">Díaz-Vergara, et al. 2026</a>; <a href="#/referencias-principales" role="doc-biblioref" onclick="">Clavijo-Gorostiaga, et al. 2026</a>)</span>.</p>
+</div>
+<aside class="notes">
+<p>Montserrat Aránguiz, Sofía Valderrama Villalobos, Bastián Díaz-Vergara, Javiera Valenzuela, Nayely Godoy, Milena Rojas, Ernesto Díaz, Gonzalo Bello y Felipe Silva corresponden a Ingeniería Estadística de la Universidad de Santiago de Chile. Las seis tesis nuevas están actualmente en desarrollo: Javiera estudia anchoveta y sardina mediante series temporales, variables ambientales y análisis de variabilidad; Nayely compara herramientas clásicas y de ciencia de datos para jurel; Milena aborda capturas de anchoveta y sardina con DBSCAN y ambiente; Ernesto analiza la forma de otolitos de reineta con ML/DL; Gonzalo estudia datos hidroacústicos de jurel en espacio-tiempo; y Felipe estudia la dependencia espacio-temporal de grandes eventos ENSO en el norte de Chile. Ljubitza Clavijo-Gorostiaga desarrolla su Magíster en Estadística en la Universidad de Valparaíso. Mario Cáceres-Soto desarrolla su Doctorado en la UNAB, con Orietta Nicolis como profesora guía y Francisco Plaza-Vega como profesor co-guía; propone asimilación de datos con IA sobre CROCO y se vincula al FONDECYT mediante la representación oceanográfica regional.</p>
+<p>[Sources] - https://franplaza.github.io/guided_theses/ - https://www.dmcc.usach.cl/comunicados/ifop-y-dmcc-usach-fortalecen-vinculacion-cientifica-en-torno-a-modelacion-pesquera-ambiente-y-aprendizaje-computacional/ - Context for research/Paper Submitted - GARCH-X version 2.pdf. - Context for research/Paper Submitted - Jack mackerel and hydroacoustics DSR2-D-26-00045_R1.pdf. - Context for research/Paper Submitted - Clavijo etal highly migratory and data science DSR2-D-26-00052_R1 (7).pdf. - Context for research/Fondecyt - 02_Proposed_research.pdf. - Context for research/Proyecto-MCS_V03.pptx, diapositivas 1, 10–14 y 17. - Niveles formativos, instituciones, temas y estado de las seis nuevas tesis confirmados por Francisco Plaza-Vega, 01-08-2026.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="cómo-seguimos-avanzando" class="slide level2 section-slide">
+<h2>Cómo seguimos avanzando?</h2>
+<div class="section-index">
+04
+</div>
+<div class="section-title">
+Oportunidades y desafíos para convertir datos en conocimiento.
+</div>
+</section>
+<section id="oportunidades" class="slide level2">
+<h2>Oportunidades</h2>
+<div class="opportunity-list">
+<div>
+<span>01</span><b>Monitoreo electrónico</b>
+<p>
+Especies, tallas, descartes, eventos y trazabilidad.
+</p>
+</div>
+<div>
+<span>02</span><b>Indicadores acuícolas</b>
+<p>
+Fondo marino, condición ambiental, comportamiento y anomalías.
+</p>
+</div>
+<div>
+<span>03</span><b>Alertas y pronósticos</b>
+<p>
+Disponibilidad, captura, distribución y riesgo operacional.
+</p>
+</div>
+<div>
+<span>04</span><b>Clima y hábitat</b>
+<p>
+Regionalización, mapas y escenarios de cambio.
+</p>
+</div>
+<div>
+<span>05</span><b>Hidroacústica y sensores</b>
+<p>
+Clasificación, integración de cruceros y lectura multivariada.
+</p>
+</div>
+<div>
+<span>06</span><b>Apoyo a decisiones</b>
+<p>
+Síntesis de evidencia e incertidumbre para procesos humanos.
+</p>
+</div>
+</div>
+<aside class="notes">
+<p>Las oportunidades adquieren valor cuando se conectan con procesos, datos y responsabilidades institucionales existentes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="desafíos" class="slide level2">
+<h2>Desafíos</h2>
+<div class="limits-list">
+<div>
+<b>Datos sesgados</b><span>Un algoritmo no corrige una cobertura pobre ni etiquetas inconsistentes.</span>
+</div>
+<div>
+<b>Causalidad</b><span>Una asociación predictiva no demuestra un mecanismo.</span>
+</div>
+<div>
+<b>Extrapolación</b><span>El futuro puede quedar fuera del rango aprendido.</span>
+</div>
+<div>
+<b>Eventos raros/extremos</b><span>Pocos ejemplos dificultan entrenamiento y validación.</span>
+</div>
+<div>
+<b>Incertidumbre</b><span>Una predicción puntual puede ocultar decisiones frágiles.</span>
+</div>
+<div>
+<b>Gobernanza</b><span>Se requieren responsables, versionado, monitoreo y criterios de uso.</span>
+</div>
+</div>
+<!-- <div class="claim compact">La pregunta no es solo “¿qué tan preciso es?”, sino también “¿cuándo falla, por qué y con qué consecuencias?”</div> -->
+<aside class="notes">
+<p>Una mayor complejidad exige más disciplina de validación, interpretación y monitoreo.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="tres-ideas-para-llevarse-a-casa" class="slide level2">
+<h2>Tres ideas para llevarse a casa</h2>
+<div class="takehome-list">
+<div>
+<span>1</span><b>La IA amplía lo observable.</b>
+<p>
+Procesa imágenes, video, series y campos espaciales a escalas antes difíciles, pero no reemplaza el diseño de muestreo.
+</p>
+</div>
+<div>
+<span>2</span><b>Estadística e IA pueden complementarse.</b>
+<p>
+Estadística, oceanografía, modelos pesqueros y deep learning aportan piezas distintas.
+</p>
+</div>
+<div>
+<span>3</span><b>El valor está en evidencia utilizable.</b>
+<p>
+La exactitud sin trazabilidad, incertidumbre e interpretación rara vez basta para apoyar una decisión real.
+</p>
+</div>
+</div>
+</section>
+<section id="la-colaboración-es-la-clave" class="slide level2 collaboration-slide">
+<h2>La colaboración es la clave!</h2>
+<div class="collaboration-line">
+Los desafíos pesqueros y acuícolas requieren conectar conocimiento del sector, datos, modelación y formación.
+</div>
+<div class="collaboration-figure">
+<p><img data-src="assets/collaboration.png" alt="Red de instituciones colaboradoras conectadas con la Universidad de Santiago de Chile"></p>
+</div>
+<aside class="notes">
+<p>[Sources] - Imagen entregada en assets/collaboration.png y utilizada en Inspo/Plaza-Vega_PUC.qmd.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-1" class="slide level2 closing-slide">
+<h2></h2>
+<div class="closing-question">
+<span>Muchas gracias</span>
+</div>
+<div class="contact-line">
+<strong>Francisco Plaza-Vega</strong> · Universidad de Santiago de Chile<br>francisco.plaza.v@usach.cl · franplaza.github.io
+</div>
+</section>
+<section id="referencias-principales" class="slide level2 references-slide appendix-slide unlisted smaller scrollable" data-visibility="uncounted">
+<h2>Referencias principales</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-alvarado2025deep" class="csl-entry" role="listitem">
+Alvarado, Eloy, Francisco Plaza-Vega, Carlos Montenegro, y Oscar Saavedra. 2025. “Deep learning-based classification of species in central-southern fisheries in Chile.” <em>Latin American Journal of Aquatic Research</em> 53 (3) :411-424 <a href="https://doi.org/10.3856/vol53-issue3-fulltext-3318">https://doi.org/10.3856/vol53-issue3-fulltext-3318</a>.
+</div>
+<div id="ref-belmar2026jumbo" class="csl-entry" role="listitem">
+Belmar-Salinas, Karen, Edison Garcés, Francisco Plaza-Vega, y Christian M. Ibáñez. 2026. “Standardized catch per unit effort of the jumbo squid Dosidicus gigas in the southern Humboldt Current System: Classical and hybrid approaches incorporating local and global environmental drivers.” Manuscrito sometido a Deep-Sea Research.
+</div>
+<div id="ref-clavijo2026migratory" class="csl-entry" role="listitem">
+Clavijo-Gorostiaga, Ljubitza, Francisco Plaza-Vega, y Marisol García-Reyes. 2026. “Temporal patterns in the landings of highly migratory species and their environmental associations in northern Chile: A data science approach.” Manuscrito revisado y reenviado (R1) a Deep-Sea Research Part II: Topical Studies in Oceanography.
+</div>
+<div id="ref-diazvergara2026garchx" class="csl-entry" role="listitem">
+Díaz-Vergara, Bastián, Francisco Plaza-Vega, Andrés Iturriaga, y Héctor Araya. 2026. “Hybrid Deep Learning–ABC Framework for GARCH-X Parameter Estimation: Application to Pelagic Fishery Volatility in the Humboldt Current System.” Manuscrito.
+</div>
+<div id="ref-goodfellow2016deep" class="csl-entry" role="listitem">
+Goodfellow, Ian, Yoshua Bengio, y Aaron Courville. 2016. “Deep Learning.” <a href="https://mitpress.mit.edu/9780262035613/deep-learning/">https://mitpress.mit.edu/9780262035613/deep-learning/</a>.
+</div>
+<div id="ref-hastie2009elements" class="csl-entry" role="listitem">
+Hastie, Trevor, Robert Tibshirani, y Jerome Friedman. 2009. “The Elements of Statistical Learning: Data Mining, Inference, and Prediction.” <a href="https://doi.org/10.1007/978-0-387-84858-7">https://doi.org/10.1007/978-0-387-84858-7</a>.
+</div>
+<div id="ref-martinez2026automatic" class="csl-entry" role="listitem">
+Martinez, Nicolás, Sebastián Moreno, Francisco Plaza-Vega, José-Emilio Castillo, y Miguel Carrasco. 2026. “Automatic Detection of Beggiatoa Microbial Mats in Salmon Farms Videos.” <em>IEEE Access</em> 14 :35356-35371 <a href="https://doi.org/10.1109/ACCESS.2026.3669848">https://doi.org/10.1109/ACCESS.2026.3669848</a>.
+</div>
+<div id="ref-naranjo2015forecasting" class="csl-entry" role="listitem">
+Naranjo, Laura, Francisco Plaza, Eleuterio Yáñez, María Ángela Barbieri, y Felipe Sánchez. 2015. “Forecasting of jack mackerel landings (Trachurus murphyi) in central-southern Chile through neural networks.” <em>Fisheries Oceanography</em> 24 (3) :219-228 <a href="https://doi.org/10.1111/fog.12105">https://doi.org/10.1111/fog.12105</a>.
+</div>
+<div id="ref-plaza2009prediccion" class="csl-entry" role="listitem">
+Plaza, Francisco. 2009. “Predicción de desembarques de anchoveta (Engraulis ringens), I y II Región, mediante la aplicación de redes neuronales artificiales.” <em>Revista de la Asociación de Profesionales Pesqueros (APROPECH)</em> (23).
+</div>
+<div id="ref-plaza2018identifying" class="csl-entry" role="listitem">
+Plaza, Francisco, Rodrigo Salas, y Eleuterio Yáñez. 2018. “Identifying ecosystem patterns from time series of anchovy (Engraulis ringens) and sardine (Sardinops sagax) landings in northern Chile.” <em>Journal of Statistical Computation and Simulation</em> 88 (10) :1863-1881 <a href="https://doi.org/10.1080/00949655.2017.1410150">https://doi.org/10.1080/00949655.2017.1410150</a>.
+</div>
+<div id="ref-plazavega2026hydrographic" class="csl-entry" role="listitem">
+Plaza-Vega, Francisco, Montserrat Aránguiz, Victor Catasti, María Ángela Barbieri, Omar Chocotea, y Eleuterio Yáñez. 2026a. “Interpretable machine learning reveals hydrographic and trophic associations of jack mackerel and euphausiid aggregation states in northern Chile.” Manuscrito revisado y reenviado (R1) a Deep-Sea Research Part II: Topical Studies in Oceanography.
+</div>
+<div id="ref-plazavega2024variability" class="csl-entry" role="listitem">
+Plaza-Vega, Francisco, y Héctor Araya. 2024. “Anchovy (Engraulis ringens) and Pacific sardine (Sardinops sagax) variability changes in northern Chile associated with the environment and inter species synchronicity: GARCH model with exogenous variable and hybrid Bayesian deep learning estimation approach.” <em>Progress in Oceanography</em> 221 :103190 <a href="https://doi.org/10.1016/j.pocean.2023.103190">https://doi.org/10.1016/j.pocean.2023.103190</a>.
+</div>
+<div id="ref-plazavega2026jackmackerel" class="csl-entry" role="listitem">
+Plaza-Vega, Francisco, Eleuterio Yáñez, Pierre Fréon, Héctor Araya, y Antonio Aranis. 2026b. “Deep learning and surplus production models for multivariate autoregressive modeling and simulation of the jack mackerel fishery associated with environmental conditions.” <em>Deep-Sea Research Part II: Topical Studies in Oceanography</em> 227 :105645 <a href="https://doi.org/10.1016/j.dsr2.2026.105645">https://doi.org/10.1016/j.dsr2.2026.105645</a>.
+</div>
+<div id="ref-valderrama2025jibia" class="csl-entry" role="listitem">
+Valderrama Villalobos, Sofía Carolina. 2025. “Patrones temporales de desembarque de Dosidicus gigas y su relación con variables ambientales.” Tesis para optar al título de Ingeniera Estadística, Universidad de Santiago de Chile.
+</div>
+<div id="ref-yanez2008coupling" class="csl-entry" role="listitem">
+Yáñez, Eleuterio, Samuel Hormazábal, Claudio Silva, et al. 2008. “Coupling between the environment and the pelagic resources exploited off northern Chile: Ecosystem indicators and a conceptual model.” <em>Latin American Journal of Aquatic Research</em> 36 (2) :159-181.
+</div>
+<div id="ref-yanez2010anchovy" class="csl-entry" role="listitem">
+Yáñez, Eleuterio, Francisco Plaza, Juan Carlos Gutiérrez-Estrada, et al. 2010. “Anchovy (Engraulis ringens) and sardine (Sardinops sagax) abundance forecast off northern Chile: A multivariate ecosystemic neural network approach.” <em>Progress in Oceanography</em> 87 (1–4) :242-250 <a href="https://doi.org/10.1016/j.pocean.2010.09.015">https://doi.org/10.1016/j.pocean.2010.09.015</a>.
+</div>
+<div id="ref-yanez2017modelling" class="csl-entry" role="listitem">
+Yáñez, Eleuterio, Francisco Plaza, Felipe Sánchez, Claudio Silva, María Ángela Barbieri, y Gabriela Böhm. 2017. “Modelling climate change impacts on anchovy and sardine landings in northern Chile using ANNs.” <em>Latin American Journal of Aquatic Research</em> 45 (4) :675-689 <a href="https://doi.org/10.3856/vol45-issue4-fulltext-4">https://doi.org/10.3856/vol45-issue4-fulltext-4</a>.
+</div>
+<div id="ref-yanez2016pelagic" class="csl-entry" role="listitem">
+Yáñez, Eleuterio, Francisco Plaza, Claudio Silva, Felipe Sánchez, María Ángela Barbieri, y Antonio Aranis. 2016. “Pelagic resources landings in central-southern Chile under the A2 climate change scenarios.” <em>Ocean Dynamics</em> 66 (10) :1333-1351.
+</div>
+</div>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="presentacion_apropech_ia_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="presentacion_apropech_ia_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="presentacion_apropech_ia_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="presentacion_apropech_ia_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="presentacion_apropech_ia_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="presentacion_apropech_ia_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="presentacion_apropech_ia_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="presentacion_apropech_ia_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="presentacion_apropech_ia_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copiado");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copiado");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
