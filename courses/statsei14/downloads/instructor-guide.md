@@ -126,7 +126,7 @@ An improvement, no change, or a worse score is acceptable. The learning outcome 
 controlled comparison and correct interpretation, not defeating a baseline.
 
 ## Homework after the session
-Point to the [homework guide](https://franplaza.github.io/statsei14-deep-learning/homework.html)
+Point to the [homework guide](https://franplaza.github.io/courses/statsei14/homework.html)
 during the final four minutes. Its reading route needs no coding. Its optional
 experiment starts from the executable Transformer demo and asks for one bounded
 extension: additional predeclared seeds or a positional-encoding ablation.

@@ -263,7 +263,7 @@
     "href": "index.html#materials",
     "title": "Deep Learning Meets ETAS",
     "section": "Materials",
-    "text": "Materials\n\nPresentation in HTML\nPresentation in PDF\nParticipant notebook\nSolved notebook with outputs\nSolved LSTM notebook as a readable HTML page\nExecutable Transformer demo notebook\nTransformer demo with prepared outputs\nFrozen catalogue and data provenance\nComplete course pack\nInstructor guide\nReferences and source distinctions\nHomework and further experiments\n\nThe GitHub repository and Colab link become available after the author’s manual upload. Before then, download the course pack and upload the notebook to Colab."
+    "text": "Materials\n\nPresentation in HTML\nPresentation in PDF\nParticipant notebook\nSolved notebook with outputs\nSolved LSTM notebook as a readable HTML page\nExecutable Transformer demo notebook\nTransformer demo with prepared outputs\nFrozen catalogue and data provenance\nComplete course pack\nInstructor guide\nReferences and source distinctions\nHomework and further experiments\n\nThe GitHub repository and Colab link are available online. Download the course pack and upload it when the notebook asks for the course files."
   },
   {
     "objectID": "index.html#why-finish-with-a-transformer-comparison",
@@ -284,7 +284,7 @@
     "href": "practical.html",
     "title": "The practical",
     "section": "",
-    "text": "Open in Colab Download notebook Download course pack\nThe GitHub-based Colab link requires the author’s manual upload. You can also open the downloaded notebook using Colab → File → Upload notebook and upload the course pack when prompted."
+    "text": "Open in Colab Download notebook Download course pack\nOpen the notebook with the Colab button, then upload data-pack.zip or course-pack.zip when prompted. You can also open the downloaded notebook using Colab → File → Upload notebook and upload the course pack when prompted."
   },
   {
     "objectID": "practical.html#the-research-question-we-carry-into-practice",
