@@ -1,0 +1,450 @@
+[
+  {
+    "objectID": "slides/index.html#s01",
+    "href": "slides/index.html#s01",
+    "title": "Deep Learning Meets ETAS",
+    "section": "",
+    "text": "STATSEI14 · PRACTICAL TUTORIAL\n\n\nDeep LearningMeets ETAS\n\n\nPractical Hybrid Workflows for Seismic Forecasting\n\n\nFrancisco Plaza-Vega Universidad de Santiago de Chile\n\n\n13 October 2026 · Chile\n\n\nLearning about seismicity through representations, models and evidence.\n\n\n\n\n     \n\n\n\nduration_seconds: 30\nThe session has 25 minutes of presentation, 23 minutes of guided LSTM practice, an eight-minute Transformer comparison and four minutes of closing discussion. Deep learning is the main theme. ETAS supplies one way to bring statistical structure into a learning problem. The public title is retained. Main slides s01-s20 end at minute 25. Use d01-d03 after the LSTM notebook at minute 48 and h01 at minute 56."
+  },
+  {
+    "objectID": "slides/index.html#s02",
+    "href": "slides/index.html#s02",
+    "title": "Deep Learning Meets ETAS",
+    "section": "What can we learn from seismicity?",
+    "text": "What can we learn from seismicity?\n\n\n\n\nSignals reveal recorded events.\nCatalogues describe event histories.\nModels turn histories into questions about what may follow.\n\n\nWhat information do we represent, and what do we ask a model to learn?\n\n\nMap: frozen USGS training catalogue and Natural Earth. Illustrates today’s regional setting.\n\n\nduration_seconds: 90\nBegin with the phenomenon and observation. Seismicity is structured in space and time, and observation is incomplete. Deep learning gives flexible function families; scientific usefulness depends on the representation, target and evaluation. Briefly define learning: weights are adjusted from examples. This prepares participants to recognize the model names on the next slide without needing their equations. Map is from today’s USGS benchmark, not the catalogue in the published case. Our route is applications, basic tools, two research cases, then a small experiment."
+  },
+  {
+    "objectID": "slides/index.html#s03",
+    "href": "slides/index.html#s03",
+    "title": "Deep Learning Meets ETAS",
+    "section": "Deep learning addresses different seismic tasks",
+    "text": "Deep learning addresses different seismic tasks\n\n\n\n\n\n\n\n\nExample\nInformation supplied\nLearning task\n\n\n\n\nConvNetQuake · 2018\nRecorded waveforms\nDetect events and classify their source region\n\n\nRECAST · 2023\nCatalogue event history\nModel the timing of future occurrences\n\n\nTransformers in Chile · 2025\nEvent features or sequences of grids\nClassify events or forecast gridded activity\n\n\n\n\nA useful model starts with a clearly defined question.\n\n\nPerol et al. · Dascher-Cousineau et al. · Delgado et al. · Farfán et al.\n\n\nduration_seconds: 180\nThis is a small selection of applications, not an exhaustive history or a performance ranking. ConvNetQuake recognizes events in a recorded waveform; it does not forecast the next earthquake. RECAST is a neural temporal point process with a GRU, benchmarked against temporal ETAS. Its results depend on data and benchmark, and do not establish superiority over spatial ETAS. Two separate studies with Orietta Nicolis motivate the last row: Delgado et al. classify labels such as foreshock/mainshock/aftershock from event features after a clustering/labeling stage; Farfán et al. compare temporal models on daily 4 by 4 Chilean grids. Their labels omit fine epicentre and magnitude information. Classification labels must not be equated with prospective warning. After the LSTM practical we will inspect a small Transformer using the same catalogue inputs and target. This closing comparison motivates alternatives without a separate technical lecture on attention. The homework develops questions raised by that comparison. This completes the five-minute context block."
+  },
+  {
+    "objectID": "slides/index.html#s04",
+    "href": "slides/index.html#s04",
+    "title": "Deep Learning Meets ETAS",
+    "section": "A network learns a mapping from examples",
+    "text": "A network learns a mapping from examples\n\nRepresented data → Neural network → Defined output\n\n\nCompare with a target → Compute a loss → Update weights\n\nArchitecture determines how information is combined.\nTraining adjusts weights to reduce the loss.\n\nThe output and the loss must match the scientific question.\n\n\nduration_seconds: 60\nUse one everyday learning example before terminology: a history goes in, an estimate comes out, and a loss measures the discrepancy. Backpropagation computes gradients; an optimizer uses them to update weights. Weights are learned, whereas the target and representation are modeling choices. Validation guides choices and stopping. This is the common foundation of the four examples that follow, adapted from Units 1 and 2 of my course. Avoid an additional chronological history of DL."
+  },
+  {
+    "objectID": "slides/index.html#s05",
+    "href": "slides/index.html#s05",
+    "title": "Deep Learning Meets ETAS",
+    "section": "MLP: combine measured features",
+    "text": "MLP: combine measured features\n\n\nA multilayer perceptron learns nonlinear combinations of a feature vector.\n\n\nExample input: recent count, magnitude summary and elapsed time. Adapted from the author’s DL course, Unit 2.\n\n\nduration_seconds: 45\nFollow one connection and then a hidden layer. Each layer combines weighted inputs and a nonlinear activation. Depth composes transformations. An MLP can learn from summaries but the representation must explicitly encode any temporal ordering it needs. We do not train an additional MLP today; it supplies the basic vocabulary for the other networks. English vector adaptation preserves the visual language of the original course scheme; provenance is in slides/assets/course-adapted/source-map.md."
+  },
+  {
+    "objectID": "slides/index.html#s06",
+    "href": "slides/index.html#s06",
+    "title": "Deep Learning Meets ETAS",
+    "section": "CNN: learn local patterns with shared filters",
+    "text": "CNN: learn local patterns with shared filters\n\n\nThe same filter examines different neighborhoods.\n\n\nSignals and spatial fields can both carry local structure. Adapted from the author’s DL course, Unit 3.\n\n\nduration_seconds: 60\nExplain a local receptive field and shared weights using the diagram. CNNs also operate on time series; they are not restricted to photographs. In the published case a sequence of ETAS-derived spatial maps provides the representation. A grid choice determines what counts as a neighborhood and what information is retained. No kernel arithmetic is needed for the workshop."
+  },
+  {
+    "objectID": "slides/index.html#s07",
+    "href": "slides/index.html#s07",
+    "title": "Deep Learning Meets ETAS",
+    "section": "LSTM: carry information through a sequence",
+    "text": "LSTM: carry information through a sequence\n\n\nA learned state summarizes the history for a defined output.\n\n\nSame learned update across time. Adapted from the author’s DL course, Unit 4.\n\n\nduration_seconds: 75\nRead left to right. Each step combines the new daily input with information carried from earlier steps. Gates control what is retained, updated and exposed. We need the idea of memory, not gate equations. A many-to-one setup turns a 30-day history into one prediction, which connects to both the published temporal case and the practical. These cases have different targets. Attention is another way to combine information across positions. We will contrast it with recurrence in a compact demonstration after the LSTM practical."
+  },
+  {
+    "objectID": "slides/index.html#s08",
+    "href": "slides/index.html#s08",
+    "title": "Deep Learning Meets ETAS",
+    "section": "Generative learning: produce new samples",
+    "text": "Generative learning: produce new samples\n\n\nA generator learns to produce samples from a learned distribution.\n\n\nGAN is one approach to generative learning. Adapted from the author’s DL course, Unit 5.\n\n\nduration_seconds: 60\nNoise allows different generated samples. A conditional extension also supplies contextual information; that is the setup in the Isidora case. The diagram here shows a generic GAN. In a GAN a discriminator or critic supplies a training signal; the generator is trained to produce samples consistent with the observed data under that objective. Generative describes the learning task, not an architecture mutually exclusive with MLP, CNN or LSTM. We will use this vocabulary in Isidora’s case. Producing a plausible curve is not sufficient evidence of a scientifically adequate distribution. This five-minute overview of DL concepts ends at minute 10. Retain input, output, learned parameters and training loss as the shared vocabulary."
+  },
+  {
+    "objectID": "slides/index.html#s09",
+    "href": "slides/index.html#s09",
+    "title": "Deep Learning Meets ETAS",
+    "section": "Our first case: learning from an ETAS representation",
+    "text": "Our first case: learning from an ETAS representation\n\n\n\n\nScientific question\nCan neural networks learn the evolution of a statistical representation of seismic activity?\nTwo views\nA daily time series and a sequence of spatial maps.\n\n\nNicolis, Plaza & Salas · Spatial Statistics 42 (2021), 100442 · CSN Chile, 2000–2017\n\n\nduration_seconds: 90\nIntroduce our published work using the original author-provided project workflow. Interpret its broad intensity/location labels precisely: the targets derive from a fitted ETAS representation, not physical shaking or an exact next epicentre. The catalogue is Chile’s National Seismological Center, unlike the USGS practical. The question is how to use a statistical model to construct representations for learning. Source https://doi.org/10.1016/j.spasta.2020.100442 . Explain that the next three slides unpack the representation and the two outputs."
+  },
+  {
+    "objectID": "slides/index.html#s10",
+    "href": "slides/index.html#s10",
+    "title": "Deep Learning Meets ETAS",
+    "section": "ETAS supplies a statistical description of activity",
+    "text": "ETAS supplies a statistical description of activity\n\n\\lambda(t\\mid\\mathcal H_t)=\\mu+\\sum_{t_i&lt;t}\\text{contribution from event }i\n\n\nBackground + magnitude-dependent contributions that decay with time\n\nSpatial ETAS also describes how contributions vary over space.\n\nThis conditional occurrence rate becomes a representation for learning.\n\n\nConceptual sketch. Process intensity is different from magnitude and shaking intensity.\n\n\nduration_seconds: 75\nUse the equation as an intuitive bridge from the preceding statistical-seismology tutorial. Background and past-event contributions encode structure. A full model requires estimated parameters, units and observation assumptions. Process intensity is a conditional rate, not itself a seven-day probability. Here the fitted intensity is summarized for neural input and targets. Avoid a separate technical ETAS lecture. The four-quantity distinction remains in the appendix."
+  },
+  {
+    "objectID": "slides/index.html#s11",
+    "href": "slides/index.html#s11",
+    "title": "Deep Learning Meets ETAS",
+    "section": "The temporal task: tomorrow’s maximum intensity",
+    "text": "The temporal task: tomorrow’s maximum intensity\n\n30 daily maxima → LSTM → Next-day maximum\n\nInput and target: summaries of the ETAS-derived intensity.\nLearning question: how much of its evolution can a temporal network capture?\n\nSpecify what is being predicted before interpreting a fit statistic.\n\n\nPublished case, Nicolis, Plaza & Salas (2021). The target is a model-derived quantity.\n\n\nduration_seconds: 75\nThe paper uses 30 daily maximum intensity values for next-day prediction. A model-derived target is scientifically different from direct event occurrence. Reported test R-squared is approximately 0.66 at the threshold-six setting. At threshold five the ETAS comparator has lower MSE, MAE and RMSE, so no uniform neural superiority follows. The paper does not establish that ETAS estimation excluded all test information. Keep these qualifications available when discussing results. We are using the case to show how a representation makes a learning task possible, and why its construction must be included in evaluation."
+  },
+  {
+    "objectID": "slides/index.html#s12",
+    "href": "slides/index.html#s12",
+    "title": "Deep Learning Meets ETAS",
+    "section": "The spatial task: the macrozone of the maximum",
+    "text": "The spatial task: the macrozone of the maximum\n\n30 daily ETAS maps → CNN → Six zone probabilities\n\n\nWhich macrozone contains tomorrow’s maximum estimated intensity?\n\n\nChanging the representation and output opens a different learning task.\n\n\nPublished case, Nicolis, Plaza & Salas (2021). These probabilities concern six macrozones.\n\n\nduration_seconds: 75\nConnect the CNN’s local patterns to spatial maps in the paper. Its class identifies the macrozone containing the next day’s maximum of the ETAS representation. This is neither the precise location of the next earthquake nor occurrence probability in today’s fixed box. The paper’s temporal and spatial branches motivate a shared principle: align representation, architecture and output. Transition: with Isidora we explored a richer output, an entire sequence following a mainshock. The published-case block ends at approximately minute 15. We now use the remaining five minutes of the research block for the Isidora case."
+  },
+  {
+    "objectID": "slides/index.html#s13",
+    "href": "slides/index.html#s13",
+    "title": "Deep Learning Meets ETAS",
+    "section": "With Isidora: can we generate aftershock sequences?",
+    "text": "With Isidora: can we generate aftershock sequences?\n\nMainshock conditions + noise → Generator → A possible sequence\n\nThesis question\nCan conditional generative models reproduce the temporal pattern of aftershock sequences?\nModel families explored\nConditional GAN · WGAN-GP · attention-based generator\n\nA richer output requires us to decide what a sequence actually represents.\n\n\nIsidora Jara Muñoz (2025), thesis · Subsequent manuscript by Plaza-Vega, Jara, Nicolis & Salinas (2026), under review\n\n\nduration_seconds: 75\nName Isidora and the thesis separately from the later manuscript. Explain conditions versus random input. WGAN-GP changes the adversarial objective and regularization; the attention variant changes how sequence positions exchange information. The thesis uses TGAN terminology and the revised manuscript uses GANT. Their evaluations and scores are separate sources. Do not turn this into three architecture tutorials or a performance contest. The question concerns conditional sample generation; ETAS-GAN is outside the empirical scope of the manuscript."
+  },
+  {
+    "objectID": "slides/index.html#s14",
+    "href": "slides/index.html#s14",
+    "title": "Deep Learning Meets ETAS",
+    "section": "One sequence mixes absence and magnitude",
+    "text": "One sequence mixes absence and magnitude\nRepresentation in the manuscript\n14 days → 224 intervals of 90 minutes → maximum magnitude per occupied interval\n\n2.5 2.5 4.1 2.5 3.4 2.5 2.5 5.0\n\n\nSchematic values. Gray: absence marker. Orange: maximum magnitude in an occupied interval.\n\n\n“No recorded event” and “event magnitude” are different outcomes.\n\n\nduration_seconds: 60\nIn this representation 2.5 codes absence and is not an observed magnitude for an empty bin. A maximum discards multiplicity, so occupied bins are not total aftershock counts. The illustrated eight bins are schematic and are not empirical observations. Ask what information the representation loses. This motivates checking occupancy as well as errors of a numeric sequence."
+  },
+  {
+    "objectID": "slides/index.html#s15",
+    "href": "slides/index.html#s15",
+    "title": "Deep Learning Meets ETAS",
+    "section": "Generated sequences distort event occupancy",
+    "text": "Generated sequences distort event occupancy\n\n\nAssess which properties of the observed sequences are reproduced.\n\n\n2026 manuscript under review · Occupied intervals, not total events · Source-case results\n\n\nduration_seconds: 75\nThis teaching plot adapts Table_gant_temporal_blocked_event_occupancy.csv. Overall occupancy is 9.27 percent observed versus 77.43 percent generated in this evaluation. Reported M&gt;=5 occupancy is 1.22 versus 0.40 percent; inherited threshold code has &gt; versus &gt;= ambiguities, so do not reinterpret these as new inclusive-threshold results. The temporal GANT mean-baseline skill remains negative, -13.8 percent. The original PI denominator refers to a mean reference, not last-value persistence. Do not merge thesis metrics, illustrative sequences and blocked results. These findings concern the studied representation and evaluation; they do not establish that all generative approaches fail. The original sequence graphic is in the appendix for discussion."
+  },
+  {
+    "objectID": "slides/index.html#s16",
+    "href": "slides/index.html#s16",
+    "title": "Deep Learning Meets ETAS",
+    "section": "The article revisits what the model should learn",
+    "text": "The article revisits what the model should learn\n\n\nEmpirical reformulation\nAggregate targets: occurrence, exceedance and count summaries.\nThe classification branch uses tree models.\n\nA future neural formulation\nOccurrence probability, followed by magnitude conditional on occurrence.\nEvaluate both parts and their joint behavior.\n\n\nReformulating the target can matter as much as changing the architecture.\n\n\nETAS-informed generation remains future work. The two-part neural model is a proposal.\n\n\nduration_seconds: 75\nThe revised manuscript examines aggregate targets with Random Forest and Gradient Boosting. Do not attribute their classification results to GANs or LSTMs. Ranking performance depends on temporal and geographic evaluation, and is not equivalent to a calibrated operational warning. Explain how the findings motivate future separation of occurrence and magnitude without claiming that this neural model has been validated. Some inherited target horizons were not fully purged, another reason to use a carefully bounded new teaching task. We now carry these modeling lessons into the practical, not the source paper’s scores. End the research block at minute 20. Five minutes remain to frame the practical task and its evaluation."
+  },
+  {
+    "objectID": "slides/index.html#s17",
+    "href": "slides/index.html#s17",
+    "title": "Deep Learning Meets ETAS",
+    "section": "The practical puts the same decisions in your hands",
+    "text": "The practical puts the same decisions in your hands\n\n\n\n\n\n\n\n\nCase\nRepresentation\nOutput\n\n\n\n\nSpatial Statistics\nETAS time series and maps\nIntensity maximum and its macrozone\n\n\nIsidora / manuscript\nMainshock conditions; binned sequences\nConditional sequences; aggregate targets\n\n\nToday\nDaily catalogue channels\nWeekly occurrence probability\n\n\n\n\nRepresent the history → define the output → learn → check the evidence.\n\n\nduration_seconds: 60\nThis is the explicit bridge. Today’s notebook does not reproduce either study. It isolates one tractable question, occurrence, and lets participants change the representation through an extra channel. The common scientific decisions connect the cases even though the targets and catalogues differ. Flexibility means being able to formulate and compare alternatives; it does not guarantee gains."
+  },
+  {
+    "objectID": "slides/index.html#s18",
+    "href": "slides/index.html#s18",
+    "title": "Deep Learning Meets ETAS",
+    "section": "Today’s target: at least one event next week",
+    "text": "Today’s target: at least one event next week\n\n\n30 past days → probability of at least one catalogue M ≥ 5 event in seven days.\n\n\nRegion: 28–34°S, 69–74°W · Input: catalogue M ≥ 4.5 · Monday forecast origins\n\n\nduration_seconds: 75\nDaily channels are log count, maximum excess magnitude and occupancy. Event presence distinguishes an empty day from an event exactly at the input threshold. Inputs are examples by days by features. Magnitude scales in ComCat are mixed; do not call all observations Mw. The practical predicts a defined recorded occurrence, not its exact location, shaking or damage. The threshold is a teaching policy, not proof of uniform completeness."
+  },
+  {
+    "objectID": "slides/index.html#s19",
+    "href": "slides/index.html#s19",
+    "title": "Deep Learning Meets ETAS",
+    "section": "Evaluate using the temporal order of the problem",
+    "text": "Evaluate using the temporal order of the problem\n\n\nCompare probabilities with simple references using Brier score, log loss and calibration.\n\n\nTrain 2001–2016 · Validation 2017–2020 · Test 2021–2025 · Frozen, revised USGS catalogue\n\n\nduration_seconds: 75\nUse training to fit weights and scaling, validation for stopping and choices, and a fixed test comparison. Inputs can extend into a previous partition; target weeks cannot cross a boundary. Today’s revised ComCat data do not reconstruct original historical availability, so this is a revised retrospective experiment. Event time and information availability are separate issues. Baselines are training frequency and logistic regression. Calibration and sample size will be inspected in the notebook; a sigmoid alone does not imply calibration."
+  },
+  {
+    "objectID": "slides/index.html#s20",
+    "href": "slides/index.html#s20",
+    "title": "Deep Learning Meets ETAS",
+    "section": "Experiment: does an informed representation help?",
+    "text": "Experiment: does an informed representation help?\n\nCatalogue channels → LSTM → occurrence probability\n\n\nCatalogue channels + activity score → LSTM → occurrence probability\n\nBefore fitting: predict what the extra information might change.\nAfter fitting: compare errors, calibration and simple baselines.\n\nThe score emphasizes larger, recent events with an illustrative decay.\n\n\nColab: practical page · Prepared results available · Transformer comparison follows the LSTM practice\n\n\nduration_seconds: 90\nMove to the notebook at minute 25. This is an ETAS-inspired score, not a fitted ETAS rate: no background or spatial kernel is estimated. Both LSTM variants use the same 30-day history. Adding a channel increases some input weights, which qualifies the comparison. The question concerns representation under a fixed protocol. Use minutes 25–28 for setup, 28–32 for windows, 32–38 for baselines and LSTM, 38–43 for the activity-score exercise, and 43–48 for evaluation. Use prepared results after three minutes of setup trouble or a fit exceeding its three-minute allowance. At minute 48 return to d01 and the Transformer notebook demonstration. All twenty main-slide durations sum to 1500 seconds."
+  },
+  {
+    "objectID": "slides/index.html#d01",
+    "href": "slides/index.html#d01",
+    "title": "Deep Learning Meets ETAS",
+    "section": "A Transformer combines the same history differently",
+    "text": "A Transformer combines the same history differently\n\n\nSame history and target. A different way to combine information across days.\n\n\nCatalogue-only comparison · 2,305 trainable parameters versus 1,297 for LSTM · One fixed, small configuration\n\n\nduration_seconds: 120\nReturn from the LSTM practical at minute 48. First recall the recurrent state. Here every observed day is projected to 16 features and given a fixed sinusoidal position encoding. Two attention heads, each with key dimension eight, combine information across the past window. Residual additions and layer normalization surround attention and the 32-to-16 feed-forward sublayer. Global average pooling and a sigmoid give the same next-week probability. Keep the explanation intuitive and point to the notebook model summary, without query/key/value algebra. All 30 inputs precede the forecast origin, so attention between those observed positions does not access the future target. The diagram omits no layer type but simplifies the detailed operations. This is a catalogue-only comparison: the Transformer does not receive the extra ETAS-inspired score. Parameter counts exclude optimizer state. The models have different capacity, so this is a bounded comparison under a fixed protocol, not a parameter-matched architecture contest. Proceed to results at minute 50."
+  },
+  {
+    "objectID": "slides/index.html#d02",
+    "href": "slides/index.html#d02",
+    "title": "Deep Learning Meets ETAS",
+    "section": "The Transformer did not improve this comparison",
+    "text": "The Transformer did not improve this comparison\n\n\n\nModel\nValidation Brier\nTest Brier\nTest log loss\n\n\n\n\nTraining frequency\n0.187690\n0.165370\n0.513204\n\n\nLogistic regression\n0.186611\n0.164229\n0.510317\n\n\nLSTM\n0.183065\n0.165413\n0.512942\n\n\nCompact Transformer\n0.188771\n0.166367\n0.515602\n\n\n\nLower is better. LSTM has the lowest validation Brier; logistic regression has the lowest test losses.\n\nChanging the architecture gave us a useful comparison, without a gain in this pilot.\n\n\nPilot: 7 October 2026 · Neural scores are means over seeds 7, 17 and 27 · Catalogue-only comparison on the same split · Exploratory results on an already-inspected test period\n\n\nduration_seconds: 240\nUse minutes 50–54 to open the Transformer notebook, inspect its model summary and load or run the compact comparison. Explain that the displayed neural scores are arithmetic means across three seeds, while the two deterministic baselines have one result. Both neural models receive the identical 30-by-3 tensor. Logistic regression uses the means, maxima and last values of those channels, while the frequency baseline uses the training target prevalence. Show the individual-seed figure or table from the prepared notebook before returning here. The three Transformer test Brier values are 0.165821, 0.167079 and 0.166200; the paired LSTM values are 0.165309, 0.165626 and 0.165304. Logistic regression has the lowest observed test Brier and log loss, whereas LSTM has the lowest validation Brier. These are descriptive differences from one frozen regional split, with 208 validation and 260 test origins, not a significance test or a claim about all Transformers. All predeclared candidates were retained without selecting a seed using test results. The original tutorial test had already been inspected before the pilot, so this is exploratory evidence. Local CPU fitting took about 1.34–1.59 seconds for Transformer and 2.00–2.05 seconds for LSTM, but early stopping used 5–9 versus 20 epochs. These fit timings do not rank architecture speed and exclude notebook setup. Source: experiments/transformer-pilot-2026-10-07/results/metrics.csv and fits.csv. The public companion assets preserve per-seed metrics. If live execution stalls, use the prepared results immediately and keep the explanation within four minutes. Do not tune against the displayed test table."
+  },
+  {
+    "objectID": "slides/index.html#d03",
+    "href": "slides/index.html#d03",
+    "title": "Deep Learning Meets ETAS",
+    "section": "What can this result tell us about the problem?",
+    "text": "What can this result tell us about the problem?\n\n\nObserved in this pilot\nThe attention model did not improve the measured losses.\nA simple baseline remained competitive.\n\nQuestions for the next experiment\nWhich representation and target preserve useful structure?\nWhat information is available in the catalogue?\nWould more data, capacity or a different training budget change the result?\n\n\nUseful deep learning depends on how we represent the phenomenon and formulate the task.\n\n\nThese questions are hypotheses to investigate. The pilot does not identify the cause of its performance.\n\n\nduration_seconds: 120\nUse minutes 54–56 to connect the result to the research cases. In Spatial Statistics, a fitted statistical representation supplied the targets and inputs. In the Isidora work, separating absence, magnitude and aggregate outcomes changed the scientific question. Here changing the architecture alone did not improve losses. The pilot cannot diagnose whether the representation, target, available information, sample size, optimization budget or model capacity caused the result. In particular, it does not establish that seismicity is too complex for deep learning or that attention is unsuitable for earthquake modeling. Ask participants for one testable hypothesis and the comparison needed to investigate it. Keep any extension conditional on preregistering choices and obtaining an appropriate new evaluation, because the current test scores are already known."
+  },
+  {
+    "objectID": "slides/index.html#h01",
+    "href": "slides/index.html#h01",
+    "title": "Deep Learning Meets ETAS",
+    "section": "What did we learn, and what would we test next?",
+    "text": "What did we learn, and what would we test next?\n\nWhich properties of the catalogue did our representation preserve?\nWhat evidence supports changing an input or an architecture?\nWhat would we evaluate next before making a broader claim?\n\n\nDeep learning offers flexible tools. Their scientific value depends on the question and the evidence.\n\n\nHomework: guided reading or a controlled extension · Build on today’s LSTM and Transformer comparison\n\n\nduration_seconds: 240\nClose at minutes 56–60. Invite two brief interpretations, then identify what the representation comparison and architecture comparison each tested. Distinguish an observed score from an explanation of that score. The compact Transformer demonstration is complete; homework deepens a reading or extends one predeclared modeling choice. Participants with less Python experience can use the guided reading and prepared comparisons. Experienced participants can propose a controlled experiment, document its target and evaluation, and retain simple baselines. The website specifies deliverables and treats comparisons on the already-inspected test as exploratory. Return to the common message: deep learning supplies flexible tools for approaching seismic phenomena, and usefulness depends on how we formulate the task and assess the evidence. The 25-minute talk, 23-minute notebook, eight-minute comparison and four-minute closing total 60 minutes."
+  },
+  {
+    "objectID": "slides/index.html#a01",
+    "href": "slides/index.html#a01",
+    "title": "Deep Learning Meets ETAS",
+    "section": "Appendix · a small Keras model",
+    "text": "Appendix · a small Keras model\nmodel = keras.Sequential([\n    keras.layers.Input(shape=(30, n_features)),\n    keras.layers.LSTM(16),\n    keras.layers.Dense(1, activation=\"sigmoid\")\n])\nmodel.compile(optimizer=\"adam\", loss=\"binary_crossentropy\")\nhistory = model.fit(X_train, y_train,\n                    validation_data=(X_val, y_val),\n                    epochs=20, batch_size=64)\n\nSequential defines · compile configures · fit learns · predict applies\n\n\nReference for the practical. Runnable notebook adds explicit seed, early stopping, learning rate and shuffle settings. Validation selects stopping rather than updating weights through gradients. https://keras.io/api/layers/recurrent_layers/lstm/ ."
+  },
+  {
+    "objectID": "slides/index.html#a02",
+    "href": "slides/index.html#a02",
+    "title": "Deep Learning Meets ETAS",
+    "section": "Appendix · quantities and scientific meaning",
+    "text": "Appendix · quantities and scientific meaning\n\n\n\n\n\n\n\nQuantity\nQuestion answered\n\n\n\n\nProcess intensity\nAt what conditional rate do events occur?\n\n\nMagnitude\nHow large is an event?\n\n\nShaking intensity\nWhat motion or effects occur at a location?\n\n\nRisk\nWhat consequences may occur given exposure and vulnerability?\n\n\n\n\nToday’s output is a probability of a defined occurrence event.\n\n\nThe published title and original workflow labels require this distinction. ETAS intensity is an event rate. A probability for an interval needs a predictive calculation, not relabeling a rate. None of today’s probability scores is a shaking or damage estimate."
+  },
+  {
+    "objectID": "slides/index.html#a03",
+    "href": "slides/index.html#a03",
+    "title": "Deep Learning Meets ETAS",
+    "section": "Appendix · the exact activity score",
+    "text": "Appendix · the exact activity score\nr_t(s)=\\sum_{t-L\\le t_i&lt;s}10^{\\alpha(M_i-M_0)}\n\\left(1+\\frac{s-t_i}{c}\\right)^{-p},\\quad s\\le t.\nIllustrative: α=1, c=1 day, p=1.1, L=30 days.\nShared history: the same available interval for both LSTMs.\nRepresentation: log1p(score) is an additional daily channel.\n\nThis index is neither an estimated ETAS rate nor a probability.\n\n\nThe history is truncated separately at each origin and the daily endpoint includes only strictly earlier events. A fitted ETAS extension needs a documented estimation sample, units, observation model and forecast construction. For the optional 14-day task, both variants use L=14. The binary target is at least one catalogue event M&gt;=5 in [t,t+7 days)."
+  },
+  {
+    "objectID": "slides/index.html#a04",
+    "href": "slides/index.html#a04",
+    "title": "Deep Learning Meets ETAS",
+    "section": "Appendix · original generative examples",
+    "text": "Appendix · original generative examples\n\n\n2026 manuscript under review · Original PI annotations use a mean-reference denominator · Illustrative cases\n\n\nUse only if discussion requires the original sequence examples. These panels are not the blocked-evaluation occupancy comparison. The absence marker is 2.5; occupied-bin maxima discard multiplicity. Original PI is a mean-baseline measure rather than last-observation persistence. Do not merge illustrative case values with the aggregate temporal evaluation or thesis results."
+  },
+  {
+    "objectID": "slides/index.html#a05",
+    "href": "slides/index.html#a05",
+    "title": "Deep Learning Meets ETAS",
+    "section": "Appendix · evidence and availability",
+    "text": "Appendix · evidence and availability\n\n\n\n\n\n\n\nCheck\nMeaning\n\n\n\n\nChronological, purged targets\nFuture target intervals do not cross partitions.\n\n\nTraining-only normalization\nLater inputs do not set scaling parameters.\n\n\nFrozen revised catalogue\nData bytes and provenance are reproducible.\n\n\nHistorical catalogue vintages\nNot reconstructed.\n\n\n\n\nReproducibility and historical information availability are separate requirements.\n\n\nMagnitude, location and inclusion may have changed after an event. The updated field is not first publication and cannot reconstruct original versions or label-adjudication delays. Dependent weeks, one regional split and a small number of seeds limit generalization. The original activity-score reference run uses one seed; the Transformer pilot repeats catalogue-only models at three seeds. The reference run shows only a small LSTM change from the added score and lower test Brier for logistic regression. A source or architecture’s reported score should not be transferred to a different target."
+  },
+  {
+    "objectID": "slides/index.html#a06",
+    "href": "slides/index.html#a06",
+    "title": "Deep Learning Meets ETAS",
+    "section": "Appendix · sources and further reading",
+    "text": "Appendix · sources and further reading\n\nSeismic applications: ConvNetQuake · RECAST.\nOur published case: Nicolis, Plaza & Salas (2021).\nGenerative case: Jara Muñoz (2025), thesis; Plaza-Vega, Jara, Nicolis & Salinas (2026), manuscript under review.\nAttention context and further reading: Delgado et al. (2025) · Farfán et al. (2025).\nDiagram style: author’s DL course, Units 2–5 · Transformer schematic matches today’s compact pilot.\nMaterials: practical · homework · full references.\n\n\nContext papers are distinct tasks, not a ranking of architectures. The 2026 manuscript status is under review, confirmed by the author. Original course diagram sources and any inherited attribution are preserved in slides/assets/course-adapted/source-map.md. Full private theses and manuscripts are excluded from distribution. Foundational DL and data/software references remain on the references page."
+  },
+  {
+    "objectID": "homework.html",
+    "href": "homework.html",
+    "title": "After the tutorial",
+    "section": "",
+    "text": "The live session combines a guided LSTM exercise with a separate, tested Transformer comparison. This follow-up offers a paper-and-evidence discussion requiring no coding and a bounded extension of the executable demo. Both continue the same question: what can a flexible model learn from a particular representation, and how would we know? Use the laboratory week to work at a suitable pace.\nReturn to the practical · References and source links"
+  },
+  {
+    "objectID": "homework.html#level-1-read-the-task-before-the-architecture",
+    "href": "homework.html#level-1-read-the-task-before-the-architecture",
+    "title": "After the tutorial",
+    "section": "Level 1 — Read the task before the architecture",
+    "text": "Level 1 — Read the task before the architecture\nSuggested time: 45–60 minutes. No training required.\nBegin with the prepared Transformer comparison. State one observation supported by its scores and one possible explanation that those scores alone cannot establish. Then compare the tutorial with two papers: one on earthquake forecasting and one on another seismic learning task. Suggested choices are RECAST or Farfán et al. (2025) for forecasting, and ConvNetQuake or Delgado et al. (2025) for detection/classification. Follow the links on the references page.\n\nWrite the scientific question in one sentence for each source. Specify whether it detects a recorded signal, classifies an event, forecasts an aggregate outcome, or generates possible future sequences.\nTrace one example from raw observations to model input and target. Include units, temporal resolution, spatial support and forecast horizon where applicable.\nIdentify when each input and label becomes available. For a foreshock/mainshock/aftershock label, investigate whether assigning the label uses later events. Distinguish a retrospectively defined label from a prospective prediction using information available at issuance.\nRead the evaluation design: chronological or random splitting, geographic separation, baseline, metric and what the metric measures. Record not reported in the source consulted whenever a detail is unavailable; do not infer the protocol from a headline score.\nExplain one useful connection to the tutorial and one reason the scores cannot be compared directly. Propose a common target and protocol that a fair comparison would require.\n\nSubmit a one-page comparison using this template:\n\n\n\nItem\nTutorial\nPaper A\nPaper B\n\n\n\n\nScientific question and task\n\n\n\n\n\nInput representation and available information\n\n\n\n\n\nTarget, horizon and spatial support\n\n\n\n\n\nModel family\n\n\n\n\n\nSplit and baseline\n\n\n\n\n\nMetric and interpretation\n\n\n\n\n\nLimitation or unresolved protocol detail\n\n\n\n\n\n\nAdd 150–200 words explaining how a change in the target can matter as much as a change in the architecture. Cite each paper and state whether you consulted the full text or only its abstract. Label the Jara thesis and the manuscript under review separately if you use them as additional sources."
+  },
+  {
+    "objectID": "homework.html#level-2-reproduce-the-demo-then-extend-one-question",
+    "href": "homework.html#level-2-reproduce-the-demo-then-extend-one-question",
+    "title": "After the tutorial",
+    "section": "Level 2 — Reproduce the demo, then extend one question",
+    "text": "Level 2 — Reproduce the demo, then extend one question\nSuggested time: 60–120 minutes, depending on Python familiarity and environment setup. Use the executable Transformer notebook and its prepared outputs. The model is already defined and locally tested; this exercise does not ask you to implement attention from scratch. Participants can also complete the interpretation using saved outputs. The notebook imports TensorFlow even in prepared mode; if imports fail, open the prepared HTML page instead.\nThe pilot kept its architecture fixed before evaluation. It compared both neural models with catalogue-only inputs across seeds 7, 17 and 27. The Transformer had higher losses in that experiment. Explaining the difference requires a new question and evidence, rather than attributing it to seismic complexity or declaring an architecture generally inferior.\n\nStart from the recorded comparison\n\nSave a copy of the demo and use a separate output directory so the distributed results remain available.\nTrace one example through its 30 × 3 input, learned representation and probability output. Explain the role of fixed sinusoidal position information and temporal averaging.\nRead the existing results for every seed. Means in the comparison are averages of individual-fit metrics, not predictions from an ensemble. Check the differences in parameter count, completed epochs and fit time.\nIf reproducing the unchanged demo, record your environment and every result, including small numerical differences. A local success does not verify execution in a clean Colab runtime.\nBefore changing anything, write a hypothesis and choose one route below. Set RUN_TRAINING = True and EVALUATE_TEST = False for either extension. Execute all cells in order: the evaluation guard keeps the new run on validation while preserving the analysis and export steps. Leave the immutable PILOT_SEEDS = [7, 17, 27] unchanged.\n\n\n\nRoute A — Does the comparison vary across more initializations?\nKeep both architectures unchanged. In the first configuration cell, set RUN_TRAINING = True, EVALUATE_TEST = False and SEEDS = [37, 47, 57]; leave REFERENCE_ARCHITECTURE = True. These are three additional, predeclared runs for each model, separate from the immutable pilot seeds. Execute all cells, then report the original seeds 7, 17 and 27 alongside all additional runs; do not replace or select seeds because of their scores.\nSummarize validation losses and paired Transformer-minus-LSTM differences for all six seeds. More seeds describe optimization variability more fully; they do not supply new earthquakes, independent test periods or a confidence interval for generalization.\n\n\nRoute B — What role does explicit position information play?\nIn the copied notebook, set RUN_TRAINING = True, EVALUATE_TEST = False, SEEDS = [7, 17, 27] and REFERENCE_ARCHITECTURE = False. Set EXTENSION_NOTE to describe the single change, for example \"Remove fixed sinusoidal position encoding\". In the copied model definition, omit only the line x = SinusoidalPosition(name=\"day_position\")(x) and keep the rest of the model unchanged. Execute all cells in order. Retain the original position-aware Transformer and the LSTM as references.\nBefore fitting, state what information this change removes and why it might matter to this task. Compare validation predictions and losses for all three seeds. The result tests this particular position ablation; it does not establish that seismic order is irrelevant or identify the full cause of the original pilot’s performance.\n\n\nKeep the rest of the experiment fixed\n\n\n\n\n\n\n\nKeep fixed\nRequired setting\n\n\n\n\nData and region\nFrozen USGS catalogue; latitude −34 to −28, longitude −74 to −69\n\n\nInputs\nPrevious 30 days; M ≥ 4.5; catalogue-only log_count, max_magnitude_excess, has_event\n\n\nTarget\nAt least one M ≥ 5 event in the next seven days, issued each Monday\n\n\nTraining and validation\n2001–2016 and 2017–2020, with the demo’s chronological boundary exclusions\n\n\nPreprocessing\nThe same windows and training-only normalization\n\n\nComparisons\nTraining-frequency and catalogue-only logistic baselines; original LSTM and Transformer\n\n\nTraining protocol\nSame optimizer, learning rate, loss, batch size, maximum 20 epochs and early-stopping rule\n\n\n\nDo not also change the lookback, magnitude threshold, region, target or ETAS-inspired input. Those changes answer different questions. Keep all declared runs, including neutral or worse results. A common maximum training budget does not imply equal completed epochs, parameters or computing cost.\n\n\nEvaluate without turning the published test into a tuning set\nUse validation Brier score and log loss, alongside a calibration plot with common fixed bins 0, 0.1, …, 1 and counts for each model and seed. Keep empty bins visible in the count table. Do not pool predictions across seeds and treat them as additional independent weeks.\nThe 2021–2025 test results are already available in the course and the pilot. Do not use them to choose an extension, seed or hyperparameter, and do not present a new analysis of that period as an untouched test. Any later evaluation on it must be labelled exploratory retrospective evaluation on a previously inspected test period. A confirmatory follow-up needs a genuinely untouched evaluation period and a protocol fixed before examining its outcomes.\nThe frozen catalogue also preserves the revised retrospective limitation: historical availability of individual event revisions remains unverified. Attention weights do not by themselves identify causal seismic mechanisms.\n\n\nDeliverables\n\n\n\n\n\n\n\nDeliverable\nWhat it must contain\n\n\n\n\nReproducible copy or annotated prepared results\nHypothesis, chosen route, fixed settings, environment and data provenance\n\n\nValidation table\nModel/variant, every seed, n, positive weeks, Brier, log loss, parameters, epochs and fit time\n\n\nOne diagnostic\nCommon-bin calibration with counts or probability-versus-time plot with observed weeks\n\n\nShort interpretation\n200–300 words separating observations, hypotheses, seed variability, test exposure and what remains unresolved\n\n\n\nExplain what the chosen experiment says about the relationship between information, representation and task. A small difference or stronger simple baseline can still be informative. The exercise does not rank LSTMs and Transformers across seismological tasks or establish an operational earthquake-warning system."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Deep Learning Meets ETAS",
+    "section": "",
+    "text": "STATSEI14 · Practical tutorial\n\n\nPractical hybrid workflows for seismic forecasting\nFrancisco Plaza-Vega\nFrom deep learning in seismology to our Spatial Statistics and aftershock research, then a guided LSTM experiment and a compact Transformer comparison: what can flexible tools tell us about a carefully defined seismic question?\n\nTuesday 13 October 2026 · 11:30–12:30 · Santiago\n\n\nOpen the practical View slides Download course pack\n\n\n\n\n\n\n\nTraining-period USGS events over a map of Chile, with a locator for the study region. The catalogue is frozen and revised.\n\n\nA regional catalogue becomes a sequence of forecasting examples."
+  },
+  {
+    "objectID": "index.html#what-you-will-be-able-to-do",
+    "href": "index.html#what-you-will-be-able-to-do",
+    "title": "Deep Learning Meets ETAS",
+    "section": "What you will be able to do",
+    "text": "What you will be able to do\n\nConnect a scientific question to a representation, neural architecture, output and loss.\nDistinguish the targets in the Spatial Statistics study, the aftershock work and this practical.\nBuild catalogue windows, train a small LSTM and compare an ETAS-inspired input with simple baselines.\nRead a controlled LSTM–Transformer comparison and separate observed differences from possible explanations.\nCarry a testable question about representation or modelling into the homework."
+  },
+  {
+    "objectID": "index.html#before-the-session",
+    "href": "index.html#before-the-session",
+    "title": "Deep Learning Meets ETAS",
+    "section": "Before the session",
+    "text": "Before the session\nThe session welcomes researchers with different levels of Python and deep learning experience. Basic Python helps when running or modifying cells; no previous neural-network training is required. You can also follow the prepared outputs, formulate a hypothesis and interpret the evidence with the group.\nBring a laptop and a browser if you plan to run the code. Colab is the intended environment; the downloadable pack includes the frozen catalogue, the LSTM exercise, the separate Transformer demo and prepared results. The recorded execution checks are local CPU runs, not a clean Colab verification."
+  },
+  {
+    "objectID": "index.html#the-60-minute-session",
+    "href": "index.html#the-60-minute-session",
+    "title": "Deep Learning Meets ETAS",
+    "section": "The 60-minute session",
+    "text": "The 60-minute session\n\n\n\n\n\n\n\nMinutes\nActivity\n\n\n\n\n00–05\nDeep learning in seismology: examples and questions\n\n\n05–10\nMLP, CNN, LSTM and generative modelling: a brief map\n\n\n10–20\nSpatial Statistics and Isidora’s work: representations, targets and evidence\n\n\n20–25\nConnect the research questions to the practical experiment\n\n\n25–28\nOpen the notebook and load the frozen catalogue\n\n\n28–32\nFollow one history, target and chronological split\n\n\n32–38\nCalculate simple baselines and train the small LSTM\n\n\n38–43\nState a hypothesis and add the ETAS-inspired score\n\n\n43–48\nEvaluate the fixed LSTM exercise\n\n\n48–56\nGuided Transformer demo: read the code and compare prepared results\n\n\n56–60\nDiscuss flexibility, evidence and the next scientific question\n\n\n\nThe session has 25 minutes of research context, 23 minutes of guided LSTM practice, an eight-minute Transformer comparison and a four-minute closing discussion. The demo uses a separate, tested notebook and prepared results. Further implementation and experiments can continue during the laboratory week."
+  },
+  {
+    "objectID": "index.html#materials",
+    "href": "index.html#materials",
+    "title": "Deep Learning Meets ETAS",
+    "section": "Materials",
+    "text": "Materials\n\nPresentation in HTML\nPresentation in PDF\nParticipant notebook\nSolved notebook with outputs\nSolved LSTM notebook as a readable HTML page\nExecutable Transformer demo notebook\nTransformer demo with prepared outputs\nFrozen catalogue and data provenance\nComplete course pack\nInstructor guide\nReferences and source distinctions\nHomework and further experiments\n\nThe GitHub repository and Colab link become available after the author’s manual upload. Before then, download the course pack and upload the notebook to Colab."
+  },
+  {
+    "objectID": "index.html#why-finish-with-a-transformer-comparison",
+    "href": "index.html#why-finish-with-a-transformer-comparison",
+    "title": "Deep Learning Meets ETAS",
+    "section": "Why finish with a Transformer comparison?",
+    "text": "Why finish with a Transformer comparison?\nThe prepared pilot keeps the weekly target and three catalogue channels fixed and compares LSTM with a compact attention model across seeds 7, 17 and 27. In this experiment, the Transformer had higher Brier score and log loss than the LSTM and both simple baselines in validation and test. We use this result to ask what the representation, information, model assumptions and task definition allow us to learn.\nThe result does not identify its cause. Available information, representation, inductive bias, training budget and the chosen target are possible explanations to investigate. A claim that the phenomenon is complex does not itself explain the observed model comparison. See the demo and its evidence."
+  },
+  {
+    "objectID": "index.html#what-the-experiment-can-establish",
+    "href": "index.html#what-the-experiment-can-establish",
+    "title": "Deep Learning Meets ETAS",
+    "section": "What the experiment can establish",
+    "text": "What the experiment can establish\nThis is a retrospective teaching benchmark using a frozen, revised USGS catalogue. Windows exclude future event times and target intervals cannot cross split boundaries. The downloaded records do not reconstruct the catalogue versions originally available at each historical forecast time.\nThe ETAS-inspired score is a simplified, truncated triggering feature with illustrative parameters. It is not a fitted ETAS model. An ETAS–GAN combination remains a research proposal, outside the empirical scope of the manuscript discussed and this practical. Neither the course nor a high probability is an operational earthquake warning."
+  },
+  {
+    "objectID": "practical.html",
+    "href": "practical.html",
+    "title": "The practical",
+    "section": "",
+    "text": "Open in Colab Download notebook Download course pack\nThe GitHub-based Colab link requires the author’s manual upload. You can also open the downloaded notebook using Colab → File → Upload notebook and upload the course pack when prompted."
+  },
+  {
+    "objectID": "practical.html#the-research-question-we-carry-into-practice",
+    "href": "practical.html#the-research-question-we-carry-into-practice",
+    "title": "The practical",
+    "section": "The research question we carry into practice",
+    "text": "The research question we carry into practice\nHow can we represent seismic history so that a model can learn something useful about what follows? The presentation develops this question through the published Spatial Statistics study and the aftershock work from Isidora Jara’s thesis and the subsequent manuscript.\n\n\n\n\n\n\n\nResearch step\nRepresentation and question\n\n\n\n\nSpatial Statistics study\nETAS-derived intensity summaries; predict their maximum and its macrozone\n\n\nIsidora’s thesis and subsequent manuscript\nAftershock sequence representations, predictive tasks and generative modelling\n\n\nThis practical\nDaily regional catalogue channels; estimate next-week occurrence probability\n\n\n\nThe practical uses a new, deliberately small target. It illustrates the same modelling decisions without reproducing the research results. An ETAS–GAN combination remains a proposal outside the empirical scope of the manuscript and this exercise.\nOur thread is question → representation → model and loss → evidence. A flexible tool is useful when these choices form a coherent scientific experiment."
+  },
+  {
+    "objectID": "practical.html#two-ways-to-participate",
+    "href": "practical.html#two-ways-to-participate",
+    "title": "The practical",
+    "section": "Two ways to participate",
+    "text": "Two ways to participate\nRun and modify the cells if you are comfortable with Python, or follow the prepared outputs and contribute a hypothesis and interpretation. Both routes investigate the same scientific question. The required live change is adding one channel to the LSTM; the Transformer is a guided comparison using a separate notebook."
+  },
+  {
+    "objectID": "practical.html#one-concrete-task",
+    "href": "practical.html#one-concrete-task",
+    "title": "The practical",
+    "section": "One concrete task",
+    "text": "One concrete task\nAt each Monday forecast origin, use the previous 30 days to estimate the probability of at least one event with catalogue magnitude M ≥ 5 in the next seven days.\n\n\n\nSetting\nFrozen teaching configuration\n\n\n\n\nRegion\nLatitude −34 to −28, longitude −74 to −69\n\n\nSource\nUSGS ComCat, 2000–2025\n\n\nInput events\nCatalogue magnitude M ≥ 4.5\n\n\nTraining origins\n2001–2016\n\n\nValidation origins\n2017–2020\n\n\nTest origins\n2021–2025\n\n\nForecast target\nAt least one qualifying event in [t, t + 7 days)\n\n\nNeural model\nLSTM with 16 units and a sigmoid output\n\n\nComparisons\nTraining prevalence and logistic regression\n\n\n\nMagnitude 4.5 is an input threshold, not a claim of uniform completeness. The notebook shows training-period coverage and magnitude-frequency diagnostics. The larger frozen download starts at magnitude 3 for these diagnostics."
+  },
+  {
+    "objectID": "practical.html#the-model-is-written-out",
+    "href": "practical.html#the-model-is-written-out",
+    "title": "The practical",
+    "section": "The model is written out",
+    "text": "The model is written out\nThe LSTM learns a representation of the ordered daily inputs. The sigmoid output and binary cross-entropy connect that representation to the weekly occurrence question. The learning steps stay visible in the notebook:\nmodel = keras.Sequential([\n    keras.layers.Input(shape=(30, X_train.shape[-1])),\n    keras.layers.LSTM(16),\n    keras.layers.Dense(1, activation=\"sigmoid\"),\n])\nmodel.compile(\n    optimizer=keras.optimizers.Adam(learning_rate=0.001),\n    loss=\"binary_crossentropy\",\n)\nhistory = model.fit(\n    X_train, y_train,\n    validation_data=(X_val, y_val),\n    epochs=20, batch_size=64,\n    callbacks=[early_stopping],\n    shuffle=False,\n)\nprobability = model.predict(X_val).ravel()\nThe notebook explains each argument beside the cell. No custom training wrapper hides these steps."
+  },
+  {
+    "objectID": "practical.html#required-exercise",
+    "href": "practical.html#required-exercise",
+    "title": "The practical",
+    "section": "Required exercise",
+    "text": "Required exercise\nBefore training: predict whether the extra channel will help, and explain why. It gives greater weight to larger and more recent events; its information may also be redundant with the catalogue channels.\nAdd the ETAS-inspired score to the feature list, update the model input and retrain. Keep the target, splits, seed and hyperparameters fixed. Compare validation Brier score and log loss with the catalogue-only model.\nAfter training: compare the result with your hypothesis. Did the same channel help logistic regression? Record what changed, whether the difference is small, and why one run cannot establish general superiority. The index is an input representation with illustrative parameters, not a fitted ETAS rate."
+  },
+  {
+    "objectID": "practical.html#continue-as-homework",
+    "href": "practical.html#continue-as-homework",
+    "title": "The practical",
+    "section": "Continue as homework",
+    "text": "Continue as homework\nSave the optional 14-versus-30-day comparison for after the session. Rebuild the windows, inspect a boundary example and compare only on validation while keeping the seven-day forecasting question fixed. The homework guide provides the follow-up route. Once this practical’s test results have been inspected, they are no longer an untouched test for selecting a new configuration."
+  },
+  {
+    "objectID": "practical.html#reading-the-output",
+    "href": "practical.html#reading-the-output",
+    "title": "The practical",
+    "section": "Reading the output",
+    "text": "Reading the output\n\nBrier score: average squared probability error. Smaller is better.\nLog loss: penalizes confident incorrect probabilities. Smaller is better.\nCalibration: compare mean predicted probability with the observed fraction, showing the number of forecasts in each bin.\nBase rate: the observed frequency of positive target weeks. The constant baseline uses training only.\n\nWeekly targets do not overlap, but earthquakes and adjacent input windows can still be dependent."
+  },
+  {
+    "objectID": "practical.html#from-minute-25-practice-comparison-and-discussion",
+    "href": "practical.html#from-minute-25-practice-comparison-and-discussion",
+    "title": "The practical",
+    "section": "From minute 25: practice, comparison and discussion",
+    "text": "From minute 25: practice, comparison and discussion\nThe presentation occupies minutes 00–25. The remaining time follows this schedule:\n\n\n\n\n\n\n\nSession minutes\nActivity\n\n\n\n\n25–28\nOpen the LSTM notebook and load the frozen catalogue\n\n\n28–32\nConnect the question to one window, label and chronological split\n\n\n32–38\nCompare simple baselines and train the small LSTM\n\n\n38–43\nState a hypothesis, add the score and compare validation results\n\n\n43–48\nEvaluate the fixed LSTM experiment\n\n\n48–56\nInspect the Transformer definition and prepared three-seed comparison\n\n\n56–60\nReturn to the scientific question and introduce follow-up work\n\n\n\nThe Transformer block uses prepared outputs and readable model code. Building an attention model from scratch is not required during the session."
+  },
+  {
+    "objectID": "practical.html#timing-and-fallback",
+    "href": "practical.html#timing-and-fallback",
+    "title": "The practical",
+    "section": "Timing and fallback",
+    "text": "Timing and fallback\nThe goal is less than three minutes of CPU training for the two LSTM variants. The distributed reference run records measured training time and the environment; a local CPU measurement is not a Colab timing guarantee.\nIf the runtime cannot train during the session, open the solved notebook and the prepared results. The notebook marks this fallback explicitly."
+  },
+  {
+    "objectID": "practical.html#original-lstm-exercise-one-seed-reference-run",
+    "href": "practical.html#original-lstm-exercise-one-seed-reference-run",
+    "title": "The practical",
+    "section": "Original LSTM exercise: one-seed reference run",
+    "text": "Original LSTM exercise: one-seed reference run\nThe solution executed from a fresh local CPU kernel in 29.1 seconds; the two LSTM fits took 4.3 seconds combined (20 epochs each, two TensorFlow threads). This is a local Windows measurement, not a Colab benchmark.\nTraining contains 834 weeks (197 positives), validation 208 (52 positives), and test 260 (54 positives). Three boundary or incomplete weeks are excluded.\n\n\n\n\nModel\nValidation Brier\nTest Brier\nTest log loss\n\n\n\n\nTraining frequency\n0.187690\n0.165370\n0.513204\n\n\nLogistic, catalogue\n0.186611\n0.164229\n0.510317\n\n\nLogistic + score\n0.185589\n0.164204\n0.509854\n\n\nLSTM, catalogue\n0.183109\n0.164984\n0.511939\n\n\nLSTM + score\n0.182790\n0.164718\n0.511082\n\n\n\n\nAdding the score changes the LSTM losses only slightly in this run. Logistic regression has the lower test Brier score. This single-seed result does not establish that either architecture is generally superior.\n\nThe course pack contains unrounded metrics, predictions, configuration and runtime metadata."
+  },
+  {
+    "objectID": "practical.html#transformer-demo",
+    "href": "practical.html#transformer-demo",
+    "title": "The practical",
+    "section": "Guided Transformer comparison",
+    "text": "Guided Transformer comparison\nDownload the executable demo · Open prepared outputs\nThis is a separate catalogue-only comparison across seeds 7, 17 and 27. It reuses the frozen data, windows, training-only normalization and weekly target, but does not add the ETAS-inspired channel. Both neural models receive the same 30 × 3 inputs. Read its LSTM results together with its Transformer results; they are not the single-seed values in the original exercise above.\nThe model projects each day to 16 dimensions, adds fixed sinusoidal position information, and applies one attention block with two heads (key dimension 8), a 32→16 feed-forward block, residual connections and normalization. Temporal averaging and a sigmoid produce one probability. All input days precede issuance; attention within that history does not expose future target observations.\nDuring minutes 48–56, follow the tensor shapes in the written model, then compare the prepared results. The demo has been tested locally; participants can reproduce or extend it after the session.\n\nWhat the pilot observed\nThe neural entries below are means of individual-fit metrics over all three seeds, not ensemble metrics. The baselines are deterministic.\n\n\n\n\nModel\nValidation Brier\nTest Brier\nTest log loss\n\n\n\n\nTraining frequency\n0.187690\n0.165370\n0.513204\n\n\nLogistic catalogue\n0.186611\n0.164229\n0.510317\n\n\nLSTM catalogue\n0.183065\n0.165413\n0.512942\n\n\nTransformer compact\n0.188771\n0.166367\n0.515602\n\n\n\n\nThe Transformer had higher Brier score and log loss than the LSTM and both baselines in both partitions for every declared seed. This observation concerns this representation, sample and protocol. It does not rank the architectures across seismological tasks.\n\n\n\nValidation and test losses for all three seeds and the two deterministic baselines.\n\n\nThe compact Transformer has 2,305 parameters and the LSTM 1,297. Transformer fits took 1.34–1.59 seconds locally, stopping after 5–9 epochs; LSTM fits took 2.00–2.05 seconds and ran 20 epochs. The different completed training work prevents interpreting this as general evidence of a faster architecture. A clean Colab run remains unverified.\nInspect the metrics, fits, predictions and runtime. All seeds are retained. Variation across seeds describes training variability, not a confidence interval for generalization. The test period was already inspected in the original tutorial, so this is an exploratory retrospective comparison, with no tuning after test evaluation.\n\n\nWhat remains a hypothesis\nThe comparison does not identify why the Transformer performed differently. Representation, available information, inductive bias, training budget and the chosen target are possible explanations to test. Neither the complexity of seismicity nor the model’s flexibility is a demonstrated cause of these scores.\nChoose one question for discussion: what information did daily regional aggregation remove, what does the architecture assume about that representation, or would a different scientific target require a different output and evaluation? A follow-up experiment should change one stated element and use training and validation for decisions."
+  },
+  {
+    "objectID": "practical.html#catalogue-revisions-and-validation",
+    "href": "practical.html#catalogue-revisions-and-validation",
+    "title": "The practical",
+    "section": "Catalogue revisions and validation",
+    "text": "Catalogue revisions and validation\nA frozen modern catalogue is reproducible but does not prove which event version was available years ago. The reference run is labelled revised retrospective, and historical as-of availability remains unverified. Input event times precede issuance; normalization uses training only; target weeks crossing a partition boundary are removed."
+  },
+  {
+    "objectID": "practical.html#after-the-tutorial",
+    "href": "practical.html#after-the-tutorial",
+    "title": "The practical",
+    "section": "After the tutorial",
+    "text": "After the tutorial\nUse minutes 56–60 to return to three questions: what did we represent, what did we ask the model to learn, and what did the evidence support? Contrast our weekly probability with the intensity summaries and aftershock sequences in the research presentation. Their targets require different outputs, losses and evaluations. Then distinguish the observed Transformer comparison from a possible explanation that a future experiment could test.\nContinue with the homework after the session. Any new region requires a matching catalogue and renewed checks of completeness, sample sizes and magnitude types. A future two-part model could estimate occurrence and magnitude conditional on occurrence separately."
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References and evidence",
+    "section": "",
+    "text": "STATSEI14 official programme. Consulted 5 October 2026. Tutorial: 13 October, 11:30–12:30, after Jiancang Zhuang and the break.\nFrancisco Plaza-Vega: Deep Learning course. Background on representations, losses and architectures.\nQuarto and GitHub Pages mini-course. Optional material on reproducible publication."
+  },
+  {
+    "objectID": "references.html#course-sources",
+    "href": "references.html#course-sources",
+    "title": "References and evidence",
+    "section": "",
+    "text": "STATSEI14 official programme. Consulted 5 October 2026. Tutorial: 13 October, 11:30–12:30, after Jiancang Zhuang and the break.\nFrancisco Plaza-Vega: Deep Learning course. Background on representations, losses and architectures.\nQuarto and GitHub Pages mini-course. Optional material on reproducible publication."
+  },
+  {
+    "objectID": "references.html#deep-learning-in-seismology-different-tasks",
+    "href": "references.html#deep-learning-in-seismology-different-tasks",
+    "title": "References and evidence",
+    "section": "Deep learning in seismology: different tasks",
+    "text": "Deep learning in seismology: different tasks\nThese primary studies provide context for the opening discussion. Their inputs, targets and evaluation settings differ; their reported scores do not form a performance ranking for this tutorial.\nPerol, T., Gharbi, M., and Denolle, M. (2018). Convolutional neural network for earthquake detection and location. Science Advances, 4(2), e1700578. DOI · Open article.\nConvNetQuake takes three-component waveform windows and classifies noise or an earthquake’s geographic cluster. This is detection and location from recorded signals; the practical instead forecasts occurrence from a catalogue history.\nDascher-Cousineau, K., Shchur, O., Brodsky, E. E., and Günnemann, S. (2023). Using Deep Learning for Flexible and Scalable Earthquake Forecasting. Geophysical Research Letters, 50, e2023GL103909. DOI and article.\nRECAST uses a recurrent neural temporal point process to map past event times and magnitudes to a distribution for the next event time. Simulated catalogue continuations support probabilistic forecasts. Its temporal ETAS comparison connects flexible learning with an explicit statistical benchmark; it does not establish superiority over every ETAS formulation."
+  },
+  {
+    "objectID": "references.html#transformer-context-and-further-reading",
+    "href": "references.html#transformer-context-and-further-reading",
+    "title": "References and evidence",
+    "section": "Transformer context and further reading",
+    "text": "Transformer context and further reading\nThe closing demonstration compares a compact Transformer with an LSTM on the same weekly occurrence task. The executed demo and participant notebook make the architecture and its local results available. The homework extends this comparison after the session. This is a new teaching experiment, distinct from the studies below.\nDelgado, L., Peralta, B., Nicolis, O., and Díaz, M. (2025). Integrating spatio-temporal density-based clustering and neural networks for earthquake classification. Expert Systems with Applications, 277, 127186. DOI · Institutional record and abstract.\nThe study combines spatio-temporal clustering, event labels and LSTM/Transformer classification. Its labels distinguish foreshocks, mainshocks and aftershocks. Classifying such labels is a different target from a probability of an event in a future week. Establishing what information is available when a label is assigned is part of the homework reading.\nFarfán, Y., Nicolis, O., and Peralta, B. (2025). Earthquake Forecasting using Temporal Transformers on Spatial Grids in Chile. 2025 IEEE CHILEAN Conference on Electrical, Electronics Engineering, Information and Communication Technologies (CHILECON). DOI · Institutional record and abstract.\nThis conference contribution compares temporal architectures using daily 4 × 4 spatial grids from Chilean seismic data. The abstract explicitly identifies the coarse binary representation and absence of geophysical information as limitations. It motivates a discussion of representation and attention, rather than a direct score comparison with this practical.\nThe two institutional abstracts establish the scope of these examples. Consult the full papers for protocol details; an abstract alone does not establish the timing of feature availability or the absence of leakage."
+  },
+  {
+    "objectID": "references.html#published-case-study",
+    "href": "references.html#published-case-study",
+    "title": "References and evidence",
+    "section": "Published case study",
+    "text": "Published case study\nNicolis, O., Plaza, F., and Salas, R. (2021). Prediction of intensity and location of seismic events using deep learning. Spatial Statistics, 42, 100442. DOI.\nThe LSTM predicts the next day’s maximum of an ETAS-derived intensity representation. The CNN classifies the macrozone of the next maximum. These are different targets from the weekly binary occurrence task in this tutorial. The published catalogue is from Chile’s National Seismological Center, not the USGS catalogue used in the practical."
+  },
+  {
+    "objectID": "references.html#thesis-and-manuscript-under-review",
+    "href": "references.html#thesis-and-manuscript-under-review",
+    "title": "References and evidence",
+    "section": "Thesis and manuscript under review",
+    "text": "Thesis and manuscript under review\nJara Muñoz, I. (2025). Generación de secuencias de réplicas sísmicas a partir de la ocurrencia de terremotos en Chile utilizando redes adversariales generativas. Thesis. Supervisor: Francisco Plaza Vega.\nPlaza-Vega, F., Jara, I., Nicolis, O., and Salinas, V. (2026). From Sequence Generation to Sparse-Target Learning for Aftershock Risk Ranking in the Pacific Ring of Fire. Manuscript under review (revised April 2026).\nThe thesis and the revision are separate sources. Their scores and conclusions must not be interchanged. The manuscript under review compares generation with aggregate targets; its classification results from Random Forest and Gradient Boosting are not neural-network results. ETAS–GAN integration is proposed future work, outside its empirical experiments.\nThe sequence representation uses 224 intervals of 90 minutes. A maximum magnitude per interval loses event multiplicity; occupied intervals cannot be reported as total earthquake counts. A value of 2.5 encodes absence in that study."
+  },
+  {
+    "objectID": "references.html#four-historical-milestones",
+    "href": "references.html#four-historical-milestones",
+    "title": "References and evidence",
+    "section": "Four historical milestones",
+    "text": "Four historical milestones\n\nRumelhart, D. E., Hinton, G. E., and Williams, R. J. (1986). Learning representations by back-propagating errors.\nHochreiter, S., and Schmidhuber, J. (1997). Long Short-Term Memory.\nKrizhevsky, A., Sutskever, I., and Hinton, G. E. (2012). ImageNet Classification with Deep Convolutional Neural Networks.\nVaswani, A., et al. (2017). Attention Is All You Need.\n\nFor adversarial learning: Goodfellow, I., et al. (2014), Generative Adversarial Nets."
+  },
+  {
+    "objectID": "references.html#data-and-software",
+    "href": "references.html#data-and-software",
+    "title": "References and evidence",
+    "section": "Data and software",
+    "text": "Data and software\n\nUSGS ComCat API.\nVersioning and preferred products in ComCat.\nWhy USGS updates magnitudes.\nKeras LSTM documentation.\nKeras MultiHeadAttention documentation.\nKeras time-series Transformer example. Architectural background. The demo uses its own fixed small design, chronological partitions and positional encoding.\nQuarto GitHub Pages publication.\nQuarto execution controls.\nGrant McDermott’s clean revealjs extension."
+  },
+  {
+    "objectID": "references.html#figure-attribution",
+    "href": "references.html#figure-attribution",
+    "title": "References and evidence",
+    "section": "Figure attribution",
+    "text": "Figure attribution\nThe published workflow and selected generative-study figures are author-provided research assets. Attribution appears in the slide notes and figure captions. Original plots in the practical are generated from the frozen USGS data.\nThe distribution package does not include the thesis, private manuscript PDFs or the publisher’s article PDF. Research-figure copyrights remain with their respective rights holders."
+  },
+  {
+    "objectID": "references.html#map-data",
+    "href": "references.html#map-data",
+    "title": "References and evidence",
+    "section": "Map data",
+    "text": "Map data\nNatural Earth, Admin 0 Countries, 1:50m supplies the coastlines and country outlines. A frozen regional subset and its provenance are included in data/geography, so the map renders offline."
+  }
+]

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600" role="img" aria-labelledby="title desc"><title id="title">MLP: learn nonlinear relations between features and an output</title><desc id="desc">Three input features pass through two fully connected hidden layers to one output. Connections are learned weights; hidden nodes apply nonlinear activations.</desc><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="context-stroke" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><rect width="1600" height="600" fill="white"/>
+<path d="M213,185 L565,130" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M213,185 L565,215" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M213,185 L565,300" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M213,185 L565,385" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M213,185 L565,470" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M213,300 L565,130" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M213,300 L565,215" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M213,300 L565,300" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M213,300 L565,385" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M213,300 L565,470" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M213,415 L565,130" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M213,415 L565,215" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M213,415 L565,300" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M213,415 L565,385" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M213,415 L565,470" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,130 L965,160" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,130 L965,255" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,130 L965,350" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,130 L965,445" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,215 L965,160" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,215 L965,255" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,215 L965,350" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,215 L965,445" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,300 L965,160" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,300 L965,255" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,300 L965,350" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,300 L965,445" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,385 L965,160" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,385 L965,255" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,385 L965,350" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,385 L965,445" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,470 L965,160" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,470 L965,255" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,470 L965,350" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M633,470 L965,445" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M1033,160 L1365,300" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M1033,255 L1365,300" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M1033,350 L1365,300" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<path d="M1033,445 L1365,300" fill="none" stroke="#607D8B" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+<circle cx="180" cy="185" r="35" fill="#E6F5F3" stroke="#00A499" stroke-width="4"/>
+<text x="180" y="197" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="400" text-anchor="middle" fill="#00A499">x1</text>
+<circle cx="180" cy="300" r="35" fill="#E6F5F3" stroke="#00A499" stroke-width="4"/>
+<text x="180" y="312" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="400" text-anchor="middle" fill="#00A499">x2</text>
+<circle cx="180" cy="415" r="35" fill="#E6F5F3" stroke="#00A499" stroke-width="4"/>
+<text x="180" y="427" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="400" text-anchor="middle" fill="#00A499">x3</text>
+<circle cx="600" cy="130" r="35" fill="#F0ECFA" stroke="#756CC7" stroke-width="4"/>
+<circle cx="600" cy="215" r="35" fill="#F0ECFA" stroke="#756CC7" stroke-width="4"/>
+<circle cx="600" cy="300" r="35" fill="#F0ECFA" stroke="#756CC7" stroke-width="4"/>
+<circle cx="600" cy="385" r="35" fill="#F0ECFA" stroke="#756CC7" stroke-width="4"/>
+<circle cx="600" cy="470" r="35" fill="#F0ECFA" stroke="#756CC7" stroke-width="4"/>
+<circle cx="1000" cy="160" r="35" fill="#F0ECFA" stroke="#756CC7" stroke-width="4"/>
+<circle cx="1000" cy="255" r="35" fill="#F0ECFA" stroke="#756CC7" stroke-width="4"/>
+<circle cx="1000" cy="350" r="35" fill="#F0ECFA" stroke="#756CC7" stroke-width="4"/>
+<circle cx="1000" cy="445" r="35" fill="#F0ECFA" stroke="#756CC7" stroke-width="4"/>
+<circle cx="1400" cy="300" r="35" fill="#FFF0E4" stroke="#EA7600" stroke-width="4"/>
+<text x="1400" y="312" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="400" text-anchor="middle" fill="#EA7600">ŷ</text>
+<text x="180" y="62" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="middle" fill="#00A499">Input features</text>
+<text x="800" y="62" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="middle" fill="#756CC7">Hidden layers</text>
+<text x="1400" y="62" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="middle" fill="#EA7600">Output</text>
+<text x="180" y="528" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="400" text-anchor="middle" fill="#607D8B">Catalogue summaries</text>
+<text x="800" y="535" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="400" text-anchor="middle" fill="#607D8B">Learned weights + nonlinear activations</text>
+<text x="1400" y="528" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="400" text-anchor="middle" fill="#607D8B">A prediction</text>
+</svg>

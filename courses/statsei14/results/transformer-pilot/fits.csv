@@ -1,0 +1,7 @@
+model,seed,parameter_count,trainable_parameters,epochs,best_epoch,fit_seconds,model_path,roundtrip_max_abs_error,finite_gradients
+LSTM catalogue,7,1297,1297,20,20,2.053591000032611,results\models\lstm_catalogue_seed_7.keras,0.0,True
+Transformer compact,7,2305,2305,6,3,1.3981619999976829,results\models\transformer_compact_seed_7.keras,0.0,True
+Transformer compact,17,2305,2305,9,6,1.587092399946414,results\models\transformer_compact_seed_17.keras,0.0,True
+LSTM catalogue,17,1297,1297,20,20,2.004912200034596,results\models\lstm_catalogue_seed_17.keras,0.0,True
+LSTM catalogue,27,1297,1297,20,20,1.9971029000589624,results\models\lstm_catalogue_seed_27.keras,0.0,True
+Transformer compact,27,2305,2305,5,2,1.337760099908337,results\models\transformer_compact_seed_27.keras,0.0,True

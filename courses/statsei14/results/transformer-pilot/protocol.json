@@ -1,0 +1,103 @@
+{
+  "created_utc": "2026-10-07T13:56:56.196218+00:00",
+  "purpose": "Isolated feasibility pilot before any course integration",
+  "course_changes_authorized": false,
+  "seeds": [
+    7,
+    17,
+    27
+  ],
+  "input_shape": [
+    30,
+    3
+  ],
+  "features": [
+    "log_count",
+    "max_magnitude_excess",
+    "has_event"
+  ],
+  "target": "At least one catalogue event M >= 5 in the next 7 days at Monday origin",
+  "partitions": {
+    "train": "2001-2016",
+    "validation": "2017-2020",
+    "test": "2021-2025"
+  },
+  "source": "Existing frozen course features and window metadata; verified hashes and training-only standardization",
+  "transformer": {
+    "projection_dim": 16,
+    "positional_encoding": "fixed sinusoidal",
+    "blocks": 1,
+    "heads": 2,
+    "key_dim": 8,
+    "feed_forward_units": [
+      32,
+      16
+    ],
+    "activation": "relu",
+    "normalization": "post-residual, epsilon=1e-6",
+    "dropout": 0.0,
+    "pooling": "GlobalAveragePooling1D",
+    "output": "sigmoid",
+    "causal_mask": false,
+    "mask_reason": "All 30 input days precede the forecast origin"
+  },
+  "lstm": {
+    "units": 16,
+    "output": "sigmoid"
+  },
+  "training": {
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "loss": "binary_crossentropy",
+    "batch_size": 64,
+    "max_epochs": 20,
+    "shuffle": false,
+    "early_stopping_monitor": "val_loss",
+    "patience": 3,
+    "restore_best_weights": true,
+    "cpu_threads": 2
+  },
+  "baselines": [
+    "Training frequency",
+    "Logistic catalogue (mean/max/last summaries, C=1)"
+  ],
+  "metrics": [
+    "Brier",
+    "log_loss"
+  ],
+  "calibration_bin_edges": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "evaluation_sequence": "Train all 6 fits using train and validation; freeze fitted artifacts; then evaluate test once. No hyperparameter search.",
+  "checks": [
+    "Same input and target rows",
+    "Same train-only normalization as course",
+    "Finite forward pass and gradients",
+    "Saved/reloaded predictions agree",
+    "Course file hashes unchanged"
+  ],
+  "interpretation": "Exploratory retrospective comparison on an already inspected test period. Seed variation is optimization variability, not generalization uncertainty. Revised catalogue historical as-of unavailable.",
+  "runtime_scope": "Local Windows CPU; fresh Colab not verified",
+  "sources": [
+    "https://keras.io/api/layers/attention_layers/multi_head_attention/",
+    "https://keras.io/examples/timeseries/timeseries_classification_transformer/"
+  ],
+  "input_hashes": {
+    "config/course.json": "79a432b857c52854527547e9e80700417eb94880bf0dcda0d17a9f7cde8adf59",
+    "results/reference-run/features_raw.npz": "51628c9d1c536edb9c9969043fb40d45a158e00bb07945530228112ccd40c11f",
+    "results/reference-run/window_metadata.csv": "85cd78912d0f41c4315c196b8866c253bf92601ad6e6538b3abf299aa259723b",
+    "results/reference-run/normalization.json": "16cf45efcfda4983a6faa89e0919dc58b0a1b005117ad07d6b02c92c67afea42",
+    "results/reference-run/metrics.csv": "52af056e65d5b67773264b7a6e78360f904063f0bceffd26cc440c7ee506cf8a",
+    "data/frozen/usgs_chile_2000_2025.csv": "16e9b731a5b407d75a2321d3d0d2c889542e8223a9ee4fe81efe624eb6b166d2"
+  }
+}

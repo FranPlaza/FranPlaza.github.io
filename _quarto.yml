@@ -1,6 +1,15 @@
 project:
   type: website
   output-dir: docs
+  # Compilar solo las fuentes del sitio; docs es la salida de GitHub Pages.
+  render:
+    - "**/*.qmd"
+    - "!docs/**"
+    - "!courses/statsei14/**"
+  # Statsei14 ya está compilado: copiar también sus notebooks y dependencias.
+  resources:
+    - "courses/statsei14/**"
+    - ".nojekyll"
 
 website:
   title: "Fran Plaza-Vega"

@@ -1,0 +1,31 @@
+{
+  "input_hashes_verified": true,
+  "catalogue_reconstruction_verified": true,
+  "labels_reconstructed": true,
+  "training_only_normalization_matches_course": true,
+  "split_boundaries_verified": true,
+  "purged_windows": 3,
+  "split_sizes": {
+    "train": [
+      834,
+      197
+    ],
+    "validation": [
+      208,
+      52
+    ],
+    "test": [
+      260,
+      54
+    ]
+  },
+  "validation_baselines_match_course": true,
+  "finite_gradients_all_fits": true,
+  "saved_model_predictions_verified": true,
+  "all_seeds_retained": true,
+  "candidates_frozen_before_test": true,
+  "protocol_unchanged": true,
+  "test_scope": "Exploratory retrospective; already inspected; no further tuning",
+  "protected_course_file_count": 900,
+  "course_hashes_unchanged": true
+}

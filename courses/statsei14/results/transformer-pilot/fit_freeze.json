@@ -1,0 +1,15 @@
+{
+  "frozen_utc": "2026-10-07T14:01:40.315453+00:00",
+  "protocol_sha256": "6081d0ad585db66823ed40ac5ebb6b0bedd5dc29b6eb9b21783eb13d7811deba",
+  "script_sha256": "4679193771f489e5725e2e03f71363387943b7eefaca8df21fce84c8561c5f22",
+  "models": {
+    "results\\models\\lstm_catalogue_seed_7.keras": "2e58343a83f722aa89ef70342df9e6eca9955612d83ac2badbc686fbc6b463a0",
+    "results\\models\\transformer_compact_seed_7.keras": "1d5118668a9eeb028d18fc2bcebf3412307858420a3f8d9feb6e1b986c0c5bed",
+    "results\\models\\transformer_compact_seed_17.keras": "8968007deb7e47d386fcd1edfa05d46257ec20c507e8ba7a70398cdd1981662f",
+    "results\\models\\lstm_catalogue_seed_17.keras": "4faa8b834b8558aa10bf943de66cb574b236b5f448368dc0de13f783837119c4",
+    "results\\models\\lstm_catalogue_seed_27.keras": "cec38f30b318e8a6007466b175aa6b517d202a6f73a278f26a673533bce764da",
+    "results\\models\\transformer_compact_seed_27.keras": "6ff7c499d21c26846bb98c00c20f88c2e04b52d5789c02a51213dbe798576bad"
+  },
+  "validation_metrics_sha256": "7229a1ef31254342bd5b182e2c0462243b3f1141a42920bd05e4109ca2f87b0c",
+  "selection": "All predeclared candidates retained; no seed or architecture selected using test."
+}
