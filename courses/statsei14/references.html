@@ -167,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="transformer-context-and-further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="transformer-context-and-further-reading">Transformer context and further reading</h2>
-<p>The closing demonstration compares a compact Transformer with an LSTM on the same weekly occurrence task. The <a href="downloads/transformer-demo-solved.html">executed demo</a> and <a href="downloads/transformer-demo.ipynb">participant notebook</a> make the architecture and its local results available. The <a href="./homework.html">homework</a> extends this comparison after the session. This is a new teaching experiment, distinct from the studies below.</p>
+<p>The earlier reference demonstration compares a compact Transformer with an LSTM on the same weekly occurrence task. The <a href="downloads/transformer-demo-solved.html">executed demo</a> and <a href="downloads/transformer-demo.ipynb">participant notebook</a> make the architecture and its local results available. The <a href="./homework.html">homework</a> extends this comparison after the session. This is a new teaching experiment, distinct from the studies below.</p>
 <p><strong>Delgado, L., Peralta, B., Nicolis, O., and Díaz, M. (2025).</strong> Integrating spatio-temporal density-based clustering and neural networks for earthquake classification. <em>Expert Systems with Applications</em>, 277, 127186. <a href="https://doi.org/10.1016/j.eswa.2025.127186">DOI</a> · <a href="https://researchers.unab.cl/en/publications/integrating-spatio-temporal-density-based-clustering-and-neural-n/">Institutional record and abstract</a>.</p>
 <p>The study combines spatio-temporal clustering, event labels and LSTM/Transformer classification. Its labels distinguish foreshocks, mainshocks and aftershocks. Classifying such labels is a different target from a probability of an event in a future week. Establishing what information is available when a label is assigned is part of the homework reading.</p>
 <p><strong>Farfán, Y., Nicolis, O., and Peralta, B. (2025).</strong> Earthquake Forecasting using Temporal Transformers on Spatial Grids in Chile. <em>2025 IEEE CHILEAN Conference on Electrical, Electronics Engineering, Information and Communication Technologies (CHILECON).</em> <a href="https://doi.org/10.1109/CHILECON66915.2025.11476035">DOI</a> · <a href="https://researchers.unab.cl/en/publications/earthquake-forecasting-using-temporal-transformers-on-spatial-gri/">Institutional record and abstract</a>.</p>
@@ -218,6 +218,16 @@ ul.task-list li input[type="checkbox"] {
 <section id="map-data" class="level2">
 <h2 class="anchored" data-anchor-id="map-data">Map data</h2>
 <p><a href="https://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-admin-0-countries-2/">Natural Earth, Admin 0 Countries, 1:50m</a> supplies the coastlines and country outlines. A frozen regional subset and its provenance are included in data/geography, so the map renders offline.</p>
+</section>
+<section id="implementations-used-by-the-three-guided-tutorials" class="level2">
+<h2 class="anchored" data-anchor-id="implementations-used-by-the-three-guided-tutorials">Implementations used by the three guided tutorials</h2>
+<ul>
+<li><a href="https://keras.io/examples/timeseries/timeseries_classification_from_scratch/">Keras: time-series classification with Conv1D</a>.</li>
+<li><a href="https://keras.io/examples/timeseries/timeseries_classification_transformer/">Keras: time-series classification with a Transformer</a>. Our encoder explicitly supplies temporal positions.</li>
+<li><a href="https://keras.io/api/layers/recurrent_layers/conv_lstm2d/">Keras: ConvLSTM2D</a>.</li>
+<li><a href="https://keras.io/examples/timeseries/timeseries_traffic_forecasting/">Keras: graph neural networks and LSTM for traffic forecasting</a>. We adapt the mechanism to a six-cell catalogue-occurrence task; this is not a reproduction of traffic results or evidence that the graph models seismic triggering.</li>
+</ul>
+<p>The examples support implementation choices. The new validation scores are separate exploratory teaching results and are not metrics from the published seismic studies or earlier course experiments.</p>
 
 
 </section>

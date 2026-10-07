@@ -1,0 +1,2056 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>One history, four neural architectures – Deep Learning Meets ETAS</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-2c169b83e1fc2996b25bcc8774810429.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+
+<body class="nav-fixed tutorial-page quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/favicon.svg" alt="" class="navbar-logo light-content">
+    <img src="../assets/favicon.svg" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">DL + ETAS</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../practical.html"> 
+<span class="menu-text">Practical</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides/index.html"> 
+<span class="menu-text">Slides</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../homework.html"> 
+<span class="menu-text">Homework</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../references.html"> 
+<span class="menu-text">References</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#start-with-a-blank-colab-notebook" id="toc-start-with-a-blank-colab-notebook" class="nav-link active" data-scroll-target="#start-with-a-blank-colab-notebook">Start with a blank Colab notebook</a></li>
+  <li><a href="#prepare-the-environment" id="toc-prepare-the-environment" class="nav-link" data-scroll-target="#prepare-the-environment">Prepare the environment</a></li>
+  <li><a href="#download-and-verify-the-frozen-catalogue" id="toc-download-and-verify-the-frozen-catalogue" class="nav-link" data-scroll-target="#download-and-verify-the-frozen-catalogue">Download and verify the frozen catalogue</a></li>
+  <li><a href="#turn-events-into-daily-inputs" id="toc-turn-events-into-daily-inputs" class="nav-link" data-scroll-target="#turn-events-into-daily-inputs">Turn events into daily inputs</a></li>
+  <li><a href="#build-histories-labels-and-chronological-partitions" id="toc-build-histories-labels-and-chronological-partitions" class="nav-link" data-scroll-target="#build-histories-labels-and-chronological-partitions">Build histories, labels and chronological partitions</a></li>
+  <li><a href="#standardize-using-training-histories-only" id="toc-standardize-using-training-histories-only" class="nav-link" data-scroll-target="#standardize-using-training-histories-only">Standardize using training histories only</a></li>
+  <li><a href="#one-question-four-ways-to-read-a-sequence" id="toc-one-question-four-ways-to-read-a-sequence" class="nav-link" data-scroll-target="#one-question-four-ways-to-read-a-sequence">1. One question, four ways to read a sequence</a></li>
+  <li><a href="#start-with-two-reference-forecasts" id="toc-start-with-two-reference-forecasts" class="nav-link" data-scroll-target="#start-with-two-reference-forecasts">2. Start with two reference forecasts</a></li>
+  <li><a href="#mlp-learn-from-fixed-lag-positions" id="toc-mlp-learn-from-fixed-lag-positions" class="nav-link" data-scroll-target="#mlp-learn-from-fixed-lag-positions">3. MLP: learn from fixed lag positions</a></li>
+  <li><a href="#cnn1d-look-for-local-temporal-patterns" id="toc-cnn1d-look-for-local-temporal-patterns" class="nav-link" data-scroll-target="#cnn1d-look-for-local-temporal-patterns">4. CNN1D: look for local temporal patterns</a></li>
+  <li><a href="#lstm-update-a-state-through-the-history" id="toc-lstm-update-a-state-through-the-history" class="nav-link" data-scroll-target="#lstm-update-a-state-through-the-history">5. LSTM: update a state through the history</a></li>
+  <li><a href="#transformer-relate-days-using-attention-and-positions" id="toc-transformer-relate-days-using-attention-and-positions" class="nav-link" data-scroll-target="#transformer-relate-days-using-attention-and-positions">6. Transformer: relate days using attention and positions</a></li>
+  <li><a href="#train-with-a-common-small-budget" id="toc-train-with-a-common-small-budget" class="nav-link" data-scroll-target="#train-with-a-common-small-budget">7. Train with a common, small budget</a></li>
+  <li><a href="#read-the-full-comparison" id="toc-read-the-full-comparison" class="nav-link" data-scroll-target="#read-the-full-comparison">8. Read the full comparison</a></li>
+  <li><a href="#inspect-calibration-with-bin-counts" id="toc-inspect-calibration-with-bin-counts" class="nav-link" data-scroll-target="#inspect-calibration-with-bin-counts">9. Inspect calibration with bin counts</a></li>
+  <li><a href="#save-this-run-and-state-its-limits" id="toc-save-this-run-and-state-its-limits" class="nav-link" data-scroll-target="#save-this-run-and-state-its-limits">10. Save this run and state its limits</a></li>
+  <li><a href="#after-class-change-one-thing-at-a-time" id="toc-after-class-change-one-thing-at-a-time" class="nav-link" data-scroll-target="#after-class-change-one-thing-at-a-time">After class: change one thing at a time</a></li>
+  <li><a href="#references-and-next-steps" id="toc-references-and-next-steps" class="nav-link" data-scroll-target="#references-and-next-steps">References and next steps</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">One history, four neural architectures</h1>
+<p class="subtitle lead">Compare an MLP, a temporal CNN, an LSTM, and a compact Transformer</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="actions">
+<p><a href="https://colab.research.google.com/#create=true" class="primary">Create a blank Colab</a> <a href="../downloads/tutorials/temporal.ipynb">Download matching notebook</a> <a href="../downloads/tutorials/temporal-solved.ipynb">Notebook with prepared outputs</a> <a href="../practical.html">All tutorials</a></p>
+</div>
+<p>Build a small probability forecast from the same 30-day catalogue history using four Keras architectures. Copy each complete code block into a blank Colab notebook in order. Keep the data, chronological partitions, and probability scores fixed while you examine what changes in the model.</p>
+<section id="start-with-a-blank-colab-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="start-with-a-blank-colab-notebook">Start with a blank Colab notebook</h2>
+<p>Open <a href="https://colab.research.google.com/#create=true">a new Colab notebook</a>, select a Python CPU runtime, and copy each numbered Python block into its own code cell, in order. The <strong>Copy</strong> button copies code only. Keep this page alongside Colab for the explanations. You can instead download the matching notebook above and run its existing cells.</p>
+<p>The first run downloads a <strong>frozen public data pack</strong> automatically. Its URL is pinned to a Git commit and its SHA-256 is checked. There is no manual ZIP upload and no live catalogue query. After an interrupted session, run the notebook again from the beginning. Outputs below labelled <em>prepared local run</em> come from an independent local CPU execution; they are not a claim about your Colab session.</p>
+<p>Colab normally supplies the required libraries. If imports fail, install <code>tensorflow==2.19.1 pandas scikit-learn matplotlib</code> in a separate cell with <code>%pip install</code>, restart the runtime, and begin again. Exact local versions and timings are recorded with the prepared results. Installation changes the active Colab environment only.</p>
+</section>
+<section id="prepare-the-environment" class="level2">
+<h2 class="anchored" data-anchor-id="prepare-the-environment">Prepare the environment</h2>
+<p>We use small networks and three predeclared seeds. Seeds describe variability in optimization, not uncertainty from new earthquakes. The tutorials evaluate <strong>validation only</strong>: the existing course test period has already been inspected. Changing architecture now does not make that period an untouched test again.</p>
+<div class="copy-step">
+<p><strong>Code block 1</strong> · Copy into a new Colab code cell, then run.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">"CUDA_VISIBLE_DEVICES"</span>] <span class="op">=</span> <span class="st">"-1"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">"TF_CPP_MIN_LOG_LEVEL"</span>] <span class="op">=</span> <span class="st">"2"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">"TF_NUM_INTRAOP_THREADS"</span>] <span class="op">=</span> <span class="st">"2"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">"TF_NUM_INTEROP_THREADS"</span>] <span class="op">=</span> <span class="st">"2"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime, hashlib, json, platform, time, uuid, zipfile</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> urllib.request <span class="im">import</span> urlopen</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    tf.config.threading.set_intra_op_parallelism_threads(<span class="dv">2</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    tf.config.threading.set_inter_op_parallelism_threads(<span class="dv">2</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">RuntimeError</span>:</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Thread settings were already initialized; restart for the reference settings."</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>SEEDS <span class="op">=</span> [<span class="dv">7</span>, <span class="dv">17</span>, <span class="dv">27</span>]</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>EPOCHS, BATCH_SIZE <span class="op">=</span> <span class="dv">20</span>, <span class="dv">64</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>TUTORIAL <span class="op">=</span> <span class="st">"temporal"</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>RUN_DIR <span class="op">=</span> Path(<span class="st">"tutorial-runs"</span>) <span class="op">/</span> (TUTORIAL <span class="op">+</span> <span class="st">"-"</span> <span class="op">+</span> uuid.uuid4().<span class="bu">hex</span>[:<span class="dv">12</span>])</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>RUN_DIR.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>started_at <span class="op">=</span> time.perf_counter()</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Python:"</span>, platform.python_version(), <span class="st">"TensorFlow:"</span>, tf.__version__, <span class="st">"Keras:"</span>, keras.__version__)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Validation only. Results will be saved to"</span>, RUN_DIR)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<pre>Python: 3.12.14 TensorFlow: 2.19.1 Keras: 3.15.1
+Validation only. Results will be saved to tutorial-runs\temporal-0da80b1f5731
+</pre>
+</details>
+</section>
+<section id="download-and-verify-the-frozen-catalogue" class="level2">
+<h2 class="anchored" data-anchor-id="download-and-verify-the-frozen-catalogue">Download and verify the frozen catalogue</h2>
+<p>The pack contains the regional USGS catalogue and its provenance. It includes records down to M 3 for diagnostics; these tutorials retain <strong>M ≥ 4.5 as inputs</strong> and <strong>M ≥ 5 as targets</strong>. Magnitudes are the preferred catalogue values, not a claim that all measurements use the same magnitude scale.</p>
+<p>The catalogue was downloaded in October 2026 and contains revised records. Separating inputs and targets by event time cannot reconstruct which catalogue versions were available historically. These are retrospective teaching experiments, not operational forecasts or maps of shaking or risk.</p>
+<div class="copy-step">
+<p><strong>Code block 2</strong> · Copy into a new Colab code cell, then run.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>PACK_URL <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/FranPlaza/FranPlaza.github.io/0e7a7e4b1c38490018f11b26170fe6a87e4997f9/courses/statsei14/downloads/data-pack.zip"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>PACK_SHA256 <span class="op">=</span> <span class="st">"0ee5d4d71aafa19023fdb1ee6f289a11e7fd7f4ed88ad7a91032ca24505d10a2"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>CATALOGUE_SHA256 <span class="op">=</span> <span class="st">"16e9b731a5b407d75a2321d3d0d2c889542e8223a9ee4fe81efe624eb6b166d2"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>archive_path <span class="op">=</span> Path(<span class="st">"statsei14-data-pack.zip"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> archive_path.exists():</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> urlopen(PACK_URL, timeout<span class="op">=</span><span class="dv">60</span>) <span class="im">as</span> response:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        payload <span class="op">=</span> response.read()</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> hashlib.sha256(payload).hexdigest() <span class="op">==</span> PACK_SHA256, <span class="st">"Unexpected download: stop."</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    archive_path.write_bytes(payload)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> hashlib.sha256(archive_path.read_bytes()).hexdigest() <span class="op">==</span> PACK_SHA256, <span class="st">"Changed cached pack: stop."</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>DATA_DIR <span class="op">=</span> Path(<span class="st">"statsei14-data"</span>).resolve()</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>DATA_DIR.mkdir(exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> zipfile.ZipFile(archive_path) <span class="im">as</span> archive:</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> member <span class="kw">in</span> archive.infolist():</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> (DATA_DIR <span class="op">/</span> member.filename).resolve().is_relative_to(DATA_DIR), <span class="st">"Unsafe ZIP member."</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    archive.extractall(DATA_DIR)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>catalogue_path <span class="op">=</span> DATA_DIR <span class="op">/</span> <span class="st">"data/frozen/usgs_chile_2000_2025.csv"</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> hashlib.sha256(catalogue_path.read_bytes()).hexdigest() <span class="op">==</span> CATALOGUE_SHA256</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> pd.read_csv(catalogue_path)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>events[<span class="st">"time"</span>] <span class="op">=</span> pd.to_datetime(events[<span class="st">"time"</span>], utc<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> events.sort_values(<span class="st">"time"</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Verified catalogue records:"</span>, <span class="bu">len</span>(events))</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>display(events[[<span class="st">"time"</span>, <span class="st">"latitude"</span>, <span class="st">"longitude"</span>, <span class="st">"mag"</span>]].head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<pre>Verified catalogue records: 12859
+</pre>
+<div class="table-responsive"><div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">time</th>
+<th data-quarto-table-cell-role="th">latitude</th>
+<th data-quarto-table-cell-role="th">longitude</th>
+<th data-quarto-table-cell-role="th">mag</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2000-01-07 11:49:11.720000+00:00</td>
+<td>-28.495</td>
+<td>-69.196</td>
+<td>4.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2000-01-08 11:43:58.150000+00:00</td>
+<td>-31.017</td>
+<td>-71.339</td>
+<td>4.4</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2000-01-11 13:16:34.420000+00:00</td>
+<td>-30.747</td>
+<td>-71.319</td>
+<td>4.5</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2000-01-18 17:12:18.360000+00:00</td>
+<td>-31.630</td>
+<td>-71.451</td>
+<td>4.9</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2000-01-19 01:24:00.150000+00:00</td>
+<td>-31.440</td>
+<td>-71.384</td>
+<td>3.8</td>
+</tr>
+</tbody>
+</table>
+
+</div></div>
+</details>
+</section>
+<section id="turn-events-into-daily-inputs" class="level2">
+<h2 class="anchored" data-anchor-id="turn-events-into-daily-inputs">Turn events into daily inputs</h2>
+<p>Each day has three channels: <code>log(1 + count)</code>, maximum magnitude above 4.5 (zero on an empty day), and an event-presence indicator. The regional series pools all locations. For the spatial tutorials we also keep six fixed geographic cells: three latitude bands by two longitude bands. Cell IDs run west to east within each row, then south to north. They are illustrative geographic bins, not inferred tectonic provinces; degree-based cells do not have identical physical areas. We retain the same domain and magnitude thresholds for every model.</p>
+<p>Only <strong>training data</strong> should be used to judge whether the grid has adequate support. A finer map would create more rare targets, not automatically more useful information. In Tutorial 1, <code>X_regional</code> is the input; the spatial arrays are prepared here so the three tutorials share one transparent data pipeline.</p>
+<div class="copy-step">
+<p><strong>Code block 3</strong> · Copy into a new Colab code cell, then run.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>START <span class="op">=</span> pd.Timestamp(<span class="st">"2000-01-01"</span>, tz<span class="op">=</span><span class="st">"UTC"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>END <span class="op">=</span> pd.Timestamp(<span class="st">"2026-01-01"</span>, tz<span class="op">=</span><span class="st">"UTC"</span>)  <span class="co"># exclusive</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> pd.date_range(START, END <span class="op">-</span> pd.Timedelta(days<span class="op">=</span><span class="dv">1</span>), freq<span class="op">=</span><span class="st">"D"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>LAT_EDGES <span class="op">=</span> np.array([<span class="op">-</span><span class="fl">34.0</span>, <span class="op">-</span><span class="fl">32.0</span>, <span class="op">-</span><span class="fl">30.0</span>, <span class="op">-</span><span class="fl">28.0</span>])</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>LON_EDGES <span class="op">=</span> np.array([<span class="op">-</span><span class="fl">74.0</span>, <span class="op">-</span><span class="fl">71.5</span>, <span class="op">-</span><span class="fl">69.0</span>])</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>N_ROWS, N_COLS <span class="op">=</span> <span class="dv">3</span>, <span class="dv">2</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>FEATURES <span class="op">=</span> [<span class="st">"log_count"</span>, <span class="st">"max_magnitude_excess"</span>, <span class="st">"has_event"</span>]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>inside <span class="op">=</span> events.latitude.between(LAT_EDGES[<span class="dv">0</span>], LAT_EDGES[<span class="op">-</span><span class="dv">1</span>]) <span class="op">&amp;</span> events.longitude.between(LON_EDGES[<span class="dv">0</span>], LON_EDGES[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>selected <span class="op">=</span> events.loc[inside <span class="op">&amp;</span> (events.time <span class="op">&gt;=</span> START) <span class="op">&amp;</span> (events.time <span class="op">&lt;</span> END) <span class="op">&amp;</span> (events.mag <span class="op">&gt;=</span> <span class="fl">4.5</span>)].copy()</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>selected[<span class="st">"day"</span>] <span class="op">=</span> (selected.time.dt.floor(<span class="st">"D"</span>) <span class="op">-</span> START).dt.days</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>selected[<span class="st">"row"</span>] <span class="op">=</span> np.clip(np.searchsorted(LAT_EDGES, selected.latitude, side<span class="op">=</span><span class="st">"right"</span>) <span class="op">-</span> <span class="dv">1</span>, <span class="dv">0</span>, N_ROWS <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>selected[<span class="st">"col"</span>] <span class="op">=</span> np.clip(np.searchsorted(LON_EDGES, selected.longitude, side<span class="op">=</span><span class="st">"right"</span>) <span class="op">-</span> <span class="dv">1</span>, <span class="dv">0</span>, N_COLS <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> np.zeros((<span class="bu">len</span>(days), N_ROWS, N_COLS), dtype<span class="op">=</span>np.float32)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>max_excess <span class="op">=</span> np.zeros_like(counts)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>target_counts <span class="op">=</span> np.zeros_like(counts)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>indices <span class="op">=</span> (selected.day.to_numpy(), selected.row.to_numpy(), selected.col.to_numpy())</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>np.add.at(counts, indices, <span class="dv">1</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>np.maximum.at(max_excess, indices, selected.mag.to_numpy() <span class="op">-</span> <span class="fl">4.5</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>qualifying <span class="op">=</span> selected.mag.to_numpy() <span class="op">&gt;=</span> <span class="fl">5.0</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>np.add.at(target_counts, <span class="bu">tuple</span>(axis[qualifying] <span class="cf">for</span> axis <span class="kw">in</span> indices), <span class="dv">1</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>daily_grid_raw <span class="op">=</span> np.stack([np.log1p(counts), max_excess, (counts <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="bu">float</span>)], axis<span class="op">=-</span><span class="dv">1</span>).astype(<span class="st">"float32"</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>daily_regional_raw <span class="op">=</span> np.stack([</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    np.log1p(counts.<span class="bu">sum</span>(axis<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">2</span>))),</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    max_excess.<span class="bu">max</span>(axis<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">2</span>)),</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    (counts.<span class="bu">sum</span>(axis<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="bu">float</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>], axis<span class="op">=-</span><span class="dv">1</span>).astype(<span class="st">"float32"</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">int</span>(counts.<span class="bu">sum</span>()) <span class="op">==</span> <span class="bu">len</span>(selected)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">int</span>(target_counts.<span class="bu">sum</span>()) <span class="op">==</span> <span class="bu">int</span>(qualifying.<span class="bu">sum</span>())</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Daily regional:"</span>, daily_regional_raw.shape, <span class="st">"; daily grid:"</span>, daily_grid_raw.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<pre>Daily regional: (9497, 3) ; daily grid: (9497, 3, 2, 3)
+</pre>
+</details>
+</section>
+<section id="build-histories-labels-and-chronological-partitions" class="level2">
+<h2 class="anchored" data-anchor-id="build-histories-labels-and-chronological-partitions">Build histories, labels and chronological partitions</h2>
+<p>At each Monday origin <code>t</code>, inputs use <code>[t − 30 days, t)</code> and targets use <code>[t, t + 7 days)</code>. We remove any target interval that crosses a train/validation/test boundary or the end of the catalogue. Inputs to a later partition can contain earlier historical days; their outcomes never enter training. Weekly target windows do not overlap, although histories overlap and earthquake sequences remain dependent.</p>
+<p>The regional target is one binary outcome. The spatial target has six binary outcomes: several cells may be positive in the same week, or all may be zero. Six cell probabilities therefore need not sum to one.</p>
+<div class="copy-step">
+<p><strong>Code block 4</strong> · Copy into a new Colab code cell, then run.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>LOOKBACK, HORIZON <span class="op">=</span> <span class="dv">30</span>, <span class="dv">7</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>VAL_START <span class="op">=</span> pd.Timestamp(<span class="st">"2017-01-01"</span>, tz<span class="op">=</span><span class="st">"UTC"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>TEST_START <span class="op">=</span> pd.Timestamp(<span class="st">"2021-01-01"</span>, tz<span class="op">=</span><span class="st">"UTC"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>regional_windows, grid_windows, grid_labels, kept_origins, partitions <span class="op">=</span> [], [], [], [], []</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>excluded <span class="op">=</span> []</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> origin <span class="kw">in</span> pd.date_range(<span class="st">"2001-01-01"</span>, <span class="st">"2025-12-31"</span>, freq<span class="op">=</span><span class="st">"W-MON"</span>, tz<span class="op">=</span><span class="st">"UTC"</span>):</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> (origin <span class="op">-</span> START).days</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    stop <span class="op">=</span> origin <span class="op">+</span> pd.Timedelta(days<span class="op">=</span>HORIZON)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    split <span class="op">=</span> <span class="st">"train"</span> <span class="cf">if</span> origin <span class="op">&lt;</span> VAL_START <span class="cf">else</span> (<span class="st">"validation"</span> <span class="cf">if</span> origin <span class="op">&lt;</span> TEST_START <span class="cf">else</span> <span class="st">"test"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    boundary <span class="op">=</span> VAL_START <span class="cf">if</span> split <span class="op">==</span> <span class="st">"train"</span> <span class="cf">else</span> (TEST_START <span class="cf">if</span> split <span class="op">==</span> <span class="st">"validation"</span> <span class="cf">else</span> END)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">&lt;</span> LOOKBACK <span class="kw">or</span> stop <span class="op">&gt;</span> boundary:</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        excluded.append(<span class="bu">str</span>(origin.date()))</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    regional_windows.append(daily_regional_raw[i <span class="op">-</span> LOOKBACK:i])</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    grid_windows.append(daily_grid_raw[i <span class="op">-</span> LOOKBACK:i])</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    grid_labels.append((target_counts[i:i <span class="op">+</span> HORIZON].<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>) <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="st">"int32"</span>))</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    kept_origins.append(origin)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    partitions.append(split)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>origins <span class="op">=</span> pd.DatetimeIndex(kept_origins)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>partitions <span class="op">=</span> np.asarray(partitions)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>raw_regional <span class="op">=</span> np.stack(regional_windows)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>raw_grid <span class="op">=</span> np.stack(grid_windows)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>y_grid <span class="op">=</span> np.stack(grid_labels)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>y_regional <span class="op">=</span> y_grid.<span class="bu">any</span>(axis<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">2</span>)).astype(<span class="st">"int32"</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>train_mask <span class="op">=</span> partitions <span class="op">==</span> <span class="st">"train"</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>val_mask <span class="op">=</span> partitions <span class="op">==</span> <span class="st">"validation"</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>test_mask <span class="op">=</span> partitions <span class="op">==</span> <span class="st">"test"</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> np.<span class="bu">all</span>(origins[train_mask] <span class="op">+</span> pd.Timedelta(days<span class="op">=</span>HORIZON) <span class="op">&lt;=</span> VAL_START)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> np.<span class="bu">all</span>(origins[val_mask] <span class="op">+</span> pd.Timedelta(days<span class="op">=</span>HORIZON) <span class="op">&lt;=</span> TEST_START)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> np.<span class="bu">all</span>(origins[test_mask] <span class="op">+</span> pd.Timedelta(days<span class="op">=</span>HORIZON) <span class="op">&lt;=</span> END)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="kw">not</span> np.<span class="bu">any</span>(train_mask <span class="op">&amp;</span> val_mask)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Windows:"</span>, <span class="bu">dict</span>(<span class="bu">zip</span>(<span class="op">*</span>np.unique(partitions, return_counts<span class="op">=</span><span class="va">True</span>))))</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Excluded boundary/incomplete targets:"</span>, excluded)</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame({</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"cell"</span>: np.arange(N_ROWS <span class="op">*</span> N_COLS),</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"row_south_to_north"</span>: np.repeat(np.arange(N_ROWS), N_COLS),</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">"col_west_to_east"</span>: np.tile(np.arange(N_COLS), N_ROWS),</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">"training_positive_weeks"</span>: y_grid[train_mask].<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>).reshape(<span class="op">-</span><span class="dv">1</span>),</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">"training_base_rate"</span>: y_grid[train_mask].mean(axis<span class="op">=</span><span class="dv">0</span>).reshape(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<pre>Windows: {np.str_('test'): np.int64(260), np.str_('train'): np.int64(834), np.str_('validation'): np.int64(208)}
+Excluded boundary/incomplete targets: ['2016-12-26', '2020-12-28', '2025-12-29']
+</pre>
+<div class="table-responsive"><div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">cell</th>
+<th data-quarto-table-cell-role="th">row_south_to_north</th>
+<th data-quarto-table-cell-role="th">col_west_to_east</th>
+<th data-quarto-table-cell-role="th">training_positive_weeks</th>
+<th data-quarto-table-cell-role="th">training_base_rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>57</td>
+<td>0.068345</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>26</td>
+<td>0.031175</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>49</td>
+<td>0.058753</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>37</td>
+<td>0.044365</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>19</td>
+<td>0.022782</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>5</td>
+<td>2</td>
+<td>1</td>
+<td>41</td>
+<td>0.049161</td>
+</tr>
+</tbody>
+</table>
+
+</div></div>
+</details>
+</section>
+<section id="standardize-using-training-histories-only" class="level2">
+<h2 class="anchored" data-anchor-id="standardize-using-training-histories-only">Standardize using training histories only</h2>
+<p>For regional inputs, we estimate one mean and standard deviation per channel. For spatial inputs, we also use one pair per channel, pooled across training cells, so the map and graph models receive exactly the same scaled arrays. Empty days remain distinguishable through the presence channel. Target labels are never standardized.</p>
+<p>The metric function averages squared probability errors and binary log losses. On spatial outputs these are averages of <strong>marginal cell scores</strong>, not the likelihood of a joint spatial point process. We will also inspect each cell separately.</p>
+<div class="copy-step">
+<p><strong>Code block 5</strong> · Copy into a new Colab code cell, then run.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>regional_mean <span class="op">=</span> raw_regional[train_mask].mean(axis<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>), dtype<span class="op">=</span>np.float64)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>regional_scale <span class="op">=</span> raw_regional[train_mask].std(axis<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>), dtype<span class="op">=</span>np.float64)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>regional_scale <span class="op">=</span> np.where(regional_scale <span class="op">&gt;</span> <span class="dv">0</span>, regional_scale, <span class="fl">1.0</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>grid_mean <span class="op">=</span> raw_grid[train_mask].mean(axis<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), dtype<span class="op">=</span>np.float64)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>grid_scale <span class="op">=</span> raw_grid[train_mask].std(axis<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), dtype<span class="op">=</span>np.float64)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>grid_scale <span class="op">=</span> np.where(grid_scale <span class="op">&gt;</span> <span class="dv">0</span>, grid_scale, <span class="fl">1.0</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>X_regional <span class="op">=</span> ((raw_regional <span class="op">-</span> regional_mean) <span class="op">/</span> regional_scale).astype(<span class="st">"float32"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>X_grid <span class="op">=</span> ((raw_grid <span class="op">-</span> grid_mean) <span class="op">/</span> grid_scale).astype(<span class="st">"float32"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> X_regional.shape[<span class="dv">1</span>:] <span class="op">==</span> (<span class="dv">30</span>, <span class="dv">3</span>) <span class="kw">and</span> X_grid.shape[<span class="dv">1</span>:] <span class="op">==</span> (<span class="dv">30</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> np.isfinite(X_regional).<span class="bu">all</span>() <span class="kw">and</span> np.isfinite(X_grid).<span class="bu">all</span>()</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> score_probabilities(y_true, probability):</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    y_true <span class="op">=</span> np.asarray(y_true, dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    probability <span class="op">=</span> np.asarray(probability, dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> y_true.shape <span class="op">==</span> probability.shape</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> np.isin(y_true, [<span class="dv">0</span>, <span class="dv">1</span>]).<span class="bu">all</span>() <span class="kw">and</span> np.isfinite(probability).<span class="bu">all</span>()</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> ((probability <span class="op">&gt;=</span> <span class="dv">0</span>) <span class="op">&amp;</span> (probability <span class="op">&lt;=</span> <span class="dv">1</span>)).<span class="bu">all</span>()</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    clipped <span class="op">=</span> np.clip(probability, <span class="fl">1e-7</span>, <span class="dv">1</span> <span class="op">-</span> <span class="fl">1e-7</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"brier"</span>: <span class="bu">float</span>(np.mean((probability <span class="op">-</span> y_true) <span class="op">**</span> <span class="dv">2</span>)),</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">"log_loss"</span>: <span class="bu">float</span>(<span class="op">-</span>np.mean(y_true <span class="op">*</span> np.log(clipped) <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> y_true) <span class="op">*</span> np.log1p(<span class="op">-</span>clipped)))}</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>protocol <span class="op">=</span> {</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tutorial"</span>: TUTORIAL, <span class="st">"seeds"</span>: SEEDS, <span class="st">"epochs_max"</span>: EPOCHS, <span class="st">"batch_size"</span>: BATCH_SIZE,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"lookback_days"</span>: LOOKBACK, <span class="st">"horizon_days"</span>: HORIZON,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"pack_url"</span>: PACK_URL, <span class="st">"pack_sha256"</span>: PACK_SHA256, <span class="st">"catalogue_sha256"</span>: CATALOGUE_SHA256,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"features"</span>: FEATURES, <span class="st">"latitude_edges"</span>: LAT_EDGES.tolist(), <span class="st">"longitude_edges"</span>: LON_EDGES.tolist(),</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"train"</span>: <span class="st">"2001-2016"</span>, <span class="st">"validation"</span>: <span class="st">"2017-2020"</span>, <span class="st">"test"</span>: <span class="st">"2021-2025; not evaluated here"</span>,</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"historical_as_of_verified"</span>: <span class="va">False</span>, <span class="st">"scope"</span>: <span class="st">"Exploratory retrospective; validation only"</span>,</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"regional_mean"</span>: regional_mean.tolist(), <span class="st">"regional_scale"</span>: regional_scale.tolist(),</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"grid_mean"</span>: grid_mean.tolist(), <span class="st">"grid_scale"</span>: grid_scale.tolist(),</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"python"</span>: platform.python_version(), <span class="st">"tensorflow"</span>: tf.__version__, <span class="st">"keras"</span>: keras.__version__,</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">"numpy"</span>: np.__version__, <span class="st">"pandas"</span>: pd.__version__, <span class="st">"scikit_learn"</span>: sklearn.__version__</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>(RUN_DIR <span class="op">/</span> <span class="st">"protocol.json"</span>).write_text(json.dumps(protocol, indent<span class="op">=</span><span class="dv">2</span>), encoding<span class="op">=</span><span class="st">"utf-8"</span>)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({<span class="st">"origin"</span>: origins.astype(<span class="bu">str</span>), <span class="st">"split"</span>: partitions}).to_csv(RUN_DIR <span class="op">/</span> <span class="st">"windows.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Ready:"</span>, X_regional.shape, X_grid.shape, <span class="st">"; no test outcomes used for fitting or evaluation."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<pre>Ready: (1302, 30, 3) (1302, 30, 3, 2, 3) ; no test outcomes used for fitting or evaluation.
+</pre>
+</details>
+</section>
+<section id="one-question-four-ways-to-read-a-sequence" class="level2">
+<h2 class="anchored" data-anchor-id="one-question-four-ways-to-read-a-sequence">1. One question, four ways to read a sequence</h2>
+<p>The target is the probability of <strong>at least one catalogue event with M ≥ 5 in the next seven days</strong> anywhere in the course region. Every model receives the same preceding 30 days and the same three catalogue channels: log event count, maximum magnitude excess, and an event indicator. The shared preparation above standardizes the channels using training windows only.</p>
+<p>An MLP uses fixed lag positions; a CNN1D shares filters across time; an LSTM updates a recurrent state; a Transformer relates days through attention and position information. Flattening for the MLP keeps each lag in a fixed position: it does <strong>not</strong> randomly discard order.</p>
+<p>We retain the existing chronological split: training 2001–2016, validation 2017–2020, and historical test 2021–2025. Since the historical test has already informed earlier course development, this extension compares <strong>validation performance only</strong>. Validation also controls early stopping, so these scores are development evidence, not an independent estimate of future performance. The revised catalogue does not establish what records were available in real time.</p>
+<p><strong>Checkpoint.</strong> A row represents one weekly forecast origin, not one earthquake. Why should we avoid a random split of these rows?</p>
+<div class="copy-step">
+<p><strong>Code block 6</strong> · Copy into a new Colab code cell, then run.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>FEATURE_NAMES <span class="op">=</span> [<span class="st">'log_count'</span>, <span class="st">'max_magnitude_excess'</span>, <span class="st">'has_event'</span>]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> X_regional.ndim <span class="op">==</span> <span class="dv">3</span> <span class="kw">and</span> X_regional.shape[<span class="dv">1</span>:] <span class="op">==</span> (<span class="dv">30</span>, <span class="dv">3</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">len</span>(y_regional) <span class="op">==</span> <span class="bu">len</span>(X_regional) <span class="op">==</span> <span class="bu">len</span>(origins)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> np.isfinite(X_regional).<span class="bu">all</span>()</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">set</span>(np.unique(y_regional)).issubset({<span class="dv">0</span>, <span class="dv">1</span>})</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="kw">not</span> np.<span class="bu">any</span>(train_mask <span class="op">&amp;</span> val_mask)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="kw">not</span> np.<span class="bu">any</span>((train_mask <span class="op">|</span> val_mask) <span class="op">&amp;</span> test_mask)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> X_regional[train_mask].astype(<span class="st">'float32'</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>X_val <span class="op">=</span> X_regional[val_mask].astype(<span class="st">'float32'</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> y_regional[train_mask].astype(<span class="st">'float32'</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>y_val <span class="op">=</span> y_regional[val_mask].astype(<span class="st">'float32'</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">len</span>(np.unique(y_train)) <span class="op">==</span> <span class="bu">len</span>(np.unique(y_val)) <span class="op">==</span> <span class="dv">2</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> pd.DatetimeIndex(origins[train_mask]).<span class="bu">max</span>() <span class="op">&lt;</span> pd.DatetimeIndex(origins[val_mask]).<span class="bu">min</span>()</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>partition_table <span class="op">=</span> pd.DataFrame([</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'split'</span>: <span class="st">'training'</span>, <span class="st">'windows'</span>: <span class="bu">len</span>(y_train), <span class="st">'positive_fraction'</span>: y_train.mean()},</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'split'</span>: <span class="st">'validation'</span>, <span class="st">'windows'</span>: <span class="bu">len</span>(y_val), <span class="st">'positive_fraction'</span>: y_val.mean()},</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>display(partition_table)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Training input:'</span>, X_train.shape, <span class="st">'| Validation input:'</span>, X_val.shape)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Features:'</span>, FEATURE_NAMES)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Historical test is not evaluated in this tutorial.'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<div class="table-responsive"><div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">split</th>
+<th data-quarto-table-cell-role="th">windows</th>
+<th data-quarto-table-cell-role="th">positive_fraction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>training</td>
+<td>834</td>
+<td>0.236211</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>validation</td>
+<td>208</td>
+<td>0.250000</td>
+</tr>
+</tbody>
+</table>
+
+</div></div>
+<pre>Training input: (834, 30, 3) | Validation input: (208, 30, 3)
+Features: ['log_count', 'max_magnitude_excess', 'has_event']
+Historical test is not evaluated in this tutorial.
+</pre>
+</details>
+</section>
+<section id="start-with-two-reference-forecasts" class="level2">
+<h2 class="anchored" data-anchor-id="start-with-two-reference-forecasts">2. Start with two reference forecasts</h2>
+<p>The prevalence forecast assigns every validation week the <strong>training</strong> positive fraction. Logistic regression receives the same 90 values as the MLP, with fixed L2 regularization. Neither reference is tuned on validation. A neural network must be compared with these inexpensive alternatives before its extra complexity is interpreted as useful.</p>
+<p>Brier score measures squared probability error; log loss penalizes confident wrong predictions strongly. Smaller values are better for both. We record runtime, but a single Colab session is not a hardware benchmark.</p>
+<div class="copy-step">
+<p><strong>Code block 7</strong> · Copy into a new Colab code cell, then run.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>metric_rows <span class="op">=</span> []</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>prediction_frames <span class="op">=</span> []</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>training_histories <span class="op">=</span> {}</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>validation_predictions <span class="op">=</span> {}</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>validation_origins <span class="op">=</span> pd.DatetimeIndex(origins[val_mask])</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> record_run(name, seed, probabilities, parameters, epochs, seconds):</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> np.asarray(probabilities, dtype<span class="op">=</span><span class="bu">float</span>).reshape(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> p.shape <span class="op">==</span> y_val.shape <span class="kw">and</span> np.isfinite(p).<span class="bu">all</span>()</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> np.<span class="bu">all</span>((p <span class="op">&gt;=</span> <span class="dv">0</span>) <span class="op">&amp;</span> (p <span class="op">&lt;=</span> <span class="dv">1</span>))</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    metric_rows.append({</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">'model'</span>: name, <span class="st">'seed'</span>: seed,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">**</span>score_probabilities(y_val, p),</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">'parameters'</span>: <span class="bu">int</span>(parameters), <span class="st">'epochs'</span>: <span class="bu">int</span>(epochs),</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">'fit_seconds'</span>: <span class="bu">float</span>(seconds),</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    validation_predictions[(name, seed)] <span class="op">=</span> p</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    prediction_frames.append(pd.DataFrame({</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">'origin'</span>: validation_origins, <span class="st">'model'</span>: name, <span class="st">'seed'</span>: seed,</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">'observed'</span>: y_val.astype(<span class="bu">int</span>), <span class="st">'probability'</span>: p,</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    }))</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>training_prevalence <span class="op">=</span> <span class="bu">float</span>(y_train.mean())</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>record_run(<span class="st">'Training prevalence'</span>, <span class="va">None</span>, np.full(<span class="bu">len</span>(y_val), training_prevalence), <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>started <span class="op">=</span> time.perf_counter()</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>logistic <span class="op">=</span> LogisticRegression(C<span class="op">=</span><span class="fl">1.0</span>, solver<span class="op">=</span><span class="st">'lbfgs'</span>, max_iter<span class="op">=</span><span class="dv">2000</span>)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>logistic.fit(X_train.reshape(<span class="bu">len</span>(X_train), <span class="op">-</span><span class="dv">1</span>), y_train)</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>logistic_seconds <span class="op">=</span> time.perf_counter() <span class="op">-</span> started</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> logistic.n_iter_.<span class="bu">max</span>() <span class="op">&lt;</span> logistic.max_iter, <span class="st">'Inspect logistic convergence before comparing.'</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>p_logistic <span class="op">=</span> logistic.predict_proba(X_val.reshape(<span class="bu">len</span>(X_val), <span class="op">-</span><span class="dv">1</span>))[:, <span class="dv">1</span>]</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>record_run(<span class="st">'Logistic regression'</span>, <span class="va">None</span>, p_logistic,</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>           logistic.coef_.size <span class="op">+</span> logistic.intercept_.size, <span class="dv">0</span>, logistic_seconds)</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame(metric_rows))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<div class="table-responsive"><div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">seed</th>
+<th data-quarto-table-cell-role="th">brier</th>
+<th data-quarto-table-cell-role="th">log_loss</th>
+<th data-quarto-table-cell-role="th">parameters</th>
+<th data-quarto-table-cell-role="th">epochs</th>
+<th data-quarto-table-cell-role="th">fit_seconds</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Training prevalence</td>
+<td>None</td>
+<td>0.187690</td>
+<td>0.562855</td>
+<td>1</td>
+<td>0</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Logistic regression</td>
+<td>None</td>
+<td>0.203664</td>
+<td>0.614405</td>
+<td>91</td>
+<td>0</td>
+<td>0.016523</td>
+</tr>
+</tbody>
+</table>
+
+</div></div>
+</details>
+</section>
+<section id="mlp-learn-from-fixed-lag-positions" class="level2">
+<h2 class="anchored" data-anchor-id="mlp-learn-from-fixed-lag-positions">3. MLP: learn from fixed lag positions</h2>
+<p><code>Flatten</code> changes <code>(30, 3)</code> into <code>(90,)</code> without changing the order of the values. A dense hidden layer can combine channels and days, but does not share the same pattern detector across lag positions.</p>
+<p><strong>Checkpoint.</strong> Where would the value for the most recent day appear after flattening? What changes if the same temporal pattern shifts five days earlier?</p>
+<div class="copy-step">
+<p><strong>Code block 8</strong> · Copy into a new Colab code cell, then run.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_mlp(input_shape):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>input_shape, name<span class="op">=</span><span class="st">'history'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Flatten(name<span class="op">=</span><span class="st">'fixed_lag_positions'</span>)(inputs)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Dense(<span class="dv">16</span>, activation<span class="op">=</span><span class="st">'relu'</span>, name<span class="op">=</span><span class="st">'hidden'</span>)(x)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">'sigmoid'</span>, name<span class="op">=</span><span class="st">'weekly_probability'</span>)(x)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> keras.Model(inputs, outputs, name<span class="op">=</span><span class="st">'MLP'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="cnn1d-look-for-local-temporal-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="cnn1d-look-for-local-temporal-patterns">4. CNN1D: look for local temporal patterns</h2>
+<p>A kernel of width 3 examines three adjacent days at a time, across all input channels. The next convolution combines nearby responses. Global average pooling summarizes the detected patterns before the probability output. This deliberately compact example favors patterns that can appear at different lag positions; it does not preserve every exact lag in the final pooled vector.</p>
+<p>The convolution slides over <strong>days</strong>, not geographic locations. See the <a href="https://keras.io/examples/timeseries/timeseries_classification_from_scratch/">Keras time-series CNN example</a> for another application of this idea.</p>
+<p><strong>Checkpoint.</strong> What useful information might shared filters capture? What exact timing information might pooling lose?</p>
+<div class="copy-step">
+<p><strong>Code block 9</strong> · Copy into a new Colab code cell, then run.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_cnn1d(input_shape):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>input_shape, name<span class="op">=</span><span class="st">'history'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Conv1D(<span class="dv">16</span>, kernel_size<span class="op">=</span><span class="dv">3</span>, padding<span class="op">=</span><span class="st">'same'</span>, activation<span class="op">=</span><span class="st">'relu'</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                            name<span class="op">=</span><span class="st">'local_patterns'</span>)(inputs)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Conv1D(<span class="dv">16</span>, kernel_size<span class="op">=</span><span class="dv">3</span>, padding<span class="op">=</span><span class="st">'same'</span>, activation<span class="op">=</span><span class="st">'relu'</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                            name<span class="op">=</span><span class="st">'combined_patterns'</span>)(x)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.GlobalAveragePooling1D(name<span class="op">=</span><span class="st">'pool_days'</span>)(x)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">'sigmoid'</span>, name<span class="op">=</span><span class="st">'weekly_probability'</span>)(x)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> keras.Model(inputs, outputs, name<span class="op">=</span><span class="st">'CNN1D'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="lstm-update-a-state-through-the-history" class="level2">
+<h2 class="anchored" data-anchor-id="lstm-update-a-state-through-the-history">5. LSTM: update a state through the history</h2>
+<p>The LSTM processes the sequence from the oldest day to the most recent day. Its gates determine how its learned state changes as each day is read. The final state feeds the same sigmoid probability output.</p>
+<p>This is a <strong>stateless</strong> model: the state restarts for every 30-day window. We do not carry a hidden state between training and validation examples.</p>
+<p><strong>Checkpoint.</strong> Why is the final hidden state a representation of the input history rather than a forecast probability by itself?</p>
+<div class="copy-step">
+<p><strong>Code block 10</strong> · Copy into a new Colab code cell, then run.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_lstm(input_shape):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>input_shape, name<span class="op">=</span><span class="st">'history'</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.LSTM(<span class="dv">16</span>, stateful<span class="op">=</span><span class="va">False</span>, name<span class="op">=</span><span class="st">'read_history'</span>)(inputs)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">'sigmoid'</span>, name<span class="op">=</span><span class="st">'weekly_probability'</span>)(x)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> keras.Model(inputs, outputs, name<span class="op">=</span><span class="st">'LSTM'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="transformer-relate-days-using-attention-and-positions" class="level2">
+<h2 class="anchored" data-anchor-id="transformer-relate-days-using-attention-and-positions">6. Transformer: relate days using attention and positions</h2>
+<p>Each day is projected into 16 features. A small <strong>learned positional embedding</strong> tells the network which lag each row represents. Two attention heads combine information across the complete observed history; residual connections, normalization, and a feed-forward block refine that representation.</p>
+<p>The position layer below exposes its weights explicitly through the public Keras layer API. It needs no custom installation or hidden helper. The <a href="https://keras.io/examples/timeseries/timeseries_classification_transformer/">Keras time-series Transformer example</a> provides the broader architecture pattern; this teaching adaptation adds explicit day positions and uses the course’s fixed chronological splits.</p>
+<p>A causal attention mask is unnecessary here: all 30 input days precede the forecast origin, and the model produces one probability for the subsequent week. No target-week observation is an input. Attention weights, if inspected later, would not establish physical causation.</p>
+<p><strong>Checkpoint.</strong> Without position information, which aspect of the sequence would attention followed by average pooling struggle to distinguish?</p>
+<div class="copy-step">
+<p><strong>Code block 11</strong> · Copy into a new Colab code cell, then run.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="at">@keras.utils.register_keras_serializable</span>(package<span class="op">=</span><span class="st">'STATSEI14'</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DayPosition(keras.layers.Layer):</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> build(<span class="va">self</span>, input_shape):</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.positions <span class="op">=</span> <span class="va">self</span>.add_weight(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>            name<span class="op">=</span><span class="st">'positions'</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>            shape<span class="op">=</span>(<span class="bu">int</span>(input_shape[<span class="dv">1</span>]), <span class="bu">int</span>(input_shape[<span class="dv">2</span>])),</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>            initializer<span class="op">=</span>keras.initializers.RandomNormal(stddev<span class="op">=</span><span class="fl">0.02</span>),</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>            trainable<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().build(input_shape)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> call(<span class="va">self</span>, inputs):</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> inputs <span class="op">+</span> <span class="va">self</span>.positions</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_config(<span class="va">self</span>):</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">super</span>().get_config()</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_transformer(input_shape):</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>input_shape, name<span class="op">=</span><span class="st">'history'</span>)</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Dense(<span class="dv">16</span>, name<span class="op">=</span><span class="st">'project_day'</span>)(inputs)</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> DayPosition(name<span class="op">=</span><span class="st">'day_positions'</span>)(x)</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    attention <span class="op">=</span> keras.layers.MultiHeadAttention(</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        num_heads<span class="op">=</span><span class="dv">2</span>, key_dim<span class="op">=</span><span class="dv">8</span>, dropout<span class="op">=</span><span class="fl">0.0</span>, name<span class="op">=</span><span class="st">'attention'</span>)(x, x)</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Add(name<span class="op">=</span><span class="st">'attention_residual'</span>)([x, attention])</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.LayerNormalization(epsilon<span class="op">=</span><span class="fl">1e-6</span>, name<span class="op">=</span><span class="st">'attention_norm'</span>)(x)</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    feed_forward <span class="op">=</span> keras.layers.Dense(<span class="dv">16</span>, activation<span class="op">=</span><span class="st">'relu'</span>, name<span class="op">=</span><span class="st">'ff_hidden'</span>)(x)</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    feed_forward <span class="op">=</span> keras.layers.Dense(<span class="dv">16</span>, name<span class="op">=</span><span class="st">'ff_output'</span>)(feed_forward)</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Add(name<span class="op">=</span><span class="st">'ff_residual'</span>)([x, feed_forward])</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.LayerNormalization(epsilon<span class="op">=</span><span class="fl">1e-6</span>, name<span class="op">=</span><span class="st">'ff_norm'</span>)(x)</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.GlobalAveragePooling1D(name<span class="op">=</span><span class="st">'pool_days'</span>)(x)</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">'sigmoid'</span>, name<span class="op">=</span><span class="st">'weekly_probability'</span>)(x)</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> keras.Model(inputs, outputs, name<span class="op">=</span><span class="st">'Transformer'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="train-with-a-common-small-budget" class="level2">
+<h2 class="anchored" data-anchor-id="train-with-a-common-small-budget">7. Train with a common, small budget</h2>
+<p>Each architecture uses the same examples, batch size, optimizer, learning rate, maximum epochs, and stopping rule. The parameter counts differ and are reported; this is a controlled teaching comparison, not equal-compute tuning of every model family. <code>EarlyStopping</code> is recreated for every fit, monitors validation log loss, and restores the best weights.</p>
+<p>Run this cell once; it fits four models for each of the three seeds. Runtime depends on the Colab session. The cell prints progress after each fit. For a short live demonstration the instructor can explain one seed’s output first; keep all configured seeds for the recorded comparison. Seed variation reflects initialization and optimization, <strong>not uncertainty from observing a different earthquake catalogue</strong>.</p>
+<p>The three channels stay unchanged across architectures. Adding an ETAS-inspired channel would be a separate input experiment.</p>
+<div class="copy-step">
+<p><strong>Code block 12</strong> · Copy into a new Colab code cell, then run.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>BUILDERS <span class="op">=</span> {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'MLP'</span>: build_mlp,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'CNN1D'</span>: build_cnn1d,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'LSTM'</span>: build_lstm,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Transformer'</span>: build_transformer,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>INPUT_SHAPE <span class="op">=</span> <span class="bu">tuple</span>(X_train.shape[<span class="dv">1</span>:])</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">len</span>(SEEDS) <span class="op">==</span> <span class="bu">len</span>(<span class="bu">set</span>(SEEDS)) <span class="kw">and</span> <span class="bu">len</span>(SEEDS) <span class="op">&gt;=</span> <span class="dv">1</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset only this cell's previous neural runs if it is executed again.</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>metric_rows <span class="op">=</span> [row <span class="cf">for</span> row <span class="kw">in</span> metric_rows <span class="cf">if</span> row[<span class="st">'model'</span>] <span class="kw">not</span> <span class="kw">in</span> BUILDERS]</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>prediction_frames <span class="op">=</span> [frame <span class="cf">for</span> frame <span class="kw">in</span> prediction_frames</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>                     <span class="cf">if</span> frame[<span class="st">'model'</span>].iloc[<span class="dv">0</span>] <span class="kw">not</span> <span class="kw">in</span> BUILDERS]</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>validation_predictions <span class="op">=</span> {key: value <span class="cf">for</span> key, value <span class="kw">in</span> validation_predictions.items()</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>                          <span class="cf">if</span> key[<span class="dv">0</span>] <span class="kw">not</span> <span class="kw">in</span> BUILDERS}</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>training_histories <span class="op">=</span> {}</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, builder <span class="kw">in</span> BUILDERS.items():</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> seed <span class="kw">in</span> SEEDS:</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>        keras.backend.clear_session()</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>        keras.utils.set_random_seed(seed)</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>        model <span class="op">=</span> builder(INPUT_SHAPE)</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>        model.<span class="bu">compile</span>(</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>            optimizer<span class="op">=</span>keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.001</span>),</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>            loss<span class="op">=</span>keras.losses.BinaryCrossentropy(),</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>        stopping <span class="op">=</span> keras.callbacks.EarlyStopping(</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>            monitor<span class="op">=</span><span class="st">'val_loss'</span>, patience<span class="op">=</span><span class="dv">3</span>, restore_best_weights<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>        started <span class="op">=</span> time.perf_counter()</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>        history <span class="op">=</span> model.fit(</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>            X_train, y_train,</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>            validation_data<span class="op">=</span>(X_val, y_val),</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>            epochs<span class="op">=</span>EPOCHS, batch_size<span class="op">=</span>BATCH_SIZE,</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>            callbacks<span class="op">=</span>[stopping], shuffle<span class="op">=</span><span class="va">False</span>, verbose<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>        seconds <span class="op">=</span> time.perf_counter() <span class="op">-</span> started</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>        <span class="co"># All validation windows fit in memory; inference has no dropout or updates.</span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>        p <span class="op">=</span> model(X_val, training<span class="op">=</span><span class="va">False</span>).numpy().reshape(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>        record_run(name, seed, p, model.count_params(),</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>                   <span class="bu">len</span>(history.history[<span class="st">'loss'</span>]), seconds)</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>        training_histories[<span class="ss">f'</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_seed_</span><span class="sc">{</span>seed<span class="sc">}</span><span class="ss">'</span>] <span class="op">=</span> {</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>            key: [<span class="bu">float</span>(value) <span class="cf">for</span> value <span class="kw">in</span> values]</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> key, values <span class="kw">in</span> history.history.items()</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>        scores <span class="op">=</span> metric_rows[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">:12s}</span><span class="ss"> seed=</span><span class="sc">{</span>seed<span class="sc">:2d}</span><span class="ss"> | params=</span><span class="sc">{</span>model<span class="sc">.</span>count_params()<span class="sc">:4d}</span><span class="ss"> | "</span></span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>              <span class="ss">f"epochs=</span><span class="sc">{</span>scores[<span class="st">'epochs'</span>]<span class="sc">:2d}</span><span class="ss"> | Brier=</span><span class="sc">{</span>scores[<span class="st">'brier'</span>]<span class="sc">:.4f}</span><span class="ss"> | "</span></span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>              <span class="ss">f"log loss=</span><span class="sc">{</span>scores[<span class="st">'log_loss'</span>]<span class="sc">:.4f}</span><span class="ss"> | </span><span class="sc">{</span>seconds<span class="sc">:.1f}</span><span class="ss">s"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<pre>WARNING:tensorflow:From C:\Users\Francisco Plaza\AppData\Local\Temp\statsei14-transformer-pilot-20261007\Lib\site-packages\keras\src\backend\common\global_state.py:82: The name tf.reset_default_graph is deprecated. Please use tf.compat.v1.reset_default_graph instead.
+
+</pre>
+<pre>MLP          seed= 7 | params=1473 | epochs=20 | Brier=0.1918 | log loss=0.5789 | 1.4s
+</pre>
+<pre>MLP          seed=17 | params=1473 | epochs=16 | Brier=0.1982 | log loss=0.5897 | 1.1s
+</pre>
+<pre>MLP          seed=27 | params=1473 | epochs=20 | Brier=0.1956 | log loss=0.5946 | 1.3s
+</pre>
+<pre>CNN1D        seed= 7 | params= 961 | epochs=10 | Brier=0.1871 | log loss=0.5612 | 1.0s
+</pre>
+<pre>CNN1D        seed=17 | params= 961 | epochs=12 | Brier=0.1872 | log loss=0.5615 | 1.1s
+</pre>
+<pre>CNN1D        seed=27 | params= 961 | epochs=13 | Brier=0.1867 | log loss=0.5603 | 1.1s
+</pre>
+<pre>LSTM         seed= 7 | params=1297 | epochs=20 | Brier=0.1815 | log loss=0.5475 | 2.2s
+</pre>
+<pre>LSTM         seed=17 | params=1297 | epochs=20 | Brier=0.1836 | log loss=0.5518 | 2.2s
+</pre>
+<pre>LSTM         seed=27 | params=1297 | epochs=20 | Brier=0.1841 | log loss=0.5529 | 2.2s
+</pre>
+<pre>Transformer  seed= 7 | params=2257 | epochs= 6 | Brier=0.1879 | log loss=0.5625 | 1.6s
+</pre>
+<pre>Transformer  seed=17 | params=2257 | epochs= 5 | Brier=0.1901 | log loss=0.5674 | 1.5s
+</pre>
+<pre>Transformer  seed=27 | params=2257 | epochs= 5 | Brier=0.1883 | log loss=0.5635 | 1.5s
+</pre>
+</details>
+</section>
+<section id="read-the-full-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="read-the-full-comparison">8. Read the full comparison</h2>
+<p>The first table retains every run. The second reports descriptive means and standard deviations across seeds; the deterministic baselines have one run, so their seed standard deviations are undefined. We display models in a fixed teaching order rather than choosing a winning seed.</p>
+<p><strong>Checkpoint.</strong> Does any architecture improve both probability scores over both references? Is the difference larger than the observed variation across seeds? A difference among these small implementations does not establish a universal ranking of MLPs, CNNs, LSTMs, and Transformers.</p>
+<div class="copy-step">
+<p><strong>Code block 13</strong> · Copy into a new Colab code cell, then run.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>model_order <span class="op">=</span> [<span class="st">'Training prevalence'</span>, <span class="st">'Logistic regression'</span>, <span class="op">*</span>BUILDERS.keys()]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> pd.DataFrame(metric_rows)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>metrics[<span class="st">'model'</span>] <span class="op">=</span> pd.Categorical(metrics[<span class="st">'model'</span>], categories<span class="op">=</span>model_order, ordered<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> metrics.sort_values([<span class="st">'model'</span>, <span class="st">'seed'</span>]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>display(metrics.<span class="bu">round</span>(<span class="dv">5</span>))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> metrics.groupby(<span class="st">'model'</span>, observed<span class="op">=</span><span class="va">True</span>).agg(</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    runs<span class="op">=</span>(<span class="st">'brier'</span>, <span class="st">'size'</span>),</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    brier_mean<span class="op">=</span>(<span class="st">'brier'</span>, <span class="st">'mean'</span>), brier_seed_sd<span class="op">=</span>(<span class="st">'brier'</span>, <span class="st">'std'</span>),</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    log_loss_mean<span class="op">=</span>(<span class="st">'log_loss'</span>, <span class="st">'mean'</span>), log_loss_seed_sd<span class="op">=</span>(<span class="st">'log_loss'</span>, <span class="st">'std'</span>),</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    parameters<span class="op">=</span>(<span class="st">'parameters'</span>, <span class="st">'first'</span>),</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    epochs_mean<span class="op">=</span>(<span class="st">'epochs'</span>, <span class="st">'mean'</span>), fit_seconds_mean<span class="op">=</span>(<span class="st">'fit_seconds'</span>, <span class="st">'mean'</span>),</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>).reindex(model_order)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>display(summary.<span class="bu">round</span>(<span class="dv">5</span>))</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="fl">3.8</span>))</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name <span class="kw">in</span> BUILDERS:</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    history <span class="op">=</span> training_histories[<span class="ss">f'</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_seed_</span><span class="sc">{</span>SEEDS[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">'</span>]</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    epochs <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="bu">len</span>(history[<span class="st">'loss'</span>]) <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">0</span>].plot(epochs, history[<span class="st">'loss'</span>], label<span class="op">=</span>name)</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">1</span>].plot(epochs, history[<span class="st">'val_loss'</span>], label<span class="op">=</span>name)</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, label <span class="kw">in</span> <span class="bu">zip</span>(axes, [<span class="st">'Training'</span>, <span class="st">'Validation'</span>]):</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    ax.<span class="bu">set</span>(title<span class="op">=</span><span class="ss">f'</span><span class="sc">{</span>label<span class="sc">}</span><span class="ss">: first seed (</span><span class="sc">{</span>SEEDS[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">)'</span>, xlabel<span class="op">=</span><span class="st">'Epoch'</span>, ylabel<span class="op">=</span><span class="st">'Log loss'</span>)</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    ax.grid(alpha<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].legend()</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<div class="table-responsive"><div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">seed</th>
+<th data-quarto-table-cell-role="th">brier</th>
+<th data-quarto-table-cell-role="th">log_loss</th>
+<th data-quarto-table-cell-role="th">parameters</th>
+<th data-quarto-table-cell-role="th">epochs</th>
+<th data-quarto-table-cell-role="th">fit_seconds</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Training prevalence</td>
+<td>NaN</td>
+<td>0.18769</td>
+<td>0.56286</td>
+<td>1</td>
+<td>0</td>
+<td>0.00000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Logistic regression</td>
+<td>NaN</td>
+<td>0.20366</td>
+<td>0.61441</td>
+<td>91</td>
+<td>0</td>
+<td>0.01652</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>MLP</td>
+<td>7.0</td>
+<td>0.19181</td>
+<td>0.57892</td>
+<td>1473</td>
+<td>20</td>
+<td>1.35043</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>MLP</td>
+<td>17.0</td>
+<td>0.19822</td>
+<td>0.58973</td>
+<td>1473</td>
+<td>16</td>
+<td>1.09686</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>MLP</td>
+<td>27.0</td>
+<td>0.19561</td>
+<td>0.59464</td>
+<td>1473</td>
+<td>20</td>
+<td>1.29875</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>CNN1D</td>
+<td>7.0</td>
+<td>0.18706</td>
+<td>0.56120</td>
+<td>961</td>
+<td>10</td>
+<td>0.97791</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>CNN1D</td>
+<td>17.0</td>
+<td>0.18717</td>
+<td>0.56146</td>
+<td>961</td>
+<td>12</td>
+<td>1.05500</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">7</th>
+<td>CNN1D</td>
+<td>27.0</td>
+<td>0.18673</td>
+<td>0.56026</td>
+<td>961</td>
+<td>13</td>
+<td>1.10786</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>LSTM</td>
+<td>7.0</td>
+<td>0.18152</td>
+<td>0.54751</td>
+<td>1297</td>
+<td>20</td>
+<td>2.21072</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>LSTM</td>
+<td>17.0</td>
+<td>0.18362</td>
+<td>0.55182</td>
+<td>1297</td>
+<td>20</td>
+<td>2.19325</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>LSTM</td>
+<td>27.0</td>
+<td>0.18405</td>
+<td>0.55289</td>
+<td>1297</td>
+<td>20</td>
+<td>2.19296</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">11</th>
+<td>Transformer</td>
+<td>7.0</td>
+<td>0.18790</td>
+<td>0.56248</td>
+<td>2257</td>
+<td>6</td>
+<td>1.60366</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">12</th>
+<td>Transformer</td>
+<td>17.0</td>
+<td>0.19011</td>
+<td>0.56742</td>
+<td>2257</td>
+<td>5</td>
+<td>1.50669</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">13</th>
+<td>Transformer</td>
+<td>27.0</td>
+<td>0.18831</td>
+<td>0.56350</td>
+<td>2257</td>
+<td>5</td>
+<td>1.52511</td>
+</tr>
+</tbody>
+</table>
+
+</div></div>
+<div class="table-responsive"><div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">runs</th>
+<th data-quarto-table-cell-role="th">brier_mean</th>
+<th data-quarto-table-cell-role="th">brier_seed_sd</th>
+<th data-quarto-table-cell-role="th">log_loss_mean</th>
+<th data-quarto-table-cell-role="th">log_loss_seed_sd</th>
+<th data-quarto-table-cell-role="th">parameters</th>
+<th data-quarto-table-cell-role="th">epochs_mean</th>
+<th data-quarto-table-cell-role="th">fit_seconds_mean</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Training prevalence</th>
+<td>1</td>
+<td>0.18769</td>
+<td>NaN</td>
+<td>0.56286</td>
+<td>NaN</td>
+<td>1</td>
+<td>0.00000</td>
+<td>0.00000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Logistic regression</th>
+<td>1</td>
+<td>0.20366</td>
+<td>NaN</td>
+<td>0.61441</td>
+<td>NaN</td>
+<td>91</td>
+<td>0.00000</td>
+<td>0.01652</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">MLP</th>
+<td>3</td>
+<td>0.19521</td>
+<td>0.00322</td>
+<td>0.58776</td>
+<td>0.00804</td>
+<td>1473</td>
+<td>18.66667</td>
+<td>1.24868</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">CNN1D</th>
+<td>3</td>
+<td>0.18699</td>
+<td>0.00023</td>
+<td>0.56097</td>
+<td>0.00063</td>
+<td>961</td>
+<td>11.66667</td>
+<td>1.04692</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">LSTM</th>
+<td>3</td>
+<td>0.18307</td>
+<td>0.00135</td>
+<td>0.55074</td>
+<td>0.00285</td>
+<td>1297</td>
+<td>20.00000</td>
+<td>2.19898</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Transformer</th>
+<td>3</td>
+<td>0.18877</td>
+<td>0.00118</td>
+<td>0.56447</td>
+<td>0.00261</td>
+<td>2257</td>
+<td>5.33333</td>
+<td>1.54515</td>
+</tr>
+</tbody>
+</table>
+
+</div></div>
+<img src="../assets/tutorials/temporal/cell-026-2.png" alt="Prepared local figure from code block 13" loading="lazy">
+</details>
+</section>
+<section id="inspect-calibration-with-bin-counts" class="level2">
+<h2 class="anchored" data-anchor-id="inspect-calibration-with-bin-counts">9. Inspect calibration with bin counts</h2>
+<p>A reliability plot compares the average predicted probability with the observed positive fraction. We use five fixed bins and annotate their sample counts. Empty bins have no estimated event rate and are omitted from the lines. A point based on a handful of weeks is weak evidence about calibration.</p>
+<p>To avoid selecting a favorable run or silently averaging predictions into an ensemble, the plots use the <strong>first predeclared seed</strong> for every neural model. The full score tables above retain all seeds. Adjacent windows share input days and seismic sequences can remain dependent, so these plots are descriptive; no independent-bin confidence intervals are claimed.</p>
+<p><strong>Checkpoint.</strong> Can a nearly constant forecast be well calibrated while providing little discrimination between weeks?</p>
+<div class="copy-step">
+<p><strong>Code block 14</strong> · Copy into a new Colab code cell, then run.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calibration_table(y_true, probabilities, bins<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    edges <span class="op">=</span> np.linspace(<span class="fl">0.0</span>, <span class="fl">1.0</span>, bins <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    indices <span class="op">=</span> np.searchsorted(edges[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>], probabilities, side<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    rows <span class="op">=</span> []</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> b <span class="kw">in</span> <span class="bu">range</span>(bins):</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        inside <span class="op">=</span> indices <span class="op">==</span> b</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        count <span class="op">=</span> <span class="bu">int</span>(inside.<span class="bu">sum</span>())</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>        rows.append({</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">'bin_left'</span>: edges[b], <span class="st">'bin_right'</span>: edges[b <span class="op">+</span> <span class="dv">1</span>], <span class="st">'count'</span>: count,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">'mean_probability'</span>: <span class="bu">float</span>(probabilities[inside].mean()) <span class="cf">if</span> count <span class="cf">else</span> np.nan,</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">'observed_fraction'</span>: <span class="bu">float</span>(y_true[inside].mean()) <span class="cf">if</span> count <span class="cf">else</span> np.nan,</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.DataFrame(rows)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>calibration_frames <span class="op">=</span> []</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="fl">7.5</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, name <span class="kw">in</span> <span class="bu">zip</span>(axes.flat, model_order):</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    seed <span class="op">=</span> SEEDS[<span class="dv">0</span>] <span class="cf">if</span> name <span class="kw">in</span> BUILDERS <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    table <span class="op">=</span> calibration_table(y_val, validation_predictions[(name, seed)])</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    calibration_frames.append(table.assign(model<span class="op">=</span>name, seed<span class="op">=</span>seed))</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    occupied <span class="op">=</span> table[table[<span class="st">'count'</span>] <span class="op">&gt;</span> <span class="dv">0</span>]</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    ax.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>], <span class="st">'--'</span>, color<span class="op">=</span><span class="st">'gray'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    ax.plot(occupied[<span class="st">'mean_probability'</span>], occupied[<span class="st">'observed_fraction'</span>], <span class="st">'o-'</span>)</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> occupied.itertuples():</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>        ax.annotate(<span class="ss">f'n=</span><span class="sc">{</span>row<span class="sc">.</span>count<span class="sc">}</span><span class="ss">'</span>, (row.mean_probability, row.observed_fraction),</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>                    xytext<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">5</span>), textcoords<span class="op">=</span><span class="st">'offset points'</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    suffix <span class="op">=</span> <span class="ss">f' | seed </span><span class="sc">{</span>seed<span class="sc">}</span><span class="ss">'</span> <span class="cf">if</span> seed <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="st">''</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    ax.<span class="bu">set</span>(title<span class="op">=</span>name <span class="op">+</span> suffix, xlim<span class="op">=</span>(<span class="op">-</span><span class="fl">0.02</span>, <span class="fl">1.02</span>), ylim<span class="op">=</span>(<span class="op">-</span><span class="fl">0.02</span>, <span class="fl">1.02</span>),</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>           xlabel<span class="op">=</span><span class="st">'Mean predicted probability'</span>, ylabel<span class="op">=</span><span class="st">'Observed positive fraction'</span>)</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>    ax.grid(alpha<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>calibration <span class="op">=</span> pd.concat(calibration_frames, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>display(calibration)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<img src="../assets/tutorials/temporal/cell-028-0.png" alt="Prepared local figure from code block 14" loading="lazy">
+<div class="table-responsive"><div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">bin_left</th>
+<th data-quarto-table-cell-role="th">bin_right</th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">mean_probability</th>
+<th data-quarto-table-cell-role="th">observed_fraction</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">seed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>0.0</td>
+<td>0.2</td>
+<td>0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Training prevalence</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>0.2</td>
+<td>0.4</td>
+<td>208</td>
+<td>0.236211</td>
+<td>0.250000</td>
+<td>Training prevalence</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>0.4</td>
+<td>0.6</td>
+<td>0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Training prevalence</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>0.6</td>
+<td>0.8</td>
+<td>0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Training prevalence</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>0.8</td>
+<td>1.0</td>
+<td>0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Training prevalence</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>0.0</td>
+<td>0.2</td>
+<td>118</td>
+<td>0.131998</td>
+<td>0.254237</td>
+<td>Logistic regression</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>0.2</td>
+<td>0.4</td>
+<td>69</td>
+<td>0.273292</td>
+<td>0.217391</td>
+<td>Logistic regression</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">7</th>
+<td>0.4</td>
+<td>0.6</td>
+<td>14</td>
+<td>0.500278</td>
+<td>0.357143</td>
+<td>Logistic regression</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>0.6</td>
+<td>0.8</td>
+<td>6</td>
+<td>0.651486</td>
+<td>0.333333</td>
+<td>Logistic regression</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>0.8</td>
+<td>1.0</td>
+<td>1</td>
+<td>0.919837</td>
+<td>0.000000</td>
+<td>Logistic regression</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>0.0</td>
+<td>0.2</td>
+<td>76</td>
+<td>0.137772</td>
+<td>0.210526</td>
+<td>MLP</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">11</th>
+<td>0.2</td>
+<td>0.4</td>
+<td>106</td>
+<td>0.282319</td>
+<td>0.235849</td>
+<td>MLP</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">12</th>
+<td>0.4</td>
+<td>0.6</td>
+<td>21</td>
+<td>0.476655</td>
+<td>0.380952</td>
+<td>MLP</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">13</th>
+<td>0.6</td>
+<td>0.8</td>
+<td>5</td>
+<td>0.667842</td>
+<td>0.600000</td>
+<td>MLP</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">14</th>
+<td>0.8</td>
+<td>1.0</td>
+<td>0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>MLP</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">15</th>
+<td>0.0</td>
+<td>0.2</td>
+<td>0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>CNN1D</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">16</th>
+<td>0.2</td>
+<td>0.4</td>
+<td>208</td>
+<td>0.250175</td>
+<td>0.250000</td>
+<td>CNN1D</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">17</th>
+<td>0.4</td>
+<td>0.6</td>
+<td>0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>CNN1D</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">18</th>
+<td>0.6</td>
+<td>0.8</td>
+<td>0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>CNN1D</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">19</th>
+<td>0.8</td>
+<td>1.0</td>
+<td>0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>CNN1D</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">20</th>
+<td>0.0</td>
+<td>0.2</td>
+<td>29</td>
+<td>0.179272</td>
+<td>0.137931</td>
+<td>LSTM</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">21</th>
+<td>0.2</td>
+<td>0.4</td>
+<td>170</td>
+<td>0.237560</td>
+<td>0.258824</td>
+<td>LSTM</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">22</th>
+<td>0.4</td>
+<td>0.6</td>
+<td>8</td>
+<td>0.493324</td>
+<td>0.375000</td>
+<td>LSTM</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">23</th>
+<td>0.6</td>
+<td>0.8</td>
+<td>1</td>
+<td>0.600097</td>
+<td>1.000000</td>
+<td>LSTM</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">24</th>
+<td>0.8</td>
+<td>1.0</td>
+<td>0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>LSTM</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">25</th>
+<td>0.0</td>
+<td>0.2</td>
+<td>0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Transformer</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">26</th>
+<td>0.2</td>
+<td>0.4</td>
+<td>202</td>
+<td>0.257570</td>
+<td>0.247525</td>
+<td>Transformer</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">27</th>
+<td>0.4</td>
+<td>0.6</td>
+<td>6</td>
+<td>0.443502</td>
+<td>0.333333</td>
+<td>Transformer</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">28</th>
+<td>0.6</td>
+<td>0.8</td>
+<td>0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Transformer</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">29</th>
+<td>0.8</td>
+<td>1.0</td>
+<td>0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Transformer</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+
+</div></div>
+</details>
+</section>
+<section id="save-this-run-and-state-its-limits" class="level2">
+<h2 class="anchored" data-anchor-id="save-this-run-and-state-its-limits">10. Save this run and state its limits</h2>
+<p>Save the validation probabilities, all seed metrics, calibration counts, training traces, and settings into this execution’s new output folder. This does not modify the frozen data or previous course results. Colab storage is temporary: download the resulting archive before closing the session.</p>
+<p>These are retrospective development results from a revised catalogue. They do not demonstrate prospective forecasting skill, real-time catalogue availability, causation, earthquake prediction at an exact time/location, or operational warning performance.</p>
+<div class="copy-step">
+<p><strong>Code block 15</strong> · Copy into a new Colab code cell, then run.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shutil</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>TEMPORAL_RUN_DIR <span class="op">=</span> RUN_DIR <span class="op">/</span> <span class="st">'temporal'</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>TEMPORAL_RUN_DIR.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>metrics.to_csv(TEMPORAL_RUN_DIR <span class="op">/</span> <span class="st">'validation_metrics_by_seed.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>summary.to_csv(TEMPORAL_RUN_DIR <span class="op">/</span> <span class="st">'validation_metric_summary.csv'</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>pd.concat(prediction_frames, ignore_index<span class="op">=</span><span class="va">True</span>).to_csv(</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    TEMPORAL_RUN_DIR <span class="op">/</span> <span class="st">'validation_predictions.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>calibration.to_csv(TEMPORAL_RUN_DIR <span class="op">/</span> <span class="st">'validation_calibration.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>(TEMPORAL_RUN_DIR <span class="op">/</span> <span class="st">'training_histories.json'</span>).write_text(</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    json.dumps(training_histories, indent<span class="op">=</span><span class="dv">2</span>), encoding<span class="op">=</span><span class="st">'utf-8'</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>metadata <span class="op">=</span> {</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'tutorial'</span>: <span class="st">'temporal'</span>, <span class="st">'catalogue_mode'</span>: <span class="st">'revised_retrospective'</span>,</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'features'</span>: FEATURE_NAMES, <span class="st">'input_shape'</span>: <span class="bu">list</span>(INPUT_SHAPE),</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'seeds'</span>: <span class="bu">list</span>(SEEDS), <span class="st">'max_epochs'</span>: EPOCHS, <span class="st">'batch_size'</span>: BATCH_SIZE,</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'optimizer'</span>: <span class="st">'Adam'</span>, <span class="st">'learning_rate'</span>: <span class="fl">0.001</span>,</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'early_stopping'</span>: {<span class="st">'monitor'</span>: <span class="st">'val_loss'</span>, <span class="st">'patience'</span>: <span class="dv">3</span>, <span class="st">'restore_best_weights'</span>: <span class="va">True</span>},</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'shuffle'</span>: <span class="va">False</span>, <span class="st">'scaler_fit_split'</span>: <span class="st">'training'</span>,</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'validation_used_for_stopping'</span>: <span class="va">True</span>, <span class="st">'test_evaluated'</span>: <span class="va">False</span>,</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">'target'</span>: <span class="st">'At least one M &gt;= 5 catalogue event in the following seven days'</span>,</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">'train_origin_range'</span>: [<span class="bu">str</span>(origins[train_mask][<span class="dv">0</span>]), <span class="bu">str</span>(origins[train_mask][<span class="op">-</span><span class="dv">1</span>])],</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">'validation_origin_range'</span>: [<span class="bu">str</span>(validation_origins[<span class="dv">0</span>]), <span class="bu">str</span>(validation_origins[<span class="op">-</span><span class="dv">1</span>])],</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">'training_windows'</span>: <span class="bu">len</span>(y_train), <span class="st">'validation_windows'</span>: <span class="bu">len</span>(y_val),</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">'training_prevalence'</span>: training_prevalence,</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">'logistic'</span>: {<span class="st">'C'</span>: <span class="fl">1.0</span>, <span class="st">'penalty'</span>: <span class="st">'l2'</span>, <span class="st">'solver'</span>: <span class="st">'lbfgs'</span>, <span class="st">'max_iter'</span>: <span class="dv">2000</span>},</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">'tensorflow_version'</span>: tf.__version__, <span class="st">'keras_version'</span>: keras.__version__,</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">'numpy_version'</span>: np.__version__, <span class="st">'sklearn_version'</span>: sklearn.__version__,</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">'interpretation'</span>: <span class="st">'Descriptive validation comparison; no independent prospective evaluation'</span>,</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>(TEMPORAL_RUN_DIR <span class="op">/</span> <span class="st">'run_metadata.json'</span>).write_text(</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    json.dumps(metadata, indent<span class="op">=</span><span class="dv">2</span>), encoding<span class="op">=</span><span class="st">'utf-8'</span>)</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Include the shared data provenance and exact window assignments in the archive.</span></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>shutil.copy2(RUN_DIR <span class="op">/</span> <span class="st">'protocol.json'</span>, TEMPORAL_RUN_DIR <span class="op">/</span> <span class="st">'data_protocol.json'</span>)</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>shutil.copy2(RUN_DIR <span class="op">/</span> <span class="st">'windows.csv'</span>, TEMPORAL_RUN_DIR <span class="op">/</span> <span class="st">'windows.csv'</span>)</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>archive <span class="op">=</span> shutil.make_archive(<span class="bu">str</span>(RUN_DIR <span class="op">/</span> <span class="st">'temporal-results'</span>), <span class="st">'zip'</span>, TEMPORAL_RUN_DIR)</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Saved:'</span>, TEMPORAL_RUN_DIR)</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Archive:'</span>, archive)</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="co"># In Colab, uncomment these two lines to download your results:</span></span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a><span class="co"># from google.colab import files</span></span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a><span class="co"># files.download(archive)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<pre>Saved: tutorial-runs\temporal-0da80b1f5731\temporal
+Archive: H:\Otros ordenadores\Mi PC\1_Proyectos\2026 - Statsei 14 -\statsei14-deep-learning\qa\tutorials-2026-10-07\executions\temporal-05f6da6b\tutorial-runs\temporal-0da80b1f5731\temporal-results.zip
+</pre>
+</details>
+</section>
+<section id="after-class-change-one-thing-at-a-time" class="level2">
+<h2 class="anchored" data-anchor-id="after-class-change-one-thing-at-a-time">After class: change one thing at a time</h2>
+<ol type="1">
+<li>Explain one architectural difference using the input shape and the operations above.</li>
+<li>Inspect which probability errors drive a difference in Brier score and log loss; use the saved predictions rather than the best-looking seed.</li>
+<li>Plan a separate input experiment: add the same precomputed ETAS-inspired history channel to <strong>every</strong> architecture, with the same partitions and training-only scaling. Treat this as an input comparison; do not mix it with the current architecture comparison or use the historical test to choose changes.</li>
+<li>Continue to the spatial tutorials. A regional daily count has forgotten where the events occurred. A grid and a graph can retain location before the temporal model reads the history.</li>
+</ol>
+<p>For the 30-minute laboratory, the instructor can walk through data preparation, the four short model definitions, and the comparison tables while training runs. Calibration, repeated seeds, and the spatial extensions remain fully executable for follow-up study.</p>
+</section>
+<section id="references-and-next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="references-and-next-steps">References and next steps</h2>
+<ul>
+<li><a href="https://keras.io/examples/timeseries/timeseries_classification_from_scratch/">Keras: Time-series classification from scratch (CNN1D)</a></li>
+<li><a href="https://keras.io/examples/timeseries/timeseries_classification_transformer/">Keras: Time-series classification with a Transformer model</a></li>
+<li><a href="https://keras.io/api/layers/convolution_layers/convolution1d/">Keras: Conv1D layer</a></li>
+<li><a href="https://keras.io/api/layers/recurrent_layers/lstm/">Keras: LSTM layer</a></li>
+<li><a href="https://keras.io/api/layers/attention_layers/multi_head_attention/">Keras: MultiHeadAttention layer</a></li>
+</ul>
+<p><a href="https://franplaza.github.io/courses/statsei14/practical.html">Return to the practical guide</a>. These implementations adapt general Keras mechanisms to an exploratory teaching task; their documentation does not validate earthquake forecasting skill.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/franplaza\.github\.io\/courses\/statsei14\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Francisco Plaza-Vega · STATSEI14 · 13 October 2026</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Retrospective teaching study</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

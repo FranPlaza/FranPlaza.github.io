@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.18">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Francisco Plaza-Vega">
   <title>Deep Learning Meets ETAS</title>
@@ -20,13 +20,10 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
+    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: 1.5em;}
-    div.column{flex: auto;}
-    @media screen {
-    div.columns{gap: min(4vw, 1.5em);}
-    div.column{overflow-x: auto;}
-    }
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -103,7 +100,7 @@
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-1dadc1da88db1748a06636489da7d5a2.css">
   <link rel="stylesheet" href="slides.css">
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../assets/katex/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -118,7 +115,7 @@
    });
 }}});
   </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="../assets/katex/katex.min.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -978,15 +975,15 @@ Practical Hybrid Workflows for Seismic Forecasting
 </section>
 <section id="a01" class="slide level2">
 <h2>Appendix · a small Keras model</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a>model <span class="op">=</span> keras.Sequential([</span>
-<span id="cb1-2"><a aria-label="2"></a>    keras.layers.Input(shape<span class="op">=</span>(<span class="dv">30</span>, n_features)),</span>
-<span id="cb1-3"><a aria-label="3"></a>    keras.layers.LSTM(<span class="dv">16</span>),</span>
-<span id="cb1-4"><a aria-label="4"></a>    keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>)</span>
-<span id="cb1-5"><a aria-label="5"></a>])</span>
-<span id="cb1-6"><a aria-label="6"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">"adam"</span>, loss<span class="op">=</span><span class="st">"binary_crossentropy"</span>)</span>
-<span id="cb1-7"><a aria-label="7"></a>history <span class="op">=</span> model.fit(X_train, y_train,</span>
-<span id="cb1-8"><a aria-label="8"></a>                    validation_data<span class="op">=</span>(X_val, y_val),</span>
-<span id="cb1-9"><a aria-label="9"></a>                    epochs<span class="op">=</span><span class="dv">20</span>, batch_size<span class="op">=</span><span class="dv">64</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines"><code class="sourceCode python"><span id="cb1-1"><a></a>model <span class="op">=</span> keras.Sequential([</span>
+<span id="cb1-2"><a></a>    keras.layers.Input(shape<span class="op">=</span>(<span class="dv">30</span>, n_features)),</span>
+<span id="cb1-3"><a></a>    keras.layers.LSTM(<span class="dv">16</span>),</span>
+<span id="cb1-4"><a></a>    keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>)</span>
+<span id="cb1-5"><a></a>])</span>
+<span id="cb1-6"><a></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">"adam"</span>, loss<span class="op">=</span><span class="st">"binary_crossentropy"</span>)</span>
+<span id="cb1-7"><a></a>history <span class="op">=</span> model.fit(X_train, y_train,</span>
+<span id="cb1-8"><a></a>                    validation_data<span class="op">=</span>(X_val, y_val),</span>
+<span id="cb1-9"><a></a>                    epochs<span class="op">=</span><span class="dv">20</span>, batch_size<span class="op">=</span><span class="dv">64</span>)</span></code></pre></div>
 <div class="takeaway">
 <p>Sequential defines · compile configures · fit learns · predict applies</p>
 </div>

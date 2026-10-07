@@ -1,3 +1,13 @@
+# Updated delivery route: three guided tutorials
+
+Use `practical.html` as the entry point. The temporal guide is the live core; maps and graphs are complete laboratory extensions. Participants open blank Colab notebooks, copy numbered blocks and download the pinned frozen pack automatically. The matching notebooks are an alternative. Every guide has collapsible prepared local outputs; switch to those when a participant cannot execute. A local fresh-kernel check does not certify actual Colab execution.
+
+Explain regional versus per-cell targets before comparing spatial scores. The six cells are identical across maps and graphs. All three tutorials evaluate validation only, retain all seeds and preserve the earlier test evidence. Use the original LSTM/ETAS-inspired exercise as a separate feature experiment. The existing slide deck retains its research narrative; use the web guide for the current code sequence.
+
+For live pacing: shared preparation and one history first; then the four model definitions; finally the probability comparison. Show the spatial input/output diagrams and leave their full execution for laboratory time. Do not promise a runtime based on the local CPU timing.
+
+The earlier instructor material follows as reference context for the original notebooks.
+
 # Instructor guide
 
 Francisco Plaza-Vega · STATSEI14 · 13 October 2026, 11:30–12:30

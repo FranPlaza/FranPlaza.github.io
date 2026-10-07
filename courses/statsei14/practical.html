@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>The practical – Deep Learning Meets ETAS</title>
+<title>The practical: build, run and compare – Deep Learning Meets ETAS</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,41 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -112,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="assets/site.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed tutorial-hub fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -166,8 +131,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The practical</h1>
-<p class="subtitle lead">From a seismic research question to a controlled learning experiment</p>
+<h1 class="title">The practical: build, run and compare</h1>
+<p class="subtitle lead">Three guided tutorials, from regional histories to maps and graphs</p>
 </div>
 
 
@@ -184,314 +149,104 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="actions">
-<p><a href="https://colab.research.google.com/github/FranPlaza/FranPlaza.github.io/blob/main/courses/statsei14/downloads/workshop.ipynb" class="primary">Open in Colab</a> <a href="downloads/workshop.ipynb">Download notebook</a> <a href="downloads/course-pack.zip">Download course pack</a></p>
+<p>Start with a blank Colab notebook and follow the code blocks on the tutorial page. Each block has a copy button, an explanation and prepared local output to compare with your own run. <strong>The frozen data download automatically; no ZIP upload is needed.</strong> The matching notebooks provide an alternative when you prefer to run existing cells.</p>
+<div class="course-note">
+<p><strong>One question at a time.</strong> First compare four ways to learn from the same regional history. Then retain location and predict one weekly probability per cell. Maps and graphs use the same six cells, inputs and target windows so their differences remain interpretable.</p>
 </div>
-<p>Open the notebook with the Colab button, then upload data-pack.zip or course-pack.zip when prompted. You can also open the downloaded notebook using <strong>Colab → File → Upload notebook</strong> and upload the course pack when prompted.</p>
-<section id="the-research-question-we-carry-into-practice" class="level2">
-<h2 class="anchored" data-anchor-id="the-research-question-we-carry-into-practice">The research question we carry into practice</h2>
-<p><strong>How can we represent seismic history so that a model can learn something useful about what follows?</strong> The presentation develops this question through the published Spatial Statistics study and the aftershock work from Isidora Jara’s thesis and the subsequent manuscript.</p>
+<div class="tutorial-cards">
+<div class="tutorial-card">
+<p><span class="kicker">01 · Core tutorial</span></p>
+<section id="four-models-one-sequence" class="level2">
+<h2 class="anchored" data-anchor-id="four-models-one-sequence">Four models, one sequence</h2>
+<p>Use 30 days of three regional catalogue channels to estimate the probability of at least one M ≥ 5 event in the following seven days. Compare MLP, CNN1D, LSTM and a small Transformer with training prevalence and logistic regression.</p>
+<p><strong>Learn:</strong> fixed lag positions, temporal filters, recurrent state, attention and positional information. Read Brier score, log loss and calibration alongside parameter counts and training time.</p>
+<p><a href="./tutorials/temporal.html" class="tutorial-link">Start the temporal tutorial</a></p>
+</section>
+</div>
+<div class="tutorial-card">
+<p><span class="kicker">02 · Spatial extension</span></p>
+<section id="learn-from-sequences-of-maps" class="level2">
+<h2 class="anchored" data-anchor-id="learn-from-sequences-of-maps">Learn from sequences of maps</h2>
+<p>Retain six geographic cells and build a sequence of daily maps. Predict a separate weekly occurrence probability for every cell using CNN2D + LSTM and ConvLSTM2D.</p>
+<p><strong>Learn:</strong> space versus time, shared spatial filters, sparse cell targets, marginal probability maps and the limits of geographic binning.</p>
+<p><a href="./tutorials/maps.html" class="tutorial-link">Start the map tutorial</a></p>
+</section>
+</div>
+<div class="tutorial-card">
+<p><span class="kicker">03 · Spatial extension</span></p>
+<section id="connect-the-same-cells-as-a-graph" class="level2">
+<h2 class="anchored" data-anchor-id="connect-the-same-cells-as-a-graph">Connect the same cells as a graph</h2>
+<p>Use the same cell histories and outcomes, with a fixed graph connecting cells that share an edge. Combine explicit neighbour aggregation with an LSTM shared across nodes.</p>
+<p><strong>Learn:</strong> adjacency, self-information and neighbour messages, node identity, and how a graph can later support irregular regions.</p>
+<p><a href="./tutorials/graphs.html" class="tutorial-link">Start the graph tutorial</a></p>
+</section>
+</div>
+</div>
+<section id="how-to-follow-the-session" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-follow-the-session">How to follow the session</h2>
+<p>Open the temporal guide alongside a blank Colab. Run its shared preparation first; inspect the window and target before training. During the live session, focus on the four model definitions and the common evaluation. The three-seed run is supplied so every declared seed remains visible. If execution is slow, expand the prepared local outputs and continue interpreting them.</p>
+<p>The spatial tutorials are complete extensions for the laboratory or later study. Each can start in its own blank notebook because it includes the same preparation. Their target is <strong>per cell</strong>, so their scores should not be ranked against the regional scores from Tutorial 1. Within the two spatial tutorials, cell support, normalization, seeds and evaluation origins are shared.</p>
+</section>
+<section id="what-stays-fixed" class="level2">
+<h2 class="anchored" data-anchor-id="what-stays-fixed">What stays fixed</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
 </colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Research step</th>
-<th style="text-align: left;">Representation and question</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Spatial Statistics study</td>
-<td style="text-align: left;">ETAS-derived intensity summaries; predict their maximum and its macrozone</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Isidora’s thesis and subsequent manuscript</td>
-<td style="text-align: left;">Aftershock sequence representations, predictive tasks and generative modelling</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">This practical</td>
-<td style="text-align: left;">Daily regional catalogue channels; estimate next-week occurrence probability</td>
-</tr>
-</tbody>
-</table>
-<p>The practical uses a new, deliberately small target. It illustrates the same modelling decisions without reproducing the research results. An ETAS–GAN combination remains a proposal outside the empirical scope of the manuscript and this exercise.</p>
-<p>Our thread is <strong>question → representation → model and loss → evidence</strong>. A flexible tool is useful when these choices form a coherent scientific experiment.</p>
-</section>
-<section id="two-ways-to-participate" class="level2">
-<h2 class="anchored" data-anchor-id="two-ways-to-participate">Two ways to participate</h2>
-<p>Run and modify the cells if you are comfortable with Python, or follow the prepared outputs and contribute a hypothesis and interpretation. Both routes investigate the same scientific question. The required live change is adding one channel to the LSTM; the Transformer is a guided comparison using a separate notebook.</p>
-</section>
-<section id="one-concrete-task" class="level2">
-<h2 class="anchored" data-anchor-id="one-concrete-task">One concrete task</h2>
-<p>At each Monday forecast origin, use the previous 30 days to estimate the probability of <strong>at least one event with catalogue magnitude M ≥ 5 in the next seven days</strong>.</p>
-<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Setting</th>
-<th style="text-align: left;">Frozen teaching configuration</th>
+<th style="text-align: left;">Teaching protocol</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;">Catalogue</td>
+<td style="text-align: left;">Frozen, revised USGS records, 2000–2025</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">Region</td>
-<td style="text-align: left;">Latitude −34 to −28, longitude −74 to −69</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Source</td>
-<td style="text-align: left;">USGS ComCat, 2000–2025</td>
+<td style="text-align: left;">28–34°S, 69–74°W</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Input events</td>
-<td style="text-align: left;">Catalogue magnitude M ≥ 4.5</td>
+<td style="text-align: left;">Input threshold / history</td>
+<td style="text-align: left;">M ≥ 4.5 / previous 30 days</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Training origins</td>
-<td style="text-align: left;">2001–2016</td>
+<td style="text-align: left;">Target threshold / horizon</td>
+<td style="text-align: left;">M ≥ 5 / following seven days</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Validation origins</td>
-<td style="text-align: left;">2017–2020</td>
+<td style="text-align: left;">Training / validation</td>
+<td style="text-align: left;">2001–2016 / 2017–2020</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Test origins</td>
-<td style="text-align: left;">2021–2025</td>
+<td style="text-align: left;">Existing test period</td>
+<td style="text-align: left;">2021–2025; already inspected in earlier course work and not evaluated in these tutorials</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Forecast target</td>
-<td style="text-align: left;">At least one qualifying event in [t, t + 7 days)</td>
+<td style="text-align: left;">Spatial support</td>
+<td style="text-align: left;">Three latitude bands × two longitude bands; six fixed cells</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Neural model</td>
-<td style="text-align: left;">LSTM with 16 units and a sigmoid output</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Comparisons</td>
-<td style="text-align: left;">Training prevalence and logistic regression</td>
+<td style="text-align: left;">Seeds</td>
+<td style="text-align: left;">7, 17, 27; all retained</td>
 </tr>
 </tbody>
 </table>
-<p>Magnitude 4.5 is an input threshold, not a claim of uniform completeness. The notebook shows training-period coverage and magnitude-frequency diagnostics. The larger frozen download starts at magnitude 3 for these diagnostics.</p>
+<p>Standardization uses training histories only. Target intervals crossing split boundaries are excluded. Validation controls early stopping and supplies the displayed comparison; it is not independent evidence of generalization. Spatial probabilities can be positive in several cells and need not sum to one. They describe catalogue occurrence, not shaking, damage or risk.</p>
 </section>
-<section id="the-model-is-written-out" class="level2">
-<h2 class="anchored" data-anchor-id="the-model-is-written-out">The model is written out</h2>
-<p>The LSTM learns a representation of the ordered daily inputs. The sigmoid output and binary cross-entropy connect that representation to the weekly occurrence question. The learning steps stay visible in the notebook:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> keras.Sequential([</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    keras.layers.Input(shape<span class="op">=</span>(<span class="dv">30</span>, X_train.shape[<span class="op">-</span><span class="dv">1</span>])),</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    keras.layers.LSTM(<span class="dv">16</span>),</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>),</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    optimizer<span class="op">=</span>keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.001</span>),</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    loss<span class="op">=</span><span class="st">"binary_crossentropy"</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    X_train, y_train,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    validation_data<span class="op">=</span>(X_val, y_val),</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    epochs<span class="op">=</span><span class="dv">20</span>, batch_size<span class="op">=</span><span class="dv">64</span>,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    callbacks<span class="op">=</span>[early_stopping],</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    shuffle<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>probability <span class="op">=</span> model.predict(X_val).ravel()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The notebook explains each argument beside the cell. No custom training wrapper hides these steps.</p>
-</section>
-<section id="required-exercise" class="level2">
-<h2 class="anchored" data-anchor-id="required-exercise">Required exercise</h2>
-<p><strong>Before training:</strong> predict whether the extra channel will help, and explain why. It gives greater weight to larger and more recent events; its information may also be redundant with the catalogue channels.</p>
-<p>Add the ETAS-inspired score to the feature list, update the model input and retrain. Keep the target, splits, seed and hyperparameters fixed. Compare validation Brier score and log loss with the catalogue-only model.</p>
-<p><strong>After training:</strong> compare the result with your hypothesis. Did the same channel help logistic regression? Record what changed, whether the difference is small, and why one run cannot establish general superiority. The index is an input representation with illustrative parameters, not a fitted ETAS rate.</p>
-</section>
-<section id="continue-as-homework" class="level2">
-<h2 class="anchored" data-anchor-id="continue-as-homework">Continue as homework</h2>
-<p>Save the optional 14-versus-30-day comparison for after the session. Rebuild the windows, inspect a boundary example and compare only on validation while keeping the seven-day forecasting question fixed. The <a href="./homework.html">homework guide</a> provides the follow-up route. Once this practical’s test results have been inspected, they are no longer an untouched test for selecting a new configuration.</p>
-</section>
-<section id="reading-the-output" class="level2">
-<h2 class="anchored" data-anchor-id="reading-the-output">Reading the output</h2>
+<section id="download-and-continue" class="level2">
+<h2 class="anchored" data-anchor-id="download-and-continue">Download and continue</h2>
 <ul>
-<li><strong>Brier score:</strong> average squared probability error. Smaller is better.</li>
-<li><strong>Log loss:</strong> penalizes confident incorrect probabilities. Smaller is better.</li>
-<li><strong>Calibration:</strong> compare mean predicted probability with the observed fraction, showing the number of forecasts in each bin.</li>
-<li><strong>Base rate:</strong> the observed frequency of positive target weeks. The constant baseline uses training only.</li>
+<li><a href="downloads/tutorials-pack.zip">Complete tutorial pack</a>: matching notebooks, prepared outputs and the exact frozen data ZIP for offline preparation.</li>
+<li><a href="downloads/tutorial-results.zip">Prepared result files</a>: per-seed and per-cell scores, predictions, training histories and provenance.</li>
+<li><a href="./homework.html">Homework and bounded experiments</a>: change one decision at a time, state the hypothesis first and stay on training/validation.</li>
+<li><a href="./practical-reference.html">Original LSTM/ETAS-inspired exercise and earlier results</a>: a separate feature experiment preserved for reference.</li>
+<li><a href="./references.html">References</a>: course sources and Keras implementation references.</li>
 </ul>
-<p>Weekly targets do not overlap, but earthquakes and adjacent input windows can still be dependent.</p>
-</section>
-<section id="from-minute-25-practice-comparison-and-discussion" class="level2">
-<h2 class="anchored" data-anchor-id="from-minute-25-practice-comparison-and-discussion">From minute 25: practice, comparison and discussion</h2>
-<p>The presentation occupies minutes 00–25. The remaining time follows this schedule:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Session minutes</th>
-<th style="text-align: left;">Activity</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">25–28</td>
-<td style="text-align: left;">Open the LSTM notebook and load the frozen catalogue</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">28–32</td>
-<td style="text-align: left;">Connect the question to one window, label and chronological split</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">32–38</td>
-<td style="text-align: left;">Compare simple baselines and train the small LSTM</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">38–43</td>
-<td style="text-align: left;">State a hypothesis, add the score and compare validation results</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">43–48</td>
-<td style="text-align: left;">Evaluate the fixed LSTM experiment</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">48–56</td>
-<td style="text-align: left;">Inspect the Transformer definition and prepared three-seed comparison</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">56–60</td>
-<td style="text-align: left;">Return to the scientific question and introduce follow-up work</td>
-</tr>
-</tbody>
-</table>
-<p>The Transformer block uses prepared outputs and readable model code. Building an attention model from scratch is not required during the session.</p>
-</section>
-<section id="timing-and-fallback" class="level2">
-<h2 class="anchored" data-anchor-id="timing-and-fallback">Timing and fallback</h2>
-<p>The goal is less than three minutes of CPU training for the two LSTM variants. The distributed reference run records measured training time and the environment; a local CPU measurement is not a Colab timing guarantee.</p>
-<p>If the runtime cannot train during the session, open the <a href="downloads/workshop-solved.html">solved notebook</a> and the prepared results. The notebook marks this fallback explicitly.</p>
-</section>
-<section id="original-lstm-exercise-one-seed-reference-run" class="level2">
-<h2 class="anchored" data-anchor-id="original-lstm-exercise-one-seed-reference-run">Original LSTM exercise: one-seed reference run</h2>
-<p>The solution executed from a fresh local CPU kernel in <strong>29.1 seconds</strong>; the two LSTM fits took <strong>4.3 seconds combined</strong> (20 epochs each, two TensorFlow threads). This is a local Windows measurement, not a Colab benchmark.</p>
-<p>Training contains 834 weeks (197 positives), validation 208 (52 positives), and test 260 (54 positives). Three boundary or incomplete weeks are excluded.</p>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Original practical metrics">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Model</th>
-<th style="text-align: right;">Validation Brier</th>
-<th style="text-align: right;">Test Brier</th>
-<th style="text-align: right;">Test log loss</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Training frequency</td>
-<td style="text-align: right;">0.187690</td>
-<td style="text-align: right;">0.165370</td>
-<td style="text-align: right;">0.513204</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Logistic, catalogue</td>
-<td style="text-align: right;">0.186611</td>
-<td style="text-align: right;">0.164229</td>
-<td style="text-align: right;">0.510317</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Logistic + score</td>
-<td style="text-align: right;">0.185589</td>
-<td style="text-align: right;">0.164204</td>
-<td style="text-align: right;">0.509854</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">LSTM, catalogue</td>
-<td style="text-align: right;">0.183109</td>
-<td style="text-align: right;">0.164984</td>
-<td style="text-align: right;">0.511939</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">LSTM + score</td>
-<td style="text-align: right;">0.182790</td>
-<td style="text-align: right;">0.164718</td>
-<td style="text-align: right;">0.511082</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Adding the score changes the LSTM losses only slightly in this run. Logistic regression has the lower test Brier score. This single-seed result does not establish that either architecture is generally superior.</p>
-<p><img src="results/reference-run/figures/calibration.png" class="img-fluid" alt="Test calibration for both LSTMs, with the number of weeks per bin."></p>
-<p>The course pack contains unrounded metrics, predictions, configuration and runtime metadata.</p>
-</section>
-<section id="transformer-demo" class="level2">
-<h2 class="anchored" data-anchor-id="transformer-demo">Guided Transformer comparison</h2>
-<p><a href="downloads/transformer-demo.ipynb">Download the executable demo</a> · <a href="downloads/transformer-demo-solved.html">Open prepared outputs</a></p>
-<p>This is a <strong>separate catalogue-only comparison across seeds 7, 17 and 27</strong>. It reuses the frozen data, windows, training-only normalization and weekly target, but does not add the ETAS-inspired channel. Both neural models receive the same 30 × 3 inputs. Read its LSTM results together with its Transformer results; they are not the single-seed values in the original exercise above.</p>
-<p>The model projects each day to 16 dimensions, adds fixed sinusoidal position information, and applies one attention block with two heads (key dimension 8), a 32→16 feed-forward block, residual connections and normalization. Temporal averaging and a sigmoid produce one probability. All input days precede issuance; attention within that history does not expose future target observations.</p>
-<p>During minutes 48–56, follow the tensor shapes in the written model, then compare the prepared results. The demo has been tested locally; participants can reproduce or extend it after the session.</p>
-<section id="what-the-pilot-observed" class="level3">
-<h3 class="anchored" data-anchor-id="what-the-pilot-observed">What the pilot observed</h3>
-<p>The neural entries below are <strong>means of individual-fit metrics over all three seeds</strong>, not ensemble metrics. The baselines are deterministic.</p>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Transformer pilot metrics">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Model</th>
-<th style="text-align: right;">Validation Brier</th>
-<th style="text-align: right;">Test Brier</th>
-<th style="text-align: right;">Test log loss</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Training frequency</td>
-<td style="text-align: right;">0.187690</td>
-<td style="text-align: right;">0.165370</td>
-<td style="text-align: right;">0.513204</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Logistic catalogue</td>
-<td style="text-align: right;">0.186611</td>
-<td style="text-align: right;">0.164229</td>
-<td style="text-align: right;">0.510317</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">LSTM catalogue</td>
-<td style="text-align: right;">0.183065</td>
-<td style="text-align: right;">0.165413</td>
-<td style="text-align: right;">0.512942</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Transformer compact</td>
-<td style="text-align: right;">0.188771</td>
-<td style="text-align: right;">0.166367</td>
-<td style="text-align: right;">0.515602</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>The Transformer had higher Brier score and log loss than the LSTM and both baselines in both partitions for every declared seed. This observation concerns this representation, sample and protocol. It does not rank the architectures across seismological tasks.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="results/transformer-pilot/figures/metrics-by-seed.png" class="img-fluid figure-img"></p>
-<figcaption>Validation and test losses for all three seeds and the two deterministic baselines.</figcaption>
-</figure>
-</div>
-<p>The compact Transformer has 2,305 parameters and the LSTM 1,297. Transformer fits took 1.34–1.59 seconds locally, stopping after 5–9 epochs; LSTM fits took 2.00–2.05 seconds and ran 20 epochs. The different completed training work prevents interpreting this as general evidence of a faster architecture. A clean Colab run remains unverified.</p>
-<p>Inspect the <a href="results/transformer-pilot/metrics.csv">metrics</a>, <a href="results/transformer-pilot/fits.csv">fits</a>, <a href="results/transformer-pilot/predictions.csv">predictions</a> and <a href="results/transformer-pilot/runtime.json">runtime</a>. All seeds are retained. Variation across seeds describes training variability, not a confidence interval for generalization. The test period was already inspected in the original tutorial, so this is an <strong>exploratory retrospective comparison</strong>, with no tuning after test evaluation.</p>
-</section>
-<section id="what-remains-a-hypothesis" class="level3">
-<h3 class="anchored" data-anchor-id="what-remains-a-hypothesis">What remains a hypothesis</h3>
-<p>The comparison does not identify why the Transformer performed differently. Representation, available information, inductive bias, training budget and the chosen target are possible explanations to test. Neither the complexity of seismicity nor the model’s flexibility is a demonstrated cause of these scores.</p>
-<p>Choose one question for discussion: what information did daily regional aggregation remove, what does the architecture assume about that representation, or would a different scientific target require a different output and evaluation? A follow-up experiment should change one stated element and use training and validation for decisions.</p>
-</section>
-</section>
-<section id="catalogue-revisions-and-validation" class="level2">
-<h2 class="anchored" data-anchor-id="catalogue-revisions-and-validation">Catalogue revisions and validation</h2>
-<p>A frozen modern catalogue is reproducible but does not prove which event version was available years ago. The reference run is labelled <strong>revised retrospective</strong>, and historical as-of availability remains unverified. Input event times precede issuance; normalization uses training only; target weeks crossing a partition boundary are removed.</p>
-</section>
-<section id="after-the-tutorial" class="level2">
-<h2 class="anchored" data-anchor-id="after-the-tutorial">After the tutorial</h2>
-<p>Use minutes 56–60 to return to three questions: <strong>what did we represent, what did we ask the model to learn, and what did the evidence support?</strong> Contrast our weekly probability with the intensity summaries and aftershock sequences in the research presentation. Their targets require different outputs, losses and evaluations. Then distinguish the observed Transformer comparison from a possible explanation that a future experiment could test.</p>
-<p>Continue with the <a href="./homework.html">homework</a> after the session. Any new region requires a matching catalogue and renewed checks of completeness, sample sizes and magnitude types. A future two-part model could estimate occurrence and magnitude conditional on occurrence separately.</p>
+<p>Prepared outputs were produced by fresh <strong>local CPU</strong> kernels. Their measured runtimes describe that machine; a complete execution in an actual Colab session remains unverified. The fixed catalogue does not establish which record versions were available at historical forecast times.</p>
 
 
 </section>

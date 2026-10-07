@@ -155,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="unnumbered">Deep Learning Meets ETAS</h1>
 <p><span class="lede">Practical hybrid workflows for seismic forecasting</span></p>
 <p><span class="byline">Francisco Plaza-Vega</span></p>
-<p>From deep learning in seismology to our Spatial Statistics and aftershock research, then a guided LSTM experiment and a compact Transformer comparison: what can flexible tools tell us about a carefully defined seismic question?</p>
+<p>From deep learning in seismology to our Spatial Statistics and aftershock research, then a guided comparison of MLP, CNN1D, LSTM and Transformer models, with map and graph extensions: what can flexible tools tell us about a carefully defined seismic question?</p>
 <div class="session-meta">
 <p>Tuesday 13 October 2026 · 11:30–12:30 · Santiago</p>
 </div>
@@ -182,18 +182,18 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li>Connect a scientific question to a representation, neural architecture, output and loss.</li>
 <li>Distinguish the targets in the Spatial Statistics study, the aftershock work and this practical.</li>
-<li>Build catalogue windows, train a small LSTM and compare an ETAS-inspired input with simple baselines.</li>
-<li>Read a controlled LSTM–Transformer comparison and separate observed differences from possible explanations.</li>
+<li>Build catalogue windows and compare MLP, CNN1D, LSTM and Transformer models against simple baselines.</li>
+<li>Retain spatial information through six-cell maps and graphs, and distinguish regional from per-cell targets.</li>
 <li>Carry a testable question about representation or modelling into the <a href="./homework.html">homework</a>.</li>
 </ol>
 </section>
 <section id="before-the-session" class="level2">
 <h2 class="anchored" data-anchor-id="before-the-session">Before the session</h2>
 <p>The session welcomes researchers with different levels of Python and deep learning experience. Basic Python helps when running or modifying cells; <strong>no previous neural-network training is required</strong>. You can also follow the prepared outputs, formulate a hypothesis and interpret the evidence with the group.</p>
-<p>Bring a laptop and a browser if you plan to run the code. Colab is the intended environment; the downloadable pack includes the frozen catalogue, the LSTM exercise, the separate Transformer demo and prepared results. The recorded execution checks are local CPU runs, not a clean Colab verification.</p>
+<p>Bring a laptop and a browser if you plan to run the code. Follow the web tutorials with a blank Colab notebook: copy the numbered Python blocks and run them in order. The frozen catalogue downloads automatically. The tutorial pack includes matching notebooks and prepared results. The recorded execution checks are local CPU runs, not a clean Colab verification.</p>
 </section>
-<section id="the-60-minute-session" class="level2">
-<h2 class="anchored" data-anchor-id="the-60-minute-session">The 60-minute session</h2>
+<section id="the-60-minute-session-and-follow-up" class="level2">
+<h2 class="anchored" data-anchor-id="the-60-minute-session-and-follow-up">The 60-minute session and follow-up</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -224,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td style="text-align: left;">25–28</td>
-<td style="text-align: left;">Open the notebook and load the frozen catalogue</td>
+<td style="text-align: left;">Open the web guide and a blank Colab; download the frozen data</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">28–32</td>
@@ -232,19 +232,19 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td style="text-align: left;">32–38</td>
-<td style="text-align: left;">Calculate simple baselines and train the small LSTM</td>
+<td style="text-align: left;">Read MLP and CNN1D; connect the LSTM definition to the same input</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">38–43</td>
-<td style="text-align: left;">State a hypothesis and add the ETAS-inspired score</td>
+<td style="text-align: left;">Inspect positional information and attention in the Transformer</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">43–48</td>
-<td style="text-align: left;">Evaluate the fixed LSTM exercise</td>
+<td style="text-align: left;">Run the common comparison or inspect prepared local outputs</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">48–56</td>
-<td style="text-align: left;">Guided Transformer demo: read the code and compare prepared results</td>
+<td style="text-align: left;">Interpret probability errors; preview the map and graph extensions</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">56–60</td>
@@ -252,10 +252,20 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>The session has <strong>25 minutes of research context, 23 minutes of guided LSTM practice, an eight-minute Transformer comparison and a four-minute closing discussion</strong>. The demo uses a separate, tested notebook and prepared results. Further implementation and experiments can continue during the laboratory week.</p>
+<p>The session has <strong>25 minutes of research context, 23 minutes of guided temporal modelling, an eight-minute interpretation and spatial preview, and four minutes of closing discussion</strong>. The four-model guide shares one preparation and evaluation pipeline; maps and graphs continue as separate tutorials. The slide deck preserves the earlier research narrative and examples. Further implementation and experiments can continue during the laboratory week.</p>
 </section>
-<section id="materials" class="level2">
-<h2 class="anchored" data-anchor-id="materials">Materials</h2>
+<section id="guided-tutorials" class="level2">
+<h2 class="anchored" data-anchor-id="guided-tutorials">Guided tutorials</h2>
+<ul>
+<li><a href="./tutorials/temporal.html">Four models, one regional sequence</a>: MLP, CNN1D, LSTM and Transformer.</li>
+<li><a href="./tutorials/maps.html">Sequences of maps</a>: CNN2D + LSTM and ConvLSTM2D.</li>
+<li><a href="./tutorials/graphs.html">The same cells as a graph</a>: graph convolution + LSTM.</li>
+<li><a href="./practical.html">All tutorials and the shared protocol</a>.</li>
+</ul>
+<p>The presentation and earlier LSTM/ETAS-inspired notebooks remain available as research context and a separate reference experiment. The web tutorials are the new route for running code; the spatial extensions are designed for the laboratory and later study.</p>
+</section>
+<section id="reference-materials" class="level2">
+<h2 class="anchored" data-anchor-id="reference-materials">Reference materials</h2>
 <ul>
 <li><a href="./slides/index.html">Presentation in HTML</a></li>
 <li><a href="slides/slides.pdf">Presentation in PDF</a></li>
@@ -270,12 +280,12 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="./references.html">References and source distinctions</a></li>
 <li><a href="./homework.html">Homework and further experiments</a></li>
 </ul>
-<p>The <a href="https://github.com/FranPlaza/FranPlaza.github.io/tree/main/courses/statsei14">GitHub repository</a> and <a href="https://colab.research.google.com/github/FranPlaza/FranPlaza.github.io/blob/main/courses/statsei14/downloads/workshop.ipynb">Colab link</a> are available online. Download the course pack and upload it when the notebook asks for the course files.</p>
+<p>For the earlier notebook-based route, the <a href="https://github.com/FranPlaza/FranPlaza.github.io/tree/main/courses/statsei14">GitHub repository</a> and <a href="https://colab.research.google.com/github/FranPlaza/FranPlaza.github.io/blob/main/courses/statsei14/downloads/workshop.ipynb">Colab link</a> are available online. Download the course pack and upload it when the notebook asks for the course files.</p>
 </section>
-<section id="why-finish-with-a-transformer-comparison" class="level2">
-<h2 class="anchored" data-anchor-id="why-finish-with-a-transformer-comparison">Why finish with a Transformer comparison?</h2>
+<section id="earlier-transformer-comparison-reference-evidence" class="level2">
+<h2 class="anchored" data-anchor-id="earlier-transformer-comparison-reference-evidence">Earlier Transformer comparison: reference evidence</h2>
 <p>The prepared pilot keeps the weekly target and three catalogue channels fixed and compares LSTM with a compact attention model across seeds 7, 17 and 27. In this experiment, the Transformer had higher Brier score and log loss than the LSTM and both simple baselines in validation and test. We use this result to ask what the representation, information, model assumptions and task definition allow us to learn.</p>
-<p>The result does not identify its cause. Available information, representation, inductive bias, training budget and the chosen target are possible explanations to investigate. A claim that the phenomenon is complex does not itself explain the observed model comparison. See the <a href="./practical.html#transformer-demo">demo and its evidence</a>.</p>
+<p>The result does not identify its cause. Available information, representation, inductive bias, training budget and the chosen target are possible explanations to investigate. A claim that the phenomenon is complex does not itself explain the observed model comparison. See the <a href="./practical-reference.html#transformer-demo">demo and its evidence</a>.</p>
 </section>
 <section id="what-the-experiment-can-establish" class="level2">
 <h2 class="anchored" data-anchor-id="what-the-experiment-can-establish">What the experiment can establish</h2>
