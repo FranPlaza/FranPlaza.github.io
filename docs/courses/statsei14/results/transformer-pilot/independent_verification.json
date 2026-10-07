@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "prediction_rows": 3744,
+  "metric_rows": 16,
+  "no_duplicate_predictions": true,
+  "labels_consistent_across_models": true,
+  "metrics_recomputed_with_direct_formulas": true,
+  "max_absolute_metric_difference": 6.484706605025536e-08,
+  "paired_origins": [
+    {
+      "split": "validation",
+      "seed": 7,
+      "n": 208
+    },
+    {
+      "split": "validation",
+      "seed": 17,
+      "n": 208
+    },
+    {
+      "split": "validation",
+      "seed": 27,
+      "n": 208
+    },
+    {
+      "split": "test",
+      "seed": 7,
+      "n": 260
+    },
+    {
+      "split": "test",
+      "seed": 17,
+      "n": 260
+    },
+    {
+      "split": "test",
+      "seed": 27,
+      "n": 260
+    }
+  ],
+  "note": "No fitting or tuning; seed variability is not generalization uncertainty."
+}

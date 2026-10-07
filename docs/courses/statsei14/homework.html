@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>After the tutorial – Deep Learning Meets ETAS</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="assets/site.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./assets/favicon.svg" alt="" class="navbar-logo light-content">
+    <img src="./assets/favicon.svg" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">DL + ETAS</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./practical.html"> 
+<span class="menu-text">Practical</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./slides/index.html"> 
+<span class="menu-text">Slides</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./homework.html" aria-current="page"> 
+<span class="menu-text">Homework</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./references.html"> 
+<span class="menu-text">References</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">After the tutorial</h1>
+<p class="subtitle lead">Read the evidence, reproduce the demo and test one modelling question</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>The live session combines a guided LSTM exercise with a separate, tested Transformer comparison. This follow-up offers a paper-and-evidence discussion requiring no coding and a bounded extension of the executable demo. Both continue the same question: <strong>what can a flexible model learn from a particular representation, and how would we know?</strong> Use the laboratory week to work at a suitable pace.</p>
+<p><a href="./practical.html">Return to the practical</a> · <a href="./references.html">References and source links</a></p>
+<section id="level-1-read-the-task-before-the-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="level-1-read-the-task-before-the-architecture">Level 1 — Read the task before the architecture</h2>
+<p><strong>Suggested time: 45–60 minutes. No training required.</strong></p>
+<p>Begin with the <a href="downloads/transformer-demo-solved.html">prepared Transformer comparison</a>. State one observation supported by its scores and one possible explanation that those scores alone cannot establish. Then compare the tutorial with two papers: one on earthquake forecasting and one on another seismic learning task. Suggested choices are RECAST or Farfán et al.&nbsp;(2025) for forecasting, and ConvNetQuake or Delgado et al.&nbsp;(2025) for detection/classification. Follow the links on the <a href="./references.html">references page</a>.</p>
+<ol type="1">
+<li>Write the scientific question in one sentence for each source. Specify whether it detects a recorded signal, classifies an event, forecasts an aggregate outcome, or generates possible future sequences.</li>
+<li>Trace one example from raw observations to model input and target. Include units, temporal resolution, spatial support and forecast horizon where applicable.</li>
+<li>Identify when each input and label becomes available. For a foreshock/mainshock/aftershock label, investigate whether assigning the label uses later events. Distinguish a retrospectively defined label from a prospective prediction using information available at issuance.</li>
+<li>Read the evaluation design: chronological or random splitting, geographic separation, baseline, metric and what the metric measures. Record <strong>not reported in the source consulted</strong> whenever a detail is unavailable; do not infer the protocol from a headline score.</li>
+<li>Explain one useful connection to the tutorial and one reason the scores cannot be compared directly. Propose a common target and protocol that a fair comparison would require.</li>
+</ol>
+<p>Submit a one-page comparison using this template:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Item</th>
+<th style="text-align: left;">Tutorial</th>
+<th style="text-align: left;">Paper A</th>
+<th style="text-align: left;">Paper B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Scientific question and task</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Input representation and available information</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Target, horizon and spatial support</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Model family</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Split and baseline</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Metric and interpretation</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Limitation or unresolved protocol detail</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>Add <strong>150–200 words</strong> explaining how a change in the target can matter as much as a change in the architecture. Cite each paper and state whether you consulted the full text or only its abstract. Label the Jara thesis and the manuscript under review separately if you use them as additional sources.</p>
+</section>
+<section id="level-2-reproduce-the-demo-then-extend-one-question" class="level2">
+<h2 class="anchored" data-anchor-id="level-2-reproduce-the-demo-then-extend-one-question">Level 2 — Reproduce the demo, then extend one question</h2>
+<p><strong>Suggested time: 60–120 minutes, depending on Python familiarity and environment setup.</strong> Use the <a href="downloads/transformer-demo.ipynb">executable Transformer notebook</a> and its <a href="downloads/transformer-demo-solved.html">prepared outputs</a>. The model is already defined and locally tested; this exercise does not ask you to implement attention from scratch. Participants can also complete the interpretation using saved outputs. The notebook imports TensorFlow even in prepared mode; if imports fail, open the prepared HTML page instead.</p>
+<p>The pilot kept its architecture fixed before evaluation. It compared both neural models with catalogue-only inputs across seeds <strong>7, 17 and 27</strong>. The Transformer had higher losses in that experiment. Explaining the difference requires a new question and evidence, rather than attributing it to seismic complexity or declaring an architecture generally inferior.</p>
+<section id="start-from-the-recorded-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="start-from-the-recorded-comparison">Start from the recorded comparison</h3>
+<ol type="1">
+<li>Save a copy of the demo and use a separate output directory so the distributed results remain available.</li>
+<li>Trace one example through its 30 × 3 input, learned representation and probability output. Explain the role of fixed sinusoidal position information and temporal averaging.</li>
+<li>Read the existing results for every seed. Means in the comparison are averages of individual-fit metrics, not predictions from an ensemble. Check the differences in parameter count, completed epochs and fit time.</li>
+<li>If reproducing the unchanged demo, record your environment and every result, including small numerical differences. A local success does not verify execution in a clean Colab runtime.</li>
+<li>Before changing anything, write a hypothesis and choose <strong>one</strong> route below. Set <code>RUN_TRAINING = True</code> and <code>EVALUATE_TEST = False</code> for either extension. Execute <strong>all cells in order</strong>: the evaluation guard keeps the new run on validation while preserving the analysis and export steps. Leave the immutable <code>PILOT_SEEDS = [7, 17, 27]</code> unchanged.</li>
+</ol>
+</section>
+<section id="route-a-does-the-comparison-vary-across-more-initializations" class="level3">
+<h3 class="anchored" data-anchor-id="route-a-does-the-comparison-vary-across-more-initializations">Route A — Does the comparison vary across more initializations?</h3>
+<p>Keep both architectures unchanged. In the first configuration cell, set <code>RUN_TRAINING = True</code>, <code>EVALUATE_TEST = False</code> and <code>SEEDS = [37, 47, 57]</code>; leave <code>REFERENCE_ARCHITECTURE = True</code>. These are three additional, predeclared runs for each model, separate from the immutable pilot seeds. Execute all cells, then report the original seeds 7, 17 and 27 alongside all additional runs; do not replace or select seeds because of their scores.</p>
+<p>Summarize validation losses and paired Transformer-minus-LSTM differences for all six seeds. More seeds describe optimization variability more fully; they do not supply new earthquakes, independent test periods or a confidence interval for generalization.</p>
+</section>
+<section id="route-b-what-role-does-explicit-position-information-play" class="level3">
+<h3 class="anchored" data-anchor-id="route-b-what-role-does-explicit-position-information-play">Route B — What role does explicit position information play?</h3>
+<p>In the copied notebook, set <code>RUN_TRAINING = True</code>, <code>EVALUATE_TEST = False</code>, <code>SEEDS = [7, 17, 27]</code> and <code>REFERENCE_ARCHITECTURE = False</code>. Set <code>EXTENSION_NOTE</code> to describe the single change, for example <code>"Remove fixed sinusoidal position encoding"</code>. In the copied model definition, omit only the line <code>x = SinusoidalPosition(name="day_position")(x)</code> and keep the rest of the model unchanged. Execute all cells in order. Retain the original position-aware Transformer and the LSTM as references.</p>
+<p>Before fitting, state what information this change removes and why it might matter to this task. Compare validation predictions and losses for all three seeds. The result tests this particular position ablation; it does not establish that seismic order is irrelevant or identify the full cause of the original pilot’s performance.</p>
+</section>
+<section id="keep-the-rest-of-the-experiment-fixed" class="level3">
+<h3 class="anchored" data-anchor-id="keep-the-rest-of-the-experiment-fixed">Keep the rest of the experiment fixed</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Keep fixed</th>
+<th style="text-align: left;">Required setting</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Data and region</td>
+<td style="text-align: left;">Frozen USGS catalogue; latitude −34 to −28, longitude −74 to −69</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inputs</td>
+<td style="text-align: left;">Previous 30 days; M ≥ 4.5; catalogue-only <code>log_count</code>, <code>max_magnitude_excess</code>, <code>has_event</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Target</td>
+<td style="text-align: left;">At least one M ≥ 5 event in the next seven days, issued each Monday</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Training and validation</td>
+<td style="text-align: left;">2001–2016 and 2017–2020, with the demo’s chronological boundary exclusions</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Preprocessing</td>
+<td style="text-align: left;">The same windows and training-only normalization</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Comparisons</td>
+<td style="text-align: left;">Training-frequency and catalogue-only logistic baselines; original LSTM and Transformer</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Training protocol</td>
+<td style="text-align: left;">Same optimizer, learning rate, loss, batch size, maximum 20 epochs and early-stopping rule</td>
+</tr>
+</tbody>
+</table>
+<p>Do not also change the lookback, magnitude threshold, region, target or ETAS-inspired input. Those changes answer different questions. Keep all declared runs, including neutral or worse results. A common maximum training budget does not imply equal completed epochs, parameters or computing cost.</p>
+</section>
+<section id="evaluate-without-turning-the-published-test-into-a-tuning-set" class="level3">
+<h3 class="anchored" data-anchor-id="evaluate-without-turning-the-published-test-into-a-tuning-set">Evaluate without turning the published test into a tuning set</h3>
+<p>Use validation Brier score and log loss, alongside a calibration plot with <strong>common fixed bins 0, 0.1, …, 1 and counts for each model and seed</strong>. Keep empty bins visible in the count table. Do not pool predictions across seeds and treat them as additional independent weeks.</p>
+<p>The 2021–2025 test results are already available in the course and the pilot. Do not use them to choose an extension, seed or hyperparameter, and do not present a new analysis of that period as an untouched test. Any later evaluation on it must be labelled <strong>exploratory retrospective evaluation on a previously inspected test period</strong>. A confirmatory follow-up needs a genuinely untouched evaluation period and a protocol fixed before examining its outcomes.</p>
+<p>The frozen catalogue also preserves the <strong>revised retrospective</strong> limitation: historical availability of individual event revisions remains unverified. Attention weights do not by themselves identify causal seismic mechanisms.</p>
+</section>
+<section id="deliverables" class="level3">
+<h3 class="anchored" data-anchor-id="deliverables">Deliverables</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Deliverable</th>
+<th style="text-align: left;">What it must contain</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Reproducible copy or annotated prepared results</td>
+<td style="text-align: left;">Hypothesis, chosen route, fixed settings, environment and data provenance</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Validation table</td>
+<td style="text-align: left;">Model/variant, every seed, n, positive weeks, Brier, log loss, parameters, epochs and fit time</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">One diagnostic</td>
+<td style="text-align: left;">Common-bin calibration with counts or probability-versus-time plot with observed weeks</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Short interpretation</td>
+<td style="text-align: left;">200–300 words separating observations, hypotheses, seed variability, test exposure and what remains unresolved</td>
+</tr>
+</tbody>
+</table>
+<p>Explain what the chosen experiment says about the <strong>relationship between information, representation and task</strong>. A small difference or stronger simple baseline can still be informative. The exercise does not rank LSTMs and Transformers across seismological tasks or establish an operational earthquake-warning system.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/franplaza\.github\.io\/statsei14-deep-learning\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Francisco Plaza-Vega · STATSEI14 · 13 October 2026</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Retrospective teaching study</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

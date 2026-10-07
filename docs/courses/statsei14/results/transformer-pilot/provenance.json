@@ -1,0 +1,22 @@
+{
+  "source_experiment": "transformer-pilot-2026-10-07",
+  "staged_utc": "2026-10-07T14:17:45.168266+00:00",
+  "role": "Frozen three-seed local pilot, separate from the original single-seed LSTM/score experiment and from subsequent demo execution",
+  "sources": {
+    "protocol.json": "6081d0ad585db66823ed40ac5ebb6b0bedd5dc29b6eb9b21783eb13d7811deba",
+    "metrics.csv": "c2dd5704df0e78dcf93b5de6279c764ceb7cb384547030861481e226b85e6835",
+    "fits.csv": "50b689747845b7ab517063ae7c56b2e741dbd4aebf92fbcfa9ddb3deac934018",
+    "predictions.csv": "404cb97781c946ef39666bb1d2ad8d632d0613f633f229f41a27fed845f18a56",
+    "runtime.json": "8872a1ae6b8d2d0959b39c3def2bddf97d61e90eec1d0756b137b235fb845d58",
+    "checks.json": "0f1ab775f14c2a2972442e4612cc29635c9b6b11dad9708a1dca1bb24b251178",
+    "normalization.json": "d223b13484b16339ab3de6bd010e4d5223707d80d8993590588a93ef78eb471f",
+    "fit_freeze.json": "7fa20fb568e05e5a0c156e38b382ed0dc061d7dae8be3ba200ee7eeb6c240edb",
+    "fresh_process_reload.json": "69074e374a929787ddaa1f92201e32a888f5511394f9a107d5b08755c0e3f499",
+    "independent_verification.json": "bf1425c2639d8027e3446cec8f151fef3866e16a9958a8ab090868adb627ead7",
+    "environment.lock.txt": "cb57c5d1bbd27e081842c3217bfcc192fc1de2053f30c798bcfd6e64912a08a9"
+  },
+  "calibration_source": "Exact rows from pilot summary.json, common 0.1-wide bins per model and seed",
+  "summary_source_sha256": "f368c0d482e2462a95cfb4a8398aec7cf7e34c83b0931c5c4da66dca38bd6e3b",
+  "interpretation": "Observed differences under a fixed representation, sample, training budget and protocol. Potential explanations are hypotheses, not identified causes. Test already inspected; exploratory retrospective.",
+  "course_original_artifacts_unchanged": true
+}

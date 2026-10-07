@@ -41,6 +41,8 @@ website:
               href: courses/deep_learning/index.qmd
             - text: Quarto y Github Pages
               href: courses/quarto_github_pages/index.qmd
+            - text: Statsei14 - Tutorial
+              href: courses/statsei14/index.html
             - text: Tesistas
               href: guided_theses/index.qmd
         - text: Investigación

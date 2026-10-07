@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600" role="img" aria-labelledby="title desc"><title id="title">CNN: learn local patterns in a map or signal</title><desc id="desc">A spatial input map is transformed by shared local filters into feature maps, then summarized to produce an output. The values and map are schematic.</desc><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="context-stroke" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><rect width="1600" height="600" fill="white"/>
+<text x="175" y="62" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="middle" fill="#5A8ECE">Input map</text>
+<text x="665" y="62" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="middle" fill="#00A499">Feature maps</text>
+<text x="1050" y="62" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="middle" fill="#756CC7">Summary</text>
+<text x="1425" y="62" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700" text-anchor="middle" fill="#EA7600">Output</text>
+<rect x="55" y="155" width="40" height="40" fill="#F2F7FC" stroke="white" stroke-width="2"/>
+<rect x="95" y="155" width="40" height="40" fill="#D7E7F7" stroke="white" stroke-width="2"/>
+<rect x="135" y="155" width="40" height="40" fill="#5A8ECE" stroke="white" stroke-width="2"/>
+<rect x="175" y="155" width="40" height="40" fill="#5A8ECE" stroke="white" stroke-width="2"/>
+<rect x="215" y="155" width="40" height="40" fill="#D7E7F7" stroke="white" stroke-width="2"/>
+<rect x="255" y="155" width="40" height="40" fill="#F2F7FC" stroke="white" stroke-width="2"/>
+<rect x="55" y="195" width="40" height="40" fill="#8BB7E4" stroke="white" stroke-width="2"/>
+<rect x="95" y="195" width="40" height="40" fill="#D7E7F7" stroke="white" stroke-width="2"/>
+<rect x="135" y="195" width="40" height="40" fill="#D7E7F7" stroke="white" stroke-width="2"/>
+<rect x="175" y="195" width="40" height="40" fill="#8BB7E4" stroke="white" stroke-width="2"/>
+<rect x="215" y="195" width="40" height="40" fill="#B2D0EF" stroke="white" stroke-width="2"/>
+<rect x="255" y="195" width="40" height="40" fill="#8BB7E4" stroke="white" stroke-width="2"/>
+<rect x="55" y="235" width="40" height="40" fill="#D7E7F7" stroke="white" stroke-width="2"/>
+<rect x="95" y="235" width="40" height="40" fill="#D7E7F7" stroke="white" stroke-width="2"/>
+<rect x="135" y="235" width="40" height="40" fill="#8BB7E4" stroke="white" stroke-width="2"/>
+<rect x="175" y="235" width="40" height="40" fill="#B2D0EF" stroke="white" stroke-width="2"/>
+<rect x="215" y="235" width="40" height="40" fill="#8BB7E4" stroke="white" stroke-width="2"/>
+<rect x="255" y="235" width="40" height="40" fill="#D7E7F7" stroke="white" stroke-width="2"/>
+<rect x="55" y="275" width="40" height="40" fill="#5A8ECE" stroke="white" stroke-width="2"/>
+<rect x="95" y="275" width="40" height="40" fill="#D7E7F7" stroke="white" stroke-width="2"/>
+<rect x="135" y="275" width="40" height="40" fill="#F2F7FC" stroke="white" stroke-width="2"/>
+<rect x="175" y="275" width="40" height="40" fill="#D7E7F7" stroke="white" stroke-width="2"/>
+<rect x="215" y="275" width="40" height="40" fill="#5A8ECE" stroke="white" stroke-width="2"/>
+<rect x="255" y="275" width="40" height="40" fill="#5A8ECE" stroke="white" stroke-width="2"/>
+<rect x="55" y="315" width="40" height="40" fill="#B2D0EF" stroke="white" stroke-width="2"/>
+<rect x="95" y="315" width="40" height="40" fill="#D7E7F7" stroke="white" stroke-width="2"/>
+<rect x="135" y="315" width="40" height="40" fill="#B2D0EF" stroke="white" stroke-width="2"/>
+<rect x="175" y="315" width="40" height="40" fill="#F2F7FC" stroke="white" stroke-width="2"/>
+<rect x="215" y="315" width="40" height="40" fill="#F2F7FC" stroke="white" stroke-width="2"/>
+<rect x="255" y="315" width="40" height="40" fill="#B2D0EF" stroke="white" stroke-width="2"/>
+<rect x="55" y="355" width="40" height="40" fill="#F2F7FC" stroke="white" stroke-width="2"/>
+<rect x="95" y="355" width="40" height="40" fill="#D7E7F7" stroke="white" stroke-width="2"/>
+<rect x="135" y="355" width="40" height="40" fill="#5A8ECE" stroke="white" stroke-width="2"/>
+<rect x="175" y="355" width="40" height="40" fill="#5A8ECE" stroke="white" stroke-width="2"/>
+<rect x="215" y="355" width="40" height="40" fill="#D7E7F7" stroke="white" stroke-width="2"/>
+<rect x="255" y="355" width="40" height="40" fill="#F2F7FC" stroke="white" stroke-width="2"/>
+<rect x="55" y="155" width="240" height="240" fill="none" stroke="#5A8ECE" stroke-width="4"/>
+<rect x="135" y="235" width="80" height="80" fill="none" stroke="#EA7600" stroke-width="6"/>
+<path d="M320,290 L500,290" fill="none" stroke="#00A499" stroke-width="5" opacity="1" stroke-linecap="round" marker-end="url(#a)"/>
+<text x="410" y="245" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#00A499">Shared</text>
+<text x="410" y="337" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#00A499">filters</text>
+<rect x="609" y="116" width="195" height="240" rx="22" fill="#E6F5F3" stroke="#00A499" stroke-width="4"/>
+<path d="M630,118 Q702.6,114 785,118 M803,138 Q806,231.2 802,335" fill="none" stroke="#00A499" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="582" y="138" width="195" height="240" rx="22" fill="#E6F5F3" stroke="#00A499" stroke-width="4"/>
+<path d="M603,140 Q675.6,136 758,140 M776,160 Q779,253.2 775,357" fill="none" stroke="#00A499" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="555" y="160" width="195" height="240" rx="22" fill="#E6F5F3" stroke="#00A499" stroke-width="4"/>
+<path d="M576,162 Q648.6,158 731,162 M749,182 Q752,275.2 748,379" fill="none" stroke="#00A499" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="571" y="179" width="36" height="34" rx="4" fill="#D4F0ED"/>
+<rect x="613" y="179" width="36" height="34" rx="4" fill="#9DDAD4"/>
+<rect x="655" y="179" width="36" height="34" rx="4" fill="#53BDB4"/>
+<rect x="697" y="179" width="36" height="34" rx="4" fill="#D4F0ED"/>
+<rect x="571" y="220" width="36" height="34" rx="4" fill="#9DDAD4"/>
+<rect x="613" y="220" width="36" height="34" rx="4" fill="#53BDB4"/>
+<rect x="655" y="220" width="36" height="34" rx="4" fill="#D4F0ED"/>
+<rect x="697" y="220" width="36" height="34" rx="4" fill="#9DDAD4"/>
+<rect x="571" y="261" width="36" height="34" rx="4" fill="#53BDB4"/>
+<rect x="613" y="261" width="36" height="34" rx="4" fill="#D4F0ED"/>
+<rect x="655" y="261" width="36" height="34" rx="4" fill="#9DDAD4"/>
+<rect x="697" y="261" width="36" height="34" rx="4" fill="#53BDB4"/>
+<rect x="571" y="302" width="36" height="34" rx="4" fill="#D4F0ED"/>
+<rect x="613" y="302" width="36" height="34" rx="4" fill="#9DDAD4"/>
+<rect x="655" y="302" width="36" height="34" rx="4" fill="#53BDB4"/>
+<rect x="697" y="302" width="36" height="34" rx="4" fill="#D4F0ED"/>
+<rect x="571" y="343" width="36" height="34" rx="4" fill="#9DDAD4"/>
+<rect x="613" y="343" width="36" height="34" rx="4" fill="#53BDB4"/>
+<rect x="655" y="343" width="36" height="34" rx="4" fill="#D4F0ED"/>
+<rect x="697" y="343" width="36" height="34" rx="4" fill="#9DDAD4"/>
+<path d="M835,290 L945,290" fill="none" stroke="#756CC7" stroke-width="5" opacity="1" stroke-linecap="round" marker-end="url(#a)"/>
+<rect x="975" y="195" width="160" height="190" rx="22" fill="#F0ECFA" stroke="#756CC7" stroke-width="4"/>
+<path d="M996,197 Q1051.8,193 1116,197 M1134,217 Q1137,286.2 1133,364" fill="none" stroke="#756CC7" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="1000" y="307" width="19" height="48" rx="3" fill="#756CC7" opacity="0.55"/>
+<rect x="1029" y="265" width="19" height="90" rx="3" fill="#756CC7" opacity="0.65"/>
+<rect x="1058" y="231" width="19" height="124" rx="3" fill="#756CC7" opacity="0.75"/>
+<rect x="1087" y="287" width="19" height="68" rx="3" fill="#756CC7" opacity="0.8500000000000001"/>
+<path d="M1160,290 L1350,290" fill="none" stroke="#EA7600" stroke-width="5" opacity="1" stroke-linecap="round" marker-end="url(#a)"/>
+<circle cx="1425" cy="290" r="54" fill="#FFF0E4" stroke="#EA7600" stroke-width="4"/>
+<text x="1425" y="306" font-family="Arial, Helvetica, sans-serif" font-size="47" font-weight="400" text-anchor="middle" fill="#EA7600">ŷ</text>
+<text x="175" y="482" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="400" text-anchor="middle" fill="#607D8B">Spatial structure</text>
+<text x="665" y="482" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="400" text-anchor="middle" fill="#607D8B">Local patterns</text>
+<text x="1055" y="482" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="400" text-anchor="middle" fill="#607D8B">Combine features</text>
+<text x="1425" y="482" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="400" text-anchor="middle" fill="#607D8B">A prediction</text>
+<text x="800" y="563" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#263238">The same filter is reused across positions.</text>
+</svg>

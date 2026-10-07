@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "models": [
+    {
+      "model": "LSTM catalogue",
+      "seed": 7,
+      "max_abs_error": 8.940696721859709e-08
+    },
+    {
+      "model": "Transformer compact",
+      "seed": 7,
+      "max_abs_error": 1.1920928955078125e-07
+    },
+    {
+      "model": "Transformer compact",
+      "seed": 17,
+      "max_abs_error": 1.490116118829654e-07
+    },
+    {
+      "model": "LSTM catalogue",
+      "seed": 17,
+      "max_abs_error": 8.940696710757479e-08
+    },
+    {
+      "model": "LSTM catalogue",
+      "seed": 27,
+      "max_abs_error": 1.192092894952701e-07
+    },
+    {
+      "model": "Transformer compact",
+      "seed": 27,
+      "max_abs_error": 1.4901161193847656e-07
+    }
+  ],
+  "note": "Imported run_pilot to register custom positional layer; no training repeated; validation predictions only."
+}
