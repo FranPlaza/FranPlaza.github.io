@@ -112,5 +112,26 @@
   },
   "research/2026-01-04-ou-rosenblatt-process/index.qmd": {
     "index.html": "65e10432"
+  },
+  "docs/courses/statsei14/downloads/instructor-guide.md": {
+    "instructor-guide.html": "c8603321"
+  },
+  "docs/courses/statsei14/downloads/transformer-demo-solved.ipynb": {
+    "transformer-demo-solved.html": "5271ca3b"
+  },
+  "docs/courses/statsei14/downloads/transformer-demo.ipynb": {
+    "transformer-demo.html": "7304661f"
+  },
+  "docs/courses/statsei14/downloads/workshop-solved.ipynb": {
+    "workshop-solved.html": "a52eed87"
+  },
+  "docs/courses/statsei14/downloads/workshop.ipynb": {
+    "workshop.html": "a008f29d"
+  },
+  "docs/courses/statsei14/slides/assets/course-adapted/source-map.md": {
+    "source-map.html": "dffe4387"
+  },
+  "docs/courses/statsei14/slides/assets/SOURCES.md": {
+    "SOURCES.html": "14af07ee"
   }
 }
