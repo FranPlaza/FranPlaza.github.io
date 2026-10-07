@@ -234,7 +234,7 @@ Practical Hybrid Workflows for Seismic Forecasting
 13 October 2026 · Chile
 </div>
 <div class="takeaway">
-<p>Learning about seismicity through representations, models and evidence.</p>
+<p>30 minutes of concepts and research · 30 minutes of guided practice</p>
 </div>
 </div>
 <div class="current-field" aria-hidden="true">
@@ -244,7 +244,10 @@ Practical Hybrid Workflows for Seismic Forecasting
 </div>
 <aside class="notes">
 <p>duration_seconds: 30</p>
-<p>The session has 25 minutes of presentation, 23 minutes of guided LSTM practice, an eight-minute Transformer comparison and four minutes of closing discussion. Deep learning is the main theme. ETAS supplies one way to bring statistical structure into a learning problem. The public title is retained. Main slides s01-s20 end at minute 25. Use d01-d03 after the LSTM notebook at minute 48 and h01 at minute 56.</p>
+<p><strong>Main idea:</strong> Deep learning connects a representation to a scientific task.</p>
+<p><strong>Explain:</strong> We will spend 30 minutes on concepts and research, then 30 minutes on guided practice with LSTM, a Transformer comparison and closing discussion. ETAS supplies one way to construct a representation.</p>
+<p><strong>Transition:</strong> How do we turn catalogue history into a probability forecast, and what changes when we change the model?</p>
+<p><strong>Backup:</strong> Main slides s01–s20 end at minute 30. Return to d01 at minute 50 and h01 at minute 57.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -274,8 +277,11 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>Map: frozen USGS training catalogue and Natural Earth. Illustrates today’s regional setting.</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 90</p>
-<p>Begin with the phenomenon and observation. Seismicity is structured in space and time, and observation is incomplete. Deep learning gives flexible function families; scientific usefulness depends on the representation, target and evaluation. Briefly define learning: weights are adjusted from examples. This prepares participants to recognize the model names on the next slide without needing their equations. Map is from today’s USGS benchmark, not the catalogue in the published case. Our route is applications, basic tools, two research cases, then a small experiment.</p>
+<p>duration_seconds: 120</p>
+<p><strong>Main idea:</strong> The observation, representation and output determine the learning problem.</p>
+<p><strong>Explain:</strong> Signals record ground motion. A catalogue summarizes detected events. A model uses a chosen history to estimate a specified output. Learning adjusts weights from examples, but we choose the representation and target.</p>
+<p><strong>Transition:</strong> The next studies illustrate distinct choices of input and output. Our practical begins with a catalogue and ends with a weekly probability.</p>
+<p><strong>Backup:</strong> Map from today’s frozen USGS training benchmark with Natural Earth coastlines. It is not the CSN catalogue used in the published case. Observation is incomplete and catalogue records can change.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -289,7 +295,7 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="s03" class="slide level2">
-<h2>Deep learning addresses different seismic tasks</h2>
+<h2>Deep learning in seismology: inputs and targets</h2>
 <table class="caption-top">
 <colgroup>
 <col style="width: 33%">
@@ -299,7 +305,7 @@ Practical Hybrid Workflows for Seismic Forecasting
 <thead>
 <tr class="header">
 <th style="text-align: left;">Example</th>
-<th style="text-align: left;">Information supplied</th>
+<th style="text-align: left;">Input</th>
 <th style="text-align: left;">Learning task</th>
 </tr>
 </thead>
@@ -311,25 +317,39 @@ Practical Hybrid Workflows for Seismic Forecasting
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>RECAST · 2023</strong></td>
-<td style="text-align: left;">Catalogue event history</td>
-<td style="text-align: left;">Model the timing of future occurrences</td>
+<td style="text-align: left;">Past event times and magnitudes</td>
+<td style="text-align: left;">Estimate the next-event time distribution</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Transformers in Chile · 2025</strong></td>
-<td style="text-align: left;">Event features or sequences of grids</td>
-<td style="text-align: left;">Classify events or forecast gridded activity</td>
+<td style="text-align: left;"><strong>Delgado et al.&nbsp;· 2025</strong></td>
+<td style="text-align: left;">Features of catalogued events</td>
+<td style="text-align: left;">Classify foreshock, mainshock and aftershock labels</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Farfán et al.&nbsp;· 2025</strong></td>
+<td style="text-align: left;">Sequences of daily spatial grids</td>
+<td style="text-align: left;">Forecast gridded seismic activity</td>
 </tr>
 </tbody>
 </table>
 <div class="takeaway">
-<p>A useful model starts with a clearly defined question.</p>
+<p>Today’s practical: 30 days of history and a seven-day occurrence probability.</p>
 </div>
 <div class="small-note">
 <p><a href="https://doi.org/10.1126/sciadv.1700578">Perol et al.</a> · <a href="https://doi.org/10.1029/2023GL103909">Dascher-Cousineau et al.</a> · <a href="https://doi.org/10.1016/j.eswa.2025.127186">Delgado et al.</a> · <a href="https://doi.org/10.1109/CHILECON66915.2025.11476035">Farfán et al.</a></p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 180</p>
-<p>This is a small selection of applications, not an exhaustive history or a performance ranking. ConvNetQuake recognizes events in a recorded waveform; it does not forecast the next earthquake. RECAST is a neural temporal point process with a GRU, benchmarked against temporal ETAS. Its results depend on data and benchmark, and do not establish superiority over spatial ETAS. Two separate studies with Orietta Nicolis motivate the last row: Delgado et al.&nbsp;classify labels such as foreshock/mainshock/aftershock from event features after a clustering/labeling stage; Farfán et al.&nbsp;compare temporal models on daily 4 by 4 Chilean grids. Their labels omit fine epicentre and magnitude information. Classification labels must not be equated with prospective warning. After the LSTM practical we will inspect a small Transformer using the same catalogue inputs and target. This closing comparison motivates alternatives without a separate technical lecture on attention. The homework develops questions raised by that comparison. This completes the five-minute context block.</p>
+<p>duration_seconds: 210</p>
+<p><strong>Main idea:</strong> These applications answer different questions.</p>
+<p><strong>Explain each example:</strong></p>
+<ul>
+<li><strong>ConvNetQuake:</strong> a CNN detects events and classifies their source region from recorded waveforms. In our practical, those events are already represented in a catalogue.</li>
+<li><strong>RECAST:</strong> a recurrent GRU summarizes past event times and magnitudes to model the next-event time distribution. Its benchmark is temporal ETAS. We will use daily inputs and a weekly occurrence target instead.</li>
+<li><strong>Delgado et al.:</strong> event features support classification after spatial and temporal clustering and labeling. Labels such as foreshock, mainshock and aftershock show why target construction belongs to the scientific problem.</li>
+<li><strong>Farfán et al.:</strong> sequences of daily 4 × 4 Chilean grids support forecasts of gridded activity. Spatial aggregation anticipates the maps and graphs available after our regional exercise.</li>
+</ul>
+<p><strong>Transition:</strong> We now introduce the network components needed to learn one of these mappings, then apply them to a common catalogue forecasting problem.</p>
+<p><strong>Backup:</strong> This selection is not a performance ranking. Event classification does not establish prospective warning. RECAST’s temporal benchmark does not establish superiority over spatial ETAS. Grid labels omit fine epicentre and magnitude information. Sources are linked on the slide. End the context block at minute 6.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -356,8 +376,11 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>The output and the loss must match the scientific question.</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 60</p>
-<p>Use one everyday learning example before terminology: a history goes in, an estimate comes out, and a loss measures the discrepancy. Backpropagation computes gradients; an optimizer uses them to update weights. Weights are learned, whereas the target and representation are modeling choices. Validation guides choices and stopping. This is the common foundation of the four examples that follow, adapted from Units 1 and 2 of my course. Avoid an additional chronological history of DL.</p>
+<p>duration_seconds: 75</p>
+<p><strong>Main idea:</strong> Training changes weights to connect represented inputs with a defined output.</p>
+<p><strong>Explain:</strong> A history enters the network, an estimate comes out, and a loss measures its discrepancy from the target. Backpropagation computes gradients, and an optimizer updates the weights. Architecture determines how information is combined.</p>
+<p><strong>Transition:</strong> We will recognize this same loop in every network and in the notebook’s compile, fit and predict calls.</p>
+<p><strong>Backup:</strong> Validation guides choices and stopping. It does not update weights through backpropagation. Adapted from Units 1 and 2 of the author’s course.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -377,11 +400,14 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>A multilayer perceptron learns nonlinear combinations of a feature vector.</p>
 </div>
 <div class="small-note">
-<p>Example input: recent count, magnitude summary and elapsed time. Adapted from the author’s DL course, Unit 2.</p>
+<p>Temporal laboratory: the MLP uses 90 values at fixed lag positions. Diagram adapted from the author’s DL course, Unit 2.</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 45</p>
-<p>Follow one connection and then a hidden layer. Each layer combines weighted inputs and a nonlinear activation. Depth composes transformations. An MLP can learn from summaries but the representation must explicitly encode any temporal ordering it needs. We do not train an additional MLP today; it supplies the basic vocabulary for the other networks. English vector adaptation preserves the visual language of the original course scheme; provenance is in slides/assets/course-adapted/source-map.md.</p>
+<p>duration_seconds: 60</p>
+<p><strong>Main idea:</strong> An MLP combines a vector of measured features through learned layers.</p>
+<p><strong>Explain:</strong> Follow one connection and then one hidden layer. Weighted combinations and nonlinear activations compose a mapping. In the temporal laboratory section, flattening the 30 × 3 window gives 90 values, each at a fixed lag position.</p>
+<p><strong>Transition:</strong> The MLP is available for independent comparison. Next, shared filters use the local structure of a sequence.</p>
+<p><strong>Backup:</strong> Flattening preserves fixed lag positions. It does not randomly discard order. The guided session focuses on LSTM and Transformer. Diagram provenance: slides/assets/course-adapted/source-map.md.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -401,11 +427,14 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>The same filter examines different neighborhoods.</p>
 </div>
 <div class="small-note">
-<p>Signals and spatial fields can both carry local structure. Adapted from the author’s DL course, Unit 3.</p>
+<p>Temporal laboratory: CNN1D shares filters across days. Diagram adapted from the author’s DL course, Unit 3.</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 60</p>
-<p>Explain a local receptive field and shared weights using the diagram. CNNs also operate on time series; they are not restricted to photographs. In the published case a sequence of ETAS-derived spatial maps provides the representation. A grid choice determines what counts as a neighborhood and what information is retained. No kernel arithmetic is needed for the workshop.</p>
+<p>duration_seconds: 75</p>
+<p><strong>Main idea:</strong> A convolution applies shared filters to local neighborhoods.</p>
+<p><strong>Explain:</strong> Use the diagram to identify a local receptive field and shared weights. In the temporal tutorial, CNN1D moves filters across days. In the published case, the CNN processes spatial patterns in ETAS-derived maps.</p>
+<p><strong>Transition:</strong> A recurrent model offers another way to combine the daily history by updating a state.</p>
+<p><strong>Backup:</strong> CNN1D is available after the live route as an optional laboratory section. The grid or temporal sampling determines what counts as a neighborhood. No kernel arithmetic is needed here. Diagram adapted from Unit 3 of the author’s course.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -428,8 +457,11 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>Same learned update across time. Adapted from the author’s DL course, Unit 4.</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 75</p>
-<p>Read left to right. Each step combines the new daily input with information carried from earlier steps. Gates control what is retained, updated and exposed. We need the idea of memory, not gate equations. A many-to-one setup turns a 30-day history into one prediction, which connects to both the published temporal case and the practical. These cases have different targets. Attention is another way to combine information across positions. We will contrast it with recurrence in a compact demonstration after the LSTM practical.</p>
+<p>duration_seconds: 90</p>
+<p><strong>Main idea:</strong> An LSTM summarizes a sequence through a learned state.</p>
+<p><strong>Explain:</strong> Read left to right. Each update combines the new day’s channels with information from previous days. Gates control what is retained, updated and exposed. A many-to-one model turns a 30-day input into one output.</p>
+<p><strong>Transition:</strong> This is the architecture we will explain in detail in Colab. A generative task asks for a richer output than one probability.</p>
+<p><strong>Backup:</strong> The published temporal case and today’s practical use different targets. Keep gate equations optional. At minute 50 we compare recurrence with attention on the same daily tensor.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -453,7 +485,10 @@ Practical Hybrid Workflows for Seismic Forecasting
 </div>
 <aside class="notes">
 <p>duration_seconds: 60</p>
-<p>Noise allows different generated samples. A conditional extension also supplies contextual information; that is the setup in the Isidora case. The diagram here shows a generic GAN. In a GAN a discriminator or critic supplies a training signal; the generator is trained to produce samples consistent with the observed data under that objective. Generative describes the learning task, not an architecture mutually exclusive with MLP, CNN or LSTM. We will use this vocabulary in Isidora’s case. Producing a plausible curve is not sufficient evidence of a scientifically adequate distribution. This five-minute overview of DL concepts ends at minute 10. Retain input, output, learned parameters and training loss as the shared vocabulary.</p>
+<p><strong>Main idea:</strong> A generator learns to produce samples under a training objective.</p>
+<p><strong>Explain:</strong> Random input allows different generated samples. A GAN uses a discriminator or critic to supply the generator’s training signal. The Isidora case also conditions generation on mainshock information.</p>
+<p><strong>Transition:</strong> With this vocabulary, consider how our first study turned an ETAS representation into neural inputs and targets.</p>
+<p><strong>Backup:</strong> Generative learning describes a task and can use MLP, CNN or recurrent components. A plausible curve alone does not establish a scientifically adequate distribution. End the concepts block at minute 12.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -482,7 +517,10 @@ Practical Hybrid Workflows for Seismic Forecasting
 </div>
 <aside class="notes">
 <p>duration_seconds: 90</p>
-<p>Introduce our published work using the original author-provided project workflow. Interpret its broad intensity/location labels precisely: the targets derive from a fitted ETAS representation, not physical shaking or an exact next epicentre. The catalogue is Chile’s National Seismological Center, unlike the USGS practical. The question is how to use a statistical model to construct representations for learning. Source https://doi.org/10.1016/j.spasta.2020.100442 . Explain that the next three slides unpack the representation and the two outputs.</p>
+<p><strong>Main idea:</strong> The published study learns the evolution of an ETAS-derived representation.</p>
+<p><strong>Explain:</strong> Use the original author-provided workflow to identify the catalogue, representation and two neural branches. The daily time series and spatial maps create different inputs and outputs.</p>
+<p><strong>Transition:</strong> What does the ETAS representation measure before a neural network uses it?</p>
+<p><strong>Backup:</strong> Nicolis, Plaza &amp; Salas, Spatial Statistics 42 (2021), 100442. Source: https://doi.org/10.1016/j.spasta.2020.100442 . Catalogue: CSN Chile, 2000–2017. Interpret the original intensity/location labels as model-derived targets, not physical shaking or an exact next epicentre.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -511,8 +549,11 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>Conceptual sketch. Process intensity is different from magnitude and shaking intensity.</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 75</p>
-<p>Use the equation as an intuitive bridge from the preceding statistical-seismology tutorial. Background and past-event contributions encode structure. A full model requires estimated parameters, units and observation assumptions. Process intensity is a conditional rate, not itself a seven-day probability. Here the fitted intensity is summarized for neural input and targets. Avoid a separate technical ETAS lecture. The four-quantity distinction remains in the appendix.</p>
+<p>duration_seconds: 90</p>
+<p><strong>Main idea:</strong> ETAS describes a conditional event rate through background and past-event contributions.</p>
+<p><strong>Explain:</strong> Use the equation as a bridge from statistical seismology. Larger and more recent events can contribute differently. Spatial ETAS also models how contributions vary over space. The study summarizes the fitted intensity for learning.</p>
+<p><strong>Transition:</strong> A daily maximum creates a specific temporal prediction task.</p>
+<p><strong>Backup:</strong> Full estimation requires parameters, units and observation assumptions. Process intensity differs from magnitude, shaking intensity and probability. The appendix keeps those distinctions available.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -539,8 +580,11 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>Published case, Nicolis, Plaza &amp; Salas (2021). The target is a model-derived quantity.</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 75</p>
-<p>The paper uses 30 daily maximum intensity values for next-day prediction. A model-derived target is scientifically different from direct event occurrence. Reported test R-squared is approximately 0.66 at the threshold-six setting. At threshold five the ETAS comparator has lower MSE, MAE and RMSE, so no uniform neural superiority follows. The paper does not establish that ETAS estimation excluded all test information. Keep these qualifications available when discussing results. We are using the case to show how a representation makes a learning task possible, and why its construction must be included in evaluation.</p>
+<p>duration_seconds: 90</p>
+<p><strong>Main idea:</strong> This LSTM predicts a model-derived intensity summary.</p>
+<p><strong>Explain:</strong> Thirty daily maximum intensity values enter the network, and the next day’s maximum is the target. This example shows how a statistical representation makes a learning task possible.</p>
+<p><strong>Transition:</strong> Keeping a spatial map instead of one daily maximum opens a different output question.</p>
+<p><strong>Backup:</strong> The paper reports test R-squared of about 0.66 at the threshold-six setting. At threshold five, ETAS has lower MSE, MAE and RMSE. The paper does not establish that ETAS estimation excluded all test information. These qualifications prevent a claim of uniform neural superiority.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -562,14 +606,17 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>Which macrozone contains tomorrow’s maximum estimated intensity?</p>
 </div>
 <div class="takeaway">
-<p>Changing the representation and output opens a different learning task.</p>
+<p>The representation determines which information the network can use.</p>
 </div>
 <div class="small-note">
 <p>Published case, Nicolis, Plaza &amp; Salas (2021). These probabilities concern six macrozones.</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 75</p>
-<p>Connect the CNN’s local patterns to spatial maps in the paper. Its class identifies the macrozone containing the next day’s maximum of the ETAS representation. This is neither the precise location of the next earthquake nor occurrence probability in today’s fixed box. The paper’s temporal and spatial branches motivate a shared principle: align representation, architecture and output. Transition: with Isidora we explored a richer output, an entire sequence following a mainshock. The published-case block ends at approximately minute 15. We now use the remaining five minutes of the research block for the Isidora case.</p>
+<p>duration_seconds: 90</p>
+<p><strong>Main idea:</strong> Changing the representation changes which information the network can use.</p>
+<p><strong>Explain:</strong> Thirty daily ETAS maps feed the spatial branch. Its six probabilities concern the macrozone containing tomorrow’s maximum estimated intensity.</p>
+<p><strong>Transition:</strong> In that study ETAS supplied the representation. In our practical we construct simpler daily channels directly from the catalogue. In both settings, we must decide what the network receives and what its output means. With Isidora we explored a richer output: an aftershock sequence.</p>
+<p><strong>Backup:</strong> The macrozone is not the exact next epicentre or today’s fixed-box occurrence target. End the published-case block at minute 18.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -598,8 +645,11 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>Isidora Jara Muñoz (2025), thesis · Subsequent manuscript by Plaza-Vega, Jara, Nicolis &amp; Salinas (2026), under review</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 75</p>
-<p>Name Isidora and the thesis separately from the later manuscript. Explain conditions versus random input. WGAN-GP changes the adversarial objective and regularization; the attention variant changes how sequence positions exchange information. The thesis uses TGAN terminology and the revised manuscript uses GANT. Their evaluations and scores are separate sources. Do not turn this into three architecture tutorials or a performance contest. The question concerns conditional sample generation; ETAS-GAN is outside the empirical scope of the manuscript.</p>
+<p>duration_seconds: 90</p>
+<p><strong>Main idea:</strong> Conditional generation asks for possible sequences following a mainshock.</p>
+<p><strong>Explain:</strong> Distinguish the mainshock conditions from the random input. The thesis explored conditional GAN, WGAN-GP and an attention-based generator. WGAN-GP changes the adversarial objective and regularization, while attention changes information exchange across positions.</p>
+<p><strong>Transition:</strong> Before judging the generated sequence, we must define what each entry represents.</p>
+<p><strong>Backup:</strong> Keep Isidora Jara Muñoz’s 2025 thesis separate from the 2026 manuscript by Plaza-Vega, Jara, Nicolis &amp; Salinas, under review. TGAN in the thesis and GANT in the manuscript have separate evaluations. ETAS-GAN is outside the manuscript’s empirical scope.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -626,8 +676,11 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>“No recorded event” and “event magnitude” are different outcomes.</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 60</p>
-<p>In this representation 2.5 codes absence and is not an observed magnitude for an empty bin. A maximum discards multiplicity, so occupied bins are not total aftershock counts. The illustrated eight bins are schematic and are not empirical observations. Ask what information the representation loses. This motivates checking occupancy as well as errors of a numeric sequence.</p>
+<p>duration_seconds: 75</p>
+<p><strong>Main idea:</strong> This sequence representation combines absence with magnitude.</p>
+<p><strong>Explain:</strong> Fourteen days become 224 intervals of 90 minutes. The value 2.5 marks absence, while an occupied bin stores its maximum magnitude. Ask which information a maximum discards.</p>
+<p><strong>Transition:</strong> We therefore need to check event occupancy as well as numeric sequence errors.</p>
+<p><strong>Backup:</strong> The eight displayed values are schematic. Empty-bin 2.5 is not an observed magnitude. Occupied intervals are not the total number of aftershocks because a bin can contain multiple events.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -650,8 +703,11 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>2026 manuscript under review · Occupied intervals, not total events · Source-case results</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 75</p>
-<p>This teaching plot adapts Table_gant_temporal_blocked_event_occupancy.csv. Overall occupancy is 9.27 percent observed versus 77.43 percent generated in this evaluation. Reported M&gt;=5 occupancy is 1.22 versus 0.40 percent; inherited threshold code has &gt; versus &gt;= ambiguities, so do not reinterpret these as new inclusive-threshold results. The temporal GANT mean-baseline skill remains negative, -13.8 percent. The original PI denominator refers to a mean reference, not last-value persistence. Do not merge thesis metrics, illustrative sequences and blocked results. These findings concern the studied representation and evaluation; they do not establish that all generative approaches fail. The original sequence graphic is in the appendix for discussion.</p>
+<p>duration_seconds: 105</p>
+<p><strong>Main idea:</strong> Evaluation must test the properties the representation is intended to preserve.</p>
+<p><strong>Explain:</strong> The manuscript’s temporal evaluation shows too many occupied intervals overall and too few in the larger-magnitude subset. A curve-level fit measure cannot replace these checks.</p>
+<p><strong>Transition:</strong> These findings motivated closer attention to the target, including aggregate occurrence and exceedance outcomes.</p>
+<p><strong>Backup:</strong> Source: Table_gant_temporal_blocked_event_occupancy.csv. Overall occupancy is 9.27% observed and 77.43% generated. Reported M≥5 occupancy is 1.22% and 0.40%, but inherited threshold code has &gt; versus ≥ ambiguity. Temporal GANT mean-baseline skill is −13.8%. Original PI uses a mean reference, not last-observation persistence. Keep thesis, illustrative and blocked results separate. These findings do not establish failure of all generative models.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -677,14 +733,17 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>Evaluate both parts and their joint behavior.</p>
 </div></div>
 <div class="takeaway">
-<p>Reformulating the target can matter as much as changing the architecture.</p>
+<p>Today we isolate occurrence in a fixed future interval as the learning target.</p>
 </div>
 <div class="small-note">
 <p>ETAS-informed generation remains future work. The two-part neural model is a proposal.</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 75</p>
-<p>The revised manuscript examines aggregate targets with Random Forest and Gradient Boosting. Do not attribute their classification results to GANs or LSTMs. Ranking performance depends on temporal and geographic evaluation, and is not equivalent to a calibrated operational warning. Explain how the findings motivate future separation of occurrence and magnitude without claiming that this neural model has been validated. Some inherited target horizons were not fully purged, another reason to use a carefully bounded new teaching task. We now carry these modeling lessons into the practical, not the source paper’s scores. End the research block at minute 20. Five minutes remain to frame the practical task and its evaluation.</p>
+<p>duration_seconds: 90</p>
+<p><strong>Main idea:</strong> The target deserves as much scrutiny as the architecture.</p>
+<p><strong>Explain:</strong> The revised manuscript examines aggregate occurrence, exceedance and count targets with Random Forest and Gradient Boosting. Separating occurrence probability from conditional magnitude is a future neural proposal.</p>
+<p><strong>Transition:</strong> This experience led us to examine the target more carefully. Today’s exercise isolates occurrence within a fixed future interval, giving us a clear output to train and evaluate before considering richer sequence models.</p>
+<p><strong>Backup:</strong> Do not attribute tree-model classification scores to GANs or LSTMs. Ranking performance varies with temporal and geographic evaluation and does not imply calibrated operational warning. Some inherited horizons were not fully purged. The proposed two-part neural model is unvalidated. End the research cases at minute 24.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -731,11 +790,14 @@ Practical Hybrid Workflows for Seismic Forecasting
 </tbody>
 </table>
 <div class="takeaway">
-<p>Represent the history → define the output → learn → check the evidence.</p>
+<p>Live: LSTM and Transformer. Laboratory extensions: MLP, CNN1D, maps and graphs.</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 60</p>
-<p>This is the explicit bridge. Today’s notebook does not reproduce either study. It isolates one tractable question, occurrence, and lets participants change the representation through an extra channel. The common scientific decisions connect the cases even though the targets and catalogues differ. Flexibility means being able to formulate and compare alternatives; it does not guarantee gains.</p>
+<p>duration_seconds: 75</p>
+<p><strong>Main idea:</strong> The same modeling decisions connect the research cases and our exercise.</p>
+<p><strong>Explain:</strong> Spatial Statistics contributes the representation question. The Isidora work contributes the target question. Today we build a regional weekly probability from daily catalogue channels.</p>
+<p><strong>Transition:</strong> The live route uses the linear temporal notebook: build one example, define references, train the LSTM, evaluate its probabilities and compare with a Transformer. MLP, CNN1D, maps, graphs and the earlier activity score remain extensions.</p>
+<p><strong>Backup:</strong> Today’s task does not reproduce either study. Building the notebook from a blank Colab is an independent-study route. Keep the prepared results available if setup or training stalls.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -755,11 +817,14 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>30 past days → probability of at least one catalogue M ≥ 5 event in seven days.</p>
 </div>
 <div class="small-note">
-<p>Region: 28–34°S, 69–74°W · Input: catalogue M ≥ 4.5 · Monday forecast origins</p>
+<p>One input: 30 days × 3 channels · Region: 28–34°S, 69–74°W · Input M ≥ 4.5 · Monday origins</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 75</p>
-<p>Daily channels are log count, maximum excess magnitude and occupancy. Event presence distinguishes an empty day from an event exactly at the input threshold. Inputs are examples by days by features. Magnitude scales in ComCat are mixed; do not call all observations Mw. The practical predicts a defined recorded occurrence, not its exact location, shaking or damage. The threshold is a teaching policy, not proof of uniform completeness.</p>
+<p>duration_seconds: 105</p>
+<p><strong>Main idea:</strong> One example is a 30-day input window and the label for its following week.</p>
+<p><strong>Explain:</strong> Point to the history, Monday forecast origin and seven-day target before showing code. The input has shape 30 × 3: log event count, maximum magnitude excess above 4.5, and an event indicator. The label is one if at least one catalogue M≥5 event occurs in the region during that week.</p>
+<p><strong>Transition:</strong> How should these examples be divided for learning and evaluation?</p>
+<p><strong>Backup:</strong> An empty day and an event exactly at M=4.5 both have zero excess, but different event indicators. Inputs are examples × days × channels. ComCat mixes magnitude scales. The thresholds are teaching choices, not proof of completeness. The target does not specify exact location, shaking or damage.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -776,14 +841,17 @@ Practical Hybrid Workflows for Seismic Forecasting
 <h2>Evaluate using the temporal order of the problem</h2>
 <p><img data-src="../results/reference-run/figures/split.png" class="focus-figure" alt="Chronological training, validation and test periods, with crossing future target weeks excluded." height="385"></p>
 <div class="takeaway">
-<p>Compare probabilities with simple references using Brier score, log loss and calibration.</p>
+<p>Today we compare validation probabilities using Brier score, log loss and calibration.</p>
 </div>
 <div class="small-note">
-<p>Train 2001–2016 · Validation 2017–2020 · Test 2021–2025 · Frozen, revised USGS catalogue</p>
+<p>Train 2001–2016 · Validation 2017–2020 · Test 2021–2025 was inspected previously and is excluded from this comparison.</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 75</p>
-<p>Use training to fit weights and scaling, validation for stopping and choices, and a fixed test comparison. Inputs can extend into a previous partition; target weeks cannot cross a boundary. Today’s revised ComCat data do not reconstruct original historical availability, so this is a revised retrospective experiment. Event time and information availability are separate issues. Baselines are training frequency and logistic regression. Calibration and sample size will be inspected in the notebook; a sigmoid alone does not imply calibration.</p>
+<p>duration_seconds: 90</p>
+<p><strong>Main idea:</strong> The current temporal tutorial compares validation performance only.</p>
+<p><strong>Explain:</strong> Training determines weights and normalization. Validation controls early stopping and supplies today’s probability diagnostics. The older test interval was already inspected during course development and is excluded from the current comparison. Target weeks cannot cross a partition boundary.</p>
+<p><strong>Transition:</strong> Compare the LSTM with training prevalence and logistic regression, then process the same history with a Transformer.</p>
+<p><strong>Backup:</strong> Training 2001–2016, validation 2017–2020, historical test 2021–2025. Earlier experiments retain their own test results. The revised frozen ComCat catalogue does not reconstruct historical availability. Validation used for stopping is development evidence. A sigmoid does not guarantee calibration.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -797,24 +865,27 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="s20" class="slide level2">
-<h2>Experiment: does an informed representation help?</h2>
+<h2>Experiment: how does the same history enter each model?</h2>
 <div class="flow-line">
-<p>Catalogue channels → LSTM → occurrence probability</p>
+<p>30 days × 3 catalogue channels → LSTM → weekly probability</p>
 </div>
 <div class="flow-line">
-<p>Catalogue channels + activity score → LSTM → occurrence probability</p>
+<p>The same history → Transformer → the same target</p>
 </div>
-<p><strong>Before fitting:</strong> predict what the extra information might change.</p>
-<p><strong>After fitting:</strong> compare errors, calibration and simple baselines.</p>
+<p><strong>Build one example:</strong> identify the input window, its origin and its label.</p>
+<p><strong>Train and evaluate:</strong> read <code>compile</code>, <code>fit</code>, <code>predict</code> and compare probability errors.</p>
 <div class="takeaway">
-<p>The score emphasizes larger, recent events with an illustrative decay.</p>
+<p>What changes when different architectures process the same information?</p>
 </div>
 <div class="small-note">
-<p>Colab: <a href="../practical.html">practical page</a> · Prepared results available · Transformer comparison follows the LSTM practice</p>
+<p><a href="../downloads/tutorials/temporal.ipynb">Prepared temporal notebook</a> · Seed 7 · MLP and CNN1D for the laboratory · Activity-score experiment as an extension</p>
 </div>
 <aside class="notes">
 <p>duration_seconds: 90</p>
-<p>Move to the notebook at minute 25. This is an ETAS-inspired score, not a fitted ETAS rate: no background or spatial kernel is estimated. Both LSTM variants use the same 30-day history. Adding a channel increases some input weights, which qualifies the comparison. The question concerns representation under a fixed protocol. Use minutes 25–28 for setup, 28–32 for windows, 32–38 for baselines and LSTM, 38–43 for the activity-score exercise, and 43–48 for evaluation. Use prepared results after three minutes of setup trouble or a fit exceeding its three-minute allowance. At minute 48 return to d01 and the Transformer notebook demonstration. All twenty main-slide durations sum to 1500 seconds.</p>
+<p><strong>Main idea:</strong> The exercise changes the architecture while retaining the daily history and occurrence target.</p>
+<p><strong>Explain:</strong> First identify an example and fit simple references. Then read the LSTM definition followed immediately by compile, fit, predict and its probability scores. The Transformer reuses the same 30 × 3 tensor and evaluation.</p>
+<p><strong>Transition:</strong> Open the prepared temporal notebook at minute 30.</p>
+<p><strong>Backup:</strong> Minutes 30–34: setup and one window. Minutes 34–43: references and LSTM. Minutes 43–50: scores, calibration and interpretation. Minutes 50–57: Transformer using d01–d03. Minutes 57–60: discussion using h01. At minute 34, use prepared outputs if setup is incomplete. Use prepared outputs if a fit exceeds three minutes. The activity-score exercise belongs to the earlier practical and remains an optional extension. Main slides sum to 1,800 seconds.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -829,16 +900,19 @@ Practical Hybrid Workflows for Seismic Forecasting
 </section>
 <section id="d01" class="slide level2">
 <h2>A Transformer combines the same history differently</h2>
-<p><img data-src="assets/course-adapted/transformer-en.svg" class="focus-figure" alt="Compact Transformer: the same 30 days by three catalogue channels, a 16-feature projection with fixed sinusoidal positions, one two-head attention block with residual normalization and a feed-forward layer, average pooling, and a weekly probability." height="440"></p>
+<p><img data-src="assets/course-adapted/transformer-en.svg" class="focus-figure" alt="Compact Transformer: the same 30 days by three catalogue channels, a 16-feature projection with learned day positions, one two-head attention block with residual normalization and a feed-forward layer, average pooling, and a weekly probability." height="440"></p>
 <div class="takeaway">
 <p>Same history and target. A different way to combine information across days.</p>
 </div>
 <div class="small-note">
-<p>Catalogue-only comparison · 2,305 trainable parameters versus 1,297 for LSTM · One fixed, small configuration</p>
+<p>Current temporal tutorial · 2,257 trainable parameters versus 1,297 for LSTM · One fixed, small configuration</p>
 </div>
 <aside class="notes">
 <p>duration_seconds: 120</p>
-<p>Return from the LSTM practical at minute 48. First recall the recurrent state. Here every observed day is projected to 16 features and given a fixed sinusoidal position encoding. Two attention heads, each with key dimension eight, combine information across the past window. Residual additions and layer normalization surround attention and the 32-to-16 feed-forward sublayer. Global average pooling and a sigmoid give the same next-week probability. Keep the explanation intuitive and point to the notebook model summary, without query/key/value algebra. All 30 inputs precede the forecast origin, so attention between those observed positions does not access the future target. The diagram omits no layer type but simplifies the detailed operations. This is a catalogue-only comparison: the Transformer does not receive the extra ETAS-inspired score. Parameter counts exclude optimizer state. The models have different capacity, so this is a bounded comparison under a fixed protocol, not a parameter-matched architecture contest. Proceed to results at minute 50.</p>
+<p><strong>Main idea:</strong> Attention combines the same observed days differently from an LSTM state.</p>
+<p><strong>Explain:</strong> At minute 50, show the current temporal notebook’s Transformer. Each day is projected to 16 features and receives a learned 16-value day-position embedding. Two attention heads, each with key dimension 8, combine positions. Residual additions and layer normalization surround attention and the 16-to-16 feed-forward sublayer. Average pooling and a sigmoid produce the weekly probability.</p>
+<p><strong>Transition:</strong> At minute 52, compare the probabilities under the unchanged evaluation.</p>
+<p><strong>Backup:</strong> The diagram matches the explicit Transformer definition in scripts/linear_tutorial_sources/temporal.json. Projection: 64 parameters, learned positions: 480, attention: 1,088, two normalizations: 64, feed-forward: 544, output: 17. Total: 2,257 trainable parameters versus 1,297 for LSTM. No dropout is applied. All input positions precede the origin, so within-history attention does not expose the target. Capacity differs between architectures. Attention weights alone do not establish causation.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -852,53 +926,52 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="d02" class="slide level2">
-<h2>The Transformer did not improve this comparison</h2>
+<h2>Validation probabilities from one declared seed</h2>
+<!-- Values from results/linear/temporal/validation_metrics.csv; run temporal-8809d0d176; SHA256 0070e74eafae57460c0c1871a91ea2bfd40a26d46da04d0b4169c13c15ffbe7e. Individual seed-7 fits, not three-seed means. -->
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Model</th>
 <th style="text-align: right;">Validation Brier</th>
-<th style="text-align: right;">Test Brier</th>
-<th style="text-align: right;">Test log loss</th>
+<th style="text-align: right;">Validation log loss</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Training frequency</td>
+<td style="text-align: left;">Training prevalence</td>
 <td style="text-align: right;">0.187690</td>
-<td style="text-align: right;">0.165370</td>
-<td style="text-align: right;">0.513204</td>
+<td style="text-align: right;">0.562855</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Logistic regression</td>
-<td style="text-align: right;">0.186611</td>
-<td style="text-align: right;"><strong>0.164229</strong></td>
-<td style="text-align: right;"><strong>0.510317</strong></td>
+<td style="text-align: right;">0.203664</td>
+<td style="text-align: right;">0.614405</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">LSTM</td>
-<td style="text-align: right;"><strong>0.183065</strong></td>
-<td style="text-align: right;">0.165413</td>
-<td style="text-align: right;">0.512942</td>
+<td style="text-align: right;">0.181521</td>
+<td style="text-align: right;">0.547512</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Compact Transformer</td>
-<td style="text-align: right;">0.188771</td>
-<td style="text-align: right;">0.166367</td>
-<td style="text-align: right;">0.515602</td>
+<td style="text-align: left;">Transformer</td>
+<td style="text-align: right;">0.187901</td>
+<td style="text-align: right;">0.562477</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Lower is better.</strong> LSTM has the lowest validation Brier; logistic regression has the lowest test losses.</p>
+<p><strong>Lower is better.</strong> Compare these scores with the calibration plot and its sample counts.</p>
 <div class="takeaway">
-<p>Changing the architecture gave us a useful comparison, without a gain in this pilot.</p>
+<p>These are development results from one region and one validation period.</p>
 </div>
 <div class="small-note">
-<p>Pilot: 7 October 2026 · Neural scores are means over seeds 7, 17 and 27 · Catalogue-only comparison on the same split · Exploratory results on an already-inspected test period</p>
+<p>Linear temporal tutorial · One fit per neural model, seed 7 · 208 validation origins · Logistic regression uses all 90 lagged values</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 240</p>
-<p>Use minutes 50–54 to open the Transformer notebook, inspect its model summary and load or run the compact comparison. Explain that the displayed neural scores are arithmetic means across three seeds, while the two deterministic baselines have one result. Both neural models receive the identical 30-by-3 tensor. Logistic regression uses the means, maxima and last values of those channels, while the frequency baseline uses the training target prevalence. Show the individual-seed figure or table from the prepared notebook before returning here. The three Transformer test Brier values are 0.165821, 0.167079 and 0.166200; the paired LSTM values are 0.165309, 0.165626 and 0.165304. Logistic regression has the lowest observed test Brier and log loss, whereas LSTM has the lowest validation Brier. These are descriptive differences from one frozen regional split, with 208 validation and 260 test origins, not a significance test or a claim about all Transformers. All predeclared candidates were retained without selecting a seed using test results. The original tutorial test had already been inspected before the pilot, so this is exploratory evidence. Local CPU fitting took about 1.34–1.59 seconds for Transformer and 2.00–2.05 seconds for LSTM, but early stopping used 5–9 versus 20 epochs. These fit timings do not rank architecture speed and exclude notebook setup. Source: experiments/transformer-pilot-2026-10-07/results/metrics.csv and fits.csv. The public companion assets preserve per-seed metrics. If live execution stalls, use the prepared results immediately and keep the explanation within four minutes. Do not tune against the displayed test table.</p>
+<p>duration_seconds: 180</p>
+<p><strong>Main idea:</strong> A probability score summarizes the errors of one fitted model on the validation weeks.</p>
+<p><strong>Explain:</strong> Use minutes 52–55 to inspect the model summary, prepared predictions and calibration. The displayed neural scores each come from one fit with seed 7. Training prevalence and logistic regression each have one result. Logistic regression receives all 90 lagged channel values. Both neural models receive the same 30 × 3 input. In this seed-7 run, the LSTM has lower Brier and log loss than the Transformer and both references. The Transformer and constant reference have similar losses. Compare both scores without assuming that added complexity improves them.</p>
+<p><strong>Transition:</strong> Which conclusions do these scores support, and which require a new experiment?</p>
+<p><strong>Backup:</strong> Source: results/linear/temporal/validation_metrics.csv. There are 208 validation origins. A single seed does not measure sensitivity to initialization. The separate repeated temporal comparison retains seeds 7, 17 and 27 and reports its own means. Validation also selects stopping, so it is not independent assessment. The earlier Transformer pilot used fixed sinusoidal positions and summary-feature logistic regression, and its scores are separate evidence. Do not mix that pilot’s test table or the repeated comparison’s means with this table. Use prepared results if live fitting stalls.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -915,9 +988,9 @@ Practical Hybrid Workflows for Seismic Forecasting
 <h2>What can this result tell us about the problem?</h2>
 <div class="columns">
 <div class="column" style="width:44%;">
-<p><strong>Observed in this pilot</strong></p>
-<p>The attention model did not improve the measured losses.</p>
-<p>A simple baseline remained competitive.</p>
+<p><strong>Reading the validation results</strong></p>
+<p>Compare each model with training prevalence.</p>
+<p>Read Brier, log loss and calibration together.</p>
 </div><div class="column" style="width:56%;">
 <p><strong>Questions for the next experiment</strong></p>
 <p>Which representation and target preserve useful structure?</p>
@@ -928,11 +1001,14 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>Useful deep learning depends on how we represent the phenomenon and formulate the task.</p>
 </div>
 <div class="small-note">
-<p>These questions are hypotheses to investigate. The pilot does not identify the cause of its performance.</p>
+<p>Validation also controls early stopping. One seed does not measure initialization sensitivity.</p>
 </div>
 <aside class="notes">
 <p>duration_seconds: 120</p>
-<p>Use minutes 54–56 to connect the result to the research cases. In Spatial Statistics, a fitted statistical representation supplied the targets and inputs. In the Isidora work, separating absence, magnitude and aggregate outcomes changed the scientific question. Here changing the architecture alone did not improve losses. The pilot cannot diagnose whether the representation, target, available information, sample size, optimization budget or model capacity caused the result. In particular, it does not establish that seismicity is too complex for deep learning or that attention is unsuitable for earthquake modeling. Ask participants for one testable hypothesis and the comparison needed to investigate it. Keep any extension conditional on preregistering choices and obtaining an appropriate new evaluation, because the current test scores are already known.</p>
+<p><strong>Main idea:</strong> A score difference does not explain its cause.</p>
+<p><strong>Explain:</strong> Use minutes 55–57 to connect the comparison to our cases. Spatial Statistics supplied a fitted representation. The Isidora work exposed difficulties in the output definition. Here, each model has one declared fit on the same history. An observed score difference describes those settings; it does not explain why the models differ.</p>
+<p><strong>Transition:</strong> Ask for one testable hypothesis and the comparison needed to investigate it, then choose an extension for the laboratory.</p>
+<p><strong>Backup:</strong> This comparison cannot isolate representation, information availability, sample size, optimization or capacity as a cause. It does not establish that attention is unsuitable for seismicity. Validation is development evidence, and the historical test was already inspected. New claims need a documented protocol and appropriate fresh evaluation.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -948,9 +1024,9 @@ Practical Hybrid Workflows for Seismic Forecasting
 <section id="h01" class="slide level2">
 <h2>What did we learn, and what would we test next?</h2>
 <ol type="1">
-<li>Which properties of the catalogue did our representation preserve?</li>
-<li>What evidence supports changing an input or an architecture?</li>
-<li>What would we evaluate next before making a broader claim?</li>
+<li>What information did our daily channels preserve or discard?</li>
+<li>What did the LSTM and Transformer comparison establish?</li>
+<li>Which extension would you test next: maps, graphs or an activity score?</li>
 </ol>
 <div class="takeaway">
 <p>Deep learning offers flexible tools. Their scientific value depends on the question and the evidence.</p>
@@ -959,8 +1035,11 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p><a href="../homework.html">Homework: guided reading or a controlled extension</a> · Build on today’s LSTM and Transformer comparison</p>
 </div>
 <aside class="notes">
-<p>duration_seconds: 240</p>
-<p>Close at minutes 56–60. Invite two brief interpretations, then identify what the representation comparison and architecture comparison each tested. Distinguish an observed score from an explanation of that score. The compact Transformer demonstration is complete; homework deepens a reading or extends one predeclared modeling choice. Participants with less Python experience can use the guided reading and prepared comparisons. Experienced participants can propose a controlled experiment, document its target and evaluation, and retain simple baselines. The website specifies deliverables and treats comparisons on the already-inspected test as exploratory. Return to the common message: deep learning supplies flexible tools for approaching seismic phenomena, and usefulness depends on how we formulate the task and assess the evidence. The 25-minute talk, 23-minute notebook, eight-minute comparison and four-minute closing total 60 minutes.</p>
+<p>duration_seconds: 180</p>
+<p><strong>Main idea:</strong> Scientific usefulness depends on the question and the evidence supporting the model.</p>
+<p><strong>Explain:</strong> Close at minutes 57–60. Invite two brief interpretations of the fixed-input architecture comparison. Distinguish the observed loss from a proposed explanation. Ask what spatial information was lost when the catalogue was pooled over the region.</p>
+<p><strong>Transition:</strong> Choose a continuation: maps, graphs, another temporal model or the earlier activity-score extension. The homework guide sets out reading and controlled experiments for the laboratory.</p>
+<p><strong>Backup:</strong> Keep baselines, a stated hypothesis and the evaluation protocol. The earlier feature experiment is a different comparison from today’s architecture exercise. Participants with less Python experience can use prepared outputs and guided reading. Thirty minutes of presentation plus thirty minutes of practical work, including comparison and discussion, total sixty minutes.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -974,21 +1053,22 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="a01" class="slide level2">
-<h2>Appendix · a small Keras model</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines"><code class="sourceCode python"><span id="cb1-1"><a></a>model <span class="op">=</span> keras.Sequential([</span>
-<span id="cb1-2"><a></a>    keras.layers.Input(shape<span class="op">=</span>(<span class="dv">30</span>, n_features)),</span>
-<span id="cb1-3"><a></a>    keras.layers.LSTM(<span class="dv">16</span>),</span>
-<span id="cb1-4"><a></a>    keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>)</span>
-<span id="cb1-5"><a></a>])</span>
-<span id="cb1-6"><a></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">"adam"</span>, loss<span class="op">=</span><span class="st">"binary_crossentropy"</span>)</span>
-<span id="cb1-7"><a></a>history <span class="op">=</span> model.fit(X_train, y_train,</span>
-<span id="cb1-8"><a></a>                    validation_data<span class="op">=</span>(X_val, y_val),</span>
-<span id="cb1-9"><a></a>                    epochs<span class="op">=</span><span class="dv">20</span>, batch_size<span class="op">=</span><span class="dv">64</span>)</span></code></pre></div>
+<h2>Appendix · the LSTM steps</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines"><code class="sourceCode python"><span id="cb1-1"><a></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>(<span class="dv">30</span>, <span class="dv">3</span>))</span>
+<span id="cb1-2"><a></a>state <span class="op">=</span> keras.layers.LSTM(<span class="dv">16</span>)(inputs)</span>
+<span id="cb1-3"><a></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>)(state)</span>
+<span id="cb1-4"><a></a>model_lstm <span class="op">=</span> keras.Model(inputs, probability)</span>
+<span id="cb1-5"><a></a>model_lstm.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">"adam"</span>, loss<span class="op">=</span><span class="st">"binary_crossentropy"</span>)</span>
+<span id="cb1-6"><a></a>history_lstm <span class="op">=</span> model_lstm.fit(</span>
+<span id="cb1-7"><a></a>    X_train, y_train, validation_data<span class="op">=</span>(X_val, y_val),</span>
+<span id="cb1-8"><a></a>    epochs<span class="op">=</span><span class="dv">20</span>, batch_size<span class="op">=</span><span class="dv">64</span>, callbacks<span class="op">=</span>[stopping_lstm], shuffle<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-9"><a></a>p_lstm <span class="op">=</span> model_lstm.predict(X_val).ravel()</span>
+<span id="cb1-10"><a></a>brier <span class="op">=</span> np.mean((p_lstm <span class="op">-</span> y_val) <span class="op">**</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="takeaway">
-<p>Sequential defines · compile configures · fit learns · predict applies</p>
+<p>Define the model · compile · fit · predict · evaluate probabilities</p>
 </div>
 <aside class="notes">
-<p>Reference for the practical. Runnable notebook adds explicit seed, early stopping, learning rate and shuffle settings. Validation selects stopping rather than updating weights through gradients. https://keras.io/api/layers/recurrent_layers/lstm/ .</p>
+<p>Abbreviated reference for the linear practical. The notebook sets seed 7 and prepares training-only scaling. Beside compile, it defines stopping_lstm with patience 3 and restored best weights. The notebook specifies Adam learning rate 0.001 explicitly. Validation selects stopping rather than updating weights through gradients. Each operation appears next to the model it concerns. https://keras.io/api/layers/recurrent_layers/lstm/ .</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1051,17 +1131,17 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="a03" class="slide level2">
-<h2>Appendix · the exact activity score</h2>
+<h2>Appendix · earlier activity-score extension</h2>
 <p><span class="math display">r_t(s)=\sum_{t-L\le t_i&lt;s}10^{\alpha(M_i-M_0)}
 \left(1+\frac{s-t_i}{c}\right)^{-p},\quad s\le t.</span></p>
 <p><strong>Illustrative:</strong> α=1, c=1 day, p=1.1, L=30 days.</p>
-<p><strong>Shared history:</strong> the same available interval for both LSTMs.</p>
+<p><strong>Earlier feature experiment:</strong> both LSTMs use the same available history.</p>
 <p><strong>Representation:</strong> log1p(score) is an additional daily channel.</p>
 <div class="takeaway">
-<p>This index is neither an estimated ETAS rate nor a probability.</p>
+<p>Optional extension from the earlier practical. The illustrative index is not a fitted ETAS rate.</p>
 </div>
 <aside class="notes">
-<p>The history is truncated separately at each origin and the daily endpoint includes only strictly earlier events. A fitted ETAS extension needs a documented estimation sample, units, observation model and forecast construction. For the optional 14-day task, both variants use L=14. The binary target is at least one catalogue event M&gt;=5 in [t,t+7 days).</p>
+<p>Earlier optional feature experiment. These results are separate from the current temporal architecture comparison. The history is truncated separately at each origin and the daily endpoint includes only strictly earlier events. A fitted ETAS extension needs a documented estimation sample, units, observation model and forecast construction. For the optional 14-day task, both variants use L=14. The binary target is at least one catalogue event M&gt;=5 in [t,t+7 days).</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1130,7 +1210,7 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>Reproducibility and historical information availability are separate requirements.</p>
 </div>
 <aside class="notes">
-<p>Magnitude, location and inclusion may have changed after an event. The updated field is not first publication and cannot reconstruct original versions or label-adjudication delays. Dependent weeks, one regional split and a small number of seeds limit generalization. The original activity-score reference run uses one seed; the Transformer pilot repeats catalogue-only models at three seeds. The reference run shows only a small LSTM change from the added score and lower test Brier for logistic regression. A source or architecture’s reported score should not be transferred to a different target.</p>
+<p>Magnitude, location and inclusion may have changed after an event. The updated field is not first publication and cannot reconstruct original versions or label-adjudication delays. Dependent weeks, one regional split and a small number of seeds limit generalization. The linear temporal tutorial reports validation only, with seed 7 once per neural model. The separate repeated comparison retains seeds 7, 17 and 27. The earlier activity-score run uses one seed and the earlier Transformer pilot uses three. Those earlier experiments retain their own test results, which are not a fresh evaluation for the current tutorial. A source or architecture’s reported score should not be transferred to a different target.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1150,7 +1230,7 @@ Practical Hybrid Workflows for Seismic Forecasting
 <li><strong>Our published case:</strong> <a href="https://doi.org/10.1016/j.spasta.2020.100442">Nicolis, Plaza &amp; Salas (2021)</a>.</li>
 <li><strong>Generative case:</strong> Jara Muñoz (2025), thesis; Plaza-Vega, Jara, Nicolis &amp; Salinas (2026), manuscript under review.</li>
 <li><strong>Attention context and further reading:</strong> <a href="https://doi.org/10.1016/j.eswa.2025.127186">Delgado et al.&nbsp;(2025)</a> · <a href="https://doi.org/10.1109/CHILECON66915.2025.11476035">Farfán et al.&nbsp;(2025)</a>.</li>
-<li><strong>Diagram style:</strong> <a href="https://franplaza.github.io/courses/deep_learning/">author’s DL course, Units 2–5</a> · Transformer schematic matches today’s compact pilot.</li>
+<li><strong>Diagram style:</strong> <a href="https://franplaza.github.io/courses/deep_learning/">author’s DL course, Units 2–5</a> · Transformer schematic matches the current temporal tutorial.</li>
 <li><strong>Materials:</strong> <a href="../practical.html">practical</a> · <a href="../homework.html">homework</a> · <a href="../references.html">full references</a>.</li>
 </ul>
 <aside class="notes">

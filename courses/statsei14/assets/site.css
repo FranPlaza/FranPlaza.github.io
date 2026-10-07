@@ -51,3 +51,7 @@ body.course-home #title-block-header{display:none}
 .tutorial-page main{min-width:0}
 .tutorial-page div.sourceCode{max-height:38rem;overflow:auto}
 @media(max-width:950px){.tutorial-cards{grid-template-columns:1fr}.tutorial-card h2{margin-top:.3rem}}
+
+/* Keep the linear graph equation and inline tensor labels usable on phones. */
+.tutorial-page .katex-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.25rem 0}
+.tutorial-page :not(pre)>code{white-space:normal;overflow-wrap:anywhere}

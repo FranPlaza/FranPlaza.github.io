@@ -149,16 +149,17 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Start with a blank Colab notebook and follow the code blocks on the tutorial page. Each block has a copy button, an explanation and prepared local output to compare with your own run. <strong>The frozen data download automatically; no ZIP upload is needed.</strong> The matching notebooks provide an alternative when you prefer to run existing cells.</p>
+<p>For the live session, download the <a href="downloads/tutorials/temporal.ipynb">temporal notebook with ready-to-run cells</a>, open <a href="https://colab.research.google.com/">Colab</a> and upload the notebook. Run the core cells in order through LSTM evaluation, with the <a href="./tutorials/temporal.html">temporal guide</a> alongside it. The Transformer follows, and MLP/CNN1D are optional laboratory sections. <strong>The frozen data download automatically; no data ZIP upload is needed.</strong> The guide also has prepared local outputs. Copying its blocks into a blank Colab remains an alternative for independent study.</p>
+<p><strong>Live route:</strong> build one example → define reference forecasts → train the LSTM → evaluate its probabilities → compare with a Transformer. The presentation takes 30 minutes and the practical, including its final discussion, takes 30 minutes.</p>
 <div class="course-note">
-<p><strong>One question at a time.</strong> First compare four ways to learn from the same regional history. Then retain location and predict one weekly probability per cell. Maps and graphs use the same six cells, inputs and target windows so their differences remain interpretable.</p>
+<p><strong>One question at a time.</strong> In the session, follow how an LSTM and a Transformer process the same regional history. Each model has its construction, <code>compile</code>, <code>fit</code>, <code>predict</code> and evaluation together. The notebook also includes MLP and CNN1D after the live route. During the laboratory, retain location and predict one weekly probability per cell: maps and graphs use the same six cells, inputs and target windows.</p>
 </div>
 <div class="tutorial-cards">
 <div class="tutorial-card">
 <p><span class="kicker">01 · Core tutorial</span></p>
-<section id="four-models-one-sequence" class="level2">
-<h2 class="anchored" data-anchor-id="four-models-one-sequence">Four models, one sequence</h2>
-<p>Use 30 days of three regional catalogue channels to estimate the probability of at least one M ≥ 5 event in the following seven days. Compare MLP, CNN1D, LSTM and a small Transformer with training prevalence and logistic regression.</p>
+<section id="one-regional-sequence-step-by-step" class="level2">
+<h2 class="anchored" data-anchor-id="one-regional-sequence-step-by-step">One regional sequence, step by step</h2>
+<p>Use 30 days of three regional catalogue channels to estimate the probability of at least one M ≥ 5 event in the following seven days. Follow training prevalence and logistic regression, then build and evaluate an LSTM. Compare with a small Transformer and explore MLP/CNN1D during the laboratory. Each neural model runs once with seed 7.</p>
 <p><strong>Learn:</strong> fixed lag positions, temporal filters, recurrent state, attention and positional information. Read Brier score, log loss and calibration alongside parameter counts and training time.</p>
 <p><a href="./tutorials/temporal.html" class="tutorial-link">Start the temporal tutorial</a></p>
 </section>
@@ -184,8 +185,43 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="how-to-follow-the-session" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-follow-the-session">How to follow the session</h2>
-<p>Open the temporal guide alongside a blank Colab. Run its shared preparation first; inspect the window and target before training. During the live session, focus on the four model definitions and the common evaluation. The three-seed run is supplied so every declared seed remains visible. If execution is slow, expand the prepared local outputs and continue interpreting them.</p>
-<p>The spatial tutorials are complete extensions for the laboratory or later study. Each can start in its own blank notebook because it includes the same preparation. Their target is <strong>per cell</strong>, so their scores should not be ranked against the regional scores from Tutorial 1. Within the two spatial tutorials, cell support, normalization, seeds and evaluation origins are shared.</p>
+<p>Open the prepared temporal notebook alongside its web guide. Before running the preparation, identify one forecast Monday: the input contains the preceding 30 days and the label records whether at least one M ≥ 5 event occurs in the following seven days. Its three channels are log event count, <strong>maximum magnitude excess above 4.5</strong>, and event presence.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Session minutes</th>
+<th style="text-align: left;">Practical activity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">30–34</td>
+<td style="text-align: left;">Open the notebook, run preparation and inspect one 30 × 3 input</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">34–43</td>
+<td style="text-align: left;">Define the references; build, compile, fit and predict with the LSTM</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">43–50</td>
+<td style="text-align: left;">Interpret Brier, log loss and calibration</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">50–57</td>
+<td style="text-align: left;">Compare the LSTM with the compact Transformer</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">57–60</td>
+<td style="text-align: left;">Discuss one finding and choose a laboratory question</td>
+</tr>
+</tbody>
+</table>
+<p>Run the core cells in order and pause at the LSTM probabilities and scores. Each fit is visible next to its model, using the single declared seed 7. The core evaluation does not depend on MLP or CNN1D. Return to the Transformer at minute 50; optional MLP/CNN1D sections and the full table can wait for the laboratory. Prepared outputs make the same evaluation available if setup or fitting stalls. At minute 34, move to those outputs if the environment is not ready; preserve the time for interpretation.</p>
+<p>The spatial tutorials are complete extensions for the laboratory or later study. Each can start in its own blank notebook because it includes the same preparation. Their target is <strong>per cell</strong>, so their scores should not be ranked against the regional scores from Tutorial 1. Within the two spatial tutorials, cell support, normalization, seed 7 and evaluation origins are shared.</p>
 </section>
 <section id="what-stays-fixed" class="level2">
 <h2 class="anchored" data-anchor-id="what-stays-fixed">What stays fixed</h2>
@@ -230,18 +266,27 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;">Three latitude bands × two longitude bands; six fixed cells</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Seeds</td>
-<td style="text-align: left;">7, 17, 27; all retained</td>
+<td style="text-align: left;">Seed in the linear walkthroughs</td>
+<td style="text-align: left;">7; one fit per neural model</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Separate repeated comparisons</td>
+<td style="text-align: left;">Seeds 7, 17 and 27; all retained</td>
 </tr>
 </tbody>
 </table>
 <p>Standardization uses training histories only. Target intervals crossing split boundaries are excluded. Validation controls early stopping and supplies the displayed comparison; it is not independent evidence of generalization. Spatial probabilities can be positive in several cells and need not sum to one. They describe catalogue occurrence, not shaking, damage or risk.</p>
 </section>
+<section id="repeated-comparisons-for-the-laboratory" class="level2">
+<h2 class="anchored" data-anchor-id="repeated-comparisons-for-the-laboratory">Repeated comparisons for the laboratory</h2>
+<p>The primary guides make one training run visible. To examine sensitivity to initialization, use the separate comparisons for <a href="./tutorials/temporal-comparison.html">temporal sequences</a>, <a href="./tutorials/maps-comparison.html">maps</a> and <a href="./tutorials/graphs-comparison.html">graphs</a>. They retain seeds 7, 17 and 27. Their means summarize separately scored fits and must not be presented as scores from the linear walkthrough.</p>
+<p>The corresponding notebooks are available for <a href="downloads/comparison/temporal.ipynb">temporal sequences</a>, <a href="downloads/comparison/maps.ipynb">maps</a> and <a href="downloads/comparison/graphs.ipynb">graphs</a>, or together in the <a href="downloads/comparison-pack.zip">comparison notebook pack</a>. Their <a href="downloads/tutorial-results.zip">prepared repeated-comparison results</a> remain separate from the linear results.</p>
+</section>
 <section id="download-and-continue" class="level2">
 <h2 class="anchored" data-anchor-id="download-and-continue">Download and continue</h2>
 <ul>
-<li><a href="downloads/tutorials-pack.zip">Complete tutorial pack</a>: matching notebooks, prepared outputs and the exact frozen data ZIP for offline preparation.</li>
-<li><a href="downloads/tutorial-results.zip">Prepared result files</a>: per-seed and per-cell scores, predictions, training histories and provenance.</li>
+<li><a href="downloads/tutorials-pack.zip">Complete tutorial pack</a>: matching linear notebooks, separate repeated comparisons, prepared outputs and the exact frozen data ZIP for offline preparation.</li>
+<li><a href="downloads/linear-results.zip">Prepared linear result files</a>: individual seed-7 scores, predictions, training histories and provenance.</li>
 <li><a href="./homework.html">Homework and bounded experiments</a>: change one decision at a time, state the hypothesis first and stay on training/validation.</li>
 <li><a href="./practical-reference.html">Original LSTM/ETAS-inspired exercise and earlier results</a>: a separate feature experiment preserved for reference.</li>
 <li><a href="./references.html">References</a>: course sources and Keras implementation references.</li>

@@ -132,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">After the tutorial</h1>
-<p class="subtitle lead">Read the evidence, reproduce the demo and test one modelling question</p>
+<p class="subtitle lead">Interpret the evidence and test one modelling question</p>
 </div>
 
 
@@ -149,30 +149,13 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="new-tutorial-extensions" class="level2">
-<h2 class="anchored" data-anchor-id="new-tutorial-extensions">New tutorial extensions</h2>
-<p>The <a href="./tutorials/temporal.html">temporal</a>, <a href="./tutorials/maps.html">map</a> and <a href="./tutorials/graphs.html">graph</a> guides provide complete code to copy into a blank Colab. Keep the existing six-cell geometry and validation protocol fixed while testing one declared change.</p>
-<ul>
-<li><strong>Temporal:</strong> change the history length or add the ETAS-inspired channel as a separate representation experiment, rebuilding windows and training-only normalization consistently.</li>
-<li><strong>Maps:</strong> inspect which cells have few positive training weeks before proposing a different grid. Changing grid resolution also changes the target and the comparability of scores.</li>
-<li><strong>Graphs:</strong> compare the fixed rook adjacency with identity adjacency under the same seeds and architecture. An improvement would concern this controlled message-passing comparison, not prove physical earthquake triggering along graph edges.</li>
-</ul>
-<p>The current test period has already been examined. Use training and validation for these extensions and report them as exploratory. Keep the prepared tutorial run as an unchanged reference. The earlier homework below belongs to the original LSTM/Transformer materials.</p>
-<p>The earlier notebook route combines a guided LSTM exercise with a separate, tested Transformer comparison. This follow-up offers a paper-and-evidence discussion requiring no coding and a bounded extension of the executable demo. Both continue the same question: <strong>what can a flexible model learn from a particular representation, and how would we know?</strong> Use the laboratory week to work at a suitable pace.</p>
+<p>The live session follows the construction, training and evaluation of an LSTM and then a Transformer on the same regional catalogue history. Each model runs once with seed 7. During the laboratory, use the complete <a href="downloads/tutorials/temporal.ipynb">temporal notebook</a>, its <a href="./tutorials/temporal.html">prepared outputs</a>, or the spatial tutorials at your own pace. Download the prepared notebooks or reconstruct the same cells in a blank Colab.</p>
 <p><a href="./practical.html">Return to the practical</a> · <a href="./references.html">References and source links</a></p>
-</section>
-<section id="level-1-read-the-task-before-the-architecture" class="level2">
-<h2 class="anchored" data-anchor-id="level-1-read-the-task-before-the-architecture">Level 1 — Read the task before the architecture</h2>
-<p><strong>Suggested time: 45–60 minutes. No training required.</strong></p>
-<p>Begin with the <a href="downloads/transformer-demo-solved.html">prepared Transformer comparison</a>. State one observation supported by its scores and one possible explanation that those scores alone cannot establish. Then compare the tutorial with two papers: one on earthquake forecasting and one on another seismic learning task. Suggested choices are RECAST or Farfán et al.&nbsp;(2025) for forecasting, and ConvNetQuake or Delgado et al.&nbsp;(2025) for detection/classification. Follow the links on the <a href="./references.html">references page</a>.</p>
-<ol type="1">
-<li>Write the scientific question in one sentence for each source. Specify whether it detects a recorded signal, classifies an event, forecasts an aggregate outcome, or generates possible future sequences.</li>
-<li>Trace one example from raw observations to model input and target. Include units, temporal resolution, spatial support and forecast horizon where applicable.</li>
-<li>Identify when each input and label becomes available. For a foreshock/mainshock/aftershock label, investigate whether assigning the label uses later events. Distinguish a retrospectively defined label from a prospective prediction using information available at issuance.</li>
-<li>Read the evaluation design: chronological or random splitting, geographic separation, baseline, metric and what the metric measures. Record <strong>not reported in the source consulted</strong> whenever a detail is unavailable; do not infer the protocol from a headline score.</li>
-<li>Explain one useful connection to the tutorial and one reason the scores cannot be compared directly. Propose a common target and protocol that a fair comparison would require.</li>
-</ol>
-<p>Submit a one-page comparison using this template:</p>
+<section id="read-the-task-before-the-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="read-the-task-before-the-architecture">Read the task before the architecture</h2>
+<p><strong>Suggested time: 45–60 minutes. No training required.</strong> Start with the current temporal guide’s validation table and calibration outputs. State one supported observation and one possible explanation that those results cannot establish. Then compare the tutorial with two papers: a forecasting study (RECAST or Farfán et al.) and a detection/classification study (ConvNetQuake or Delgado et al.). Use the <a href="./references.html">references page</a>.</p>
+<p>For each source, identify the scientific question, one input example, the target and when the information becomes available. Distinguish a retrospectively assigned foreshock/mainshock/aftershock label from prospective forecasting. Record <strong>not reported in the source consulted</strong> when a protocol detail is unavailable.</p>
+<div class="table-responsive">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -208,105 +191,84 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Split and baseline</td>
+<td style="text-align: left;">Split, baseline and evaluation metric</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Metric and interpretation</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Limitation or unresolved protocol detail</td>
+<td style="text-align: left;">Limitation or unresolved detail</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
-<p>Add <strong>150–200 words</strong> explaining how a change in the target can matter as much as a change in the architecture. Cite each paper and state whether you consulted the full text or only its abstract. Label the Jara thesis and the manuscript under review separately if you use them as additional sources.</p>
+</div>
+<p>Submit a one-page comparison and 150–200 words explaining why scores from different tasks cannot be ranked directly. Cite each paper and identify whether you consulted the full text or abstract. Keep the Jara thesis and the manuscript under review distinct if you include them.</p>
 </section>
-<section id="level-2-reproduce-the-demo-then-extend-one-question" class="level2">
-<h2 class="anchored" data-anchor-id="level-2-reproduce-the-demo-then-extend-one-question">Level 2 — Reproduce the demo, then extend one question</h2>
-<p><strong>Suggested time: 60–120 minutes, depending on Python familiarity and environment setup.</strong> Use the <a href="downloads/transformer-demo.ipynb">executable Transformer notebook</a> and its <a href="downloads/transformer-demo-solved.html">prepared outputs</a>. The model is already defined and locally tested; this exercise does not ask you to implement attention from scratch. Participants can also complete the interpretation using saved outputs. The notebook imports TensorFlow even in prepared mode; if imports fail, open the prepared HTML page instead.</p>
-<p>The pilot kept its architecture fixed before evaluation. It compared both neural models with catalogue-only inputs across seeds <strong>7, 17 and 27</strong>. The Transformer had higher losses in that experiment. Explaining the difference requires a new question and evidence, rather than attributing it to seismic complexity or declaring an architecture generally inferior.</p>
-<section id="start-from-the-recorded-comparison" class="level3">
-<h3 class="anchored" data-anchor-id="start-from-the-recorded-comparison">Start from the recorded comparison</h3>
+<section id="complete-the-linear-walkthrough-and-examine-repeated-fits" class="level2">
+<h2 class="anchored" data-anchor-id="complete-the-linear-walkthrough-and-examine-repeated-fits">Complete the linear walkthrough and examine repeated fits</h2>
+<p><strong>Suggested time: 60–120 minutes, depending on environment and Python familiarity.</strong> Complete the optional MLP and CNN1D sections of the linear temporal notebook. Each model places its construction, training and evaluation together and uses seed 7. Then open the separate <a href="./tutorials/temporal-comparison.html">three-seed comparison</a> or its <a href="downloads/comparison/temporal.ipynb">notebook</a> to examine seeds 7, 17 and 27.</p>
 <ol type="1">
-<li>Save a copy of the demo and use a separate output directory so the distributed results remain available.</li>
-<li>Trace one example through its 30 × 3 input, learned representation and probability output. Explain the role of fixed sinusoidal position information and temporal averaging.</li>
-<li>Read the existing results for every seed. Means in the comparison are averages of individual-fit metrics, not predictions from an ensemble. Check the differences in parameter count, completed epochs and fit time.</li>
-<li>If reproducing the unchanged demo, record your environment and every result, including small numerical differences. A local success does not verify execution in a clean Colab runtime.</li>
-<li>Before changing anything, write a hypothesis and choose <strong>one</strong> route below. Set <code>RUN_TRAINING = True</code> and <code>EVALUATE_TEST = False</code> for either extension. Execute <strong>all cells in order</strong>: the evaluation guard keeps the new run on validation while preserving the analysis and export steps. Leave the immutable <code>PILOT_SEEDS = [7, 17, 27]</code> unchanged.</li>
+<li>Trace one 30 × 3 input through each model. Identify fixed lag positions in the MLP, a shared temporal filter in CNN1D, recurrent state in the LSTM, and learned positions plus attention in the Transformer.</li>
+<li>Identify the model definition, <code>compile</code>, <code>fit</code>, <code>predict</code> and score calculation. Explain what <code>fit()</code> changes and which decisions the researcher fixed beforehand. Compare parameter counts and completed epochs as context for the losses.</li>
+<li>Read Brier, log loss and calibration alongside the simple references. Separate the seed-7 result from the repeated comparison. In the latter, mean losses summarize individually scored fits; they are not the loss of an ensemble prediction.</li>
+<li>Record your environment and differences from the prepared local results. Small numerical differences are possible. A local execution does not verify actual Colab execution.</li>
 </ol>
 </section>
-<section id="route-a-does-the-comparison-vary-across-more-initializations" class="level3">
-<h3 class="anchored" data-anchor-id="route-a-does-the-comparison-vary-across-more-initializations">Route A — Does the comparison vary across more initializations?</h3>
-<p>Keep both architectures unchanged. In the first configuration cell, set <code>RUN_TRAINING = True</code>, <code>EVALUATE_TEST = False</code> and <code>SEEDS = [37, 47, 57]</code>; leave <code>REFERENCE_ARCHITECTURE = True</code>. These are three additional, predeclared runs for each model, separate from the immutable pilot seeds. Execute all cells, then report the original seeds 7, 17 and 27 alongside all additional runs; do not replace or select seeds because of their scores.</p>
-<p>Summarize validation losses and paired Transformer-minus-LSTM differences for all six seeds. More seeds describe optimization variability more fully; they do not supply new earthquakes, independent test periods or a confidence interval for generalization.</p>
-</section>
-<section id="route-b-what-role-does-explicit-position-information-play" class="level3">
-<h3 class="anchored" data-anchor-id="route-b-what-role-does-explicit-position-information-play">Route B — What role does explicit position information play?</h3>
-<p>In the copied notebook, set <code>RUN_TRAINING = True</code>, <code>EVALUATE_TEST = False</code>, <code>SEEDS = [7, 17, 27]</code> and <code>REFERENCE_ARCHITECTURE = False</code>. Set <code>EXTENSION_NOTE</code> to describe the single change, for example <code>"Remove fixed sinusoidal position encoding"</code>. In the copied model definition, omit only the line <code>x = SinusoidalPosition(name="day_position")(x)</code> and keep the rest of the model unchanged. Execute all cells in order. Retain the original position-aware Transformer and the LSTM as references.</p>
-<p>Before fitting, state what information this change removes and why it might matter to this task. Compare validation predictions and losses for all three seeds. The result tests this particular position ablation; it does not establish that seismic order is irrelevant or identify the full cause of the original pilot’s performance.</p>
-</section>
-<section id="keep-the-rest-of-the-experiment-fixed" class="level3">
-<h3 class="anchored" data-anchor-id="keep-the-rest-of-the-experiment-fixed">Keep the rest of the experiment fixed</h3>
+<section id="choose-one-controlled-extension" class="level2">
+<h2 class="anchored" data-anchor-id="choose-one-controlled-extension">Choose one controlled extension</h2>
+<p>Write the hypothesis and the single proposed change before fitting. Keep an unchanged copy of the tutorial and write new outputs to a separate directory. Use training and validation only; retain every declared run, including neutral or worse results.</p>
+<div class="table-responsive">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Keep fixed</th>
-<th style="text-align: left;">Required setting</th>
+<th style="text-align: left;">Route</th>
+<th style="text-align: left;">One question</th>
+<th style="text-align: left;">What to keep fixed</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Data and region</td>
-<td style="text-align: left;">Frozen USGS catalogue; latitude −34 to −28, longitude −74 to −69</td>
+<td style="text-align: left;">Temporal representation</td>
+<td style="text-align: left;">Does a different history length change the LSTM comparison?</td>
+<td style="text-align: left;">Target, region, training/validation boundaries, seeds and baselines; rebuild windows and training-only scaling consistently</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Inputs</td>
-<td style="text-align: left;">Previous 30 days; M ≥ 4.5; catalogue-only <code>log_count</code>, <code>max_magnitude_excess</code>, <code>has_event</code></td>
+<td style="text-align: left;">ETAS-inspired channel</td>
+<td style="text-align: left;">Does adding the illustrative activity score help the same LSTM?</td>
+<td style="text-align: left;">Catalogue channels, history, target and evaluation; document added parameters and do not mix this with an architecture change</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Target</td>
-<td style="text-align: left;">At least one M ≥ 5 event in the next seven days, issued each Monday</td>
+<td style="text-align: left;">Transformer positions</td>
+<td style="text-align: left;">What changes when learned positional information is removed?</td>
+<td style="text-align: left;">Remaining layers, data, optimizer, seeds and evaluation; report the resulting capacity change</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Training and validation</td>
-<td style="text-align: left;">2001–2016 and 2017–2020, with the demo’s chronological boundary exclusions</td>
+<td style="text-align: left;">Maps</td>
+<td style="text-align: left;">Where are positive cell labels scarce, and how does this affect calibration?</td>
+<td style="text-align: left;">Existing six-cell geometry and target; begin with prepared predictions before proposing a new grid</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Preprocessing</td>
-<td style="text-align: left;">The same windows and training-only normalization</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Comparisons</td>
-<td style="text-align: left;">Training-frequency and catalogue-only logistic baselines; original LSTM and Transformer</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Training protocol</td>
-<td style="text-align: left;">Same optimizer, learning rate, loss, batch size, maximum 20 epochs and early-stopping rule</td>
+<td style="text-align: left;">Graphs</td>
+<td style="text-align: left;">Does rook adjacency differ from identity adjacency in this implementation?</td>
+<td style="text-align: left;">Same six cells, node inputs, architecture, seeds and origins</td>
 </tr>
 </tbody>
 </table>
-<p>Do not also change the lookback, magnitude threshold, region, target or ETAS-inspired input. Those changes answer different questions. Keep all declared runs, including neutral or worse results. A common maximum training budget does not imply equal completed epochs, parameters or computing cost.</p>
+</div>
+<p>The <a href="./tutorials/maps.html">map</a> and <a href="./tutorials/graphs.html">graph</a> tutorials predict the same six marginal probabilities. Their scores concern per-cell targets and should not be ranked against regional occurrence scores. Geographic adjacency does not establish physical triggering. The <a href="./practical-reference.html">original feature experiment</a> documents the illustrative ETAS-inspired score; it is not a fitted ETAS rate.</p>
 </section>
-<section id="evaluate-without-turning-the-published-test-into-a-tuning-set" class="level3">
-<h3 class="anchored" data-anchor-id="evaluate-without-turning-the-published-test-into-a-tuning-set">Evaluate without turning the published test into a tuning set</h3>
-<p>Use validation Brier score and log loss, alongside a calibration plot with <strong>common fixed bins 0, 0.1, …, 1 and counts for each model and seed</strong>. Keep empty bins visible in the count table. Do not pool predictions across seeds and treat them as additional independent weeks.</p>
-<p>The 2021–2025 test results are already available in the course and the pilot. Do not use them to choose an extension, seed or hyperparameter, and do not present a new analysis of that period as an untouched test. Any later evaluation on it must be labelled <strong>exploratory retrospective evaluation on a previously inspected test period</strong>. A confirmatory follow-up needs a genuinely untouched evaluation period and a protocol fixed before examining its outcomes.</p>
-<p>The frozen catalogue also preserves the <strong>revised retrospective</strong> limitation: historical availability of individual event revisions remains unverified. Attention weights do not by themselves identify causal seismic mechanisms.</p>
-</section>
-<section id="deliverables" class="level3">
-<h3 class="anchored" data-anchor-id="deliverables">Deliverables</h3>
+<section id="evaluate-and-report-the-extension" class="level2">
+<h2 class="anchored" data-anchor-id="evaluate-and-report-the-extension">Evaluate and report the extension</h2>
+<p>Use Brier and log loss, plus calibration with common bins and counts for each model and seed. For a repeated extension, declare seeds 7, 17 and 27 before running it and retain every result. A single-seed walkthrough cannot establish initialization stability. Do not treat multiple seeds as additional independent earthquake weeks. Validation also supports early stopping, so these comparisons remain development evidence.</p>
+<div class="table-responsive">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -315,32 +277,33 @@ ul.task-list li input[type="checkbox"] {
 <thead>
 <tr class="header">
 <th style="text-align: left;">Deliverable</th>
-<th style="text-align: left;">What it must contain</th>
+<th style="text-align: left;">Contents</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Reproducible copy or annotated prepared results</td>
-<td style="text-align: left;">Hypothesis, chosen route, fixed settings, environment and data provenance</td>
+<td style="text-align: left;">Reproducible copy or annotated prepared outputs</td>
+<td style="text-align: left;">Hypothesis, one change, fixed settings, environment and data provenance</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Validation table</td>
-<td style="text-align: left;">Model/variant, every seed, n, positive weeks, Brier, log loss, parameters, epochs and fit time</td>
+<td style="text-align: left;">Model, every seed, sample size, positive labels, Brier, log loss, parameters, epochs and fit time</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">One diagnostic</td>
-<td style="text-align: left;">Common-bin calibration with counts or probability-versus-time plot with observed weeks</td>
+<td style="text-align: left;">Diagnostic</td>
+<td style="text-align: left;">Calibration with counts or predicted probabilities over time beside observed labels</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Short interpretation</td>
-<td style="text-align: left;">200–300 words separating observations, hypotheses, seed variability, test exposure and what remains unresolved</td>
+<td style="text-align: left;">Interpretation</td>
+<td style="text-align: left;">200–300 words separating observations, hypotheses, seed variability and unresolved limitations</td>
 </tr>
 </tbody>
 </table>
-<p>Explain what the chosen experiment says about the <strong>relationship between information, representation and task</strong>. A small difference or stronger simple baseline can still be informative. The exercise does not rank LSTMs and Transformers across seismological tasks or establish an operational earthquake-warning system.</p>
+</div>
+<p>The 2021–2025 test was inspected in earlier course work. Do not use it to select a change or present it as untouched evidence. A confirmatory follow-up requires a new evaluation period and a protocol fixed before examining its outcomes. Revised catalogue records also do not establish what was available at historical forecast times.</p>
+<p>The <a href="./practical-reference.html">earlier LSTM/ETAS exercise and Transformer pilot</a> remain separate reference materials. Their fixed sinusoidal positions, logistic summaries and test results belong to that earlier experiment, not to the current learned-position tutorial.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

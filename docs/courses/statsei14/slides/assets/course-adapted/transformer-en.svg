@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600" role="img" aria-labelledby="title desc"><title id="title">A compact Transformer for the same 30-day catalogue history</title><desc id="desc">Thirty days by three channels enter a dense projection to sixteen features and a fixed sinusoidal position encoding. One Transformer block has two attention heads of dimension eight, residual addition and layer normalization, a 32 to 16 feed-forward network, and a second residual addition and layer normalization. Global average pooling and a sigmoid produce next-week occurrence probability. All input positions precede the forecast origin.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><rect width="1600" height="600" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600" role="img" aria-labelledby="title desc"><title id="title">A compact Transformer for the same 30-day catalogue history</title><desc id="desc">Thirty days by three channels enter a dense projection to sixteen features and learned day-position embeddings. One Transformer block has two attention heads of dimension eight, residual addition and layer normalization, a 16 to 16 feed-forward network, and a second residual addition and layer normalization. Global average pooling and a sigmoid produce next-week occurrence probability. All input positions precede the forecast origin.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><rect width="1600" height="600" fill="white"/>
 <text x="135" y="94" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" font-size="38" font-weight="700" fill="#5A8ECE">History</text>
 <rect x="35" y="200" width="205" height="205" rx="18" fill="#EDF3FB" stroke="#5A8ECE" stroke-width="4"/>
 <rect x="73" y="229" width="34" height="24" rx="4" fill="#B3CFEB"/>
@@ -20,8 +20,8 @@
 <rect x="325" y="188" width="255" height="225" rx="18" fill="#E6F5F3" stroke="#00A499" stroke-width="4"/>
 <text x="452" y="238" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" font-size="36" font-weight="700" fill="#00A499">Dense(16)</text>
 <text x="452" y="284" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" font-size="37" font-weight="600" fill="#00A499">+</text>
-<text x="452" y="331" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" font-size="31" font-weight="400" fill="#263238">Fixed positions</text>
-<text x="452" y="374" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" font-size="31" font-weight="400" fill="#607D8B">sinusoidal</text>
+<text x="452" y="331" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" font-size="31" font-weight="400" fill="#263238">Day positions</text>
+<text x="452" y="374" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" font-size="31" font-weight="400" fill="#607D8B">learned</text>
 <text x="452" y="449" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" font-size="34" font-weight="400" fill="#607D8B">30 × 16</text>
 <rect x="645" y="54" width="528" height="493" rx="22" fill="#F7FBFB" stroke="#00A499" stroke-width="4"/>
 <text x="909" y="100" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" font-size="37" font-weight="700" fill="#00A499">1 Transformer block</text>
@@ -35,7 +35,7 @@
 <path d="M690 178 L690 292 L717 292" fill="none" stroke="#756CC7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
 <path d="M690 178 L716 178" fill="none" stroke="#756CC7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="730" y="359" width="394" height="69" rx="13" fill="white" stroke="#00A499" stroke-width="4"/>
-<text x="927" y="402" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" font-size="31" font-weight="600" fill="#00A499">Feed-forward 32 → 16</text>
+<text x="927" y="402" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" font-size="31" font-weight="600" fill="#00A499">Feed-forward 16 → 16</text>
 <path d="M927 321 L927 347" fill="none" stroke="#00A499" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
 <rect x="730" y="470" width="394" height="53" rx="12" fill="#F0ECFA" stroke="#756CC7" stroke-width="4"/>
 <text x="927" y="507" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" font-size="32" font-weight="600" fill="#756CC7">Add + normalize</text>
