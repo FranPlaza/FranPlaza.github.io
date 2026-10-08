@@ -256,7 +256,7 @@
     "href": "tutorials/temporal.html",
     "title": "A catalogue history becomes a probability forecast",
     "section": "",
-    "text": "Download prepared notebook Open Colab to upload the notebook Notebook with example outputs Sensitivity to initialization All tutorials\nExample results use one training run per neural model, seed 7. See Environment and setup.\nScientific question. Given the previous 30 days of catalogue information, what is the probability of at least one M ≥ 5 event in the region during the following seven days?\nOne learning example is a weekly forecast origin. Its input is a table with 30 rows (past days) and three columns (catalogue channels). Its target is zero or one.\nThe presentation introduces the learning tasks and architectures. In the guided practical, we fit an LSTM, interpret its probability errors, and compare a Transformer on the same examples. MLP and CNN1D are extensions for independent study.\nEach neural model uses one training run, seed 7. To examine sensitivity to initialization, continue with the three-seed comparison.\nWhat a score means here. Training covers 2001–2016. Validation covers 2017–2020 and also determines early stopping, so the results describe retrospective development. The catalogue is frozen and revised; historical real-time availability has not been reconstructed. The previously inspected 2021–2025 period is not evaluated and cannot serve as a new independent test."
+    "text": "Download prepared notebook Open Colab to upload the notebook Download notebook with example outputs Sensitivity to initialization All tutorials\nExample results use one training run per neural model, seed 7. See Environment and setup.\nScientific question. Given the previous 30 days of catalogue information, what is the probability of at least one M ≥ 5 event in the region during the following seven days?\nOne learning example is a weekly forecast origin. Its input is a table with 30 rows (past days) and three columns (catalogue channels). Its target is zero or one.\nThe presentation introduces the learning tasks and architectures. In the guided practical, we fit an LSTM, interpret its probability errors, and compare a Transformer on the same examples. MLP and CNN1D are extensions for independent study.\nEach neural model uses one training run, seed 7. To examine sensitivity to initialization, continue with the three-seed comparison.\nWhat a score means here. Training covers 2001–2016. Validation covers 2017–2020 and also determines early stopping, so the results describe retrospective development. The catalogue is frozen and revised; historical real-time availability has not been reconstructed. The previously inspected 2021–2025 period is not evaluated and cannot serve as a new independent test."
   },
   {
     "objectID": "tutorials/temporal.html#guided-practical-itinerary",
@@ -410,7 +410,7 @@
     "href": "tutorials/maps.html",
     "title": "From regional histories to daily maps",
     "section": "",
-    "text": "Download prepared notebook Open Colab to upload the notebook Notebook with example outputs Sensitivity to initialization All tutorials\nExample results use one training run per neural model, seed 7. See Environment and setup."
+    "text": "Download prepared notebook Open Colab to upload the notebook Download notebook with example outputs Sensitivity to initialization All tutorials\nExample results use one training run per neural model, seed 7. See Environment and setup."
   },
   {
     "objectID": "tutorials/maps.html#cnn2d-lstm-and-convlstm2d",
@@ -536,7 +536,7 @@
     "href": "tutorials/graphs.html",
     "title": "The same six cells as a graph",
     "section": "",
-    "text": "Download prepared notebook Open Colab to upload the notebook Notebook with example outputs Sensitivity to initialization All tutorials\nExample results use one training run per neural model, seed 7. See Environment and setup."
+    "text": "Download prepared notebook Open Colab to upload the notebook Download notebook with example outputs Sensitivity to initialization All tutorials\nExample results use one training run per neural model, seed 7. See Environment and setup."
   },
   {
     "objectID": "tutorials/graphs.html#graph-lstm",
@@ -809,7 +809,7 @@
     "href": "practical.html",
     "title": "The practical: build, run and compare",
     "section": "",
-    "text": "For the live session, download the temporal notebook with ready-to-run cells, open Colab and upload the notebook. Run the core cells in order through LSTM evaluation, with the temporal guide alongside it. The Transformer follows, and MLP/CNN1D are optional laboratory sections. The frozen data download automatically; no data ZIP upload is needed. The guide also has prepared local outputs. Copying its blocks into a blank Colab remains an alternative for independent study.\nLive route: build one example → define reference forecasts → train the LSTM → evaluate its probabilities → compare with a Transformer."
+    "text": "For the live session, start with the temporal tutorial below. Use its Download prepared notebook button, then open Colab and upload the downloaded file. Run the core cells in order through LSTM evaluation, keeping the tutorial alongside the notebook. The Transformer follows, and MLP/CNN1D are optional laboratory sections. The frozen data download automatically; no data ZIP upload is needed. The guide also has prepared local outputs. Copying its blocks into a blank Colab remains an alternative for independent study.\nLive route: build one example → define reference forecasts → train the LSTM → evaluate its probabilities → compare with a Transformer."
   },
   {
     "objectID": "practical.html#one-regional-sequence-step-by-step",
@@ -865,7 +865,7 @@
     "href": "tutorials/graphs-comparison.html",
     "title": "Sensitivity to initialization: graph model",
     "section": "",
-    "text": "Download prepared notebook Open Colab to upload the notebook Notebook with prepared outputs Blank Colab for self-study All tutorials\nRepresent the six geographic cells as graph nodes with daily sequences. Repeat Graph + LSTM with seeds 7, 17 and 27 under a fixed graph and chronological protocol: three neural fits.\nRun every cell in order. This independent-study laboratory uses the same data, normalization, targets and partitions as the map comparison. Examine each run, summarize validation scores across seeds, and compare the graph and map models on the same cell-level task. The graph defines information sharing; it does not establish a physical triggering mechanism."
+    "text": "Download prepared notebook Open Colab to upload the notebook Download notebook with prepared outputs Blank Colab for self-study All tutorials\nRepresent the six geographic cells as graph nodes with daily sequences. Repeat Graph + LSTM with seeds 7, 17 and 27 under a fixed graph and chronological protocol: three neural fits.\nRun every cell in order. This independent-study laboratory uses the same data, normalization, targets and partitions as the map comparison. Examine each run, summarize validation scores across seeds, and compare the graph and map models on the same cell-level task. The graph defines information sharing; it does not establish a physical triggering mechanism."
   },
   {
     "objectID": "tutorials/graphs-comparison.html#open-the-prepared-notebook-in-colab",
@@ -991,7 +991,7 @@
     "href": "tutorials/maps-comparison.html",
     "title": "Sensitivity to initialization: map models",
     "section": "",
-    "text": "Download prepared notebook Open Colab to upload the notebook Notebook with prepared outputs Blank Colab for self-study All tutorials\nCompare CNN2D + LSTM and ConvLSTM2D on the same frozen catalogue, daily inputs, six geographic cells and chronological partitions. Repeat both architectures with seeds 7, 17 and 27: six neural fits.\nRun every cell in order. This independent-study laboratory examines sensitivity to initialization and compares how the models combine space and time. Report each run and summarize validation scores across seeds. Validation diagnostics from this retrospective exercise do not establish operational seismic forecasting skill."
+    "text": "Download prepared notebook Open Colab to upload the notebook Download notebook with prepared outputs Blank Colab for self-study All tutorials\nCompare CNN2D + LSTM and ConvLSTM2D on the same frozen catalogue, daily inputs, six geographic cells and chronological partitions. Repeat both architectures with seeds 7, 17 and 27: six neural fits.\nRun every cell in order. This independent-study laboratory examines sensitivity to initialization and compares how the models combine space and time. Report each run and summarize validation scores across seeds. Validation diagnostics from this retrospective exercise do not establish operational seismic forecasting skill."
   },
   {
     "objectID": "tutorials/maps-comparison.html#open-the-prepared-notebook-in-colab",
@@ -1117,7 +1117,7 @@
     "href": "tutorials/temporal-comparison.html",
     "title": "Sensitivity to initialization: temporal models",
     "section": "",
-    "text": "Download prepared notebook Open Colab to upload the notebook Notebook with prepared outputs Blank Colab for self-study All tutorials\nHow sensitive is a model comparison to initialization? Repeat each architecture with seeds 7, 17 and 27 to examine training sensitivity under a fixed data and evaluation protocol. Run the notebook in sequence, then compare validation losses and calibration.\nThis independent-study laboratory fits an MLP, a CNN1D, an LSTM and a Transformer with all three seeds: 12 neural fits. Keep all four architecture definitions and every configured seed."
+    "text": "Download prepared notebook Open Colab to upload the notebook Download notebook with prepared outputs Blank Colab for self-study All tutorials\nHow sensitive is a model comparison to initialization? Repeat each architecture with seeds 7, 17 and 27 to examine training sensitivity under a fixed data and evaluation protocol. Run the notebook in sequence, then compare validation losses and calibration.\nThis independent-study laboratory fits an MLP, a CNN1D, an LSTM and a Transformer with all three seeds: 12 neural fits. Keep all four architecture definitions and every configured seed."
   },
   {
     "objectID": "tutorials/temporal-comparison.html#first-understand-one-observation",
