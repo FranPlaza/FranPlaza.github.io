@@ -186,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Study how adding an activity feature changes an LSTM under a fixed protocol. This laboratory activity includes its own reference forecasts and recorded results. For the guided LSTM and Transformer session, open the <a href="./practical.html">practical guide</a>.</p>
 <div class="actions">
-<p><a href="https://colab.research.google.com/github/FranPlaza/FranPlaza.github.io/blob/main/courses/statsei14/downloads/workshop.ipynb" class="primary">Open in Colab</a> <a href="downloads/workshop.ipynb">Download notebook</a> <a href="downloads/course-pack.zip">Download course pack</a></p>
+<p><a href="https://colab.research.google.com/github/FranPlaza/FranPlaza.github.io/blob/main/courses/statsei14/downloads/workshop.ipynb" class="primary">Open in Colab</a> <a href="downloads/workshop.ipynb" download="workshop.ipynb">Download notebook</a> <a href="downloads/course-pack.zip">Download course pack</a></p>
 </div>
 <p>Open the notebook with the Colab button, then upload data-pack.zip or course-pack.zip when prompted. You can also open the downloaded notebook using <strong>Colab → File → Upload notebook</strong> and upload the course pack when prompted.</p>
 <section id="the-research-question-we-carry-into-practice" class="level2">
@@ -372,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="transformer-demo" class="level2">
 <h2 class="anchored" data-anchor-id="transformer-demo">Fixed-position Transformer comparison</h2>
-<p><a href="downloads/transformer-demo.ipynb">Download the executable demo</a> · <a href="downloads/transformer-demo-solved.html">Open prepared outputs</a></p>
+<p><a href="downloads/transformer-demo.ipynb" download="transformer-demo.ipynb">Download the executable demo</a> · <a href="downloads/transformer-demo-solved.html">Open prepared outputs</a></p>
 <p>This is a <strong>separate catalogue-only comparison across seeds 7, 17 and 27</strong>. It reuses the frozen data, windows, training-only normalization and weekly target, but does not add the ETAS-inspired channel. Both neural models receive the same 30 × 3 inputs. Read its LSTM results together with its Transformer results; they are not the single-seed values in the original exercise above.</p>
 <p>The model projects each day to 16 dimensions, adds fixed sinusoidal position information, and applies one attention block with two heads (key dimension 8), a 32→16 feed-forward block, residual connections and normalization. Temporal averaging and a sigmoid produce one probability. All input days precede issuance; attention within that history does not expose future target observations.</p>
 <p>Follow the tensor shapes in the written model, then compare all three seeds. This model uses fixed sinusoidal positions and 2,305 parameters; the guided tutorial uses learned day positions and 2,257 parameters. Keep each model definition with its own results.</p>
