@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>References and evidence – Deep Learning Meets ETAS</title>
+<title>Environment and setup – Deep Learning Meets ETAS</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -111,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Homework</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./references.html" aria-current="page"> 
+    <a class="nav-link" href="./references.html"> 
 <span class="menu-text">References</span></a>
   </li>  
 </ul>
@@ -131,8 +166,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">References and evidence</h1>
-<p class="subtitle lead">Published results, a thesis, and a manuscript under review have different roles</p>
+<h1 class="title">Environment and setup</h1>
+<p class="subtitle lead">Run the notebooks and interpret the supplied example outputs</p>
 </div>
 
 
@@ -149,87 +184,55 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="course-sources" class="level2">
-<h2 class="anchored" data-anchor-id="course-sources">Course sources</h2>
-<ul>
-<li><a href="https://www.statsei14.cl/">STATSEI14 official programme</a>. Consulted 5 October 2026. Tutorial: 13 October, 11:30–12:30, after Jiancang Zhuang and the break.</li>
-<li><a href="https://franplaza.github.io/courses/deep_learning/">Francisco Plaza-Vega: Deep Learning course</a>. Background on representations, losses and architectures.</li>
-<li><a href="https://franplaza.github.io/courses/quarto_github_pages/index.html">Quarto and GitHub Pages mini-course</a>. Optional material on reproducible publication.</li>
-</ul>
+<section id="open-a-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="open-a-notebook">Open a notebook</h2>
+<p>Download the <a href="downloads/tutorials/temporal.ipynb">temporal notebook</a>, open <a href="https://colab.research.google.com/">Google Colab</a>, choose <strong>File &gt; Upload notebook</strong>, and select the file. A Python CPU runtime is sufficient for these small models. Run the cells from the beginning in order. The <a href="./tutorials/temporal.html">web guide</a> provides explanations and example outputs.</p>
+<p>The first preparation cells download a frozen data pack pinned to a Git commit and verify its SHA-256. To work locally, extract the <a href="downloads/tutorials-pack.zip">tutorial pack</a> and keep <code>statsei14-data-pack.zip</code> beside the notebooks. With the required libraries installed, the notebooks reuse that file without downloading it.</p>
+<p>If imports fail in Colab, run this in a separate cell, restart the runtime, and begin again:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install tensorflow<span class="op">==</span><span class="fl">2.19.1</span> pandas scikit<span class="op">-</span>learn matplotlib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="deep-learning-in-seismology-different-tasks" class="level2">
-<h2 class="anchored" data-anchor-id="deep-learning-in-seismology-different-tasks">Deep learning in seismology: different tasks</h2>
-<p>These primary studies provide context for the opening discussion. Their inputs, targets and evaluation settings differ; their reported scores do not form a performance ranking for this tutorial.</p>
-<p><strong>Perol, T., Gharbi, M., and Denolle, M. (2018).</strong> Convolutional neural network for earthquake detection and location. <em>Science Advances</em>, 4(2), e1700578. <a href="https://doi.org/10.1126/sciadv.1700578">DOI</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5817932/">Open article</a>.</p>
-<p>ConvNetQuake takes three-component waveform windows and classifies noise or an earthquake’s geographic cluster. This is detection and location from recorded signals; the practical instead forecasts occurrence from a catalogue history.</p>
-<p><strong>Dascher-Cousineau, K., Shchur, O., Brodsky, E. E., and Günnemann, S. (2023).</strong> Using Deep Learning for Flexible and Scalable Earthquake Forecasting. <em>Geophysical Research Letters</em>, 50, e2023GL103909. <a href="https://doi.org/10.1029/2023GL103909">DOI and article</a>.</p>
-<p>RECAST uses a recurrent neural temporal point process to map past event times and magnitudes to a distribution for the next event time. Simulated catalogue continuations support probabilistic forecasts. Its temporal ETAS comparison connects flexible learning with an explicit statistical benchmark; it does not establish superiority over every ETAS formulation.</p>
+<section id="environment-of-the-example-results" class="level2">
+<h2 class="anchored" data-anchor-id="environment-of-the-example-results">Environment of the example results</h2>
+<p>The supplied guided notebooks were executed in fresh Windows CPU kernels on <strong>7 October 2026</strong>. A complete execution in an actual Colab session has <strong>not been verified</strong>. Hardware and software versions can affect runtime and numerical results. Record both when comparing your run with the supplied outputs.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">Recorded version</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Python</td>
+<td style="text-align: left;">3.12.14</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TensorFlow</td>
+<td style="text-align: left;">2.19.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Keras</td>
+<td style="text-align: left;">3.15.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NumPy</td>
+<td style="text-align: left;">2.1.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">pandas</td>
+<td style="text-align: left;">2.3.3</td>
+</tr>
+</tbody>
+</table>
+<p>The guided examples use <strong>seed 7</strong>, one fit per neural model. The initialization comparisons use <strong>7, 17 and 27</strong> and report every run. A shared seed does not imply identical weights across architectures.</p>
+<p>The web pages show numerical summaries, figures and relevant diagnostic messages. Complete execution streams, including library warnings and run-specific file paths, remain in the downloadable notebooks with outputs. The <a href="downloads/linear-results.zip">seed-7 result archive</a> and <a href="downloads/tutorial-results.zip">three-seed result archive</a> include predictions and run information.</p>
+<p>Frozen data-pack SHA-256:</p>
+<pre class="text"><code>0ee5d4d71aafa19023fdb1ee6f289a11e7fd7f4ed88ad7a91032ca24505d10a2</code></pre>
 </section>
-<section id="transformer-context-and-further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="transformer-context-and-further-reading">Transformer context and further reading</h2>
-<p>The <a href="./tutorials/temporal.html">guided temporal comparison</a> uses an LSTM and a compact Transformer for weekly catalogue occurrence. Its learned day positions and validation results belong to this teaching task. The <a href="./homework.html">homework</a> explores representation and capacity under a fixed protocol. The studies below address their own data and targets.</p>
-<p><strong>Delgado, L., Peralta, B., Nicolis, O., and Díaz, M. (2025).</strong> Integrating spatio-temporal density-based clustering and neural networks for earthquake classification. <em>Expert Systems with Applications</em>, 277, 127186. <a href="https://doi.org/10.1016/j.eswa.2025.127186">DOI</a> · <a href="https://researchers.unab.cl/en/publications/integrating-spatio-temporal-density-based-clustering-and-neural-n/">Institutional record and abstract</a>.</p>
-<p>The study combines spatio-temporal clustering, event labels and LSTM/Transformer classification. Its labels distinguish foreshocks, mainshocks and aftershocks. Classifying such labels is a different target from a probability of an event in a future week. Establishing what information is available when a label is assigned is part of the homework reading.</p>
-<p><strong>Farfán, Y., Nicolis, O., and Peralta, B. (2025).</strong> Earthquake Forecasting using Temporal Transformers on Spatial Grids in Chile. <em>2025 IEEE CHILEAN Conference on Electrical, Electronics Engineering, Information and Communication Technologies (CHILECON).</em> <a href="https://doi.org/10.1109/CHILECON66915.2025.11476035">DOI</a> · <a href="https://researchers.unab.cl/en/publications/earthquake-forecasting-using-temporal-transformers-on-spatial-gri/">Institutional record and abstract</a>.</p>
-<p>This conference contribution compares temporal architectures using daily 4 × 4 spatial grids from Chilean seismic data. The abstract explicitly identifies the coarse binary representation and absence of geophysical information as limitations. It motivates a discussion of representation and attention, rather than a direct score comparison with this practical.</p>
-<p>The two institutional abstracts establish the scope of these examples. Consult the full papers for protocol details; an abstract alone does not establish the timing of feature availability or the absence of leakage.</p>
-</section>
-<section id="published-case-study" class="level2">
-<h2 class="anchored" data-anchor-id="published-case-study">Published case study</h2>
-<p><strong>Nicolis, O., Plaza, F., and Salas, R. (2021).</strong> Prediction of intensity and location of seismic events using deep learning. <em>Spatial Statistics</em>, 42, 100442. <a href="https://doi.org/10.1016/j.spasta.2020.100442">DOI</a>.</p>
-<p>The LSTM predicts the next day’s maximum of an ETAS-derived intensity representation. The CNN classifies the macrozone of the next maximum. These are different targets from the weekly binary occurrence task in this tutorial. The published catalogue is from Chile’s National Seismological Center, not the USGS catalogue used in the practical.</p>
-</section>
-<section id="thesis-and-manuscript-under-review" class="level2">
-<h2 class="anchored" data-anchor-id="thesis-and-manuscript-under-review">Thesis and manuscript under review</h2>
-<p><strong>Jara Muñoz, I. (2025).</strong> <em>Generación de secuencias de réplicas sísmicas a partir de la ocurrencia de terremotos en Chile utilizando redes adversariales generativas.</em> Thesis. Supervisor: Francisco Plaza Vega.</p>
-<p><strong>Plaza-Vega, F., Jara, I., Nicolis, O., and Salinas, V. (2026).</strong> <em>From Sequence Generation to Sparse-Target Learning for Aftershock Risk Ranking in the Pacific Ring of Fire.</em> Manuscript under review (revised April 2026).</p>
-<p>The thesis and the revision are separate sources. Their scores and conclusions must not be interchanged. The manuscript under review compares generation with aggregate targets; its classification results from Random Forest and Gradient Boosting are not neural-network results. ETAS–GAN integration is proposed future work, outside its empirical experiments.</p>
-<p>The sequence representation uses 224 intervals of 90 minutes. A maximum magnitude per interval loses event multiplicity; occupied intervals cannot be reported as total earthquake counts. A value of 2.5 encodes absence in that study.</p>
-</section>
-<section id="four-historical-milestones" class="level2">
-<h2 class="anchored" data-anchor-id="four-historical-milestones">Four historical milestones</h2>
-<ul>
-<li>Rumelhart, D. E., Hinton, G. E., and Williams, R. J. (1986). <a href="https://www.nature.com/articles/323533a0">Learning representations by back-propagating errors</a>.</li>
-<li>Hochreiter, S., and Schmidhuber, J. (1997). <a href="https://direct.mit.edu/neco/article/9/8/1735/6109/Long-Short-Term-Memory">Long Short-Term Memory</a>.</li>
-<li>Krizhevsky, A., Sutskever, I., and Hinton, G. E. (2012). <a href="https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html">ImageNet Classification with Deep Convolutional Neural Networks</a>.</li>
-<li>Vaswani, A., et al.&nbsp;(2017). <a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a>.</li>
-</ul>
-<p>For adversarial learning: Goodfellow, I., et al.&nbsp;(2014), <a href="https://arxiv.org/abs/1406.2661">Generative Adversarial Nets</a>.</p>
-</section>
-<section id="data-and-software" class="level2">
-<h2 class="anchored" data-anchor-id="data-and-software">Data and software</h2>
-<ul>
-<li><a href="https://earthquake.usgs.gov/fdsnws/event/1/">USGS ComCat API</a>.</li>
-<li><a href="https://earthquake.usgs.gov/data/catalog/products.php">Versioning and preferred products in ComCat</a>.</li>
-<li><a href="https://www.usgs.gov/faqs/whywhen-does-usgs-update-magnitude-earthquake">Why USGS updates magnitudes</a>.</li>
-<li><a href="https://keras.io/api/optimizers/adam/">Keras Adam optimizer</a>.</li>
-<li><a href="https://keras.io/api/callbacks/early_stopping/">Keras EarlyStopping</a>.</li>
-<li><a href="https://scikit-learn.org/stable/modules/cross_validation.html#time-series-split">Temporal cross-validation</a>.</li>
-<li><a href="https://keras.io/api/layers/recurrent_layers/lstm/">Keras LSTM documentation</a>.</li>
-<li><a href="https://keras.io/api/layers/attention_layers/multi_head_attention/">Keras MultiHeadAttention documentation</a>.</li>
-<li><a href="https://keras.io/examples/timeseries/timeseries_classification_transformer/">Keras time-series Transformer example</a>. Architectural background. The demo uses its own fixed small design, chronological partitions and positional encoding.</li>
-<li><a href="https://quarto.org/docs/publishing/github-pages.html">Quarto GitHub Pages publication</a>.</li>
-<li><a href="https://quarto.org/docs/projects/code-execution.html">Quarto execution controls</a>.</li>
-<li><a href="https://github.com/grantmcdermott/quarto-revealjs-clean">Grant McDermott’s clean revealjs extension</a>.</li>
-</ul>
-</section>
-<section id="figure-attribution" class="level2">
-<h2 class="anchored" data-anchor-id="figure-attribution">Figure attribution</h2>
-<p>Research figures are credited in their captions and slide notes. Original tutorial figures use the frozen USGS catalogue. Research-figure copyrights remain with their respective rights holders.</p>
-</section>
-<section id="map-data" class="level2">
-<h2 class="anchored" data-anchor-id="map-data">Map data</h2>
-<p><a href="https://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-admin-0-countries-2/">Natural Earth, Admin 0 Countries, 1:50m</a> supplies the coastlines and country outlines. A frozen regional subset and its provenance are included in data/geography, so the map renders offline.</p>
-</section>
-<section id="implementations-used-by-the-three-guided-tutorials" class="level2">
-<h2 class="anchored" data-anchor-id="implementations-used-by-the-three-guided-tutorials">Implementations used by the three guided tutorials</h2>
-<ul>
-<li><a href="https://keras.io/examples/timeseries/timeseries_classification_from_scratch/">Keras: time-series classification with Conv1D</a>.</li>
-<li><a href="https://keras.io/examples/timeseries/timeseries_classification_transformer/">Keras: time-series classification with a Transformer</a>. Our encoder explicitly supplies temporal positions.</li>
-<li><a href="https://keras.io/api/layers/recurrent_layers/conv_lstm2d/">Keras: ConvLSTM2D</a>.</li>
-<li><a href="https://keras.io/examples/timeseries/timeseries_traffic_forecasting/">Keras: graph neural networks and LSTM for traffic forecasting</a>. We adapt the mechanism to a six-cell catalogue-occurrence task; this is not a reproduction of traffic results or evidence that the graph models seismic triggering.</li>
-</ul>
-<p>The examples support implementation choices. The new validation scores are separate exploratory teaching results and are not metrics from the published seismic studies or earlier course experiments.</p>
+<section id="if-execution-is-interrupted" class="level2">
+<h2 class="anchored" data-anchor-id="if-execution-is-interrupted">If execution is interrupted</h2>
+<p>Restart from the first cell to reconstruct the variables in order. Save the generated result archive before closing a temporary Colab session. If setup or fitting stalls during the tutorial, continue the discussion with the supplied outputs.</p>
+<p>See the <a href="./practical.html#what-stays-fixed">practical protocol</a> for chronological partitions and interpretation limits. The frozen revised catalogue does not reconstruct historical catalogue versions.</p>
 
 
 </section>

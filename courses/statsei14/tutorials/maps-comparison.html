@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Spatial sequences: CNN2D + LSTM and ConvLSTM — Three-seed reference comparison – Deep Learning Meets ETAS</title>
+<title>Sensitivity to initialization: map models – Deep Learning Meets ETAS</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -166,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#open-the-prepared-notebook-in-colab" id="toc-open-the-prepared-notebook-in-colab" class="nav-link active" data-scroll-target="#open-the-prepared-notebook-in-colab">Open the prepared notebook in Colab</a></li>
-  <li><a href="#prepare-the-environment" id="toc-prepare-the-environment" class="nav-link" data-scroll-target="#prepare-the-environment">Prepare the environment</a></li>
+  <li><a href="#prepare-the-experiment" id="toc-prepare-the-experiment" class="nav-link" data-scroll-target="#prepare-the-experiment">Prepare the experiment</a></li>
   <li><a href="#download-and-verify-the-frozen-catalogue" id="toc-download-and-verify-the-frozen-catalogue" class="nav-link" data-scroll-target="#download-and-verify-the-frozen-catalogue">Download and verify the frozen catalogue</a></li>
   <li><a href="#turn-events-into-daily-inputs" id="toc-turn-events-into-daily-inputs" class="nav-link" data-scroll-target="#turn-events-into-daily-inputs">Turn events into daily inputs</a></li>
   <li><a href="#build-histories-labels-and-chronological-partitions" id="toc-build-histories-labels-and-chronological-partitions" class="nav-link" data-scroll-target="#build-histories-labels-and-chronological-partitions">Build histories, labels and chronological partitions</a></li>
@@ -190,8 +190,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Spatial sequences: CNN2D + LSTM and ConvLSTM — Three-seed reference comparison</h1>
-<p class="subtitle lead">From daily regional summaries to six cell probabilities</p>
+<h1 class="title">Sensitivity to initialization: map models</h1>
+<p class="subtitle lead">CNN2D + LSTM and ConvLSTM2D on the same six cells</p>
 </div>
 
 
@@ -217,25 +217,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Three-seed reference comparison
+<span class="screen-reader-only">Note</span>Sensitivity to initialization
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This page retains the original repeated experiment (seeds 7, 17 and 27), its code and prepared outputs. Its averages and spreads belong to that experiment. For the 30-minute practical and direct single-seed code, use the <a href="../tutorials/maps.html">linear teaching walkthrough</a>. Do not substitute these outputs for an execution of the linear notebook.</p>
+<p>This laboratory repeats each architecture with seeds 7, 17 and 27 under a fixed data and evaluation protocol. Run all cells in sequence and retain every fit. For a step-by-step introduction with one training run per model, see the <a href="../tutorials/maps.html">guided tutorial</a>.</p>
 </div>
 </div>
-<p>Build two small spatial-temporal networks on the same frozen catalogue. Copy each code block into a new Colab cell in order. The common preparation below downloads and verifies the course data, constructs the six-cell representation, and preserves the chronological split. This is an exploratory teaching extension; validation diagnostics are not verified seismic forecasting results.</p>
+<p>Compare CNN2D + LSTM and ConvLSTM2D on the same frozen catalogue, daily inputs, six geographic cells and chronological partitions. Repeat both architectures with seeds 7, 17 and 27: <strong>six neural fits</strong>.</p>
+<p>Run every cell in order. This independent-study laboratory examines sensitivity to initialization and compares how the models combine space and time. Report each run and summarize validation scores across seeds. Validation diagnostics from this retrospective exercise do not establish operational seismic forecasting skill.</p>
 <section id="open-the-prepared-notebook-in-colab" class="level2">
 <h2 class="anchored" data-anchor-id="open-the-prepared-notebook-in-colab">Open the prepared notebook in Colab</h2>
-<p><strong>For the live practical, download the notebook with cells already prepared.</strong> Open <a href="https://colab.research.google.com/">Google Colab</a>, choose <strong>File &gt; Upload notebook</strong>, and select <code>maps.ipynb</code>. Select a Python CPU runtime and run the cells from the beginning in order. Keep this page alongside Colab for the explanations. The separate notebook with prepared outputs is a reference from the documented local run.</p>
-<p><strong>Execution order and teaching order serve different purposes.</strong> Run all code cells in sequence so every variable and model definition exists. The instructor will pause the explanation at selected checkpoints while execution continues. If setup or training takes longer than the live slot, read the prepared local outputs on this page; completing a fresh run can continue after class. Do not skip code cells just because their detailed explanation is deferred.</p>
-<p><strong>For self-study from a blank notebook:</strong> open <a href="https://colab.research.google.com/#create=true">a new Colab</a> and copy each numbered Python block into its own code cell, in order. The <strong>Copy</strong> button copies code only. This produces the same experiment as the prepared notebook.</p>
-<p>The first run downloads a <strong>frozen public data pack</strong> automatically. Its URL is pinned to a Git commit and its SHA-256 is checked. There is no manual ZIP upload and no live catalogue query. After an interrupted session, run the notebook again from the beginning. Outputs below labelled <em>prepared local run</em> come from an independent local CPU execution; they are not a claim about your Colab session.</p>
-<p>Colab normally supplies the required libraries. If imports fail, install <code>tensorflow==2.19.1 pandas scikit-learn matplotlib</code> in a separate cell with <code>%pip install</code>, restart the runtime, and begin again. Exact local versions and timings are recorded with the prepared results. Installation changes the active Colab environment only.</p>
+<p>Download this comparison notebook. Open <a href="https://colab.research.google.com/">Google Colab</a>, choose <strong>File &gt; Upload notebook</strong>, and select <code>maps.ipynb</code>. Select a Python CPU runtime and run every cell from the beginning in order. The notebook with prepared outputs provides an example of the complete experiment.</p>
+<p>For independent study from a blank notebook, open <a href="https://colab.research.google.com/#create=true">a new Colab</a> and copy each numbered Python block into its own code cell, in order. The <strong>Copy</strong> button copies code only. After an interrupted session, begin again from the first cell.</p>
+<p>The first run downloads a <strong>frozen public data pack</strong> automatically. Its URL is pinned to a Git commit and its SHA-256 is checked. The experiment does not query the live catalogue.</p>
+<p>If imports fail, run <code>%pip install tensorflow==2.19.1 pandas scikit-learn matplotlib</code> in a separate cell, restart the runtime, and begin again. Consult the <a href="https://franplaza.github.io/courses/statsei14/environment.html">environment and execution notes</a> for software versions and verification status. Record your software versions and hardware, and note numerical differences from the supplied results.</p>
 </section>
-<section id="prepare-the-environment" class="level2">
-<h2 class="anchored" data-anchor-id="prepare-the-environment">Prepare the environment</h2>
-<p>We use small networks and three predeclared seeds. A seed controls the pseudo-random choices used for initialization and optimization; it does not represent uncertainty from new earthquakes. The tutorials evaluate <strong>validation only</strong>: the existing course test period has already been inspected. Changing architecture now does not make that period an untouched test again.</p>
+<section id="prepare-the-experiment" class="level2">
+<h2 class="anchored" data-anchor-id="prepare-the-experiment">Prepare the experiment</h2>
+<p>We use small networks and <strong>three predeclared seeds: 7, 17 and 27</strong>. A seed controls pseudo-random choices used during initialization and optimization; variation across seeds is not uncertainty from observing a new earthquake catalogue. Retain every specified run.</p>
+<p>The experiment evaluates <strong>validation only</strong>. The 2021–2025 period has already been inspected and is not an untouched test. Validation also controls early stopping, so its scores describe model development.</p>
 <div class="copy-step">
 <p><strong>Code block 1</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -270,10 +271,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>started_at <span class="op">=</span> time.perf_counter()</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Python:"</span>, platform.python_version(), <span class="st">"TensorFlow:"</span>, tf.__version__, <span class="st">"Keras:"</span>, keras.__version__)</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Validation only. Results will be saved to"</span>, RUN_DIR)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
-<pre>Python: 3.12.14 TensorFlow: 2.19.1 Keras: 3.15.1
-Validation only. Results will be saved to tutorial-runs\maps-445f3b58f5db
-</pre>
+<details class="prepared-output"><summary>Example output — seeds 7, 17 and 27</summary>
+<pre>Python: 3.12.14 TensorFlow: 2.19.1 Keras: 3.15.1</pre>
 </details>
 </section>
 <section id="download-and-verify-the-frozen-catalogue" class="level2">
@@ -306,10 +305,9 @@ Validation only. Results will be saved to tutorial-runs\maps-445f3b58f5db
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> events.sort_values(<span class="st">"time"</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Verified catalogue records:"</span>, <span class="bu">len</span>(events))</span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>display(events[[<span class="st">"time"</span>, <span class="st">"latitude"</span>, <span class="st">"longitude"</span>, <span class="st">"mag"</span>]].head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seeds 7, 17 and 27</summary>
 <pre>Verified catalogue records:</pre>
-<pre> 12859
-</pre>
+<pre>12859</pre>
 <div class="table-responsive"><div>
 
 
@@ -368,7 +366,7 @@ Validation only. Results will be saved to tutorial-runs\maps-445f3b58f5db
 <section id="turn-events-into-daily-inputs" class="level2">
 <h2 class="anchored" data-anchor-id="turn-events-into-daily-inputs">Turn events into daily inputs</h2>
 <p>Each day has three channels: <code>log(1 + count)</code>, maximum magnitude excess above 4.5 (the daily maximum minus 4.5, or zero on an empty day), and an event-presence indicator. The regional series pools all locations. For the spatial tutorials we also keep six fixed geographic cells: three latitude bands by two longitude bands. Cell IDs run west to east within each row, then south to north. They are illustrative geographic bins, not inferred tectonic provinces; degree-based cells do not have identical physical areas. We retain the same domain and magnitude thresholds for every model.</p>
-<p>Only <strong>training data</strong> should be used to judge whether the grid has adequate support. A finer map would create more rare targets, not automatically more useful information. In Tutorial 1, <code>X_regional</code> is the input; the spatial arrays are prepared here so the three tutorials share one transparent data pipeline.</p>
+<p>Only <strong>training data</strong> should be used to judge whether the grid has adequate support. A finer map would create more rare targets, not automatically more useful information. <code>X_regional</code> supplies the regional models. The map and graph models use the six-cell arrays prepared from the same catalogue and calendar.</p>
 <div class="copy-step">
 <p><strong>Code block 3</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -402,9 +400,8 @@ Validation only. Results will be saved to tutorial-runs\maps-445f3b58f5db
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">int</span>(counts.<span class="bu">sum</span>()) <span class="op">==</span> <span class="bu">len</span>(selected)</span>
 <span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">int</span>(target_counts.<span class="bu">sum</span>()) <span class="op">==</span> <span class="bu">int</span>(qualifying.<span class="bu">sum</span>())</span>
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Daily regional:"</span>, daily_regional_raw.shape, <span class="st">"; daily grid:"</span>, daily_grid_raw.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
-<pre>Daily regional: (9497, 3) ; daily grid: (9497, 3, 2, 3)
-</pre>
+<details class="prepared-output"><summary>Example output — seeds 7, 17 and 27</summary>
+<pre>Daily regional: (9497, 3) ; daily grid: (9497, 3, 2, 3)</pre>
 </details>
 </section>
 <section id="build-histories-labels-and-chronological-partitions" class="level2">
@@ -454,10 +451,9 @@ Validation only. Results will be saved to tutorial-runs\maps-445f3b58f5db
 <span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">"training_positive_weeks"</span>: y_grid[train_mask].<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>).reshape(<span class="op">-</span><span class="dv">1</span>),</span>
 <span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">"training_base_rate"</span>: y_grid[train_mask].mean(axis<span class="op">=</span><span class="dv">0</span>).reshape(<span class="op">-</span><span class="dv">1</span>)</span>
 <span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seeds 7, 17 and 27</summary>
 <pre>Windows: {np.str_('test'): np.int64(260), np.str_('train'): np.int64(834), np.str_('validation'): np.int64(208)}
-Excluded boundary/incomplete targets: ['2016-12-26', '2020-12-28', '2025-12-29']
-</pre>
+Excluded boundary/incomplete targets: ['2016-12-26', '2020-12-28', '2025-12-29']</pre>
 <div class="table-responsive"><div>
 
 
@@ -529,7 +525,7 @@ Excluded boundary/incomplete targets: ['2016-12-26', '2020-12-28', '2025-12-29']
 </section>
 <section id="standardize-using-training-histories-only" class="level2">
 <h2 class="anchored" data-anchor-id="standardize-using-training-histories-only">Standardize using training histories only</h2>
-<p>For regional inputs, we estimate one mean and standard deviation per channel. For spatial inputs, we also use one pair per channel, pooled across training cells, so the map and graph models receive exactly the same scaled arrays. Empty days remain distinguishable through the presence channel. Target labels are never standardized.</p>
+<p>For regional inputs, we estimate one mean and standard deviation per channel. For spatial inputs, we also use one pair per channel, pooled across training cells, so the map and graph models receive exactly the same scaled arrays. A historical day can contribute to several overlapping training windows. These training estimates are applied to every validation history. Empty days remain distinguishable through the presence channel. Target labels are never standardized.</p>
 <p>The metric function averages squared probability errors and binary log losses. On spatial outputs these are averages of <strong>marginal cell scores</strong>, not the likelihood of a joint spatial point process. We will also inspect each cell separately.</p>
 <div class="copy-step">
 <p><strong>Code block 5</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
@@ -570,9 +566,8 @@ Excluded boundary/incomplete targets: ['2016-12-26', '2020-12-28', '2025-12-29']
 <span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>(RUN_DIR <span class="op">/</span> <span class="st">"protocol.json"</span>).write_text(json.dumps(protocol, indent<span class="op">=</span><span class="dv">2</span>), encoding<span class="op">=</span><span class="st">"utf-8"</span>)</span>
 <span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({<span class="st">"origin"</span>: origins.astype(<span class="bu">str</span>), <span class="st">"split"</span>: partitions}).to_csv(RUN_DIR <span class="op">/</span> <span class="st">"windows.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Ready:"</span>, X_regional.shape, X_grid.shape, <span class="st">"; no test outcomes used for fitting or evaluation."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
-<pre>Ready: (1302, 30, 3) (1302, 30, 3, 2, 3) ; no test outcomes used for fitting or evaluation.
-</pre>
+<details class="prepared-output"><summary>Example output — seeds 7, 17 and 27</summary>
+<pre>Ready: (1302, 30, 3) (1302, 30, 3, 2, 3) ; no test outcomes used for fitting or evaluation.</pre>
 </details>
 </section>
 <section id="keep-the-spatial-support-explicit" class="level2">
@@ -618,7 +613,7 @@ Excluded boundary/incomplete targets: ['2016-12-26', '2020-12-28', '2025-12-29']
 <span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Counts describe positive forecast windows, not independent earthquakes.'</span>)</span>
 <span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (node_table.training_positive_windows <span class="op">&lt;</span> <span class="dv">20</span>).<span class="bu">any</span>():</span>
 <span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Sparse cells: fitting and calibration can be unstable.'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seeds 7, 17 and 27</summary>
 <div class="table-responsive"><div>
 
 
@@ -709,8 +704,7 @@ Excluded boundary/incomplete targets: ['2016-12-26', '2020-12-28', '2025-12-29']
 </div></div>
 <pre>Input: (1302, 30, 3, 2, 3) | target: (1302, 3, 2)
 Counts describe positive forecast windows, not independent earthquakes.
-Sparse cells: fitting and calibration can be unstable.
-</pre>
+Sparse cells: fitting and calibration can be unstable.</pre>
 </details>
 </section>
 <section id="read-a-map-before-fitting" class="level2">
@@ -732,14 +726,13 @@ Sparse cells: fitting and calibration can be unstable.
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    ax.<span class="bu">set</span>(title<span class="op">=</span>title, xlabel<span class="op">=</span><span class="st">'Longitude (degrees)'</span>, ylabel<span class="op">=</span><span class="st">'Latitude (degrees)'</span>)</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    fig.colorbar(mesh, ax<span class="op">=</span>ax)</span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seeds 7, 17 and 27</summary>
 <img src="../assets/tutorials-comparison/maps/cell-014-0.png" alt="Prepared local figure from code block 7" loading="lazy">
 </details>
 </section>
 <section id="establish-a-spatial-baseline" class="level2">
 <h2 class="anchored" data-anchor-id="establish-a-spatial-baseline">3. Establish a spatial baseline</h2>
 <p>Repeat <strong>each cell’s training prevalence</strong> for every validation origin. This accounts for persistent differences between cells and uses no validation labels for fitting. A training cell without positives has empirical prevalence zero; the shared scorer clips probabilities only for log loss. Retain all six cells in the evaluation.</p>
-<p>The helper only records results. Model construction, fitting and prediction remain visible below.</p>
 <div class="copy-step">
 <p><strong>Code block 8</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -773,9 +766,8 @@ Sparse cells: fitting and calibration can be unstable.
 <span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>p_baseline <span class="op">=</span> np.broadcast_to(prevalence, y_val.shape).copy()</span>
 <span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>record_validation(<span class="st">'Cell prevalence'</span>, <span class="op">-</span><span class="dv">1</span>, p_baseline, <span class="dv">0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
 <span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Baseline validation scores:'</span>, metric_rows[<span class="op">-</span><span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
-<pre>Baseline validation scores: {'model': 'Cell prevalence', 'seed': -1, 'split': 'validation', 'parameters': 0, 'fit_seconds': 0.0, 'predict_seconds': 0.0, 'epochs_run': 0, 'best_epoch': 0, 'brier': 0.045091246675882525, 'log_loss': 0.19124590620332385}
-</pre>
+<details class="prepared-output"><summary>Example output — seeds 7, 17 and 27</summary>
+<pre>Baseline validation scores: {'model': 'Cell prevalence', 'seed': -1, 'split': 'validation', 'parameters': 0, 'fit_seconds': 0.0, 'predict_seconds': 0.0, 'epochs_run': 0, 'best_epoch': 0, 'brier': 0.045091246675882525, 'log_loss': 0.19124590620332385}</pre>
 </details>
 </section>
 <section id="separate-space-and-time-cnn2d-lstm" class="level2">
@@ -805,7 +797,7 @@ Sparse cells: fitting and calibration can be unstable.
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>preview_model <span class="op">=</span> build_cnn2d_lstm()</span>
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>preview_model.summary()</span>
 <span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> preview_model(X_grid[train_mask][:<span class="dv">2</span>], training<span class="op">=</span><span class="va">False</span>).shape <span class="op">==</span> (<span class="dv">2</span>, N_ROWS, N_COLS)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seeds 7, 17 and 27</summary>
 <div class="table-responsive"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "cnn2d_lstm"</span>
 </pre>
 </div>
@@ -863,7 +855,7 @@ Sparse cells: fitting and calibration can be unstable.
 <span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>preview_convlstm <span class="op">=</span> build_convlstm()</span>
 <span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>preview_convlstm.summary()</span>
 <span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> preview_convlstm(X_grid[train_mask][:<span class="dv">2</span>], training<span class="op">=</span><span class="va">False</span>).shape <span class="op">==</span> (<span class="dv">2</span>, N_ROWS, N_COLS)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seeds 7, 17 and 27</summary>
 <div class="table-responsive"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "convlstm"</span>
 </pre>
 </div>
@@ -897,7 +889,7 @@ Sparse cells: fitting and calibration can be unstable.
 <section id="train-under-one-declared-protocol" class="level2">
 <h2 class="anchored" data-anchor-id="train-under-one-declared-protocol">6. Train under one declared protocol</h2>
 <p>Run three seeds per architecture with identical maximum epochs, batch size and patience. Each fit receives a fresh optimizer and early-stopping callback. Chronological arrays are not shuffled. Validation also controls early stopping; the resulting scores are <strong>development diagnostics</strong>, not independent confirmation.</p>
-<p>The original course test interval has already been inspected. This extension computes no test predictions. Seeds probe initialization sensitivity, not independent samples of seismicity. CPU runtime may be several minutes; devices can produce different timings and numerical results.</p>
+<p>The 2021–2025 interval has already been inspected. This extension computes no test predictions. Seeds probe initialization sensitivity, not independent samples of seismicity. CPU runtime may be several minutes; devices can produce different timings and numerical results.</p>
 <div class="copy-step">
 <p><strong>Code block 11</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -929,476 +921,13 @@ Sparse cells: fitting and calibration can be unstable.
 <span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>            predict_seconds, <span class="bu">len</span>(history.history[<span class="st">'loss'</span>]),</span>
 <span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>            <span class="dv">1</span> <span class="op">+</span> <span class="bu">int</span>(np.argmin(history.history[<span class="st">'val_loss'</span>])),</span>
 <span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
-<pre>WARNING:tensorflow:From C:\Users\Francisco Plaza\AppData\Local\Temp\statsei14-transformer-pilot-20261007\Lib\site-packages\keras\src\backend\common\global_state.py:82: The name tf.reset_default_graph is deprecated. Please use tf.compat.v1.reset_default_graph instead.
-
-</pre>
-<pre>CNN2D + LSTM, seed=7, parameters=4486
-Epoch 1/20
-</pre>
-<pre>14/14 - 2s - 131ms/step - loss: 0.6805 - val_loss: 0.6249
-</pre>
-<pre>Epoch 2/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.5713 - val_loss: 0.4917
-</pre>
-<pre>Epoch 3/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.4266 - val_loss: 0.3472
-</pre>
-<pre>Epoch 4/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.3064 - val_loss: 0.2661
-</pre>
-<pre>Epoch 5/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.2478 - val_loss: 0.2298
-</pre>
-<pre>Epoch 6/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.2196 - val_loss: 0.2113
-</pre>
-<pre>Epoch 7/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.2048 - val_loss: 0.2016
-</pre>
-<pre>Epoch 8/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1969 - val_loss: 0.1966
-</pre>
-<pre>Epoch 9/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1925 - val_loss: 0.1940
-</pre>
-<pre>Epoch 10/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1897 - val_loss: 0.1926
-</pre>
-<pre>Epoch 11/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1878 - val_loss: 0.1917
-</pre>
-<pre>Epoch 12/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1865 - val_loss: 0.1911
-</pre>
-<pre>Epoch 13/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1854 - val_loss: 0.1908
-</pre>
-<pre>Epoch 14/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1845 - val_loss: 0.1906
-</pre>
-<pre>Epoch 15/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1837 - val_loss: 0.1905
-</pre>
-<pre>Epoch 16/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1831 - val_loss: 0.1905
-</pre>
-<pre>Epoch 17/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1825 - val_loss: 0.1906
-</pre>
-<pre>Epoch 18/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1820 - val_loss: 0.1907
-</pre>
-<pre>CNN2D + LSTM, seed=17, parameters=4486
-Epoch 1/20
-</pre>
-<pre>14/14 - 2s - 129ms/step - loss: 0.6898 - val_loss: 0.6563
-</pre>
-<pre>Epoch 2/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.6272 - val_loss: 0.5777
-</pre>
-<pre>Epoch 3/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.5304 - val_loss: 0.4598
-</pre>
-<pre>Epoch 4/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.4168 - val_loss: 0.3689
-</pre>
-<pre>Epoch 5/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.3411 - val_loss: 0.3121
-</pre>
-<pre>Epoch 6/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.2909 - val_loss: 0.2709
-</pre>
-<pre>Epoch 7/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.2544 - val_loss: 0.2422
-</pre>
-<pre>Epoch 8/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.2298 - val_loss: 0.2241
-</pre>
-<pre>Epoch 9/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.2144 - val_loss: 0.2130
-</pre>
-<pre>Epoch 10/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.2046 - val_loss: 0.2059
-</pre>
-<pre>Epoch 11/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1981 - val_loss: 0.2013
-</pre>
-<pre>Epoch 12/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1936 - val_loss: 0.1982
-</pre>
-<pre>Epoch 13/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1903 - val_loss: 0.1961
-</pre>
-<pre>Epoch 14/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1878 - val_loss: 0.1945
-</pre>
-<pre>Epoch 15/20
-</pre>
-<pre>14/14 - 0s - 8ms/step - loss: 0.1859 - val_loss: 0.1935
-</pre>
-<pre>Epoch 16/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1844 - val_loss: 0.1927
-</pre>
-<pre>Epoch 17/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1832 - val_loss: 0.1921
-</pre>
-<pre>Epoch 18/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1822 - val_loss: 0.1916
-</pre>
-<pre>Epoch 19/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1813 - val_loss: 0.1913
-</pre>
-<pre>Epoch 20/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1806 - val_loss: 0.1910
-</pre>
-<pre>CNN2D + LSTM, seed=27, parameters=4486
-Epoch 1/20
-</pre>
-<pre>14/14 - 2s - 129ms/step - loss: 0.6826 - val_loss: 0.6511
-</pre>
-<pre>Epoch 2/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.6207 - val_loss: 0.5729
-</pre>
-<pre>Epoch 3/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.5284 - val_loss: 0.4681
-</pre>
-<pre>Epoch 4/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.4233 - val_loss: 0.3731
-</pre>
-<pre>Epoch 5/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.3349 - val_loss: 0.3031
-</pre>
-<pre>Epoch 6/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.2770 - val_loss: 0.2626
-</pre>
-<pre>Epoch 7/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.2431 - val_loss: 0.2380
-</pre>
-<pre>Epoch 8/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.2224 - val_loss: 0.2230
-</pre>
-<pre>Epoch 9/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.2095 - val_loss: 0.2135
-</pre>
-<pre>Epoch 10/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.2012 - val_loss: 0.2072
-</pre>
-<pre>Epoch 11/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1956 - val_loss: 0.2030
-</pre>
-<pre>Epoch 12/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1916 - val_loss: 0.1999
-</pre>
-<pre>Epoch 13/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1887 - val_loss: 0.1977
-</pre>
-<pre>Epoch 14/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1866 - val_loss: 0.1960
-</pre>
-<pre>Epoch 15/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1849 - val_loss: 0.1948
-</pre>
-<pre>Epoch 16/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1835 - val_loss: 0.1939
-</pre>
-<pre>Epoch 17/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1824 - val_loss: 0.1934
-</pre>
-<pre>Epoch 18/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1815 - val_loss: 0.1930
-</pre>
-<pre>Epoch 19/20
-</pre>
-<pre>14/14 - 0s - 9ms/step - loss: 0.1808 - val_loss: 0.1928
-</pre>
-<pre>Epoch 20/20
-</pre>
-<pre>14/14 - 0s - 8ms/step - loss: 0.1802 - val_loss: 0.1926
-</pre>
-<pre>WARNING:tensorflow:5 out of the last 9 calls to &lt;function TensorFlowTrainer.make_predict_function.&lt;locals&gt;.one_step_on_data_distributed at 0x00000157703AA3E0&gt; triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
-</pre>
-<pre>WARNING:tensorflow:6 out of the last 12 calls to &lt;function TensorFlowTrainer.make_predict_function.&lt;locals&gt;.one_step_on_data_distributed at 0x00000157703AA3E0&gt; triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
-</pre>
+<details class="prepared-output"><summary>Example output — seeds 7, 17 and 27</summary>
+<pre>CNN2D + LSTM, seed=7, parameters=4486</pre>
+<pre>CNN2D + LSTM, seed=17, parameters=4486</pre>
+<pre>CNN2D + LSTM, seed=27, parameters=4486</pre>
 <pre>ConvLSTM2D, seed=7, parameters=1174</pre>
-<pre>Epoch 1/20
-</pre>
-<pre>14/14 - 1s - 78ms/step - loss: 0.6849 - val_loss: 0.6717
-</pre>
-<pre>Epoch 2/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.6596 - val_loss: 0.6432
-</pre>
-<pre>Epoch 3/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.6196 - val_loss: 0.5814
-</pre>
-<pre>Epoch 4/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.5266 - val_loss: 0.4496
-</pre>
-<pre>Epoch 5/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.3994 - val_loss: 0.3421
-</pre>
-<pre>Epoch 6/20
-</pre>
-<pre>14/14 - 0s - 21ms/step - loss: 0.3110 - val_loss: 0.2771
-</pre>
-<pre>Epoch 7/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.2560 - val_loss: 0.2372
-</pre>
-<pre>Epoch 8/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.2225 - val_loss: 0.2141
-</pre>
-<pre>Epoch 9/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.2037 - val_loss: 0.2022
-</pre>
-<pre>Epoch 10/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1938 - val_loss: 0.1963
-</pre>
-<pre>Epoch 11/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1886 - val_loss: 0.1933
-</pre>
-<pre>Epoch 12/20
-</pre>
-<pre>14/14 - 0s - 21ms/step - loss: 0.1858 - val_loss: 0.1919
-</pre>
-<pre>Epoch 13/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1841 - val_loss: 0.1912
-</pre>
-<pre>Epoch 14/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1831 - val_loss: 0.1908
-</pre>
-<pre>Epoch 15/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1824 - val_loss: 0.1907
-</pre>
-<pre>Epoch 16/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1818 - val_loss: 0.1906
-</pre>
-<pre>Epoch 17/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1815 - val_loss: 0.1906
-</pre>
-<pre>Epoch 18/20
-</pre>
-<pre>14/14 - 0s - 19ms/step - loss: 0.1811 - val_loss: 0.1906
-</pre>
-<pre>Epoch 19/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1808 - val_loss: 0.1907
-</pre>
-<pre>Epoch 20/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1804 - val_loss: 0.1907
-</pre>
-<pre>ConvLSTM2D, seed=17, parameters=1174
-Epoch 1/20
-</pre>
-<pre>14/14 - 1s - 78ms/step - loss: 0.6953 - val_loss: 0.6850
-</pre>
-<pre>Epoch 2/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.6756 - val_loss: 0.6661
-</pre>
-<pre>Epoch 3/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.6510 - val_loss: 0.6332
-</pre>
-<pre>Epoch 4/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.5991 - val_loss: 0.5473
-</pre>
-<pre>Epoch 5/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.4709 - val_loss: 0.3888
-</pre>
-<pre>Epoch 6/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.3349 - val_loss: 0.2928
-</pre>
-<pre>Epoch 7/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.2587 - val_loss: 0.2388
-</pre>
-<pre>Epoch 8/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.2161 - val_loss: 0.2119
-</pre>
-<pre>Epoch 9/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1957 - val_loss: 0.2005
-</pre>
-<pre>Epoch 10/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1869 - val_loss: 0.1957
-</pre>
-<pre>Epoch 11/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1832 - val_loss: 0.1937
-</pre>
-<pre>Epoch 12/20
-</pre>
-<pre>14/14 - 0s - 19ms/step - loss: 0.1815 - val_loss: 0.1927
-</pre>
-<pre>Epoch 13/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1806 - val_loss: 0.1923
-</pre>
-<pre>Epoch 14/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1801 - val_loss: 0.1921
-</pre>
-<pre>Epoch 15/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1798 - val_loss: 0.1920
-</pre>
-<pre>Epoch 16/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1795 - val_loss: 0.1920
-</pre>
-<pre>Epoch 17/20
-</pre>
-<pre>14/14 - 0s - 21ms/step - loss: 0.1793 - val_loss: 0.1920
-</pre>
-<pre>Epoch 18/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1790 - val_loss: 0.1920
-</pre>
-<pre>Epoch 19/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1788 - val_loss: 0.1922
-</pre>
-<pre>ConvLSTM2D, seed=27, parameters=1174
-Epoch 1/20
-</pre>
-<pre>14/14 - 1s - 78ms/step - loss: 0.6818 - val_loss: 0.6656
-</pre>
-<pre>Epoch 2/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.6496 - val_loss: 0.6262
-</pre>
-<pre>Epoch 3/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.5934 - val_loss: 0.5497
-</pre>
-<pre>Epoch 4/20
-</pre>
-<pre>14/14 - 0s - 21ms/step - loss: 0.5003 - val_loss: 0.4436
-</pre>
-<pre>Epoch 5/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.3921 - val_loss: 0.3423
-</pre>
-<pre>Epoch 6/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.3012 - val_loss: 0.2728
-</pre>
-<pre>Epoch 7/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.2457 - val_loss: 0.2361
-</pre>
-<pre>Epoch 8/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.2169 - val_loss: 0.2173
-</pre>
-<pre>Epoch 9/20
-</pre>
-<pre>14/14 - 0s - 21ms/step - loss: 0.2012 - val_loss: 0.2073
-</pre>
-<pre>Epoch 10/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1922 - val_loss: 0.2024
-</pre>
-<pre>Epoch 11/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1869 - val_loss: 0.1979
-</pre>
-<pre>Epoch 12/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1830 - val_loss: 0.1963
-</pre>
-<pre>Epoch 13/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1809 - val_loss: 0.1945
-</pre>
-<pre>Epoch 14/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1796 - val_loss: 0.1925
-</pre>
-<pre>Epoch 15/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1783 - val_loss: 0.1929
-</pre>
-<pre>Epoch 16/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1778 - val_loss: 0.1930
-</pre>
-<pre>Epoch 17/20
-</pre>
-<pre>14/14 - 0s - 20ms/step - loss: 0.1771 - val_loss: 0.1931
-</pre>
+<pre>ConvLSTM2D, seed=17, parameters=1174</pre>
+<pre>ConvLSTM2D, seed=27, parameters=1174</pre>
 </details>
 </section>
 <section id="compare-score-capacity-and-runtime" class="level2">
@@ -1428,7 +957,7 @@ Epoch 1/20
 <span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    log_loss<span class="op">=</span>(<span class="st">'log_loss'</span>, <span class="st">'mean'</span>),</span>
 <span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>).reset_index())</span>
 <span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Seed SD describes initialization variability; it is not a confidence interval.'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seeds 7, 17 and 27</summary>
 <div class="table-responsive"><div>
 
 
@@ -1655,8 +1184,7 @@ Epoch 1/20
 </table>
 
 </div></div>
-<pre>Seed SD describes initialization variability; it is not a confidence interval.
-</pre>
+<pre>Seed SD describes initialization variability; it is not a confidence interval.</pre>
 </details>
 </section>
 <section id="interpret-the-spatial-output-correctly" class="level2">
@@ -1689,7 +1217,7 @@ Epoch 1/20
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="ss">f'</span><span class="sc">{</span>MAP_MODEL<span class="sc">}</span><span class="ss">: six illustrative geographic cells'</span>)</span>
 <span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>fig.savefig(OUTPUT_DIR <span class="op">/</span> <span class="st">'validation_mean_maps.png'</span>, dpi<span class="op">=</span><span class="dv">160</span>)</span>
 <span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seeds 7, 17 and 27</summary>
 <img src="../assets/tutorials-comparison/maps/cell-026-0.png" alt="Prepared local figure from code block 13" loading="lazy">
 </details>
 </section>
@@ -1734,7 +1262,7 @@ Epoch 1/20
 <span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>cell_bias[<span class="st">'mean_probability'</span>] <span class="op">=</span> mean_seed_prediction.mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>cell_bias.to_csv(OUTPUT_DIR <span class="op">/</span> <span class="st">'validation_cell_bias.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>display(cell_bias)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seeds 7, 17 and 27</summary>
 <div class="table-responsive"><div>
 
 
@@ -1843,7 +1371,7 @@ Epoch 1/20
 </section>
 <section id="save-the-experiment-and-state-the-next-question" class="level2">
 <h2 class="anchored" data-anchor-id="save-the-experiment-and-state-the-next-question">10. Save the experiment and state the next question</h2>
-<p>Retain the output directory with the common data manifest. A local run does not establish fresh-Colab execution or that today’s catalogue was available unchanged at historical forecast dates.</p>
+<p>Retain the output directory with the common data manifest. The revised catalogue does not establish that these records were available unchanged at historical forecast dates.</p>
 <p><strong>Exercises</strong></p>
 <ol type="1">
 <li>Explain why regional and cell-level Brier scores answer different questions and cannot be ranked directly.</li>
@@ -1888,11 +1416,8 @@ Epoch 1/20
 <span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    files.download(archive_path)</span>
 <span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ImportError</span>:</span>
 <span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Outside Colab: copy the archive from the displayed local path.'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Prepared local output — expand to compare</summary>
-<pre>Saved validation outputs to: tutorial-runs\maps-445f3b58f5db\maps
-Downloadable experiment archive: H:\Otros ordenadores\Mi PC\1_Proyectos\2026 - Statsei 14 -\statsei14-deep-learning\qa\tutorials-2026-10-07\executions\maps-c332efd9\tutorial-runs\maps-445f3b58f5db\maps_outputs.zip
-Outside Colab: copy the archive from the displayed local path.
-</pre>
+<details class="prepared-output"><summary>Example output — seeds 7, 17 and 27</summary>
+<pre>Outside Colab: copy the archive from the displayed local path.</pre>
 </details>
 </section>
 <section id="references-and-next-steps" class="level2">

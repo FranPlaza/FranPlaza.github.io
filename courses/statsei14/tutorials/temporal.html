@@ -179,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#transformer-combine-days-through-attention-and-position" id="toc-transformer-combine-days-through-attention-and-position" class="nav-link" data-scroll-target="#transformer-combine-days-through-attention-and-position">5. Transformer: combine days through attention and position</a></li>
   <li><a href="#compare-lstm-and-transformer-on-the-same-validation-weeks" id="toc-compare-lstm-and-transformer-on-the-same-validation-weeks" class="nav-link" data-scroll-target="#compare-lstm-and-transformer-on-the-same-validation-weeks">6. Compare LSTM and Transformer on the same validation weeks</a></li>
   <li><a href="#inspect-learning-curves" id="toc-inspect-learning-curves" class="nav-link" data-scroll-target="#inspect-learning-curves">7. Inspect learning curves</a></li>
-  <li><a href="#live-route-complete" id="toc-live-route-complete" class="nav-link" data-scroll-target="#live-route-complete">Live route complete</a></li>
+  <li><a href="#guided-session-complete" id="toc-guided-session-complete" class="nav-link" data-scroll-target="#guided-session-complete">Guided session complete</a></li>
   <li><a href="#extension-a.-mlp-combine-values-at-fixed-lag-positions" id="toc-extension-a.-mlp-combine-values-at-fixed-lag-positions" class="nav-link" data-scroll-target="#extension-a.-mlp-combine-values-at-fixed-lag-positions">Extension A. MLP: combine values at fixed lag positions</a></li>
   <li><a href="#extension-b.-cnn1d-apply-shared-filters-to-adjacent-days" id="toc-extension-b.-cnn1d-apply-shared-filters-to-adjacent-days" class="nav-link" data-scroll-target="#extension-b.-cnn1d-apply-shared-filters-to-adjacent-days">Extension B. CNN1D: apply shared filters to adjacent days</a></li>
   <li><a href="#extension-c.-compare-all-four-neural-architectures" id="toc-extension-c.-compare-all-four-neural-architectures" class="nav-link" data-scroll-target="#extension-c.-compare-all-four-neural-architectures">Extension C. Compare all four neural architectures</a></li>
@@ -195,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">A catalogue history becomes a probability forecast</h1>
-<p class="subtitle lead">A linear LSTM walkthrough, then a Transformer comparison</p>
+<p class="subtitle lead">Guided session: LSTM and Transformer</p>
 </div>
 
 
@@ -213,29 +213,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="actions">
-<p><a href="../downloads/tutorials/temporal.ipynb" class="primary">Download prepared notebook</a> <a href="https://colab.research.google.com/">Open Colab to upload the notebook</a> <a href="../downloads/tutorials/temporal-solved.ipynb">Notebook with verified local outputs</a> <a href="../tutorials/temporal-comparison.html">Three-seed reference comparison</a> <a href="../practical.html">All tutorials</a></p>
+<p><a href="../downloads/tutorials/temporal.ipynb" class="primary">Download prepared notebook</a> <a href="https://colab.research.google.com/">Open Colab to upload the notebook</a> <a href="../downloads/tutorials/temporal-solved.ipynb">Notebook with example outputs</a> <a href="../tutorials/temporal-comparison.html">Sensitivity to initialization</a> <a href="../practical.html">All tutorials</a></p>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Execution and result scope
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Prepared outputs were verified in a fresh local kernel using the frozen data pack. They describe seed 7 individual runs, not three-seed averages. Colab execution has not been verified.</p>
-</div>
-</div>
+<p>Example results use one training run per neural model, <strong>seed 7</strong>. See <a href="../environment.html">Environment and setup</a>.</p>
 <p><strong>Scientific question.</strong> Given the previous 30 days of catalogue information, what is the probability of at least one M ≥ 5 event in the region during the following seven days?</p>
 <p>One learning example is a <strong>weekly forecast origin</strong>. Its input is a table with 30 rows (past days) and three columns (catalogue channels). Its target is zero or one.</p>
-<p>The session remains <strong>30 minutes of presentation + 30 minutes of practice</strong>. The practical follows the LSTM first, reads its probability errors, and then compares a Transformer. MLP and CNN1D remain clearly marked extensions after the live route.</p>
-<p>This notebook makes the definition, <code>compile</code>, <code>fit</code> and <code>predict</code> of every model visible. It runs <strong>seed 7 once per model</strong>. These individual validation scores are separate from the <a href="https://franplaza.github.io/courses/statsei14/tutorials/temporal-comparison.html">three-seed reference comparison</a>. Prepared outputs, when provided, come from a separately verified local execution of these cells; Colab execution has not been verified.</p>
-<p><strong>What a score means here.</strong> Training covers 2001–2016. Validation covers 2017–2020 and also determines early stopping, so the results describe retrospective development. The catalogue is frozen and revised; historical real-time availability has not been reconstructed. The previously inspected 2021–2025 period is not evaluated.</p>
+<p>The session comprises <strong>30 minutes of presentation + 30 minutes of practice</strong>. We fit an LSTM, interpret its probability errors, and compare a Transformer on the same examples. MLP and CNN1D are extensions for independent study.</p>
+<p>Each neural model uses <strong>one training run, seed 7</strong>. To examine sensitivity to initialization, continue with the <a href="https://franplaza.github.io/courses/statsei14/tutorials/temporal-comparison.html">three-seed comparison</a>.</p>
+<p><strong>What a score means here.</strong> Training covers 2001–2016. Validation covers 2017–2020 and also determines early stopping, so the results describe retrospective development. The catalogue is frozen and revised; historical real-time availability has not been reconstructed. The previously inspected 2021–2025 period is not evaluated and cannot serve as a new independent test.</p>
 <section id="the-30-minute-practical" class="level2">
 <h2 class="anchored" data-anchor-id="the-30-minute-practical">The 30-minute practical</h2>
-<p>Run Preparation A–F before the live explanation, or use the notebook with prepared outputs if a local run has been supplied. Each preparation step stays visible for self-study. Do not try to teach every preparation line during the session.</p>
+<p>Preparation A–F constructs the daily features, input windows and chronological partitions. During the guided session, we will inspect one example before fitting the models. The preparation cells provide a detailed reference for independent study. Run them before the session or open the notebook with prepared outputs.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -254,7 +242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td>34–43 min</td>
-<td>Fit the references; read the LSTM definition, compile, fit and predict</td>
+<td>Fit the references; discuss LSTM settings for two minutes, then compile, fit and predict</td>
 </tr>
 <tr class="odd">
 <td>43–50 min</td>
@@ -270,12 +258,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>The live route ends before the MLP/CNN1D section; all earlier cells can run in order without those extensions.</p>
+<p>The guided session ends before the MLP/CNN1D section. Run all earlier cells in order.</p>
 </section>
 <section id="preparation-a.-load-the-tools" class="level2">
 <h2 class="anchored" data-anchor-id="preparation-a.-load-the-tools">Preparation A. Load the tools</h2>
-<p>Select a Python CPU runtime in Colab. If imports are unavailable, run <code>%pip install tensorflow==2.19.1 keras==3.15.1 pandas scikit-learn matplotlib</code>, restart the runtime, and begin again.</p>
-<p>This walkthrough uses <strong>one declared seed, 7</strong>, so we can follow each fit directly. The full course guides retain three seeds (7, 17, 27). A single fit does not measure variability across initializations. The examples below generate their own results.</p>
+<p>Select a Python CPU runtime in Colab. If imports are unavailable, run <code>%pip install tensorflow==2.19.1 keras==3.15.1 pandas scikit-learn matplotlib</code>, restart the runtime, and begin again. See the <a href="https://franplaza.github.io/courses/statsei14/environment.html">environment and execution notes</a> for the supplied environment and verification status.</p>
+<p>The examples use <strong>seed 7</strong>. Record your software versions and hardware, and note any numerical differences from the supplied results. A single run does not measure sensitivity to initialization.</p>
 <div class="copy-step">
 <p><strong>Code block 1</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -300,15 +288,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>BATCH_SIZE <span class="op">=</span> <span class="dv">64</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"TensorFlow:"</span>, tf.__version__, <span class="st">"Keras:"</span>, keras.__version__)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<pre>TensorFlow: 2.19.1 Keras: 3.15.1
-</pre>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
+<pre>TensorFlow: 2.19.1 Keras: 3.15.1</pre>
 </details>
 </section>
 <section id="preparation-b.-read-the-frozen-catalogue" class="level2">
 <h2 class="anchored" data-anchor-id="preparation-b.-read-the-frozen-catalogue">Preparation B. Read the frozen catalogue</h2>
-<p>The download is pinned to the same Git commit as the published tutorial. The two checks identify the exact ZIP and catalogue. We read only the CSV in memory, so no extraction or project-folder machinery is needed.</p>
-<p>The catalogue contains revised records. This is a retrospective teaching exercise. We use training (2001–2016) and validation (2017–2020); the previously inspected 2021–2025 period is not evaluated here.</p>
+<p>The data pack is pinned to a Git commit. SHA-256 checks identify the exact ZIP and catalogue, and the CSV is read into memory.</p>
+<p>Training covers 2001–2016 and validation covers 2017–2020. The catalogue contains revised records, so this is a retrospective exercise. The previously inspected 2021–2025 period is not evaluated here.</p>
 <p>For offline use, upload the frozen data pack as <code>statsei14-data-pack.zip</code> in the working directory before running this cell. Otherwise the cell downloads the pinned ZIP. Both paths check the same SHA-256 values.</p>
 <div class="copy-step">
 <p><strong>Code block 2</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
@@ -335,9 +322,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>events[<span class="st">"time"</span>] <span class="op">=</span> pd.to_datetime(events[<span class="st">"time"</span>], utc<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> events.sort_values(<span class="st">"time"</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>display(events[[<span class="st">"time"</span>, <span class="st">"latitude"</span>, <span class="st">"longitude"</span>, <span class="st">"mag"</span>]].head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<pre>Data source: local frozen pack
-</pre>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
+<pre>Data source: local frozen pack</pre>
 <div class="table-responsive"><div>
 
 
@@ -411,9 +397,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>selected <span class="op">=</span> events.loc[inside <span class="op">&amp;</span> in_time <span class="op">&amp;</span> (events[<span class="st">"mag"</span>] <span class="op">&gt;=</span> <span class="fl">4.5</span>)].copy()</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>selected[<span class="st">"date"</span>] <span class="op">=</span> selected[<span class="st">"time"</span>].dt.floor(<span class="st">"D"</span>)</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Input events:"</span>, <span class="bu">len</span>(selected))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<pre>Input events: 2121
-</pre>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
+<pre>Input events: 2121</pre>
 </details>
 </section>
 <section id="preparation-d.-build-three-regional-columns" class="level2">
@@ -440,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>daily_table <span class="op">=</span> pd.DataFrame(daily_regional_raw, index<span class="op">=</span>days, columns<span class="op">=</span>FEATURES)</span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> daily_count.<span class="bu">sum</span>() <span class="op">==</span> <span class="bu">len</span>(selected)</span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>display(daily_table.head(<span class="dv">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
 
@@ -523,7 +508,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="preparation-e.-one-monday-becomes-one-learning-example" class="level2">
 <h2 class="anchored" data-anchor-id="preparation-e.-one-monday-becomes-one-learning-example">Preparation E. One Monday becomes one learning example</h2>
 <p>At origin t, take inputs from <strong>[t − 30 days, t)</strong> and the outcome from <strong>[t, t + 7 days)</strong>. The Python slices below implement those intervals directly. We omit target weeks that cross a partition boundary.</p>
-<p>Only origins through 2020 are built. The retained examples are the same training and validation examples as in the original guide. Weekly targets do not overlap, although input histories share days.</p>
+<p>Only origins through 2020 are built. Weekly targets do not overlap, although input histories share days.</p>
 <div class="copy-step">
 <p><strong>Code block 5</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -556,15 +541,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> (origins[val_mask] <span class="op">+</span> pd.Timedelta(days<span class="op">=</span>HORIZON) <span class="op">&lt;=</span> TEST_START).<span class="bu">all</span>()</span>
 <span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Training examples:"</span>, train_mask.<span class="bu">sum</span>(), <span class="st">"Validation examples:"</span>, val_mask.<span class="bu">sum</span>())</span>
 <span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"One input:"</span>, raw_regional[<span class="dv">0</span>].shape, <span class="st">"One outcome:"</span>, y_regional[<span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <pre>Training examples: 834 Validation examples: 208
-One input: (30, 3) One outcome: 1
-</pre>
+One input: (30, 3) One outcome: 1</pre>
 </details>
 </section>
 <section id="preparation-f.-estimate-scaling-from-training-histories" class="level2">
 <h2 class="anchored" data-anchor-id="preparation-f.-estimate-scaling-from-training-histories">Preparation F. Estimate scaling from training histories</h2>
-<p>There is one mean and one standard deviation per channel. The same three channels will also be used in the map extension. We keep the original weighting over overlapping training windows. Validation has no role in estimating these parameters.</p>
+<p>Estimate one mean and one standard deviation per channel from the training windows. A historical day can contribute to several overlapping windows. Apply these training estimates to all validation histories. Validation has no role in estimating the scaling parameters.</p>
 <div class="copy-step">
 <p><strong>Code block 6</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -577,7 +561,7 @@ One input: (30, 3) One outcome: 1
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame({</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"channel"</span>: FEATURES, <span class="st">"training_mean"</span>: regional_mean, <span class="st">"training_sd"</span>: regional_scale</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
 
@@ -639,7 +623,7 @@ One input: (30, 3) One outcome: 1
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>history_dates <span class="op">=</span> pd.date_range(origins[example] <span class="op">-</span> pd.Timedelta(days<span class="op">=</span>LOOKBACK), periods<span class="op">=</span>LOOKBACK)</span>
 <span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame(raw_regional[example], index<span class="op">=</span>history_dates, columns<span class="op">=</span>FEATURES).tail(<span class="dv">10</span>))</span>
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Forecast origin:"</span>, origins[example], <span class="st">"Future weekly outcome:"</span>, y_regional[example])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
 
@@ -669,8 +653,7 @@ One input: (30, 3) One outcome: 1
 </table>
 
 </div></div>
-<pre>X_train: (834, 30, 3) y_train: (834,)
-</pre>
+<pre>X_train: (834, 30, 3) y_train: (834,)</pre>
 <div class="table-responsive"><div>
 
 
@@ -748,8 +731,7 @@ One input: (30, 3) One outcome: 1
 </table>
 
 </div></div>
-<pre>Forecast origin: 2001-01-01 00:00:00+00:00 Future weekly outcome: 1
-</pre>
+<pre>Forecast origin: 2001-01-01 00:00:00+00:00 Future weekly outcome: 1</pre>
 </details>
 </section>
 <section id="fit-two-reference-forecasts" class="level2">
@@ -774,17 +756,18 @@ One input: (30, 3) One outcome: 1
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Constant probability:"</span>, <span class="bu">round</span>(training_prevalence, <span class="dv">4</span>))</span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Logistic regression input:"</span>, X_train_flat.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <pre>Constant probability: 0.2362
-Logistic regression input: (834, 90)
-</pre>
+Logistic regression input: (834, 90)</pre>
 </details>
 </section>
 <section id="lstm-update-a-learned-state-through-the-history" class="level2">
 <h2 class="anchored" data-anchor-id="lstm-update-a-learned-state-through-the-history">3. LSTM: update a learned state through the history</h2>
-<p>The LSTM reads the oldest day first and the most recent day last. Its final state summarizes the 30-day input. The sigmoid layer converts that state into one weekly probability.</p>
+<p><strong>Input: 30 days × 3 catalogue channels.</strong> Each day contains log(1 + event count), maximum magnitude excess above 4.5, and an event indicator. The LSTM reads the oldest day first and the most recent day last.</p>
+<p>The final LSTM state contains <strong>16 learned features</strong>. A Dense layer with a sigmoid activation transforms it into <strong>one probability</strong> of at least one catalogue M ≥ 5 event in the following seven days:</p>
+<p><strong>30 × 3 input → final state (16 values) → Dense + sigmoid → weekly probability.</strong></p>
 <p>The state starts again for each history. It is not carried between training examples or into validation.</p>
-<p><strong>Discuss:</strong> The hidden state has 16 values. Why is it not yet the probability we want to report?</p>
+<p><strong>Discuss:</strong> Which quantities describe observed inputs, which describe the internal representation, and which describe the model output?</p>
 <div class="copy-step">
 <p><strong>Code block 9</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -796,10 +779,7 @@ Logistic regression input: (834, 90)
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>, name<span class="op">=</span><span class="st">"weekly_probability"</span>)(history_state)</span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>model_lstm <span class="op">=</span> keras.Model(inputs, probability, name<span class="op">=</span><span class="st">"LSTM"</span>)</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>model_lstm.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<pre>WARNING:tensorflow:From C:\Users\Francisco Plaza\AppData\Local\Temp\statsei14-transformer-pilot-20261007\Lib\site-packages\keras\src\backend\common\global_state.py:82: The name tf.reset_default_graph is deprecated. Please use tf.compat.v1.reset_default_graph instead.
-
-</pre>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "LSTM"</span>
 </pre>
 </div>
@@ -826,7 +806,60 @@ Logistic regression input: (834, 90)
 </details>
 <section id="train-lstm-and-obtain-validation-probabilities" class="level3">
 <h3 class="anchored" data-anchor-id="train-lstm-and-obtain-validation-probabilities">Train LSTM and obtain validation probabilities</h3>
-<p>Use the same optimizer, loss, stopping rule and chronological examples. The repeated calls keep this model’s training visible next to its definition.</p>
+<section id="model-settings-and-validation" class="level4">
+<h4 class="anchored" data-anchor-id="model-settings-and-validation">Model settings and validation</h4>
+<p>The network learns weights and biases from the training data. We specify the architecture and training settings before fitting.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Setting</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Input history</td>
+<td>30 days</td>
+<td>History available to each example</td>
+</tr>
+<tr class="even">
+<td>LSTM units</td>
+<td>16</td>
+<td>Dimension of the recurrent state</td>
+</tr>
+<tr class="odd">
+<td>Adam learning rate</td>
+<td>0.001</td>
+<td>Scale of the optimizer’s updates</td>
+</tr>
+<tr class="even">
+<td>Batch size</td>
+<td>64 windows</td>
+<td>Training examples per update; each window contains 30 days</td>
+</tr>
+<tr class="odd">
+<td>Maximum epochs</td>
+<td>20</td>
+<td>Maximum complete passes through the training examples</td>
+</tr>
+<tr class="even">
+<td>Early-stopping patience</td>
+<td>3</td>
+<td>Consecutive epochs without improved validation loss before stopping</td>
+</tr>
+</tbody>
+</table>
+<p><code>compile</code> sets the optimizer and binary cross-entropy loss. <code>fit</code> adjusts the weights using the training examples. Early stopping monitors validation loss; <code>restore_best_weights=True</code> keeps the weights from the epoch with the lowest validation loss. <code>predict</code> applies those fitted weights to the validation histories.</p>
+<p>Validation observations do not supply the gradient updates, but their loss influences which weights are retained. The validation scores therefore describe model development.</p>
+<p>These values provide a <strong>compact starting configuration for the exercise</strong>. They have not been established as optimal by a hyperparameter search. Every neural model uses the same Adam learning rate, batch size, epoch limit and stopping rule; parameter counts differ.</p>
+<p>The <strong>seven-day horizon and M ≥ 5 threshold define the scientific question</strong>. Changing them changes the target. The <strong>seed identifies a training realization</strong>, not a parameter to optimize for the most favourable score.</p>
+<p><strong>After the session:</strong> compare 8, 16 and 32 LSTM units with the data and remaining settings fixed, following the protocol in “Guided session complete” below.</p>
 <div class="copy-step">
 <p><strong>Code block 10</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -848,91 +881,11 @@ Logistic regression input: (834, 90)
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>seconds_lstm <span class="op">=</span> time.perf_counter() <span class="op">-</span> started</span>
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>p_lstm <span class="op">=</span> model_lstm.predict(X_val, verbose<span class="op">=</span><span class="dv">0</span>).ravel()</span>
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First probabilities:"</span>, np.<span class="bu">round</span>(p_lstm[:<span class="dv">5</span>], <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<pre>Epoch 1/20
-</pre>
-<pre>14/14 - 1s - 50ms/step - loss: 0.6647 - val_loss: 0.6445
-</pre>
-<pre>Epoch 2/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.6275 - val_loss: 0.6056
-</pre>
-<pre>Epoch 3/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5835 - val_loss: 0.5631
-</pre>
-<pre>Epoch 4/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5482 - val_loss: 0.5547
-</pre>
-<pre>Epoch 5/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5393 - val_loss: 0.5534
-</pre>
-<pre>Epoch 6/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5389 - val_loss: 0.5526
-</pre>
-<pre>Epoch 7/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5395 - val_loss: 0.5521
-</pre>
-<pre>Epoch 8/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5389 - val_loss: 0.5516
-</pre>
-<pre>Epoch 9/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5381 - val_loss: 0.5511
-</pre>
-<pre>Epoch 10/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5376 - val_loss: 0.5507
-</pre>
-<pre>Epoch 11/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5372 - val_loss: 0.5502
-</pre>
-<pre>Epoch 12/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5368 - val_loss: 0.5498
-</pre>
-<pre>Epoch 13/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5364 - val_loss: 0.5494
-</pre>
-<pre>Epoch 14/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5359 - val_loss: 0.5491
-</pre>
-<pre>Epoch 15/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5355 - val_loss: 0.5487
-</pre>
-<pre>Epoch 16/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5352 - val_loss: 0.5484
-</pre>
-<pre>Epoch 17/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5348 - val_loss: 0.5481
-</pre>
-<pre>Epoch 18/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5344 - val_loss: 0.5479
-</pre>
-<pre>Epoch 19/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5341 - val_loss: 0.5477
-</pre>
-<pre>Epoch 20/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5338 - val_loss: 0.5475
-</pre>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <pre>First probabilities:</pre>
-<pre> [0.2111 0.1742 0.2462 0.2221 0.2103]
-</pre>
+<pre>[0.2111 0.1742 0.2462 0.2221 0.2103]</pre>
 </details>
+</section>
 </section>
 <section id="read-a-probability-error-directly" class="level3">
 <h3 class="anchored" data-anchor-id="read-a-probability-error-directly">Read a probability error directly</h3>
@@ -949,7 +902,7 @@ Logistic regression input: (834, 90)
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"squared_error"</span>: squared_errors_lstm[:<span class="dv">5</span>],</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>}))</span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"LSTM validation Brier:"</span>, <span class="bu">round</span>(<span class="bu">float</span>(brier_lstm), <span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
 
@@ -1003,8 +956,7 @@ Logistic regression input: (834, 90)
 </table>
 
 </div></div>
-<pre>LSTM validation Brier: 0.181521
-</pre>
+<pre>LSTM validation Brier: 0.181521</pre>
 </details>
 </section>
 </section>
@@ -1037,7 +989,7 @@ Logistic regression input: (834, 90)
 <span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>})</span>
 <span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>display(comparison_lstm.<span class="bu">round</span>(<span class="dv">6</span>))</span>
 <span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Validation weeks:"</span>, <span class="bu">len</span>(y_val), <span class="st">"Positive fraction:"</span>, <span class="bu">round</span>(<span class="bu">float</span>(y_val.mean()), <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
 
@@ -1077,14 +1029,13 @@ Logistic regression input: (834, 90)
 </table>
 
 </div></div>
-<pre>Validation weeks: 208 Positive fraction: 0.25
-</pre>
+<pre>Validation weeks: 208 Positive fraction: 0.25</pre>
 </details>
 </section>
 <section id="transformer-combine-days-through-attention-and-position" class="level2">
 <h2 class="anchored" data-anchor-id="transformer-combine-days-through-attention-and-position">5. Transformer: combine days through attention and position</h2>
-<p>The input and target stay fixed. Each day is projected to 16 features. A learned vector identifies each of the 30 positions. Attention then combines information across the observed days.</p>
-<p>The small <code>DayPosition</code> class below is the only custom layer in this notebook. It defines one mathematical operation: add a trainable 30 × 16 position table. It does not hide data preparation, model construction, fitting or evaluation. Keeping this layer preserves the original trainable positions.</p>
+<p>The input and target stay fixed. Each day is first represented by 16 features. The <code>DayPosition</code> layer adds a trainable vector for each of the 30 lags, allowing the model to distinguish where an observation occurs within the input history.</p>
+<p>The position table has shape <strong>30 × 16</strong>. Attention then combines information across the observed days.</p>
 <div class="copy-step">
 <p><strong>Code block 13</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -1129,7 +1080,7 @@ Logistic regression input: (834, 90)
 <span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>, name<span class="op">=</span><span class="st">"weekly_probability"</span>)(history_summary)</span>
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>model_transformer <span class="op">=</span> keras.Model(inputs, probability, name<span class="op">=</span><span class="st">"Transformer"</span>)</span>
 <span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>model_transformer.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "Transformer"</span>
 </pre>
 </div>
@@ -1184,7 +1135,7 @@ Logistic regression input: (834, 90)
 </section>
 <section id="train-transformer-and-obtain-validation-probabilities" class="level3">
 <h3 class="anchored" data-anchor-id="train-transformer-and-obtain-validation-probabilities">Train Transformer and obtain validation probabilities</h3>
-<p>Use the same optimizer, loss, stopping rule and chronological examples. The repeated calls keep this model’s training visible next to its definition.</p>
+<p>Train the Transformer on the same chronological examples as the LSTM, with Adam learning rate 0.001, binary cross-entropy, batches of 64 and a maximum of 20 epochs. Initialize with seed 7. Early stopping again monitors validation loss with patience 3 and restores the best weights.</p>
 <div class="copy-step">
 <p><strong>Code block 15</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -1206,40 +1157,15 @@ Logistic regression input: (834, 90)
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>seconds_transformer <span class="op">=</span> time.perf_counter() <span class="op">-</span> started</span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>p_transformer <span class="op">=</span> model_transformer.predict(X_val, verbose<span class="op">=</span><span class="dv">0</span>).ravel()</span>
 <span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First probabilities:"</span>, np.<span class="bu">round</span>(p_transformer[:<span class="dv">5</span>], <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<pre>Epoch 1/20
-</pre>
-<pre>14/14 - 1s - 86ms/step - loss: 0.6045 - val_loss: 0.5931
-</pre>
-<pre>Epoch 2/20
-</pre>
-<pre>14/14 - 0s - 5ms/step - loss: 0.5381 - val_loss: 0.5626
-</pre>
-<pre>Epoch 3/20
-</pre>
-<pre>14/14 - 0s - 4ms/step - loss: 0.5399 - val_loss: 0.5625
-</pre>
-<pre>Epoch 4/20
-</pre>
-<pre>14/14 - 0s - 4ms/step - loss: 0.5368 - val_loss: 0.5642
-</pre>
-<pre>Epoch 5/20
-</pre>
-<pre>14/14 - 0s - 4ms/step - loss: 0.5320 - val_loss: 0.5647
-</pre>
-<pre>Epoch 6/20
-</pre>
-<pre>14/14 - 0s - 4ms/step - loss: 0.5316 - val_loss: 0.5661
-</pre>
-<pre>First probabilities: [0.2969 0.2649 0.2397 0.2303 0.2337]
-</pre>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
+<pre>First probabilities: [0.2969 0.2649 0.2397 0.2303 0.2337]</pre>
 </details>
 </section>
 </section>
 <section id="compare-lstm-and-transformer-on-the-same-validation-weeks" class="level2">
 <h2 class="anchored" data-anchor-id="compare-lstm-and-transformer-on-the-same-validation-weeks">6. Compare LSTM and Transformer on the same validation weeks</h2>
 <p>Each column below contains predictions for the same validation origins. We calculate both scores directly, over rows. Log loss penalizes confident incorrect probabilities strongly. Clipping is only for the logarithms; Brier uses the original probabilities.</p>
-<p>These are <strong>single-seed results</strong>, with parameter counts and the actual number of epochs. They are not the three-seed means in the original tutorial. Validation also determined early stopping, so the table is development evidence.</p>
+<p><strong>Example results — seed 7.</strong> The table reports one run per neural model, its parameter count and its actual number of epochs. Validation also determined early stopping, so these scores are development evidence. See the <a href="https://franplaza.github.io/courses/statsei14/environment.html">environment notes</a> when comparing your execution with the supplied results.</p>
 <div class="copy-step">
 <p><strong>Code block 16</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -1270,7 +1196,7 @@ Logistic regression input: (834, 90)
 <span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"epochs"</span>: [<span class="dv">0</span>, <span class="dv">0</span>, <span class="bu">len</span>(history_lstm.history[<span class="st">"loss"</span>]), <span class="bu">len</span>(history_transformer.history[<span class="st">"loss"</span>])],</span>
 <span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>})</span>
 <span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>display(comparison.<span class="bu">round</span>(<span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
 
@@ -1331,8 +1257,9 @@ Logistic regression input: (834, 90)
 </section>
 <section id="inspect-learning-curves" class="level2">
 <h2 class="anchored" data-anchor-id="inspect-learning-curves">7. Inspect learning curves</h2>
-<p>The curves show how training and validation loss changed during fitting. Predictions above use the restored best weights; the history still includes all executed epochs.</p>
-<p><strong>Discuss:</strong> Did the more complex model improve on the constant reference? What information or experiment would help explain the difference? A single run cannot establish an architecture ranking.</p>
+<p>The curves show how training and validation loss changed during fitting. Predictions above use the restored best weights; the history still includes all executed epochs. The limit of 20 epochs is a maximum: early stopping can end training sooner. Reaching that limit does not establish that the training budget is adequate.</p>
+<p>In the supplied seed-7 run, the <strong>LSTM reaches 20 epochs</strong>, with its lowest validation loss at epoch 20. The <strong>Transformer stops after six epochs</strong> and restores the weights from <strong>epoch 3</strong>. Validation loss therefore affects which fitted weights are used for prediction, even though validation observations do not supply gradient updates.</p>
+<p><strong>Discuss:</strong> Which epoch has the lowest validation loss for each model? Did either run reach the maximum? Did the more complex model improve on the constant reference? A single run cannot establish an architecture ranking.</p>
 <div class="copy-step">
 <p><strong>Code block 17</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -1349,20 +1276,30 @@ Logistic regression input: (834, 90)
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].legend()</span>
 <span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
 <span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<img src="../assets/tutorials-linear/temporal/cell-034-0.png" alt="Verified local single-seed figure from code block 17" loading="lazy">
+<details class="prepared-output"><summary>Example output — seed 7</summary>
+<img src="../assets/tutorials-linear/temporal/cell-034-0.png" alt="Example figure from code block 17" loading="lazy">
 </details>
 </section>
-<section id="live-route-complete" class="level2">
-<h2 class="anchored" data-anchor-id="live-route-complete">Live route complete</h2>
-<p>You have turned one 30 × 3 history into a probability, evaluated that probability against two references, and changed the architecture while preserving the input and outcome. Stop here for the 30-minute practical.</p>
+<section id="guided-session-complete" class="level2">
+<h2 class="anchored" data-anchor-id="guided-session-complete">Guided session complete</h2>
+<p>You have turned one 30 × 3 history into a probability, evaluated that probability against two references, and changed the architecture while preserving the input and outcome. This completes the 30-minute practical.</p>
 <p>Ask: did the individual neural runs improve both scores, and what would be needed for an independent assessment? One seed does not measure initialization variability; validation is also used for early stopping. An untouched evaluation period and a predeclared protocol would be needed for a new assessment.</p>
-<p><strong>After the session:</strong> continue with MLP/CNN1D below, <a href="https://franplaza.github.io/courses/statsei14/tutorials/maps.html">daily maps</a>, <a href="https://franplaza.github.io/courses/statsei14/tutorials/graphs.html">the six-cell graph</a>, or the separately retained <a href="https://franplaza.github.io/courses/statsei14/tutorials/temporal-comparison.html">three-seed reference comparison</a>.</p>
+<section id="laboratory-sensitivity-to-recurrent-state-size" class="level3">
+<h3 class="anchored" data-anchor-id="laboratory-sensitivity-to-recurrent-state-size">Laboratory: sensitivity to recurrent-state size</h3>
+<ol type="1">
+<li>Declare the candidates before fitting: <strong>8, 16 and 32 LSTM units</strong>.</li>
+<li>Keep the channels, 30-day history, target, chronological partitions, scaling, optimizer, batch size and stopping rule fixed.</li>
+<li>Predeclare <strong>validation log loss as the main comparison criterion</strong>, and report Brier score and calibration with their sample counts.</li>
+<li>First inspect one run per candidate with seed 7. Then repeat every candidate with <strong>seeds 7, 17 and 27</strong>, retaining each run and summarizing all three seeds. Do not select the best-looking seed.</li>
+<li>Examine whether any improvement with capacity is consistent under this protocol. Variation across seeds describes training sensitivity, not uncertainty from a new catalogue.</li>
+</ol>
+<p>Candidate selection uses validation information, so the best validation score remains evidence for model development. A future independent assessment requires data that did not influence these choices and a protocol that respects chronological order. The already inspected <strong>2021–2025 period is not a new independent test</strong>.</p>
+<p><strong>Other extensions:</strong> continue with MLP/CNN1D below, <a href="https://franplaza.github.io/courses/statsei14/tutorials/maps.html">daily maps</a>, <a href="https://franplaza.github.io/courses/statsei14/tutorials/graphs.html">the six-cell graph</a>, or <a href="https://franplaza.github.io/courses/statsei14/tutorials/temporal-comparison.html">sensitivity to initialization</a>.</p>
+</section>
 </section>
 <section id="extension-a.-mlp-combine-values-at-fixed-lag-positions" class="level2">
 <h2 class="anchored" data-anchor-id="extension-a.-mlp-combine-values-at-fixed-lag-positions">Extension A. MLP: combine values at fixed lag positions</h2>
 <p>Flatten turns the 30 × 3 table into 90 numbers. The hidden layer learns nonlinear combinations of those values. Its weights can distinguish fixed lag positions, but the layer does not share the same detector across different days.</p>
-<p>The network is built directly below. There is no model-constructor function to look up elsewhere.</p>
 <div class="copy-step">
 <p><strong>Code block 18</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -1375,7 +1312,7 @@ Logistic regression input: (834, 90)
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>, name<span class="op">=</span><span class="st">"weekly_probability"</span>)(hidden)</span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>model_mlp <span class="op">=</span> keras.Model(inputs, probability, name<span class="op">=</span><span class="st">"MLP"</span>)</span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>model_mlp.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "MLP"</span>
 </pre>
 </div>
@@ -1404,8 +1341,7 @@ Logistic regression input: (834, 90)
 </details>
 <section id="train-mlp-and-obtain-validation-probabilities" class="level3">
 <h3 class="anchored" data-anchor-id="train-mlp-and-obtain-validation-probabilities">Train MLP and obtain validation probabilities</h3>
-<p><code>compile</code> chooses the optimizer and loss. <code>fit</code> adjusts the weights. The stopping rule monitors validation loss and restores the best weights. <code>predict</code> then applies those fitted weights to the validation histories.</p>
-<p>Every network uses Adam with learning rate 0.001, up to 20 epochs, batches of 64 and the same stopping rule. Parameter counts differ. These settings define a teaching comparison, not an exhaustive tuning of each model family.</p>
+<p>Train the MLP with the optimizer, loss, batch size, maximum epochs and stopping rule introduced for the LSTM. Initialize it with seed 7. Its parameter count differs, but its inputs, targets and chronological partitions are unchanged.</p>
 <div class="copy-step">
 <p><strong>Code block 19</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -1427,91 +1363,8 @@ Logistic regression input: (834, 90)
 <span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>seconds_mlp <span class="op">=</span> time.perf_counter() <span class="op">-</span> started</span>
 <span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>p_mlp <span class="op">=</span> model_mlp.predict(X_val, verbose<span class="op">=</span><span class="dv">0</span>).ravel()</span>
 <span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First probabilities:"</span>, np.<span class="bu">round</span>(p_mlp[:<span class="dv">5</span>], <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<pre>Epoch 1/20
-</pre>
-<pre>14/14 - 0s - 23ms/step - loss: 0.8741 - val_loss: 0.8236
-</pre>
-<pre>Epoch 2/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.7797 - val_loss: 0.7609
-</pre>
-<pre>Epoch 3/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.7145 - val_loss: 0.7135
-</pre>
-<pre>Epoch 4/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.6650 - val_loss: 0.6778
-</pre>
-<pre>Epoch 5/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.6279 - val_loss: 0.6516
-</pre>
-<pre>Epoch 6/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.5998 - val_loss: 0.6326
-</pre>
-<pre>Epoch 7/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.5786 - val_loss: 0.6189
-</pre>
-<pre>Epoch 8/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.5624 - val_loss: 0.6085
-</pre>
-<pre>Epoch 9/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.5495 - val_loss: 0.6009
-</pre>
-<pre>Epoch 10/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.5392 - val_loss: 0.5954
-</pre>
-<pre>Epoch 11/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.5306 - val_loss: 0.5912
-</pre>
-<pre>Epoch 12/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.5231 - val_loss: 0.5879
-</pre>
-<pre>Epoch 13/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.5164 - val_loss: 0.5856
-</pre>
-<pre>Epoch 14/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.5105 - val_loss: 0.5837
-</pre>
-<pre>Epoch 15/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.5050 - val_loss: 0.5822
-</pre>
-<pre>Epoch 16/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.5000 - val_loss: 0.5811
-</pre>
-<pre>Epoch 17/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.4952 - val_loss: 0.5803
-</pre>
-<pre>Epoch 18/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.4907 - val_loss: 0.5795
-</pre>
-<pre>Epoch 19/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.4863 - val_loss: 0.5789
-</pre>
-<pre>Epoch 20/20
-</pre>
-<pre>14/14 - 0s - 3ms/step - loss: 0.4821 - val_loss: 0.5789
-</pre>
-<pre>WARNING:tensorflow:5 out of the last 15 calls to &lt;function TensorFlowTrainer.make_predict_function.&lt;locals&gt;.one_step_on_data_distributed at 0x000002B886FC32E0&gt; triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
-</pre>
-<pre>First probabilities: [0.3634 0.4025 0.3187 0.2095 0.1107]
-</pre>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
+<pre>First probabilities: [0.3634 0.4025 0.3187 0.2095 0.1107]</pre>
 </details>
 </section>
 </section>
@@ -1537,7 +1390,7 @@ Logistic regression input: (834, 90)
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>, name<span class="op">=</span><span class="st">"weekly_probability"</span>)(history_summary)</span>
 <span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>model_cnn1d <span class="op">=</span> keras.Model(inputs, probability, name<span class="op">=</span><span class="st">"CNN1D"</span>)</span>
 <span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>model_cnn1d.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "CNN1D"</span>
 </pre>
 </div>
@@ -1569,7 +1422,7 @@ Logistic regression input: (834, 90)
 </details>
 <section id="train-cnn1d-and-obtain-validation-probabilities" class="level3">
 <h3 class="anchored" data-anchor-id="train-cnn1d-and-obtain-validation-probabilities">Train CNN1D and obtain validation probabilities</h3>
-<p>Use the same optimizer, loss, stopping rule and chronological examples. The repeated calls keep this model’s training visible next to its definition.</p>
+<p>Train CNN1D on the same examples with Adam learning rate 0.001, binary cross-entropy, batches of 64 and a maximum of 20 epochs. Initialize it with seed 7 and restore the weights with the lowest validation loss using early-stopping patience 3.</p>
 <div class="copy-step">
 <p><strong>Code block 21</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -1591,57 +1444,14 @@ Logistic regression input: (834, 90)
 <span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>seconds_cnn1d <span class="op">=</span> time.perf_counter() <span class="op">-</span> started</span>
 <span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>p_cnn1d <span class="op">=</span> model_cnn1d.predict(X_val, verbose<span class="op">=</span><span class="dv">0</span>).ravel()</span>
 <span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First probabilities:"</span>, np.<span class="bu">round</span>(p_cnn1d[:<span class="dv">5</span>], <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<pre>Epoch 1/20
-</pre>
-<pre>14/14 - 0s - 31ms/step - loss: 0.6271 - val_loss: 0.5900
-</pre>
-<pre>Epoch 2/20
-</pre>
-<pre>14/14 - 0s - 4ms/step - loss: 0.5768 - val_loss: 0.5669
-</pre>
-<pre>Epoch 3/20
-</pre>
-<pre>14/14 - 0s - 4ms/step - loss: 0.5559 - val_loss: 0.5616
-</pre>
-<pre>Epoch 4/20
-</pre>
-<pre>14/14 - 0s - 4ms/step - loss: 0.5489 - val_loss: 0.5614
-</pre>
-<pre>Epoch 5/20
-</pre>
-<pre>14/14 - 0s - 4ms/step - loss: 0.5467 - val_loss: 0.5613
-</pre>
-<pre>Epoch 6/20
-</pre>
-<pre>14/14 - 0s - 4ms/step - loss: 0.5458 - val_loss: 0.5612
-</pre>
-<pre>Epoch 7/20
-</pre>
-<pre>14/14 - 0s - 4ms/step - loss: 0.5454 - val_loss: 0.5612
-</pre>
-<pre>Epoch 8/20
-</pre>
-<pre>14/14 - 0s - 4ms/step - loss: 0.5448 - val_loss: 0.5612
-</pre>
-<pre>Epoch 9/20
-</pre>
-<pre>14/14 - 0s - 4ms/step - loss: 0.5443 - val_loss: 0.5612
-</pre>
-<pre>Epoch 10/20
-</pre>
-<pre>14/14 - 0s - 4ms/step - loss: 0.5437 - val_loss: 0.5613
-</pre>
-<pre>WARNING:tensorflow:5 out of the last 15 calls to &lt;function TensorFlowTrainer.make_predict_function.&lt;locals&gt;.one_step_on_data_distributed at 0x000002B888216AC0&gt; triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
-</pre>
-<pre>First probabilities: [0.2602 0.2589 0.2559 0.2422 0.2541]
-</pre>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
+<pre>First probabilities: [0.2602 0.2589 0.2559 0.2422 0.2541]</pre>
 </details>
 </section>
 </section>
 <section id="extension-c.-compare-all-four-neural-architectures" class="level2">
 <h2 class="anchored" data-anchor-id="extension-c.-compare-all-four-neural-architectures">Extension C. Compare all four neural architectures</h2>
-<p>This section runs after both extension models. It repeats the explicit score calculation so the full comparison remains easy to inspect. It includes the same validation origins and reports one seed per model; it does not replace the three-seed reference table.</p>
+<p>Run this section after both extension models. Compare forecasts for the same validation origins, using the same score definitions. The table reports one run per neural model with seed 7; the three-seed comparison examines sensitivity to initialization separately.</p>
 <div class="copy-step">
 <p><strong>Code block 22</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -1676,7 +1486,7 @@ Logistic regression input: (834, 90)
 <span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>               <span class="bu">len</span>(history_lstm.history[<span class="st">"loss"</span>]), <span class="bu">len</span>(history_transformer.history[<span class="st">"loss"</span>])],</span>
 <span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>})</span>
 <span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>display(comparison.<span class="bu">round</span>(<span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
 
@@ -1780,7 +1590,7 @@ Logistic regression input: (834, 90)
 <span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>       title<span class="op">=</span><span class="ss">f"LSTM calibration, seed </span><span class="sc">{</span>SEED<span class="sc">}</span><span class="ss">; labels = counts"</span>, xlim<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>), ylim<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
 <span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
 <span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
 
@@ -1828,7 +1638,7 @@ Logistic regression input: (834, 90)
 </table>
 
 </div></div>
-<img src="../assets/tutorials-linear/temporal/cell-047-1.png" alt="Verified local single-seed figure from code block 23" loading="lazy">
+<img src="../assets/tutorials-linear/temporal/cell-047-1.png" alt="Example figure from code block 23" loading="lazy">
 </details>
 </section>
 <section id="optional.-save-the-complete-single-seed-run" class="level2">
@@ -1858,16 +1668,13 @@ Logistic regression input: (834, 90)
 <span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"historical_as_of_verified"</span>: <span class="va">False</span>, <span class="st">"colab_execution_verified"</span>: <span class="va">False</span>,</span>
 <span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>}])</span>
 <span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>protocol.to_csv(output_dir <span class="op">/</span> <span class="st">"protocol.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<pre>Tables saved to: H:\Otros ordenadores\Mi PC\1_Proyectos\2026 - Statsei 14 -\statsei14-deep-learning\qa\linear-integration-2026-10-07\executions\temporal-8809d0d176\outputs_temporal
-</pre>
-</details>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>
 <ul>
-<li><a href="https://franplaza.github.io/courses/statsei14/tutorials/temporal-comparison.html">Original StatSei14 temporal tutorial, frozen data and protocol</a></li>
+<li><a href="https://franplaza.github.io/courses/statsei14/tutorials/temporal-comparison.html">Sensitivity to initialization: temporal models, frozen data and protocol</a></li>
 <li><a href="https://keras.io/api/models/model_training_apis/">Keras model training API: compile, fit and predict</a></li>
+<li><a href="https://keras.io/api/callbacks/early_stopping/">Keras EarlyStopping</a></li>
 <li><a href="https://keras.io/guides/functional_api/">Keras Functional API</a></li>
 <li><a href="https://keras.io/api/layers/attention_layers/multi_head_attention/">Keras MultiHeadAttention</a></li>
 </ul>

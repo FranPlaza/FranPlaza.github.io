@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Original LSTM and ETAS-inspired reference – Deep Learning Meets ETAS</title>
+<title>ETAS-inspired feature experiment – Deep Learning Meets ETAS</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -166,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Original LSTM and ETAS-inspired reference</h1>
+<h1 class="title">ETAS-inspired feature experiment</h1>
 <p class="subtitle lead">From a seismic research question to a controlled learning experiment</p>
 </div>
 
@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This page preserves the earlier notebook-based exercise and its recorded results. For the new copy-and-run tutorials, start with the <a href="./practical.html">practical guide</a>.</p>
+<p>Study how adding an activity feature changes an LSTM under a fixed protocol. This laboratory activity includes its own reference forecasts and recorded results. For the guided LSTM and Transformer session, open the <a href="./practical.html">practical guide</a>.</p>
 <div class="actions">
 <p><a href="https://colab.research.google.com/github/FranPlaza/FranPlaza.github.io/blob/main/courses/statsei14/downloads/workshop.ipynb" class="primary">Open in Colab</a> <a href="downloads/workshop.ipynb">Download notebook</a> <a href="downloads/course-pack.zip">Download course pack</a></p>
 </div>
@@ -223,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="two-ways-to-participate" class="level2">
 <h2 class="anchored" data-anchor-id="two-ways-to-participate">Two ways to participate</h2>
-<p>Run and modify the cells if you are comfortable with Python, or follow the prepared outputs and contribute a hypothesis and interpretation. Both routes investigate the same scientific question. The required live change is adding one channel to the LSTM; the Transformer is a guided comparison using a separate notebook.</p>
+<p>Run and modify the cells if you are comfortable with Python, or follow the prepared outputs and contribute a hypothesis and interpretation. Both routes investigate the same scientific question. The experiment adds one channel to the LSTM. A separate notebook below studies a Transformer with fixed sinusoidal positions.</p>
 </section>
 <section id="one-concrete-task" class="level2">
 <h2 class="anchored" data-anchor-id="one-concrete-task">One concrete task</h2>
@@ -276,9 +276,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>Magnitude 4.5 is an input threshold, not a claim of uniform completeness. The notebook shows training-period coverage and magnitude-frequency diagnostics. The larger frozen download starts at magnitude 3 for these diagnostics.</p>
 </section>
-<section id="the-model-is-written-out" class="level2">
-<h2 class="anchored" data-anchor-id="the-model-is-written-out">The model is written out</h2>
-<p>The LSTM learns a representation of the ordered daily inputs. The sigmoid output and binary cross-entropy connect that representation to the weekly occurrence question. The learning steps stay visible in the notebook:</p>
+<section id="from-history-to-a-weekly-probability" class="level2">
+<h2 class="anchored" data-anchor-id="from-history-to-a-weekly-probability">From history to a weekly probability</h2>
+<p>The LSTM learns a representation of the ordered daily inputs. The sigmoid output and binary cross-entropy connect that representation to the weekly occurrence question. The training and prediction steps are:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> keras.Sequential([</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    keras.layers.Input(shape<span class="op">=</span>(<span class="dv">30</span>, X_train.shape[<span class="op">-</span><span class="dv">1</span>])),</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    keras.layers.LSTM(<span class="dv">16</span>),</span>
@@ -296,17 +296,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    shuffle<span class="op">=</span><span class="va">False</span>,</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>probability <span class="op">=</span> model.predict(X_val).ravel()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The notebook explains each argument beside the cell. No custom training wrapper hides these steps.</p>
+<p><code>compile</code> specifies the optimizer and loss; <code>fit</code> updates weights using training windows; <code>predict</code> returns probabilities for the validation histories.</p>
 </section>
-<section id="required-exercise" class="level2">
-<h2 class="anchored" data-anchor-id="required-exercise">Required exercise</h2>
+<section id="compare-catalogue-inputs-with-an-added-activity-feature" class="level2">
+<h2 class="anchored" data-anchor-id="compare-catalogue-inputs-with-an-added-activity-feature">Compare catalogue inputs with an added activity feature</h2>
 <p><strong>Before training:</strong> predict whether the extra channel will help, and explain why. It gives greater weight to larger and more recent events; its information may also be redundant with the catalogue channels.</p>
 <p>Add the ETAS-inspired score to the feature list, update the model input and retrain. Keep the target, splits, seed and hyperparameters fixed. Compare validation Brier score and log loss with the catalogue-only model.</p>
 <p><strong>After training:</strong> compare the result with your hypothesis. Did the same channel help logistic regression? Record what changed, whether the difference is small, and why one run cannot establish general superiority. The index is an input representation with illustrative parameters, not a fitted ETAS rate.</p>
 </section>
 <section id="continue-as-homework" class="level2">
 <h2 class="anchored" data-anchor-id="continue-as-homework">Continue as homework</h2>
-<p>Save the optional 14-versus-30-day comparison for after the session. Rebuild the windows, inspect a boundary example and compare only on validation while keeping the seven-day forecasting question fixed. The <a href="./homework.html">homework guide</a> provides the follow-up route. Once this practical’s test results have been inspected, they are no longer an untouched test for selecting a new configuration.</p>
+<p>Save the optional 14-versus-30-day comparison for after the session. Rebuild the windows, inspect a boundary example and compare only on validation while keeping the seven-day forecasting question fixed. The <a href="./homework.html">homework guide</a> provides the follow-up route. This experiment’s test results have already been inspected; that period is no longer an untouched test for selecting a new configuration.</p>
 </section>
 <section id="reading-the-output" class="level2">
 <h2 class="anchored" data-anchor-id="reading-the-output">Reading the output</h2>
@@ -318,61 +318,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Weekly targets do not overlap, but earthquakes and adjacent input windows can still be dependent.</p>
 </section>
-<section id="from-minute-25-practice-comparison-and-discussion" class="level2">
-<h2 class="anchored" data-anchor-id="from-minute-25-practice-comparison-and-discussion">From minute 25: practice, comparison and discussion</h2>
-<p>The presentation occupies minutes 00–25. The remaining time follows this schedule:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Session minutes</th>
-<th style="text-align: left;">Activity</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">25–28</td>
-<td style="text-align: left;">Open the LSTM notebook and load the frozen catalogue</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">28–32</td>
-<td style="text-align: left;">Connect the question to one window, label and chronological split</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">32–38</td>
-<td style="text-align: left;">Compare simple baselines and train the small LSTM</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">38–43</td>
-<td style="text-align: left;">State a hypothesis, add the score and compare validation results</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">43–48</td>
-<td style="text-align: left;">Evaluate the fixed LSTM experiment</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">48–56</td>
-<td style="text-align: left;">Inspect the Transformer definition and prepared three-seed comparison</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">56–60</td>
-<td style="text-align: left;">Return to the scientific question and introduce follow-up work</td>
-</tr>
-</tbody>
-</table>
-<p>The Transformer block uses prepared outputs and readable model code. Building an attention model from scratch is not required during the session.</p>
-</section>
-<section id="timing-and-fallback" class="level2">
-<h2 class="anchored" data-anchor-id="timing-and-fallback">Timing and fallback</h2>
-<p>The goal is less than three minutes of CPU training for the two LSTM variants. The distributed reference run records measured training time and the environment; a local CPU measurement is not a Colab timing guarantee.</p>
-<p>If the runtime cannot train during the session, open the <a href="downloads/workshop-solved.html">solved notebook</a> and the prepared results. The notebook marks this fallback explicitly.</p>
-</section>
-<section id="original-lstm-exercise-one-seed-reference-run" class="level2">
-<h2 class="anchored" data-anchor-id="original-lstm-exercise-one-seed-reference-run">Original LSTM exercise: one-seed reference run</h2>
-<p>The solution executed from a fresh local CPU kernel in <strong>29.1 seconds</strong>; the two LSTM fits took <strong>4.3 seconds combined</strong> (20 epochs each, two TensorFlow threads). This is a local Windows measurement, not a Colab benchmark.</p>
+<section id="example-results-one-seed" class="level2">
+<h2 class="anchored" data-anchor-id="example-results-one-seed">Example results: one seed</h2>
+<p>Use the <a href="downloads/workshop-solved.html">notebook with outputs</a> to inspect the predictions before proposing a change. Software and execution context are described in <a href="./environment.html">Environment and setup</a>.</p>
 <p>Training contains 834 weeks (197 positives), validation 208 (52 positives), and test 260 (54 positives). Three boundary or incomplete weeks are excluded.</p>
 <div class="table-responsive" tabindex="0" role="region" aria-label="Original practical metrics">
 <table class="caption-top table">
@@ -423,13 +371,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The course pack contains unrounded metrics, predictions, configuration and runtime metadata.</p>
 </section>
 <section id="transformer-demo" class="level2">
-<h2 class="anchored" data-anchor-id="transformer-demo">Guided Transformer comparison</h2>
+<h2 class="anchored" data-anchor-id="transformer-demo">Fixed-position Transformer comparison</h2>
 <p><a href="downloads/transformer-demo.ipynb">Download the executable demo</a> · <a href="downloads/transformer-demo-solved.html">Open prepared outputs</a></p>
 <p>This is a <strong>separate catalogue-only comparison across seeds 7, 17 and 27</strong>. It reuses the frozen data, windows, training-only normalization and weekly target, but does not add the ETAS-inspired channel. Both neural models receive the same 30 × 3 inputs. Read its LSTM results together with its Transformer results; they are not the single-seed values in the original exercise above.</p>
 <p>The model projects each day to 16 dimensions, adds fixed sinusoidal position information, and applies one attention block with two heads (key dimension 8), a 32→16 feed-forward block, residual connections and normalization. Temporal averaging and a sigmoid produce one probability. All input days precede issuance; attention within that history does not expose future target observations.</p>
-<p>During minutes 48–56, follow the tensor shapes in the written model, then compare the prepared results. The demo has been tested locally; participants can reproduce or extend it after the session.</p>
-<section id="what-the-pilot-observed" class="level3">
-<h3 class="anchored" data-anchor-id="what-the-pilot-observed">What the pilot observed</h3>
+<p>Follow the tensor shapes in the written model, then compare all three seeds. This model uses fixed sinusoidal positions and 2,305 parameters; the guided tutorial uses learned day positions and 2,257 parameters. Keep each model definition with its own results.</p>
+<section id="read-the-validation-and-test-scores" class="level3">
+<h3 class="anchored" data-anchor-id="read-the-validation-and-test-scores">Read the validation and test scores</h3>
 <p>The neural entries below are <strong>means of individual-fit metrics over all three seeds</strong>, not ensemble metrics. The baselines are deterministic.</p>
 <div class="table-responsive" tabindex="0" role="region" aria-label="Transformer pilot metrics">
 <table class="caption-top table">
@@ -476,7 +424,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Validation and test losses for all three seeds and the two deterministic baselines.</figcaption>
 </figure>
 </div>
-<p>The compact Transformer has 2,305 parameters and the LSTM 1,297. Transformer fits took 1.34–1.59 seconds locally, stopping after 5–9 epochs; LSTM fits took 2.00–2.05 seconds and ran 20 epochs. The different completed training work prevents interpreting this as general evidence of a faster architecture. A clean Colab run remains unverified.</p>
+<p>The compact Transformer has 2,305 parameters and the LSTM 1,297. Transformer fits took 1.34–1.59 seconds locally, stopping after 5–9 epochs; LSTM fits took 2.00–2.05 seconds and ran 20 epochs. The different completed training work prevents interpreting this as general evidence of a faster architecture.</p>
 <p>Inspect the <a href="results/transformer-pilot/metrics.csv">metrics</a>, <a href="results/transformer-pilot/fits.csv">fits</a>, <a href="results/transformer-pilot/predictions.csv">predictions</a> and <a href="results/transformer-pilot/runtime.json">runtime</a>. All seeds are retained. Variation across seeds describes training variability, not a confidence interval for generalization. The test period was already inspected in the original tutorial, so this is an <strong>exploratory retrospective comparison</strong>, with no tuning after test evaluation.</p>
 </section>
 <section id="what-remains-a-hypothesis" class="level3">
@@ -489,9 +437,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="catalogue-revisions-and-validation">Catalogue revisions and validation</h2>
 <p>A frozen modern catalogue is reproducible but does not prove which event version was available years ago. The reference run is labelled <strong>revised retrospective</strong>, and historical as-of availability remains unverified. Input event times precede issuance; normalization uses training only; target weeks crossing a partition boundary are removed.</p>
 </section>
-<section id="after-the-tutorial" class="level2">
-<h2 class="anchored" data-anchor-id="after-the-tutorial">After the tutorial</h2>
-<p>Use minutes 56–60 to return to three questions: <strong>what did we represent, what did we ask the model to learn, and what did the evidence support?</strong> Contrast our weekly probability with the intensity summaries and aftershock sequences in the research presentation. Their targets require different outputs, losses and evaluations. Then distinguish the observed Transformer comparison from a possible explanation that a future experiment could test.</p>
+<section id="discuss-the-evidence" class="level2">
+<h2 class="anchored" data-anchor-id="discuss-the-evidence">Discuss the evidence</h2>
+<p>Return to three questions: <strong>what did we represent, what did we ask the model to learn, and what did the evidence support?</strong> Contrast our weekly probability with the intensity summaries and aftershock sequences in the research presentation. Their targets require different outputs, losses and evaluations. Then distinguish the observed Transformer comparison from a possible explanation that a future experiment could test.</p>
 <p>Continue with the <a href="./homework.html">homework</a> after the session. Any new region requires a matching catalogue and renewed checks of completeness, sample sizes and magnitude types. A future two-part model could estimate occurrence and magnitude conditional on occurrence separately.</p>
 
 

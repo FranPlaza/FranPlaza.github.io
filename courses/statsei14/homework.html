@@ -207,15 +207,27 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>Submit a one-page comparison and 150–200 words explaining why scores from different tasks cannot be ranked directly. Cite each paper and identify whether you consulted the full text or abstract. Keep the Jara thesis and the manuscript under review distinct if you include them.</p>
 </section>
-<section id="complete-the-linear-walkthrough-and-examine-repeated-fits" class="level2">
-<h2 class="anchored" data-anchor-id="complete-the-linear-walkthrough-and-examine-repeated-fits">Complete the linear walkthrough and examine repeated fits</h2>
-<p><strong>Suggested time: 60–120 minutes, depending on environment and Python familiarity.</strong> Complete the optional MLP and CNN1D sections of the linear temporal notebook. Each model places its construction, training and evaluation together and uses seed 7. Then open the separate <a href="./tutorials/temporal-comparison.html">three-seed comparison</a> or its <a href="downloads/comparison/temporal.ipynb">notebook</a> to examine seeds 7, 17 and 27.</p>
+<section id="compare-architectures-and-examine-repeated-fits" class="level2">
+<h2 class="anchored" data-anchor-id="compare-architectures-and-examine-repeated-fits">Compare architectures and examine repeated fits</h2>
+<p><strong>Suggested time: 60–120 minutes, depending on environment and Python familiarity.</strong> Complete the optional MLP and CNN1D sections of the temporal notebook. Each model places its construction, training and evaluation together and uses seed 7. Then open the separate <a href="./tutorials/temporal-comparison.html">three-seed comparison</a> or its <a href="downloads/comparison/temporal.ipynb">notebook</a> to examine seeds 7, 17 and 27.</p>
 <ol type="1">
 <li>Trace one 30 × 3 input through each model. Identify fixed lag positions in the MLP, a shared temporal filter in CNN1D, recurrent state in the LSTM, and learned positions plus attention in the Transformer.</li>
 <li>Identify the model definition, <code>compile</code>, <code>fit</code>, <code>predict</code> and score calculation. Explain what <code>fit()</code> changes and which decisions the researcher fixed beforehand. Compare parameter counts and completed epochs as context for the losses.</li>
 <li>Read Brier, log loss and calibration alongside the simple references. Separate the seed-7 result from the repeated comparison. In the latter, mean losses summarize individually scored fits; they are not the loss of an ensemble prediction.</li>
-<li>Record your environment and differences from the prepared local results. Small numerical differences are possible. A local execution does not verify actual Colab execution.</li>
+<li>Record your software versions and hardware, and note numerical differences from the supplied results. See <a href="./environment.html">Environment and setup</a>.</li>
 </ol>
+</section>
+<section id="sensitivity-to-recurrent-state-size-8-16-and-32-units" class="level2">
+<h2 class="anchored" data-anchor-id="sensitivity-to-recurrent-state-size-8-16-and-32-units">Sensitivity to recurrent-state size: 8, 16 and 32 units</h2>
+<p>The network learns weights and biases. The recurrent-state size is a setting we choose before fitting. The 16-unit LSTM is a compact starting configuration; no search in this tutorial establishes it as optimal.</p>
+<ol type="1">
+<li>Declare the candidates <strong>8, 16 and 32 units</strong> before fitting. Change only the number in <code>keras.layers.LSTM(16)</code> in a separate copy of the temporal notebook.</li>
+<li>Keep the three channels, 30-day history, target, region, chronological partitions, training-only scaling, Adam learning rate 0.001, batch size 64, maximum 20 epochs and patience 3 fixed. Keep <code>restore_best_weights=True</code> and <code>shuffle=False</code>.</li>
+<li>Declare <strong>validation log loss</strong> as the primary comparison; also report Brier score, calibration with bin counts, parameter count and completed epochs. Begin with seed 7 to follow the procedure, then repeat <strong>every candidate</strong> with seeds 7, 17 and 27.</li>
+<li>Retain all results. Assess whether any change persists across these initializations, and distinguish increased capacity from an improvement in the stated criterion.</li>
+</ol>
+<p>The seven-day horizon and M ≥ 5 threshold define the scientific target. Changing them studies a different outcome. Changing the seed studies another training realization; it does not create new earthquake observations.</p>
+<p>Validation is used for early stopping and for comparing candidates. The selected score is therefore development evidence. A subsequent independent assessment requires data that did not influence these choices and a selection procedure that respects chronological order. The already inspected 2021–2025 period cannot serve as a new untouched test.</p>
 </section>
 <section id="choose-one-controlled-extension" class="level2">
 <h2 class="anchored" data-anchor-id="choose-one-controlled-extension">Choose one controlled extension</h2>
@@ -263,7 +275,7 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-<p>The <a href="./tutorials/maps.html">map</a> and <a href="./tutorials/graphs.html">graph</a> tutorials predict the same six marginal probabilities. Their scores concern per-cell targets and should not be ranked against regional occurrence scores. Geographic adjacency does not establish physical triggering. The <a href="./practical-reference.html">original feature experiment</a> documents the illustrative ETAS-inspired score; it is not a fitted ETAS rate.</p>
+<p>The <a href="./tutorials/maps.html">map</a> and <a href="./tutorials/graphs.html">graph</a> tutorials predict the same six marginal probabilities. Their scores concern per-cell targets and should not be ranked against regional occurrence scores. Geographic adjacency does not establish physical triggering. The <a href="./practical-reference.html">ETAS-inspired feature experiment</a> documents the illustrative ETAS-inspired score; it is not a fitted ETAS rate.</p>
 </section>
 <section id="evaluate-and-report-the-extension" class="level2">
 <h2 class="anchored" data-anchor-id="evaluate-and-report-the-extension">Evaluate and report the extension</h2>
@@ -301,7 +313,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </div>
 <p>The 2021–2025 test was inspected in earlier course work. Do not use it to select a change or present it as untouched evidence. A confirmatory follow-up requires a new evaluation period and a protocol fixed before examining its outcomes. Revised catalogue records also do not establish what was available at historical forecast times.</p>
-<p>The <a href="./practical-reference.html">earlier LSTM/ETAS exercise and Transformer pilot</a> remain separate reference materials. Their fixed sinusoidal positions, logistic summaries and test results belong to that earlier experiment, not to the current learned-position tutorial.</p>
+<p>For an input experiment, use the <a href="./practical-reference.html">ETAS-inspired feature activity</a>. Keep the feature set, target and evaluation protocol explicit when interpreting any comparison.</p>
 
 
 </section>

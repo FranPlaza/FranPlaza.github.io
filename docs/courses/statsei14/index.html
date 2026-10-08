@@ -155,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="unnumbered">Deep Learning Meets ETAS</h1>
 <p><span class="lede">Practical hybrid workflows for seismic forecasting</span></p>
 <p><span class="byline">Francisco Plaza-Vega</span></p>
-<p>Connect deep learning in seismology with our Spatial Statistics and aftershock research. Then follow a small LSTM from catalogue history to a weekly probability. Read its construction, training and evaluation in consecutive cells, then compare it with a compact Transformer.</p>
+<p>This tutorial introduces practical deep learning workflows for seismic catalogues. Build a weekly occurrence model, compare it with simple reference forecasts, and examine how an LSTM and a compact Transformer use the same seismic history. Spatial and ETAS-inspired extensions are available for independent study.</p>
 <div class="session-meta">
 <p>Tuesday 13 October 2026 · 11:30–12:30 · Santiago</p>
 </div>
@@ -190,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="before-the-session" class="level2">
 <h2 class="anchored" data-anchor-id="before-the-session">Before the session</h2>
 <p>The session welcomes researchers with different levels of Python and deep learning experience. Basic Python helps when running or modifying cells; <strong>no previous neural-network training is required</strong>. You can also follow the prepared outputs, formulate a hypothesis and interpret the evidence with the group.</p>
-<p>Bring a laptop and a browser if you plan to run the code. Download the <a href="downloads/tutorials/temporal.ipynb">prepared temporal notebook</a>, open Colab and upload that notebook before the session. Run the core cells in order through the LSTM evaluation; the frozen catalogue downloads automatically. Each model has its own visible <code>compile</code>, <code>fit</code> and <code>predict</code> calls. Keep the <a href="./tutorials/temporal.html">web guide</a> alongside it for explanations and prepared local outputs. Rebuilding the exercise in a blank notebook remains an option for independent study. The recorded execution checks are local CPU runs; a complete Colab execution remains unverified.</p>
+<p>Bring a laptop and a browser if you plan to run the code. Download the <a href="downloads/tutorials/temporal.ipynb">temporal notebook</a>, open <a href="https://colab.research.google.com/">Colab</a> and upload the notebook. Keep the <a href="./tutorials/temporal.html">web guide</a> alongside it for explanations and example outputs. The preparation downloads and verifies the frozen catalogue automatically. See <a href="./environment.html">Environment and setup</a> for installation and the software used for the supplied results.</p>
 </section>
 <section id="thirty-minutes-of-presentation-thirty-minutes-of-practice" class="level2">
 <h2 class="anchored" data-anchor-id="thirty-minutes-of-presentation-thirty-minutes-of-practice">Thirty minutes of presentation, thirty minutes of practice</h2>
@@ -231,50 +231,47 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;">Open the prepared notebook and inspect one example</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">34–43</td>
-<td style="text-align: left;">Define the references; build, compile, fit and predict with the LSTM</td>
+<td style="text-align: left;">34–36</td>
+<td style="text-align: left;">Distinguish learned weights from model settings and read the training protocol</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">36–43</td>
+<td style="text-align: left;">Define the references; build, compile, fit and predict with the LSTM</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">43–50</td>
 <td style="text-align: left;">Interpret weekly probabilities, Brier, log loss and calibration</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">50–57</td>
 <td style="text-align: left;">Transformer on the same history: positional information, attention and results</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">57–60</td>
 <td style="text-align: left;">Discuss one finding and choose a laboratory extension</td>
 </tr>
 </tbody>
 </table>
-<p>The first <strong>30 minutes</strong> connect seismic applications, research cases and the practical question. The next <strong>30 minutes</strong> cover the prepared notebook, LSTM evaluation, a Transformer comparison and discussion. MLP and CNN1D follow the live route as optional laboratory sections. The primary notebook uses seed 7 once per model so that each fit can be followed directly. A separate comparison retains seeds 7, 17 and 27. Maps, graphs and the ETAS-inspired feature experiment are follow-up routes.</p>
+<p>The guided practical follows the LSTM and Transformer. MLP, CNN1D, maps, graphs and the ETAS-inspired feature experiment are available after the session.</p>
 </section>
-<section id="guided-tutorials" class="level2">
-<h2 class="anchored" data-anchor-id="guided-tutorials">Guided tutorials</h2>
+<section id="materials-to-open" class="level2">
+<h2 class="anchored" data-anchor-id="materials-to-open">Materials to open</h2>
 <ul>
-<li><a href="./tutorials/temporal.html">One regional sequence, step by step</a>: references, LSTM and Transformer, with MLP and CNN1D for the laboratory.</li>
-<li><a href="./tutorials/maps.html">Sequences of maps</a>: CNN2D + LSTM and ConvLSTM2D.</li>
-<li><a href="./tutorials/graphs.html">The same cells as a graph</a>: graph convolution + LSTM.</li>
-<li><a href="./practical.html">All tutorials and the shared protocol</a>.</li>
+<li><a href="./slides/index.html">Presentation</a> and <a href="slides/slides.pdf">PDF</a>.</li>
+<li><a href="./tutorials/temporal.html">Guided session: LSTM and Transformer</a>, <a href="downloads/tutorials/temporal.ipynb">notebook</a> and <a href="downloads/tutorials/temporal-solved.ipynb">notebook with example outputs</a>.</li>
+<li><a href="downloads/tutorials-pack.zip">Tutorial pack</a>: temporal, map and graph notebooks, example outputs and frozen data.</li>
+<li><a href="./environment.html">Environment and setup</a>.</li>
 </ul>
-<p>The slides, notebook and instructor guide follow this same 30 + 30 route. The <a href="./tutorials/temporal-comparison.html">three-seed temporal comparison</a> preserves the original repeated experiment separately. The earlier LSTM/ETAS-inspired notebooks and Transformer pilot remain a <a href="./practical-reference.html">separate reference experiment</a>. Their model definitions and scores are not the results of the current tutorial.</p>
 </section>
-<section id="session-materials-and-laboratory-extensions" class="level2">
-<h2 class="anchored" data-anchor-id="session-materials-and-laboratory-extensions">Session materials and laboratory extensions</h2>
+<section id="continue-after-the-session" class="level2">
+<h2 class="anchored" data-anchor-id="continue-after-the-session">Continue after the session</h2>
 <ul>
-<li><a href="./slides/index.html">Presentation in HTML</a> and <a href="slides/slides.pdf">PDF</a>.</li>
-<li><a href="downloads/tutorials/temporal.ipynb">Temporal notebook with ready-to-run cells</a>.</li>
-<li><a href="downloads/tutorials/temporal-solved.ipynb">Temporal notebook with prepared local outputs</a>.</li>
-<li><a href="./tutorials/temporal.html">Temporal web guide and prepared results from seed 7</a>.</li>
-<li><a href="./tutorials/temporal-comparison.html">Three-seed comparison for the laboratory</a> and its <a href="downloads/comparison/temporal.ipynb">notebook</a>.</li>
-<li><a href="downloads/tutorials-pack.zip">Complete tutorial pack</a>: linear temporal, map and graph notebooks, separate repeated comparisons and frozen data.</li>
-<li><a href="downloads/instructor-guide.md">Instructor guide</a>.</li>
-<li><a href="./references.html">References and source distinctions</a>.</li>
-<li><a href="./homework.html">Laboratory questions</a>.</li>
-<li><a href="./practical-reference.html">Earlier LSTM/ETAS exercise and Transformer pilot</a>.</li>
+<li><a href="./homework.html">Model capacity and controlled experiments</a>: compare LSTM states of 8, 16 and 32 units, or study another question.</li>
+<li><a href="./tutorials/temporal-comparison.html">Sensitivity to initialization</a>: compare seeds 7, 17 and 27 under the same protocol.</li>
+<li>Spatial extensions: <a href="./tutorials/maps.html">sequences of maps</a> and <a href="./tutorials/graphs.html">the same cells as a graph</a>.</li>
+<li><a href="./practical-reference.html">ETAS-inspired feature experiment</a>.</li>
+<li><a href="./references.html">References</a> and <a href="downloads/instructor-guide.md">instructor guide</a>.</li>
 </ul>
-<p>The current comparison evaluates validation only, and early stopping also uses validation. An observed score difference describes this teaching experiment; it does not identify its cause or establish a general ranking of architectures. Read Brier, log loss and calibration together, and compare with training prevalence and logistic regression. The live table describes one fit per model with seed 7. It does not measure variability across initializations. Use the separate repeated comparison to examine all three declared seeds; keep its means separate from the live results.</p>
 </section>
 <section id="what-the-experiment-can-establish" class="level2">
 <h2 class="anchored" data-anchor-id="what-the-experiment-can-establish">What the experiment can establish</h2>

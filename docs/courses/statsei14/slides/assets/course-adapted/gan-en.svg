@@ -1,8 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600" role="img" aria-labelledby="title desc"><title id="title">GAN: learn to generate samples through an adversarial comparison</title><desc id="desc">Random noise enters a generator. Synthetic samples and real examples are compared by a discriminator. Training feedback updates the generator. After training, only the generator is needed to draw new samples.</desc><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="context-stroke" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><rect width="1600" height="600" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600" role="img" aria-labelledby="title desc"><title id="title">GAN: a generator produces a new sample</title><desc id="desc">Random noise z enters generator G to produce the generated sample x̃ = G(z). A discriminator compares generated samples and real examples, supplying a training signal. After training, drawing z and applying G directly produces a new sample.</desc><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="context-stroke" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><rect width="1600" height="600" fill="white"/>
 <text x="195" y="65" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="middle" fill="#00A499">Random input</text>
 <text x="530" y="65" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="middle" fill="#00A499">Generator</text>
-<text x="920" y="65" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="middle" fill="#263238">Samples</text>
+<text x="898" y="65" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="middle" fill="#00A499">Model output</text>
 <text x="1325" y="65" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="middle" fill="#EA7600">Discriminator</text>
+<text x="1325" y="110" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="600" text-anchor="middle" fill="#607D8B">Training signal</text>
 <rect x="90" y="179" width="205" height="132" rx="22" fill="#E6F5F3" stroke="#00A499" stroke-width="4"/>
 <path d="M111,181 Q188.39999999999998,177 276,181 M294,201 Q297,242.36 293,290" fill="none" stroke="#00A499" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
 <text x="192" y="229" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" text-anchor="middle" fill="#00A499">z</text>
@@ -12,23 +13,24 @@
 <path d="M428,162 Q525.08,158 634,162 M652,182 Q655,241.6 651,309" fill="none" stroke="#00A499" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
 <text x="530" y="235" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" text-anchor="middle" fill="#00A499">G</text>
 <text x="530" y="294" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="400" text-anchor="middle" fill="#607D8B">G(z)</text>
-<path d="M667,245 L740,245" fill="none" stroke="#00A499" stroke-width="5" opacity="1" stroke-linecap="round" marker-end="url(#a)"/>
-<rect x="758" y="153" width="280" height="122" rx="22" fill="#E6F5F3" stroke="#00A499" stroke-width="4"/>
-<path d="M779,155 Q892.4,151 1019,155 M1037,175 Q1040,211.56 1036,254" fill="none" stroke="#00A499" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="898" y="198" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="middle" fill="#00A499">Synthetic</text>
+<path d="M667,245 L710,245" fill="none" stroke="#00A499" stroke-width="5" opacity="1" stroke-linecap="round" marker-end="url(#a)"/>
+<rect x="728" y="133" width="340" height="155" rx="22" fill="#E6F5F3" stroke="#00A499" stroke-width="4"/>
+<path d="M749,135 Q891.2,131 1049,135 M1067,155 Q1070,207.39999999999998 1066,267" fill="none" stroke="#00A499" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="898" y="173" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" text-anchor="middle" fill="#00A499">Generated sample</text>
+<text x="898" y="215" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" text-anchor="middle" fill="#00A499">x̃ = G(z)</text>
 <rect x="758" y="342" width="280" height="122" rx="22" fill="#FFF0E4" stroke="#EA7600" stroke-width="4"/>
 <path d="M779,344 Q892.4,340 1019,344 M1037,364 Q1040,400.56 1036,443" fill="none" stroke="#EA7600" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
 <text x="898" y="387" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="middle" fill="#EA7600">Real examples</text>
-<path d="M795,235 L795,235 L815,227 L835,233 L855,201 L875,230 L895,220 L915,232 L935,228 L955,234 L975,216 L995,235" fill="none" stroke="#00A499" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M795,270 L795,270 L815,262 L835,268 L855,236 L875,265 L895,255 L915,267 L935,263 L955,269 L975,251 L995,270" fill="none" stroke="#00A499" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
 <path d="M795,425 L795,425 L815,420 L835,397 L855,417 L875,409 L895,423 L915,419 L935,425 L955,412 L975,423 L995,425" fill="none" stroke="#EA7600" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-<path d="M1048,216 L1110,216 L1110,260 L1165,260" fill="none" stroke="#00A499" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#a)"/>
+<path d="M1078,216 L1110,216 L1110,260 L1165,260" fill="none" stroke="#00A499" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#a)"/>
 <path d="M1048,405 L1110,405 L1110,300 L1165,300" fill="none" stroke="#EA7600" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#a)"/>
 <rect x="1180" y="189" width="285" height="184" rx="22" fill="white" stroke="#EA7600" stroke-width="4"/>
 <path d="M1201,191 Q1316.8,187 1446,191 M1464,211 Q1467,277.32 1463,352" fill="none" stroke="#EA7600" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
 <text x="1322" y="258" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" text-anchor="middle" fill="#EA7600">D</text>
-<text x="1322" y="309" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#263238">Real or</text>
-<text x="1322" y="351" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#263238">synthetic?</text>
+<text x="1322" y="309" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="400" text-anchor="middle" fill="#263238">Real or</text>
+<text x="1322" y="351" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="400" text-anchor="middle" fill="#263238">synthetic?</text>
 <path d="M1290,382 L1290,505 L530,505 L530,342" fill="none" stroke="#00A499" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#a)" stroke-dasharray="10 8"/>
-<text x="864" y="542" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#00A499">Training feedback to the generator</text>
-<text x="800" y="584" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#263238">After training: sample z → G(z) → a new synthetic example.</text>
+<text x="864" y="542" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="400" text-anchor="middle" fill="#607D8B">Training feedback to the generator</text>
+<text x="800" y="584" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" text-anchor="middle" fill="#00A499">After training: draw z → apply G → obtain a generated sample x̃.</text>
 </svg>

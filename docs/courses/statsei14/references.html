@@ -167,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="transformer-context-and-further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="transformer-context-and-further-reading">Transformer context and further reading</h2>
-<p>The earlier reference demonstration compares a compact Transformer with an LSTM on the same weekly occurrence task. The <a href="downloads/transformer-demo-solved.html">executed demo</a> and <a href="downloads/transformer-demo.ipynb">participant notebook</a> make the architecture and its local results available. The <a href="./homework.html">homework</a> extends this comparison after the session. This is a new teaching experiment, distinct from the studies below.</p>
+<p>The <a href="./tutorials/temporal.html">guided temporal comparison</a> uses an LSTM and a compact Transformer for weekly catalogue occurrence. Its learned day positions and validation results belong to this teaching task. The <a href="./homework.html">homework</a> explores representation and capacity under a fixed protocol. The studies below address their own data and targets.</p>
 <p><strong>Delgado, L., Peralta, B., Nicolis, O., and Díaz, M. (2025).</strong> Integrating spatio-temporal density-based clustering and neural networks for earthquake classification. <em>Expert Systems with Applications</em>, 277, 127186. <a href="https://doi.org/10.1016/j.eswa.2025.127186">DOI</a> · <a href="https://researchers.unab.cl/en/publications/integrating-spatio-temporal-density-based-clustering-and-neural-n/">Institutional record and abstract</a>.</p>
 <p>The study combines spatio-temporal clustering, event labels and LSTM/Transformer classification. Its labels distinguish foreshocks, mainshocks and aftershocks. Classifying such labels is a different target from a probability of an event in a future week. Establishing what information is available when a label is assigned is part of the homework reading.</p>
 <p><strong>Farfán, Y., Nicolis, O., and Peralta, B. (2025).</strong> Earthquake Forecasting using Temporal Transformers on Spatial Grids in Chile. <em>2025 IEEE CHILEAN Conference on Electrical, Electronics Engineering, Information and Communication Technologies (CHILECON).</em> <a href="https://doi.org/10.1109/CHILECON66915.2025.11476035">DOI</a> · <a href="https://researchers.unab.cl/en/publications/earthquake-forecasting-using-temporal-transformers-on-spatial-gri/">Institutional record and abstract</a>.</p>
@@ -202,6 +202,9 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://earthquake.usgs.gov/fdsnws/event/1/">USGS ComCat API</a>.</li>
 <li><a href="https://earthquake.usgs.gov/data/catalog/products.php">Versioning and preferred products in ComCat</a>.</li>
 <li><a href="https://www.usgs.gov/faqs/whywhen-does-usgs-update-magnitude-earthquake">Why USGS updates magnitudes</a>.</li>
+<li><a href="https://keras.io/api/optimizers/adam/">Keras Adam optimizer</a>.</li>
+<li><a href="https://keras.io/api/callbacks/early_stopping/">Keras EarlyStopping</a>.</li>
+<li><a href="https://scikit-learn.org/stable/modules/cross_validation.html#time-series-split">Temporal cross-validation</a>.</li>
 <li><a href="https://keras.io/api/layers/recurrent_layers/lstm/">Keras LSTM documentation</a>.</li>
 <li><a href="https://keras.io/api/layers/attention_layers/multi_head_attention/">Keras MultiHeadAttention documentation</a>.</li>
 <li><a href="https://keras.io/examples/timeseries/timeseries_classification_transformer/">Keras time-series Transformer example</a>. Architectural background. The demo uses its own fixed small design, chronological partitions and positional encoding.</li>
@@ -212,8 +215,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="figure-attribution" class="level2">
 <h2 class="anchored" data-anchor-id="figure-attribution">Figure attribution</h2>
-<p>The published workflow and selected generative-study figures are author-provided research assets. Attribution appears in the slide notes and figure captions. Original plots in the practical are generated from the frozen USGS data.</p>
-<p>The distribution package does not include the thesis, private manuscript PDFs or the publisher’s article PDF. Research-figure copyrights remain with their respective rights holders.</p>
+<p>Research figures are credited in their captions and slide notes. Original tutorial figures use the frozen USGS catalogue. Research-figure copyrights remain with their respective rights holders.</p>
 </section>
 <section id="map-data" class="level2">
 <h2 class="anchored" data-anchor-id="map-data">Map data</h2>

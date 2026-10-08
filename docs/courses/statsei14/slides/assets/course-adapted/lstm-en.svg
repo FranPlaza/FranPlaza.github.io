@@ -1,26 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600" role="img" aria-labelledby="title desc"><title id="title">LSTM: summarize a history through a sequence of memory updates</title><desc id="desc">Three illustrated time steps share one LSTM model. Daily inputs enter at each step. Cell state and hidden state pass forward, and the final hidden state gives one forecast. Intermediate time steps are omitted.</desc><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="context-stroke" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><rect width="1600" height="600" fill="white"/>
-<text x="710" y="50" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="middle" fill="#263238">Memory is updated as each day arrives</text>
-<rect x="125" y="420" width="220" height="98" rx="22" fill="#EDF3FB" stroke="#5A8ECE" stroke-width="4"/>
-<path d="M146,422 Q230.6,418 326,422 M344,442 Q347,467.04 343,497" fill="none" stroke="#5A8ECE" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="235" y="482" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#5A8ECE">Day 1</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600" role="img" aria-labelledby="title desc"><title id="title">LSTM: 30 days of catalogue features produce a weekly occurrence probability</title><desc id="desc">Each of 30 days has three catalogue channels: log(1 + count), maximum magnitude excess above 4.5 and an event indicator. Shared LSTM updates build a final state of 16 values. Dense plus sigmoid transforms it into the probability of at least one catalogue M &gt;= 5 event in the next seven days. Intermediate time steps are omitted.</desc><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="context-stroke" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><rect width="1600" height="600" fill="white"/>
+<text x="800" y="50" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="middle" fill="#263238">Input: 30 days × 3 catalogue channels</text>
+<rect x="125" y="410" width="220" height="98" rx="22" fill="#EDF3FB" stroke="#5A8ECE" stroke-width="4"/>
+<path d="M146,412 Q230.6,408 326,412 M344,432 Q347,457.04 343,487" fill="none" stroke="#5A8ECE" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="235" y="448" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#5A8ECE">Day 1</text>
+<text x="235" y="489" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" text-anchor="middle" fill="#5A8ECE">3 features</text>
 <rect x="110" y="190" width="250" height="143" rx="22" fill="#E6F5F3" stroke="#00A499" stroke-width="4"/>
 <path d="M131,192 Q230.0,188 341,192 M359,212 Q362,258.64 358,312" fill="none" stroke="#00A499" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
 <text x="235" y="276" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="middle" fill="#00A499">LSTM</text>
-<path d="M235,415 L235,343" fill="none" stroke="#5A8ECE" stroke-width="4" opacity="1" stroke-linecap="round" marker-end="url(#a)"/>
-<rect x="525" y="420" width="220" height="98" rx="22" fill="#EDF3FB" stroke="#5A8ECE" stroke-width="4"/>
-<path d="M546,422 Q630.6,418 726,422 M744,442 Q747,467.04 743,497" fill="none" stroke="#5A8ECE" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="635" y="482" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#5A8ECE">Day 2</text>
+<path d="M235,405 L235,343" fill="none" stroke="#5A8ECE" stroke-width="4" opacity="1" stroke-linecap="round" marker-end="url(#a)"/>
+<rect x="525" y="410" width="220" height="98" rx="22" fill="#EDF3FB" stroke="#5A8ECE" stroke-width="4"/>
+<path d="M546,412 Q630.6,408 726,412 M744,432 Q747,457.04 743,487" fill="none" stroke="#5A8ECE" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="635" y="448" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#5A8ECE">Day 2</text>
+<text x="635" y="489" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" text-anchor="middle" fill="#5A8ECE">3 features</text>
 <rect x="510" y="190" width="250" height="143" rx="22" fill="#E6F5F3" stroke="#00A499" stroke-width="4"/>
 <path d="M531,192 Q630.0,188 741,192 M759,212 Q762,258.64 758,312" fill="none" stroke="#00A499" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
 <text x="635" y="276" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="middle" fill="#00A499">LSTM</text>
-<path d="M635,415 L635,343" fill="none" stroke="#5A8ECE" stroke-width="4" opacity="1" stroke-linecap="round" marker-end="url(#a)"/>
-<rect x="1025" y="420" width="220" height="98" rx="22" fill="#EDF3FB" stroke="#5A8ECE" stroke-width="4"/>
-<path d="M1046,422 Q1130.6,418 1226,422 M1244,442 Q1247,467.04 1243,497" fill="none" stroke="#5A8ECE" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="1135" y="482" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#5A8ECE">Day 30</text>
+<path d="M635,405 L635,343" fill="none" stroke="#5A8ECE" stroke-width="4" opacity="1" stroke-linecap="round" marker-end="url(#a)"/>
+<rect x="1025" y="410" width="220" height="98" rx="22" fill="#EDF3FB" stroke="#5A8ECE" stroke-width="4"/>
+<path d="M1046,412 Q1130.6,408 1226,412 M1244,432 Q1247,457.04 1243,487" fill="none" stroke="#5A8ECE" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="1135" y="448" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#5A8ECE">Day 30</text>
+<text x="1135" y="489" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" text-anchor="middle" fill="#5A8ECE">3 features</text>
 <rect x="1010" y="190" width="250" height="143" rx="22" fill="#E6F5F3" stroke="#00A499" stroke-width="4"/>
 <path d="M1031,192 Q1130.0,188 1241,192 M1259,212 Q1262,258.64 1258,312" fill="none" stroke="#00A499" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="1135" y="276" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="middle" fill="#00A499">LSTM</text>
-<path d="M1135,415 L1135,343" fill="none" stroke="#5A8ECE" stroke-width="4" opacity="1" stroke-linecap="round" marker-end="url(#a)"/>
+<text x="1135" y="247" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="700" text-anchor="middle" fill="#00A499">LSTM</text>
+<text x="1135" y="302" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="600" text-anchor="middle" fill="#00A499">State: 16 values</text>
+<path d="M1135,405 L1135,343" fill="none" stroke="#5A8ECE" stroke-width="4" opacity="1" stroke-linecap="round" marker-end="url(#a)"/>
 <path d="M360,230 L500,230" fill="none" stroke="#00A499" stroke-width="5" opacity="1" stroke-linecap="round" marker-end="url(#a)"/>
 <path d="M360,298 L500,298" fill="none" stroke="#EA7600" stroke-width="4" opacity="1" stroke-linecap="round" marker-end="url(#a)"/>
 <path d="M760,230 L1000,230" fill="none" stroke="#00A499" stroke-width="5" opacity="1" stroke-linecap="round" marker-end="url(#a)"/>
@@ -28,11 +32,13 @@
 <text x="870" y="205" font-family="Arial, Helvetica, sans-serif" font-size="53" font-weight="400" text-anchor="middle" fill="#607D8B">…</text>
 <text x="870" y="345" font-family="Arial, Helvetica, sans-serif" font-size="53" font-weight="400" text-anchor="middle" fill="#607D8B">…</text>
 <text x="640" y="130" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#00A499">Cell state: retained memory</text>
-<text x="825" y="383" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#EA7600">Hidden state</text>
+<text x="825" y="380" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#EA7600">Hidden state</text>
 <path d="M1265,262 L1350,262" fill="none" stroke="#EA7600" stroke-width="5" opacity="1" stroke-linecap="round" marker-end="url(#a)"/>
+<text x="1440" y="140" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="600" text-anchor="middle" fill="#EA7600">Dense + sigmoid</text>
 <rect x="1366" y="188" width="224" height="150" rx="22" fill="#FFF0E4" stroke="#EA7600" stroke-width="4"/>
 <path d="M1387,190 Q1473.52,186 1571,190 M1589,210 Q1592,260.0 1588,317" fill="none" stroke="#EA7600" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
 <text x="1478" y="250" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="600" text-anchor="middle" fill="#EA7600">p</text>
 <text x="1478" y="298" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#EA7600">Next week</text>
-<text x="770" y="567" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#263238">Shared weights; gates control what to retain and update.</text>
+<text x="800" y="550" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" text-anchor="middle" fill="#263238">Daily features: log(1 + count), maximum magnitude excess above 4.5</text>
+<text x="800" y="591" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" text-anchor="middle" fill="#263238">and an event indicator. Catalogue inputs use M ≥ 4.5.</text>
 </svg>

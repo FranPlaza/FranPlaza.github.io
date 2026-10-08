@@ -208,7 +208,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#a-guided-graph-lstm-example-for-statsei14" id="toc-a-guided-graph-lstm-example-for-statsei14" class="nav-link active" data-scroll-target="#a-guided-graph-lstm-example-for-statsei14">A guided Graph + LSTM example for STATSEI14</a></li>
+  <li><a href="#graph-lstm" id="toc-graph-lstm" class="nav-link active" data-scroll-target="#graph-lstm">Graph + LSTM</a></li>
   <li><a href="#preparation-a.-load-the-tools" id="toc-preparation-a.-load-the-tools" class="nav-link" data-scroll-target="#preparation-a.-load-the-tools">Preparation A. Load the tools</a></li>
   <li><a href="#preparation-b.-read-the-frozen-catalogue" id="toc-preparation-b.-read-the-frozen-catalogue" class="nav-link" data-scroll-target="#preparation-b.-read-the-frozen-catalogue">Preparation B. Read the frozen catalogue</a></li>
   <li><a href="#preparation-c.-select-the-region-and-define-the-daily-calendar" id="toc-preparation-c.-select-the-region-and-define-the-daily-calendar" class="nav-link" data-scroll-target="#preparation-c.-select-the-region-and-define-the-daily-calendar">Preparation C. Select the region and define the daily calendar</a></li>
@@ -236,7 +236,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">The same six cells as a graph</h1>
-<p class="subtitle lead">A linear Graph + LSTM extension</p>
+<p class="subtitle lead">Spatial extension: Graph + LSTM</p>
 </div>
 
 
@@ -254,33 +254,20 @@ window.Quarto = {
 
 
 <div class="actions">
-<p><a href="../downloads/tutorials/graphs.ipynb" class="primary">Download prepared notebook</a> <a href="https://colab.research.google.com/">Open Colab to upload the notebook</a> <a href="../downloads/tutorials/graphs-solved.ipynb">Notebook with verified local outputs</a> <a href="../tutorials/graphs-comparison.html">Three-seed reference comparison</a> <a href="../practical.html">All tutorials</a></p>
+<p><a href="../downloads/tutorials/graphs.ipynb" class="primary">Download prepared notebook</a> <a href="https://colab.research.google.com/">Open Colab to upload the notebook</a> <a href="../downloads/tutorials/graphs-solved.ipynb">Notebook with example outputs</a> <a href="../tutorials/graphs-comparison.html">Sensitivity to initialization</a> <a href="../practical.html">All tutorials</a></p>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Execution and result scope
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Prepared outputs were verified in a fresh local kernel using the frozen data pack. They describe seed 7 individual runs, not three-seed averages. Colab execution has not been verified.</p>
-</div>
-</div>
-<section id="a-guided-graph-lstm-example-for-statsei14" class="level2">
-<h2 class="anchored" data-anchor-id="a-guided-graph-lstm-example-for-statsei14">A guided Graph + LSTM example for STATSEI14</h2>
+<p>Example results use one training run per neural model, <strong>seed 7</strong>. See <a href="../environment.html">Environment and setup</a>.</p>
+<section id="graph-lstm" class="level2">
+<h2 class="anchored" data-anchor-id="graph-lstm">Graph + LSTM</h2>
 <p>We represent the six geographic cells as nodes. Each node contains 30 days of three catalogue features. The model returns the probability of at least one catalogue event with magnitude <span class="math inline">M \geq 5</span> in each cell during the following seven days.</p>
-<p>Read and run the cells in order: prepare the data, draw the graph, define the model, fit it, and inspect its probabilities. Intermediate arrays and model operations remain visible throughout.</p>
-<p>This guided version uses <strong>seed 7 once</strong>. The <a href="https://franplaza.github.io/courses/statsei14/tutorials/graphs-comparison.html">complete graph tutorial</a> retains the original three-seed experiment (7, 17, 27). A single run does not reproduce its across-seed summary or measure initialization variability.</p>
-<p><strong>Evaluation:</strong> training 2001–2016 and validation 2017–2020. Validation also controls early stopping, so the displayed scores are development diagnostics. We do not evaluate the previously inspected 2021–2025 test period. The catalogue is a frozen, revised record; this is a retrospective teaching experiment.</p>
-<p><strong>Session placement.</strong> This is a self-study extension after the 30-minute presentation and 30-minute temporal practical. The data preparation is complete and can run independently. Prepared outputs, when provided, come from a verified local run of these cells; Colab execution has not been verified.</p>
+<p>Read and run the cells in order: prepare the data, draw the graph, define the model, fit it, and inspect its probabilities. This is an independent-study extension after the 30-minute presentation and 30-minute temporal practical.</p>
+<p>The model uses <strong>one training run, seed 7</strong>. The <a href="https://franplaza.github.io/courses/statsei14/tutorials/graphs-comparison.html">three-seed graph comparison</a> examines sensitivity to initialization with seeds 7, 17 and 27. A single run does not measure that variability.</p>
+<p><strong>Evaluation:</strong> training 2001–2016 and validation 2017–2020. Validation also controls early stopping, so the displayed scores are development diagnostics. The previously inspected 2021–2025 period is not evaluated and cannot serve as a new independent test. The catalogue is a frozen, revised record; historical real-time availability has not been reconstructed.</p>
 </section>
 <section id="preparation-a.-load-the-tools" class="level2">
 <h2 class="anchored" data-anchor-id="preparation-a.-load-the-tools">Preparation A. Load the tools</h2>
-<p>Select a Python CPU runtime in Colab. If imports are unavailable, run <code>%pip install tensorflow==2.19.1 keras==3.15.1 pandas scikit-learn matplotlib</code>, restart the runtime, and begin again.</p>
-<p>This walkthrough uses <strong>one declared seed, 7</strong>, so we can follow each fit directly. The full course guides retain three seeds (7, 17, 27). A single fit does not measure variability across initializations. The examples below generate their own results.</p>
+<p>Select a Python CPU runtime in Colab. If imports are unavailable, run <code>%pip install tensorflow==2.19.1 keras==3.15.1 pandas scikit-learn matplotlib</code>, restart the runtime, and begin again. See the <a href="https://franplaza.github.io/courses/statsei14/environment.html">environment and execution notes</a> for the supplied environment and verification status.</p>
+<p>The examples use <strong>seed 7</strong>. Record your software versions and hardware, and note any numerical differences from the supplied results. A single run does not measure sensitivity to initialization.</p>
 <div class="copy-step">
 <p><strong>Code block 1</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -305,15 +292,14 @@ window.Quarto = {
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>BATCH_SIZE <span class="op">=</span> <span class="dv">64</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"TensorFlow:"</span>, tf.__version__, <span class="st">"Keras:"</span>, keras.__version__)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<pre>TensorFlow: 2.19.1 Keras: 3.15.1
-</pre>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
+<pre>TensorFlow: 2.19.1 Keras: 3.15.1</pre>
 </details>
 </section>
 <section id="preparation-b.-read-the-frozen-catalogue" class="level2">
 <h2 class="anchored" data-anchor-id="preparation-b.-read-the-frozen-catalogue">Preparation B. Read the frozen catalogue</h2>
-<p>The download is pinned to the same Git commit as the published tutorial. The two checks identify the exact ZIP and catalogue. We read only the CSV in memory, so no extraction or project-folder machinery is needed.</p>
-<p>The catalogue contains revised records. This is a retrospective teaching exercise. We use training (2001–2016) and validation (2017–2020); the previously inspected 2021–2025 period is not evaluated here.</p>
+<p>The data pack is pinned to a Git commit. SHA-256 checks identify the exact ZIP and catalogue, and the CSV is read into memory.</p>
+<p>Training covers 2001–2016 and validation covers 2017–2020. The catalogue contains revised records, so this is a retrospective exercise. The previously inspected 2021–2025 period is not evaluated here.</p>
 <p>For offline use, upload the frozen data pack as <code>statsei14-data-pack.zip</code> in the working directory before running this cell. Otherwise the cell downloads the pinned ZIP. Both paths check the same SHA-256 values.</p>
 <div class="copy-step">
 <p><strong>Code block 2</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
@@ -340,9 +326,8 @@ window.Quarto = {
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>events[<span class="st">"time"</span>] <span class="op">=</span> pd.to_datetime(events[<span class="st">"time"</span>], utc<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> events.sort_values(<span class="st">"time"</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>display(events[[<span class="st">"time"</span>, <span class="st">"latitude"</span>, <span class="st">"longitude"</span>, <span class="st">"mag"</span>]].head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<pre>Data source: local frozen pack
-</pre>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
+<pre>Data source: local frozen pack</pre>
 <div class="table-responsive"><div>
 
 
@@ -416,9 +401,8 @@ window.Quarto = {
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>selected <span class="op">=</span> events.loc[inside <span class="op">&amp;</span> in_time <span class="op">&amp;</span> (events[<span class="st">"mag"</span>] <span class="op">&gt;=</span> <span class="fl">4.5</span>)].copy()</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>selected[<span class="st">"date"</span>] <span class="op">=</span> selected[<span class="st">"time"</span>].dt.floor(<span class="st">"D"</span>)</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Input events:"</span>, <span class="bu">len</span>(selected))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<pre>Input events: 2121
-</pre>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
+<pre>Input events: 2121</pre>
 </details>
 </section>
 <section id="preparation-d.-keep-the-same-six-geographic-cells" class="level2">
@@ -457,15 +441,14 @@ window.Quarto = {
 <span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>], axis<span class="op">=-</span><span class="dv">1</span>).astype(<span class="st">"float32"</span>)</span>
 <span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> counts.<span class="bu">sum</span>() <span class="op">==</span> <span class="bu">len</span>(selected)</span>
 <span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Daily maps (days, rows, columns, channels):"</span>, daily_grid_raw.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<pre>Daily maps (days, rows, columns, channels): (9497, 3, 2, 3)
-</pre>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
+<pre>Daily maps (days, rows, columns, channels): (9497, 3, 2, 3)</pre>
 </details>
 </section>
 <section id="preparation-e.-one-monday-becomes-one-learning-example" class="level2">
 <h2 class="anchored" data-anchor-id="preparation-e.-one-monday-becomes-one-learning-example">Preparation E. One Monday becomes one learning example</h2>
 <p>At origin t, take inputs from <strong>[t − 30 days, t)</strong> and the outcome from <strong>[t, t + 7 days)</strong>. The Python slices below implement those intervals directly. We omit target weeks that cross a partition boundary.</p>
-<p>Only origins through 2020 are built. The retained examples are the same training and validation examples as in the original guide. Weekly targets do not overlap, although input histories share days.</p>
+<p>Only origins through 2020 are built. Weekly targets do not overlap, although input histories share days.</p>
 <div class="copy-step">
 <p><strong>Code block 5</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -498,17 +481,16 @@ window.Quarto = {
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> (origins[val_mask] <span class="op">+</span> pd.Timedelta(days<span class="op">=</span>HORIZON) <span class="op">&lt;=</span> TEST_START).<span class="bu">all</span>()</span>
 <span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Training examples:"</span>, train_mask.<span class="bu">sum</span>(), <span class="st">"Validation examples:"</span>, val_mask.<span class="bu">sum</span>())</span>
 <span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"One input:"</span>, raw_grid[<span class="dv">0</span>].shape, <span class="st">"One outcome:"</span>, y_grid[<span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <pre>Training examples: 834 Validation examples: 208
 One input: (30, 3, 2, 3) One outcome: [[1 0]
  [1 0]
- [0 0]]
-</pre>
+ [0 0]]</pre>
 </details>
 </section>
 <section id="preparation-f.-estimate-scaling-from-training-histories" class="level2">
 <h2 class="anchored" data-anchor-id="preparation-f.-estimate-scaling-from-training-histories">Preparation F. Estimate scaling from training histories</h2>
-<p>There is one mean and one standard deviation per channel. For maps, cells share these scaling parameters. We keep the original weighting over overlapping training windows. Validation has no role in estimating these parameters.</p>
+<p>Estimate one mean and one standard deviation per channel from the training windows. A historical day can contribute to several overlapping windows. The six geographic cells share these channel-specific scaling parameters. Apply these training estimates to all validation histories. Validation has no role in estimating the scaling parameters.</p>
 <div class="copy-step">
 <p><strong>Code block 6</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -521,7 +503,7 @@ One input: (30, 3, 2, 3) One outcome: [[1 0]
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame({</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"channel"</span>: FEATURES, <span class="st">"training_mean"</span>: grid_mean, <span class="st">"training_sd"</span>: grid_scale</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
 
@@ -601,7 +583,7 @@ One input: (30, 3, 2, 3) One outcome: [[1 0]
 <span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>display(node_table)</span>
 <span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Training:"</span>, X_train.shape, <span class="st">"targets:"</span>, y_train.shape)</span>
 <span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Validation:"</span>, X_val.shape, <span class="st">"targets:"</span>, y_val.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
 
@@ -684,8 +666,7 @@ One input: (30, 3, 2, 3) One outcome: [[1 0]
 
 </div></div>
 <pre>Training: (834, 30, 6, 3) targets: (834, 6)
-Validation: (208, 30, 6, 3) targets: (208, 6)
-</pre>
+Validation: (208, 30, 6, 3) targets: (208, 6)</pre>
 </details>
 </section>
 <section id="connect-neighbouring-cells" class="level2">
@@ -709,7 +690,7 @@ Validation: (208, 30, 6, 3) targets: (208, 6)
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> np.array_equal(A, A.T)</span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> np.allclose(A_normalized.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>), <span class="dv">1</span>)</span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame(A_normalized, index<span class="op">=</span><span class="bu">range</span>(N_NODES), columns<span class="op">=</span><span class="bu">range</span>(N_NODES)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
 
@@ -807,8 +788,8 @@ Validation: (208, 30, 6, 3) targets: (208, 6)
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>fig.colorbar(points, ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"Training fraction of positive weeks"</span>)</span>
 <span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
 <span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<img src="../assets/tutorials-linear/graphs/cell-017-0.png" alt="Verified local single-seed figure from code block 9" loading="lazy">
+<details class="prepared-output"><summary>Example output — seed 7</summary>
+<img src="../assets/tutorials-linear/graphs/cell-017-0.png" alt="Example figure from code block 9" loading="lazy">
 </details>
 </section>
 <section id="inspect-one-message-passing-step" class="level2">
@@ -824,7 +805,7 @@ Validation: (208, 30, 6, 3) targets: (208, 6)
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame(one_day, columns<span class="op">=</span>FEATURES).rename_axis(<span class="st">"node"</span>))</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame(neighbour_mean, columns<span class="op">=</span>FEATURES).rename_axis(<span class="st">"node"</span>))</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Node 0 mean:"</span>, one_day[[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]].mean(axis<span class="op">=</span><span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
 
@@ -943,8 +924,7 @@ Validation: (208, 30, 6, 3) targets: (208, 6)
 </table>
 
 </div></div>
-<pre>Node 0 mean: [-0.1584049  -0.10714584 -0.17166023]
-</pre>
+<pre>Node 0 mean: [-0.1584049  -0.10714584 -0.17166023]</pre>
 </details>
 </section>
 <section id="define-the-graph-convolution" class="level2">
@@ -956,8 +936,7 @@ h_i = \operatorname{ReLU}\left(
     W_{\mathrm{neighbour}}\sum_j \overline A_{ij}x_j + b
 \right).
 </span></p>
-<p>The same operation is applied at every day and node. The neighbourhood average includes the node itself; its separate self-projection is also retained, as in the complete tutorial.</p>
-<p>This is the notebook’s only custom class. <code>build</code> creates the fixed adjacency weight, while <code>call</code> shows the graph calculation. The dense weights are learned; the adjacency matrix is not.</p>
+<p>The same operation is applied at every day and node. The neighbourhood average includes the focal node. A separate self-transformation allows the model to weight its own features differently from the neighbourhood average. Both transformations are learned, while the adjacency matrix remains fixed.</p>
 <div class="copy-step">
 <p><strong>Code block 11</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -1044,10 +1023,7 @@ h_i = \operatorname{ReLU}\left(
 <span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>              loss<span class="op">=</span><span class="st">"binary_crossentropy"</span>)</span>
 <span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>model.summary()</span>
 <span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> model.output_shape <span class="op">==</span> (<span class="va">None</span>, N_NODES)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<pre>WARNING:tensorflow:From C:\Users\Francisco Plaza\AppData\Local\Temp\statsei14-transformer-pilot-20261007\Lib\site-packages\keras\src\backend\common\global_state.py:82: The name tf.reset_default_graph is deprecated. Please use tf.compat.v1.reset_default_graph instead.
-
-</pre>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "graph_lstm"</span>
 </pre>
 </div>
@@ -1092,7 +1068,7 @@ h_i = \operatorname{ReLU}\left(
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame({<span class="st">"node"</span>: np.arange(N_NODES),</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"baseline_probability"</span>: prevalence}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
 
@@ -1143,8 +1119,8 @@ h_i = \operatorname{ReLU}\left(
 </section>
 <section id="fit-the-model-once" class="level2">
 <h2 class="anchored" data-anchor-id="fit-the-model-once">Fit the model once</h2>
-<p>We use seed 7, a maximum of 20 epochs, batches of 64, and patience 3. Early stopping restores the weights from the lowest validation loss. The LSTM state restarts for every input window; it is not carried from training into validation examples.</p>
-<p>A single seed makes the workflow easier to follow. Repetition across seeds belongs to the full experiment and should not be replaced by selecting the best-looking run.</p>
+<p>We use seed 7, Adam learning rate 0.001, a maximum of 20 epochs, batches of 64 windows, and early-stopping patience 3. Early stopping restores the weights from the lowest validation loss. The LSTM state restarts for every input window; it is not carried from training into validation examples.</p>
+<p>These are starting settings for the exercise. To examine sensitivity to initialization, repeat the same configuration with seeds 17 and 27 and report every run. Do not select a seed by its validation score.</p>
 <div class="copy-step">
 <p><strong>Code block 14</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -1165,73 +1141,8 @@ h_i = \operatorname{ReLU}\left(
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> p_graph.shape <span class="op">==</span> y_val.shape</span>
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> np.isfinite(p_graph).<span class="bu">all</span>() <span class="kw">and</span> ((p_graph <span class="op">&gt;=</span> <span class="dv">0</span>) <span class="op">&amp;</span> (p_graph <span class="op">&lt;=</span> <span class="dv">1</span>)).<span class="bu">all</span>()</span>
 <span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Validation probabilities:"</span>, p_graph.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<pre>Epoch 1/20
-</pre>
-<pre>14/14 - 3s - 195ms/step - loss: 0.6446 - val_loss: 0.6001
-</pre>
-<pre>Epoch 2/20
-</pre>
-<pre>14/14 - 0s - 12ms/step - loss: 0.5562 - val_loss: 0.4744
-</pre>
-<pre>Epoch 3/20
-</pre>
-<pre>14/14 - 0s - 12ms/step - loss: 0.3776 - val_loss: 0.2200
-</pre>
-<pre>Epoch 4/20
-</pre>
-<pre>14/14 - 0s - 12ms/step - loss: 0.1961 - val_loss: 0.1892
-</pre>
-<pre>Epoch 5/20
-</pre>
-<pre>14/14 - 0s - 13ms/step - loss: 0.1847 - val_loss: 0.1894
-</pre>
-<pre>Epoch 6/20
-</pre>
-<pre>14/14 - 0s - 13ms/step - loss: 0.1829 - val_loss: 0.1877
-</pre>
-<pre>Epoch 7/20
-</pre>
-<pre>14/14 - 0s - 12ms/step - loss: 0.1817 - val_loss: 0.1869
-</pre>
-<pre>Epoch 8/20
-</pre>
-<pre>14/14 - 0s - 12ms/step - loss: 0.1813 - val_loss: 0.1864
-</pre>
-<pre>Epoch 9/20
-</pre>
-<pre>14/14 - 0s - 12ms/step - loss: 0.1808 - val_loss: 0.1860
-</pre>
-<pre>Epoch 10/20
-</pre>
-<pre>14/14 - 0s - 12ms/step - loss: 0.1804 - val_loss: 0.1857
-</pre>
-<pre>Epoch 11/20
-</pre>
-<pre>14/14 - 0s - 12ms/step - loss: 0.1800 - val_loss: 0.1855
-</pre>
-<pre>Epoch 12/20
-</pre>
-<pre>14/14 - 0s - 13ms/step - loss: 0.1797 - val_loss: 0.1854
-</pre>
-<pre>Epoch 13/20
-</pre>
-<pre>14/14 - 0s - 12ms/step - loss: 0.1795 - val_loss: 0.1854
-</pre>
-<pre>Epoch 14/20
-</pre>
-<pre>14/14 - 0s - 12ms/step - loss: 0.1794 - val_loss: 0.1855
-</pre>
-<pre>Epoch 15/20
-</pre>
-<pre>14/14 - 0s - 12ms/step - loss: 0.1793 - val_loss: 0.1855
-</pre>
-<pre>Epoch 16/20
-</pre>
-<pre>14/14 - 0s - 12ms/step - loss: 0.1792 - val_loss: 0.1856
-</pre>
-<pre>Validation probabilities: (208, 6)
-</pre>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
+<pre>Validation probabilities: (208, 6)</pre>
 </details>
 <div class="copy-step">
 <p><strong>Code block 15</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
@@ -1245,14 +1156,14 @@ h_i = \operatorname{ReLU}\left(
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>       title<span class="op">=</span><span class="st">"Graph + LSTM: training and validation"</span>)</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<img src="../assets/tutorials-linear/graphs/cell-028-0.png" alt="Verified local single-seed figure from code block 15" loading="lazy">
+<details class="prepared-output"><summary>Example output — seed 7</summary>
+<img src="../assets/tutorials-linear/graphs/cell-028-0.png" alt="Example figure from code block 15" loading="lazy">
 </details>
 </section>
 <section id="compare-probability-errors" class="level2">
 <h2 class="anchored" data-anchor-id="compare-probability-errors">Compare probability errors</h2>
-<p><strong>Brier score</strong> is the mean squared error of probabilities. <strong>Log loss</strong> penalizes confident wrong probabilities strongly. Lower values are better for both. Clipping below is only for numerical stability in the logarithm.</p>
-<p>Pooled scores average over all validation origins and cells. They describe six marginal probability forecasts, not a joint spatial likelihood.</p>
+<p><strong>Example results — seed 7.</strong> <strong>Brier score</strong> is the mean squared error of probabilities. <strong>Log loss</strong> penalizes confident wrong probabilities strongly. Lower values are better for both. Clipping below is only for numerical stability in the logarithm.</p>
+<p>Pooled scores average over all validation origins and cells. They describe six marginal probability forecasts, not a joint spatial likelihood. Validation also selected the stopping epoch. See the <a href="https://franplaza.github.io/courses/statsei14/environment.html">environment notes</a> when comparing your execution with the supplied results.</p>
 <div class="copy-step">
 <p><strong>Code block 16</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -1278,7 +1189,7 @@ h_i = \operatorname{ReLU}\left(
 <span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fit_seconds"</span>: [<span class="fl">0.0</span>, fit_seconds],</span>
 <span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>})</span>
 <span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>display(results)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
 
@@ -1337,7 +1248,7 @@ h_i = \operatorname{ReLU}\left(
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    y_val <span class="op">*</span> np.log(graph_clipped) <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> y_val) <span class="op">*</span> np.log1p(<span class="op">-</span>graph_clipped), axis<span class="op">=</span><span class="dv">0</span></span>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>display(cell_results)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
 
@@ -1456,8 +1367,8 @@ h_i = \operatorname{ReLU}\left(
 <span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>fig.colorbar(mesh, ax<span class="op">=</span>axes, label<span class="op">=</span><span class="st">"Fraction / probability of a positive week"</span>)</span>
 <span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<img src="../assets/tutorials-linear/graphs/cell-034-0.png" alt="Verified local single-seed figure from code block 18" loading="lazy">
+<details class="prepared-output"><summary>Example output — seed 7</summary>
+<img src="../assets/tutorials-linear/graphs/cell-034-0.png" alt="Example figure from code block 18" loading="lazy">
 </details>
 </section>
 <section id="optional-inspect-calibration" class="level2">
@@ -1490,7 +1401,7 @@ h_i = \operatorname{ReLU}\left(
 <span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>       ylabel<span class="op">=</span><span class="st">"Observed fraction"</span>, title<span class="op">=</span><span class="st">"Pooled validation calibration"</span>)</span>
 <span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
 <span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
 
@@ -1534,7 +1445,7 @@ h_i = \operatorname{ReLU}\left(
 </table>
 
 </div></div>
-<img src="../assets/tutorials-linear/graphs/cell-036-1.png" alt="Verified local single-seed figure from code block 19" loading="lazy">
+<img src="../assets/tutorials-linear/graphs/cell-036-1.png" alt="Example figure from code block 19" loading="lazy">
 </details>
 </section>
 <section id="save-the-tables-from-this-run" class="level2">
@@ -1572,10 +1483,6 @@ h_i = \operatorname{ReLU}\left(
 <span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"historical_as_of_verified"</span>: <span class="va">False</span>, <span class="st">"colab_execution_verified"</span>: <span class="va">False</span>,</span>
 <span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>}])</span>
 <span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>protocol.to_csv(output_dir <span class="op">/</span> <span class="st">"protocol.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<details class="prepared-output"><summary>Verified local output · single seed — expand to compare</summary>
-<pre>Tables saved to: H:\Otros ordenadores\Mi PC\1_Proyectos\2026 - Statsei 14 -\statsei14-deep-learning\qa\linear-integration-2026-10-07\executions\graphs-8b429cdb1b\outputs_graphs
-</pre>
-</details>
 </section>
 <section id="what-did-the-graph-add" class="level2">
 <h2 class="anchored" data-anchor-id="what-did-the-graph-add">What did the graph add?</h2>
@@ -1585,7 +1492,7 @@ h_i = \operatorname{ReLU}\left(
 <section id="sources" class="level3">
 <h3 class="anchored" data-anchor-id="sources">Sources</h3>
 <ul>
-<li><a href="https://franplaza.github.io/courses/statsei14/tutorials/graphs-comparison.html">Original STATSEI14 graph tutorial</a>: catalogue protocol, graph equation, architecture and full three-seed experiment.</li>
+<li><a href="https://franplaza.github.io/courses/statsei14/tutorials/graphs-comparison.html">Sensitivity to initialization: graph model</a>: catalogue protocol, graph equation, architecture and three-seed experiment.</li>
 <li><a href="https://keras.io/examples/timeseries/timeseries_traffic_forecasting/">Keras graph and LSTM example</a>: motivation for combining spatial messages and temporal recurrence.</li>
 <li><a href="https://keras.io/api/layers/recurrent_layers/lstm/">Keras LSTM layer</a>: recurrent layer used in this model.</li>
 </ul>

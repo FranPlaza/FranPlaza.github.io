@@ -160,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="one-regional-sequence-step-by-step" class="level2">
 <h2 class="anchored" data-anchor-id="one-regional-sequence-step-by-step">One regional sequence, step by step</h2>
 <p>Use 30 days of three regional catalogue channels to estimate the probability of at least one M ≥ 5 event in the following seven days. Follow training prevalence and logistic regression, then build and evaluate an LSTM. Compare with a small Transformer and explore MLP/CNN1D during the laboratory. Each neural model runs once with seed 7.</p>
-<p><strong>Learn:</strong> fixed lag positions, temporal filters, recurrent state, attention and positional information. Read Brier score, log loss and calibration alongside parameter counts and training time.</p>
+<p><strong>Learn:</strong> fixed lag positions, temporal filters, recurrent state, attention and positional information. Read Brier score, log loss and calibration alongside parameter counts and completed epochs.</p>
 <p><a href="./tutorials/temporal.html" class="tutorial-link">Start the temporal tutorial</a></p>
 </section>
 </div>
@@ -203,24 +203,28 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;">Open the notebook, run preparation and inspect one 30 × 3 input</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">34–43</td>
-<td style="text-align: left;">Define the references; build, compile, fit and predict with the LSTM</td>
+<td style="text-align: left;">34–36</td>
+<td style="text-align: left;">Read model settings, the epoch limit and the validation stopping rule</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">36–43</td>
+<td style="text-align: left;">Define the references; build, compile, fit and predict with the LSTM</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">43–50</td>
 <td style="text-align: left;">Interpret Brier, log loss and calibration</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">50–57</td>
 <td style="text-align: left;">Compare the LSTM with the compact Transformer</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">57–60</td>
 <td style="text-align: left;">Discuss one finding and choose a laboratory question</td>
 </tr>
 </tbody>
 </table>
-<p>Run the core cells in order and pause at the LSTM probabilities and scores. Each fit is visible next to its model, using the single declared seed 7. The core evaluation does not depend on MLP or CNN1D. Return to the Transformer at minute 50; optional MLP/CNN1D sections and the full table can wait for the laboratory. Prepared outputs make the same evaluation available if setup or fitting stalls. At minute 34, move to those outputs if the environment is not ready; preserve the time for interpretation.</p>
+<p>Run the core cells in order and pause at the LSTM probabilities and scores. Each fit is visible next to its model, using the single declared seed 7. The core evaluation does not depend on MLP or CNN1D. Return to the Transformer at minute 50; optional MLP/CNN1D sections and the full table can wait for the laboratory. Prepared outputs make the same evaluation available if setup or fitting stalls. If setup or fitting stalls, continue with the example outputs and return to execution after the session.</p>
 <p>The spatial tutorials are complete extensions for the laboratory or later study. Each can start in its own blank notebook because it includes the same preparation. Their target is <strong>per cell</strong>, so their scores should not be ranked against the regional scores from Tutorial 1. Within the two spatial tutorials, cell support, normalization, seed 7 and evaluation origins are shared.</p>
 </section>
 <section id="what-stays-fixed" class="level2">
@@ -266,12 +270,12 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;">Three latitude bands × two longitude bands; six fixed cells</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Seed in the linear walkthroughs</td>
+<td style="text-align: left;">Seed in the guided examples</td>
 <td style="text-align: left;">7; one fit per neural model</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Separate repeated comparisons</td>
-<td style="text-align: left;">Seeds 7, 17 and 27; all retained</td>
+<td style="text-align: left;">Seeds 7, 17 and 27</td>
 </tr>
 </tbody>
 </table>
@@ -279,19 +283,19 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="repeated-comparisons-for-the-laboratory" class="level2">
 <h2 class="anchored" data-anchor-id="repeated-comparisons-for-the-laboratory">Repeated comparisons for the laboratory</h2>
-<p>The primary guides make one training run visible. To examine sensitivity to initialization, use the separate comparisons for <a href="./tutorials/temporal-comparison.html">temporal sequences</a>, <a href="./tutorials/maps-comparison.html">maps</a> and <a href="./tutorials/graphs-comparison.html">graphs</a>. They retain seeds 7, 17 and 27. Their means summarize separately scored fits and must not be presented as scores from the linear walkthrough.</p>
-<p>The corresponding notebooks are available for <a href="downloads/comparison/temporal.ipynb">temporal sequences</a>, <a href="downloads/comparison/maps.ipynb">maps</a> and <a href="downloads/comparison/graphs.ipynb">graphs</a>, or together in the <a href="downloads/comparison-pack.zip">comparison notebook pack</a>. Their <a href="downloads/tutorial-results.zip">prepared repeated-comparison results</a> remain separate from the linear results.</p>
+<p>Repeat each architecture with seeds 7, 17 and 27 to examine sensitivity to initialization under a fixed data and evaluation protocol. Use the comparisons for <a href="./tutorials/temporal-comparison.html">temporal sequences</a>, <a href="./tutorials/maps-comparison.html">maps</a> and <a href="./tutorials/graphs-comparison.html">graphs</a>. Report every run and the mean and spread of its scores. For spatial calibration, the displayed ensemble averages probabilities across seeds; its score differs from the mean score of individual runs.</p>
+<p>Download the <a href="downloads/comparison-pack.zip">comparison notebook pack</a> and <a href="downloads/tutorial-results.zip">three-seed result files</a>. The guided examples use seed 7; keep that result distinct from the repeated-run summaries.</p>
 </section>
 <section id="download-and-continue" class="level2">
 <h2 class="anchored" data-anchor-id="download-and-continue">Download and continue</h2>
 <ul>
-<li><a href="downloads/tutorials-pack.zip">Complete tutorial pack</a>: matching linear notebooks, separate repeated comparisons, prepared outputs and the exact frozen data ZIP for offline preparation.</li>
-<li><a href="downloads/linear-results.zip">Prepared linear result files</a>: individual seed-7 scores, predictions, training histories and provenance.</li>
+<li><a href="downloads/tutorials-pack.zip">Complete tutorial pack</a>: temporal, map and graph notebooks, example outputs and the frozen data ZIP for offline preparation.</li>
+<li><a href="downloads/linear-results.zip">Example result files — seed 7</a>: individual seed-7 scores, predictions, training histories and provenance.</li>
 <li><a href="./homework.html">Homework and bounded experiments</a>: change one decision at a time, state the hypothesis first and stay on training/validation.</li>
-<li><a href="./practical-reference.html">Original LSTM/ETAS-inspired exercise and earlier results</a>: a separate feature experiment preserved for reference.</li>
+<li><a href="./practical-reference.html">ETAS-inspired feature experiment</a>: study the effect of adding an activity feature to the same LSTM.</li>
 <li><a href="./references.html">References</a>: course sources and Keras implementation references.</li>
 </ul>
-<p>Prepared outputs were produced by fresh <strong>local CPU</strong> kernels. Their measured runtimes describe that machine; a complete execution in an actual Colab session remains unverified. The fixed catalogue does not establish which record versions were available at historical forecast times.</p>
+<p>See <a href="./environment.html">Environment and setup</a> for installation, software versions and the execution context of the example outputs.</p>
 
 
 </section>
