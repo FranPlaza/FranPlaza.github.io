@@ -153,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
 <p><a href="./practical.html">Return to the practical</a> · <a href="./references.html">References and source links</a></p>
 <section id="read-the-task-before-the-architecture" class="level2">
 <h2 class="anchored" data-anchor-id="read-the-task-before-the-architecture">Read the task before the architecture</h2>
-<p><strong>Suggested time: 45–60 minutes. No training required.</strong> Start with the current temporal guide’s validation table and calibration outputs. State one supported observation and one possible explanation that those results cannot establish. Then compare the tutorial with two papers: a forecasting study (RECAST or Farfán et al.) and a detection/classification study (ConvNetQuake or Delgado et al.). Use the <a href="./references.html">references page</a>.</p>
+<p><strong>No training required.</strong> Start with the current temporal guide’s validation table and calibration outputs. State one supported observation and one possible explanation that those results cannot establish. Then compare the tutorial with two papers: a forecasting study (RECAST or Farfán et al.) and a detection/classification study (ConvNetQuake or Delgado et al.). Use the <a href="./references.html">references page</a>.</p>
 <p>For each source, identify the scientific question, one input example, the target and when the information becomes available. Distinguish a retrospectively assigned foreshock/mainshock/aftershock label from prospective forecasting. Record <strong>not reported in the source consulted</strong> when a protocol detail is unavailable.</p>
 <div class="table-responsive">
 <table class="caption-top table">
@@ -209,7 +209,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="compare-architectures-and-examine-repeated-fits" class="level2">
 <h2 class="anchored" data-anchor-id="compare-architectures-and-examine-repeated-fits">Compare architectures and examine repeated fits</h2>
-<p><strong>Suggested time: 60–120 minutes, depending on environment and Python familiarity.</strong> Complete the optional MLP and CNN1D sections of the temporal notebook. Each model places its construction, training and evaluation together and uses seed 7. Then open the separate <a href="./tutorials/temporal-comparison.html">three-seed comparison</a> or its <a href="downloads/comparison/temporal.ipynb">notebook</a> to examine seeds 7, 17 and 27.</p>
+<p>Complete the optional MLP and CNN1D sections of the temporal notebook. Each model places its construction, training and evaluation together and uses seed 7. Then open the separate <a href="./tutorials/temporal-comparison.html">three-seed comparison</a> or its <a href="downloads/comparison/temporal.ipynb">notebook</a> to examine seeds 7, 17 and 27.</p>
 <ol type="1">
 <li>Trace one 30 × 3 input through each model. Identify fixed lag positions in the MLP, a shared temporal filter in CNN1D, recurrent state in the LSTM, and learned positions plus attention in the Transformer.</li>
 <li>Identify the model definition, <code>compile</code>, <code>fit</code>, <code>predict</code> and score calculation. Explain what <code>fit()</code> changes and which decisions the researcher fixed beforehand. Compare parameter counts and completed epochs as context for the losses.</li>

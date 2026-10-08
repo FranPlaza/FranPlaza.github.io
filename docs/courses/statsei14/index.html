@@ -157,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="byline">Francisco Plaza-Vega</span></p>
 <p>This tutorial introduces practical deep learning workflows for seismic catalogues. Build a weekly occurrence model, compare it with simple reference forecasts, and examine how an LSTM and a compact Transformer use the same seismic history. Spatial and ETAS-inspired extensions are available for independent study.</p>
 <div class="session-meta">
-<p>Tuesday 13 October 2026 · 11:30–12:30 · Santiago</p>
+<p>Tuesday 13 October 2026 · Santiago</p>
 </div>
 <div class="actions">
 <p><a href="./practical.html" class="primary">Open the practical</a> <a href="./slides/index.html">View slides</a> <a href="downloads/tutorials-pack.zip">Download tutorial pack</a></p>
@@ -192,67 +192,30 @@ ul.task-list li input[type="checkbox"] {
 <p>The session welcomes researchers with different levels of Python and deep learning experience. Basic Python helps when running or modifying cells; <strong>no previous neural-network training is required</strong>. You can also follow the prepared outputs, formulate a hypothesis and interpret the evidence with the group.</p>
 <p>Bring a laptop and a browser if you plan to run the code. Download the <a href="downloads/tutorials/temporal.ipynb">temporal notebook</a>, open <a href="https://colab.research.google.com/">Colab</a> and upload the notebook. Keep the <a href="./tutorials/temporal.html">web guide</a> alongside it for explanations and example outputs. The preparation downloads and verifies the frozen catalogue automatically. See <a href="./environment.html">Environment and setup</a> for installation and the software used for the supplied results.</p>
 </section>
-<section id="thirty-minutes-of-presentation-thirty-minutes-of-practice" class="level2">
-<h2 class="anchored" data-anchor-id="thirty-minutes-of-presentation-thirty-minutes-of-practice">Thirty minutes of presentation, thirty minutes of practice</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Minutes</th>
-<th style="text-align: left;">Activity</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">00–06</td>
-<td style="text-align: left;">Seismic learning tasks: inputs, outputs and today’s question</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">06–12</td>
-<td style="text-align: left;">A network, its loss, and a brief map of MLP, CNN, LSTM and generative learning</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">12–18</td>
-<td style="text-align: left;">Spatial Statistics: how a representation defines a learning problem</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">18–24</td>
-<td style="text-align: left;">Isidora’s work: how the target changes what a model can learn</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">24–30</td>
-<td style="text-align: left;">One 30 × 3 window, a weekly label, baselines and chronological evaluation</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">30–34</td>
-<td style="text-align: left;">Open the prepared notebook and inspect one example</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">34–36</td>
-<td style="text-align: left;">Distinguish learned weights from model settings and read the training protocol</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">36–43</td>
-<td style="text-align: left;">Define the references; build, compile, fit and predict with the LSTM</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">43–50</td>
-<td style="text-align: left;">Interpret weekly probabilities, Brier, log loss and calibration</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">50–57</td>
-<td style="text-align: left;">Transformer on the same history: positional information, attention and results</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">57–60</td>
-<td style="text-align: left;">Discuss one finding and choose a laboratory extension</td>
-</tr>
-</tbody>
-</table>
+<section id="what-we-will-explore" class="level2">
+<h2 class="anchored" data-anchor-id="what-we-will-explore">What we will explore</h2>
+<section id="presentation" class="level3">
+<h3 class="anchored" data-anchor-id="presentation">Presentation</h3>
+<ol type="1">
+<li>Seismic learning tasks: inputs, outputs and today’s question.</li>
+<li>A network, its loss, and a map of MLP, CNN, LSTM and generative learning.</li>
+<li>Spatial Statistics: how a representation defines a learning problem.</li>
+<li>Isidora’s work: how the target changes what a model can learn.</li>
+<li>One 30 × 3 window, a weekly label, baselines and chronological evaluation.</li>
+</ol>
+</section>
+<section id="guided-practical" class="level3">
+<h3 class="anchored" data-anchor-id="guided-practical">Guided practical</h3>
+<ol type="1">
+<li>Open the prepared notebook and inspect one example.</li>
+<li>Distinguish learned weights from model settings and read the training protocol.</li>
+<li>Define the references; build, compile, fit and predict with the LSTM.</li>
+<li>Interpret weekly probabilities, Brier, log loss and calibration.</li>
+<li>Compare a Transformer on the same history: positional information, attention and results.</li>
+<li>Discuss one finding and choose a laboratory extension.</li>
+</ol>
 <p>The guided practical follows the LSTM and Transformer. MLP, CNN1D, maps, graphs and the ETAS-inspired feature experiment are available after the session.</p>
+</section>
 </section>
 <section id="materials-to-open" class="level2">
 <h2 class="anchored" data-anchor-id="materials-to-open">Materials to open</h2>
@@ -270,7 +233,7 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="./tutorials/temporal-comparison.html">Sensitivity to initialization</a>: compare seeds 7, 17 and 27 under the same protocol.</li>
 <li>Spatial extensions: <a href="./tutorials/maps.html">sequences of maps</a> and <a href="./tutorials/graphs.html">the same cells as a graph</a>.</li>
 <li><a href="./practical-reference.html">ETAS-inspired feature experiment</a>.</li>
-<li><a href="./references.html">References</a> and <a href="downloads/instructor-guide.md">instructor guide</a>.</li>
+<li><a href="./references.html">References</a>.</li>
 </ul>
 </section>
 <section id="what-the-experiment-can-establish" class="level2">

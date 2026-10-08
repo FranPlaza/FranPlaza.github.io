@@ -1,6 +1,6 @@
-# Instructor guide: 30 minutes of presentation + 30 minutes of practice
+# Instructor guide: topics and facilitation
 
-Francisco Plaza-Vega · STATSEI14 · 13 October 2026, 11:30–12:30
+Francisco Plaza-Vega · STATSEI14 · 13 October 2026
 
 ## Teaching question and session outcome
 
@@ -10,22 +10,18 @@ By the end, participants should recognize one training example, explain the LSTM
 
 The presentation remains in English. Deep learning is the main theme; ETAS connects statistical representations to the author's research. Do not teach a separate ETAS fitting lesson. Keep the published Spatial Statistics article, Isidora's thesis, the manuscript under review and the teaching experiment as distinct evidence sources.
 
-## Exact schedule
+## Session itinerary
 
-| Minutes | Activity |
-|:--|:--|
-| 00–06 | Seismic learning tasks: inputs, outputs and today's question |
-| 06–12 | A network, its loss, and a brief map of MLP, CNN, LSTM and generative learning |
-| 12–18 | Spatial Statistics: how a representation defines a learning problem |
-| 18–24 | Isidora's work: how the target changes what a model can learn |
-| 24–30 | One 30 × 3 window, a weekly label, baselines and chronological evaluation |
-| 30–34 | Open the prepared notebook and inspect one example |
-| 34–43 | Define references, explain model settings for two minutes, then build, compile, fit and predict with the LSTM |
-| 43–50 | Interpret weekly probabilities, Brier, log loss and calibration |
-| 50–57 | Transformer on the same history: positional information, attention and results |
-| 57–60 | Discuss one finding and choose a laboratory extension |
+1. Introduce seismic learning tasks, their inputs and outputs.
+2. Explain representations, losses and model families.
+3. Connect the published research and aftershock work to the practical question.
+4. Inspect one catalogue window, its weekly label and chronological evaluation.
+5. Define reference forecasts, explain model settings and train the LSTM.
+6. Interpret probabilities, Brier score, log loss and calibration.
+7. Compare how a Transformer uses the same input history.
+8. Discuss the evidence and choose a laboratory extension.
 
-Main slides s01–s20 total 1,800 seconds. The notebook occupies minutes 30–50; d01–d03 support the Transformer comparison at minutes 50–57; h01 closes at minutes 57–60. Those final 30 minutes include the seven-minute Transformer comparison and three-minute discussion. Appendices are backup material.
+Adapt the pace and depth to the group's experience and questions. Use prepared outputs when setup or fitting stalls. Appendices support questions and further study.
 
 ## Research-to-practice transitions
 
@@ -57,13 +53,13 @@ Choose a forecast origin t on a Monday. The input uses [t − 30 days, t), and t
 
 For one example, shape is (30, 3); a batch adds the examples axis. The regional summaries discard event locations. The model's sigmoid output is a weekly occurrence probability, not a predicted magnitude or event time.
 
-## Guided notebook: minutes 30–50
+## Guided notebook
 
 Follow four visible stages: build one example, define reference forecasts, train the LSTM, and evaluate its probabilities. Read the core cells from top to bottom. Explain the daily channels, one window and its label before dwelling on implementation. Pause at the intermediate daily table and input shape so participants can connect each array to the scientific task.
 
 The logistic reference receives all 90 standardized lag values. Training prevalence is a constant probability estimated from training labels. Explain the LSTM definition line by line: ordered input, a 16-unit recurrent state and a one-unit sigmoid. Distinguish the 30 days, 3 observed channels, 16 learned state values and 1 probability. Training histories determine scaling.
 
-Before the first LSTM fit, reserve two minutes within the 34–43 block for **Model settings and validation**. The network learns weights and biases. We choose its architecture and training settings before fitting:
+Before the first LSTM fit, introduce **Model settings and validation**. The network learns weights and biases. We choose its architecture and training settings before fitting:
 
 | Setting | Value | Explanation |
 |:--|--:|:--|
@@ -78,11 +74,11 @@ Describe these values as a compact starting configuration for the exercise. The 
 
 Point to `compile` for Adam and binary cross-entropy, `fit` for training-weight updates and `predict` for probabilities. Early stopping monitors validation loss and restores the weights from the best validation epoch. Validation observations do not contribute gradient updates, but they influence which weights we retain. Twenty epochs is a limit, and training can stop earlier. Reaching that limit does not establish that the training budget is adequate. In the prepared seed-7 run, the LSTM reaches 20 epochs while validation loss still decreases slightly. The Transformer stops after six epochs and restores the weights from epoch three. Use the learning curves to distinguish the epoch limit, actual training duration and the epoch whose weights are retained.
 
-The primary notebook uses one declared seed, 7. Each model has its own visible training and evaluation beside its definition. The LSTM comparison needs only the preparation and reference cells. Participants can complete that core before reading the Transformer at minute 50. MLP and CNN1D follow as optional laboratory sections and are not dependencies of the live route. The separate three-seed comparison is available after the session.
+The primary notebook uses one declared seed, 7. Each model has its own visible training and evaluation beside its definition. The LSTM comparison needs only the preparation and reference cells. Participants can complete that core before reading the Transformer. MLP and CNN1D follow as optional laboratory sections and are not dependencies of the live route. The separate three-seed comparison is available after the session.
 
-At minute 34, use prepared outputs if setup is incomplete. If fitting takes more than three minutes, continue with those same prepared outputs. Identify them as earlier local CPU results. Preserve minutes 43–50 for evaluation; never spend that interval resolving an individual installation.
+Use prepared outputs if setup or fitting stalls. Identify them as recorded local CPU results and preserve space for interpreting probabilities and discussing the scientific question.
 
-## Evaluation: minutes 43–50
+## Evaluation
 
 Ask participants to identify a predicted probability, its observed weekly label and the corresponding error. Compare Brier and log loss with the training-prevalence reference, then inspect calibration with bin counts. A sigmoid does not guarantee calibration. The seed-7 walkthrough describes one fit per model and does not measure variability across initializations. Differences among seeds in the separate repeated comparison describe optimization variability, not uncertainty from new earthquakes.
 
@@ -90,7 +86,7 @@ The current tutorials evaluate validation (2017–2020) only; early stopping als
 
 The slide table shows one seed-7 fit per neural model on 208 validation weeks. The sensitivity comparison reports arithmetic means of fit-level losses across seeds 7, 17 and 27. Those means answer a different question from the performance of a single fit or an ensemble prediction. Do not choose an architecture or seed using the previously inspected test.
 
-## Transformer: minutes 50–57
+## Transformer
 
 Follow four operations: project each day into 16 features; add learned positional information; combine observed days with two attention heads; pool to one weekly probability. The current model has 2,257 trainable parameters, compared with 1,297 for the LSTM. Inspect the projection, position, attention and output layers in the model definition.
 
@@ -98,7 +94,7 @@ The current positional table has 30 × 16 learned values. The feed-forward block
 
 Compare the same validation outputs. Differences in capacity and completed epochs remain; this is not a parameter-matched competition. Read the seed-7 Brier and log loss values alongside prevalence and calibration. One split and one initialization do not rank these model families generally or establish a cause for their difference. Use the separate repeated comparison to discuss initialization sensitivity.
 
-## Closing and laboratory: minutes 57–60
+## Closing and laboratory
 
 Ask for one supported observation and one hypothesis that needs another comparison. Offer concrete continuations: compare recurrent-state sizes, read MLP/CNN1D on the same input, retain locations using maps or graphs, or add an ETAS-inspired feature while holding the LSTM fixed. Changing a feature changes the representation. LSTM versus Transformer changes architecture.
 

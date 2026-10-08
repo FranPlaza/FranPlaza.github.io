@@ -260,7 +260,7 @@ window.Quarto = {
 <section id="graph-lstm" class="level2">
 <h2 class="anchored" data-anchor-id="graph-lstm">Graph + LSTM</h2>
 <p>We represent the six geographic cells as nodes. Each node contains 30 days of three catalogue features. The model returns the probability of at least one catalogue event with magnitude <span class="math inline">M \geq 5</span> in each cell during the following seven days.</p>
-<p>Read and run the cells in order: prepare the data, draw the graph, define the model, fit it, and inspect its probabilities. This is an independent-study extension after the 30-minute presentation and 30-minute temporal practical.</p>
+<p>Read and run the cells in order: prepare the data, draw the graph, define the model, fit it, and inspect its probabilities. This is an independent-study extension after the presentation and guided temporal practical.</p>
 <p>The model uses <strong>one training run, seed 7</strong>. The <a href="https://franplaza.github.io/courses/statsei14/tutorials/graphs-comparison.html">three-seed graph comparison</a> examines sensitivity to initialization with seeds 7, 17 and 27. A single run does not measure that variability.</p>
 <p><strong>Evaluation:</strong> training 2001–2016 and validation 2017–2020. Validation also controls early stopping, so the displayed scores are development diagnostics. The previously inspected 2021–2025 period is not evaluated and cannot serve as a new independent test. The catalogue is a frozen, revised record; historical real-time availability has not been reconstructed.</p>
 </section>

@@ -165,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#the-30-minute-practical" id="toc-the-30-minute-practical" class="nav-link active" data-scroll-target="#the-30-minute-practical">The 30-minute practical</a></li>
+  <li><a href="#guided-practical-itinerary" id="toc-guided-practical-itinerary" class="nav-link active" data-scroll-target="#guided-practical-itinerary">Guided practical itinerary</a></li>
   <li><a href="#preparation-a.-load-the-tools" id="toc-preparation-a.-load-the-tools" class="nav-link" data-scroll-target="#preparation-a.-load-the-tools">Preparation A. Load the tools</a></li>
   <li><a href="#preparation-b.-read-the-frozen-catalogue" id="toc-preparation-b.-read-the-frozen-catalogue" class="nav-link" data-scroll-target="#preparation-b.-read-the-frozen-catalogue">Preparation B. Read the frozen catalogue</a></li>
   <li><a href="#preparation-c.-select-the-region-and-define-the-daily-calendar" id="toc-preparation-c.-select-the-region-and-define-the-daily-calendar" class="nav-link" data-scroll-target="#preparation-c.-select-the-region-and-define-the-daily-calendar">Preparation C. Select the region and define the daily calendar</a></li>
@@ -218,46 +218,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Example results use one training run per neural model, <strong>seed 7</strong>. See <a href="../environment.html">Environment and setup</a>.</p>
 <p><strong>Scientific question.</strong> Given the previous 30 days of catalogue information, what is the probability of at least one M ≥ 5 event in the region during the following seven days?</p>
 <p>One learning example is a <strong>weekly forecast origin</strong>. Its input is a table with 30 rows (past days) and three columns (catalogue channels). Its target is zero or one.</p>
-<p>The session comprises <strong>30 minutes of presentation + 30 minutes of practice</strong>. We fit an LSTM, interpret its probability errors, and compare a Transformer on the same examples. MLP and CNN1D are extensions for independent study.</p>
+<p>The presentation introduces the learning tasks and architectures. In the guided practical, we fit an LSTM, interpret its probability errors, and compare a Transformer on the same examples. MLP and CNN1D are extensions for independent study.</p>
 <p>Each neural model uses <strong>one training run, seed 7</strong>. To examine sensitivity to initialization, continue with the <a href="https://franplaza.github.io/courses/statsei14/tutorials/temporal-comparison.html">three-seed comparison</a>.</p>
 <p><strong>What a score means here.</strong> Training covers 2001–2016. Validation covers 2017–2020 and also determines early stopping, so the results describe retrospective development. The catalogue is frozen and revised; historical real-time availability has not been reconstructed. The previously inspected 2021–2025 period is not evaluated and cannot serve as a new independent test.</p>
-<section id="the-30-minute-practical" class="level2">
-<h2 class="anchored" data-anchor-id="the-30-minute-practical">The 30-minute practical</h2>
+<section id="guided-practical-itinerary" class="level2">
+<h2 class="anchored" data-anchor-id="guided-practical-itinerary">Guided practical itinerary</h2>
 <p>Preparation A–F constructs the daily features, input windows and chronological partitions. During the guided session, we will inspect one example before fitting the models. The preparation cells provide a detailed reference for independent study. Run them before the session or open the notebook with prepared outputs.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Session time</th>
-<th>Practical activity</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>30–34 min</td>
-<td>Confirm setup and inspect one input window and outcome</td>
-</tr>
-<tr class="even">
-<td>34–43 min</td>
-<td>Fit the references; discuss LSTM settings for two minutes, then compile, fit and predict</td>
-</tr>
-<tr class="odd">
-<td>43–50 min</td>
-<td>Interpret Brier score, log loss and validation support</td>
-</tr>
-<tr class="even">
-<td>50–57 min</td>
-<td>Follow the Transformer and compare the same validation origins</td>
-</tr>
-<tr class="odd">
-<td>57–60 min</td>
-<td>Read the limits and choose an extension</td>
-</tr>
-</tbody>
-</table>
+<ol type="1">
+<li>Confirm setup and inspect one input window and outcome.</li>
+<li>Fit the references; discuss LSTM settings, then compile, fit and predict.</li>
+<li>Interpret Brier score, log loss and validation support.</li>
+<li>Follow the Transformer and compare the same validation origins.</li>
+<li>Read the limits and choose an extension.</li>
+</ol>
 <p>The guided session ends before the MLP/CNN1D section. Run all earlier cells in order.</p>
 </section>
 <section id="preparation-a.-load-the-tools" class="level2">
@@ -1282,7 +1255,7 @@ Logistic regression input: (834, 90)</pre>
 </section>
 <section id="guided-session-complete" class="level2">
 <h2 class="anchored" data-anchor-id="guided-session-complete">Guided session complete</h2>
-<p>You have turned one 30 × 3 history into a probability, evaluated that probability against two references, and changed the architecture while preserving the input and outcome. This completes the 30-minute practical.</p>
+<p>You have turned one 30 × 3 history into a probability, evaluated that probability against two references, and changed the architecture while preserving the input and outcome. This completes the guided practical.</p>
 <p>Ask: did the individual neural runs improve both scores, and what would be needed for an independent assessment? One seed does not measure initialization variability; validation is also used for early stopping. An untouched evaluation period and a predeclared protocol would be needed for a new assessment.</p>
 <section id="laboratory-sensitivity-to-recurrent-state-size" class="level3">
 <h3 class="anchored" data-anchor-id="laboratory-sensitivity-to-recurrent-state-size">Laboratory: sensitivity to recurrent-state size</h3>

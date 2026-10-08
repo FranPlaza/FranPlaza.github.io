@@ -150,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>For the live session, download the <a href="downloads/tutorials/temporal.ipynb">temporal notebook with ready-to-run cells</a>, open <a href="https://colab.research.google.com/">Colab</a> and upload the notebook. Run the core cells in order through LSTM evaluation, with the <a href="./tutorials/temporal.html">temporal guide</a> alongside it. The Transformer follows, and MLP/CNN1D are optional laboratory sections. <strong>The frozen data download automatically; no data ZIP upload is needed.</strong> The guide also has prepared local outputs. Copying its blocks into a blank Colab remains an alternative for independent study.</p>
-<p><strong>Live route:</strong> build one example → define reference forecasts → train the LSTM → evaluate its probabilities → compare with a Transformer. The presentation takes 30 minutes and the practical, including its final discussion, takes 30 minutes.</p>
+<p><strong>Live route:</strong> build one example → define reference forecasts → train the LSTM → evaluate its probabilities → compare with a Transformer.</p>
 <div class="course-note">
 <p><strong>One question at a time.</strong> In the session, follow how an LSTM and a Transformer process the same regional history. Each model has its construction, <code>compile</code>, <code>fit</code>, <code>predict</code> and evaluation together. The notebook also includes MLP and CNN1D after the live route. During the laboratory, retain location and predict one weekly probability per cell: maps and graphs use the same six cells, inputs and target windows.</p>
 </div>
@@ -186,45 +186,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="how-to-follow-the-session" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-follow-the-session">How to follow the session</h2>
 <p>Open the prepared temporal notebook alongside its web guide. Before running the preparation, identify one forecast Monday: the input contains the preceding 30 days and the label records whether at least one M ≥ 5 event occurs in the following seven days. Its three channels are log event count, <strong>maximum magnitude excess above 4.5</strong>, and event presence.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Session minutes</th>
-<th style="text-align: left;">Practical activity</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">30–34</td>
-<td style="text-align: left;">Open the notebook, run preparation and inspect one 30 × 3 input</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">34–36</td>
-<td style="text-align: left;">Read model settings, the epoch limit and the validation stopping rule</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">36–43</td>
-<td style="text-align: left;">Define the references; build, compile, fit and predict with the LSTM</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">43–50</td>
-<td style="text-align: left;">Interpret Brier, log loss and calibration</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">50–57</td>
-<td style="text-align: left;">Compare the LSTM with the compact Transformer</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">57–60</td>
-<td style="text-align: left;">Discuss one finding and choose a laboratory question</td>
-</tr>
-</tbody>
-</table>
-<p>Run the core cells in order and pause at the LSTM probabilities and scores. Each fit is visible next to its model, using the single declared seed 7. The core evaluation does not depend on MLP or CNN1D. Return to the Transformer at minute 50; optional MLP/CNN1D sections and the full table can wait for the laboratory. Prepared outputs make the same evaluation available if setup or fitting stalls. If setup or fitting stalls, continue with the example outputs and return to execution after the session.</p>
+<ol type="1">
+<li>Open the notebook, run preparation and inspect one 30 × 3 input.</li>
+<li>Read model settings, the epoch limit and the validation stopping rule.</li>
+<li>Define the references; build, compile, fit and predict with the LSTM.</li>
+<li>Interpret Brier, log loss and calibration.</li>
+<li>Compare the LSTM with the compact Transformer.</li>
+<li>Discuss one finding and choose a laboratory question.</li>
+</ol>
+<p>Run the core cells in order and pause at the LSTM probabilities and scores. Each fit is visible next to its model, using the single declared seed 7. The core evaluation does not depend on MLP or CNN1D. Continue with the Transformer after interpreting the LSTM results; optional MLP/CNN1D sections and the full table can wait for the laboratory. If setup or fitting stalls, continue with the example outputs and return to execution after the session.</p>
 <p>The spatial tutorials are complete extensions for the laboratory or later study. Each can start in its own blank notebook because it includes the same preparation. Their target is <strong>per cell</strong>, so their scores should not be ranked against the regional scores from Tutorial 1. Within the two spatial tutorials, cell support, normalization, seed 7 and evaluation origins are shared.</p>
 </section>
 <section id="what-stays-fixed" class="level2">
