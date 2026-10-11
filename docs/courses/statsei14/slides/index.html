@@ -1168,23 +1168,183 @@ Practical Hybrid Workflows for Seismic Forecasting
           display:block!important;
       }</style></aside>
 </section>
+<section id="a01mlp" class="slide level2">
+<h2>Appendix · MLP: combine values at fixed lag positions</h2>
+<p><strong>Input:</strong> 30 days × 3 channels. <strong>Output:</strong> one weekly occurrence probability.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>(<span class="dv">30</span>, <span class="dv">3</span>))</span>
+<span id="cb1-4"><a></a>fixed_lags <span class="op">=</span> keras.layers.Flatten()(inputs)</span>
+<span id="cb1-5"><a></a>hidden <span class="op">=</span> keras.layers.Dense(<span class="dv">16</span>, activation<span class="op">=</span><span class="st">"relu"</span>)(fixed_lags)</span>
+<span id="cb1-6"><a></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>)(hidden)</span>
+<span id="cb1-7"><a></a>model_mlp <span class="op">=</span> keras.Model(inputs, probability)</span></code></pre></div>
+<div class="takeaway">
+<p>Flatten gives 90 values at fixed lag positions; Dense learns nonlinear combinations.</p>
+</div>
+<div class="small-note">
+<p>Temporal notebook · Same catalogue channels and M ≥ 5 occurrence target over the next seven days</p>
+</div>
+<aside class="notes">
+<p><strong>Main idea:</strong> The MLP learns from the same history as the LSTM through a different architecture.</p>
+<p><strong>Explain:</strong> One example has 30 rows and three channels. Flatten places its 90 values in a fixed order. The hidden layer combines those values, and a sigmoid returns one weekly probability. The lag positions remain identifiable; flattening does not shuffle the history. Unlike a convolution, the Dense layer does not share one local filter across days.</p>
+<p><strong>Transition:</strong> The CNN1D applies shared filters to neighbouring days in the same input.</p>
+<p><strong>Backup:</strong> Architecture from scripts/linear_tutorial_sources/temporal.json, cell linear-temporal-041. Only names and the explicit input shape have been shortened. The channels are log(1 + count), maximum magnitude excess above 4.5 and an event indicator. The full notebook sets seed 7, estimates scaling from training histories, then compiles, fits and predicts with the stated chronological protocol. The 16 hidden units are a fixed teaching choice, not a demonstrated optimum. See ../tutorials/temporal.qmd .</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="a01cnn" class="slide level2">
+<h2>Appendix · CNN1D: share filters across neighbouring days</h2>
+<p><strong>Input:</strong> 30 days × 3 channels. <strong>Output:</strong> one weekly occurrence probability.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>(<span class="dv">30</span>, <span class="dv">3</span>))</span>
+<span id="cb2-4"><a></a>local <span class="op">=</span> keras.layers.Conv1D(</span>
+<span id="cb2-5"><a></a>    <span class="dv">16</span>, kernel_size<span class="op">=</span><span class="dv">3</span>, padding<span class="op">=</span><span class="st">"same"</span>, activation<span class="op">=</span><span class="st">"relu"</span>)(inputs)</span>
+<span id="cb2-6"><a></a>combined <span class="op">=</span> keras.layers.Conv1D(</span>
+<span id="cb2-7"><a></a>    <span class="dv">16</span>, kernel_size<span class="op">=</span><span class="dv">3</span>, padding<span class="op">=</span><span class="st">"same"</span>, activation<span class="op">=</span><span class="st">"relu"</span>)(local)</span>
+<span id="cb2-8"><a></a>summary <span class="op">=</span> keras.layers.GlobalAveragePooling1D()(combined)</span>
+<span id="cb2-9"><a></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>)(summary)</span>
+<span id="cb2-10"><a></a>model_cnn1d <span class="op">=</span> keras.Model(inputs, probability)</span></code></pre></div>
+<div class="takeaway">
+<p>Conv1D scans time. A spatial CNN uses Conv2D to scan map neighbourhoods.</p>
+</div>
+<div class="small-note">
+<p>Temporal notebook · Width-three filters use all three channels; pooling summarizes responses across days</p>
+</div>
+<aside class="notes">
+<p><strong>Main idea:</strong> This CNN operates over the temporal axis rather than over geography.</p>
+<p><strong>Explain:</strong> Each width-three filter examines neighbouring days and all input channels. The second convolution combines the local responses. Global average pooling summarizes those responses before the sigmoid produces a weekly occurrence probability. Inputs, labels and partitions match the temporal LSTM example; the way information is combined changes.</p>
+<p><strong>Transition:</strong> The next reference shows the LSTM architecture together with the common supervised fitting steps.</p>
+<p><strong>Backup:</strong> Architecture from scripts/linear_tutorial_sources/temporal.json, cell linear-temporal-045. Names are shortened and shape is written explicitly; both 16-filter layers, kernel size three, same padding, ReLU and global average pooling are retained. The full notebook uses the stated seed, training-only scaling and stopping rule. The spatial notebook at ../tutorials/maps.qmd uses Conv2D over maps and returns six marginal cell-occurrence probabilities; that is a different target from the six mutually exclusive macrozone classes in the published study. This slide’s CNN1D has one regional output.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="a01" class="slide level2">
 <h2>Appendix · the LSTM steps</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines"><code class="sourceCode python"><span id="cb1-1"><a></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>(<span class="dv">30</span>, <span class="dv">3</span>))</span>
-<span id="cb1-2"><a></a>state <span class="op">=</span> keras.layers.LSTM(<span class="dv">16</span>)(inputs)</span>
-<span id="cb1-3"><a></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>)(state)</span>
-<span id="cb1-4"><a></a>model_lstm <span class="op">=</span> keras.Model(inputs, probability)</span>
-<span id="cb1-5"><a></a>model_lstm.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">"adam"</span>, loss<span class="op">=</span><span class="st">"binary_crossentropy"</span>)</span>
-<span id="cb1-6"><a></a>history_lstm <span class="op">=</span> model_lstm.fit(</span>
-<span id="cb1-7"><a></a>    X_train, y_train, validation_data<span class="op">=</span>(X_val, y_val),</span>
-<span id="cb1-8"><a></a>    epochs<span class="op">=</span><span class="dv">20</span>, batch_size<span class="op">=</span><span class="dv">64</span>, callbacks<span class="op">=</span>[stopping_lstm], shuffle<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb1-9"><a></a>p_lstm <span class="op">=</span> model_lstm.predict(X_val).ravel()</span>
-<span id="cb1-10"><a></a>brier <span class="op">=</span> np.mean((p_lstm <span class="op">-</span> y_val) <span class="op">**</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><strong>Input:</strong> 30 days × 3 channels. <strong>Output:</strong> one weekly occurrence probability.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines"><code class="sourceCode python"><span id="cb3-1"><a></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>(<span class="dv">30</span>, <span class="dv">3</span>))</span>
+<span id="cb3-2"><a></a>state <span class="op">=</span> keras.layers.LSTM(<span class="dv">16</span>)(inputs)</span>
+<span id="cb3-3"><a></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>)(state)</span>
+<span id="cb3-4"><a></a>model_lstm <span class="op">=</span> keras.Model(inputs, probability)</span>
+<span id="cb3-5"><a></a>model_lstm.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">"adam"</span>, loss<span class="op">=</span><span class="st">"binary_crossentropy"</span>)</span>
+<span id="cb3-6"><a></a>history_lstm <span class="op">=</span> model_lstm.fit(</span>
+<span id="cb3-7"><a></a>    X_train, y_train, validation_data<span class="op">=</span>(X_val, y_val),</span>
+<span id="cb3-8"><a></a>    epochs<span class="op">=</span><span class="dv">20</span>, batch_size<span class="op">=</span><span class="dv">64</span>, callbacks<span class="op">=</span>[stopping_lstm], shuffle<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-9"><a></a>p_lstm <span class="op">=</span> model_lstm.predict(X_val).ravel()</span>
+<span id="cb3-10"><a></a>brier <span class="op">=</span> np.mean((p_lstm <span class="op">-</span> y_val) <span class="op">**</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="takeaway">
 <p>Define the model · compile · fit · predict · evaluate probabilities</p>
 </div>
 <aside class="notes">
-<p>Abbreviated reference for the guided practical. The notebook sets seed 7 and prepares training-only scaling. Beside compile, it defines stopping_lstm with patience 3 and restored best weights. The notebook specifies Adam learning rate 0.001 explicitly. Validation selects stopping rather than updating weights through gradients. Each operation appears next to the model it concerns. https://keras.io/api/layers/recurrent_layers/lstm/ .</p>
+<p>Abbreviated reference for the guided practical. The same compile, fit, predict and probability-evaluation workflow applies to the supervised MLP and CNN1D examples; each requires its own model, stopping callback and fitted history. These steps do not replace the alternating GAN updates. The notebook sets seed 7 and prepares training-only scaling. Beside compile, it defines stopping_lstm with patience 3 and restored best weights. The notebook specifies Adam learning rate 0.001 explicitly. Validation selects stopping rather than updating weights through gradients. Each operation appears next to the model it concerns. https://keras.io/api/layers/recurrent_layers/lstm/ .</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="a01gan" class="slide level2">
+<h2>Appendix · conditional GAN: two networks, different outputs</h2>
+<p><strong>G:</strong> conditions + noise → sequence. <strong>D:</strong> sequence + conditions → real/fake score.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Generator G</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
+<span id="cb4-2"><a></a><span class="im">from</span> tensorflow.keras <span class="im">import</span> layers</span>
+<span id="cb4-3"><a></a>noise <span class="op">=</span> keras.Input(shape<span class="op">=</span>(<span class="dv">16</span>,), name<span class="op">=</span><span class="st">"noise"</span>)</span>
+<span id="cb4-4"><a></a>conditions <span class="op">=</span> keras.Input(</span>
+<span id="cb4-5"><a></a>    shape<span class="op">=</span>(<span class="dv">5</span>,), name<span class="op">=</span><span class="st">"conditions"</span>)</span>
+<span id="cb4-6"><a></a>g <span class="op">=</span> layers.Concatenate()([noise, conditions])</span>
+<span id="cb4-7"><a></a>g <span class="op">=</span> layers.Dense(<span class="dv">64</span>, activation<span class="op">=</span><span class="st">"relu"</span>)(g)</span>
+<span id="cb4-8"><a></a>g <span class="op">=</span> layers.Dense(<span class="dv">128</span>, activation<span class="op">=</span><span class="st">"relu"</span>)(g)</span>
+<span id="cb4-9"><a></a>generated <span class="op">=</span> layers.Dense(</span>
+<span id="cb4-10"><a></a>    <span class="dv">224</span>, activation<span class="op">=</span><span class="st">"tanh"</span>)(g)</span>
+<span id="cb4-11"><a></a>generator <span class="op">=</span> keras.Model(</span>
+<span id="cb4-12"><a></a>    [noise, conditions], generated, name<span class="op">=</span><span class="st">"G"</span>)</span></code></pre></div>
+</div><div class="column" style="width:50%;">
+<p><strong>Discriminator D</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines"><code class="sourceCode python"><span id="cb5-1"><a></a>sequence <span class="op">=</span> keras.Input(</span>
+<span id="cb5-2"><a></a>    shape<span class="op">=</span>(<span class="dv">224</span>,), name<span class="op">=</span><span class="st">"sequence"</span>)</span>
+<span id="cb5-3"><a></a>d <span class="op">=</span> layers.Concatenate()([sequence, conditions])</span>
+<span id="cb5-4"><a></a>d <span class="op">=</span> layers.Dense(<span class="dv">128</span>, activation<span class="op">=</span><span class="st">"relu"</span>)(d)</span>
+<span id="cb5-5"><a></a>d <span class="op">=</span> layers.Dense(<span class="dv">64</span>, activation<span class="op">=</span><span class="st">"relu"</span>)(d)</span>
+<span id="cb5-6"><a></a>real_score <span class="op">=</span> layers.Dense(</span>
+<span id="cb5-7"><a></a>    <span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>)(d)</span>
+<span id="cb5-8"><a></a>discriminator <span class="op">=</span> keras.Model(</span>
+<span id="cb5-9"><a></a>    [sequence, conditions], real_score, name<span class="op">=</span><span class="st">"D"</span>)</span></code></pre></div>
+</div></div>
+<div class="takeaway">
+<p>G produces 224 scaled values. D’s real/fake score is not an occurrence probability.</p>
+</div>
+<div class="small-note">
+<p>Small, untrained teaching example · Reduced conditional-GAN architecture; no thesis replication or performance claim</p>
+</div>
+<aside class="notes">
+<p><strong>Main idea:</strong> Conditional generation requires a generator and a discriminator with distinct outputs.</p>
+<p><strong>Explain:</strong> The five conditioning values describe the mainshock; 16 random values supply variation. Concatenation combines both inputs. The generator’s Dense layers produce 224 values with tanh. The discriminator combines a sequence with the same conditions and returns a real-versus-generated score. Read the Python blocks from left to right. Constructing these networks does not train them or reproduce the thesis experiment.</p>
+<p><strong>Transition:</strong> Training alternates between improving the discriminator and improving the generator through the discriminator.</p>
+<p><strong>Backup:</strong> The structure follows code/train_vanilla_cgan.py, lines 122–158 and 205–232; scaling follows code/prepare_data.py, lines 120–137, in the audited aftershock project. The smaller widths and noise dimension shown here are teaching choices; no trained model or metric is claimed. The five conditions are longitude, latitude, mainshock magnitude, depth and derived longitude on a 0–360 scale. The derived longitude is not an independent physical measurement. Conditions and sequences require MinMax scaling to [−1, 1], fitted on training data only. Inverse-transform generated values before reading magnitudes or the absence marker 2.5. The sequence representation comprises 224 intervals of 90 minutes, covering 14 days within 100 km; occupied intervals store maximum magnitude. D’s sigmoid is a real/fake classification score under adversarial training, not the probability of an earthquake or an aftershock exceedance. Network construction alone establishes no distributional adequacy.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="a01gantrain" class="slide level2">
+<h2>Appendix · GAN training alternates two updates</h2>
+<p><strong>Pseudocode:</strong> the update logic below is explanatory, not executable Python.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource text number-lines"><code class="sourceCode"><span id="cb6-1"><a></a>for each batch of observed sequences and mainshock conditions:</span>
+<span id="cb6-2"><a></a>    draw noise; generated = G(noise, conditions)</span>
+<span id="cb6-3"><a></a>    keep G fixed</span>
+<span id="cb6-4"><a></a>    D_loss = BCE(1, D(observed, conditions))</span>
+<span id="cb6-5"><a></a>           + BCE(0, D(generated, conditions))</span>
+<span id="cb6-6"><a></a>    update only D weights to reduce D_loss</span>
+<span id="cb6-7"><a></a></span>
+<span id="cb6-8"><a></a>    draw fresh noise; generated = G(noise, conditions)</span>
+<span id="cb6-9"><a></a>    keep D weights fixed, but pass gradients through D</span>
+<span id="cb6-10"><a></a>    G_loss = BCE(1, D(generated, conditions))</span>
+<span id="cb6-11"><a></a>    update only G weights to reduce G_loss</span></code></pre></div>
+<div class="takeaway">
+<p>After training: choose conditions, draw noise and use G to produce a candidate sequence.</p>
+</div>
+<div class="small-note">
+<p>BCE = binary cross-entropy · D learns labels real = 1 and generated = 0; G is updated toward D’s real label</p>
+</div>
+<aside class="notes">
+<p><strong>Main idea:</strong> GAN training alternates the objective and the network whose weights are updated.</p>
+<p><strong>Explain:</strong> In the discriminator step, observed sequences carry label one and generated sequences label zero. Hold the generator fixed and update only D. Then draw fresh noise, hold D’s weights fixed and pass gradients through D to update G toward label one. This feedback changes the generator even though its desired output is a sequence rather than a binary label. Generation after training uses G and new noise.</p>
+<p><strong>Transition:</strong> Return to the scientific checks: do generated samples preserve occurrence, magnitude and temporal structure?</p>
+<p><strong>Backup:</strong> Explanatory pseudocode based on the alternating updates in code/train_vanilla_cgan.py, lines 205–232. It omits optimizer setup, gradient-tape syntax, batching and validation details. No opaque training helper is assumed and no fitting is performed on these slides. During the D update, generator weights must not change; during the G update, discriminator weights must not change while its differentiable operations still transmit gradients. This is a reduced vanilla conditional-GAN explanation, not the WGAN-GP or attention-based generator training procedure. Conditions and sequences use training-only scaling, and generated values require inverse transformation before scientific interpretation.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
