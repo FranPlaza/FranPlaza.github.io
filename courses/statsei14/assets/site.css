@@ -55,3 +55,7 @@ body.course-home #title-block-header{display:none}
 /* Keep the linear graph equation and inline tensor labels usable on phones. */
 .tutorial-page .katex-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.25rem 0}
 .tutorial-page :not(pre)>code{white-space:normal;overflow-wrap:anywhere}
+
+/* Keep the introductory catalogue map visible on narrow screens. */
+.catalogue-map-output{max-width:100%;margin:.8rem 0 1.5rem}
+.catalogue-map-output img{display:block;max-width:100%;height:auto}

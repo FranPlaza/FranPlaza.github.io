@@ -6,20 +6,20 @@ Francisco Plaza-Vega · STATSEI14 · 13 October 2026
 
 How do we turn catalogue history into a probability forecast, and what changes when we change the model?
 
-By the end, participants should recognize one training example, explain the LSTM input and output, trace the visible construction, training and evaluation cells, interpret probability scores against simple references and explain what attention changes in the Transformer. Researchers may have different Python and neural-network experience. Reading prepared outputs and stating a testable hypothesis are valid ways to participate.
+By the end, attendees should recognize one training example, explain the LSTM input and output, trace the visible construction, training and evaluation cells, interpret probability scores against simple references and explain what attention changes in the Transformer. Researchers may have different Python and neural-network experience. Reading prepared outputs and stating a testable hypothesis are valid ways to participate.
 
-The presentation remains in English. Deep learning is the main theme; ETAS connects statistical representations to the author's research. Do not teach a separate ETAS fitting lesson. Keep the published Spatial Statistics article, Isidora's thesis, the manuscript under review and the teaching experiment as distinct evidence sources.
+The presentation remains in English. Deep learning is the main theme; ETAS connects statistical representations to the author's research. Do not teach a separate ETAS fitting lesson. Keep the published Spatial Statistics article, the USACH undergraduate thesis, the manuscript under review and the teaching experiment as distinct evidence sources.
 
 ## Session itinerary
 
 1. Introduce seismic learning tasks, their inputs and outputs.
 2. Explain representations, losses and model families.
-3. Connect the published research and aftershock work to the practical question.
-4. Inspect one catalogue window, its weekly label and chronological evaluation.
+3. Explain the ETAS temporal/spatial branches, generative aftershock exploration and observed-label classification in the submitted manuscript.
+4. Map the study region, then inspect one catalogue window, its weekly label and chronological evaluation.
 5. Define reference forecasts, explain model settings and train the LSTM.
 6. Interpret probabilities, Brier score, log loss and calibration.
-7. Compare how a Transformer uses the same input history.
-8. Discuss the evidence and choose a laboratory extension.
+7. Contrast spatial maps and the Graph + LSTM input/output. Use prepared Transformer results if the pace permits.
+8. Discuss the evidence and consider optional research extensions.
 
 Adapt the pace and depth to the group's experience and questions. Use prepared outputs when setup or fitting stalls. Appendices support questions and further study.
 
@@ -29,19 +29,23 @@ After the application examples: “The learning task depends on what we observe 
 
 After Spatial Statistics: “ETAS supplied the representation used by the neural models. In the practical we construct a simpler representation directly from the catalogue. In both cases, we decide what information the network receives and what its output means.”
 
-After Isidora's work: “This experience led us to examine the target more carefully. Today we focus on occurrence within a fixed future interval, so the output is explicit and we can evaluate its probabilities.”
+After the generative exploration: “This experience led us to examine the target more carefully. Today we focus on occurrence within a fixed future interval, so the output is explicit and we can evaluate its probabilities.”
 
-At s17: “The live exercise follows an LSTM and then a Transformer on the same history. MLP, CNN1D and the spatial tutorials remain available for the laboratory.”
+At s17: “The live execution focuses on the regional LSTM. We introduce spatial maps and Graph + LSTM through their input and output. Complete notebooks and a Transformer comparison remain available for optional exploration.”
 
 Before introducing spatial extensions: “What spatial information did we lose when we pooled the whole region?” Maps and graphs estimate six marginal occurrence probabilities. They are not the mutually exclusive macrozone-of-maximum classes of the published study.
 
-## Before participants arrive
+## Before attendees arrive
 
 1. Open the local or published practical page, slides and temporal guide. Check the current slide PDF and notebook downloads.
-2. Download `downloads/tutorials/temporal.ipynb`, open Colab and use File → Upload notebook. The notebook has ready-to-run cells; a blank notebook is an independent-study option.
+2. Download `downloads/tutorials/temporal.ipynb`, open Colab and use File → Upload notebook. The notebook has ready-to-run cells; a blank notebook is an optional way to explore the implementation.
 3. Keep `downloads/tutorials/temporal-solved.ipynb` and the web guide's prepared outputs available. The tutorial pack includes the exact frozen data ZIP for offline preparation.
 4. Inspect imports and the frozen data download before the session when possible. Do not promise the local CPU runtime in Colab. Actual Colab execution remains unverified unless a separate recorded check establishes it.
 5. Open speaker notes with S. Put the spoken idea and transition first; use scientific qualifications as support for questions.
+
+## The first catalogue map
+
+After loading the frozen data, show the study region with M >= 6 events from training (2001–2016). Change MAP_MAG_MIN to 5 to reveal more points. This plotting filter leaves the catalogue, model input threshold and targets intact. The country outlines are already included in the frozen data pack. Explain that pooling events into regional daily channels discards their individual locations.
 
 ## One observation before technical preparation
 
@@ -55,7 +59,7 @@ For one example, shape is (30, 3); a batch adds the examples axis. The regional 
 
 ## Guided notebook
 
-Follow four visible stages: build one example, define reference forecasts, train the LSTM, and evaluate its probabilities. Read the core cells from top to bottom. Explain the daily channels, one window and its label before dwelling on implementation. Pause at the intermediate daily table and input shape so participants can connect each array to the scientific task.
+Follow four visible stages: build one example, define reference forecasts, train the LSTM, and evaluate its probabilities. Read the core cells from top to bottom. Explain the daily channels, one window and its label before dwelling on implementation. Pause at the intermediate daily table and input shape so attendees can connect each array to the scientific task.
 
 The logistic reference receives all 90 standardized lag values. Training prevalence is a constant probability estimated from training labels. Explain the LSTM definition line by line: ordered input, a 16-unit recurrent state and a one-unit sigmoid. Distinguish the 30 days, 3 observed channels, 16 learned state values and 1 probability. Training histories determine scaling.
 
@@ -74,19 +78,21 @@ Describe these values as a compact starting configuration for the exercise. The 
 
 Point to `compile` for Adam and binary cross-entropy, `fit` for training-weight updates and `predict` for probabilities. Early stopping monitors validation loss and restores the weights from the best validation epoch. Validation observations do not contribute gradient updates, but they influence which weights we retain. Twenty epochs is a limit, and training can stop earlier. Reaching that limit does not establish that the training budget is adequate. In the prepared seed-7 run, the LSTM reaches 20 epochs while validation loss still decreases slightly. The Transformer stops after six epochs and restores the weights from epoch three. Use the learning curves to distinguish the epoch limit, actual training duration and the epoch whose weights are retained.
 
-The primary notebook uses one declared seed, 7. Each model has its own visible training and evaluation beside its definition. The LSTM comparison needs only the preparation and reference cells. Participants can complete that core before reading the Transformer. MLP and CNN1D follow as optional laboratory sections and are not dependencies of the live route. The separate three-seed comparison is available after the session.
+The primary notebook uses one declared seed, 7. Each model has its own visible training and evaluation beside its definition. The LSTM comparison needs only the preparation and reference cells. Attendees can complete that core before reading the Transformer. MLP and CNN1D follow as optional extensions and are not dependencies of the live route. The separate three-seed comparison is available after the session.
 
 Use prepared outputs if setup or fitting stalls. Identify them as recorded local CPU results and preserve space for interpreting probabilities and discussing the scientific question.
 
 ## Evaluation
 
-Ask participants to identify a predicted probability, its observed weekly label and the corresponding error. Compare Brier and log loss with the training-prevalence reference, then inspect calibration with bin counts. A sigmoid does not guarantee calibration. The seed-7 walkthrough describes one fit per model and does not measure variability across initializations. Differences among seeds in the separate repeated comparison describe optimization variability, not uncertainty from new earthquakes.
+Ask attendees to identify a predicted probability, its observed weekly label and the corresponding error. Compare Brier and log loss with the training-prevalence reference, then inspect calibration with bin counts. A sigmoid does not guarantee calibration. The seed-7 walkthrough describes one fit per model and does not measure variability across initializations. Differences among seeds in the separate repeated comparison describe optimization variability, not uncertainty from new earthquakes.
 
 The current tutorials evaluate validation (2017–2020) only; early stopping also uses it. These scores are development evidence, not independent generalization evidence. Training is 2001–2016. The 2021–2025 test was already inspected in earlier course experiments and is excluded from this comparison. Target intervals crossing boundaries are removed; inputs can use earlier history. The frozen revised catalogue does not reconstruct historical information availability.
 
 The slide table shows one seed-7 fit per neural model on 208 validation weeks. The sensitivity comparison reports arithmetic means of fit-level losses across seeds 7, 17 and 27. Those means answer a different question from the performance of a single fit or an ensemble prediction. Do not choose an architecture or seed using the previously inspected test.
 
-## Transformer
+## Optional Transformer comparison
+
+Use the prepared outputs for a brief comparison when useful. The live route can stop after LSTM evaluation.
 
 Follow four operations: project each day into 16 features; add learned positional information; combine observed days with two attention heads; pool to one weekly probability. The current model has 2,257 trainable parameters, compared with 1,297 for the LSTM. Inspect the projection, position, attention and output layers in the model definition.
 
@@ -94,12 +100,16 @@ The current positional table has 30 × 16 learned values. The feed-forward block
 
 Compare the same validation outputs. Differences in capacity and completed epochs remain; this is not a parameter-matched competition. Read the seed-7 Brier and log loss values alongside prevalence and calibration. One split and one initialization do not rank these model families generally or establish a cause for their difference. Use the separate repeated comparison to discuss initialization sensitivity.
 
-## Closing and laboratory
+## Graph + LSTM preview
 
-Ask for one supported observation and one hypothesis that needs another comparison. Offer concrete continuations: compare recurrent-state sizes, read MLP/CNN1D on the same input, retain locations using maps or graphs, or add an ETAS-inspired feature while holding the LSTM fixed. Changing a feature changes the representation. LSTM versus Transformer changes architecture.
+Show one 30 × 6 × 3 input: past days, fixed cells and catalogue channels. Neighbour aggregation combines information from adjacent cells, and the LSTM processes each node history. The output contains six marginal weekly occurrence probabilities. Introduce these ideas without requiring the group to finish training during the session; the complete graph notebook and its example outputs are in Further exploration.
 
-For a small laboratory experiment, declare **8, 16 and 32 LSTM units** before training. Hold features, 30-day history, target, split dates, optimizer, batch size and stopping rule fixed. Declare validation log loss as the primary comparison and inspect Brier score and calibration as well. Begin with seed 7, then retain all fits with seeds 7, 17 and 27 to examine whether differences persist across initializations. Compare each candidate's parameter count and learning curves. Selecting a setting uses validation information and produces development evidence. Independent evaluation requires a genuinely untouched period and must respect temporal order. Keep the previously inspected 2021–2025 interval out of selection.
+## Closing and further exploration
+
+Ask for one supported observation and one hypothesis that needs another comparison. Offer optional research directions: compare recurrent-state sizes, read MLP/CNN1D on the same input, retain locations using maps or graphs, or add an ETAS-inspired feature while holding the LSTM fixed. Changing a feature changes the representation. LSTM versus Transformer changes architecture.
+
+For attendees who wish to explore recurrent-state size, the optional experiment requires declaring **8, 16 and 32 LSTM units** before training. Hold features, 30-day history, target, split dates, optimizer, batch size and stopping rule fixed. Declare validation log loss as the primary comparison and inspect Brier score and calibration as well. Begin with seed 7, then retain all fits with seeds 7, 17 and 27 to examine whether differences persist across initializations. Compare each candidate's parameter count and learning curves. Selecting a setting uses validation information and produces development evidence. Independent evaluation requires a genuinely untouched period and must respect temporal order. Keep the previously inspected 2021–2025 interval out of selection.
 
 Spatial maps use (30, 3, 2, 3) per example; graphs use (30, 6, 3). Both predict six marginal weekly probabilities that need not sum to one. Do not compare their scores directly with regional occurrence scores.
 
-Homework is in `homework.html`. The sensitivity guides are `tutorials/temporal-comparison.html`, `tutorials/maps-comparison.html` and `tutorials/graphs-comparison.html`, with notebooks under `downloads/comparison/`. They retain seeds 7, 17 and 27. A bounded extension declares one change, preserves an unchanged reference, retains all declared seeds and uses training/validation. An independent confirmatory claim needs a genuinely untouched evaluation period.
+Optional resources and research questions are collected in **Further exploration** at `homework.html`. The sensitivity guides are `tutorials/temporal-comparison.html`, `tutorials/maps-comparison.html` and `tutorials/graphs-comparison.html`, with notebooks under `downloads/comparison/`. They retain seeds 7, 17 and 27. A bounded extension declares one change, preserves an unchanged reference, retains all declared seeds and uses training/validation. An independent confirmatory claim needs a genuinely untouched evaluation period.

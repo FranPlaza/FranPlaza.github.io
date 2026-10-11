@@ -143,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../homework.html"> 
-<span class="menu-text">Homework</span></a>
+<span class="menu-text">Further exploration</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../references.html"> 
@@ -168,6 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#guided-practical-itinerary" id="toc-guided-practical-itinerary" class="nav-link active" data-scroll-target="#guided-practical-itinerary">Guided practical itinerary</a></li>
   <li><a href="#preparation-a.-load-the-tools" id="toc-preparation-a.-load-the-tools" class="nav-link" data-scroll-target="#preparation-a.-load-the-tools">Preparation A. Load the tools</a></li>
   <li><a href="#preparation-b.-read-the-frozen-catalogue" id="toc-preparation-b.-read-the-frozen-catalogue" class="nav-link" data-scroll-target="#preparation-b.-read-the-frozen-catalogue">Preparation B. Read the frozen catalogue</a></li>
+  <li><a href="#locate-the-catalogue-on-a-map" id="toc-locate-the-catalogue-on-a-map" class="nav-link" data-scroll-target="#locate-the-catalogue-on-a-map">Locate the catalogue on a map</a></li>
   <li><a href="#preparation-c.-select-the-region-and-define-the-daily-calendar" id="toc-preparation-c.-select-the-region-and-define-the-daily-calendar" class="nav-link" data-scroll-target="#preparation-c.-select-the-region-and-define-the-daily-calendar">Preparation C. Select the region and define the daily calendar</a></li>
   <li><a href="#preparation-d.-build-three-regional-columns" id="toc-preparation-d.-build-three-regional-columns" class="nav-link" data-scroll-target="#preparation-d.-build-three-regional-columns">Preparation D. Build three regional columns</a></li>
   <li><a href="#preparation-e.-one-monday-becomes-one-learning-example" id="toc-preparation-e.-one-monday-becomes-one-learning-example" class="nav-link" data-scroll-target="#preparation-e.-one-monday-becomes-one-learning-example">Preparation E. One Monday becomes one learning example</a></li>
@@ -176,10 +177,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#fit-two-reference-forecasts" id="toc-fit-two-reference-forecasts" class="nav-link" data-scroll-target="#fit-two-reference-forecasts">2. Fit two reference forecasts</a></li>
   <li><a href="#lstm-update-a-learned-state-through-the-history" id="toc-lstm-update-a-learned-state-through-the-history" class="nav-link" data-scroll-target="#lstm-update-a-learned-state-through-the-history">3. LSTM: update a learned state through the history</a></li>
   <li><a href="#evaluate-the-lstm-against-the-references" id="toc-evaluate-the-lstm-against-the-references" class="nav-link" data-scroll-target="#evaluate-the-lstm-against-the-references">4. Evaluate the LSTM against the references</a></li>
-  <li><a href="#transformer-combine-days-through-attention-and-position" id="toc-transformer-combine-days-through-attention-and-position" class="nav-link" data-scroll-target="#transformer-combine-days-through-attention-and-position">5. Transformer: combine days through attention and position</a></li>
+  <li><a href="#core-practical-complete" id="toc-core-practical-complete" class="nav-link" data-scroll-target="#core-practical-complete">Core practical complete</a></li>
+  <li><a href="#optional-extension.-transformer-combine-days-through-attention-and-position" id="toc-optional-extension.-transformer-combine-days-through-attention-and-position" class="nav-link" data-scroll-target="#optional-extension.-transformer-combine-days-through-attention-and-position">Optional extension. Transformer: combine days through attention and position</a></li>
   <li><a href="#compare-lstm-and-transformer-on-the-same-validation-weeks" id="toc-compare-lstm-and-transformer-on-the-same-validation-weeks" class="nav-link" data-scroll-target="#compare-lstm-and-transformer-on-the-same-validation-weeks">6. Compare LSTM and Transformer on the same validation weeks</a></li>
   <li><a href="#inspect-learning-curves" id="toc-inspect-learning-curves" class="nav-link" data-scroll-target="#inspect-learning-curves">7. Inspect learning curves</a></li>
-  <li><a href="#guided-session-complete" id="toc-guided-session-complete" class="nav-link" data-scroll-target="#guided-session-complete">Guided session complete</a></li>
+  <li><a href="#reflect-on-the-optional-transformer-comparison" id="toc-reflect-on-the-optional-transformer-comparison" class="nav-link" data-scroll-target="#reflect-on-the-optional-transformer-comparison">Reflect on the optional Transformer comparison</a></li>
   <li><a href="#extension-a.-mlp-combine-values-at-fixed-lag-positions" id="toc-extension-a.-mlp-combine-values-at-fixed-lag-positions" class="nav-link" data-scroll-target="#extension-a.-mlp-combine-values-at-fixed-lag-positions">Extension A. MLP: combine values at fixed lag positions</a></li>
   <li><a href="#extension-b.-cnn1d-apply-shared-filters-to-adjacent-days" id="toc-extension-b.-cnn1d-apply-shared-filters-to-adjacent-days" class="nav-link" data-scroll-target="#extension-b.-cnn1d-apply-shared-filters-to-adjacent-days">Extension B. CNN1D: apply shared filters to adjacent days</a></li>
   <li><a href="#extension-c.-compare-all-four-neural-architectures" id="toc-extension-c.-compare-all-four-neural-architectures" class="nav-link" data-scroll-target="#extension-c.-compare-all-four-neural-architectures">Extension C. Compare all four neural architectures</a></li>
@@ -195,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">A catalogue history becomes a probability forecast</h1>
-<p class="subtitle lead">Guided session: LSTM and Transformer</p>
+<p class="subtitle lead">Guided session: from a catalogue map to an LSTM probability</p>
 </div>
 
 
@@ -215,23 +217,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="actions">
 <p><a href="../downloads/tutorials/temporal.ipynb" class="primary" download="temporal.ipynb">Download prepared notebook</a> <a href="https://colab.research.google.com/">Open Colab to upload the notebook</a> <a href="../downloads/tutorials/temporal-solved.ipynb" download="temporal-solved.ipynb">Download notebook with example outputs</a> <a href="../tutorials/temporal-comparison.html">Sensitivity to initialization</a> <a href="../practical.html">All tutorials</a></p>
 </div>
-<p>Example results use one training run per neural model, <strong>seed 7</strong>. See <a href="../environment.html">Environment and setup</a>.</p>
+<p>Example results use one training run per neural model, <strong>seed 7</strong>. See <a href="../environment.html">Environment and setup</a>. The introductory map was executed separately; the model code and example results are preserved from the verified original run. This edition was not rerun end to end.</p>
 <p><strong>Scientific question.</strong> Given the previous 30 days of catalogue information, what is the probability of at least one M ≥ 5 event in the region during the following seven days?</p>
 <p>One learning example is a <strong>weekly forecast origin</strong>. Its input is a table with 30 rows (past days) and three columns (catalogue channels). Its target is zero or one.</p>
-<p>The presentation introduces the learning tasks and architectures. In the guided practical, we fit an LSTM, interpret its probability errors, and compare a Transformer on the same examples. MLP and CNN1D are extensions for independent study.</p>
+<p>The presentation introduces the learning tasks and architectures. In the guided practical, we locate the catalogue on a map, inspect one 30 × 3 history, fit an LSTM and interpret its probability errors against two references. Transformer, MLP and CNN1D are optional extensions for further exploration.</p>
 <p>Each neural model uses <strong>one training run, seed 7</strong>. To examine sensitivity to initialization, continue with the <a href="https://franplaza.github.io/courses/statsei14/tutorials/temporal-comparison.html">three-seed comparison</a>.</p>
 <p><strong>What a score means here.</strong> Training covers 2001–2016. Validation covers 2017–2020 and also determines early stopping, so the results describe retrospective development. The catalogue is frozen and revised; historical real-time availability has not been reconstructed. The previously inspected 2021–2025 period is not evaluated and cannot serve as a new independent test.</p>
 <section id="guided-practical-itinerary" class="level2">
 <h2 class="anchored" data-anchor-id="guided-practical-itinerary">Guided practical itinerary</h2>
 <p>Preparation A–F constructs the daily features, input windows and chronological partitions. During the guided session, we will inspect one example before fitting the models. The preparation cells provide a detailed reference for independent study. Run them before the session or open the notebook with prepared outputs.</p>
 <ol type="1">
-<li>Confirm setup and inspect one input window and outcome.</li>
+<li>Locate training-period earthquakes on the study-region map.</li>
+<li>Inspect one 30 × 3 input window and its weekly outcome.</li>
 <li>Fit the references; discuss LSTM settings, then compile, fit and predict.</li>
-<li>Interpret Brier score, log loss and validation support.</li>
-<li>Follow the Transformer and compare the same validation origins.</li>
-<li>Read the limits and choose an extension.</li>
+<li>Interpret Brier score, log loss, validation support and the limits.</li>
+<li>If useful, inspect the prepared Transformer comparison; continue the optional extensions independently.</li>
 </ol>
-<p>The guided session ends before the MLP/CNN1D section. Run all earlier cells in order.</p>
+<p>The core guided practical ends after the LSTM evaluation in section 4. Running the Transformer is optional; its prepared outputs allow a brief comparison without another live fit. Run all earlier preparation and core cells in order.</p>
 </section>
 <section id="preparation-a.-load-the-tools" class="level2">
 <h2 class="anchored" data-anchor-id="preparation-a.-load-the-tools">Preparation A. Load the tools</h2>
@@ -352,24 +354,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div></div>
 </details>
 </section>
+<section id="locate-the-catalogue-on-a-map" class="level2">
+<h2 class="anchored" data-anchor-id="locate-the-catalogue-on-a-map">Locate the catalogue on a map</h2>
+<p>Before turning earthquakes into arrays, locate the study region. The map shows <strong>training-period events, 2001–2016, with M ≥ 6</strong>. Change <code>MAP_MAG_MIN</code> to <code>5.0</code> to display more points. This is a <strong>display filter only</strong>: the catalogue, model inputs (M ≥ 4.5), targets (M ≥ 5) and chronological partitions stay unchanged.</p>
+<p>Country outlines come from Natural Earth and are already included in the frozen data pack, so the map also works offline. The dashed box marks the study region; it is a geographic selection, not a tectonic boundary. Coordinates are plotted as longitude and latitude for geographic context.</p>
+<div class="copy-step">
+<p><strong>Code block 3</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>MAP_MAG_MIN <span class="op">=</span> <span class="fl">6.0</span>  <span class="co"># Change to 5.0 to show more events; this does not change training.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>map_period <span class="op">=</span> (events[<span class="st">"time"</span>] <span class="op">&gt;=</span> <span class="st">"2001-01-01"</span>) <span class="op">&amp;</span> (events[<span class="st">"time"</span>] <span class="op">&lt;</span> <span class="st">"2017-01-01"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>map_region <span class="op">=</span> events[<span class="st">"latitude"</span>].between(<span class="op">-</span><span class="fl">34.0</span>, <span class="op">-</span><span class="fl">28.0</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>map_region <span class="op">&amp;=</span> events[<span class="st">"longitude"</span>].between(<span class="op">-</span><span class="fl">74.0</span>, <span class="op">-</span><span class="fl">69.0</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>map_events <span class="op">=</span> events.loc[map_period <span class="op">&amp;</span> map_region <span class="op">&amp;</span> (events[<span class="st">"mag"</span>] <span class="op">&gt;=</span> MAP_MAG_MIN)]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> zipfile.ZipFile(io.BytesIO(pack_bytes)) <span class="im">as</span> map_archive:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    map_countries <span class="op">=</span> json.loads(</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        map_archive.read(<span class="st">"data/geography/southern_south_america.geojson"</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    )[<span class="st">"features"</span>]</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Map only: </span><span class="sc">{</span><span class="bu">len</span>(map_events)<span class="sc">}</span><span class="ss"> events with M ≥ </span><span class="sc">{</span>MAP_MAG_MIN<span class="sc">:g}</span><span class="ss">, 2001–2016"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="prepared-output"><summary>Example output — seed 7</summary>
+<pre>Map only: 45 events with M ≥ 6, 2001–2016</pre>
+</details>
+<div class="copy-step">
+<p><strong>Code block 4</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>map_figure, map_axis <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="fl">6.5</span>, <span class="dv">7</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>map_axis.set_facecolor(<span class="st">"#eaf3f8"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># GeoJSON stores each country as one or more polygons; draw their outer rings.</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> map_country <span class="kw">in</span> map_countries:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    map_geometry <span class="op">=</span> map_country[<span class="st">"geometry"</span>]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    map_polygons <span class="op">=</span> map_geometry[<span class="st">"coordinates"</span>]</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> map_geometry[<span class="st">"type"</span>] <span class="op">==</span> <span class="st">"Polygon"</span>:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        map_polygons <span class="op">=</span> [map_polygons]</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> map_polygon <span class="kw">in</span> map_polygons:</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        map_outline <span class="op">=</span> np.asarray(map_polygon[<span class="dv">0</span>])</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        map_axis.fill(map_outline[:, <span class="dv">0</span>], map_outline[:, <span class="dv">1</span>],</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                      facecolor<span class="op">=</span><span class="st">"#f1eee6"</span>, edgecolor<span class="op">=</span><span class="st">"#78868c"</span>, linewidth<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>map_axis.plot([<span class="op">-</span><span class="dv">74</span>, <span class="op">-</span><span class="dv">69</span>, <span class="op">-</span><span class="dv">69</span>, <span class="op">-</span><span class="dv">74</span>, <span class="op">-</span><span class="dv">74</span>], [<span class="op">-</span><span class="dv">34</span>, <span class="op">-</span><span class="dv">34</span>, <span class="op">-</span><span class="dv">28</span>, <span class="op">-</span><span class="dv">28</span>, <span class="op">-</span><span class="dv">34</span>],</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>              color<span class="op">=</span><span class="st">"#bd641f"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">"Study region"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>map_axis.scatter(map_events[<span class="st">"longitude"</span>], map_events[<span class="st">"latitude"</span>],</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                 s<span class="op">=</span><span class="dv">35</span>, color<span class="op">=</span><span class="st">"#087e8b"</span>, edgecolors<span class="op">=</span><span class="st">"white"</span>, linewidths<span class="op">=</span><span class="fl">0.4</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                 alpha<span class="op">=</span><span class="fl">0.8</span>, zorder<span class="op">=</span><span class="dv">3</span>, label<span class="op">=</span><span class="ss">f"M ≥ </span><span class="sc">{</span>MAP_MAG_MIN<span class="sc">:g}</span><span class="ss"> (</span><span class="sc">{</span><span class="bu">len</span>(map_events)<span class="sc">}</span><span class="ss"> events)"</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>map_axis.<span class="bu">set</span>(xlim<span class="op">=</span>(<span class="op">-</span><span class="fl">74.8</span>, <span class="op">-</span><span class="fl">68.2</span>), ylim<span class="op">=</span>(<span class="op">-</span><span class="fl">34.7</span>, <span class="op">-</span><span class="fl">27.3</span>),</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>             xlabel<span class="op">=</span><span class="st">"Longitude (degrees)"</span>, ylabel<span class="op">=</span><span class="st">"Latitude (degrees)"</span>,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>             title<span class="op">=</span><span class="st">"Chile: study region and training-period events (2001–2016)"</span>)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>map_axis.set_aspect(<span class="dv">1</span> <span class="op">/</span> np.cos(np.deg2rad(<span class="op">-</span><span class="dv">31</span>)))</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>map_axis.text(<span class="op">-</span><span class="fl">70.8</span>, <span class="op">-</span><span class="fl">27.8</span>, <span class="st">"CHILE"</span>, color<span class="op">=</span><span class="st">"#52665c"</span>, ha<span class="op">=</span><span class="st">"center"</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>map_axis.text(<span class="op">-</span><span class="fl">68.9</span>, <span class="op">-</span><span class="fl">32.5</span>, <span class="st">"ARGENTINA"</span>, rotation<span class="op">=</span><span class="dv">90</span>, color<span class="op">=</span><span class="st">"#52665c"</span>, ha<span class="op">=</span><span class="st">"center"</span>)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>map_axis.grid(alpha<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>map_axis.legend(loc<span class="op">=</span><span class="st">"lower left"</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>map_figure.text(<span class="fl">0.5</span>, <span class="fl">0.01</span>, <span class="st">"Events: USGS ComCat, revised snapshot · Outlines: Natural Earth 1:50m"</span>,</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>                ha<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>map_figure.tight_layout(rect<span class="op">=</span>(<span class="dv">0</span>, <span class="fl">0.03</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="catalogue-map-output">
+<img src="../assets/tutorials-linear/temporal/cell-007-0.png" alt="Chile study region with Natural Earth country outlines and 45 training-period catalogue events, 2001–2016, magnitude at least 6." loading="lazy">
+</div>
+<p>The map shows the locations of catalogue events. The temporal model will summarize the whole box by day; the spatial extensions will divide it into six cells. Neither representation is the earthquake sequence itself.</p>
+</section>
 <section id="preparation-c.-select-the-region-and-define-the-daily-calendar" class="level2">
 <h2 class="anchored" data-anchor-id="preparation-c.-select-the-region-and-define-the-daily-calendar">Preparation C. Select the region and define the daily calendar</h2>
 <p>Input events satisfy <strong>M ≥ 4.5</strong>. The future occurrence target uses <strong>M ≥ 5</strong>. We retain every calendar day, including days without events. The first year supplies history for the earliest training windows.</p>
 <p>The three channels are log(1 + count), maximum magnitude excess above 4.5, and presence. Presence distinguishes an empty day from a day containing an event exactly at the input threshold.</p>
 <div class="copy-step">
-<p><strong>Code block 3</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 5</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>START <span class="op">=</span> pd.Timestamp(<span class="st">"2000-01-01"</span>, tz<span class="op">=</span><span class="st">"UTC"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>END <span class="op">=</span> pd.Timestamp(<span class="st">"2026-01-01"</span>, tz<span class="op">=</span><span class="st">"UTC"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> pd.date_range(START, END <span class="op">-</span> pd.Timedelta(days<span class="op">=</span><span class="dv">1</span>), freq<span class="op">=</span><span class="st">"D"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>FEATURES <span class="op">=</span> [<span class="st">"log_count"</span>, <span class="st">"max_magnitude_excess"</span>, <span class="st">"has_event"</span>]</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>inside <span class="op">=</span> events[<span class="st">"latitude"</span>].between(<span class="op">-</span><span class="fl">34.0</span>, <span class="op">-</span><span class="fl">28.0</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>inside <span class="op">&amp;=</span> events[<span class="st">"longitude"</span>].between(<span class="op">-</span><span class="fl">74.0</span>, <span class="op">-</span><span class="fl">69.0</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>in_time <span class="op">=</span> (events[<span class="st">"time"</span>] <span class="op">&gt;=</span> START) <span class="op">&amp;</span> (events[<span class="st">"time"</span>] <span class="op">&lt;</span> END)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>selected <span class="op">=</span> events.loc[inside <span class="op">&amp;</span> in_time <span class="op">&amp;</span> (events[<span class="st">"mag"</span>] <span class="op">&gt;=</span> <span class="fl">4.5</span>)].copy()</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>selected[<span class="st">"date"</span>] <span class="op">=</span> selected[<span class="st">"time"</span>].dt.floor(<span class="st">"D"</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Input events:"</span>, <span class="bu">len</span>(selected))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>START <span class="op">=</span> pd.Timestamp(<span class="st">"2000-01-01"</span>, tz<span class="op">=</span><span class="st">"UTC"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>END <span class="op">=</span> pd.Timestamp(<span class="st">"2026-01-01"</span>, tz<span class="op">=</span><span class="st">"UTC"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> pd.date_range(START, END <span class="op">-</span> pd.Timedelta(days<span class="op">=</span><span class="dv">1</span>), freq<span class="op">=</span><span class="st">"D"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>FEATURES <span class="op">=</span> [<span class="st">"log_count"</span>, <span class="st">"max_magnitude_excess"</span>, <span class="st">"has_event"</span>]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>inside <span class="op">=</span> events[<span class="st">"latitude"</span>].between(<span class="op">-</span><span class="fl">34.0</span>, <span class="op">-</span><span class="fl">28.0</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>inside <span class="op">&amp;=</span> events[<span class="st">"longitude"</span>].between(<span class="op">-</span><span class="fl">74.0</span>, <span class="op">-</span><span class="fl">69.0</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>in_time <span class="op">=</span> (events[<span class="st">"time"</span>] <span class="op">&gt;=</span> START) <span class="op">&amp;</span> (events[<span class="st">"time"</span>] <span class="op">&lt;</span> END)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>selected <span class="op">=</span> events.loc[inside <span class="op">&amp;</span> in_time <span class="op">&amp;</span> (events[<span class="st">"mag"</span>] <span class="op">&gt;=</span> <span class="fl">4.5</span>)].copy()</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>selected[<span class="st">"date"</span>] <span class="op">=</span> selected[<span class="st">"time"</span>].dt.floor(<span class="st">"D"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Input events:"</span>, <span class="bu">len</span>(selected))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <pre>Input events: 2121</pre>
 </details>
@@ -378,26 +443,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="preparation-d.-build-three-regional-columns">Preparation D. Build three regional columns</h2>
 <p>Grouping counts the events on each day. Reindexing inserts the missing days. The separate target count will only be used to form outcomes after a forecast origin.</p>
 <div class="copy-step">
-<p><strong>Code block 4</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 6</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>daily_count <span class="op">=</span> selected.groupby(<span class="st">"date"</span>).size().reindex(days, fill_value<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>daily_count <span class="op">=</span> daily_count.to_numpy(dtype<span class="op">=</span><span class="st">"float32"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>daily_maximum <span class="op">=</span> selected.groupby(<span class="st">"date"</span>)[<span class="st">"mag"</span>].<span class="bu">max</span>().reindex(days)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>daily_excess <span class="op">=</span> (daily_maximum <span class="op">-</span> <span class="fl">4.5</span>).fillna(<span class="dv">0</span>).to_numpy(dtype<span class="op">=</span><span class="st">"float32"</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>larger_events <span class="op">=</span> selected.loc[selected[<span class="st">"mag"</span>] <span class="op">&gt;=</span> <span class="fl">5.0</span>]</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>target_counts <span class="op">=</span> larger_events.groupby(<span class="st">"date"</span>).size().reindex(days, fill_value<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>target_counts <span class="op">=</span> target_counts.to_numpy(dtype<span class="op">=</span><span class="st">"float32"</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>daily_regional_raw <span class="op">=</span> np.column_stack([</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    np.log1p(daily_count),</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    daily_excess,</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    (daily_count <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="st">"float32"</span>),</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>]).astype(<span class="st">"float32"</span>)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>daily_table <span class="op">=</span> pd.DataFrame(daily_regional_raw, index<span class="op">=</span>days, columns<span class="op">=</span>FEATURES)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> daily_count.<span class="bu">sum</span>() <span class="op">==</span> <span class="bu">len</span>(selected)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>display(daily_table.head(<span class="dv">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>daily_count <span class="op">=</span> selected.groupby(<span class="st">"date"</span>).size().reindex(days, fill_value<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>daily_count <span class="op">=</span> daily_count.to_numpy(dtype<span class="op">=</span><span class="st">"float32"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>daily_maximum <span class="op">=</span> selected.groupby(<span class="st">"date"</span>)[<span class="st">"mag"</span>].<span class="bu">max</span>().reindex(days)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>daily_excess <span class="op">=</span> (daily_maximum <span class="op">-</span> <span class="fl">4.5</span>).fillna(<span class="dv">0</span>).to_numpy(dtype<span class="op">=</span><span class="st">"float32"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>larger_events <span class="op">=</span> selected.loc[selected[<span class="st">"mag"</span>] <span class="op">&gt;=</span> <span class="fl">5.0</span>]</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>target_counts <span class="op">=</span> larger_events.groupby(<span class="st">"date"</span>).size().reindex(days, fill_value<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>target_counts <span class="op">=</span> target_counts.to_numpy(dtype<span class="op">=</span><span class="st">"float32"</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>daily_regional_raw <span class="op">=</span> np.column_stack([</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    np.log1p(daily_count),</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    daily_excess,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    (daily_count <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="st">"float32"</span>),</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>]).astype(<span class="st">"float32"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>daily_table <span class="op">=</span> pd.DataFrame(daily_regional_raw, index<span class="op">=</span>days, columns<span class="op">=</span>FEATURES)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> daily_count.<span class="bu">sum</span>() <span class="op">==</span> <span class="bu">len</span>(selected)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>display(daily_table.head(<span class="dv">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
@@ -483,37 +548,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>At origin t, take inputs from <strong>[t − 30 days, t)</strong> and the outcome from <strong>[t, t + 7 days)</strong>. The Python slices below implement those intervals directly. We omit target weeks that cross a partition boundary.</p>
 <p>Only origins through 2020 are built. Weekly targets do not overlap, although input histories share days.</p>
 <div class="copy-step">
-<p><strong>Code block 5</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 7</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>VAL_START <span class="op">=</span> pd.Timestamp(<span class="st">"2017-01-01"</span>, tz<span class="op">=</span><span class="st">"UTC"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>TEST_START <span class="op">=</span> pd.Timestamp(<span class="st">"2021-01-01"</span>, tz<span class="op">=</span><span class="st">"UTC"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>candidate_origins <span class="op">=</span> pd.date_range(<span class="st">"2001-01-01"</span>, <span class="st">"2020-12-31"</span>, freq<span class="op">=</span><span class="st">"W-MON"</span>, tz<span class="op">=</span><span class="st">"UTC"</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>histories, outcomes, kept_origins <span class="op">=</span> [], [], []</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> origin <span class="kw">in</span> candidate_origins:</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> days.get_loc(origin)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    target_end <span class="op">=</span> origin <span class="op">+</span> pd.Timedelta(days<span class="op">=</span>HORIZON)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    boundary <span class="op">=</span> VAL_START <span class="cf">if</span> origin <span class="op">&lt;</span> VAL_START <span class="cf">else</span> TEST_START</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">&lt;</span> LOOKBACK <span class="kw">or</span> target_end <span class="op">&gt;</span> boundary:</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    history <span class="op">=</span> daily_regional_raw[i <span class="op">-</span> LOOKBACK:i]</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    future_counts <span class="op">=</span> target_counts[i:i <span class="op">+</span> HORIZON]</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    outcome <span class="op">=</span> <span class="bu">int</span>(future_counts.<span class="bu">sum</span>() <span class="op">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    histories.append(history)</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    outcomes.append(outcome)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    kept_origins.append(origin)</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>origins <span class="op">=</span> pd.DatetimeIndex(kept_origins)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>raw_regional <span class="op">=</span> np.stack(histories)</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>y_regional <span class="op">=</span> np.asarray(outcomes, dtype<span class="op">=</span><span class="st">"int32"</span>)</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>train_mask <span class="op">=</span> origins <span class="op">&lt;</span> VAL_START</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>val_mask <span class="op">=</span> origins <span class="op">&gt;=</span> VAL_START</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> (origins[train_mask] <span class="op">+</span> pd.Timedelta(days<span class="op">=</span>HORIZON) <span class="op">&lt;=</span> VAL_START).<span class="bu">all</span>()</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> (origins[val_mask] <span class="op">+</span> pd.Timedelta(days<span class="op">=</span>HORIZON) <span class="op">&lt;=</span> TEST_START).<span class="bu">all</span>()</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Training examples:"</span>, train_mask.<span class="bu">sum</span>(), <span class="st">"Validation examples:"</span>, val_mask.<span class="bu">sum</span>())</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"One input:"</span>, raw_regional[<span class="dv">0</span>].shape, <span class="st">"One outcome:"</span>, y_regional[<span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>VAL_START <span class="op">=</span> pd.Timestamp(<span class="st">"2017-01-01"</span>, tz<span class="op">=</span><span class="st">"UTC"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>TEST_START <span class="op">=</span> pd.Timestamp(<span class="st">"2021-01-01"</span>, tz<span class="op">=</span><span class="st">"UTC"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>candidate_origins <span class="op">=</span> pd.date_range(<span class="st">"2001-01-01"</span>, <span class="st">"2020-12-31"</span>, freq<span class="op">=</span><span class="st">"W-MON"</span>, tz<span class="op">=</span><span class="st">"UTC"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>histories, outcomes, kept_origins <span class="op">=</span> [], [], []</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> origin <span class="kw">in</span> candidate_origins:</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> days.get_loc(origin)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    target_end <span class="op">=</span> origin <span class="op">+</span> pd.Timedelta(days<span class="op">=</span>HORIZON)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    boundary <span class="op">=</span> VAL_START <span class="cf">if</span> origin <span class="op">&lt;</span> VAL_START <span class="cf">else</span> TEST_START</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">&lt;</span> LOOKBACK <span class="kw">or</span> target_end <span class="op">&gt;</span> boundary:</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    history <span class="op">=</span> daily_regional_raw[i <span class="op">-</span> LOOKBACK:i]</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    future_counts <span class="op">=</span> target_counts[i:i <span class="op">+</span> HORIZON]</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    outcome <span class="op">=</span> <span class="bu">int</span>(future_counts.<span class="bu">sum</span>() <span class="op">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    histories.append(history)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    outcomes.append(outcome)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    kept_origins.append(origin)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>origins <span class="op">=</span> pd.DatetimeIndex(kept_origins)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>raw_regional <span class="op">=</span> np.stack(histories)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>y_regional <span class="op">=</span> np.asarray(outcomes, dtype<span class="op">=</span><span class="st">"int32"</span>)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>train_mask <span class="op">=</span> origins <span class="op">&lt;</span> VAL_START</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>val_mask <span class="op">=</span> origins <span class="op">&gt;=</span> VAL_START</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> (origins[train_mask] <span class="op">+</span> pd.Timedelta(days<span class="op">=</span>HORIZON) <span class="op">&lt;=</span> VAL_START).<span class="bu">all</span>()</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> (origins[val_mask] <span class="op">+</span> pd.Timedelta(days<span class="op">=</span>HORIZON) <span class="op">&lt;=</span> TEST_START).<span class="bu">all</span>()</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Training examples:"</span>, train_mask.<span class="bu">sum</span>(), <span class="st">"Validation examples:"</span>, val_mask.<span class="bu">sum</span>())</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"One input:"</span>, raw_regional[<span class="dv">0</span>].shape, <span class="st">"One outcome:"</span>, y_regional[<span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <pre>Training examples: 834 Validation examples: 208
 One input: (30, 3) One outcome: 1</pre>
@@ -523,17 +588,17 @@ One input: (30, 3) One outcome: 1</pre>
 <h2 class="anchored" data-anchor-id="preparation-f.-estimate-scaling-from-training-histories">Preparation F. Estimate scaling from training histories</h2>
 <p>Estimate one mean and one standard deviation per channel from the training windows. A historical day can contribute to several overlapping windows. Apply these training estimates to all validation histories. Validation has no role in estimating the scaling parameters.</p>
 <div class="copy-step">
-<p><strong>Code block 6</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 8</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>regional_mean <span class="op">=</span> raw_regional[train_mask].mean(axis<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>), dtype<span class="op">=</span>np.float64)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>regional_scale <span class="op">=</span> raw_regional[train_mask].std(axis<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>), dtype<span class="op">=</span>np.float64)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>regional_scale <span class="op">=</span> np.where(regional_scale <span class="op">&gt;</span> <span class="dv">0</span>, regional_scale, <span class="fl">1.0</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>X_regional <span class="op">=</span> ((raw_regional <span class="op">-</span> regional_mean) <span class="op">/</span> regional_scale).astype(<span class="st">"float32"</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> np.isfinite(X_regional).<span class="bu">all</span>()</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame({</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"channel"</span>: FEATURES, <span class="st">"training_mean"</span>: regional_mean, <span class="st">"training_sd"</span>: regional_scale</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>regional_mean <span class="op">=</span> raw_regional[train_mask].mean(axis<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>), dtype<span class="op">=</span>np.float64)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>regional_scale <span class="op">=</span> raw_regional[train_mask].std(axis<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>), dtype<span class="op">=</span>np.float64)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>regional_scale <span class="op">=</span> np.where(regional_scale <span class="op">&gt;</span> <span class="dv">0</span>, regional_scale, <span class="fl">1.0</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>X_regional <span class="op">=</span> ((raw_regional <span class="op">-</span> regional_mean) <span class="op">/</span> regional_scale).astype(<span class="st">"float32"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> np.isfinite(X_regional).<span class="bu">all</span>()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame({</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"channel"</span>: FEATURES, <span class="st">"training_mean"</span>: regional_mean, <span class="st">"training_sd"</span>: regional_scale</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>}))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
@@ -577,25 +642,25 @@ One input: (30, 3) One outcome: 1</pre>
 <p>The array axes are <strong>examples × days × channels</strong>. An array row is not an individual earthquake. The raw table below shows one history before standardization; its label belongs to the following seven days.</p>
 <p><strong>Discuss:</strong> Which information remains after pooling all event locations into one regional history?</p>
 <div class="copy-step">
-<p><strong>Code block 7</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 9</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> X_regional[train_mask]</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>X_val <span class="op">=</span> X_regional[val_mask]</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> y_regional[train_mask].astype(<span class="st">"float32"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>y_val <span class="op">=</span> y_regional[val_mask].astype(<span class="st">"float32"</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>validation_origins <span class="op">=</span> origins[val_mask]</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame({</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"partition"</span>: [<span class="st">"training"</span>, <span class="st">"validation"</span>],</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"examples"</span>: [<span class="bu">len</span>(y_train), <span class="bu">len</span>(y_val)],</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"positive_fraction"</span>: [y_train.mean(), y_val.mean()],</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>}))</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"X_train:"</span>, X_train.shape, <span class="st">"y_train:"</span>, y_train.shape)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>example <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>history_dates <span class="op">=</span> pd.date_range(origins[example] <span class="op">-</span> pd.Timedelta(days<span class="op">=</span>LOOKBACK), periods<span class="op">=</span>LOOKBACK)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame(raw_regional[example], index<span class="op">=</span>history_dates, columns<span class="op">=</span>FEATURES).tail(<span class="dv">10</span>))</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Forecast origin:"</span>, origins[example], <span class="st">"Future weekly outcome:"</span>, y_regional[example])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> X_regional[train_mask]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>X_val <span class="op">=</span> X_regional[val_mask]</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> y_regional[train_mask].astype(<span class="st">"float32"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>y_val <span class="op">=</span> y_regional[val_mask].astype(<span class="st">"float32"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>validation_origins <span class="op">=</span> origins[val_mask]</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame({</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"partition"</span>: [<span class="st">"training"</span>, <span class="st">"validation"</span>],</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"examples"</span>: [<span class="bu">len</span>(y_train), <span class="bu">len</span>(y_val)],</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"positive_fraction"</span>: [y_train.mean(), y_val.mean()],</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"X_train:"</span>, X_train.shape, <span class="st">"y_train:"</span>, y_train.shape)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>example <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>history_dates <span class="op">=</span> pd.date_range(origins[example] <span class="op">-</span> pd.Timedelta(days<span class="op">=</span>LOOKBACK), periods<span class="op">=</span>LOOKBACK)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame(raw_regional[example], index<span class="op">=</span>history_dates, columns<span class="op">=</span>FEATURES).tail(<span class="dv">10</span>))</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Forecast origin:"</span>, origins[example], <span class="st">"Future weekly outcome:"</span>, y_regional[example])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
@@ -712,23 +777,23 @@ One input: (30, 3) One outcome: 1</pre>
 <p>The first forecast always returns the training positive fraction. Logistic regression uses all 90 lagged values, in the same order as the MLP below. Neither reference is tuned on validation.</p>
 <p>Flattening preserves a fixed position for each day and channel. It does not randomly reorder the history.</p>
 <div class="copy-step">
-<p><strong>Code block 8</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 10</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>training_prevalence <span class="op">=</span> <span class="bu">float</span>(y_train.mean())</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>p_prevalence <span class="op">=</span> np.full(<span class="bu">len</span>(y_val), training_prevalence)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>X_train_flat <span class="op">=</span> X_train.reshape(<span class="bu">len</span>(X_train), LOOKBACK <span class="op">*</span> <span class="bu">len</span>(FEATURES))</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>X_val_flat <span class="op">=</span> X_val.reshape(<span class="bu">len</span>(X_val), LOOKBACK <span class="op">*</span> <span class="bu">len</span>(FEATURES))</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>logistic <span class="op">=</span> LogisticRegression(C<span class="op">=</span><span class="fl">1.0</span>, solver<span class="op">=</span><span class="st">"lbfgs"</span>, max_iter<span class="op">=</span><span class="dv">2000</span>)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>logistic.fit(X_train_flat, y_train)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> logistic.n_iter_.<span class="bu">max</span>() <span class="op">&lt;</span> logistic.max_iter, <span class="st">"Inspect convergence."</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>p_logistic <span class="op">=</span> logistic.predict_proba(X_val_flat)[:, <span class="dv">1</span>]</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Constant probability:"</span>, <span class="bu">round</span>(training_prevalence, <span class="dv">4</span>))</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Logistic regression input:"</span>, X_train_flat.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>training_prevalence <span class="op">=</span> <span class="bu">float</span>(y_train.mean())</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>p_prevalence <span class="op">=</span> np.full(<span class="bu">len</span>(y_val), training_prevalence)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>X_train_flat <span class="op">=</span> X_train.reshape(<span class="bu">len</span>(X_train), LOOKBACK <span class="op">*</span> <span class="bu">len</span>(FEATURES))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>X_val_flat <span class="op">=</span> X_val.reshape(<span class="bu">len</span>(X_val), LOOKBACK <span class="op">*</span> <span class="bu">len</span>(FEATURES))</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>logistic <span class="op">=</span> LogisticRegression(C<span class="op">=</span><span class="fl">1.0</span>, solver<span class="op">=</span><span class="st">"lbfgs"</span>, max_iter<span class="op">=</span><span class="dv">2000</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>logistic.fit(X_train_flat, y_train)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> logistic.n_iter_.<span class="bu">max</span>() <span class="op">&lt;</span> logistic.max_iter, <span class="st">"Inspect convergence."</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>p_logistic <span class="op">=</span> logistic.predict_proba(X_val_flat)[:, <span class="dv">1</span>]</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Constant probability:"</span>, <span class="bu">round</span>(training_prevalence, <span class="dv">4</span>))</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Logistic regression input:"</span>, X_train_flat.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <pre>Constant probability: 0.2362
 Logistic regression input: (834, 90)</pre>
@@ -742,16 +807,16 @@ Logistic regression input: (834, 90)</pre>
 <p>The state starts again for each history. It is not carried between training examples or into validation.</p>
 <p><strong>Discuss:</strong> Which quantities describe observed inputs, which describe the internal representation, and which describe the model output?</p>
 <div class="copy-step">
-<p><strong>Code block 9</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 11</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>keras.backend.clear_session()</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>keras.utils.set_random_seed(SEED)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>:], name<span class="op">=</span><span class="st">"history"</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>history_state <span class="op">=</span> keras.layers.LSTM(<span class="dv">16</span>, stateful<span class="op">=</span><span class="va">False</span>, name<span class="op">=</span><span class="st">"read_history"</span>)(inputs)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>, name<span class="op">=</span><span class="st">"weekly_probability"</span>)(history_state)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>model_lstm <span class="op">=</span> keras.Model(inputs, probability, name<span class="op">=</span><span class="st">"LSTM"</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>model_lstm.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>keras.backend.clear_session()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>keras.utils.set_random_seed(SEED)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>:], name<span class="op">=</span><span class="st">"history"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>history_state <span class="op">=</span> keras.layers.LSTM(<span class="dv">16</span>, stateful<span class="op">=</span><span class="va">False</span>, name<span class="op">=</span><span class="st">"read_history"</span>)(inputs)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>, name<span class="op">=</span><span class="st">"weekly_probability"</span>)(history_state)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>model_lstm <span class="op">=</span> keras.Model(inputs, probability, name<span class="op">=</span><span class="st">"LSTM"</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>model_lstm.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "LSTM"</span>
 </pre>
@@ -832,28 +897,28 @@ Logistic regression input: (834, 90)</pre>
 <p>Validation observations do not supply the gradient updates, but their loss influences which weights are retained. The validation scores therefore describe model development.</p>
 <p>These values provide a <strong>compact starting configuration for the exercise</strong>. They have not been established as optimal by a hyperparameter search. Every neural model uses the same Adam learning rate, batch size, epoch limit and stopping rule; parameter counts differ.</p>
 <p>The <strong>seven-day horizon and M ≥ 5 threshold define the scientific question</strong>. Changing them changes the target. The <strong>seed identifies a training realization</strong>, not a parameter to optimize for the most favourable score.</p>
-<p><strong>After the session:</strong> compare 8, 16 and 32 LSTM units with the data and remaining settings fixed, following the protocol in “Guided session complete” below.</p>
+<p><strong>Optional exploration:</strong> compare 8, 16 and 32 LSTM units with the data and remaining settings fixed, following the protocol in “Guided session complete” below.</p>
 <div class="copy-step">
-<p><strong>Code block 10</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 12</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>model_lstm.<span class="bu">compile</span>(</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    optimizer<span class="op">=</span>keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.001</span>),</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    loss<span class="op">=</span>keras.losses.BinaryCrossentropy(),</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>stopping_lstm <span class="op">=</span> keras.callbacks.EarlyStopping(</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    monitor<span class="op">=</span><span class="st">"val_loss"</span>, patience<span class="op">=</span><span class="dv">3</span>, restore_best_weights<span class="op">=</span><span class="va">True</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>started <span class="op">=</span> time.perf_counter()</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>history_lstm <span class="op">=</span> model_lstm.fit(</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    X_train, y_train,</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    validation_data<span class="op">=</span>(X_val, y_val),</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    epochs<span class="op">=</span>EPOCHS, batch_size<span class="op">=</span>BATCH_SIZE,</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    callbacks<span class="op">=</span>[stopping_lstm], shuffle<span class="op">=</span><span class="va">False</span>, verbose<span class="op">=</span><span class="dv">2</span>,</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>seconds_lstm <span class="op">=</span> time.perf_counter() <span class="op">-</span> started</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>p_lstm <span class="op">=</span> model_lstm.predict(X_val, verbose<span class="op">=</span><span class="dv">0</span>).ravel()</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First probabilities:"</span>, np.<span class="bu">round</span>(p_lstm[:<span class="dv">5</span>], <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>model_lstm.<span class="bu">compile</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    optimizer<span class="op">=</span>keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.001</span>),</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    loss<span class="op">=</span>keras.losses.BinaryCrossentropy(),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>stopping_lstm <span class="op">=</span> keras.callbacks.EarlyStopping(</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    monitor<span class="op">=</span><span class="st">"val_loss"</span>, patience<span class="op">=</span><span class="dv">3</span>, restore_best_weights<span class="op">=</span><span class="va">True</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>started <span class="op">=</span> time.perf_counter()</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>history_lstm <span class="op">=</span> model_lstm.fit(</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    X_train, y_train,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    validation_data<span class="op">=</span>(X_val, y_val),</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    epochs<span class="op">=</span>EPOCHS, batch_size<span class="op">=</span>BATCH_SIZE,</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    callbacks<span class="op">=</span>[stopping_lstm], shuffle<span class="op">=</span><span class="va">False</span>, verbose<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>seconds_lstm <span class="op">=</span> time.perf_counter() <span class="op">-</span> started</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>p_lstm <span class="op">=</span> model_lstm.predict(X_val, verbose<span class="op">=</span><span class="dv">0</span>).ravel()</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First probabilities:"</span>, np.<span class="bu">round</span>(p_lstm[:<span class="dv">5</span>], <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <pre>First probabilities:</pre>
 <pre>[0.2111 0.1742 0.2462 0.2221 0.2103]</pre>
@@ -864,17 +929,17 @@ Logistic regression input: (834, 90)</pre>
 <h3 class="anchored" data-anchor-id="read-a-probability-error-directly">Read a probability error directly</h3>
 <p>For observed outcome y and predicted probability p, the Brier error is (p − y)². The overall score is its mean. This calculation makes the quantity being compared visible.</p>
 <div class="copy-step">
-<p><strong>Code block 11</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 13</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>squared_errors_lstm <span class="op">=</span> (p_lstm.astype(<span class="bu">float</span>) <span class="op">-</span> y_val) <span class="op">**</span> <span class="dv">2</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>brier_lstm <span class="op">=</span> squared_errors_lstm.mean()</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame({</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"origin"</span>: validation_origins[:<span class="dv">5</span>],</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"observed"</span>: y_val[:<span class="dv">5</span>].astype(<span class="bu">int</span>),</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"probability"</span>: p_lstm[:<span class="dv">5</span>],</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"squared_error"</span>: squared_errors_lstm[:<span class="dv">5</span>],</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>}))</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"LSTM validation Brier:"</span>, <span class="bu">round</span>(<span class="bu">float</span>(brier_lstm), <span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>squared_errors_lstm <span class="op">=</span> (p_lstm.astype(<span class="bu">float</span>) <span class="op">-</span> y_val) <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>brier_lstm <span class="op">=</span> squared_errors_lstm.mean()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>display(pd.DataFrame({</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"origin"</span>: validation_origins[:<span class="dv">5</span>],</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"observed"</span>: y_val[:<span class="dv">5</span>].astype(<span class="bu">int</span>),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"probability"</span>: p_lstm[:<span class="dv">5</span>],</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"squared_error"</span>: squared_errors_lstm[:<span class="dv">5</span>],</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"LSTM validation Brier:"</span>, <span class="bu">round</span>(<span class="bu">float</span>(brier_lstm), <span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
@@ -938,30 +1003,30 @@ Logistic regression input: (834, 90)</pre>
 <p>First compare probability forecasts for the <strong>same validation weeks</strong>. Brier score is the mean squared probability error; log loss also penalizes confident incorrect forecasts. Lower is better for both. Validation also selected the stopping epoch, so this is a development comparison.</p>
 <p>The following calculation uses the two references and the LSTM only. You can inspect this complete comparison before introducing attention. The seed is recorded only for a neural fit.</p>
 <div class="copy-step">
-<p><strong>Code block 12</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 14</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>probabilities_lstm <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Training prevalence"</span>: p_prevalence,</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Logistic regression"</span>: p_logistic,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LSTM"</span>: p_lstm,</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>}, index<span class="op">=</span>validation_origins)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>predicted_lstm <span class="op">=</span> probabilities_lstm.to_numpy(dtype<span class="op">=</span><span class="bu">float</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>observed <span class="op">=</span> y_val[:, <span class="va">None</span>].astype(<span class="bu">float</span>)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> np.isfinite(predicted_lstm).<span class="bu">all</span>()</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> ((predicted_lstm <span class="op">&gt;=</span> <span class="dv">0</span>) <span class="op">&amp;</span> (predicted_lstm <span class="op">&lt;=</span> <span class="dv">1</span>)).<span class="bu">all</span>()</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>brier_before_attention <span class="op">=</span> ((predicted_lstm <span class="op">-</span> observed) <span class="op">**</span> <span class="dv">2</span>).mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>safe_lstm <span class="op">=</span> np.clip(predicted_lstm, <span class="fl">1e-7</span>, <span class="dv">1</span> <span class="op">-</span> <span class="fl">1e-7</span>)</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>logloss_before_attention <span class="op">=</span> <span class="op">-</span>(observed <span class="op">*</span> np.log(safe_lstm)</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> observed) <span class="op">*</span> np.log1p(<span class="op">-</span>safe_lstm)).mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>comparison_lstm <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"model"</span>: probabilities_lstm.columns,</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"seed"</span>: [<span class="va">None</span>, <span class="va">None</span>, SEED],</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"brier"</span>: brier_before_attention,</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"log_loss"</span>: logloss_before_attention,</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>display(comparison_lstm.<span class="bu">round</span>(<span class="dv">6</span>))</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Validation weeks:"</span>, <span class="bu">len</span>(y_val), <span class="st">"Positive fraction:"</span>, <span class="bu">round</span>(<span class="bu">float</span>(y_val.mean()), <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>probabilities_lstm <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Training prevalence"</span>: p_prevalence,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Logistic regression"</span>: p_logistic,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LSTM"</span>: p_lstm,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>}, index<span class="op">=</span>validation_origins)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>predicted_lstm <span class="op">=</span> probabilities_lstm.to_numpy(dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>observed <span class="op">=</span> y_val[:, <span class="va">None</span>].astype(<span class="bu">float</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> np.isfinite(predicted_lstm).<span class="bu">all</span>()</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> ((predicted_lstm <span class="op">&gt;=</span> <span class="dv">0</span>) <span class="op">&amp;</span> (predicted_lstm <span class="op">&lt;=</span> <span class="dv">1</span>)).<span class="bu">all</span>()</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>brier_before_attention <span class="op">=</span> ((predicted_lstm <span class="op">-</span> observed) <span class="op">**</span> <span class="dv">2</span>).mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>safe_lstm <span class="op">=</span> np.clip(predicted_lstm, <span class="fl">1e-7</span>, <span class="dv">1</span> <span class="op">-</span> <span class="fl">1e-7</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>logloss_before_attention <span class="op">=</span> <span class="op">-</span>(observed <span class="op">*</span> np.log(safe_lstm)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> observed) <span class="op">*</span> np.log1p(<span class="op">-</span>safe_lstm)).mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>comparison_lstm <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"model"</span>: probabilities_lstm.columns,</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"seed"</span>: [<span class="va">None</span>, <span class="va">None</span>, SEED],</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"brier"</span>: brier_before_attention,</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"log_loss"</span>: logloss_before_attention,</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>display(comparison_lstm.<span class="bu">round</span>(<span class="dv">6</span>))</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Validation weeks:"</span>, <span class="bu">len</span>(y_val), <span class="st">"Positive fraction:"</span>, <span class="bu">round</span>(<span class="bu">float</span>(y_val.mean()), <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
@@ -1005,54 +1070,60 @@ Logistic regression input: (834, 90)</pre>
 <pre>Validation weeks: 208 Positive fraction: 0.25</pre>
 </details>
 </section>
-<section id="transformer-combine-days-through-attention-and-position" class="level2">
-<h2 class="anchored" data-anchor-id="transformer-combine-days-through-attention-and-position">5. Transformer: combine days through attention and position</h2>
+<section id="core-practical-complete" class="level2">
+<h2 class="anchored" data-anchor-id="core-practical-complete">Core practical complete</h2>
+<p>You have mapped the training catalogue, represented 30 days as a 30 × 3 array, and evaluated an LSTM probability against two references. This is the stopping point for the live practical.</p>
+<p><strong>Discuss:</strong> Did the LSTM improve both scores? Validation also selected the stopping epoch, and one seed does not establish an architecture ranking. The revised catalogue is not a reconstruction of historical real-time availability. The previously inspected 2021–2025 period is not a new independent test.</p>
+<p>The Transformer below is optional. Inspect its prepared outputs for a short comparison, or run the full extension later.</p>
+</section>
+<section id="optional-extension.-transformer-combine-days-through-attention-and-position" class="level2">
+<h2 class="anchored" data-anchor-id="optional-extension.-transformer-combine-days-through-attention-and-position">Optional extension. Transformer: combine days through attention and position</h2>
 <p>The input and target stay fixed. Each day is first represented by 16 features. The <code>DayPosition</code> layer adds a trainable vector for each of the 30 lags, allowing the model to distinguish where an observation occurs within the input history.</p>
 <p>The position table has shape <strong>30 × 16</strong>. Attention then combines information across the observed days.</p>
 <div class="copy-step">
-<p><strong>Code block 13</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 15</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DayPosition(keras.layers.Layer):</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> build(<span class="va">self</span>, input_shape):</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.positions <span class="op">=</span> <span class="va">self</span>.add_weight(</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>            name<span class="op">=</span><span class="st">"positions"</span>,</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>            shape<span class="op">=</span>(<span class="bu">int</span>(input_shape[<span class="dv">1</span>]), <span class="bu">int</span>(input_shape[<span class="dv">2</span>])),</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>            initializer<span class="op">=</span>keras.initializers.RandomNormal(stddev<span class="op">=</span><span class="fl">0.02</span>),</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>            trainable<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().build(input_shape)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> call(<span class="va">self</span>, inputs):</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> inputs <span class="op">+</span> <span class="va">self</span>.positions</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DayPosition(keras.layers.Layer):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> build(<span class="va">self</span>, input_shape):</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.positions <span class="op">=</span> <span class="va">self</span>.add_weight(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>            name<span class="op">=</span><span class="st">"positions"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>            shape<span class="op">=</span>(<span class="bu">int</span>(input_shape[<span class="dv">1</span>]), <span class="bu">int</span>(input_shape[<span class="dv">2</span>])),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>            initializer<span class="op">=</span>keras.initializers.RandomNormal(stddev<span class="op">=</span><span class="fl">0.02</span>),</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>            trainable<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().build(input_shape)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> call(<span class="va">self</span>, inputs):</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> inputs <span class="op">+</span> <span class="va">self</span>.positions</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="follow-the-represented-history-through-one-attention-block" class="level3">
 <h3 class="anchored" data-anchor-id="follow-the-represented-history-through-one-attention-block">Follow the represented history through one attention block</h3>
 <p>All 30 input days precede the forecast origin. Attention across this complete input window therefore does not access the future target. Positional vectors distinguish different lags. Residual additions and normalization preserve and refine the represented history.</p>
 <p>The final pooling and sigmoid produce the same scalar weekly probability as the other models. Attention weights by themselves would not establish a physical triggering mechanism.</p>
 <div class="copy-step">
-<p><strong>Code block 14</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 16</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>keras.backend.clear_session()</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>keras.utils.set_random_seed(SEED)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>:], name<span class="op">=</span><span class="st">"history"</span>)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>projected_days <span class="op">=</span> keras.layers.Dense(<span class="dv">16</span>, name<span class="op">=</span><span class="st">"project_day"</span>)(inputs)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>positioned_days <span class="op">=</span> DayPosition(name<span class="op">=</span><span class="st">"day_positions"</span>)(projected_days)</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>attention <span class="op">=</span> keras.layers.MultiHeadAttention(</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    num_heads<span class="op">=</span><span class="dv">2</span>, key_dim<span class="op">=</span><span class="dv">8</span>, dropout<span class="op">=</span><span class="fl">0.0</span>, name<span class="op">=</span><span class="st">"attention"</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>)(positioned_days, positioned_days)</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>attended_days <span class="op">=</span> keras.layers.Add(name<span class="op">=</span><span class="st">"attention_residual"</span>)([positioned_days, attention])</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>attended_days <span class="op">=</span> keras.layers.LayerNormalization(epsilon<span class="op">=</span><span class="fl">1e-6</span>, name<span class="op">=</span><span class="st">"attention_norm"</span>)(attended_days)</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>feed_forward <span class="op">=</span> keras.layers.Dense(<span class="dv">16</span>, activation<span class="op">=</span><span class="st">"relu"</span>, name<span class="op">=</span><span class="st">"ff_hidden"</span>)(attended_days)</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>feed_forward <span class="op">=</span> keras.layers.Dense(<span class="dv">16</span>, name<span class="op">=</span><span class="st">"ff_output"</span>)(feed_forward)</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>refined_days <span class="op">=</span> keras.layers.Add(name<span class="op">=</span><span class="st">"ff_residual"</span>)([attended_days, feed_forward])</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>refined_days <span class="op">=</span> keras.layers.LayerNormalization(epsilon<span class="op">=</span><span class="fl">1e-6</span>, name<span class="op">=</span><span class="st">"ff_norm"</span>)(refined_days)</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>history_summary <span class="op">=</span> keras.layers.GlobalAveragePooling1D(name<span class="op">=</span><span class="st">"pool_days"</span>)(refined_days)</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>, name<span class="op">=</span><span class="st">"weekly_probability"</span>)(history_summary)</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>model_transformer <span class="op">=</span> keras.Model(inputs, probability, name<span class="op">=</span><span class="st">"Transformer"</span>)</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>model_transformer.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>keras.backend.clear_session()</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>keras.utils.set_random_seed(SEED)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>:], name<span class="op">=</span><span class="st">"history"</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>projected_days <span class="op">=</span> keras.layers.Dense(<span class="dv">16</span>, name<span class="op">=</span><span class="st">"project_day"</span>)(inputs)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>positioned_days <span class="op">=</span> DayPosition(name<span class="op">=</span><span class="st">"day_positions"</span>)(projected_days)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>attention <span class="op">=</span> keras.layers.MultiHeadAttention(</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    num_heads<span class="op">=</span><span class="dv">2</span>, key_dim<span class="op">=</span><span class="dv">8</span>, dropout<span class="op">=</span><span class="fl">0.0</span>, name<span class="op">=</span><span class="st">"attention"</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>)(positioned_days, positioned_days)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>attended_days <span class="op">=</span> keras.layers.Add(name<span class="op">=</span><span class="st">"attention_residual"</span>)([positioned_days, attention])</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>attended_days <span class="op">=</span> keras.layers.LayerNormalization(epsilon<span class="op">=</span><span class="fl">1e-6</span>, name<span class="op">=</span><span class="st">"attention_norm"</span>)(attended_days)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>feed_forward <span class="op">=</span> keras.layers.Dense(<span class="dv">16</span>, activation<span class="op">=</span><span class="st">"relu"</span>, name<span class="op">=</span><span class="st">"ff_hidden"</span>)(attended_days)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>feed_forward <span class="op">=</span> keras.layers.Dense(<span class="dv">16</span>, name<span class="op">=</span><span class="st">"ff_output"</span>)(feed_forward)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>refined_days <span class="op">=</span> keras.layers.Add(name<span class="op">=</span><span class="st">"ff_residual"</span>)([attended_days, feed_forward])</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>refined_days <span class="op">=</span> keras.layers.LayerNormalization(epsilon<span class="op">=</span><span class="fl">1e-6</span>, name<span class="op">=</span><span class="st">"ff_norm"</span>)(refined_days)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>history_summary <span class="op">=</span> keras.layers.GlobalAveragePooling1D(name<span class="op">=</span><span class="st">"pool_days"</span>)(refined_days)</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>, name<span class="op">=</span><span class="st">"weekly_probability"</span>)(history_summary)</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>model_transformer <span class="op">=</span> keras.Model(inputs, probability, name<span class="op">=</span><span class="st">"Transformer"</span>)</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>model_transformer.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "Transformer"</span>
 </pre>
@@ -1110,26 +1181,26 @@ Logistic regression input: (834, 90)</pre>
 <h3 class="anchored" data-anchor-id="train-transformer-and-obtain-validation-probabilities">Train Transformer and obtain validation probabilities</h3>
 <p>Train the Transformer on the same chronological examples as the LSTM, with Adam learning rate 0.001, binary cross-entropy, batches of 64 and a maximum of 20 epochs. Initialize with seed 7. Early stopping again monitors validation loss with patience 3 and restores the best weights.</p>
 <div class="copy-step">
-<p><strong>Code block 15</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 17</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>model_transformer.<span class="bu">compile</span>(</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    optimizer<span class="op">=</span>keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.001</span>),</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    loss<span class="op">=</span>keras.losses.BinaryCrossentropy(),</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>stopping_transformer <span class="op">=</span> keras.callbacks.EarlyStopping(</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    monitor<span class="op">=</span><span class="st">"val_loss"</span>, patience<span class="op">=</span><span class="dv">3</span>, restore_best_weights<span class="op">=</span><span class="va">True</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>started <span class="op">=</span> time.perf_counter()</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>history_transformer <span class="op">=</span> model_transformer.fit(</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    X_train, y_train,</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    validation_data<span class="op">=</span>(X_val, y_val),</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    epochs<span class="op">=</span>EPOCHS, batch_size<span class="op">=</span>BATCH_SIZE,</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    callbacks<span class="op">=</span>[stopping_transformer], shuffle<span class="op">=</span><span class="va">False</span>, verbose<span class="op">=</span><span class="dv">2</span>,</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>seconds_transformer <span class="op">=</span> time.perf_counter() <span class="op">-</span> started</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>p_transformer <span class="op">=</span> model_transformer.predict(X_val, verbose<span class="op">=</span><span class="dv">0</span>).ravel()</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First probabilities:"</span>, np.<span class="bu">round</span>(p_transformer[:<span class="dv">5</span>], <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>model_transformer.<span class="bu">compile</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    optimizer<span class="op">=</span>keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.001</span>),</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    loss<span class="op">=</span>keras.losses.BinaryCrossentropy(),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>stopping_transformer <span class="op">=</span> keras.callbacks.EarlyStopping(</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    monitor<span class="op">=</span><span class="st">"val_loss"</span>, patience<span class="op">=</span><span class="dv">3</span>, restore_best_weights<span class="op">=</span><span class="va">True</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>started <span class="op">=</span> time.perf_counter()</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>history_transformer <span class="op">=</span> model_transformer.fit(</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    X_train, y_train,</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    validation_data<span class="op">=</span>(X_val, y_val),</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    epochs<span class="op">=</span>EPOCHS, batch_size<span class="op">=</span>BATCH_SIZE,</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    callbacks<span class="op">=</span>[stopping_transformer], shuffle<span class="op">=</span><span class="va">False</span>, verbose<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>seconds_transformer <span class="op">=</span> time.perf_counter() <span class="op">-</span> started</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>p_transformer <span class="op">=</span> model_transformer.predict(X_val, verbose<span class="op">=</span><span class="dv">0</span>).ravel()</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First probabilities:"</span>, np.<span class="bu">round</span>(p_transformer[:<span class="dv">5</span>], <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <pre>First probabilities: [0.2969 0.2649 0.2397 0.2303 0.2337]</pre>
 </details>
@@ -1140,35 +1211,35 @@ Logistic regression input: (834, 90)</pre>
 <p>Each column below contains predictions for the same validation origins. We calculate both scores directly, over rows. Log loss penalizes confident incorrect probabilities strongly. Clipping is only for the logarithms; Brier uses the original probabilities.</p>
 <p><strong>Example results — seed 7.</strong> The table reports one run per neural model, its parameter count and its actual number of epochs. Validation also determined early stopping, so these scores are development evidence. See the <a href="https://franplaza.github.io/courses/statsei14/environment.html">environment notes</a> when comparing your execution with the supplied results.</p>
 <div class="copy-step">
-<p><strong>Code block 16</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 18</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Training prevalence"</span>: p_prevalence,</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Logistic regression"</span>: p_logistic,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LSTM"</span>: p_lstm,</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Transformer"</span>: p_transformer,</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>}, index<span class="op">=</span>validation_origins)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>predicted <span class="op">=</span> probabilities.to_numpy(dtype<span class="op">=</span><span class="bu">float</span>)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>observed <span class="op">=</span> y_val[:, <span class="va">None</span>].astype(<span class="bu">float</span>)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> np.isfinite(predicted).<span class="bu">all</span>() <span class="kw">and</span> ((predicted <span class="op">&gt;=</span> <span class="dv">0</span>) <span class="op">&amp;</span> (predicted <span class="op">&lt;=</span> <span class="dv">1</span>)).<span class="bu">all</span>()</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>squared_errors <span class="op">=</span> (predicted <span class="op">-</span> observed) <span class="op">**</span> <span class="dv">2</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>brier <span class="op">=</span> squared_errors.mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>safe_probabilities <span class="op">=</span> np.clip(predicted, <span class="fl">1e-7</span>, <span class="dv">1</span> <span class="op">-</span> <span class="fl">1e-7</span>)</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>log_errors <span class="op">=</span> <span class="op">-</span>(observed <span class="op">*</span> np.log(safe_probabilities)</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>               <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> observed) <span class="op">*</span> np.log1p(<span class="op">-</span>safe_probabilities))</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>logloss <span class="op">=</span> log_errors.mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>comparison <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"model"</span>: probabilities.columns,</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"seed"</span>: [<span class="va">None</span>, <span class="va">None</span>, SEED, SEED],</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"brier"</span>: brier,</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"log_loss"</span>: logloss,</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"parameters"</span>: [<span class="dv">1</span>, <span class="dv">91</span>, model_lstm.count_params(), model_transformer.count_params()],</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"epochs"</span>: [<span class="dv">0</span>, <span class="dv">0</span>, <span class="bu">len</span>(history_lstm.history[<span class="st">"loss"</span>]), <span class="bu">len</span>(history_transformer.history[<span class="st">"loss"</span>])],</span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>display(comparison.<span class="bu">round</span>(<span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Training prevalence"</span>: p_prevalence,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Logistic regression"</span>: p_logistic,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LSTM"</span>: p_lstm,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Transformer"</span>: p_transformer,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>}, index<span class="op">=</span>validation_origins)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>predicted <span class="op">=</span> probabilities.to_numpy(dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>observed <span class="op">=</span> y_val[:, <span class="va">None</span>].astype(<span class="bu">float</span>)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> np.isfinite(predicted).<span class="bu">all</span>() <span class="kw">and</span> ((predicted <span class="op">&gt;=</span> <span class="dv">0</span>) <span class="op">&amp;</span> (predicted <span class="op">&lt;=</span> <span class="dv">1</span>)).<span class="bu">all</span>()</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>squared_errors <span class="op">=</span> (predicted <span class="op">-</span> observed) <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>brier <span class="op">=</span> squared_errors.mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>safe_probabilities <span class="op">=</span> np.clip(predicted, <span class="fl">1e-7</span>, <span class="dv">1</span> <span class="op">-</span> <span class="fl">1e-7</span>)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>log_errors <span class="op">=</span> <span class="op">-</span>(observed <span class="op">*</span> np.log(safe_probabilities)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>               <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> observed) <span class="op">*</span> np.log1p(<span class="op">-</span>safe_probabilities))</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>logloss <span class="op">=</span> log_errors.mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>comparison <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"model"</span>: probabilities.columns,</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"seed"</span>: [<span class="va">None</span>, <span class="va">None</span>, SEED, SEED],</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"brier"</span>: brier,</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"log_loss"</span>: logloss,</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"parameters"</span>: [<span class="dv">1</span>, <span class="dv">91</span>, model_lstm.count_params(), model_transformer.count_params()],</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"epochs"</span>: [<span class="dv">0</span>, <span class="dv">0</span>, <span class="bu">len</span>(history_lstm.history[<span class="st">"loss"</span>]), <span class="bu">len</span>(history_transformer.history[<span class="st">"loss"</span>])],</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>display(comparison.<span class="bu">round</span>(<span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
@@ -1234,31 +1305,31 @@ Logistic regression input: (834, 90)</pre>
 <p>In the supplied seed-7 run, the <strong>LSTM reaches 20 epochs</strong>, with its lowest validation loss at epoch 20. The <strong>Transformer stops after six epochs</strong> and restores the weights from <strong>epoch 3</strong>. Validation loss therefore affects which fitted weights are used for prediction, even though validation observations do not supply gradient updates.</p>
 <p><strong>Discuss:</strong> Which epoch has the lowest validation loss for each model? Did either run reach the maximum? Did the more complex model improve on the constant reference? A single run cannot establish an architecture ranking.</p>
 <div class="copy-step">
-<p><strong>Code block 17</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 19</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>histories <span class="op">=</span> {</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LSTM"</span>: history_lstm, <span class="st">"Transformer"</span>: history_transformer,</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="fl">3.8</span>))</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, fitted_history <span class="kw">in</span> histories.items():</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    epoch <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="bu">len</span>(fitted_history.history[<span class="st">"loss"</span>]) <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">0</span>].plot(epoch, fitted_history.history[<span class="st">"loss"</span>], label<span class="op">=</span>name)</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">1</span>].plot(epoch, fitted_history.history[<span class="st">"val_loss"</span>], label<span class="op">=</span>name)</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].<span class="bu">set</span>(title<span class="op">=</span><span class="st">"Training"</span>, xlabel<span class="op">=</span><span class="st">"Epoch"</span>, ylabel<span class="op">=</span><span class="st">"Log loss"</span>)</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].<span class="bu">set</span>(title<span class="op">=</span><span class="st">"Validation"</span>, xlabel<span class="op">=</span><span class="st">"Epoch"</span>, ylabel<span class="op">=</span><span class="st">"Log loss"</span>)</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].legend()</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>histories <span class="op">=</span> {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LSTM"</span>: history_lstm, <span class="st">"Transformer"</span>: history_transformer,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="fl">3.8</span>))</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, fitted_history <span class="kw">in</span> histories.items():</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    epoch <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="bu">len</span>(fitted_history.history[<span class="st">"loss"</span>]) <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">0</span>].plot(epoch, fitted_history.history[<span class="st">"loss"</span>], label<span class="op">=</span>name)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">1</span>].plot(epoch, fitted_history.history[<span class="st">"val_loss"</span>], label<span class="op">=</span>name)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].<span class="bu">set</span>(title<span class="op">=</span><span class="st">"Training"</span>, xlabel<span class="op">=</span><span class="st">"Epoch"</span>, ylabel<span class="op">=</span><span class="st">"Log loss"</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].<span class="bu">set</span>(title<span class="op">=</span><span class="st">"Validation"</span>, xlabel<span class="op">=</span><span class="st">"Epoch"</span>, ylabel<span class="op">=</span><span class="st">"Log loss"</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].legend()</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
-<img src="../assets/tutorials-linear/temporal/cell-034-0.png" alt="Example figure from code block 17" loading="lazy">
+<img src="../assets/tutorials-linear/temporal/cell-038-0.png" alt="Example figure from code block 19" loading="lazy">
 </details>
 </section>
-<section id="guided-session-complete" class="level2">
-<h2 class="anchored" data-anchor-id="guided-session-complete">Guided session complete</h2>
-<p>You have turned one 30 × 3 history into a probability, evaluated that probability against two references, and changed the architecture while preserving the input and outcome. This completes the guided practical.</p>
+<section id="reflect-on-the-optional-transformer-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="reflect-on-the-optional-transformer-comparison">Reflect on the optional Transformer comparison</h2>
+<p>You have turned one 30 × 3 history into a probability, evaluated that probability against two references, and changed the architecture while preserving the input and outcome. This completes the optional architecture comparison.</p>
 <p>Ask: did the individual neural runs improve both scores, and what would be needed for an independent assessment? One seed does not measure initialization variability; validation is also used for early stopping. An untouched evaluation period and a predeclared protocol would be needed for a new assessment.</p>
-<section id="laboratory-sensitivity-to-recurrent-state-size" class="level3">
-<h3 class="anchored" data-anchor-id="laboratory-sensitivity-to-recurrent-state-size">Laboratory: sensitivity to recurrent-state size</h3>
+<section id="optional-exploration-sensitivity-to-recurrent-state-size" class="level3">
+<h3 class="anchored" data-anchor-id="optional-exploration-sensitivity-to-recurrent-state-size">Optional exploration: sensitivity to recurrent-state size</h3>
 <ol type="1">
 <li>Declare the candidates before fitting: <strong>8, 16 and 32 LSTM units</strong>.</li>
 <li>Keep the channels, 30-day history, target, chronological partitions, scaling, optimizer, batch size and stopping rule fixed.</li>
@@ -1274,17 +1345,17 @@ Logistic regression input: (834, 90)</pre>
 <h2 class="anchored" data-anchor-id="extension-a.-mlp-combine-values-at-fixed-lag-positions">Extension A. MLP: combine values at fixed lag positions</h2>
 <p>Flatten turns the 30 × 3 table into 90 numbers. The hidden layer learns nonlinear combinations of those values. Its weights can distinguish fixed lag positions, but the layer does not share the same detector across different days.</p>
 <div class="copy-step">
-<p><strong>Code block 18</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 20</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>keras.backend.clear_session()</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>keras.utils.set_random_seed(SEED)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>:], name<span class="op">=</span><span class="st">"history"</span>)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>fixed_lags <span class="op">=</span> keras.layers.Flatten(name<span class="op">=</span><span class="st">"fixed_lag_positions"</span>)(inputs)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>hidden <span class="op">=</span> keras.layers.Dense(<span class="dv">16</span>, activation<span class="op">=</span><span class="st">"relu"</span>, name<span class="op">=</span><span class="st">"hidden"</span>)(fixed_lags)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>, name<span class="op">=</span><span class="st">"weekly_probability"</span>)(hidden)</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>model_mlp <span class="op">=</span> keras.Model(inputs, probability, name<span class="op">=</span><span class="st">"MLP"</span>)</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>model_mlp.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>keras.backend.clear_session()</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>keras.utils.set_random_seed(SEED)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>:], name<span class="op">=</span><span class="st">"history"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>fixed_lags <span class="op">=</span> keras.layers.Flatten(name<span class="op">=</span><span class="st">"fixed_lag_positions"</span>)(inputs)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>hidden <span class="op">=</span> keras.layers.Dense(<span class="dv">16</span>, activation<span class="op">=</span><span class="st">"relu"</span>, name<span class="op">=</span><span class="st">"hidden"</span>)(fixed_lags)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>, name<span class="op">=</span><span class="st">"weekly_probability"</span>)(hidden)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>model_mlp <span class="op">=</span> keras.Model(inputs, probability, name<span class="op">=</span><span class="st">"MLP"</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>model_mlp.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "MLP"</span>
 </pre>
@@ -1316,26 +1387,26 @@ Logistic regression input: (834, 90)</pre>
 <h3 class="anchored" data-anchor-id="train-mlp-and-obtain-validation-probabilities">Train MLP and obtain validation probabilities</h3>
 <p>Train the MLP with the optimizer, loss, batch size, maximum epochs and stopping rule introduced for the LSTM. Initialize it with seed 7. Its parameter count differs, but its inputs, targets and chronological partitions are unchanged.</p>
 <div class="copy-step">
-<p><strong>Code block 19</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 21</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>model_mlp.<span class="bu">compile</span>(</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    optimizer<span class="op">=</span>keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.001</span>),</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    loss<span class="op">=</span>keras.losses.BinaryCrossentropy(),</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>stopping_mlp <span class="op">=</span> keras.callbacks.EarlyStopping(</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    monitor<span class="op">=</span><span class="st">"val_loss"</span>, patience<span class="op">=</span><span class="dv">3</span>, restore_best_weights<span class="op">=</span><span class="va">True</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>started <span class="op">=</span> time.perf_counter()</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>history_mlp <span class="op">=</span> model_mlp.fit(</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    X_train, y_train,</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    validation_data<span class="op">=</span>(X_val, y_val),</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    epochs<span class="op">=</span>EPOCHS, batch_size<span class="op">=</span>BATCH_SIZE,</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    callbacks<span class="op">=</span>[stopping_mlp], shuffle<span class="op">=</span><span class="va">False</span>, verbose<span class="op">=</span><span class="dv">2</span>,</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>seconds_mlp <span class="op">=</span> time.perf_counter() <span class="op">-</span> started</span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>p_mlp <span class="op">=</span> model_mlp.predict(X_val, verbose<span class="op">=</span><span class="dv">0</span>).ravel()</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First probabilities:"</span>, np.<span class="bu">round</span>(p_mlp[:<span class="dv">5</span>], <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>model_mlp.<span class="bu">compile</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    optimizer<span class="op">=</span>keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.001</span>),</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    loss<span class="op">=</span>keras.losses.BinaryCrossentropy(),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>stopping_mlp <span class="op">=</span> keras.callbacks.EarlyStopping(</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    monitor<span class="op">=</span><span class="st">"val_loss"</span>, patience<span class="op">=</span><span class="dv">3</span>, restore_best_weights<span class="op">=</span><span class="va">True</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>started <span class="op">=</span> time.perf_counter()</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>history_mlp <span class="op">=</span> model_mlp.fit(</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    X_train, y_train,</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    validation_data<span class="op">=</span>(X_val, y_val),</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    epochs<span class="op">=</span>EPOCHS, batch_size<span class="op">=</span>BATCH_SIZE,</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    callbacks<span class="op">=</span>[stopping_mlp], shuffle<span class="op">=</span><span class="va">False</span>, verbose<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>seconds_mlp <span class="op">=</span> time.perf_counter() <span class="op">-</span> started</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>p_mlp <span class="op">=</span> model_mlp.predict(X_val, verbose<span class="op">=</span><span class="dv">0</span>).ravel()</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First probabilities:"</span>, np.<span class="bu">round</span>(p_mlp[:<span class="dv">5</span>], <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <pre>First probabilities: [0.3634 0.4025 0.3187 0.2095 0.1107]</pre>
 </details>
@@ -1347,22 +1418,22 @@ Logistic regression input: (834, 90)</pre>
 <p>This convolution moves over <strong>time</strong>, not over geographic cells. Pooling makes the final representation less sensitive to exact lag positions.</p>
 <p><strong>Discuss:</strong> What might happen if the same short pattern occurs five days earlier in the history?</p>
 <div class="copy-step">
-<p><strong>Code block 20</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 22</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>keras.backend.clear_session()</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>keras.utils.set_random_seed(SEED)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>:], name<span class="op">=</span><span class="st">"history"</span>)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>local_patterns <span class="op">=</span> keras.layers.Conv1D(</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">16</span>, kernel_size<span class="op">=</span><span class="dv">3</span>, padding<span class="op">=</span><span class="st">"same"</span>, activation<span class="op">=</span><span class="st">"relu"</span>, name<span class="op">=</span><span class="st">"local_patterns"</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>)(inputs)</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>combined_patterns <span class="op">=</span> keras.layers.Conv1D(</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="dv">16</span>, kernel_size<span class="op">=</span><span class="dv">3</span>, padding<span class="op">=</span><span class="st">"same"</span>, activation<span class="op">=</span><span class="st">"relu"</span>, name<span class="op">=</span><span class="st">"combined_patterns"</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>)(local_patterns)</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>history_summary <span class="op">=</span> keras.layers.GlobalAveragePooling1D(name<span class="op">=</span><span class="st">"pool_days"</span>)(combined_patterns)</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>, name<span class="op">=</span><span class="st">"weekly_probability"</span>)(history_summary)</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>model_cnn1d <span class="op">=</span> keras.Model(inputs, probability, name<span class="op">=</span><span class="st">"CNN1D"</span>)</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>model_cnn1d.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>keras.backend.clear_session()</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>keras.utils.set_random_seed(SEED)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>:], name<span class="op">=</span><span class="st">"history"</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>local_patterns <span class="op">=</span> keras.layers.Conv1D(</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">16</span>, kernel_size<span class="op">=</span><span class="dv">3</span>, padding<span class="op">=</span><span class="st">"same"</span>, activation<span class="op">=</span><span class="st">"relu"</span>, name<span class="op">=</span><span class="st">"local_patterns"</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>)(inputs)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>combined_patterns <span class="op">=</span> keras.layers.Conv1D(</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="dv">16</span>, kernel_size<span class="op">=</span><span class="dv">3</span>, padding<span class="op">=</span><span class="st">"same"</span>, activation<span class="op">=</span><span class="st">"relu"</span>, name<span class="op">=</span><span class="st">"combined_patterns"</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>)(local_patterns)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>history_summary <span class="op">=</span> keras.layers.GlobalAveragePooling1D(name<span class="op">=</span><span class="st">"pool_days"</span>)(combined_patterns)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>probability <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>, activation<span class="op">=</span><span class="st">"sigmoid"</span>, name<span class="op">=</span><span class="st">"weekly_probability"</span>)(history_summary)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>model_cnn1d <span class="op">=</span> keras.Model(inputs, probability, name<span class="op">=</span><span class="st">"CNN1D"</span>)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>model_cnn1d.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "CNN1D"</span>
 </pre>
@@ -1397,26 +1468,26 @@ Logistic regression input: (834, 90)</pre>
 <h3 class="anchored" data-anchor-id="train-cnn1d-and-obtain-validation-probabilities">Train CNN1D and obtain validation probabilities</h3>
 <p>Train CNN1D on the same examples with Adam learning rate 0.001, binary cross-entropy, batches of 64 and a maximum of 20 epochs. Initialize it with seed 7 and restore the weights with the lowest validation loss using early-stopping patience 3.</p>
 <div class="copy-step">
-<p><strong>Code block 21</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 23</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>model_cnn1d.<span class="bu">compile</span>(</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    optimizer<span class="op">=</span>keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.001</span>),</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    loss<span class="op">=</span>keras.losses.BinaryCrossentropy(),</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>stopping_cnn1d <span class="op">=</span> keras.callbacks.EarlyStopping(</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    monitor<span class="op">=</span><span class="st">"val_loss"</span>, patience<span class="op">=</span><span class="dv">3</span>, restore_best_weights<span class="op">=</span><span class="va">True</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>started <span class="op">=</span> time.perf_counter()</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>history_cnn1d <span class="op">=</span> model_cnn1d.fit(</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    X_train, y_train,</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    validation_data<span class="op">=</span>(X_val, y_val),</span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    epochs<span class="op">=</span>EPOCHS, batch_size<span class="op">=</span>BATCH_SIZE,</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    callbacks<span class="op">=</span>[stopping_cnn1d], shuffle<span class="op">=</span><span class="va">False</span>, verbose<span class="op">=</span><span class="dv">2</span>,</span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>seconds_cnn1d <span class="op">=</span> time.perf_counter() <span class="op">-</span> started</span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>p_cnn1d <span class="op">=</span> model_cnn1d.predict(X_val, verbose<span class="op">=</span><span class="dv">0</span>).ravel()</span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First probabilities:"</span>, np.<span class="bu">round</span>(p_cnn1d[:<span class="dv">5</span>], <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>model_cnn1d.<span class="bu">compile</span>(</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    optimizer<span class="op">=</span>keras.optimizers.Adam(learning_rate<span class="op">=</span><span class="fl">0.001</span>),</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    loss<span class="op">=</span>keras.losses.BinaryCrossentropy(),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>stopping_cnn1d <span class="op">=</span> keras.callbacks.EarlyStopping(</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    monitor<span class="op">=</span><span class="st">"val_loss"</span>, patience<span class="op">=</span><span class="dv">3</span>, restore_best_weights<span class="op">=</span><span class="va">True</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>started <span class="op">=</span> time.perf_counter()</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>history_cnn1d <span class="op">=</span> model_cnn1d.fit(</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    X_train, y_train,</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    validation_data<span class="op">=</span>(X_val, y_val),</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    epochs<span class="op">=</span>EPOCHS, batch_size<span class="op">=</span>BATCH_SIZE,</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    callbacks<span class="op">=</span>[stopping_cnn1d], shuffle<span class="op">=</span><span class="va">False</span>, verbose<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>seconds_cnn1d <span class="op">=</span> time.perf_counter() <span class="op">-</span> started</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>p_cnn1d <span class="op">=</span> model_cnn1d.predict(X_val, verbose<span class="op">=</span><span class="dv">0</span>).ravel()</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First probabilities:"</span>, np.<span class="bu">round</span>(p_cnn1d[:<span class="dv">5</span>], <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <pre>First probabilities: [0.2602 0.2589 0.2559 0.2422 0.2541]</pre>
 </details>
@@ -1426,39 +1497,39 @@ Logistic regression input: (834, 90)</pre>
 <h2 class="anchored" data-anchor-id="extension-c.-compare-all-four-neural-architectures">Extension C. Compare all four neural architectures</h2>
 <p>Run this section after both extension models. Compare forecasts for the same validation origins, using the same score definitions. The table reports one run per neural model with seed 7; the three-seed comparison examines sensitivity to initialization separately.</p>
 <div class="copy-step">
-<p><strong>Code block 22</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 24</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Training prevalence"</span>: p_prevalence,</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Logistic regression"</span>: p_logistic,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"MLP"</span>: p_mlp,</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"CNN1D"</span>: p_cnn1d,</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LSTM"</span>: p_lstm,</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Transformer"</span>: p_transformer,</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>}, index<span class="op">=</span>validation_origins)</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>predicted <span class="op">=</span> probabilities.to_numpy(dtype<span class="op">=</span><span class="bu">float</span>)</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>observed <span class="op">=</span> y_val[:, <span class="va">None</span>].astype(<span class="bu">float</span>)</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> np.isfinite(predicted).<span class="bu">all</span>() <span class="kw">and</span> ((predicted <span class="op">&gt;=</span> <span class="dv">0</span>) <span class="op">&amp;</span> (predicted <span class="op">&lt;=</span> <span class="dv">1</span>)).<span class="bu">all</span>()</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>squared_errors <span class="op">=</span> (predicted <span class="op">-</span> observed) <span class="op">**</span> <span class="dv">2</span></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>brier <span class="op">=</span> squared_errors.mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>safe_probabilities <span class="op">=</span> np.clip(predicted, <span class="fl">1e-7</span>, <span class="dv">1</span> <span class="op">-</span> <span class="fl">1e-7</span>)</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>log_errors <span class="op">=</span> <span class="op">-</span>(observed <span class="op">*</span> np.log(safe_probabilities)</span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>               <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> observed) <span class="op">*</span> np.log1p(<span class="op">-</span>safe_probabilities))</span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>logloss <span class="op">=</span> log_errors.mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>comparison <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"model"</span>: probabilities.columns,</span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"seed"</span>: [<span class="va">None</span>, <span class="va">None</span>, SEED, SEED, SEED, SEED],</span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"brier"</span>: brier,</span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"log_loss"</span>: logloss,</span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"parameters"</span>: [<span class="dv">1</span>, <span class="dv">91</span>, model_mlp.count_params(), model_cnn1d.count_params(),</span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>                   model_lstm.count_params(), model_transformer.count_params()],</span>
-<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"epochs"</span>: [<span class="dv">0</span>, <span class="dv">0</span>, <span class="bu">len</span>(history_mlp.history[<span class="st">"loss"</span>]), <span class="bu">len</span>(history_cnn1d.history[<span class="st">"loss"</span>]),</span>
-<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>               <span class="bu">len</span>(history_lstm.history[<span class="st">"loss"</span>]), <span class="bu">len</span>(history_transformer.history[<span class="st">"loss"</span>])],</span>
-<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>display(comparison.<span class="bu">round</span>(<span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Training prevalence"</span>: p_prevalence,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Logistic regression"</span>: p_logistic,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"MLP"</span>: p_mlp,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"CNN1D"</span>: p_cnn1d,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LSTM"</span>: p_lstm,</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Transformer"</span>: p_transformer,</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>}, index<span class="op">=</span>validation_origins)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>predicted <span class="op">=</span> probabilities.to_numpy(dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>observed <span class="op">=</span> y_val[:, <span class="va">None</span>].astype(<span class="bu">float</span>)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> np.isfinite(predicted).<span class="bu">all</span>() <span class="kw">and</span> ((predicted <span class="op">&gt;=</span> <span class="dv">0</span>) <span class="op">&amp;</span> (predicted <span class="op">&lt;=</span> <span class="dv">1</span>)).<span class="bu">all</span>()</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>squared_errors <span class="op">=</span> (predicted <span class="op">-</span> observed) <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>brier <span class="op">=</span> squared_errors.mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>safe_probabilities <span class="op">=</span> np.clip(predicted, <span class="fl">1e-7</span>, <span class="dv">1</span> <span class="op">-</span> <span class="fl">1e-7</span>)</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>log_errors <span class="op">=</span> <span class="op">-</span>(observed <span class="op">*</span> np.log(safe_probabilities)</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>               <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> observed) <span class="op">*</span> np.log1p(<span class="op">-</span>safe_probabilities))</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>logloss <span class="op">=</span> log_errors.mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>comparison <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"model"</span>: probabilities.columns,</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"seed"</span>: [<span class="va">None</span>, <span class="va">None</span>, SEED, SEED, SEED, SEED],</span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"brier"</span>: brier,</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"log_loss"</span>: logloss,</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"parameters"</span>: [<span class="dv">1</span>, <span class="dv">91</span>, model_mlp.count_params(), model_cnn1d.count_params(),</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>                   model_lstm.count_params(), model_transformer.count_params()],</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"epochs"</span>: [<span class="dv">0</span>, <span class="dv">0</span>, <span class="bu">len</span>(history_mlp.history[<span class="st">"loss"</span>]), <span class="bu">len</span>(history_cnn1d.history[<span class="st">"loss"</span>]),</span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>               <span class="bu">len</span>(history_lstm.history[<span class="st">"loss"</span>]), <span class="bu">len</span>(history_transformer.history[<span class="st">"loss"</span>])],</span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>display(comparison.<span class="bu">round</span>(<span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
@@ -1541,28 +1612,28 @@ Logistic regression input: (834, 90)</pre>
 <p>Within a probability bin, compare the average prediction with the fraction of positive weeks. Always inspect the number of weeks contributing to a point. Here we inspect the LSTM from this seed; no ensemble is constructed.</p>
 <p>Overlapping histories and seismic sequences create dependence. The plot is descriptive and does not supply independent-bin confidence intervals.</p>
 <div class="copy-step">
-<p><strong>Code block 23</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 25</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>calibration_data <span class="op">=</span> pd.DataFrame({<span class="st">"probability"</span>: p_lstm, <span class="st">"observed"</span>: y_val})</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>calibration_data[<span class="st">"bin"</span>] <span class="op">=</span> pd.cut(</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    calibration_data[<span class="st">"probability"</span>], bins<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">6</span>), include_lowest<span class="op">=</span><span class="va">True</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>calibration <span class="op">=</span> calibration_data.groupby(<span class="st">"bin"</span>, observed<span class="op">=</span><span class="va">True</span>).agg(</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    count<span class="op">=</span>(<span class="st">"observed"</span>, <span class="st">"size"</span>),</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    mean_probability<span class="op">=</span>(<span class="st">"probability"</span>, <span class="st">"mean"</span>),</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    observed_fraction<span class="op">=</span>(<span class="st">"observed"</span>, <span class="st">"mean"</span>),</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>display(calibration)</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">4</span>))</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>], <span class="st">"--"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>ax.plot(calibration[<span class="st">"mean_probability"</span>], calibration[<span class="st">"observed_fraction"</span>], <span class="st">"o-"</span>)</span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> calibration.itertuples():</span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    ax.annotate(<span class="bu">str</span>(row.count), (row.mean_probability, row.observed_fraction))</span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>ax.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">"Mean predicted probability"</span>, ylabel<span class="op">=</span><span class="st">"Observed fraction"</span>,</span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>       title<span class="op">=</span><span class="ss">f"LSTM calibration, seed </span><span class="sc">{</span>SEED<span class="sc">}</span><span class="ss">; labels = counts"</span>, xlim<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>), ylim<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>calibration_data <span class="op">=</span> pd.DataFrame({<span class="st">"probability"</span>: p_lstm, <span class="st">"observed"</span>: y_val})</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>calibration_data[<span class="st">"bin"</span>] <span class="op">=</span> pd.cut(</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    calibration_data[<span class="st">"probability"</span>], bins<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">6</span>), include_lowest<span class="op">=</span><span class="va">True</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>calibration <span class="op">=</span> calibration_data.groupby(<span class="st">"bin"</span>, observed<span class="op">=</span><span class="va">True</span>).agg(</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    count<span class="op">=</span>(<span class="st">"observed"</span>, <span class="st">"size"</span>),</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    mean_probability<span class="op">=</span>(<span class="st">"probability"</span>, <span class="st">"mean"</span>),</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    observed_fraction<span class="op">=</span>(<span class="st">"observed"</span>, <span class="st">"mean"</span>),</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>display(calibration)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">4</span>))</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>], <span class="st">"--"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>ax.plot(calibration[<span class="st">"mean_probability"</span>], calibration[<span class="st">"observed_fraction"</span>], <span class="st">"o-"</span>)</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> calibration.itertuples():</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    ax.annotate(<span class="bu">str</span>(row.count), (row.mean_probability, row.observed_fraction))</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>ax.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">"Mean predicted probability"</span>, ylabel<span class="op">=</span><span class="st">"Observed fraction"</span>,</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>       title<span class="op">=</span><span class="ss">f"LSTM calibration, seed </span><span class="sc">{</span>SEED<span class="sc">}</span><span class="ss">; labels = counts"</span>, xlim<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>), ylim<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <details class="prepared-output"><summary>Example output — seed 7</summary>
 <div class="table-responsive"><div>
 
@@ -1611,7 +1682,7 @@ Logistic regression input: (834, 90)</pre>
 </table>
 
 </div></div>
-<img src="../assets/tutorials-linear/temporal/cell-047-1.png" alt="Example figure from code block 23" loading="lazy">
+<img src="../assets/tutorials-linear/temporal/cell-051-1.png" alt="Example figure from code block 25" loading="lazy">
 </details>
 </section>
 <section id="optional.-save-the-complete-single-seed-run" class="level2">
@@ -1619,28 +1690,28 @@ Logistic regression input: (834, 90)</pre>
 <p>The exported tables record the seed and are saved in <code>outputs_temporal</code>. Copy that folder before another run, because the filenames are reused. For a repeated comparison, change SEED to 17 and then 27, restart, and run the complete notebook each time. Keep every declared run and summarize the separate score tables. Do not select a favourable seed. Alternatively, use the <a href="https://franplaza.github.io/courses/statsei14/tutorials/temporal-comparison.html">complete three-seed guide</a>.</p>
 <p>Changing the representation is a separate question from changing the architecture. Adding an ETAS-inspired channel belongs to that next experiment. The spatial guides retain geographic cells and estimate one probability per cell, so their numerical scores answer a different target from this regional comparison.</p>
 <div class="copy-step">
-<p><strong>Code block 24</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
+<p><strong>Code block 26</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>output_dir <span class="op">=</span> Path(<span class="st">"outputs_temporal"</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>output_dir.mkdir(exist_ok<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>comparison.to_csv(output_dir <span class="op">/</span> <span class="st">"validation_metrics.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>probabilities.assign(observed<span class="op">=</span>y_val, seed<span class="op">=</span>SEED).to_csv(</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    output_dir <span class="op">/</span> <span class="st">"validation_predictions.csv"</span>, index_label<span class="op">=</span><span class="st">"origin"</span>,</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>comparison_lstm.to_csv(output_dir <span class="op">/</span> <span class="st">"lstm_reference_metrics.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Tables saved to:"</span>, output_dir.resolve())</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>protocol <span class="op">=</span> pd.DataFrame([{</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"seed"</span>: SEED, <span class="st">"lookback_days"</span>: LOOKBACK, <span class="st">"horizon_days"</span>: HORIZON,</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"train_start"</span>: <span class="st">"2001-01-01"</span>, <span class="st">"train_end_exclusive"</span>: <span class="st">"2017-01-01"</span>,</span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"validation_start"</span>: <span class="st">"2017-01-01"</span>, <span class="st">"validation_end_exclusive"</span>: <span class="st">"2021-01-01"</span>,</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"training_examples"</span>: <span class="bu">int</span>(train_mask.<span class="bu">sum</span>()), <span class="st">"validation_examples"</span>: <span class="bu">int</span>(val_mask.<span class="bu">sum</span>()),</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"maximum_epochs"</span>: EPOCHS, <span class="st">"batch_size"</span>: BATCH_SIZE, <span class="st">"early_stopping_patience"</span>: <span class="dv">3</span>,</span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"pack_sha256"</span>: PACK_SHA256, <span class="st">"catalogue_sha256"</span>: CATALOGUE_SHA256,</span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tensorflow_version"</span>: tf.__version__, <span class="st">"keras_version"</span>: keras.__version__,</span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"historical_as_of_verified"</span>: <span class="va">False</span>, <span class="st">"colab_execution_verified"</span>: <span class="va">False</span>,</span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>}])</span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>protocol.to_csv(output_dir <span class="op">/</span> <span class="st">"protocol.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>output_dir <span class="op">=</span> Path(<span class="st">"outputs_temporal"</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>output_dir.mkdir(exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>comparison.to_csv(output_dir <span class="op">/</span> <span class="st">"validation_metrics.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>probabilities.assign(observed<span class="op">=</span>y_val, seed<span class="op">=</span>SEED).to_csv(</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    output_dir <span class="op">/</span> <span class="st">"validation_predictions.csv"</span>, index_label<span class="op">=</span><span class="st">"origin"</span>,</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>comparison_lstm.to_csv(output_dir <span class="op">/</span> <span class="st">"lstm_reference_metrics.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Tables saved to:"</span>, output_dir.resolve())</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>protocol <span class="op">=</span> pd.DataFrame([{</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"seed"</span>: SEED, <span class="st">"lookback_days"</span>: LOOKBACK, <span class="st">"horizon_days"</span>: HORIZON,</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"train_start"</span>: <span class="st">"2001-01-01"</span>, <span class="st">"train_end_exclusive"</span>: <span class="st">"2017-01-01"</span>,</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"validation_start"</span>: <span class="st">"2017-01-01"</span>, <span class="st">"validation_end_exclusive"</span>: <span class="st">"2021-01-01"</span>,</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"training_examples"</span>: <span class="bu">int</span>(train_mask.<span class="bu">sum</span>()), <span class="st">"validation_examples"</span>: <span class="bu">int</span>(val_mask.<span class="bu">sum</span>()),</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"maximum_epochs"</span>: EPOCHS, <span class="st">"batch_size"</span>: BATCH_SIZE, <span class="st">"early_stopping_patience"</span>: <span class="dv">3</span>,</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"pack_sha256"</span>: PACK_SHA256, <span class="st">"catalogue_sha256"</span>: CATALOGUE_SHA256,</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tensorflow_version"</span>: tf.__version__, <span class="st">"keras_version"</span>: keras.__version__,</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"historical_as_of_verified"</span>: <span class="va">False</span>, <span class="st">"colab_execution_verified"</span>: <span class="va">False</span>,</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>}])</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>protocol.to_csv(output_dir <span class="op">/</span> <span class="st">"protocol.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>

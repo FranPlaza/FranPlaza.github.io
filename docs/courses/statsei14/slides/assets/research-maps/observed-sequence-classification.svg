@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600" role="img" aria-labelledby="title desc"><title id="title">Observed sequences supply labels for magnitude-threshold classification</title><desc id="desc">At training time, observed aftershock sequences define binary exceedance labels for a magnitude threshold within fourteen days and a hundred kilometres. These labels supervise classifiers that receive mainshock features. Logistic regression, Random Forest, Gradient Boosting and XGBoost estimate an exceedance probability. Generated GAN samples are not the classifier input.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.6"/></marker></defs><rect width="1600" height="600" fill="white"/>
+<text x="800" y="45" font-family="Arial, Helvetica, sans-serif" font-size="37" font-weight="700" text-anchor="middle" fill="#263238">Classification branch of the manuscript</text>
+<rect x="30" y="112" width="360" height="166" rx="18" fill="#EDF3FB" stroke="#5A8ECE" stroke-width="3"/>
+<text x="210" y="166" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="middle" fill="#5A8ECE">Mainshock features</text>
+<text x="210" y="221" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="400" text-anchor="middle" fill="#263238">Conditions at origin</text>
+<path d="M405 192 L580 192" fill="none" stroke="#5A8ECE" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="595" y="92" width="440" height="205" rx="18" fill="#E6F5F3" stroke="#00A499" stroke-width="3"/>
+<text x="815" y="142" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="middle" fill="#00A499">Classifier</text>
+<text x="815" y="192" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="400" text-anchor="middle" fill="#263238">Logistic / Random Forest</text>
+<text x="815" y="240" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="400" text-anchor="middle" fill="#263238">Gradient Boosting / XGBoost</text>
+<path d="M1050 192 L1180 192" fill="none" stroke="#00A499" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="1195" y="104" width="380" height="179" rx="18" fill="#FFF0E4" stroke="#EA7600" stroke-width="3"/>
+<text x="1385" y="157" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" text-anchor="middle" fill="#EA7600">Probability</text>
+<text x="1385" y="208" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400" text-anchor="middle" fill="#263238">At least one qualifying</text>
+<text x="1385" y="252" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400" text-anchor="middle" fill="#263238">aftershock in 14 days</text>
+<rect x="30" y="385" width="410" height="150" rx="18" fill="#EDF3FB" stroke="#5A8ECE" stroke-width="3"/>
+<text x="235" y="434" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="middle" fill="#5A8ECE">Observed sequences</text>
+<text x="235" y="484" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="400" text-anchor="middle" fill="#263238">14 days, within 100 km</text>
+<path d="M455 460 L580 460" fill="none" stroke="#5A8ECE" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="595" y="373" width="440" height="174" rx="18" fill="#F0ECFA" stroke="#756CC7" stroke-width="3"/>
+<text x="815" y="421" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" text-anchor="middle" fill="#756CC7">Binary labels</text>
+<text x="815" y="466" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="400" text-anchor="middle" fill="#263238">Occurrence or exceedance</text>
+<text x="815" y="508" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="400" text-anchor="middle" fill="#263238">at a magnitude threshold</text>
+<path d="M815 357 L815 309" fill="none" stroke="#756CC7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)" stroke-dasharray="9 7"/>
+<text x="1005" y="342" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="600" text-anchor="middle" fill="#756CC7">Training targets</text>
+<text x="800" y="593" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" text-anchor="middle" fill="#263238">Observed aftershock outcomes define the labels used to fit each classifier.</text>
+</svg>

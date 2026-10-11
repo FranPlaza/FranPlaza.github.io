@@ -143,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../homework.html"> 
-<span class="menu-text">Homework</span></a>
+<span class="menu-text">Further exploration</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../references.html"> 
@@ -221,11 +221,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This laboratory repeats each architecture with seeds 7, 17 and 27 under a fixed data and evaluation protocol. Run all cells in sequence and retain every fit. For a step-by-step introduction with one training run per model, see the <a href="../tutorials/graphs.html">guided tutorial</a>.</p>
+<p>This optional experiment repeats each architecture with seeds 7, 17 and 27 under a fixed data and evaluation protocol. Run all cells in sequence and retain every fit. For a step-by-step introduction with one training run per model, see the <a href="../tutorials/graphs.html">guided tutorial</a>.</p>
 </div>
 </div>
 <p>Represent the six geographic cells as graph nodes with daily sequences. Repeat Graph + LSTM with seeds 7, 17 and 27 under a fixed graph and chronological protocol: <strong>three neural fits</strong>.</p>
-<p>Run every cell in order. This independent-study laboratory uses the same data, normalization, targets and partitions as the map comparison. Examine each run, summarize validation scores across seeds, and compare the graph and map models on the same cell-level task. The graph defines information sharing; it does not establish a physical triggering mechanism.</p>
+<p>Run every cell in order. This optional experiment uses the same data, normalization, targets and partitions as the map comparison. Examine each run, summarize validation scores across seeds, and compare the graph and map models on the same cell-level task. The graph defines information sharing; it does not establish a physical triggering mechanism.</p>
 <section id="open-the-prepared-notebook-in-colab" class="level2">
 <h2 class="anchored" data-anchor-id="open-the-prepared-notebook-in-colab">Open the prepared notebook in Colab</h2>
 <p>Download this comparison notebook. Open <a href="https://colab.research.google.com/">Google Colab</a>, choose <strong>File &gt; Upload notebook</strong>, and select <code>graphs.ipynb</code>. Select a Python CPU runtime and run every cell from the beginning in order. The notebook with prepared outputs provides an example of the complete experiment.</p>
@@ -1409,7 +1409,7 @@ Node sequence shape: (1302, 30, 6, 3)</pre>
 <section id="design-a-control-for-the-spatial-claim" class="level2">
 <h2 class="anchored" data-anchor-id="design-a-control-for-the-spatial-claim">10. Design a control for the spatial claim</h2>
 <p>An <strong>identity adjacency</strong> prevents cross-node messages while preserving temporal histories, parameter counts, loss and training settings. In both the preview and training calls, use <code>build_graph_lstm(np.eye(N_NODES, dtype='float32'))</code>, keeping the direct self branch. This optional follow-up needs the same seeds and protocol, reported as another exploratory experiment rather than selected favourable runs.</p>
-<p><strong>Exercises</strong></p>
+<p><strong>Optional exploration</strong></p>
 <ol type="1">
 <li>What remains learnable with identity adjacency? Does removing cross-node messages remove the LSTM?</li>
 <li>Explain the rook edges and the physical interpretations that are unsupported.</li>

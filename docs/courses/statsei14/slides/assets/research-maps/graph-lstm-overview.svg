@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600" role="img" aria-labelledby="title desc"><title id="title">Graph plus LSTM: spatial sharing and temporal memory</title><desc id="desc">Six fixed geographic cells form a rook-adjacency graph. Each node contains thirty days of three catalogue features. Graph convolution shares information within each day. A shared LSTM processes each node history and a sigmoid head returns six marginal weekly occurrence probabilities. Full fitting is optional further exploration.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.6"/></marker></defs><rect width="1600" height="600" fill="white"/>
+<text x="240" y="63" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="700" text-anchor="middle" fill="#5A8ECE">Six geographic cells</text>
+<path d="M120 160 L300 160" stroke="#5A8ECE" stroke-width="4"/>
+<path d="M120 160 L120 280" stroke="#5A8ECE" stroke-width="4"/>
+<path d="M300 160 L300 280" stroke="#5A8ECE" stroke-width="4"/>
+<path d="M120 280 L300 280" stroke="#5A8ECE" stroke-width="4"/>
+<path d="M120 280 L120 400" stroke="#5A8ECE" stroke-width="4"/>
+<path d="M300 280 L300 400" stroke="#5A8ECE" stroke-width="4"/>
+<path d="M120 400 L300 400" stroke="#5A8ECE" stroke-width="4"/>
+<circle cx="120" cy="160" r="32" fill="#EDF3FB" stroke="#5A8ECE" stroke-width="3"/>
+<text x="120" y="171" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="600" text-anchor="middle" fill="#5A8ECE">1</text>
+<circle cx="300" cy="160" r="32" fill="#EDF3FB" stroke="#5A8ECE" stroke-width="3"/>
+<text x="300" y="171" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="600" text-anchor="middle" fill="#5A8ECE">2</text>
+<circle cx="120" cy="280" r="32" fill="#EDF3FB" stroke="#5A8ECE" stroke-width="3"/>
+<text x="120" y="291" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="600" text-anchor="middle" fill="#5A8ECE">3</text>
+<circle cx="300" cy="280" r="32" fill="#EDF3FB" stroke="#5A8ECE" stroke-width="3"/>
+<text x="300" y="291" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="600" text-anchor="middle" fill="#5A8ECE">4</text>
+<circle cx="120" cy="400" r="32" fill="#EDF3FB" stroke="#5A8ECE" stroke-width="3"/>
+<text x="120" y="411" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="600" text-anchor="middle" fill="#5A8ECE">5</text>
+<circle cx="300" cy="400" r="32" fill="#EDF3FB" stroke="#5A8ECE" stroke-width="3"/>
+<text x="300" y="411" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="600" text-anchor="middle" fill="#5A8ECE">6</text>
+<text x="235" y="495" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="400" text-anchor="middle" fill="#607D8B">30 days × 6 nodes</text>
+<text x="235" y="541" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="400" text-anchor="middle" fill="#607D8B">× 3 features</text>
+<path d="M375 280 L495 280" fill="none" stroke="#5A8ECE" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="510" y="156" width="280" height="245" rx="18" fill="#E6F5F3" stroke="#00A499" stroke-width="3"/>
+<text x="650" y="213" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="middle" fill="#00A499">Graph convolution</text>
+<text x="650" y="272" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="400" text-anchor="middle" fill="#263238">Within each day</text>
+<text x="650" y="327" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="400" text-anchor="middle" fill="#263238">Fixed adjacency</text>
+<path d="M805 280 L895 280" fill="none" stroke="#00A499" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="910" y="156" width="280" height="245" rx="18" fill="#F0ECFA" stroke="#756CC7" stroke-width="3"/>
+<text x="1050" y="213" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="middle" fill="#756CC7">LSTM</text>
+<text x="1050" y="272" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="400" text-anchor="middle" fill="#263238">Over 30 days</text>
+<text x="1050" y="327" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" text-anchor="middle" fill="#263238">Shared across nodes</text>
+<path d="M1205 280 L1290 280" fill="none" stroke="#EA7600" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="1305" y="156" width="270" height="245" rx="18" fill="#FFF0E4" stroke="#EA7600" stroke-width="3"/>
+<text x="1440" y="210" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" text-anchor="middle" fill="#EA7600">6 probabilities</text>
+<text x="1440" y="270" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="600" text-anchor="middle" fill="#EA7600">p₁, …, p₆</text>
+<text x="1440" y="325" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="400" text-anchor="middle" fill="#263238">One per cell</text>
+<text x="1440" y="372" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" text-anchor="middle" fill="#263238">Next 7 days, M ≥ 5</text>
+<text x="1015" y="489" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#263238">Each cell has its own occurrence target.</text>
+<text x="1015" y="539" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#263238">The probabilities need not sum to one.</text>
+</svg>

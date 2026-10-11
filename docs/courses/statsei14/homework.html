@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>After the tutorial – Deep Learning Meets ETAS</title>
+<title>Further exploration – Deep Learning Meets ETAS</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -108,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./homework.html" aria-current="page"> 
-<span class="menu-text">Homework</span></a>
+<span class="menu-text">Further exploration</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./references.html"> 
@@ -131,8 +131,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">After the tutorial</h1>
-<p class="subtitle lead">Interpret the evidence and test one modelling question</p>
+<h1 class="title">Further exploration</h1>
+<p class="subtitle lead">Optional questions, experiments and resources for your research</p>
 </div>
 
 
@@ -149,89 +149,88 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The live session follows the construction, training and evaluation of an LSTM and then a Transformer on the same regional catalogue history. Each model runs once with seed 7. During the laboratory, use the complete <a href="downloads/tutorials/temporal.ipynb" download="temporal.ipynb">temporal notebook</a>, its <a href="./tutorials/temporal.html">prepared outputs</a>, or the spatial tutorials at your own pace. Download the prepared notebooks or reconstruct the same cells in a blank Colab.</p>
+<p>These resources are for conference participants who would like to explore the examples after the session or adapt them to their own research. All routes are optional. The prepared outputs provide a starting point for discussion without training a model.</p>
+<p>The <a href="downloads/tutorials/temporal.ipynb" download="temporal.ipynb">temporal notebook</a> and its <a href="./tutorials/temporal.html">web guide with example outputs</a> contain the LSTM and Transformer comparison, followed by MLP and CNN1D extensions. The map and graph tutorials offer spatial examples. Graph + LSTM can be introduced through its input and output during the session and continued here using the complete notebook. You can download the prepared notebooks or reconstruct the same cells in Colab.</p>
 <p><a href="./practical.html">Return to the practical</a> · <a href="./references.html">References and source links</a></p>
-<section id="read-the-task-before-the-architecture" class="level2">
-<h2 class="anchored" data-anchor-id="read-the-task-before-the-architecture">Read the task before the architecture</h2>
-<p><strong>No training required.</strong> Start with the current temporal guide’s validation table and calibration outputs. State one supported observation and one possible explanation that those results cannot establish. Then compare the tutorial with two papers: a forecasting study (RECAST or Farfán et al.) and a detection/classification study (ConvNetQuake or Delgado et al.). Use the <a href="./references.html">references page</a>.</p>
-<p>For each source, identify the scientific question, one input example, the target and when the information becomes available. Distinguish a retrospectively assigned foreshock/mainshock/aftershock label from prospective forecasting. Record <strong>not reported in the source consulted</strong> when a protocol detail is unavailable.</p>
+<section id="questions-to-take-into-your-research" class="level2">
+<h2 class="anchored" data-anchor-id="questions-to-take-into-your-research">Questions to take into your research</h2>
+<ul>
+<li>Which aspects of seismic activity does the input representation retain, and which does it leave out?</li>
+<li>What information would actually be available when issuing a forecast?</li>
+<li>Does a model improve on a simple reference, and does that conclusion depend on the metric or initialization?</li>
+<li>Which additional data or evaluation period would support a stronger conclusion?</li>
+</ul>
+<p>The validation table and calibration outputs in the temporal guide illustrate these questions. An observed difference between models can suggest a hypothesis; it does not by itself identify the reason for that difference.</p>
+</section>
+<section id="read-across-scientific-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="read-across-scientific-tasks">Read across scientific tasks</h2>
+<p>The <a href="./references.html">references</a> include forecasting studies such as RECAST and Farfán et al., and detection or classification studies such as ConvNetQuake and Delgado et al.&nbsp;A useful way to connect them to your own work is to compare their questions, representations and evidence.</p>
 <div class="table-responsive">
 <table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Item</th>
-<th style="text-align: left;">Tutorial</th>
-<th style="text-align: left;">Paper A</th>
-<th style="text-align: left;">Paper B</th>
+<th style="text-align: left;">Aspect</th>
+<th style="text-align: left;">Question for reading a study</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Scientific question and task</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">Scientific task</td>
+<td style="text-align: left;">What question does the model answer?</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Input representation and available information</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">Input and information availability</td>
+<td style="text-align: left;">What is one input example, and when are its measurements available?</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Target, horizon and spatial support</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">Target</td>
+<td style="text-align: left;">What is predicted, over which horizon and spatial support?</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Model family</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">Evaluation</td>
+<td style="text-align: left;">Which splits, reference forecasts and metrics support the claim?</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Split, baseline and evaluation metric</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Limitation or unresolved detail</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">Limits</td>
+<td style="text-align: left;">What is unresolved or not reported in the source consulted?</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Submit a one-page comparison and 150–200 words explaining why scores from different tasks cannot be ranked directly. Cite each paper and identify whether you consulted the full text or abstract. Keep the Jara thesis and the manuscript under review distinct if you include them.</p>
+<p>A retrospectively assigned foreshock/mainshock/aftershock label differs from a prospective forecasting target. Scores for different tasks cannot be ranked directly. When reusing a claim, cite the source and distinguish evidence available in its full text from information in an abstract. The Jara thesis and the manuscript under review are separate sources.</p>
 </section>
-<section id="compare-architectures-and-examine-repeated-fits" class="level2">
-<h2 class="anchored" data-anchor-id="compare-architectures-and-examine-repeated-fits">Compare architectures and examine repeated fits</h2>
-<p>Complete the optional MLP and CNN1D sections of the temporal notebook. Each model places its construction, training and evaluation together and uses seed 7. Then open the separate <a href="./tutorials/temporal-comparison.html">three-seed comparison</a> or its <a href="downloads/comparison/temporal.ipynb" download="temporal.ipynb">notebook</a> to examine seeds 7, 17 and 27.</p>
-<ol type="1">
-<li>Trace one 30 × 3 input through each model. Identify fixed lag positions in the MLP, a shared temporal filter in CNN1D, recurrent state in the LSTM, and learned positions plus attention in the Transformer.</li>
-<li>Identify the model definition, <code>compile</code>, <code>fit</code>, <code>predict</code> and score calculation. Explain what <code>fit()</code> changes and which decisions the researcher fixed beforehand. Compare parameter counts and completed epochs as context for the losses.</li>
-<li>Read Brier, log loss and calibration alongside the simple references. Separate the seed-7 result from the repeated comparison. In the latter, mean losses summarize individually scored fits; they are not the loss of an ensemble prediction.</li>
-<li>Record your software versions and hardware, and note numerical differences from the supplied results. See <a href="./environment.html">Environment and setup</a>.</li>
-</ol>
+<section id="explore-the-supplied-models" class="level2">
+<h2 class="anchored" data-anchor-id="explore-the-supplied-models">Explore the supplied models</h2>
+<p>The optional MLP and CNN1D sections of the temporal notebook follow the LSTM and Transformer. They process the same 30 × 3 input using different assumptions: fixed lag positions in an MLP, shared temporal filters in CNN1D, recurrent state in an LSTM, and learned positions plus attention in the Transformer.</p>
+<p>Each model places its definition, <code>compile</code>, <code>fit</code>, <code>predict</code> and evaluation together. This makes it possible to follow what training changes and which settings the researcher chooses beforehand. Parameter counts and completed epochs provide context for the losses.</p>
+<p>The guided examples use <strong>seed 7</strong>. The separate <a href="./tutorials/temporal-comparison.html">three-seed comparison</a>, also available as a <a href="downloads/comparison/temporal.ipynb" download="temporal.ipynb">notebook</a>, explores seeds <strong>7, 17 and 27</strong>. Read Brier score, log loss and calibration alongside the simple references. Mean losses summarize individually scored fits; they are not the loss of an ensemble prediction. A single run cannot establish stability across initializations.</p>
+<p>See <a href="./environment.html">Environment and setup</a> for software versions and the context of the prepared results. If you rerun a notebook, recording your versions and hardware helps interpret numerical differences.</p>
 </section>
-<section id="sensitivity-to-recurrent-state-size-8-16-and-32-units" class="level2">
-<h2 class="anchored" data-anchor-id="sensitivity-to-recurrent-state-size-8-16-and-32-units">Sensitivity to recurrent-state size: 8, 16 and 32 units</h2>
-<p>The network learns weights and biases. The recurrent-state size is a setting we choose before fitting. The 16-unit LSTM is a compact starting configuration; no search in this tutorial establishes it as optimal.</p>
+<section id="one-optional-experiment-8-16-and-32-lstm-units" class="level2">
+<h2 class="anchored" data-anchor-id="one-optional-experiment-8-16-and-32-lstm-units">One optional experiment: 8, 16 and 32 LSTM units</h2>
+<p>The network learns weights and biases. Its recurrent-state size is a setting chosen before fitting. The 16-unit LSTM is a compact starting configuration; this tutorial does not establish it as optimal.</p>
+<p>If model capacity is relevant to your research question, a controlled comparison could use the following protocol:</p>
 <ol type="1">
-<li>Declare the candidates <strong>8, 16 and 32 units</strong> before fitting. Change only the number in <code>keras.layers.LSTM(16)</code> in a separate copy of the temporal notebook.</li>
+<li>Declare <strong>8, 16 and 32 units</strong> before fitting. Change only the number in <code>keras.layers.LSTM(16)</code> in a separate copy of the temporal notebook.</li>
 <li>Keep the three channels, 30-day history, target, region, chronological partitions, training-only scaling, Adam learning rate 0.001, batch size 64, maximum 20 epochs and patience 3 fixed. Keep <code>restore_best_weights=True</code> and <code>shuffle=False</code>.</li>
-<li>Declare <strong>validation log loss</strong> as the primary comparison; also report Brier score, calibration with bin counts, parameter count and completed epochs. Begin with seed 7 to follow the procedure, then repeat <strong>every candidate</strong> with seeds 7, 17 and 27.</li>
-<li>Retain all results. Assess whether any change persists across these initializations, and distinguish increased capacity from an improvement in the stated criterion.</li>
+<li>Declare <strong>validation log loss</strong> as the primary comparison; also inspect Brier score, calibration with bin counts, parameter count and completed epochs. Seed 7 provides an initial walkthrough; assessing initialization sensitivity requires repeating <strong>every candidate</strong> with seeds <strong>7, 17 and 27</strong>.</li>
+<li>Retain every run, including neutral or worse results. Examine whether a difference persists across these initializations, rather than selecting the best-looking seed.</li>
 </ol>
 <p>The seven-day horizon and M ≥ 5 threshold define the scientific target. Changing them studies a different outcome. Changing the seed studies another training realization; it does not create new earthquake observations.</p>
-<p>Validation is used for early stopping and for comparing candidates. The selected score is therefore development evidence. A subsequent independent assessment requires data that did not influence these choices and a selection procedure that respects chronological order. The already inspected 2021–2025 period cannot serve as a new untouched test.</p>
+<p>Validation controls early stopping and the comparison of candidates. A selected validation score remains development evidence. Independent assessment requires data that did not influence these choices and a selection procedure that respects chronological order.</p>
 </section>
-<section id="choose-one-controlled-extension" class="level2">
-<h2 class="anchored" data-anchor-id="choose-one-controlled-extension">Choose one controlled extension</h2>
-<p>Write the hypothesis and the single proposed change before fitting. Keep an unchanged copy of the tutorial and write new outputs to a separate directory. Use training and validation only; retain every declared run, including neutral or worse results.</p>
+<section id="continue-with-graph-lstm" class="level2">
+<h2 class="anchored" data-anchor-id="continue-with-graph-lstm">Continue with Graph + LSTM</h2>
+<p>The <a href="./tutorials/graphs.html">graph tutorial</a> starts with a study-area map, then represents the same six geographic cells as nodes. Follow the sequence at your own pace: inspect the cells and their neighbours, read one 30 × 6 × 3 input, then trace neighbour aggregation and the LSTM to six weekly occurrence probabilities. The notebook and its example outputs are complete even if the live discussion stops at the representation.</p>
+<p>Compare the graph with the <a href="./tutorials/maps.html">map tutorial</a> using the same cells and targets. The six probabilities describe separate cell outcomes and need not sum to one. They differ from the six mutually exclusive macrozone classes in Nicolis et al.&nbsp;(2021).</p>
+</section>
+<section id="other-questions-to-explore" class="level2">
+<h2 class="anchored" data-anchor-id="other-questions-to-explore">Other questions to explore</h2>
+<p>The following routes can help connect the examples to a question of your own. Each separates one modelling decision from the rest of the experiment.</p>
 <div class="table-responsive">
 <table class="caption-top table">
 <colgroup>
@@ -242,7 +241,7 @@ ul.task-list li input[type="checkbox"] {
 <thead>
 <tr class="header">
 <th style="text-align: left;">Route</th>
-<th style="text-align: left;">One question</th>
+<th style="text-align: left;">Possible question</th>
 <th style="text-align: left;">What to keep fixed</th>
 </tr>
 </thead>
@@ -255,17 +254,17 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td style="text-align: left;">ETAS-inspired channel</td>
 <td style="text-align: left;">Does adding the illustrative activity score help the same LSTM?</td>
-<td style="text-align: left;">Catalogue channels, history, target and evaluation; document added parameters and do not mix this with an architecture change</td>
+<td style="text-align: left;">Catalogue channels, history, target and evaluation; document added parameters and keep this separate from an architecture change</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Transformer positions</td>
 <td style="text-align: left;">What changes when learned positional information is removed?</td>
-<td style="text-align: left;">Remaining layers, data, optimizer, seeds and evaluation; report the resulting capacity change</td>
+<td style="text-align: left;">Remaining layers, data, optimizer, seeds and evaluation; account for the resulting capacity change</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Maps</td>
 <td style="text-align: left;">Where are positive cell labels scarce, and how does this affect calibration?</td>
-<td style="text-align: left;">Existing six-cell geometry and target; begin with prepared predictions before proposing a new grid</td>
+<td style="text-align: left;">Existing six-cell geometry and target; prepared predictions provide a starting point before proposing a new grid</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Graphs</td>
@@ -275,45 +274,13 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
-<p>The <a href="./tutorials/maps.html">map</a> and <a href="./tutorials/graphs.html">graph</a> tutorials predict the same six marginal probabilities. Their scores concern per-cell targets and should not be ranked against regional occurrence scores. Geographic adjacency does not establish physical triggering. The <a href="./practical-reference.html">ETAS-inspired feature experiment</a> documents the illustrative ETAS-inspired score; it is not a fitted ETAS rate.</p>
+<p>The <a href="./tutorials/maps.html">map</a> and <a href="./tutorials/graphs.html">graph</a> tutorials predict the same six marginal probabilities. Their per-cell scores should not be ranked against regional occurrence scores. Geographic adjacency does not establish physical triggering. The <a href="./practical-reference.html">ETAS-inspired feature experiment</a> documents an illustrative activity score; it is not a fitted ETAS rate.</p>
 </section>
-<section id="evaluate-and-report-the-extension" class="level2">
-<h2 class="anchored" data-anchor-id="evaluate-and-report-the-extension">Evaluate and report the extension</h2>
-<p>Use Brier and log loss, plus calibration with common bins and counts for each model and seed. For a repeated extension, declare seeds 7, 17 and 27 before running it and retain every result. A single-seed walkthrough cannot establish initialization stability. Do not treat multiple seeds as additional independent earthquake weeks. Validation also supports early stopping, so these comparisons remain development evidence.</p>
-<div class="table-responsive">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Deliverable</th>
-<th style="text-align: left;">Contents</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Reproducible copy or annotated prepared outputs</td>
-<td style="text-align: left;">Hypothesis, one change, fixed settings, environment and data provenance</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Validation table</td>
-<td style="text-align: left;">Model, every seed, sample size, positive labels, Brier, log loss, parameters, epochs and fit time</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Diagnostic</td>
-<td style="text-align: left;">Calibration with counts or predicted probabilities over time beside observed labels</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Interpretation</td>
-<td style="text-align: left;">200–300 words separating observations, hypotheses, seed variability and unresolved limitations</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>The 2021–2025 test was inspected in earlier course work. Do not use it to select a change or present it as untouched evidence. A confirmatory follow-up requires a new evaluation period and a protocol fixed before examining its outcomes. Revised catalogue records also do not establish what was available at historical forecast times.</p>
-<p>For an input experiment, use the <a href="./practical-reference.html">ETAS-inspired feature activity</a>. Keep the feature set, target and evaluation protocol explicit when interpreting any comparison.</p>
+<section id="keep-an-exploration-interpretable" class="level2">
+<h2 class="anchored" data-anchor-id="keep-an-exploration-interpretable">Keep an exploration interpretable</h2>
+<p>For any experiment you choose to pursue, define the hypothesis and proposed change before fitting. Keep an unchanged reference and save new outputs separately. A reproducible record includes the model settings, data provenance, software environment and every declared run.</p>
+<p>Brier score, log loss and calibration describe complementary aspects of probability forecasts. Common calibration bins and their counts help compare models and seeds. Retaining all seeds distinguishes a recurring difference from a favourable individual fit; those seeds are not additional independent earthquake weeks.</p>
+<p>Use training and validation for these explorations. The <strong>2021–2025 test period was inspected in earlier work</strong> and cannot serve as a new untouched test for selecting a configuration. A confirmatory follow-up needs a new evaluation period and a protocol fixed before examining its outcomes. Revised catalogue records also do not establish what was available at historical forecast times.</p>
 
 
 </section>

@@ -244,7 +244,7 @@ Practical Hybrid Workflows for Seismic Forecasting
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> Deep learning connects a representation to a scientific task.</p>
-<p><strong>Explain:</strong> We will connect concepts and research cases with guided LSTM modelling, a Transformer comparison and discussion. ETAS supplies one way to construct a representation.</p>
+<p><strong>Explain:</strong> We will connect concepts and research cases with guided LSTM modelling, a Transformer comparison and discussion. ETAS supplies one way to construct a representation. The LSTM is the core practical example; additional comparisons can use prepared outputs.</p>
 <p><strong>Transition:</strong> How do we turn catalogue history into a probability forecast, and what changes when we change the model?</p>
 <p><strong>Backup:</strong> Follow the presentation with the temporal notebook, the Transformer comparison and discussion. Adjust the pace to the group.</p>
 <style type="text/css">
@@ -396,13 +396,13 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>A multilayer perceptron learns nonlinear combinations of a feature vector.</p>
 </div>
 <div class="small-note">
-<p>Temporal laboratory: the MLP uses 90 values at fixed lag positions. Diagram adapted from the author’s DL course, Unit 2.</p>
+<p>Optional extension: the MLP uses 90 values at fixed lag positions. Diagram adapted from the author’s DL course, Unit 2.</p>
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> An MLP combines a vector of measured features through learned layers.</p>
-<p><strong>Explain:</strong> Follow one connection and then one hidden layer. Weighted combinations and nonlinear activations compose a mapping. In the temporal laboratory section, flattening the 30 × 3 window gives 90 values, each at a fixed lag position.</p>
+<p><strong>Explain:</strong> Follow one connection and then one hidden layer. Weighted combinations and nonlinear activations compose a mapping. In the optional MLP section, flattening the 30 × 3 window gives 90 values, each at a fixed lag position.</p>
 <p><strong>Transition:</strong> The MLP is available for independent comparison. Next, shared filters use the local structure of a sequence.</p>
-<p><strong>Backup:</strong> Flattening preserves fixed lag positions. It does not randomly discard order. The guided session focuses on LSTM and Transformer. Diagram provenance: slides/assets/course-adapted/source-map.md.</p>
+<p><strong>Backup:</strong> Flattening preserves fixed lag positions. It does not randomly discard order. The core example is the LSTM, with a Transformer comparison available to support discussion. Diagram provenance: slides/assets/course-adapted/source-map.md.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -422,13 +422,13 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>The same filter examines different neighborhoods.</p>
 </div>
 <div class="small-note">
-<p>Temporal laboratory: CNN1D shares filters across days. Diagram adapted from the author’s DL course, Unit 3.</p>
+<p>Optional extension: CNN1D shares filters across days. Diagram adapted from the author’s DL course, Unit 3.</p>
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> A convolution applies shared filters to local neighborhoods.</p>
 <p><strong>Explain:</strong> Use the diagram to identify a local receptive field and shared weights. In the temporal tutorial, CNN1D moves filters across days. In the published case, the CNN processes spatial patterns in ETAS-derived maps.</p>
 <p><strong>Transition:</strong> A recurrent model offers another way to combine the daily history by updating a state.</p>
-<p><strong>Backup:</strong> CNN1D is available after the live route as an optional laboratory section. The grid or temporal sampling determines what counts as a neighborhood. No kernel arithmetic is needed here. Diagram adapted from Unit 3 of the author’s course.</p>
+<p><strong>Backup:</strong> CNN1D is available for optional exploration after the live comparison. The grid or temporal sampling determines what counts as a neighborhood. No kernel arithmetic is needed here. Diagram adapted from Unit 3 of the author’s course.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -480,7 +480,7 @@ Practical Hybrid Workflows for Seismic Forecasting
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> A generator learns to produce samples under a training objective.</p>
-<p><strong>Explain:</strong> Follow z into G and stop at the generated sample x̃ = G(z): this is the output we want to obtain. During training, the discriminator compares generated samples with real examples and supplies a signal for improving G. After training, draw new noise and apply G to obtain another possible sample. In the Isidora case, mainshock conditions and noise determine a possible aftershock sequence. Generating a sequence and estimating a weekly occurrence probability are different learning tasks.</p>
+<p><strong>Explain:</strong> Follow z into G and stop at the generated sample x̃ = G(z): this is the output we want to obtain. During training, the discriminator compares generated samples with real examples and supplies a signal for improving G. After training, draw new noise and apply G to obtain another possible sample. In the aftershock example, mainshock conditions and noise determine a possible sequence. Generating a sequence and estimating a weekly occurrence probability are different learning tasks.</p>
 <p><strong>Transition:</strong> With this vocabulary, consider how our first study turned an ETAS representation into neural inputs and targets.</p>
 <p><strong>Backup:</strong> Generative learning describes a task and can use MLP, CNN or recurrent components. A plausible curve alone does not establish a scientifically adequate distribution.</p>
 <style type="text/css">
@@ -496,24 +496,16 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="s09" class="slide level2">
-<h2>Our first case: learning from an ETAS representation</h2>
-<div class="columns">
-<div class="column" style="width:53%;">
-<p><img data-src="assets/published-workflow.png" class="focus-figure" alt="Original published-project workflow linking data processing, LSTM and CNN to temporal and spatial summaries." height="475"></p>
-</div><div class="column" style="width:47%;">
-<p><strong>Scientific question</strong></p>
-<p>Can neural networks learn the evolution of a statistical representation of seismic activity?</p>
-<p><strong>Two views</strong></p>
-<p>A daily time series and a sequence of spatial maps.</p>
-</div></div>
+<h2>ETAS intensity maps support two learning tasks</h2>
+<p><img data-src="assets/research-maps/etas-learning-tasks.svg" class="focus-figure" alt="A temporal ETAS fit with shared parameters supplies daily intensity maps on a one-degree grid. Thirty spatial maxima feed LSTM regression and thirty maps feed CNN classification of six macrozones." height="475"></p>
 <div class="small-note">
 <p>Nicolis, Plaza &amp; Salas · Spatial Statistics 42 (2021), 100442 · CSN Chile, 2000–2017</p>
 </div>
 <aside class="notes">
-<p><strong>Main idea:</strong> The published study learns the evolution of an ETAS-derived representation.</p>
-<p><strong>Explain:</strong> Follow the study workflow from the catalogue to the ETAS representation and the two neural branches. The daily time series and spatial maps create different inputs and outputs.</p>
-<p><strong>Transition:</strong> What does the ETAS representation measure before a neural network uses it?</p>
-<p><strong>Backup:</strong> Nicolis, Plaza &amp; Salas, Spatial Statistics 42 (2021), 100442. Source: https://doi.org/10.1016/j.spasta.2020.100442 . Catalogue: CSN Chile, 2000–2017. Interpret the original intensity/location labels as model-derived targets, not physical shaking or an exact next epicentre.</p>
+<p><strong>Main idea:</strong> Both neural branches learn summaries of the same ETAS-derived intensity maps.</p>
+<p><strong>Explain:</strong> Begin with the catalogue: event times, locations and magnitudes. The study fits temporal ETAS across the area and shares its parameters across 1° × 1° grid cells. Evaluate intensity through time to obtain daily maps. For the temporal branch, take the spatial maximum of each map and use 30 values to predict the next maximum with an LSTM. For the spatial branch, retain 30 maps and use a CNN to classify which of six latitudinal macrozones contains the next maximum.</p>
+<p><strong>Transition:</strong> The meaning of the map depends on the distinction between process intensity, earthquake magnitude and ground shaking.</p>
+<p><strong>Backup:</strong> Source: Nicolis, Plaza &amp; Salas (2021), pp.&nbsp;8–9, https://doi.org/10.1016/j.spasta.2020.100442 . This is a temporal ETAS construction with common area-level parameters applied to grid cells. Do not describe it as a jointly fitted spatial ETAS model. The grid here is schematic. Neither neural target identifies the exact next epicentre.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -527,25 +519,24 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="s10" class="slide level2">
-<h2>ETAS supplies a statistical description of activity</h2>
+<h2>ETAS intensity describes a conditional event rate</h2>
 <div class="equation-focus">
-<p><span class="math display">\lambda(t\mid\mathcal H_t)=\mu+\sum_{t_i&lt;t}\text{contribution from event }i</span></p>
+<p><span class="math display">
+\lambda(t\mid\mathcal H_t)=\mu+\sum_{t_i&lt;t}\text{contribution from event }i
+</span></p>
 </div>
 <div class="flow-line">
 <p>Background + magnitude-dependent contributions that decay with time</p>
 </div>
-<p><strong>Spatial ETAS</strong> also describes how contributions vary over space.</p>
+<p><strong>Published construction:</strong> common ETAS parameters applied across 1° × 1° cells produce a sequence of intensity maps.</p>
 <div class="takeaway">
-<p>This conditional occurrence rate becomes a representation for learning.</p>
-</div>
-<div class="small-note">
-<p>Conceptual sketch. Process intensity is different from magnitude and shaking intensity.</p>
+<p>A map value is an estimated occurrence rate, not an earthquake magnitude.</p>
 </div>
 <aside class="notes">
-<p><strong>Main idea:</strong> ETAS describes a conditional event rate through background and past-event contributions.</p>
-<p><strong>Explain:</strong> Use the equation as a bridge from statistical seismology. Larger and more recent events can contribute differently. Spatial ETAS also models how contributions vary over space. The study summarizes the fitted intensity for learning.</p>
-<p><strong>Transition:</strong> A daily maximum creates a specific temporal prediction task.</p>
-<p><strong>Backup:</strong> Full estimation requires parameters, units and observation assumptions. Process intensity differs from magnitude, shaking intensity and probability. The appendix keeps those distinctions available.</p>
+<p><strong>Main idea:</strong> The ETAS representation is a conditional event rate built from the catalogue history.</p>
+<p><strong>Explain:</strong> Past events contribute according to their magnitude and elapsed time. The temporal ETAS parameters are estimated for the study area and shared across grid cells. Evaluating this representation each day creates the maps used by the neural branches. A maximum over cells produces a daily scalar, while retaining the cells preserves spatial structure.</p>
+<p><strong>Transition:</strong> The temporal branch learns the evolution of that daily spatial maximum.</p>
+<p><strong>Backup:</strong> Source: Nicolis, Plaza &amp; Salas (2021), pp.&nbsp;8–9. The displayed temporal formula is conceptual. The paper’s map construction uses common parameters across cells. Process intensity differs from magnitude, shaking intensity and probability. Converting an event rate into an interval probability requires an explicit predictive calculation.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -559,23 +550,23 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="s11" class="slide level2">
-<h2>The temporal task: tomorrow’s maximum intensity</h2>
+<h2>LSTM regression of ETAS-derived intensity</h2>
 <div class="learning-flow">
-<p><span class="flow-node">30 daily maxima</span> → <span class="flow-node">LSTM</span> → <span class="flow-node">Next-day maximum</span></p>
+<p><span class="flow-node">30 daily spatial maxima</span> → <span class="flow-node">LSTM</span> → <span class="flow-node">Next-day maximum intensity</span></p>
 </div>
-<p><strong>Input and target:</strong> summaries of the ETAS-derived intensity.</p>
-<p><strong>Learning question:</strong> how much of its evolution can a temporal network capture?</p>
+<p><strong>One daily value:</strong> the maximum estimated ETAS intensity across the map.</p>
+<p><strong>Input:</strong> 30 consecutive values. <strong>Target:</strong> the following day’s value.</p>
 <div class="takeaway">
-<p>Specify what is being predicted before interpreting a fit statistic.</p>
+<p>This LSTM predicts a continuous intensity summary.</p>
 </div>
 <div class="small-note">
-<p>Published case, Nicolis, Plaza &amp; Salas (2021). The target is a model-derived quantity.</p>
+<p>Nicolis, Plaza &amp; Salas (2021) · Regression of a model-derived target</p>
 </div>
 <aside class="notes">
-<p><strong>Main idea:</strong> This LSTM predicts a model-derived intensity summary.</p>
-<p><strong>Explain:</strong> Thirty daily maximum intensity values enter the network, and the next day’s maximum is the target. This example shows how a statistical representation makes a learning task possible.</p>
-<p><strong>Transition:</strong> Keeping a spatial map instead of one daily maximum opens a different output question.</p>
-<p><strong>Backup:</strong> The paper reports test R-squared of about 0.66 at the threshold-six setting. At threshold five, ETAS has lower MSE, MAE and RMSE. The paper does not establish that ETAS estimation excluded all test information. These qualifications prevent a claim of uniform neural superiority.</p>
+<p><strong>Main idea:</strong> The published LSTM performs regression on a sequence of ETAS intensity maxima.</p>
+<p><strong>Explain:</strong> Start with the common map sequence. Reduce each map to its largest intensity value. Thirty successive maxima form one input history, and the next day’s maximum is the regression target. The target is a model-derived rate summary. In today’s practical the LSTM receives catalogue channels and predicts a weekly occurrence probability, so the architecture is familiar but the target and output layer have a different meaning.</p>
+<p><strong>Transition:</strong> The CNN branch keeps the maps and asks a location-classification question about the same maximum.</p>
+<p><strong>Backup:</strong> The paper reports test R-squared of about 0.66 at the threshold-six setting. At threshold five, ETAS has lower MSE, MAE and RMSE. The paper does not establish that ETAS estimation excluded all test information. These qualifications prevent a claim of uniform neural superiority. Source: Nicolis, Plaza &amp; Salas (2021), https://doi.org/10.1016/j.spasta.2020.100442 .</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -589,24 +580,24 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="s12" class="slide level2">
-<h2>The spatial task: the macrozone of the maximum</h2>
+<h2>CNN classification of six macrozones</h2>
 <div class="learning-flow">
-<p><span class="flow-node">30 daily ETAS maps</span> → <span class="flow-node">CNN</span> → <span class="flow-node">Six zone probabilities</span></p>
+<p><span class="flow-node">30 daily ETAS maps</span> → <span class="flow-node">CNN</span> → <span class="flow-node">Six macrozone probabilities</span></p>
 </div>
 <div class="big-question">
-<p>Which macrozone contains tomorrow’s maximum estimated intensity?</p>
+<p>Which latitudinal macrozone contains the next day’s maximum estimated intensity?</p>
 </div>
 <div class="takeaway">
-<p>The representation determines which information the network can use.</p>
+<p>One of six location classes describes the maximum of the ETAS map.</p>
 </div>
 <div class="small-note">
-<p>Published case, Nicolis, Plaza &amp; Salas (2021). These probabilities concern six macrozones.</p>
+<p>Nicolis, Plaza &amp; Salas (2021) · The macrozones locate a map maximum, not an exact epicentre</p>
 </div>
 <aside class="notes">
-<p><strong>Main idea:</strong> Changing the representation changes which information the network can use.</p>
-<p><strong>Explain:</strong> Thirty daily ETAS maps feed the spatial branch. Its six probabilities concern the macrozone containing tomorrow’s maximum estimated intensity.</p>
-<p><strong>Transition:</strong> In that study ETAS supplied the representation. In our practical we construct simpler daily channels directly from the catalogue. In both settings, we must decide what the network receives and what its output means. With Isidora we explored a richer output: an aftershock sequence.</p>
-<p><strong>Backup:</strong> The macrozone is not the exact next epicentre or today’s fixed-box occurrence target.</p>
+<p><strong>Main idea:</strong> The CNN classifies the location of a maximum within six predefined latitudinal macrozones.</p>
+<p><strong>Explain:</strong> Keep all cells from each daily intensity map instead of retaining only its maximum value. A sequence of 30 maps enters the CNN. The output gives probabilities for the six macrozones, and the target identifies the macrozone of the next day’s map maximum. Contrast this with the LSTM branch: the LSTM predicts how large the maximum will be, while the CNN predicts which macrozone contains it.</p>
+<p><strong>Transition:</strong> A generative task asks for an entire possible aftershock sequence, which requires another definition of the output.</p>
+<p><strong>Backup:</strong> Source: Nicolis, Plaza &amp; Salas (2021), pp.&nbsp;8–9, https://doi.org/10.1016/j.spasta.2020.100442 . These six mutually exclusive macrozone classes differ from the six marginal cell-occurrence targets in today’s optional map and graph notebooks. They do not identify the exact next epicentre, earthquake magnitude or shaking intensity.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -620,25 +611,19 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="s13" class="slide level2">
-<h2>With Isidora: can we generate aftershock sequences?</h2>
-<div class="learning-flow">
-<p><span class="flow-node">Mainshock conditions + noise</span> → <span class="flow-node">Generator</span> → <span class="flow-node">A possible sequence</span></p>
-</div>
-<p><strong>Thesis question</strong></p>
-<p>Can conditional generative models reproduce the temporal pattern of aftershock sequences?</p>
-<p><strong>Model families explored</strong></p>
-<p>Conditional GAN · WGAN-GP · attention-based generator</p>
+<h2>Generative exploration of aftershock sequences</h2>
+<p><img data-src="assets/research-maps/thesis-conditional-generation.svg" class="focus-figure" alt="Mainshock longitude, latitude, magnitude and depth combine with noise to condition cGAN, WGAN-GP or TGAN. Each produces a possible 224-value aftershock sequence over fourteen days within one hundred kilometres." height="450"></p>
 <div class="takeaway">
-<p>A richer output requires us to decide what a sequence actually represents.</p>
+<p>The output is a possible sequence conditioned on a mainshock.</p>
 </div>
 <div class="small-note">
-<p>Isidora Jara Muñoz (2025), thesis · Subsequent manuscript by Plaza-Vega, Jara, Nicolis &amp; Salinas (2026), under review</p>
+<p>Jara Muñoz (2025) · Undergraduate thesis in Statistical Engineering · Universidad de Santiago de Chile</p>
 </div>
 <aside class="notes">
-<p><strong>Main idea:</strong> Conditional generation asks for possible sequences following a mainshock.</p>
-<p><strong>Explain:</strong> Distinguish the mainshock conditions from the random input. The thesis explored conditional GAN, WGAN-GP and an attention-based generator. WGAN-GP changes the adversarial objective and regularization, while attention changes information exchange across positions.</p>
-<p><strong>Transition:</strong> Before judging the generated sequence, we must define what each entry represents.</p>
-<p><strong>Backup:</strong> Keep Isidora Jara Muñoz’s 2025 thesis separate from the 2026 manuscript by Plaza-Vega, Jara, Nicolis &amp; Salinas, under review. TGAN in the thesis and GANT in the manuscript have separate evaluations. ETAS-GAN is outside the manuscript’s empirical scope.</p>
+<p><strong>Main idea:</strong> The undergraduate thesis explores conditional generation of possible aftershock sequences.</p>
+<p><strong>Explain:</strong> Distinguish the mainshock conditions from the random input. Longitude, latitude, magnitude and depth describe the mainshock. Noise allows different possible sequences under the same conditions. The thesis explores conditional GAN, WGAN-GP and TGAN, an attention-based generator. The representation has 224 intervals of 90 minutes over 14 days within 100 km of the mainshock. An occupied interval stores its maximum magnitude and 2.5 marks absence.</p>
+<p><strong>Transition:</strong> This representation combines occurrence and magnitude, so evaluating generated sequences requires more than curve-level errors.</p>
+<p><strong>Backup:</strong> Isidora Jara Muñoz (2025), undergraduate thesis leading to the degree of Ingeniera Estadística, Universidad de Santiago de Chile, title page and pp.&nbsp;46–51. The thesis stores longitude using a 0–360 convention. Preserve the distinction between TGAN in the thesis and GANT in the later manuscript: their evaluations are separate. WGAN-GP changes the adversarial objective and regularization, while attention changes information exchange across positions. Neither the thesis nor the manuscript establishes an empirically validated ETAS–GAN combination.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -708,28 +693,49 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="s16" class="slide level2">
-<h2>The article revisits what the model should learn</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Empirical reformulation</strong></p>
-<p>Aggregate targets: occurrence, exceedance and count summaries.</p>
-<p>The classification branch uses tree models.</p>
-</div><div class="column" style="width:50%;">
-<p><strong>A future neural formulation</strong></p>
-<p>Occurrence probability, followed by magnitude conditional on occurrence.</p>
-<p>Evaluate both parts and their joint behavior.</p>
-</div></div>
+<h2>Observed sequences define magnitude-threshold labels</h2>
+<p><img data-src="assets/research-maps/observed-sequence-classification.svg" class="focus-figure" alt="Observed aftershock sequences define binary occurrence or magnitude-threshold labels. These labels supervise classifiers using mainshock features to estimate the probability of at least one qualifying aftershock in fourteen days within one hundred kilometres. GAN outputs are not classifier inputs." height="465"></p>
 <div class="takeaway">
-<p>Today we isolate occurrence in a fixed future interval as the learning target.</p>
+<p>The classification target comes from observed aftershock outcomes.</p>
 </div>
 <div class="small-note">
-<p>ETAS-informed generation remains future work. The two-part neural model is a proposal.</p>
+<p>Plaza-Vega, Jara, Nicolis &amp; Salinas (2026), manuscript under review · 14 days and 100 km</p>
 </div>
 <aside class="notes">
-<p><strong>Main idea:</strong> The target deserves as much scrutiny as the architecture.</p>
-<p><strong>Explain:</strong> The revised manuscript examines aggregate occurrence, exceedance and count targets with Random Forest and Gradient Boosting. Separating occurrence probability from conditional magnitude is a future neural proposal.</p>
-<p><strong>Transition:</strong> This experience led us to examine the target more carefully. Today’s exercise isolates occurrence within a fixed future interval, giving us a clear output to train and evaluate before considering richer sequence models.</p>
-<p><strong>Backup:</strong> Do not attribute tree-model classification scores to GANs or LSTMs. Ranking performance varies with temporal and geographic evaluation and does not imply calibrated operational warning. The analyses split examples by mainshock date. Target windows crossing partition boundaries were not fully purged. The proposed two-part neural model is unvalidated.</p>
+<p><strong>Main idea:</strong> The manuscript’s classification branch uses observed sequences to define a probability target.</p>
+<p><strong>Explain:</strong> Follow the lower branch first. An observed aftershock sequence supplies a binary occurrence or magnitude-exceedance label over 14 days and within 100 km. These labels supervise classifiers whose predictors describe the mainshock. Logistic regression, Random Forest, Gradient Boosting and XGBoost estimate the probability of at least one qualifying aftershock. The generated GAN sequence is not the classifier’s input. This is a reformulation of the scientific target, rather than a demonstration that the generator already produces calibrated exceedance probabilities.</p>
+<p><strong>Transition:</strong> The distinction between representation, generated sample and predictive probability also clarifies what an ETAS-informed generative model would still need to demonstrate.</p>
+<p><strong>Backup:</strong> Source: Plaza-Vega, Jara, Nicolis &amp; Salinas (2026), manuscript under review, submission version dated 27 April, pp.&nbsp;4–9 and 18–21. The manuscript uses non-strict magnitude-threshold notation while inherited classification code uses a strict comparison, so this schematic intentionally names the magnitude threshold without assigning an operator. The separate occupancy table on s15 has a confirmed M ≥ 5 definition. Do not attribute classification scores to GANs or LSTMs. Ranking performance varies with temporal and geographic evaluation and does not imply calibrated operational warning. The analyses split examples by mainshock date, and target windows crossing partition boundaries were not fully purged.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="s16b" class="slide level2">
+<h2>Research hypothesis: ETAS-informed generation</h2>
+<div class="learning-flow">
+<p><span class="flow-node">History available at the origin</span> → <span class="flow-node">ETAS-derived information</span> → <span class="flow-node">Conditional generator</span></p>
+</div>
+<p><strong>Possible role:</strong> supply a conditioning variable or a constraint on generated sequences.</p>
+<p><strong>Question:</strong> does that addition improve occurrence, magnitude and temporal structure under a fixed evaluation?</p>
+<div class="takeaway">
+<p>This is a proposed research direction. No hybrid results are shown here.</p>
+</div>
+<div class="small-note">
+<p>Future work discussed in the manuscript · The tutorial’s illustrative activity score is a separate feature experiment</p>
+</div>
+<aside class="notes">
+<p><strong>Main idea:</strong> ETAS-informed generation remains a hypothesis that requires its own experiment.</p>
+<p><strong>Explain:</strong> A statistical process model might supply information to condition a generator or constrain a generated sequence. This is a possible design choice, not an achieved result in the manuscript. A comparison would need the same observed history, a clearly defined output, an unchanged generative reference and evaluation of the properties the representation should preserve.</p>
+<p><strong>Transition:</strong> Today’s practical returns to a smaller question with an explicit target: occurrence within a fixed future interval.</p>
+<p><strong>Backup:</strong> The manuscript discusses ETAS and hybrid ETAS–machine-learning work as future directions on p.&nbsp;21. No empirical ETAS–GAN performance is claimed. Any ETAS fit and derived information must respect the information available at each origin. A fitted ETAS intensity is a conditional event rate; the illustrative truncated activity score in the tutorial has a different status. A future two-part neural model for occurrence and conditional magnitude also remains unvalidated.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -743,7 +749,7 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="s17" class="slide level2">
-<h2>The practical puts the same decisions in your hands</h2>
+<h2>The practical applies the same modelling decisions</h2>
 <table class="caption-top">
 <colgroup>
 <col style="width: 33%">
@@ -760,29 +766,34 @@ Practical Hybrid Workflows for Seismic Forecasting
 <tbody>
 <tr class="odd">
 <td style="text-align: left;"><strong>Spatial Statistics</strong></td>
-<td style="text-align: left;">ETAS time series and maps</td>
+<td style="text-align: left;">ETAS maps and daily maxima</td>
 <td style="text-align: left;">Intensity maximum and its macrozone</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Isidora / manuscript</strong></td>
-<td style="text-align: left;">Mainshock conditions; binned sequences</td>
-<td style="text-align: left;">Conditional sequences; aggregate targets</td>
+<td style="text-align: left;"><strong>Generative study</strong></td>
+<td style="text-align: left;">Mainshock conditions and noise</td>
+<td style="text-align: left;">A possible binned aftershock sequence</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Today</strong></td>
+<td style="text-align: left;"><strong>Classification study</strong></td>
+<td style="text-align: left;">Mainshock predictors; observed outcome labels</td>
+<td style="text-align: left;">Occurrence or exceedance probability</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Today’s practical</strong></td>
 <td style="text-align: left;">Daily catalogue channels</td>
 <td style="text-align: left;">Weekly occurrence probability</td>
 </tr>
 </tbody>
 </table>
 <div class="takeaway">
-<p>Live: LSTM and Transformer. Laboratory extensions: MLP, CNN1D, maps and graphs.</p>
+<p>Core example: LSTM. Further comparisons: Transformer and spatial models.</p>
 </div>
 <aside class="notes">
-<p><strong>Main idea:</strong> The same modeling decisions connect the research cases and our exercise.</p>
-<p><strong>Explain:</strong> Spatial Statistics contributes the representation question. The Isidora work contributes the target question. Today we build a regional weekly probability from daily catalogue channels.</p>
-<p><strong>Transition:</strong> The live route uses the guided temporal notebook: build one example, define references, train the LSTM, evaluate its probabilities and compare with a Transformer. MLP, CNN1D, maps, graphs and the ETAS-inspired feature experiment remain extensions.</p>
-<p><strong>Backup:</strong> Today’s task does not reproduce either study. Building the notebook from a blank Colab is an independent-study route. Keep the prepared results available if setup or training stalls.</p>
+<p><strong>Main idea:</strong> A representation, output and evaluation protocol connect the research cases to the practical.</p>
+<p><strong>Explain:</strong> The published ETAS study defines two learning tasks using a model-derived representation. Conditional generation produces a possible sequence. The manuscript’s classification branch derives labels from observed outcomes and estimates a probability. Today we build a regional weekly occurrence probability from three daily catalogue channels.</p>
+<p><strong>Transition:</strong> Inspect one input example, fit references and the LSTM, then read its probability scores. A brief Transformer comparison and spatial examples are available if they help the discussion.</p>
+<p><strong>Backup:</strong> Today’s task does not reproduce the research studies. The guided sequence is one example, references, LSTM fitting and evaluation. Transformer results can be read from prepared outputs. CNN maps offer a spatial contrast. Introduce Graph + LSTM through its input and output; its full fitting procedure is optional further exploration. Keep prepared results available if setup or fitting stalls.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -861,13 +872,13 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>What changes when different architectures process the same information?</p>
 </div>
 <div class="small-note">
-<p><a href="../tutorials/temporal.html">Temporal tutorial and notebook</a> · Seed 7 · MLP and CNN1D for the laboratory · Activity-score experiment as an extension</p>
+<p><a href="../tutorials/temporal.html">Temporal tutorial and notebook</a> · Seed 7 · Optional MLP and CNN1D exploration · Activity-score experiment as an extension</p>
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> The exercise changes the architecture while retaining the daily history and occurrence target.</p>
 <p><strong>Explain:</strong> First identify an example and fit simple references. Then read the LSTM definition followed immediately by compile, fit, predict and its probability scores. The Transformer reuses the same 30 × 3 tensor and evaluation.</p>
-<p><strong>Transition:</strong> Open the prepared temporal notebook.</p>
-<p><strong>Backup:</strong> Follow setup and one input window with references, LSTM training, probability evaluation and the Transformer comparison. Use prepared outputs if setup or fitting stalls. Conclude with discussion and a laboratory question. The ETAS-inspired feature experiment is an optional laboratory extension.</p>
+<p><strong>Transition:</strong> Open the prepared temporal notebook and inspect one example before fitting the references and LSTM.</p>
+<p><strong>Backup:</strong> Prioritize one input window, references, LSTM fitting and interpretation of probabilities. Use prepared outputs if setup or fitting stalls. If the discussion benefits from it, compare the Transformer using its prepared outputs. CNN maps provide a spatial contrast. Introduce Graph + LSTM through its input and output, leaving the full workflow as optional exploration.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -891,7 +902,7 @@ Practical Hybrid Workflows for Seismic Forecasting
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> Attention combines the same observed days differently from an LSTM state.</p>
-<p><strong>Explain:</strong> Show the temporal notebook’s Transformer. Each day is projected to 16 features and receives a learned 16-value day-position embedding. Two attention heads, each with key dimension 8, combine positions. Residual additions and layer normalization surround attention and the 16-to-16 feed-forward sublayer. Average pooling and a sigmoid produce the weekly probability.</p>
+<p><strong>Explain:</strong> If the pace allows a brief comparison, show the temporal notebook’s Transformer using prepared outputs. Each day is projected to 16 features and receives a learned 16-value day-position embedding. Two attention heads, each with key dimension 8, combine positions. Residual additions and layer normalization surround attention and the 16-to-16 feed-forward sublayer. Average pooling and a sigmoid produce the weekly probability.</p>
 <p><strong>Transition:</strong> Compare the probabilities under the unchanged evaluation.</p>
 <p><strong>Backup:</strong> The Transformer first projects each day and adds a learned position vector. Projection: 64 parameters, learned positions: 480, attention: 1,088, two normalizations: 64, feed-forward: 544, output: 17. Total: 2,257 trainable parameters versus 1,297 for LSTM. No dropout is applied. All input positions precede the origin, so within-history attention does not expose the target. Capacity differs between architectures. Attention weights alone do not establish causation.</p>
 <style type="text/css">
@@ -985,9 +996,35 @@ Practical Hybrid Workflows for Seismic Forecasting
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> A score difference does not explain its cause.</p>
-<p><strong>Explain:</strong> Connect the comparison to our cases. Spatial Statistics supplied a fitted representation. The Isidora work exposed difficulties in the output definition. Here, each model has one declared fit on the same history. An observed score difference describes those settings; it does not explain why the models differ.</p>
-<p><strong>Transition:</strong> Ask for one testable hypothesis and the comparison needed to investigate it, then choose an extension for the laboratory.</p>
+<p><strong>Explain:</strong> Connect the comparison to our cases. Spatial Statistics supplied a fitted representation. The generative and classification studies exposed the consequences of choosing an output definition. Here, each model has one declared fit on the same history. An observed score difference describes those settings; it does not explain why the models differ.</p>
+<p><strong>Transition:</strong> Invite questions about the result. A brief spatial example can show how retaining locations changes the input and output before closing the discussion.</p>
 <p><strong>Backup:</strong> This comparison cannot isolate representation, information availability, sample size, optimization or capacity as a cause. It does not establish that attention is unsuitable for seismicity. Validation is development evidence, and the historical test was already inspected. New claims need a documented protocol and appropriate fresh evaluation.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="g01" class="slide level2">
+<h2>Spatial extension: Graph + LSTM</h2>
+<p><img data-src="assets/research-maps/graph-lstm-overview.svg" class="focus-figure" alt="Six geographic cells form a fixed rook graph. Thirty days of three features per node pass through graph convolution within each day, a shared LSTM over time and six marginal weekly occurrence probabilities." height="450"></p>
+<div class="takeaway">
+<p>Graph connections share spatial information; the LSTM summarizes each node’s history.</p>
+</div>
+<div class="small-note">
+<p>Input/output introduction · <a href="../tutorials/graphs.html">Complete graph example for optional exploration</a></p>
+</div>
+<aside class="notes">
+<p><strong>Main idea:</strong> Graph + LSTM keeps the same six cells as the map example and separates spatial from temporal operations.</p>
+<p><strong>Explain:</strong> Point to the six geographic cells, which are nodes rather than individual earthquakes. Each node contains 30 days of three catalogue features. Within a day, graph convolution combines features over fixed rook adjacency. A shared LSTM processes the sequence for each node, and a sigmoid head produces one weekly occurrence probability per cell. Several cells can be positive in the same week, so these marginal probabilities need not sum to one.</p>
+<p><strong>Transition:</strong> These examples suggest possible research questions about representation, available information and evaluation, rather than a universal ranking of architectures.</p>
+<p><strong>Backup:</strong> This slide introduces input and output. The complete Graph + LSTM notebook is optional further exploration. Geographic adjacency is a modelling choice and does not establish physical triggering. The implementation includes the focal node in the neighborhood average and learns a separate self-transformation. Compare identity adjacency under unchanged inputs and protocol to investigate the role of cross-node messages. Map and graph scores concern the same cell-level target and should not be ranked against regional occurrence scores.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1005,18 +1042,18 @@ Practical Hybrid Workflows for Seismic Forecasting
 <ol type="1">
 <li>What information did our daily channels preserve or discard?</li>
 <li>What did the LSTM and Transformer comparison establish?</li>
-<li>Which extension would you test next: maps, graphs or an activity score?</li>
+<li>Which research question would you explore next with maps, graphs or an activity score?</li>
 </ol>
 <div class="takeaway">
 <p>Deep learning offers flexible tools. Their scientific value depends on the question and the evidence.</p>
 </div>
 <div class="small-note">
-<p><a href="../homework.html">Homework: guided reading or a controlled extension</a> · Build on today’s LSTM and Transformer comparison</p>
+<p><a href="../homework.html">Further exploration: optional reading and experiments</a> · LSTM and Transformer resources</p>
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> Scientific usefulness depends on the question and the evidence supporting the model.</p>
-<p><strong>Explain:</strong> Invite two brief interpretations of the fixed-input architecture comparison. Distinguish the observed loss from a proposed explanation. Ask what spatial information was lost when the catalogue was pooled over the region.</p>
-<p><strong>Transition:</strong> Choose a continuation: maps, graphs, recurrent-state size or the ETAS-inspired feature experiment. The homework guide sets out reading and controlled experiments for the laboratory.</p>
+<p><strong>Explain:</strong> Invite questions and interpretations of the fixed-input architecture comparison. Distinguish the observed loss from a proposed explanation. Discuss what spatial information was lost when the catalogue was pooled over the region.</p>
+<p><strong>Transition:</strong> For anyone interested in continuing independently, Further exploration offers references and optional comparisons involving maps, graphs, recurrent-state size or the ETAS-inspired feature experiment.</p>
 <p><strong>Backup:</strong> Keep baselines, a stated hypothesis and the evaluation protocol. Comparing 8, 16 and 32 recurrent units examines capacity while holding the other settings fixed. An ETAS-inspired feature changes the representation while retaining the LSTM. Participants with less Python experience can use prepared outputs and guided reading.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -1206,10 +1243,10 @@ Practical Hybrid Workflows for Seismic Forecasting
 <ul>
 <li><strong>Seismic applications:</strong> <a href="https://doi.org/10.1126/sciadv.1700578">ConvNetQuake</a> · <a href="https://doi.org/10.1029/2023GL103909">RECAST</a>.</li>
 <li><strong>Our published case:</strong> <a href="https://doi.org/10.1016/j.spasta.2020.100442">Nicolis, Plaza &amp; Salas (2021)</a>.</li>
-<li><strong>Generative case:</strong> Jara Muñoz (2025), thesis; Plaza-Vega, Jara, Nicolis &amp; Salinas (2026), manuscript under review.</li>
+<li><strong>Aftershock studies:</strong> Jara Muñoz (2025), Statistical Engineering undergraduate thesis, Universidad de Santiago de Chile; Plaza-Vega, Jara, Nicolis &amp; Salinas (2026), manuscript under review.</li>
 <li><strong>Attention context and further reading:</strong> <a href="https://doi.org/10.1016/j.eswa.2025.127186">Delgado et al.&nbsp;(2025)</a> · <a href="https://doi.org/10.1109/CHILECON66915.2025.11476035">Farfán et al.&nbsp;(2025)</a>.</li>
 <li><strong>Diagram style:</strong> <a href="https://franplaza.github.io/courses/deep_learning/">author’s DL course, Units 2–5</a> · Transformer schematic matches the current temporal tutorial.</li>
-<li><strong>Materials:</strong> <a href="../practical.html">practical</a> · <a href="../homework.html">homework</a> · <a href="../references.html">full references</a>.</li>
+<li><strong>Materials:</strong> <a href="../practical.html">practical</a> · <a href="../homework.html">Further exploration</a> · <a href="../references.html">full references</a>.</li>
 </ul>
 <aside class="notes">
 <p>The context papers address distinct learning tasks and do not provide a ranking of architectures. Plaza-Vega, Jara, Nicolis &amp; Salinas (2026) is a manuscript under review. The LSTM teaching diagram follows the course adaptation of the many-to-one diagram attributed to Raschka (2019). The references page provides foundational deep learning and data/software sources.</p>

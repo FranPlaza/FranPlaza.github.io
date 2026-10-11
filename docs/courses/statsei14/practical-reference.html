@@ -143,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./homework.html"> 
-<span class="menu-text">Homework</span></a>
+<span class="menu-text">Further exploration</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./references.html"> 
@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Study how adding an activity feature changes an LSTM under a fixed protocol. This laboratory activity includes its own reference forecasts and recorded results. For the guided LSTM and Transformer session, open the <a href="./practical.html">practical guide</a>.</p>
+<p>Study how adding an activity feature changes an LSTM under a fixed protocol. This optional exploration includes its own reference forecasts and recorded results. For the guided LSTM and Transformer session, open the <a href="./practical.html">practical guide</a>.</p>
 <div class="actions">
 <p><a href="https://colab.research.google.com/github/FranPlaza/FranPlaza.github.io/blob/main/courses/statsei14/downloads/workshop.ipynb" class="primary">Open in Colab</a> <a href="downloads/workshop.ipynb" download="workshop.ipynb">Download notebook</a> <a href="downloads/course-pack.zip">Download course pack</a></p>
 </div>
@@ -304,9 +304,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Add the ETAS-inspired score to the feature list, update the model input and retrain. Keep the target, splits, seed and hyperparameters fixed. Compare validation Brier score and log loss with the catalogue-only model.</p>
 <p><strong>After training:</strong> compare the result with your hypothesis. Did the same channel help logistic regression? Record what changed, whether the difference is small, and why one run cannot establish general superiority. The index is an input representation with illustrative parameters, not a fitted ETAS rate.</p>
 </section>
-<section id="continue-as-homework" class="level2">
-<h2 class="anchored" data-anchor-id="continue-as-homework">Continue as homework</h2>
-<p>Save the optional 14-versus-30-day comparison for after the session. Rebuild the windows, inspect a boundary example and compare only on validation while keeping the seven-day forecasting question fixed. The <a href="./homework.html">homework guide</a> provides the follow-up route. This experiment’s test results have already been inspected; that period is no longer an untouched test for selecting a new configuration.</p>
+<section id="further-exploration" class="level2">
+<h2 class="anchored" data-anchor-id="further-exploration">Further exploration</h2>
+<p>If you wish to explore the effect of history length, try the optional 14-versus-30-day comparison. Rebuild the windows, inspect a boundary example and compare only on validation while keeping the seven-day forecasting question fixed. <a href="./homework.html">Further exploration</a> offers related research questions. This experiment’s test results have already been inspected; that period is no longer an untouched test for selecting a new configuration.</p>
 </section>
 <section id="reading-the-output" class="level2">
 <h2 class="anchored" data-anchor-id="reading-the-output">Reading the output</h2>
@@ -430,7 +430,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="what-remains-a-hypothesis" class="level3">
 <h3 class="anchored" data-anchor-id="what-remains-a-hypothesis">What remains a hypothesis</h3>
 <p>The comparison does not identify why the Transformer performed differently. Representation, available information, inductive bias, training budget and the chosen target are possible explanations to test. Neither the complexity of seismicity nor the model’s flexibility is a demonstrated cause of these scores.</p>
-<p>Choose one question for discussion: what information did daily regional aggregation remove, what does the architecture assume about that representation, or would a different scientific target require a different output and evaluation? A follow-up experiment should change one stated element and use training and validation for decisions.</p>
+<p>Possible questions for discussion include: what information did daily regional aggregation remove, what does the architecture assume about that representation, or would a different scientific target require a different output and evaluation? A follow-up experiment should change one stated element and use training and validation for decisions.</p>
 </section>
 </section>
 <section id="catalogue-revisions-and-validation" class="level2">
@@ -440,7 +440,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="discuss-the-evidence" class="level2">
 <h2 class="anchored" data-anchor-id="discuss-the-evidence">Discuss the evidence</h2>
 <p>Return to three questions: <strong>what did we represent, what did we ask the model to learn, and what did the evidence support?</strong> Contrast our weekly probability with the intensity summaries and aftershock sequences in the research presentation. Their targets require different outputs, losses and evaluations. Then distinguish the observed Transformer comparison from a possible explanation that a future experiment could test.</p>
-<p>Continue with the <a href="./homework.html">homework</a> after the session. Any new region requires a matching catalogue and renewed checks of completeness, sample sizes and magnitude types. A future two-part model could estimate occurrence and magnitude conditional on occurrence separately.</p>
+<p>For optional reading and research questions, see <a href="./homework.html">Further exploration</a>. Any new region requires a matching catalogue and renewed checks of completeness, sample sizes and magnitude types. A future two-part model could estimate occurrence and magnitude conditional on occurrence separately.</p>
 
 
 </section>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600" role="img" aria-labelledby="title desc"><title id="title">Conditional generation of aftershock sequences</title><desc id="desc">Mainshock longitude, latitude, magnitude and depth combine with random noise to condition a generator. Conditional GAN, WGAN-GP and TGAN are explored in the undergraduate thesis. The output is a possible sequence represented by 224 values over fourteen days and a hundred-kilometre neighborhood. The sequence here is schematic.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="context-stroke" stroke-width="1.6"/></marker></defs><rect width="1600" height="600" fill="white"/>
+<rect x="110" y="42" width="250" height="104" rx="18" fill="#F0ECFA" stroke="#756CC7" stroke-width="3"/>
+<text x="235" y="88" font-family="Arial, Helvetica, sans-serif" font-size="33" font-weight="700" text-anchor="middle" fill="#756CC7">Random noise</text>
+<text x="235" y="131" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="600" text-anchor="middle" fill="#756CC7">z</text>
+<path d="M375 94 L840 94 L840 174" fill="none" stroke="#756CC7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="30" y="200" width="430" height="205" rx="18" fill="#EDF3FB" stroke="#5A8ECE" stroke-width="3"/>
+<text x="245" y="248" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="middle" fill="#5A8ECE">Mainshock conditions</text>
+<text x="245" y="302" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="400" text-anchor="middle" fill="#263238">Longitude and latitude</text>
+<text x="245" y="354" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="400" text-anchor="middle" fill="#263238">Magnitude and depth</text>
+<path d="M475 300 L645 300" fill="none" stroke="#5A8ECE" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="660" y="190" width="360" height="220" rx="18" fill="#E6F5F3" stroke="#00A499" stroke-width="3"/>
+<text x="840" y="245" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="middle" fill="#00A499">Generator</text>
+<text x="840" y="301" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="400" text-anchor="middle" fill="#263238">cGAN / WGAN-GP</text>
+<text x="840" y="353" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="400" text-anchor="middle" fill="#263238">TGAN</text>
+<path d="M1035 300 L1145 300" fill="none" stroke="#00A499" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="1160" y="190" width="410" height="220" rx="18" fill="#FFF0E4" stroke="#EA7600" stroke-width="3"/>
+<text x="1365" y="245" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="middle" fill="#EA7600">Generated sequence</text>
+<text x="1365" y="299" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="600" text-anchor="middle" fill="#EA7600">224 values</text>
+<text x="1365" y="352" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="400" text-anchor="middle" fill="#263238">A possible realization</text>
+<text x="800" y="482" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" text-anchor="middle" fill="#263238">Same mainshock conditions, different noise: different possible sequences</text>
+<text x="800" y="536" font-family="Arial, Helvetica, sans-serif" font-size="33" font-weight="400" text-anchor="middle" fill="#607D8B">14 days · 90-minute intervals · 100 km around the mainshock</text>
+<text x="800" y="583" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="400" text-anchor="middle" fill="#607D8B">Each interval stores a maximum magnitude, with 2.5 marking absence.</text>
+</svg>
