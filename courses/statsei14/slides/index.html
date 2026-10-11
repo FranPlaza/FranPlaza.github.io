@@ -244,9 +244,9 @@ Practical Hybrid Workflows for Seismic Forecasting
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> Deep learning connects a representation to a scientific task.</p>
-<p><strong>Explain:</strong> We will connect concepts and research cases with guided LSTM modelling, a Transformer comparison and discussion. ETAS supplies one way to construct a representation. The LSTM is the core practical example; additional comparisons can use prepared outputs.</p>
+<p><strong>Explain:</strong> We will connect concepts and research cases with guided LSTM modelling, discussion and an optional Transformer comparison. ETAS supplies one way to construct a representation. The LSTM is the core practical example; additional comparisons can use prepared outputs.</p>
 <p><strong>Transition:</strong> How do we turn catalogue history into a probability forecast, and what changes when we change the model?</p>
-<p><strong>Backup:</strong> Follow the presentation with the temporal notebook, the Transformer comparison and discussion. Adjust the pace to the group.</p>
+<p><strong>Backup:</strong> Follow the presentation with the temporal notebook and discussion; use the Transformer comparison if it helps. Adjust the pace to the group.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -455,7 +455,7 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p><strong>Main idea:</strong> An LSTM summarizes a sequence through a learned state.</p>
 <p><strong>Explain:</strong> Each blue box contains three daily catalogue features: log(1 + count), maximum magnitude excess above 4.5 and an event indicator. Thirty days form one 30 × 3 input. The LSTM processes that ordered history and builds a final state with 16 values. A Dense layer with a sigmoid converts that state into one probability: at least one catalogue event with M ≥ 5 in the next seven days. Distinguish the 30 observed days, 3 measured channels, 16 learned state values and 1 output.</p>
 <p><strong>Transition:</strong> This is the architecture we will explain in detail in Colab. A generative task asks for a richer output than one probability.</p>
-<p><strong>Backup:</strong> Today’s example uses catalogue events with M ≥ 4.5 to construct the daily features. An empty day has zero count, zero magnitude excess and indicator zero. An event exactly at M = 4.5 has zero excess but indicator one. The published temporal case uses a different target. Gates and shared weights remain useful background. We will compare recurrence with attention on the same daily tensor.</p>
+<p><strong>Backup:</strong> Today’s example uses catalogue events with M ≥ 4.5 to construct the daily features. An empty day has zero count, zero magnitude excess and indicator zero. An event exactly at M = 4.5 has zero excess but indicator one. The published temporal case uses a different target. Gates and shared weights remain useful background. An optional comparison contrasts recurrence and attention on the same daily tensor.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -550,23 +550,72 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="s11" class="slide level2">
-<h2>LSTM regression of ETAS-derived intensity</h2>
-<div class="learning-flow">
-<p><span class="flow-node">30 daily spatial maxima</span> → <span class="flow-node">LSTM</span> → <span class="flow-node">Next-day maximum intensity</span></p>
-</div>
-<p><strong>One daily value:</strong> the maximum estimated ETAS intensity across the map.</p>
-<p><strong>Input:</strong> 30 consecutive values. <strong>Target:</strong> the following day’s value.</p>
+<h2>A map maximum becomes one value in the LSTM input</h2>
+<p><img data-src="assets/visual-evidence/map-to-thirty-maxima.svg" class="focus-figure" alt="A schematic daily ETAS intensity map is reduced to its spatial maximum. Thirty successive daily maxima enter an LSTM, whose target is the next day's maximum. The grid and relative values are teaching illustrations." height="470"></p>
 <div class="takeaway">
-<p>This LSTM predicts a continuous intensity summary.</p>
+<p>30 daily spatial maxima → LSTM → next-day maximum intensity</p>
 </div>
 <div class="small-note">
-<p>Nicolis, Plaza &amp; Salas (2021) · Regression of a model-derived target</p>
+<p>Nicolis, Plaza &amp; Salas (2021) · Original published regression task · Diagram illustrates the operation, not measured values</p>
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> The published LSTM performs regression on a sequence of ETAS intensity maxima.</p>
-<p><strong>Explain:</strong> Start with the common map sequence. Reduce each map to its largest intensity value. Thirty successive maxima form one input history, and the next day’s maximum is the regression target. The target is a model-derived rate summary. In today’s practical the LSTM receives catalogue channels and predicts a weekly occurrence probability, so the architecture is familiar but the target and output layer have a different meaning.</p>
-<p><strong>Transition:</strong> The CNN branch keeps the maps and asks a location-classification question about the same maximum.</p>
-<p><strong>Backup:</strong> The paper reports test R-squared of about 0.66 at the threshold-six setting. At threshold five, ETAS has lower MSE, MAE and RMSE. The paper does not establish that ETAS estimation excluded all test information. These qualifications prevent a claim of uniform neural superiority. Source: Nicolis, Plaza &amp; Salas (2021), https://doi.org/10.1016/j.spasta.2020.100442 .</p>
+<p><strong>Explain:</strong> Find the largest value in one daily map. Repeat for 30 days to create one input vector. The target is the maximum of the following day’s map. The diagram’s heights and highlighted cell are constructed to explain this operation; they do not reproduce a particular date or forecast. This is a model-derived continuous target. Today’s practical instead uses catalogue channels and a weekly occurrence probability.</p>
+<p><strong>Transition:</strong> The original published test panel shows what the regression output looks like.</p>
+<p><strong>Backup:</strong> Source: Nicolis, Plaza &amp; Salas (2021), pp.&nbsp;8–10, https://doi.org/10.1016/j.spasta.2020.100442 . The temporal ETAS fit uses area-level parameters across 1° × 1° cells. A spatial maximum retains one value and discards the location and the rest of the field. No empirical 30-day sequence is claimed in this constructed illustration.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="s11r" class="slide level2">
+<h2>Published LSTM result: an ETAS-derived test target</h2>
+<div class="columns">
+<div class="column" style="width:65%;">
+<p><img data-src="assets/visual-evidence/sources/nicolis2021-fig5b-lstm-test.png" class="focus-figure" alt="Original published Figure 5b: observed ETAS-derived test target and LSTM predictions for the magnitude-six setting. The original axis and plotting scale are preserved." height="445"></p>
+</div><div class="column" style="width:35%;">
+<p><strong>M ≥ 6 setting · Table 3</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Model</th>
+<th style="text-align: right;">RMSE</th>
+<th style="text-align: right;">R²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ETAS</td>
+<td style="text-align: right;">0.5475</td>
+<td style="text-align: right;">0.6241</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LSTM</td>
+<td style="text-align: right;">0.5296</td>
+<td style="text-align: right;">0.6561</td>
+</tr>
+</tbody>
+</table>
+<p>Lower error and higher R² for this reported comparison.</p>
+</div></div>
+<div class="takeaway">
+<p>The network tracks a model-derived target; this is not a direct event-probability test.</p>
+</div>
+<div class="small-note">
+<p>Nicolis, Plaza &amp; Salas (2021), Figure 5(b) and Table 3 · Original plotting scale retained</p>
+</div>
+<aside class="notes">
+<p><strong>Main idea:</strong> The original result shows a fitted sequence and its reported test errors for a specific published setting.</p>
+<p><strong>Explain:</strong> The green curve labelled Observed in the original panel is the ETAS-derived target. The blue curve is the LSTM prediction. Read the curves before the table: the network follows much of the target’s variation, and its reported RMSE is slightly lower than the ETAS comparison in this magnitude-six setting. R² is a regression measure, not a probability calibration result.</p>
+<p><strong>Transition:</strong> The CNN retains the maps and predicts a location class for the next maximum.</p>
+<p><strong>Backup:</strong> Source: Nicolis, Plaza &amp; Salas (2021), Figure 5(b), p.&nbsp;9, and Table 3, p.&nbsp;10. Exact M ≥ 6 values: LSTM MSE 0.2804, MAE 0.2136, RMSE 0.5296 and R² 0.6561; ETAS MSE 0.2998, MAE 0.3484, RMSE 0.5475 and R² 0.6241. The source panel’s vertical scale is ambiguous; retain it and do not reinterpret negative plotted values as raw conditional rates. Do not infer dates or associate the panel with the preceding constructed example. At threshold five, ETAS has lower MSE, MAE and RMSE. The paper does not establish that ETAS estimation excluded all test information. These qualifications prevent a claim of uniform neural superiority.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -580,24 +629,19 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="s12" class="slide level2">
-<h2>CNN classification of six macrozones</h2>
-<div class="learning-flow">
-<p><span class="flow-node">30 daily ETAS maps</span> → <span class="flow-node">CNN</span> → <span class="flow-node">Six macrozone probabilities</span></p>
-</div>
-<div class="big-question">
-<p>Which latitudinal macrozone contains the next day’s maximum estimated intensity?</p>
-</div>
+<h2>CNN: locate the next map maximum in one of six macrozones</h2>
+<p><img data-src="assets/visual-evidence/cnn-six-macrozones.svg" class="focus-figure" alt="Six latitudinal macrozones reconstructed from the published Table 2 over geographic context. A constructed maximum in zone three and illustrative six-class probabilities show the CNN target. These are teaching values, not empirical predictions." height="480"></p>
 <div class="takeaway">
-<p>One of six location classes describes the maximum of the ETAS map.</p>
+<p>The target is one macrozone containing the next day’s maximum ETAS intensity.</p>
 </div>
 <div class="small-note">
-<p>Nicolis, Plaza &amp; Salas (2021) · The macrozones locate a map maximum, not an exact epicentre</p>
+<p>Nicolis, Plaza &amp; Salas (2021), Table 2 · Natural Earth geography · Marker and probabilities are illustrative</p>
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> The CNN classifies the location of a maximum within six predefined latitudinal macrozones.</p>
-<p><strong>Explain:</strong> Keep all cells from each daily intensity map instead of retaining only its maximum value. A sequence of 30 maps enters the CNN. The output gives probabilities for the six macrozones, and the target identifies the macrozone of the next day’s map maximum. Contrast this with the LSTM branch: the LSTM predicts how large the maximum will be, while the CNN predicts which macrozone contains it.</p>
-<p><strong>Transition:</strong> A generative task asks for an entire possible aftershock sequence, which requires another definition of the output.</p>
-<p><strong>Backup:</strong> Source: Nicolis, Plaza &amp; Salas (2021), pp.&nbsp;8–9, https://doi.org/10.1016/j.spasta.2020.100442 . These six mutually exclusive macrozone classes differ from the six marginal cell-occurrence targets in today’s optional map and graph notebooks. They do not identify the exact next epicentre, earthquake magnitude or shaking intensity.</p>
+<p><strong>Explain:</strong> Keep the complete spatial map on each of 30 days. The CNN outputs six probabilities that sum to one. The next day’s map supplies one target class: the macrozone containing its maximum. In the constructed example, that maximum is in zone 3. The displayed probability vector is chosen for teaching and is not a fitted prediction. The LSTM asks how large the maximum will be; the CNN asks which macrozone contains it.</p>
+<p><strong>Transition:</strong> A generative task asks for an entire possible aftershock sequence, which needs a different output representation.</p>
+<p><strong>Backup:</strong> Source: Nicolis, Plaza &amp; Salas (2021), Table 2, p.&nbsp;9, https://doi.org/10.1016/j.spasta.2020.100442 . The geographic figure is reconstructed from the six printed latitudinal bounds, numbered from south to north, and Natural Earth geometry. It is not a source-paper forecast map. The source Table 2 has a 0.01° discrepancy between the fifth and sixth intervals, retained in the diagram data. These six mutually exclusive classes differ from the six marginal cell-occurrence targets in today’s optional map and graph notebooks. They do not identify the exact next epicentre, earthquake magnitude or shaking intensity.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -612,18 +656,18 @@ Practical Hybrid Workflows for Seismic Forecasting
 </section>
 <section id="s13" class="slide level2">
 <h2>Generative exploration of aftershock sequences</h2>
-<p><img data-src="assets/research-maps/thesis-conditional-generation.svg" class="focus-figure" alt="Mainshock longitude, latitude, magnitude and depth combine with noise to condition cGAN, WGAN-GP or TGAN. Each produces a possible 224-value aftershock sequence over fourteen days within one hundred kilometres." height="450"></p>
+<p><img data-src="assets/visual-evidence/conditional-sequence-visible.svg" class="focus-figure" alt="Mainshock conditions and random noise enter a conditional generator. A constructed 224-value sequence makes the output representation visible: 90-minute intervals over fourteen days, absence marker 2.5 and a maximum of 5.1. These values are not observations or a fitted generator output." height="465"></p>
 <div class="takeaway">
-<p>The output is a possible sequence conditioned on a mainshock.</p>
+<p>The intended output is a possible sequence conditioned on a mainshock.</p>
 </div>
 <div class="small-note">
 <p>Jara Muñoz (2025) · Undergraduate thesis in Statistical Engineering · Universidad de Santiago de Chile</p>
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> The undergraduate thesis explores conditional generation of possible aftershock sequences.</p>
-<p><strong>Explain:</strong> Distinguish the mainshock conditions from the random input. Longitude, latitude, magnitude and depth describe the mainshock. Noise allows different possible sequences under the same conditions. The thesis explores conditional GAN, WGAN-GP and TGAN, an attention-based generator. The representation has 224 intervals of 90 minutes over 14 days within 100 km of the mainshock. An occupied interval stores its maximum magnitude and 2.5 marks absence.</p>
-<p><strong>Transition:</strong> This representation combines occurrence and magnitude, so evaluating generated sequences requires more than curve-level errors.</p>
-<p><strong>Backup:</strong> Isidora Jara Muñoz (2025), undergraduate thesis leading to the degree of Ingeniera Estadística, Universidad de Santiago de Chile, title page and pp.&nbsp;46–51. The thesis stores longitude using a 0–360 convention. Preserve the distinction between TGAN in the thesis and GANT in the later manuscript: their evaluations are separate. WGAN-GP changes the adversarial objective and regularization, while attention changes information exchange across positions. Neither the thesis nor the manuscript establishes an empirically validated ETAS–GAN combination.</p>
+<p><strong>Explain:</strong> Mainshock location, magnitude and depth describe the conditions. Noise permits different generated outcomes under those conditions. The thesis explores cGAN, WGAN-GP and TGAN. The output representation contains 224 intervals of 90 minutes over 14 days within 100 km. An occupied interval stores its maximum magnitude; 2.5 marks absence. The visible sequence is constructed only to make that encoding clear. It is neither an observed catalogue sequence nor the output of a fitted generator.</p>
+<p><strong>Transition:</strong> An original manuscript panel lets us compare a real observed reference and a generated sequence in this representation.</p>
+<p><strong>Backup:</strong> Thesis source: Jara Muñoz (2025), title page and pp.&nbsp;46–51 (printed pp.&nbsp;40–45). Mainshock longitude, latitude, magnitude and depth plus derived longitude on a 0–360 scale form five conditioning attributes. The latter is derived, not a fifth independent physical measurement. TGAN is an attention-based generator. The thesis and the later manuscript are separate versions with different evaluations. The shared constructed example has maximum 5.1; it will make binary labels transparent later without representing a fitted result.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -637,23 +681,28 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="s14" class="slide level2">
-<h2>One sequence mixes absence and magnitude</h2>
-<p><strong>Representation in the manuscript</strong></p>
-<p>14 days → 224 intervals of 90 minutes → maximum magnitude per occupied interval</p>
-<div class="bin-sequence">
-<p><span class="empty-bin">2.5</span> <span class="empty-bin">2.5</span> <span class="event-bin">4.1</span> <span class="empty-bin">2.5</span> <span class="event-bin">3.4</span> <span class="empty-bin">2.5</span> <span class="empty-bin">2.5</span> <span class="event-bin">5.0</span></p>
+<h2>An observed and generated sequence: one manuscript case</h2>
+<div class="columns">
+<div class="column" style="width:38%;">
+<p><strong>GANT · case B</strong></p>
+<p><span style="color:#2F3E46">━━ Observed reference</span></p>
+<p><span style="color:#E76F51">━━ Generated sequence</span></p>
+<p>Vertical axis: interval maximum magnitude (Mw).</p>
+<p><strong>2.5 marks absence.</strong></p>
+</div><div class="column" style="width:62%;">
+<p><img data-src="assets/visual-evidence/sources/asmbi-manuscript-fig4-gant-case-b.png" class="focus-figure" alt="Original manuscript Figure 4, GANT case B from the primary random-split experiment. The observed curve is dark and the generated curve is coral; the horizontal axis covers 336 hours. The original case annotation is PI minus 136 percent." height="515"></p>
+</div></div>
+<div class="takeaway">
+<p>Compare occurrence, peak magnitude and timing, as well as the shape of the curve.</p>
 </div>
 <div class="small-note">
-<p>Schematic values. Gray: absence marker. Orange: maximum magnitude in an occupied interval.</p>
-</div>
-<div class="takeaway">
-<p>“No recorded event” and “event magnitude” are different outcomes.</p>
+<p>2026 manuscript under review, Figure 4 · One case from the primary random split · Original PI = −136% for this case</p>
 </div>
 <aside class="notes">
-<p><strong>Main idea:</strong> This sequence representation combines absence with magnitude.</p>
-<p><strong>Explain:</strong> Fourteen days become 224 intervals of 90 minutes. The value 2.5 marks absence, while an occupied bin stores its maximum magnitude. Ask which information a maximum discards.</p>
-<p><strong>Transition:</strong> We therefore need to check event occupancy as well as numeric sequence errors.</p>
-<p><strong>Backup:</strong> The eight displayed values are schematic. Empty-bin 2.5 is not an observed magnitude. Occupied intervals are not the total number of aftershocks because a bin can contain multiple events.</p>
+<p><strong>Main idea:</strong> A visible pair exposes the properties that a sequence-level score can conceal.</p>
+<p><strong>Explain:</strong> This is an original observed/generated pair from the manuscript, separate from the preceding constructed example. Both curves share 224 intervals over 336 hours. Identify the long absence periods, the observed isolated peak and the generated activity. An occupied interval stores a maximum magnitude, not an event count. The dark curve is the observed reference; the coral curve is GANT output. Read the original PI annotation as a measure for this one case.</p>
+<p><strong>Transition:</strong> To assess whether the problem persists beyond this example, inspect aggregate occupancy in the separate temporal evaluation.</p>
+<p><strong>Backup:</strong> Source: Plaza-Vega, Jara, Nicolis &amp; Salinas (2026), manuscript under review, Figure 4, lower-right panel. Case B belongs to the primary random-split experiment. Its PI is −136%, using the original mean-reference denominator. It is neither the random-split aggregate score nor the temporal mean-baseline skill of −13.8%. The cropped panel omits the shared y-axis and legend, which are explicitly supplied on this slide. Empty-bin 2.5 is not an observed magnitude; occupied bins discard within-bin multiplicity. Do not merge this case with the subsequent blocked evaluation or the thesis experiments.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -667,19 +716,19 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="s15" class="slide level2">
-<h2>Generated sequences distort event occupancy</h2>
-<p><img data-src="../results/reference-run/figures/generative-occupancy.png" class="focus-figure" alt="Temporal GANT evaluation from the manuscript: generated sequences occupy too many intervals overall and too few of the larger-magnitude intervals." height="450"></p>
+<h2>GANT temporal evaluation: too many occupied intervals</h2>
+<p><img data-src="../results/reference-run/figures/generative-occupancy.png" class="focus-figure" alt="Temporal GANT evaluation: occupied intervals are 9.27 percent observed versus 77.43 percent generated. Intervals with magnitude at least five are 1.22 percent observed versus 0.40 percent generated." height="450"></p>
 <div class="takeaway">
-<p>Assess which properties of the observed sequences are reproduced.</p>
+<p>GANT overproduces occupied intervals while underrepresenting intervals with M ≥ 5.</p>
 </div>
 <div class="small-note">
-<p>2026 manuscript under review · Occupied intervals, not total events · Source-case results</p>
+<p>2026 manuscript under review · Temporal evaluation · Percentages of intervals, not total event counts</p>
 </div>
 <aside class="notes">
-<p><strong>Main idea:</strong> Evaluation must test the properties the representation is intended to preserve.</p>
-<p><strong>Explain:</strong> The manuscript’s temporal evaluation shows too many occupied intervals overall and too few in the larger-magnitude subset. A curve-level fit measure cannot replace these checks.</p>
-<p><strong>Transition:</strong> These findings motivated closer attention to the target, including aggregate occurrence and exceedance outcomes.</p>
-<p><strong>Backup:</strong> In the manuscript’s temporal GANT evaluation, an occupied interval has a value &gt;2.5. Overall occupancy is 9.27% observed and 77.43% generated. Occupancy with M ≥ 5 is 1.22% observed and 0.40% generated. These proportions describe occupied intervals, whose stored maxima discard event multiplicity. Temporal GANT mean-baseline skill is −13.8%. Original PI uses a mean reference, not last-observation persistence. Keep thesis, illustrative and blocked results separate. These findings do not establish failure of all generative models.</p>
+<p><strong>Main idea:</strong> This GANT configuration does not reproduce two important occupancy properties in the temporal evaluation.</p>
+<p><strong>Explain:</strong> Read the bars as proportions of all intervals. The generated representation contains far more intervals above the absence marker: 77.43% versus 9.27%. Yet intervals reaching M ≥ 5 are less frequent: 0.40% versus 1.22%. These are distinct errors. A single curve-level loss does not reveal both, and the findings concern this model, representation and evaluation.</p>
+<p><strong>Transition:</strong> A simpler scientific target can ask whether the observed sequence contains at least one event above a specified magnitude threshold.</p>
+<p><strong>Backup:</strong> In the manuscript’s temporal GANT evaluation, an occupied interval has a value &gt;2.5. Overall occupancy is 9.27% observed and 77.43% generated. Occupancy with M ≥ 5 is 1.22% observed and 0.40% generated. These proportions describe occupied intervals, whose stored maxima discard event multiplicity. Temporal GANT mean-baseline skill is −13.8%. Original PI uses a mean reference, not last-observation persistence. Keep thesis, illustrative cases and blocked results separate. These findings do not establish failure of all generative models.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -694,18 +743,72 @@ Practical Hybrid Workflows for Seismic Forecasting
 </section>
 <section id="s16" class="slide level2">
 <h2>Observed sequences define magnitude-threshold labels</h2>
-<p><img data-src="assets/research-maps/observed-sequence-classification.svg" class="focus-figure" alt="Observed aftershock sequences define binary occurrence or magnitude-threshold labels. These labels supervise classifiers using mainshock features to estimate the probability of at least one qualifying aftershock in fourteen days within one hundred kilometres. GAN outputs are not classifier inputs." height="465"></p>
+<p><img data-src="assets/visual-evidence/sequence-to-binary-labels.svg" class="focus-figure" alt="Constructed observed-sequence illustration with maximum 5.1: the threshold-five label is one and the threshold-six label is zero. Actual observed sequences, not GAN outputs, supply training labels in the classification study." height="440"></p>
 <div class="takeaway">
-<p>The classification target comes from observed aftershock outcomes.</p>
+<p>Mainshock features → classifier → probability of at least one qualifying aftershock</p>
 </div>
 <div class="small-note">
-<p>Plaza-Vega, Jara, Nicolis &amp; Salinas (2026), manuscript under review · 14 days and 100 km</p>
+<p>Manuscript under review · 14 days, 100 km · Observed outcomes define labels; the displayed sequence is constructed</p>
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> The manuscript’s classification branch uses observed sequences to define a probability target.</p>
-<p><strong>Explain:</strong> Follow the lower branch first. An observed aftershock sequence supplies a binary occurrence or magnitude-exceedance label over 14 days and within 100 km. These labels supervise classifiers whose predictors describe the mainshock. Logistic regression, Random Forest, Gradient Boosting and XGBoost estimate the probability of at least one qualifying aftershock. The generated GAN sequence is not the classifier’s input. This is a reformulation of the scientific target, rather than a demonstration that the generator already produces calibrated exceedance probabilities.</p>
-<p><strong>Transition:</strong> The distinction between representation, generated sample and predictive probability also clarifies what an ETAS-informed generative model would still need to demonstrate.</p>
-<p><strong>Backup:</strong> Source: Plaza-Vega, Jara, Nicolis &amp; Salinas (2026), manuscript under review, submission version dated 27 April, pp.&nbsp;4–9 and 18–21. The manuscript uses non-strict magnitude-threshold notation while inherited classification code uses a strict comparison, so this schematic intentionally names the magnitude threshold without assigning an operator. The separate occupancy table on s15 has a confirmed M ≥ 5 definition. Do not attribute classification scores to GANs or LSTMs. Ranking performance varies with temporal and geographic evaluation and does not imply calibrated operational warning. The analyses split examples by mainshock date, and target windows crossing partition boundaries were not fully purged.</p>
+<p><strong>Explain:</strong> Use the same constructed sequence as a transparent illustration of an observed-outcome representation. Its maximum is 5.1: a threshold of five gives label one, while a threshold of six gives zero. In the actual study, observed catalogue sequences supply these labels over 14 days within 100 km. Mainshock predictors enter logistic regression, Random Forest, Gradient Boosting or XGBoost, which estimate a probability. Generated GAN sequences are not classifier inputs. This is binary classification at each threshold, not multiclass magnitude prediction.</p>
+<p><strong>Transition:</strong> The manuscript’s classification results show why the evaluation scheme also changes the conclusion.</p>
+<p><strong>Backup:</strong> Source: Plaza-Vega, Jara, Nicolis &amp; Salinas (2026), manuscript under review, submission version dated 27 April, pp.&nbsp;4–9 and 18–21. The manuscript uses non-strict magnitude-threshold notation while inherited classification code uses a strict comparison. The constructed maximum 5.1 yields the displayed labels under either convention and therefore does not resolve or hide that source discrepancy. The separate occupancy table on s15 has a confirmed M ≥ 5 definition. The constructed sequence is neither an actual observation nor a fitted GAN output. Do not attribute classification scores to GANs or LSTMs. The temporal analyses split examples by mainshock date, and target windows crossing partition boundaries were not fully purged.</p>
+<p><strong>Code verification:</strong> The original manuscript repository uses <code>y &gt; threshold</code> in <code>code/analyze_temporal_blocked_validation.py</code>, line 82, and <code>code/analyze_geographic_blocked_validation.py</code>, line 127. Temporal assignment by mainshock date is in <code>code/analyze_temporal_blocked_validation.py</code>, lines 405–411; chronological GANT row splitting is in <code>code/prepare_temporal_blocked_gant_data.py</code>, lines 133–163. Saved metadata confirms target horizons crossing boundaries. This establishes overlapping horizons, not the size of any repeated-event leakage. The separate occupancy calculation uses <code>&gt;= 5.0</code> in <code>code/build_revision_support_tables.py</code>, lines 480–482.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="s16r" class="slide level2">
+<h2>Classification performance depends on the evaluation</h2>
+<p><strong>Reported target (Table 9):</strong> at least one Mw ≥ 6 aftershock within 14 days and 100 km.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Evaluation scheme</th>
+<th style="text-align: left;">Best reported classifier</th>
+<th style="text-align: right;">ROC-AUC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Random split</td>
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: right;">0.816</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Temporal split</td>
+<td style="text-align: left;">Gradient Boosting</td>
+<td style="text-align: right;">0.672</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Geographic split</td>
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: right;">0.642</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Each row selects the best model in its own evaluation.</strong> Models and evaluation samples differ.</p>
+<div class="takeaway">
+<p>These AUCs measure discrimination. They do not establish calibrated probabilities.</p>
+</div>
+<div class="small-note">
+<p>Plaza-Vega, Jara, Nicolis &amp; Salinas (2026), manuscript under review · Table 9 · Magnitude-threshold classification</p>
+</div>
+<aside class="notes">
+<p><strong>Main idea:</strong> The evaluation protocol matters to the interpretation of classification performance.</p>
+<p><strong>Explain:</strong> Table 9 concerns at least one aftershock at magnitude threshold six within the encoded 14-day, 100-km horizon. It reports the best classifier under each validation scheme. The random-split result is 0.816 for Random Forest; the temporal result is 0.672 for Gradient Boosting; the geographic result is 0.642 for Random Forest. These are not three evaluations of one fixed fitted model. They indicate more limited discrimination under the blocked schemes in these experiments. ROC-AUC summarizes ranking across thresholds and does not assess calibration of the reported probabilities.</p>
+<p><strong>Transition:</strong> This evidence motivates a research hypothesis about process-informed representations, not a claim that a hybrid generator already works.</p>
+<p><strong>Backup:</strong> Source: submission manuscript Table 9, p.&nbsp;17. The printed target is at least one Mw ≥ 6 aftershock. Inherited classification code uses a strict threshold, as documented on s16. Preserve the different selected models and samples when discussing these values. The study’s target windows crossing temporal partition boundaries were not fully purged. Classifier outputs arise from mainshock features supervised by observed sequence labels. GAN outputs are not the classifier inputs. The magnitude-threshold notation discrepancy described on the preceding slide remains a source limitation. Operational warnings would require additional evaluation and probability calibration evidence.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -733,7 +836,7 @@ Practical Hybrid Workflows for Seismic Forecasting
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> ETAS-informed generation remains a hypothesis that requires its own experiment.</p>
-<p><strong>Explain:</strong> A statistical process model might supply information to condition a generator or constrain a generated sequence. This is a possible design choice, not an achieved result in the manuscript. A comparison would need the same observed history, a clearly defined output, an unchanged generative reference and evaluation of the properties the representation should preserve.</p>
+<p><strong>Explain:</strong> A statistical process model might supply information to condition a generator or constrain a generated sequence. This is a possible design choice, not an achieved result in the manuscript. A comparison would fit ETAS to the available continuous catalogue, map its information to the same 14-day, 100-km outcome and encoding, and retain an unchanged generative reference. It would evaluate occurrence, magnitude and temporal structure under the same protocol.</p>
 <p><strong>Transition:</strong> Today’s practical returns to a smaller question with an explicit target: occurrence within a fixed future interval.</p>
 <p><strong>Backup:</strong> The manuscript discusses ETAS and hybrid ETAS–machine-learning work as future directions on p.&nbsp;21. No empirical ETAS–GAN performance is claimed. Any ETAS fit and derived information must respect the information available at each origin. A fitted ETAS intensity is a conditional event rate; the illustrative truncated activity score in the tutorial has a different status. A future two-part neural model for occurrence and conditional magnitude also remains unvalidated.</p>
 <style type="text/css">
@@ -787,7 +890,7 @@ Practical Hybrid Workflows for Seismic Forecasting
 </tbody>
 </table>
 <div class="takeaway">
-<p>Core example: LSTM. Further comparisons: Transformer and spatial models.</p>
+<p>Core example: references, LSTM and probability evaluation. Optional comparisons: Transformer and spatial models.</p>
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> A representation, output and evaluation protocol connect the research cases to the practical.</p>
@@ -844,7 +947,7 @@ Practical Hybrid Workflows for Seismic Forecasting
 <aside class="notes">
 <p><strong>Main idea:</strong> The current temporal tutorial compares validation performance only.</p>
 <p><strong>Explain:</strong> Training determines weights and normalization. Validation controls early stopping and supplies today’s probability diagnostics. The older test interval was already inspected during course development and is excluded from the current comparison. Target weeks cannot cross a partition boundary.</p>
-<p><strong>Transition:</strong> Compare the LSTM with training prevalence and logistic regression, then process the same history with a Transformer.</p>
+<p><strong>Transition:</strong> Compare the LSTM with training prevalence and logistic regression. A Transformer can optionally process the same history.</p>
 <p><strong>Backup:</strong> Training 2001–2016, validation 2017–2020, historical test 2021–2025. Earlier experiments retain their own test results. The revised frozen ComCat catalogue does not reconstruct historical availability. Validation used for stopping is development evidence. A sigmoid does not guarantee calibration.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -859,26 +962,24 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="s20" class="slide level2">
-<h2>Experiment: how does the same history enter each model?</h2>
+<h2>Guided experiment: from one example to an LSTM probability</h2>
 <div class="flow-line">
 <p>30 days × 3 catalogue channels → LSTM → weekly probability</p>
 </div>
-<div class="flow-line">
-<p>The same history → Transformer → the same target</p>
-</div>
-<p><strong>Build one example:</strong> identify the input window, its origin and its label.</p>
-<p><strong>Train and evaluate:</strong> read <code>compile</code>, <code>fit</code>, <code>predict</code> and compare probability errors.</p>
+<p><strong>Build one example:</strong> identify the input window, forecast origin and label.</p>
+<p><strong>Fit references and the LSTM:</strong> read compile, fit and predict beside the model.</p>
+<p><strong>Evaluate:</strong> compare Brier score, log loss and calibration.</p>
 <div class="takeaway">
-<p>What changes when different architectures process the same information?</p>
+<p>Does the LSTM improve on training prevalence and logistic regression in this experiment?</p>
 </div>
 <div class="small-note">
-<p><a href="../tutorials/temporal.html">Temporal tutorial and notebook</a> · Seed 7 · Optional MLP and CNN1D exploration · Activity-score experiment as an extension</p>
+<p><a href="../tutorials/temporal.html">Temporal tutorial and notebook</a> · Seed 7 · Optional comparison: Transformer on the same history and target</p>
 </div>
 <aside class="notes">
-<p><strong>Main idea:</strong> The exercise changes the architecture while retaining the daily history and occurrence target.</p>
-<p><strong>Explain:</strong> First identify an example and fit simple references. Then read the LSTM definition followed immediately by compile, fit, predict and its probability scores. The Transformer reuses the same 30 × 3 tensor and evaluation.</p>
-<p><strong>Transition:</strong> Open the prepared temporal notebook and inspect one example before fitting the references and LSTM.</p>
-<p><strong>Backup:</strong> Prioritize one input window, references, LSTM fitting and interpretation of probabilities. Use prepared outputs if setup or fitting stalls. If the discussion benefits from it, compare the Transformer using its prepared outputs. CNN maps provide a spatial contrast. Introduce Graph + LSTM through its input and output, leaving the full workflow as optional exploration.</p>
+<p><strong>Main idea:</strong> The core exercise connects one input example to reference models, LSTM fitting and probability evaluation.</p>
+<p><strong>Explain:</strong> Inspect one 30 × 3 history and its future label. Fit training prevalence and logistic regression as references, then read the LSTM definition beside compile, fit, predict and its scores. State what the probabilities refer to before comparing losses. Sixteen recurrent units define the small teaching configuration; they are not a demonstrated optimum.</p>
+<p><strong>Transition:</strong> Open the temporal notebook and inspect one example. If useful after interpreting the LSTM, use the next slides for an optional Transformer comparison.</p>
+<p><strong>Backup:</strong> Prioritize one input window, references, LSTM fitting and interpretation. Prepared outputs preserve discussion if setup or fitting stalls. The Transformer reuses the same 30 × 3 tensor and evaluation, but its full live execution is optional. CNN maps provide a spatial contrast. Introduce Graph + LSTM through its input and output; its full workflow is optional exploration.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -892,7 +993,7 @@ Practical Hybrid Workflows for Seismic Forecasting
       }</style></aside>
 </section>
 <section id="d01" class="slide level2">
-<h2>A Transformer combines the same history differently</h2>
+<h2>Optional comparison: a Transformer on the same history</h2>
 <p><img data-src="assets/course-adapted/transformer-en.svg" class="focus-figure" alt="Compact Transformer: the same 30 days by three catalogue channels, a 16-feature projection with learned day positions, one two-head attention block with residual normalization and a feed-forward layer, average pooling, and a weekly probability." height="440"></p>
 <div class="takeaway">
 <p>Same history and target. A different way to combine information across days.</p>
@@ -931,32 +1032,32 @@ Practical Hybrid Workflows for Seismic Forecasting
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Training prevalence</td>
-<td style="text-align: right;">0.187690</td>
-<td style="text-align: right;">0.562855</td>
+<td style="text-align: right;">0.188</td>
+<td style="text-align: right;">0.563</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Logistic regression</td>
-<td style="text-align: right;">0.203664</td>
-<td style="text-align: right;">0.614405</td>
+<td style="text-align: right;">0.204</td>
+<td style="text-align: right;">0.614</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">LSTM</td>
-<td style="text-align: right;">0.181521</td>
-<td style="text-align: right;">0.547512</td>
+<td style="text-align: right;">0.182</td>
+<td style="text-align: right;">0.548</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Transformer</td>
-<td style="text-align: right;">0.187901</td>
-<td style="text-align: right;">0.562477</td>
+<td style="text-align: left;">Transformer (optional)</td>
+<td style="text-align: right;">0.188</td>
+<td style="text-align: right;">0.562</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Lower is better.</strong> Compare these scores with the calibration plot and its sample counts.</p>
+<p><strong>Lower is better.</strong> The LSTM has the lowest losses in these individual fits. Read calibration alongside them.</p>
 <div class="takeaway">
 <p>These are development results from one region and one validation period.</p>
 </div>
 <div class="small-note">
-<p>One training run per neural model, seed 7 · 208 validation weeks</p>
+<p>One fit per neural model, seed 7 · 208 validation weeks · Display rounded to three decimals</p>
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> A probability score summarizes the errors of one fitted model on the validation weeks.</p>
@@ -1041,18 +1142,18 @@ Practical Hybrid Workflows for Seismic Forecasting
 <h2>What did we learn, and what would we test next?</h2>
 <ol type="1">
 <li>What information did our daily channels preserve or discard?</li>
-<li>What did the LSTM and Transformer comparison establish?</li>
+<li>What did the LSTM comparison with simple references establish?</li>
 <li>Which research question would you explore next with maps, graphs or an activity score?</li>
 </ol>
 <div class="takeaway">
 <p>Deep learning offers flexible tools. Their scientific value depends on the question and the evidence.</p>
 </div>
 <div class="small-note">
-<p><a href="../homework.html">Further exploration: optional reading and experiments</a> · LSTM and Transformer resources</p>
+<p><a href="../homework.html">Further exploration: optional reading and experiments</a> · LSTM references and optional extensions</p>
 </div>
 <aside class="notes">
 <p><strong>Main idea:</strong> Scientific usefulness depends on the question and the evidence supporting the model.</p>
-<p><strong>Explain:</strong> Invite questions and interpretations of the fixed-input architecture comparison. Distinguish the observed loss from a proposed explanation. Discuss what spatial information was lost when the catalogue was pooled over the region.</p>
+<p><strong>Explain:</strong> Invite questions and interpretations of the LSTM comparison with simple references; include the Transformer if discussed. Distinguish the observed loss from a proposed explanation. Discuss what spatial information was lost when the catalogue was pooled over the region.</p>
 <p><strong>Transition:</strong> For anyone interested in continuing independently, Further exploration offers references and optional comparisons involving maps, graphs, recurrent-state size or the ETAS-inspired feature experiment.</p>
 <p><strong>Backup:</strong> Keep baselines, a stated hypothesis and the evaluation protocol. Comparing 8, 16 and 32 recurrent units examines capacity while holding the other settings fixed. An ETAS-inspired feature changes the representation while retaining the LSTM. Participants with less Python experience can use prepared outputs and guided reading.</p>
 <style type="text/css">
@@ -1156,7 +1257,7 @@ Practical Hybrid Workflows for Seismic Forecasting
 <p>Optional representation experiment. The illustrative index is not a fitted ETAS rate.</p>
 </div>
 <aside class="notes">
-<p>This feature experiment compares the representation while holding the LSTM fixed. The guided LSTM/Transformer comparison changes architecture while retaining the same input. The history is truncated separately at each origin and the daily endpoint includes only strictly earlier events. A fitted ETAS extension needs a documented estimation sample, units, observation model and forecast construction. For the optional 14-day task, both variants use L=14. The binary target is at least one catalogue event M&gt;=5 in [t,t+7 days).</p>
+<p>This feature experiment compares the representation while holding the LSTM fixed. The optional LSTM/Transformer comparison changes architecture while retaining the same input. The history is truncated separately at each origin and the daily endpoint includes only strictly earlier events. A fitted ETAS extension needs a documented estimation sample, units, observation model and forecast construction. For the optional 14-day task, both variants use L=14. The binary target is at least one catalogue event M&gt;=5 in [t,t+7 days).</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

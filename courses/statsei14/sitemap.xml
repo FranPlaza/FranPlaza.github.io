@@ -2,51 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://franplaza.github.io/courses/statsei14/slides/index.html</loc>
-    <lastmod>2026-10-11T03:31:14.093Z</lastmod>
+    <lastmod>2026-10-11T04:37:51.112Z</lastmod>
   </url>
   <url>
     <loc>https://franplaza.github.io/courses/statsei14/homework.html</loc>
-    <lastmod>2026-10-11T03:25:25.178Z</lastmod>
+    <lastmod>2026-10-11T04:20:57.682Z</lastmod>
   </url>
   <url>
     <loc>https://franplaza.github.io/courses/statsei14/tutorials/temporal.html</loc>
-    <lastmod>2026-10-11T03:29:56.803Z</lastmod>
+    <lastmod>2026-10-11T04:40:32.093Z</lastmod>
   </url>
   <url>
-    <loc>https://franplaza.github.io/courses/statsei14/tutorials/maps.html</loc>
-    <lastmod>2026-10-11T03:29:56.932Z</lastmod>
+    <loc>https://franplaza.github.io/courses/statsei14/tutorials/research-examples.html</loc>
+    <lastmod>2026-10-11T04:37:03.013Z</lastmod>
   </url>
   <url>
-    <loc>https://franplaza.github.io/courses/statsei14/tutorials/graphs.html</loc>
-    <lastmod>2026-10-11T03:29:57.099Z</lastmod>
+    <loc>https://franplaza.github.io/courses/statsei14/tutorials/maps-comparison.html</loc>
+    <lastmod>2026-10-11T04:30:51.177Z</lastmod>
+  </url>
+  <url>
+    <loc>https://franplaza.github.io/courses/statsei14/tutorials/graphs-comparison.html</loc>
+    <lastmod>2026-10-11T04:30:51.326Z</lastmod>
+  </url>
+  <url>
+    <loc>https://franplaza.github.io/courses/statsei14/practical.html</loc>
+    <lastmod>2026-10-11T04:30:00.320Z</lastmod>
+  </url>
+  <url>
+    <loc>https://franplaza.github.io/courses/statsei14/index.html</loc>
+    <lastmod>2026-10-11T04:30:45.815Z</lastmod>
   </url>
   <url>
     <loc>https://franplaza.github.io/courses/statsei14/practical-reference.html</loc>
     <lastmod>2026-10-11T03:01:23.991Z</lastmod>
   </url>
   <url>
-    <loc>https://franplaza.github.io/courses/statsei14/index.html</loc>
-    <lastmod>2026-10-11T03:25:25.163Z</lastmod>
+    <loc>https://franplaza.github.io/courses/statsei14/tutorials/graphs.html</loc>
+    <lastmod>2026-10-11T04:29:01.703Z</lastmod>
   </url>
   <url>
-    <loc>https://franplaza.github.io/courses/statsei14/practical.html</loc>
-    <lastmod>2026-10-11T03:25:25.168Z</lastmod>
-  </url>
-  <url>
-    <loc>https://franplaza.github.io/courses/statsei14/tutorials/graphs-comparison.html</loc>
-    <lastmod>2026-10-11T03:30:50.808Z</lastmod>
-  </url>
-  <url>
-    <loc>https://franplaza.github.io/courses/statsei14/tutorials/maps-comparison.html</loc>
-    <lastmod>2026-10-11T03:30:50.679Z</lastmod>
+    <loc>https://franplaza.github.io/courses/statsei14/tutorials/maps.html</loc>
+    <lastmod>2026-10-11T04:29:01.545Z</lastmod>
   </url>
   <url>
     <loc>https://franplaza.github.io/courses/statsei14/tutorials/temporal-comparison.html</loc>
-    <lastmod>2026-10-11T03:30:50.557Z</lastmod>
+    <lastmod>2026-10-11T04:30:51.014Z</lastmod>
   </url>
   <url>
     <loc>https://franplaza.github.io/courses/statsei14/environment.html</loc>
-    <lastmod>2026-10-11T03:26:53.126Z</lastmod>
+    <lastmod>2026-10-11T04:39:44.439Z</lastmod>
   </url>
   <url>
     <loc>https://franplaza.github.io/courses/statsei14/references.html</loc>

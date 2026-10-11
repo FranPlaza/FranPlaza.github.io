@@ -6,7 +6,7 @@ Francisco Plaza-Vega · STATSEI14 · 13 October 2026
 
 How do we turn catalogue history into a probability forecast, and what changes when we change the model?
 
-By the end, attendees should recognize one training example, explain the LSTM input and output, trace the visible construction, training and evaluation cells, interpret probability scores against simple references and explain what attention changes in the Transformer. Researchers may have different Python and neural-network experience. Reading prepared outputs and stating a testable hypothesis are valid ways to participate.
+By the end, attendees should recognize one training example, explain the LSTM input and output, trace the visible construction, training and evaluation cells, and interpret probability scores and calibration against simple references. The optional Transformer comparison explores what attention changes. Researchers may have different Python and neural-network experience. Reading prepared outputs and stating a testable hypothesis are valid ways to participate.
 
 The presentation remains in English. Deep learning is the main theme; ETAS connects statistical representations to the author's research. Do not teach a separate ETAS fitting lesson. Keep the published Spatial Statistics article, the USACH undergraduate thesis, the manuscript under review and the teaching experiment as distinct evidence sources.
 
@@ -59,7 +59,7 @@ For one example, shape is (30, 3); a batch adds the examples axis. The regional 
 
 ## Guided notebook
 
-Follow four visible stages: build one example, define reference forecasts, train the LSTM, and evaluate its probabilities. Read the core cells from top to bottom. Explain the daily channels, one window and its label before dwelling on implementation. Pause at the intermediate daily table and input shape so attendees can connect each array to the scientific task.
+Follow the core sequence: build one example, define reference forecasts, train the LSTM, read its learning curve, and evaluate probability scores and calibration before closing the practical. Read the core cells from top to bottom. Explain the daily channels, one window and its label before dwelling on implementation. Pause at the intermediate daily table and input shape so attendees can connect each array to the scientific task.
 
 The logistic reference receives all 90 standardized lag values. Training prevalence is a constant probability estimated from training labels. Explain the LSTM definition line by line: ordered input, a 16-unit recurrent state and a one-unit sigmoid. Distinguish the 30 days, 3 observed channels, 16 learned state values and 1 probability. Training histories determine scaling.
 
@@ -84,7 +84,7 @@ Use prepared outputs if setup or fitting stalls. Identify them as recorded local
 
 ## Evaluation
 
-Ask attendees to identify a predicted probability, its observed weekly label and the corresponding error. Compare Brier and log loss with the training-prevalence reference, then inspect calibration with bin counts. A sigmoid does not guarantee calibration. The seed-7 walkthrough describes one fit per model and does not measure variability across initializations. Differences among seeds in the separate repeated comparison describe optimization variability, not uncertainty from new earthquakes.
+Ask attendees to identify a predicted probability, its observed weekly label and the corresponding error. In the LSTM calibration plot, the occupied bins contain 29, 170, 8 and 1 validation weeks. The final point has little support; it does not establish a stable calibration defect. Compare Brier and log loss with the training-prevalence reference, then inspect calibration with bin counts. A sigmoid does not guarantee calibration. The seed-7 walkthrough describes one fit per model and does not measure variability across initializations. Differences among seeds in the separate repeated comparison describe optimization variability, not uncertainty from new earthquakes.
 
 The current tutorials evaluate validation (2017–2020) only; early stopping also uses it. These scores are development evidence, not independent generalization evidence. Training is 2001–2016. The 2021–2025 test was already inspected in earlier course experiments and is excluded from this comparison. Target intervals crossing boundaries are removed; inputs can use earlier history. The frozen revised catalogue does not reconstruct historical information availability.
 
@@ -113,3 +113,9 @@ For attendees who wish to explore recurrent-state size, the optional experiment 
 Spatial maps use (30, 3, 2, 3) per example; graphs use (30, 6, 3). Both predict six marginal weekly probabilities that need not sum to one. Do not compare their scores directly with regional occurrence scores.
 
 Optional resources and research questions are collected in **Further exploration** at `homework.html`. The sensitivity guides are `tutorials/temporal-comparison.html`, `tutorials/maps-comparison.html` and `tutorials/graphs-comparison.html`, with notebooks under `downloads/comparison/`. They retain seeds 7, 17 and 27. A bounded extension declares one change, preserves an unchanged reference, retains all declared seeds and uses training/validation. An independent confirmatory claim needs a genuinely untouched evaluation period.
+
+## Research examples and visible evidence
+
+Use the brief research-examples guide to connect a map maximum to a temporal window and an observed-sequence representation to a magnitude-threshold label. The sequence illustration uses a maximum of 5.1 to keep the opening explanation separate from the inherited strict/non-strict threshold discrepancy. Retain that discrepancy in the scientific provenance notes. Labels are derived from observed outcomes, not GAN samples.
+
+The six numbered cells in the spatial notebooks follow the implemented order, west to east and south to north. They are different from the published study's latitudinal macrozones.

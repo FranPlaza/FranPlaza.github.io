@@ -1,0 +1,45 @@
+{
+  "geography": "Natural Earth Admin 0, 1:50m; frozen repository geometry and provenance",
+  "boundaries_source": "Nicolis, Plaza & Salas (2021), Table 2, p. 9",
+  "bands_south_to_north": [
+    [
+      -44,
+      -39.67
+    ],
+    [
+      -39.67,
+      -35.34
+    ],
+    [
+      -35.34,
+      -31
+    ],
+    [
+      -31,
+      -26.67
+    ],
+    [
+      -26.67,
+      -22.34
+    ],
+    [
+      -22.33,
+      -18
+    ]
+  ],
+  "source_gap_note": "The printed Table 2 gives -22.34 for zone 5 and -22.33 for zone 6; the source bounds are retained.",
+  "constructed_marker": {
+    "longitude": -72,
+    "latitude": -33,
+    "zone": 3
+  },
+  "constructed_probabilities": [
+    0.03,
+    0.07,
+    0.6,
+    0.15,
+    0.1,
+    0.05
+  ],
+  "status": "Teaching illustration. Marker and probabilities are invented to demonstrate the target. They are not an empirical result or an exact epicentre forecast."
+}

@@ -189,11 +189,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Download the <a href="downloads/tutorials/temporal.ipynb" download="temporal.ipynb">temporal notebook</a>, open <a href="https://colab.research.google.com/">Google Colab</a>, choose <strong>File &gt; Upload notebook</strong>, and select the file. A Python CPU runtime is sufficient for these small models. Run the cells from the beginning in order. The <a href="./tutorials/temporal.html">web guide</a> provides explanations and example outputs.</p>
 <p>The first preparation cells download a frozen data pack pinned to a Git commit and verify its SHA-256. To work locally, extract the <a href="downloads/tutorials-pack.zip">tutorial pack</a> and keep <code>statsei14-data-pack.zip</code> beside the notebooks. With the required libraries installed, the notebooks reuse that file without downloading it.</p>
 <p>If imports fail in Colab, run this in a separate cell, restart the runtime, and begin again:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install tensorflow<span class="op">==</span><span class="fl">2.19.1</span> pandas scikit<span class="op">-</span>learn matplotlib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install tensorflow<span class="op">==</span><span class="fl">2.19.1</span> keras<span class="op">==</span><span class="fl">3.15.1</span> pandas scikit<span class="op">-</span>learn matplotlib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="environment-of-the-example-results" class="level2">
 <h2 class="anchored" data-anchor-id="environment-of-the-example-results">Environment of the example results</h2>
-<p>The supplied model outputs come from fresh Windows CPU runs on <strong>7 October 2026</strong>. The study-area map cells were added and checked separately on <strong>11 October 2026</strong>, using the same frozen data. The earlier model code and outputs are preserved; the expanded notebooks have not been rerun end to end. A complete execution in an actual Colab session has <strong>not been verified</strong>. Hardware and software versions can affect runtime and numerical results. Record both when comparing your run with the supplied outputs.</p>
+<p>The supplied model outputs come from fresh Windows CPU runs on <strong>7 October 2026</strong>. The study-area maps, numbered spatial grids and individual LSTM learning-curve display were checked separately on <strong>11 October 2026</strong>, using the same frozen data and recorded model outputs. The LSTM calibration cell now appears before the core stopping point. The original scientific cells and their outputs are preserved, including that relocated calibration cell; the expanded notebooks have not been rerun end to end. A complete execution in an actual Colab session has <strong>not been verified</strong>. Hardware and software versions can affect runtime and numerical results. Record both when comparing your run with the supplied outputs.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -226,12 +226,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>The guided examples use <strong>seed 7</strong>, one fit per neural model. The initialization comparisons use <strong>7, 17 and 27</strong> and report every run. A shared seed does not imply identical weights across architectures.</p>
 <p>The web pages show numerical summaries, figures and relevant diagnostic messages. Complete execution streams, including library warnings and run-specific file paths, remain in the downloadable notebooks with outputs. The <a href="downloads/linear-results.zip">seed-7 result archive</a> and <a href="downloads/tutorial-results.zip">three-seed result archive</a> include predictions and run information.</p>
+<section id="the-prepared-lstm-learning-curve" class="level3">
+<h3 class="anchored" data-anchor-id="the-prepared-lstm-learning-curve">The prepared LSTM learning curve</h3>
+<p>The individual LSTM curve uses losses recorded in the original training log, rounded there to four decimals. It is a reconstruction of that recorded run, not a new fit. When you run the notebook, the plotting cell reads the full-precision values in <code>history_lstm.history</code>. The original comparative curve remains available with the optional Transformer material. In the prepared LSTM run, validation loss was lowest at epoch 20, the allowed maximum; early stopping did not stop it before that limit.</p>
+<p>The web calibration figure uses the same saved validation predictions and binning, with extra space for the count labels. The original notebook output is retained.</p>
+</section>
+<section id="research-examples-and-source-figures" class="level3">
+<h3 class="anchored" data-anchor-id="research-examples-and-source-figures">Research examples and source figures</h3>
+<p>The <a href="./tutorials/research-examples.html">two research examples</a> demonstrate input-window and label construction without fitting another model. Their source and any illustrative values are stated beside each example. Published figure extracts retain their source attribution; example transformations and original article evaluations have separate roles.</p>
 <p>Frozen data-pack SHA-256:</p>
 <pre class="text"><code>0ee5d4d71aafa19023fdb1ee6f289a11e7fd7f4ed88ad7a91032ca24505d10a2</code></pre>
 </section>
+</section>
 <section id="if-execution-is-interrupted" class="level2">
 <h2 class="anchored" data-anchor-id="if-execution-is-interrupted">If execution is interrupted</h2>
-<p>Restart from the first cell to reconstruct the variables in order. Save the generated result archive before closing a temporary Colab session. If setup or fitting stalls during the tutorial, continue the discussion with the supplied outputs.</p>
+<p>Restart from the first cell to reconstruct the variables in order. Download your generated result files before closing a temporary Colab session; the temporal notebook writes CSV files to <code>outputs_temporal</code>. If setup or fitting stalls during the tutorial, continue the discussion with the supplied outputs.</p>
 <p>See the <a href="./practical.html#what-stays-fixed">practical protocol</a> for chronological partitions and interpretation limits. The frozen revised catalogue does not reconstruct historical catalogue versions.</p>
 
 
