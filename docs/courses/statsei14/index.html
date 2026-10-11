@@ -155,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="unnumbered">Deep Learning Meets ETAS</h1>
 <p><span class="lede">Practical hybrid workflows for seismic forecasting</span></p>
 <p><span class="byline">Francisco Plaza-Vega</span></p>
-<p>This tutorial connects seismic research questions to deep learning representations and outputs. We examine temporal and spatial learning from ETAS, generative aftershock sequences and a reformulation as occurrence classification. The practical begins with a catalogue map, then follows an LSTM probability forecast and its evaluation. Prepared spatial and Transformer examples support further exploration.</p>
+<p>This tutorial follows a seismic question through data representation, model choice and evaluation. We introduce the deep-learning building blocks before examining temporal and spatial learning from ETAS, generative aftershock sequences and occurrence classification. The practical applies those modelling decisions to a regional catalogue and an LSTM probability forecast. Prepared spatial and Transformer examples support further exploration.</p>
 <div class="session-meta">
 <p>Tuesday 13 October 2026 · Santiago</p>
 </div>
@@ -175,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="course-note">
-<p><strong>Guiding question:</strong> How can flexible learning tools help us represent seismic history and investigate a clearly specified question? In the practical, that question becomes the probability of at least one catalogue event with magnitude <strong>M ≥ 5</strong> in this region during the next seven days.</p>
+<p><strong>Guiding question:</strong> How do we turn a seismic question into a deep-learning experiment? In the practical, we estimate the probability of at least one catalogue event with magnitude <strong>M ≥ 5</strong> in this region during the next seven days.</p>
 </div>
 <section id="what-you-will-be-able-to-do" class="level2">
 <h2 class="anchored" data-anchor-id="what-you-will-be-able-to-do">What you will be able to do</h2>
@@ -194,16 +194,43 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="what-we-will-explore" class="level2">
 <h2 class="anchored" data-anchor-id="what-we-will-explore">What we will explore</h2>
-<section id="presentation" class="level3">
-<h3 class="anchored" data-anchor-id="presentation">Presentation</h3>
-<ol type="1">
-<li>Seismic learning tasks: inputs, outputs and today’s question.</li>
-<li>A network, its loss, and a map of MLP, CNN, LSTM and generative learning.</li>
-<li>Spatial Statistics: daily ETAS maps, temporal maxima for the LSTM and six macrozone probabilities from the CNN.</li>
-<li>Generative aftershock exploration, its limitations and occurrence classification in the submitted manuscript.</li>
-<li>ETAS-informed generation as a future research question.</li>
-<li>One 30 × 3 window, a weekly label, baselines and chronological evaluation.</li>
-</ol>
+<section id="session-itinerary" class="level3">
+<h3 class="anchored" data-anchor-id="session-itinerary">Session itinerary</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Section</th>
+<th style="text-align: left;">Guiding question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>1. Seismic questions and data</strong></td>
+<td style="text-align: left;">What do we observe, and what do we want to estimate?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>2. From data to learning tasks</strong></td>
+<td style="text-align: left;">How do we define inputs, targets and representations?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>3. Deep-learning building blocks</strong></td>
+<td style="text-align: left;">How do different models use the available information?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>4. Lessons from our research</strong></td>
+<td style="text-align: left;">What worked, what was difficult, and what did we learn?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>5. Guided practical</strong></td>
+<td style="text-align: left;">How do we build and evaluate a weekly occurrence forecast?</td>
+</tr>
+</tbody>
+</table>
+<p>MLP, CNN and LSTM illustrate different ways to combine information; adversarial learning introduces generation through two interacting networks. The research cases examine what these capabilities achieved in specific experiments. We connect each scientific question to its representation, model output and evidence, then apply those decisions in the practical.</p>
 </section>
 <section id="guided-practical" class="level3">
 <h3 class="anchored" data-anchor-id="guided-practical">Guided practical</h3>

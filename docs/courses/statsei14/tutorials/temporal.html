@@ -170,7 +170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#preparation-b.-read-the-frozen-catalogue" id="toc-preparation-b.-read-the-frozen-catalogue" class="nav-link" data-scroll-target="#preparation-b.-read-the-frozen-catalogue">Preparation B. Read the frozen catalogue</a></li>
   <li><a href="#locate-the-catalogue-on-a-map" id="toc-locate-the-catalogue-on-a-map" class="nav-link" data-scroll-target="#locate-the-catalogue-on-a-map">Locate the catalogue on a map</a></li>
   <li><a href="#preparation-c.-select-the-region-and-define-the-daily-calendar" id="toc-preparation-c.-select-the-region-and-define-the-daily-calendar" class="nav-link" data-scroll-target="#preparation-c.-select-the-region-and-define-the-daily-calendar">Preparation C. Select the region and define the daily calendar</a></li>
-  <li><a href="#preparation-d.-build-three-regional-columns" id="toc-preparation-d.-build-three-regional-columns" class="nav-link" data-scroll-target="#preparation-d.-build-three-regional-columns">Preparation D. Build three regional columns</a></li>
+  <li><a href="#preparation-d.-build-three-daily-catalogue-features" id="toc-preparation-d.-build-three-daily-catalogue-features" class="nav-link" data-scroll-target="#preparation-d.-build-three-daily-catalogue-features">Preparation D. Build three daily catalogue features</a></li>
   <li><a href="#preparation-e.-one-monday-becomes-one-learning-example" id="toc-preparation-e.-one-monday-becomes-one-learning-example" class="nav-link" data-scroll-target="#preparation-e.-one-monday-becomes-one-learning-example">Preparation E. One Monday becomes one learning example</a></li>
   <li><a href="#preparation-f.-estimate-scaling-from-training-histories" id="toc-preparation-f.-estimate-scaling-from-training-histories" class="nav-link" data-scroll-target="#preparation-f.-estimate-scaling-from-training-histories">Preparation F. Estimate scaling from training histories</a></li>
   <li><a href="#inspect-one-input-before-fitting-a-model" id="toc-inspect-one-input-before-fitting-a-model" class="nav-link" data-scroll-target="#inspect-one-input-before-fitting-a-model">1. Inspect one input before fitting a model</a></li>
@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Example results use one training run per neural model, <strong>seed 7</strong>. See <a href="../environment.html">Environment and setup</a>.</p>
 <p><strong>Scientific question.</strong> Given the previous 30 days of catalogue information, what is the probability of at least one M ≥ 5 event in the region during the following seven days?</p>
-<p>One learning example is a <strong>weekly forecast origin</strong>. Its input is a table with 30 rows (past days) and three columns (catalogue channels). Its target is zero or one.</p>
+<p>One learning example is a <strong>weekly forecast origin</strong>. Its input is a table with 30 rows (past days) and three columns: the <strong>three daily catalogue features</strong>, also called channels. Its target is zero or one.</p>
 <p>The presentation introduces the learning tasks and architectures. In the guided practical, we locate the catalogue on a map, inspect one 30 × 3 history, fit an LSTM and interpret its probability errors against two references. Transformer, MLP and CNN1D are optional extensions for further exploration.</p>
 <p>Each neural model uses <strong>one training run, seed 7</strong>. To examine sensitivity to initialization, continue with the <a href="https://franplaza.github.io/courses/statsei14/tutorials/temporal-comparison.html">three-seed comparison</a>.</p>
 <p><strong>What a score means here.</strong> Training covers 2001–2016. Validation covers 2017–2020 and also determines early stopping, so the results describe retrospective development. The catalogue is frozen and revised; historical real-time availability has not been reconstructed. The previously inspected 2021–2025 period is not evaluated and cannot serve as a new independent test.</p>
@@ -420,7 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="preparation-c.-select-the-region-and-define-the-daily-calendar" class="level2">
 <h2 class="anchored" data-anchor-id="preparation-c.-select-the-region-and-define-the-daily-calendar">Preparation C. Select the region and define the daily calendar</h2>
 <p>Input events satisfy <strong>M ≥ 4.5</strong>. The future occurrence target uses <strong>M ≥ 5</strong>. We retain every calendar day, including days without events. The first year supplies history for the earliest training windows.</p>
-<p>The three channels are log(1 + count), maximum magnitude excess above 4.5, and presence. Presence distinguishes an empty day from a day containing an event exactly at the input threshold.</p>
+<p>We will summarize each day with <strong>three daily catalogue features</strong>: measured variables that are also called channels. This is a representation chosen for this exercise, not a requirement that a neural network must have three inputs. The next section defines each feature before we construct it.</p>
 <div class="copy-step">
 <p><strong>Code block 5</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -439,9 +439,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre>Input events: 2121</pre>
 </details>
 </section>
-<section id="preparation-d.-build-three-regional-columns" class="level2">
-<h2 class="anchored" data-anchor-id="preparation-d.-build-three-regional-columns">Preparation D. Build three regional columns</h2>
-<p>Grouping counts the events on each day. Reindexing inserts the missing days. The separate target count will only be used to form outcomes after a forecast origin.</p>
+<section id="preparation-d.-build-three-daily-catalogue-features" class="level2">
+<h2 class="anchored" data-anchor-id="preparation-d.-build-three-daily-catalogue-features">Preparation D. Build three daily catalogue features</h2>
+<p>One daily catalogue feature is <strong>one variable per day</strong>; in the model input, a feature is also called a channel. We pool the selected events across the study region and record these three values:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Daily catalogue feature</th>
+<th style="text-align: left;">Daily value before standardization</th>
+<th style="text-align: left;">What it describes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>log_count</code></td>
+<td style="text-align: left;"><code>log(1 + count)</code> for events with M ≥ 4.5</td>
+<td style="text-align: left;">How many events occurred, with large counts compressed by the natural logarithm. Zero events gives zero.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>max_magnitude_excess</code></td>
+<td style="text-align: left;">Maximum daily magnitude minus 4.5; zero on an empty day</td>
+<td style="text-align: left;">How far the largest event exceeded the input threshold. An event exactly at M = 4.5 also gives zero excess.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>has_event</code></td>
+<td style="text-align: left;">1 when <code>count &gt; 0</code>; otherwise 0</td>
+<td style="text-align: left;">Whether the day contained at least one selected event.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Illustrative examples, before standardization:</strong></p>
+<ul>
+<li>Two events with a maximum magnitude of 5.2 give <code>[log(3), 0.70, 1]</code>, approximately <strong><code>[1.10, 0.70, 1]</code></strong>.</li>
+<li>An empty day gives <strong><code>[0, 0, 0]</code></strong>.</li>
+<li>One event exactly at M = 4.5 gives <strong><code>[log(2), 0, 1]</code></strong>, approximately <code>[0.69, 0, 1]</code>.</li>
+</ul>
+<p>The presence flag separates the last two cases when reading the magnitude-excess feature. <strong>It is redundant with the count feature:</strong> <code>has_event</code> is determined by <code>count &gt; 0</code>, so it adds no independent information. We retain it as an explicit, easily read indicator; this choice is not evidence of improved predictive performance.</p>
+<p>Thirty successive days form <strong>one 30 × 3 input</strong>. The temporal MLP, CNN1D, LSTM and Transformer use these same histories to estimate the probability of at least one <strong>M ≥ 5 event in the following seven days</strong>. The MLP flattens the table into 90 values in a fixed order; the other three models keep the days × features layout. Three is our chosen number of variables, not an architectural rule. The conditional GAN in the presentation is a separate example: it uses five mainshock attributes plus random noise to generate a sequence.</p>
+<p>Grouping counts the events on each day. Reindexing inserts the missing days. The separate target count will only be used to form outcomes after a forecast origin. Preparation F estimates feature scaling from training histories only; the examples above show the raw values before that step.</p>
 <div class="copy-step">
 <p><strong>Code block 6</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -586,7 +626,8 @@ One input: (30, 3) One outcome: 1</pre>
 </section>
 <section id="preparation-f.-estimate-scaling-from-training-histories" class="level2">
 <h2 class="anchored" data-anchor-id="preparation-f.-estimate-scaling-from-training-histories">Preparation F. Estimate scaling from training histories</h2>
-<p>Estimate one mean and one standard deviation per channel from the training windows. A historical day can contribute to several overlapping windows. Apply these training estimates to all validation histories. Validation has no role in estimating the scaling parameters.</p>
+<p>Estimate one mean and one standard deviation per daily catalogue feature from the training windows. A historical day can contribute to several overlapping windows. Apply these training estimates to all validation histories. Validation has no role in estimating the scaling parameters.</p>
+<p>The three-feature examples above are raw values. Standardization subtracts the training mean and divides by the training standard deviation: <code>(value - training_mean) / training_std</code>. <strong>A negative standardized value means that the feature value is below its training mean; it does not mean a negative earthquake magnitude.</strong> A raw zero can therefore become negative when the training mean is positive. The feature meanings and their order stay the same.</p>
 <div class="copy-step">
 <p><strong>Code block 8</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -639,7 +680,7 @@ One input: (30, 3) One outcome: 1</pre>
 </section>
 <section id="inspect-one-input-before-fitting-a-model" class="level2">
 <h2 class="anchored" data-anchor-id="inspect-one-input-before-fitting-a-model">1. Inspect one input before fitting a model</h2>
-<p>The array axes are <strong>examples × days × channels</strong>. An array row is not an individual earthquake. The raw table below shows one history before standardization; its label belongs to the following seven days.</p>
+<p>The array axes are <strong>examples × days × features (channels)</strong>. An array row is not an individual earthquake. The raw table below shows one history before standardization; its label belongs to the following seven days.</p>
 <p><strong>Discuss:</strong> Which information remains after pooling all event locations into one regional history?</p>
 <div class="copy-step">
 <p><strong>Code block 9</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
@@ -775,7 +816,7 @@ One input: (30, 3) One outcome: 1</pre>
 <section id="fit-two-reference-forecasts" class="level2">
 <h2 class="anchored" data-anchor-id="fit-two-reference-forecasts">2. Fit two reference forecasts</h2>
 <p>The first forecast always returns the training positive fraction. Logistic regression uses all 90 lagged values, in the same order as the MLP below. Neither reference is tuned on validation.</p>
-<p>Flattening preserves a fixed position for each day and channel. It does not randomly reorder the history.</p>
+<p>Flattening preserves a fixed position for each day and feature. It does not randomly reorder the history.</p>
 <div class="copy-step">
 <p><strong>Code block 10</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>
@@ -801,7 +842,7 @@ Logistic regression input: (834, 90)</pre>
 </section>
 <section id="lstm-update-a-learned-state-through-the-history" class="level2">
 <h2 class="anchored" data-anchor-id="lstm-update-a-learned-state-through-the-history">3. LSTM: update a learned state through the history</h2>
-<p><strong>Input: 30 days × 3 catalogue channels.</strong> Each day contains log(1 + event count), maximum magnitude excess above 4.5, and an event indicator. The LSTM reads the oldest day first and the most recent day last.</p>
+<p><strong>Input: 30 days × 3 daily catalogue features (channels).</strong> Each day contains log(1 + event count), maximum magnitude excess above 4.5, and an event indicator. The LSTM reads the oldest day first and the most recent day last.</p>
 <p>The final LSTM state contains <strong>16 learned features</strong>. A Dense layer with a sigmoid activation transforms it into <strong>one probability</strong> of at least one catalogue M ≥ 5 event in the following seven days:</p>
 <p><strong>30 × 3 input → final state (16 values) → Dense + sigmoid → weekly probability.</strong></p>
 <p>The state starts again for each history. It is not carried between training examples or into validation.</p>
@@ -1432,7 +1473,7 @@ Logistic regression input: (834, 90)</pre>
 <h3 class="anchored" data-anchor-id="optional-exploration-sensitivity-to-recurrent-state-size">Optional exploration: sensitivity to recurrent-state size</h3>
 <ol type="1">
 <li>Declare the candidates before fitting: <strong>8, 16 and 32 LSTM units</strong>.</li>
-<li>Keep the channels, 30-day history, target, chronological partitions, scaling, optimizer, batch size and stopping rule fixed.</li>
+<li>Keep the daily catalogue features, 30-day history, target, chronological partitions, scaling, optimizer, batch size and stopping rule fixed.</li>
 <li>Predeclare <strong>validation log loss as the main comparison criterion</strong>, and report Brier score and calibration with their sample counts.</li>
 <li>First inspect one run per candidate with seed 7. Then repeat every candidate with <strong>seeds 7, 17 and 27</strong>, retaining each run and summarizing all three seeds. Do not select the best-looking seed.</li>
 <li>Examine whether any improvement with capacity is consistent under this protocol. Variation across seeds describes training sensitivity, not uncertainty from a new catalogue.</li>
@@ -1514,7 +1555,7 @@ Logistic regression input: (834, 90)</pre>
 </section>
 <section id="extension-b.-cnn1d-apply-shared-filters-to-adjacent-days" class="level2">
 <h2 class="anchored" data-anchor-id="extension-b.-cnn1d-apply-shared-filters-to-adjacent-days">Extension B. CNN1D: apply shared filters to adjacent days</h2>
-<p>A filter of width three examines three neighbouring days and all input channels. The second convolution combines these local responses. Global average pooling summarizes the responses over the window.</p>
+<p>A filter of width three examines three neighbouring days and all three daily catalogue features (input channels). The second convolution combines these local responses. Global average pooling summarizes the responses over the window.</p>
 <p>This convolution moves over <strong>time</strong>, not over geographic cells. Pooling makes the final representation less sensitive to exact lag positions.</p>
 <p><strong>Discuss:</strong> What might happen if the same short pattern occurs five days earlier in the history?</p>
 <div class="copy-step">
@@ -1710,7 +1751,7 @@ Logistic regression input: (834, 90)</pre>
 <section id="optional.-save-the-complete-single-seed-run" class="level2">
 <h2 class="anchored" data-anchor-id="optional.-save-the-complete-single-seed-run">Optional. Save the complete single-seed run</h2>
 <p>The exported tables record the seed and are saved in <code>outputs_temporal</code>. Copy that folder before another run, because the filenames are reused. For a repeated comparison, change SEED to 17 and then 27, restart, and run the complete notebook each time. Keep every declared run and summarize the separate score tables. Do not select a favourable seed. Alternatively, use the <a href="https://franplaza.github.io/courses/statsei14/tutorials/temporal-comparison.html">complete three-seed guide</a>.</p>
-<p>Changing the representation is a separate question from changing the architecture. Adding an ETAS-inspired channel belongs to that next experiment. The spatial guides retain geographic cells and estimate one probability per cell, so their numerical scores answer a different target from this regional comparison.</p>
+<p>Changing the representation is a separate question from changing the architecture. Adding an ETAS-inspired feature belongs to that next experiment. The spatial guides retain geographic cells and estimate one probability per cell, so their numerical scores answer a different target from this regional comparison.</p>
 <div class="copy-step">
 <p><strong>Code block 27</strong> · Run the matching prepared-notebook cell in order. For self-study, copy into a new Colab code cell.</p>
 </div>

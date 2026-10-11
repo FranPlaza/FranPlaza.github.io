@@ -282,3 +282,122 @@ html.print-pdf #s01 .data-dot { animation: none !important; transform: scale(1);
   html.print-pdf .reveal .slides section.slide { box-sizing: border-box !important; padding: 40px 72px 54px !important; }
   html.print-pdf .reveal .slides section.slide.title-slide { top: 0 !important; height: 100% !important; padding: 56px 82px !important; }
 }
+
+/* ---------- APROPECH section dividers ----------
+   Source: APROPECH apropech.css, section slides (575–637).
+   Gradients, contour geometry, timing and type values are preserved.
+   Contours are conceptual decoration, not data or forecasts. */
+.reveal .slides section.slide.section-slide {
+  position: absolute;
+  top: 0 !important;
+  height: 100% !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+  overflow: clip;
+  isolation: isolate;
+  color: var(--white);
+  background:
+    radial-gradient(circle at 80% 20%, rgba(23,169,184,0.23), transparent 28%),
+    radial-gradient(circle at 18% 84%, rgba(232,91,12,0.18), transparent 26%),
+    linear-gradient(135deg, var(--navy-950), var(--navy-800));
+}
+
+.reveal .slides section.slide.section-slide.present,
+.reveal.overview .slides section.slide.section-slide {
+  display: flex !important;
+}
+
+.reveal .slides section.slide.section-slide::before {
+  content: "";
+  position: absolute;
+  inset: -24%;
+  opacity: 0.36;
+  background: repeating-radial-gradient(ellipse at 76% 45%, transparent 0 48px, rgba(185,237,241,0.14) 49px 52px, transparent 53px 98px);
+  animation: contourDrift 22s ease-in-out infinite alternate;
+  animation-play-state: paused;
+  pointer-events: none;
+}
+
+.reveal .slides section.slide.section-slide > * {
+  position: relative;
+  z-index: 2;
+}
+
+.reveal .slides section.slide.section-slide h2 {
+  max-width: 1180px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--white);
+  font-size: 72px;
+  font-weight: 500;
+  line-height: 0.98;
+  white-space: normal;
+}
+
+.reveal .section-slide .section-index {
+  order: -1;
+  margin-bottom: 20px;
+  color: var(--orange-400);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.reveal .section-slide .section-title {
+  max-width: 1020px;
+  margin-top: 28px;
+  color: var(--cyan-200);
+  font-size: 30px;
+  line-height: 1.25;
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  html:not(.print-pdf) .reveal:not(.overview):not(.paused) .slides section.slide.section-slide.present::before {
+    animation-play-state: running;
+  }
+}
+
+@media screen {
+  html:not(.print-pdf) .reveal:has(.slides section.section-slide.present) .footer,
+  html:not(.print-pdf) .reveal:has(.slides section.section-slide.present) .slide-number,
+  html:not(.print-pdf) .reveal:has(.slides section.section-slide.present) .controls {
+    color: rgba(185,237,241,0.7);
+  }
+}
+
+/* Reveal's PDF layout wraps sections in .pdf-page; keep full-height centering. */
+html.print-pdf .reveal .slides section.slide.section-slide {
+  display: flex !important;
+  top: 0 !important;
+  height: 100% !important;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+html.print-pdf .reveal .slides section.slide.section-slide::before {
+  animation: none !important;
+  transform: none;
+}
+
+html.print-pdf .pdf-page:has(section.section-slide) .footer,
+html.print-pdf .pdf-page:has(section.section-slide) .slide-number {
+  color: rgba(185,237,241,0.7);
+}
+
+@media print, (prefers-reduced-motion: reduce) {
+  .reveal .slides section.slide.section-slide::before {
+    animation: none !important;
+    transform: none;
+  }
+}
+
+@media print {
+  .reveal .slides section.slide.section-slide {
+    display: flex !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

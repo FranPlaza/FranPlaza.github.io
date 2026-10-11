@@ -152,14 +152,14 @@ ul.task-list li input[type="checkbox"] {
 <p>For the live session, start with the temporal tutorial below. Use its <strong>Download prepared notebook</strong> button, then open <a href="https://colab.research.google.com/">Colab</a> and upload the downloaded file. Run the core cells in order through LSTM evaluation, keeping the tutorial alongside the notebook. The Transformer, MLP and CNN1D remain available as optional comparisons. <strong>The frozen data download automatically; no data ZIP upload is needed.</strong> The guide also has prepared local outputs. Copying its blocks into a blank Colab remains an optional way to explore the implementation.</p>
 <p><strong>Live route:</strong> map the study region → build one example → define reference forecasts → train the LSTM → inspect its learning curve → evaluate scores and calibration. Spatial maps and a Graph + LSTM preview connect the example to further exploration.</p>
 <div class="course-note">
-<p><strong>One question at a time.</strong> In the session, follow how an LSTM processes the regional history. A prepared Transformer comparison shows another way to use that same input. Each model has its construction, <code>compile</code>, <code>fit</code>, <code>predict</code> and evaluation together. The notebook also includes MLP and CNN1D after the live route. In the optional spatial extensions, retain location and predict one weekly probability per cell: maps and graphs use the same six cells, inputs and target windows.</p>
+<p><strong>Apply the same modelling decisions.</strong> In the research cases, we chose a representation, defined an output and examined the evidence. Here we make those decisions explicit: summarize 30 days of regional catalogue history, estimate the probability of at least one M ≥ 5 event during the following seven days, and compare the LSTM with simple references. A prepared Transformer comparison shows another way to use that same input. Each model has its construction, <code>compile</code>, <code>fit</code>, <code>predict</code> and evaluation together. The notebook also includes MLP and CNN1D after the live route. In the optional spatial extensions, retain location and predict one weekly probability per cell: maps and graphs use the same six cells, inputs and target windows.</p>
 </div>
 <div class="tutorial-cards">
 <div class="tutorial-card">
 <p><span class="kicker">01 · Core tutorial</span></p>
 <section id="one-regional-sequence-step-by-step" class="level2">
 <h2 class="anchored" data-anchor-id="one-regional-sequence-step-by-step">One regional sequence, step by step</h2>
-<p>Use 30 days of three regional catalogue channels to estimate the probability of at least one M ≥ 5 event in the following seven days. Follow training prevalence and logistic regression, then build and evaluate an LSTM. A small Transformer offers an optional comparison through prepared outputs; MLP/CNN1D are further extensions. Each neural model runs once with seed 7.</p>
+<p>Use 30 days of three daily catalogue features to estimate the probability of at least one M ≥ 5 event in the following seven days. Follow training prevalence and logistic regression, then build and evaluate an LSTM. A small Transformer offers an optional comparison through prepared outputs; MLP/CNN1D are further extensions. Each neural model runs once with seed 7.</p>
 <p><strong>Learn:</strong> fixed lag positions, temporal filters, recurrent state, attention and positional information. Read Brier score, log loss and calibration alongside parameter counts and completed epochs.</p>
 <p><a href="./tutorials/temporal.html" class="tutorial-link">Start the temporal tutorial</a></p>
 </section>
@@ -185,7 +185,47 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="how-to-follow-the-session" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-follow-the-session">How to follow the session</h2>
-<p>Open the prepared temporal notebook alongside its web guide. Before running the preparation, identify one forecast Monday: the input contains the preceding 30 days and the label records whether at least one M ≥ 5 event occurs in the following seven days. Its three channels are log event count, <strong>maximum magnitude excess above 4.5</strong>, and event presence.</p>
+<p>Open the prepared temporal notebook alongside its web guide. Before running the preparation, identify one forecast Monday: the input contains the preceding 30 days and the label records whether at least one M ≥ 5 event occurs in the following seven days.</p>
+<section id="three-daily-catalogue-features-channels" class="level3">
+<h3 class="anchored" data-anchor-id="three-daily-catalogue-features-channels">Three daily catalogue features (channels)</h3>
+<p>A <strong>daily feature is one variable constructed from the catalogue for each day</strong>; the array also calls these features <strong>channels</strong>. For each day, summarize catalogue events with M ≥ 4.5 inside the study region:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Daily feature</th>
+<th style="text-align: left;">Calculation</th>
+<th style="text-align: left;">What it describes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Event count, transformed</td>
+<td style="text-align: left;"><code>log(1 + count)</code></td>
+<td style="text-align: left;">How many qualifying events occurred, on a compressed scale</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Maximum magnitude excess</td>
+<td style="text-align: left;">Daily maximum magnitude minus 4.5; zero on an empty day</td>
+<td style="text-align: left;">How far the largest event exceeds the input threshold</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Event presence</td>
+<td style="text-align: left;">1 if at least one qualifying event occurred; otherwise 0</td>
+<td style="text-align: left;">Whether the day contains an event</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Illustrative example, before standardization:</strong> two events with maximum magnitude 5.2 give approximately <strong>[1.10, 0.70, 1]</strong>. An empty day gives <strong>[0, 0, 0]</strong>. One event exactly at M = 4.5 gives approximately <strong>[0.69, 0, 1]</strong>. Presence distinguishes the last two cases when reading the magnitude-excess variable, although it is redundant with the count and adds no new information.</p>
+<p>Stacking 30 consecutive daily rows gives <strong>30 days (rows) × 3 daily features (columns)</strong>. One row represents a day; one complete window is a training example. The table and examples above show values <strong>before standardization</strong>. The network receives their standardized versions, using means and standard deviations estimated from training histories only. A negative standardized value means that feature is below its training mean.</p>
+<p><strong>The same input reaches the LSTM and the optional MLP, CNN1D and Transformer.</strong> The MLP flattens it into 90 values; CNN1D filters neighbouring days; the LSTM reads the ordered days; and the Transformer combines days through attention and position. All four estimate the same weekly occurrence probability. Using three variables is a choice for this example, not a requirement of these architectures. The conditional GAN discussed in the slides is a separate example with mainshock conditions and noise as inputs.</p>
+</section>
+<section id="follow-the-core-experiment" class="level3">
+<h3 class="anchored" data-anchor-id="follow-the-core-experiment">Follow the core experiment</h3>
 <ol type="1">
 <li>Load the catalogue, view the study-area map and inspect one 30 × 3 input.</li>
 <li>Read model settings, the epoch limit and the validation stopping rule.</li>
@@ -196,6 +236,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <p>Run the core cells in order and pause at the LSTM probabilities and scores. Each fit is visible next to its model, using the single declared seed 7. The core evaluation does not depend on MLP or CNN1D. The LSTM evaluation, including its calibration plot, completes the core execution. The Transformer comparison can use prepared outputs, while its training cells, MLP/CNN1D sections and the full table remain available for further exploration. If setup or fitting stalls, continue with the example outputs and return to execution after the session.</p>
 <p>The spatial tutorials are complete, optional extensions for attendees who wish to explore location information further. Graph + LSTM does not need to be completed during the session. Each can start in its own blank notebook because it includes the same preparation. Their target is <strong>per cell</strong>, so their scores should not be ranked against the regional scores from Tutorial 1. Within the two spatial tutorials, cell support, normalization, seed 7 and evaluation origins are shared. A map of the numbered six cells connects their geography to the 3 × 2 array and graph nodes.</p>
+</section>
 </section>
 <section id="the-first-catalogue-map" class="level2">
 <h2 class="anchored" data-anchor-id="the-first-catalogue-map">The first catalogue map</h2>
